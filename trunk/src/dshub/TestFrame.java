@@ -234,7 +234,13 @@ public class TestFrame extends javax.swing.JFrame
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setToolTipText("About DSHub...");
-       
+        jPanel1.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+               // jPanel1FocusGained(evt);
+            }
+        });
 
         jLabel1.setText("This program is distributed in the hope that it will be useful, ");
 
@@ -256,7 +262,7 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
-        jLabel14.setText("Version: DSHub Zeta RC12");
+        jLabel14.setText("Version: DSHub Zeta RC13");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
