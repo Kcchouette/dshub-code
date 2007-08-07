@@ -165,7 +165,7 @@ public class Command
                         else if(aux.startsWith("I4"))
                         {
                             
-                            
+                            cur_client.I4=aux.substring(2);
               if(aux.substring (2).equals("0.0.0.0")||aux.substring (2).equals ("localhost") )//only if active client
               {
                cur_client.I4=cur_client.ClientSock.getInetAddress().getHostAddress();
@@ -179,7 +179,7 @@ public class Command
                    return;
               }
                             cur_inf=cur_inf+" I4"+cur_client.I4;
-                            cur_client.I4=aux.substring(2);
+                            
                         }
                         else if(aux.startsWith("I6"))
                         {
