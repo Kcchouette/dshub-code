@@ -154,7 +154,7 @@ public class Variables implements Serializable
     static int  Timeout_Login=20;
     static int  Default_Port=411;
    
-    static String HubVersion="DSHub Zeta";
+    static String HubVersion="DSHub Eta";
     static String HubDE="";
     static String HubName="hub of "+System.getProperty ("user.name");
    

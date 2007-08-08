@@ -234,13 +234,6 @@ public class TestFrame extends javax.swing.JFrame
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setToolTipText("About DSHub...");
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
-               // jPanel1FocusGained(evt);
-            }
-        });
 
         jLabel1.setText("This program is distributed in the hope that it will be useful, ");
 
@@ -262,7 +255,7 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
-        jLabel14.setText("Version: DSHub Zeta RC13");
+        jLabel14.setText("Version: DSHub Eta RC1");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -295,7 +288,7 @@ public class TestFrame extends javax.swing.JFrame
                         .add(jLabel7)))
                 .addContainerGap(207, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(603, Short.MAX_VALUE)
+                .addContainerGap(615, Short.MAX_VALUE)
                 .add(jLabel14)
                 .addContainerGap())
         );
