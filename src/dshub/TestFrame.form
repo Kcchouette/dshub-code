@@ -164,7 +164,7 @@
                       <EmptySpace pref="207" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="603" max="32767" attributes="0"/>
+                      <EmptySpace pref="615" max="32767" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -252,7 +252,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Version: DSHub Zeta RC13"/>
+                <Property name="text" type="java.lang.String" value="Version: DSHub Eta RC1"/>
               </Properties>
             </Component>
           </SubComponents>

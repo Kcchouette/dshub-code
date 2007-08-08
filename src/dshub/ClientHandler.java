@@ -239,7 +239,7 @@ int kicked=0;
         else
             sendToClient("IINF HU1 HI1 VE"+Vars.HubVersion+" NI"+CommandParser.retADCStr(Vars.HubName)+ " DE"+CommandParser.retADCStr(Vars.HubDE));
         sendToClient("IMSG "+
-            "Running\\sZeta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+            "Running\\sEta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
        
        
         recvbuf=RS.readLine();

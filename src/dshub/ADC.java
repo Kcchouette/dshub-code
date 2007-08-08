@@ -39,11 +39,27 @@ abstract public class ADC
     static String ISID="ISID";
     
     /** IINF hub info parsing to connecting client*/
-   static String MOTD="                         CONGRATULATIONS you succesfully run DSHub and you are now on it !\n"+
-           "         To change this MOTD create a \"motd\" file ( no extension ) in the folder with the DSHub.jar an paste youre motd there and restart !"+
-           "\nZeta Version ChangeLog:\n"+
+   static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
+           "Some reminders :\n" +
+           "DSHub is ADC software so you need an ADC compatibile client.\n"+
+"At the moment of this release ( August 2007 ), the following ADC clients were available:\n"+
+"dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.4.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+"So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
+"Some ADC reminders:\n"+
+"-- You need to connect to address adc://\n"+
+"-- There is no default port, every time one must be specified ( like 411 on NMDC)\n"+
+"-- Accounts are on CID not nick ( you can use what nick you want )\n"+
+"-- Clients that are not ADC compat or dont use the address correctly will just hang up and you will see them at Connecting Users in stats command.\n"+
+"Oh and another thing, NMDC hublists dont work with ADC, so i got 2 fine lists that support ADC for you:\n"+
+"  www.hubtracker.com\n"+
+"  www.adchublist.com\n"+
+"Thanks for using DSHub and I hope you will have as much fun using it as I had creating it ;)\n"+
+
+"For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub\n"+
+           "Or the SourceForge page located at http://www.sf.net/projects/dshub\n"+
+           "Have a nice hubbing !"
            
-            "           * fixed bancid and banip bugs, sorry about them :(\n" +
+           /* "           * fixed bancid and banip bugs, sorry about them :(\n" +
             "           * modified config files path, taken from classpath;\n"+
             "           * met MAGY he helped me with a GUI for dshub, just testing some GUI now;\n"+
             "           * tested GUI on windows and linux with no X server, in last case, message GUI not viewable shows up;\n"+
@@ -113,7 +129,7 @@ abstract public class ADC
             "           * hub security now sends all messages except login;\n"+
             "           * finally found bug that killed me over last month, when passive user couldnt connect irregulary (found out why);\n"+
             "           * completely changed string parsing, now everything is going thru 2 functions;\n"+
-            "Zeta Ultra Version"
+            "Zeta Ultra Version"*/
             ;
     
     
