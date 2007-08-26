@@ -88,6 +88,15 @@ public class Variables implements Serializable
      int search_steps;
      int search_spam_reset;
      
+
+    // ****** ADC advanced config ************* 
+     
+     int BMSG;
+     int DMSG;
+     int EMSG;
+     int FMSG;
+     int HMSG;
+     
       public Variables()
       {
           Timeout_Login=Vars.Timeout_Login;
@@ -136,6 +145,13 @@ public class Variables implements Serializable
       Msg_Search_Spam=Vars.Msg_Search_Spam;
       bot_name=Vars.bot_name;
       bot_desc=Vars.bot_desc;
+      
+      
+      BMSG=Vars.BMSG;
+      DMSG=Vars.DMSG;
+      EMSG=Vars.EMSG;
+      FMSG=Vars.FMSG;
+      HMSG=Vars.HMSG;
       }
 }
  class Vars
@@ -206,4 +222,12 @@ public class Variables implements Serializable
     static String Msg_Full="Have a nice day and don't forget to smile !";
     static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
     static String Msg_Search_Spam="Search ticket Reserved.\nPlease be patient while search\nis being processed.\nDo NOT close this window or start other search\nor you will lose this search !".replaceAll (" ","\\ ");
+    
+    // ****** ADC advanced config ************* 
+    
+    static int BMSG=1;
+    static int DMSG=1;
+    static int EMSG=1;
+    static int FMSG=1;
+    static int HMSG=1;
 }

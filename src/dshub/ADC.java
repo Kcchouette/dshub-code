@@ -63,6 +63,7 @@ abstract public class ADC
                        * fixed small gui stuff in opchat desc & name;
            * added advanced adc config panel;
            * added the MSG context parameters;
+           * added variables in config file, added the modifiers in GUI;
            **/
             
             ;
