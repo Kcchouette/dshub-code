@@ -808,6 +808,31 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
      if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
         new STAError(cur_client,240,"MSG Invalid State.");
       
+     switch(Issued_Command.charAt(0))
+     {
+         case 'B':
+             if(Vars.BMSG!=1)
+             { new STAError(cur_client,140,"MSG Invalid Context B");
+                       return;}
+         case 'E':
+              if(Vars.EMSG!=1)
+              {  new STAError(cur_client,140,"MSG Invalid Context E");
+                       return;}
+         case 'D':
+          if(Vars.DMSG!=1)
+          {   new STAError(cur_client,140,"MSG Invalid Context D");
+                       return;
+         }
+         case 'F':
+          if(Vars.FMSG!=1)
+           {   new STAError(cur_client,140,"MSG Invalid Context F");
+                       return;}
+         case 'H':
+              if(Vars.HMSG!=1)
+              {   new STAError(cur_client,140,"MSG Invalid Context H");
+                       return;}
+                 
+     }
                    //System.out.println (Issued_Command) ;
                     StringTokenizer tok=new StringTokenizer(Issued_Command);
                     String aux=tok.nextToken ();
