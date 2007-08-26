@@ -190,6 +190,16 @@ public class TestFrame extends javax.swing.JFrame
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        BMSGcheck = new javax.swing.JCheckBox();
+        DMSGcheck = new javax.swing.JCheckBox();
+        EMSGcheck = new javax.swing.JCheckBox();
+        FMSGcheck = new javax.swing.JCheckBox();
+        HMSGcheck = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -1295,6 +1305,90 @@ public class TestFrame extends javax.swing.JFrame
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Log", jPanel12);
+
+        jPanel9.setToolTipText("ADC advanced configuration panel");
+        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel51.setText("The ADC advanced configuration Panel.");
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel52.setText("Here you can configure the ADC commands separately.");
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel53.setText("MSG");
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel54.setText("Allowed contexts:");
+
+        BMSGcheck.setText("B (broadcast)");
+        BMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        DMSGcheck.setText("D (direct message)");
+        DMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        DMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        EMSGcheck.setText("E (direct echo message)");
+        EMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        EMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        FMSGcheck.setText("F (feature broadcast)");
+        FMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        FMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        HMSGcheck.setText("H (to hub only)");
+        HMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        HMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel9Layout.createSequentialGroup()
+                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(38, 38, 38)
+                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel52)
+                            .add(jLabel51)))
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(25, 25, 25)
+                        .add(jLabel54)
+                        .add(15, 15, 15)
+                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(DMSGcheck)
+                            .add(BMSGcheck)
+                            .add(EMSGcheck)
+                            .add(FMSGcheck)
+                            .add(HMSGcheck)))
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(96, 96, 96)
+                        .add(jLabel53)))
+                .addContainerGap(453, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel51)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel52)
+                .add(24, 24, 24)
+                .add(jLabel53)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel54)
+                    .add(BMSGcheck))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(DMSGcheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(EMSGcheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(FMSGcheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(HMSGcheck)
+                .addContainerGap(208, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Advanced", jPanel9);
 
         jPanel4.setToolTipText("Some Help ...");
         jTextArea1.setColumns(20);
@@ -2576,6 +2670,11 @@ public class TestFrame extends javax.swing.JFrame
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AccountTable;
+    private javax.swing.JCheckBox BMSGcheck;
+    private javax.swing.JCheckBox DMSGcheck;
+    private javax.swing.JCheckBox EMSGcheck;
+    private javax.swing.JCheckBox FMSGcheck;
+    private javax.swing.JCheckBox HMSGcheck;
     private javax.swing.JTextArea LogText;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
@@ -2641,6 +2740,10 @@ public class TestFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2655,6 +2758,7 @@ public class TestFrame extends javax.swing.JFrame
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

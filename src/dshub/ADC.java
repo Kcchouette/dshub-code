@@ -61,6 +61,8 @@ abstract public class ADC
            
           /*           * fixed cfg spaces in setting topic hub name etc.
                        * fixed small gui stuff in opchat desc & name;
+           * added advanced adc config panel;
+           * added the MSG context parameters;
            **/
             
             ;
