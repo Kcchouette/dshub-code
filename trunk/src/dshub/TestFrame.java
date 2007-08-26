@@ -244,7 +244,6 @@ public class TestFrame extends javax.swing.JFrame
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setToolTipText("About DSHub...");
-
         jLabel1.setText("This program is distributed in the hope that it will be useful, ");
 
         jLabel2.setText("but WITHOUT ANY WARRANTY; without even the implied warranty of ");
@@ -1322,22 +1321,57 @@ public class TestFrame extends javax.swing.JFrame
         BMSGcheck.setText("B (broadcast)");
         BMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BMSGcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                BMSGcheckActionPerformed(evt);
+            }
+        });
 
         DMSGcheck.setText("D (direct message)");
         DMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DMSGcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                DMSGcheckActionPerformed(evt);
+            }
+        });
 
         EMSGcheck.setText("E (direct echo message)");
         EMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         EMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        EMSGcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                EMSGcheckActionPerformed(evt);
+            }
+        });
 
         FMSGcheck.setText("F (feature broadcast)");
         FMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FMSGcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                FMSGcheckActionPerformed(evt);
+            }
+        });
 
         HMSGcheck.setText("H (to hub only)");
         HMSGcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HMSGcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HMSGcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                HMSGcheckActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1477,6 +1511,82 @@ public class TestFrame extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_HMSGcheckActionPerformed
+    {//GEN-HEADEREND:event_HMSGcheckActionPerformed
+if(HMSGcheck.isSelected())
+             
+         {
+             Main.PopMsg("HMSG changed from \"0\" to \"1\".");
+             Vars.HMSG=1;
+         }
+         else
+         {
+             Main.PopMsg("HMSG changed from \"1\" to \"0\".");
+             Vars.HMSG=0;
+         }
+    }//GEN-LAST:event_HMSGcheckActionPerformed
+
+    private void FMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_FMSGcheckActionPerformed
+    {//GEN-HEADEREND:event_FMSGcheckActionPerformed
+if(FMSGcheck.isSelected())
+             
+         {
+             Main.PopMsg("FMSG changed from \"0\" to \"1\".");
+             Vars.FMSG=1;
+         }
+         else
+         {
+             Main.PopMsg("FMSG changed from \"1\" to \"0\".");
+             Vars.FMSG=0;
+         }
+    }//GEN-LAST:event_FMSGcheckActionPerformed
+
+    private void EMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_EMSGcheckActionPerformed
+    {//GEN-HEADEREND:event_EMSGcheckActionPerformed
+ if(EMSGcheck.isSelected())
+             
+         {
+             Main.PopMsg("EMSG changed from \"0\" to \"1\".");
+             Vars.EMSG=1;
+         }
+         else
+         {
+             Main.PopMsg("EMSG changed from \"1\" to \"0\".");
+             Vars.EMSG=0;
+         }
+    }//GEN-LAST:event_EMSGcheckActionPerformed
+
+    private void DMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_DMSGcheckActionPerformed
+    {//GEN-HEADEREND:event_DMSGcheckActionPerformed
+ if(DMSGcheck.isSelected())
+             
+         {
+             Main.PopMsg("DMSG changed from \"0\" to \"1\".");
+             Vars.DMSG=1;
+         }
+         else
+         {
+             Main.PopMsg("DMSG changed from \"1\" to \"0\".");
+             Vars.DMSG=0;
+         }
+    }//GEN-LAST:event_DMSGcheckActionPerformed
+
+    private void BMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_BMSGcheckActionPerformed
+    {//GEN-HEADEREND:event_BMSGcheckActionPerformed
+
+        if(BMSGcheck.isSelected())
+             
+         {
+             Main.PopMsg("BMSG changed from \"0\" to \"1\".");
+             Vars.BMSG=1;
+         }
+         else
+         {
+             Main.PopMsg("BMSG changed from \"1\" to \"0\".");
+             Vars.BMSG=0;
+         }
+    }//GEN-LAST:event_BMSGcheckActionPerformed
 
     
 
@@ -2617,8 +2727,26 @@ public class TestFrame extends javax.swing.JFrame
        
         botdescfield.setText(Vars.bot_desc);
         
-        
-       
+        if(Vars.BMSG==1)
+            BMSGcheck.setSelected (true);
+        else
+            BMSGcheck.setSelected(false);    
+        if(Vars.EMSG==1)
+            EMSGcheck.setSelected (true);
+        else
+            EMSGcheck.setSelected(false); 
+        if(Vars.DMSG==1)
+            DMSGcheck.setSelected (true);
+        else
+            DMSGcheck.setSelected(false); 
+        if(Vars.HMSG==1)
+            HMSGcheck.setSelected (true);
+        else
+            HMSGcheck.setSelected(false); 
+        if(Vars.FMSG==1)
+            FMSGcheck.setSelected (true);
+        else
+            FMSGcheck.setSelected(false); 
 
     }//GEN-LAST:event_formWindowGainedFocus
 

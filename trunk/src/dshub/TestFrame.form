@@ -1933,6 +1933,9 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BMSGcheckActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="DMSGcheck">
               <Properties>
@@ -1946,6 +1949,9 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DMSGcheckActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="EMSGcheck">
               <Properties>
@@ -1959,6 +1965,9 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EMSGcheckActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="FMSGcheck">
               <Properties>
@@ -1972,6 +1981,9 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FMSGcheckActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="HMSGcheck">
               <Properties>
@@ -1985,6 +1997,9 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HMSGcheckActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

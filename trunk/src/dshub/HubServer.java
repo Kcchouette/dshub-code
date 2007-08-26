@@ -374,6 +374,12 @@ public class HubServer extends Thread
       Vars.search_spam_reset=vars.search_spam_reset;
       Vars.bot_name=vars.bot_name;
       Vars.bot_desc=vars.bot_desc;
+      
+      Vars.BMSG=vars.BMSG;
+      Vars.EMSG=vars.EMSG;
+      Vars.DMSG=vars.DMSG;
+      Vars.HMSG=vars.HMSG;
+      Vars.FMSG=vars.FMSG;
         
         in.close();
 
