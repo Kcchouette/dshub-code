@@ -59,9 +59,9 @@ abstract public class ADC
            "Or the SourceForge page located at http://www.sf.net/projects/dshub\n"+
            "Have a nice hubbing !"
            
-           /* "           * fixed bancid and banip bugs, sorry about them :(\n" +
-            "           * modified config files path, taken from classpath;\n"+
-            "           * met MAGY he helped me with a GUI for dshub, just testing some GUI now;\n"+
+          /* "           * fixed cfg spaces in setting topic hub name etc.\n" +
+            "           * fixed small gui stuff in opchat desc & name;\n"+
+            "           * //met MAGY he helped me with a GUI for dshub, just testing some GUI now;\n"+
             "           * tested GUI on windows and linux with no X server, in last case, message GUI not viewable shows up;\n"+
             "           * still need to test on X server;\n"+
             "           * added a gui command that brings up GUI;\n"+

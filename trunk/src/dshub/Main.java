@@ -267,7 +267,7 @@ public class Main extends Thread
      */
     public static void main(String [] args) 
     {
-        System.out.println ("Initializing DSHub Zeta ...");
+        System.out.println ("Initializing DSHub Eta ...");
         curtime=System.currentTimeMillis();
         
     try
