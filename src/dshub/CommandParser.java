@@ -3852,7 +3852,7 @@ public class CommandParser extends Thread
                         
                         Vars.HubName=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("IINF NI"+Vars.HubName);
+                        new Broadcast ("IINF NI"+retADCStr(Vars.HubName));
                         
                 }
                 else if(aux.toLowerCase().equals ("max_ni"))
@@ -4150,7 +4150,7 @@ public class CommandParser extends Thread
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD NI"+Vars.Opchat_name,10);
+                        new Broadcast ("BINF ABCD NI"+retADCStr(Vars.Opchat_name),10);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_name"))
@@ -4183,7 +4183,7 @@ public class CommandParser extends Thread
                         
                         Vars.bot_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA NI"+Vars.bot_name);
+                        new Broadcast ("BINF DCBA NI"+retADCStr(Vars.bot_name));
                         
                 }
                 else if(aux.toLowerCase ().equals ("opchat_desc"))
@@ -4198,7 +4198,7 @@ public class CommandParser extends Thread
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD DE"+Vars.Opchat_desc,10);
+                        new Broadcast ("BINF ABCD DE"+retADCStr(Vars.Opchat_desc),10);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_desc"))
@@ -4213,7 +4213,7 @@ public class CommandParser extends Thread
                         
                         Vars.bot_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA DE"+Vars.bot_desc);
+                        new Broadcast ("BINF DCBA DE"+retADCStr(Vars.bot_desc));
                         
                 }
                 else if(aux.toLowerCase().equals ("kick_time"))
@@ -4585,7 +4585,7 @@ public class CommandParser extends Thread
                    auxbuf=auxbuf.replaceAll(" ","\\ ");
                    Vars.HubDE=auxbuf;
                    Main.Server.vars.HubDE=auxbuf;
-                   new Broadcast ("IINF DE"+auxbuf);
+                   new Broadcast ("IINF DE"+retADCStr(auxbuf));
                    new Broadcast("IMSG Topic was changed by "+cur_client.NI+" to \""+Vars.HubDE+"\"");
                    
                }

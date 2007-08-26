@@ -1548,7 +1548,7 @@ public class TestFrame extends javax.swing.JFrame
           }
         Thing=opchatdescfield.getText();
          
-                        String aucsy=Vars.Opchat_name;
+                        String aucsy=Vars.Opchat_desc;
                         if(!(aucsy.equals (Thing)))
                         {
                            
