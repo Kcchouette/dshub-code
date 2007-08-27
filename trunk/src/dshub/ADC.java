@@ -43,7 +43,7 @@ abstract public class ADC
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
 "At the moment of this release ( August 2007 ), the following ADC clients were available:\n"+
-"dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.4.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+"dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69*, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
 "Some ADC reminders:\n"+
 "-- You need to connect to address adc://\n"+
@@ -64,6 +64,7 @@ abstract public class ADC
            * added advanced adc config panel;
            * added the MSG context parameters;
            * added variables in config file, added the modifiers in GUI;
+           * the msg context modders work now;
            **/
             
             ;
