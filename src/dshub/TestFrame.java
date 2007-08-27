@@ -253,7 +253,7 @@ public class TestFrame extends javax.swing.JFrame
         jLabel4.setText("GNU General Public License for more details. ");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
-        jLabel5.setText("Welcome to DSHub a ADC hubsoft for Direct Connect.");
+        jLabel5.setText("Welcome to DSHub an ADC hubsoft for Direct Connect.");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel6.setText("Death Squad Hub. The Credits. ");
@@ -264,7 +264,7 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
-        jLabel14.setText("Version: DSHub Eta RC1");
+        jLabel14.setText("Version: DSHub Eta RC2");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,7 +273,7 @@ public class TestFrame extends javax.swing.JFrame
             .add(jPanel1Layout.createSequentialGroup()
                 .add(189, 189, 189)
                 .add(jLabel5)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
