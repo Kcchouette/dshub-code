@@ -235,9 +235,9 @@ int kicked=0;
         sendToClient(ADC.ISID+" "+SessionID);
         
         if(Vars.HubDE.equals (""))
-            sendToClient("IINF HU1 HI1 VE"+Vars.HubVersion+" NI"+CommandParser.retADCStr(Vars.HubName));
+            sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName));
         else
-            sendToClient("IINF HU1 HI1 VE"+Vars.HubVersion+" NI"+CommandParser.retADCStr(Vars.HubName)+ " DE"+CommandParser.retADCStr(Vars.HubDE));
+            sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName)+ " DE"+CommandParser.retADCStr(Vars.HubDE));
         sendToClient("IMSG "+
             "Running\\sEta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
        
