@@ -230,17 +230,22 @@ int kicked=0;
         
         
         sendToClient(ADC.Init);
-        
+         
        
         sendToClient(ADC.ISID+" "+SessionID);
-        
+         
         if(Vars.HubDE.equals (""))
             sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName));
         else
             sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName)+ " DE"+CommandParser.retADCStr(Vars.HubDE));
         sendToClient("IMSG "+
             "Running\\sEta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
-       
+        while(Queue.First!=null)
+                {
+                this.PS.printf ("%s\n",Queue.First.MSG);
+                
+                Queue.First=Queue.First.Next;
+                }
        
         recvbuf=RS.readLine();
         logged_in=1;
@@ -260,10 +265,27 @@ int kicked=0;
         while(ClientSock.isConnected () && !ClientSock.isClosed ())
      
        {
-          
-          
+         this.sleep(20);
+           
+               /* if(!this.ClientSock.isConnected () && this.userok==1)
+                    throw new Exception();
+                if(this.ClientSock.isClosed ())
+                    break;*/
+                while(Queue.First!=null)
+                {
+                this.PS.printf ("%s\n",Queue.First.MSG);
+                
+                Queue.First=Queue.First.Next;
+                }
+                
+        
+        if(ClientSock.isClosed())
+            System.out.printf("da");
+          if(RS.ready()) 
+          {
             recvbuf=RS.readLine();
-          
+          //ClientSock.
+           // RS.
           
             //String auxbuf;
             char aux1='\\';char aux2='n';
@@ -290,7 +312,13 @@ int kicked=0;
          else
          
          new Command (this,null,"NORMAL");
-        
+       }
+          while(Queue.First!=null)
+                {
+                this.PS.printf ("%s\n",Queue.First.MSG);
+                
+                Queue.First=Queue.First.Next;
+                }
        }
         
         }
@@ -322,6 +350,12 @@ int kicked=0;
            if(this.NextClient!=null)
            this.NextClient.PrevClient=this.PrevClient;
             //tempy.NextClient=tempy.NextClient.NextClient;
+            while(Queue.First!=null)
+                {
+                this.PS.printf ("%s\n",Queue.First.MSG);
+                
+                Queue.First=Queue.First.Next;
+                }
             try
             {
                 this.sleep (100);

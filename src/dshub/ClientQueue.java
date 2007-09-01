@@ -28,7 +28,7 @@ import java.io.IOException;
  *
  * @author Pietricica
  */
-public class ClientQueue extends Thread
+public class ClientQueue 
 {
     
     ClientHandler cur_client;
@@ -51,7 +51,7 @@ public class ClientQueue extends Thread
 
         First=null;
         Last=null;
-        start();
+        
     }
     
     public void addMsg(String newmsg)
@@ -70,53 +70,7 @@ public class ClientQueue extends Thread
     
     public void run()
     {
-        try
-        {
-            while(true)
-            {
-                if(!cur_client.ClientSock.isConnected () && cur_client.userok==1)
-                    throw new Exception();
-                if(cur_client.ClientSock.isClosed ())
-                    break;
-                while(First!=null)
-                {
-                cur_client.PS.printf ("%s\n",First.MSG);
-                
-                First=First.Next;
-                }
-                this.sleep (50);
-            }
-        }
-        catch (Exception e)
-        {
-            //ClientHandler tempy=ClientHandler.FirstClient;
-            
-            
-           /* while (!tempy.NextClient.equals(cur_client) && tempy.NextClient!=null)
-            {
-                
-                tempy=tempy.NextClient;
-                if(tempy.NextClient==null)
-                    break;
-            }*/
-          if(cur_client.userok==1) //if he ever logged in... else is no point in sending QUI
-          {
-                 new Broadcast("IQUI "+cur_client.SessionID);
-                    // System.out.printf ("[disconnected:] %s\n",this.NI);  
-          }
-           cur_client.PrevClient.NextClient=cur_client.NextClient;
-           if(cur_client.NextClient!=null)
-           cur_client.NextClient.PrevClient=cur_client.PrevClient;
-            //tempy.NextClient=tempy.NextClient.NextClient;
-            try
-            {
-            cur_client.ClientSock.close();
-            }
-            catch (IOException ee)
-            {
-            }
-            
-        }
+        
     }
     
 }
