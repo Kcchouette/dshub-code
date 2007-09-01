@@ -1307,20 +1307,22 @@ if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='C' && Issued_Com
        { 
              //this means client is disconnected
            
-            ClientHandler tempy=cur_client.FirstClient.NextClient;
-            ClientHandler tempyprev=cur_client.FirstClient;
-            while (!tempy.equals(cur_client))
+           // ClientHandler tempy=cur_client.FirstClient.NextClient;
+           // ClientHandler tempyprev=cur_client.FirstClient;
+           /* while (!tempy.equals(cur_client))
             {
                 tempyprev=tempyprev.NextClient;
                 tempy=tempy.NextClient;
             }
-            tempyprev.NextClient=tempy.NextClient;
+            tempyprev.NextClient=tempy.NextClient;*/
             if(cur_client.FirstClient.NextClient!=null && cur_client.userok==1)
             {
             new Broadcast("IQUI "+cur_client.SessionID);
                   
             }
-        
+           cur_client.PrevClient.NextClient=cur_client.NextClient;
+           if(cur_client.NextClient!=null)
+           cur_client.NextClient.PrevClient=cur_client.PrevClient;
             try{
             cur_client.ClientSock.close();
             }

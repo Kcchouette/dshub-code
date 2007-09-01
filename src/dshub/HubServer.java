@@ -251,6 +251,9 @@ public class HubServer extends Thread
         ClientHandler newclient=new ClientHandler(s);
        newclient.NextClient=ClientHandler.FirstClient.NextClient;
        ClientHandler.FirstClient.NextClient=newclient;
+       newclient.PrevClient=ClientHandler.FirstClient;
+       if(newclient.NextClient!=null)
+       newclient.NextClient.PrevClient=newclient;
 
         
     }

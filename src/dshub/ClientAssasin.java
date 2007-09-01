@@ -60,13 +60,15 @@ public class ClientAssasin extends Thread
                     catch(Exception e)
                     {
                     
-                    
-                    
+                   ClientHandler cur_client=temp.NextClient; 
+            cur_client.PrevClient.NextClient=cur_client.NextClient;
+            if(cur_client.NextClient!=null)
+           cur_client.NextClient.PrevClient=cur_client.PrevClient;
          ClientHandler x=temp.NextClient;
          new Broadcast("IQUI "+temp.NextClient.SessionID);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
              Main.PopMsg(x.NI+" was dropped due to timeout."+(System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)/1000);
-               temp.NextClient=x.NextClient;
+               //temp.NextClient=x.NextClient;
              
                 x.kicked=1;    
                try

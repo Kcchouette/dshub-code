@@ -89,23 +89,25 @@ public class ClientQueue extends Thread
         }
         catch (Exception e)
         {
-            ClientHandler tempy=ClientHandler.FirstClient;
+            //ClientHandler tempy=ClientHandler.FirstClient;
             
             
-            while (!tempy.NextClient.equals(cur_client) && tempy.NextClient!=null)
+           /* while (!tempy.NextClient.equals(cur_client) && tempy.NextClient!=null)
             {
                 
                 tempy=tempy.NextClient;
                 if(tempy.NextClient==null)
                     break;
-            }
+            }*/
           if(cur_client.userok==1) //if he ever logged in... else is no point in sending QUI
           {
                  new Broadcast("IQUI "+cur_client.SessionID);
                     // System.out.printf ("[disconnected:] %s\n",this.NI);  
           }
-           
-            tempy.NextClient=tempy.NextClient.NextClient;
+           cur_client.PrevClient.NextClient=cur_client.NextClient;
+           if(cur_client.NextClient!=null)
+           cur_client.NextClient.PrevClient=cur_client.PrevClient;
+            //tempy.NextClient=tempy.NextClient.NextClient;
             try
             {
             cur_client.ClientSock.close();

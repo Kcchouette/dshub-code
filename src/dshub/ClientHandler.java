@@ -303,7 +303,7 @@ int kicked=0;
             if(kicked==1)
                 return;
             //System.out.println (sta);
-           ClientHandler tempy=FirstClient;
+           /*ClientHandler tempy=FirstClient;
             //ClientHandler tempyprev=FirstClient;
             
             while (!tempy.NextClient.equals(this) && tempy.NextClient!=null)
@@ -312,14 +312,16 @@ int kicked=0;
                 tempy=tempy.NextClient;
                 if(tempy.NextClient==null)
                     break;
-            }
+            }*/
           if(this.userok==1) //if he ever logged in... else is no point in sending QUI
           {
                  new Broadcast("IQUI "+SessionID);
                     // System.out.printf ("[disconnected:] %s\n",this.NI);  
           }
-           
-            tempy.NextClient=tempy.NextClient.NextClient;
+           this.PrevClient.NextClient=this.NextClient;
+           if(this.NextClient!=null)
+           this.NextClient.PrevClient=this.PrevClient;
+            //tempy.NextClient=tempy.NextClient.NextClient;
             try
             {
                 this.sleep (100);
@@ -412,49 +414,51 @@ int kicked=0;
              whokicked.sendFromBot(""+this.NI+" is op, can't kick him.");
              return;
          }
-         ClientHandler tempy=FirstClient;
-         while(tempy.NextClient!=this)
-             tempy=tempy.NextClient;
-         ClientHandler temp=tempy.NextClient;
+         //ClientHandler tempy=FirstClient;
+        // while(tempy.NextClient!=this)
+          //   tempy=tempy.NextClient;
+        // ClientHandler temp=tempy.NextClient;
          if(kicktime!=-1)
          {
              if(bantype==3)
-         BanList.addban (bantype,temp.ID,1000*kicktime,whokicked.NI,kickmsg);
+         BanList.addban (bantype,this.ID,1000*kicktime,whokicked.NI,kickmsg);
              else if(bantype==2)
-                     BanList.addban (bantype,temp.ClientSock.getInetAddress().getHostAddress(),1000*kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,this.ClientSock.getInetAddress().getHostAddress(),1000*kicktime,whokicked.NI,kickmsg);
               else if(bantype==1)
-                     BanList.addban (bantype,temp.NI,1000*kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,this.NI,1000*kicktime,whokicked.NI,kickmsg);
         }
          else
           {
          
           if(bantype==3)
-        BanList.addban (bantype,temp.ID,kicktime,whokicked.NI,kickmsg);
+        BanList.addban (bantype,this.ID,kicktime,whokicked.NI,kickmsg);
              else if(bantype==2)
-                     BanList.addban (bantype,temp.ClientSock.getInetAddress().getHostAddress(),kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,this.ClientSock.getInetAddress().getHostAddress(),kicktime,whokicked.NI,kickmsg);
               else if(bantype==1)
-                     BanList.addban (bantype,temp.NI,kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,this.NI,kicktime,whokicked.NI,kickmsg);
                    
           }
-         String brcast="IQUI "+temp.SessionID+" ID"+whokicked.SessionID+" TL"+Long.toString (kicktime);
+         String brcast="IQUI "+this.SessionID+" ID"+whokicked.SessionID+" TL"+Long.toString (kicktime);
            if(!kickmsg.equals(""))
                brcast=brcast+" MS"+CommandParser.retADCStr (kickmsg);
          new Broadcast(brcast);
            this.sendToClient (brcast);
              
-               tempy.NextClient=this.NextClient;
+           this.PrevClient.NextClient=this.NextClient;
+           if(this.NextClient!=null)
+           this.NextClient.PrevClient=this.PrevClient;
              this. kicked=1;
                     
                try
               {
               this.sleep (200);
-               temp.ClientSock.close();
+               this.ClientSock.close();
               }
              catch (Exception e)
                {
                }
              whokicked.sendFromBot("Kicked user "+this.NI+" with CID "+this.ID+" out in flames.");
-             Main.PopMsg (whokicked.NI+" kicked user "+this.NI+" with CID " + temp.ID+" out in flames.");
+             Main.PopMsg (whokicked.NI+" kicked user "+this.NI+" with CID " + this.ID+" out in flames.");
                     Main.Server.rewritebans ();
      }
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype)
@@ -482,22 +486,25 @@ int kicked=0;
              whokicked.sendFromBot(""+this.NI+" is op, can't drop him.");
              return;
          }
-         ClientHandler tempy=FirstClient;
-         while(tempy.NextClient!=this)
-             tempy=tempy.NextClient;
-         ClientHandler temp=tempy.NextClient;
+         //ClientHandler tempy=FirstClient;
+        // while(tempy.NextClient!=this)
+         //    tempy=tempy.NextClient;
+        // ClientHandler temp=tempy.NextClient;
          
          
-         new Broadcast("IQUI "+temp.SessionID);
-           this.sendToClient ("IQUI "+temp.SessionID+" ID"+whokicked.SessionID);
+         new Broadcast("IQUI "+this.SessionID);
+           this.sendToClient ("IQUI "+this.SessionID+" ID"+whokicked.SessionID);
              
-               tempy.NextClient=this.NextClient;
+               //tempy.NextClient=this.NextClient;
+           this.PrevClient.NextClient=this.NextClient;
+           if(this.NextClient!=null)
+           this.NextClient.PrevClient=this.PrevClient;
              this. kicked=1;
                     
                try
               {
               this.sleep (200);
-               temp.ClientSock.close();
+               this.ClientSock.close();
               }
              catch (Exception e)
                {
