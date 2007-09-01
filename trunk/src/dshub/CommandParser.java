@@ -4634,7 +4634,7 @@ public class CommandParser extends Thread
             line bb=Broadcast.First;
             while(bb!=null)
             {
-                blah00=blah00+bb.curline;
+                blah00=blah00+retNormStr(bb.curline);
                 bb=bb.Next;
             }
             
@@ -4646,7 +4646,7 @@ public class CommandParser extends Thread
             line bb=FirstCommand;
             while(bb!=null)
             {
-                blah00=blah00+bb.curline;
+                blah00=blah00+retNormStr(bb.curline);
                 bb=bb.Next;
             }
             
