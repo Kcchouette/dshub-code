@@ -219,7 +219,7 @@ int kicked=0;
         
         try
         {
-      
+     
         ClientSock.setSoTimeout (1000*Vars.Timeout_Login);
         ClientSock.setKeepAlive (true);
          LastKeepAlive=System.currentTimeMillis ();
@@ -259,13 +259,13 @@ int kicked=0;
        
       
       ClientSock.setSoTimeout (0);
-   
+      
       
       
         while(ClientSock.isConnected () && !ClientSock.isClosed ())
      
        {
-         this.sleep(20);
+         //this.sleep(20);
            
                /* if(!this.ClientSock.isConnected () && this.userok==1)
                     throw new Exception();
@@ -279,11 +279,17 @@ int kicked=0;
                 }
                 
         
-        if(ClientSock.isClosed())
-            System.out.printf("da");
-          if(RS.ready()) 
-          {
-            recvbuf=RS.readLine();
+       // if(ClientSock.isClosed())
+        //    System.out.printf("da");
+       try
+       {
+         ClientSock.setSoTimeout (50);
+          //try
+         
+            recvbuf=RS.readLine(); //ClientSock.setSo
+          
+          
+         ClientSock.setSoTimeout (0);
           //ClientSock.
            // RS.
           
@@ -313,6 +319,12 @@ int kicked=0;
          
          new Command (this,null,"NORMAL");
        }
+       catch(SocketTimeoutException ste)
+          {
+            //System.out.println ("timeout");
+          }
+       
+       }
           while(Queue.First!=null)
                 {
                 this.PS.printf ("%s\n",Queue.First.MSG);
@@ -321,7 +333,8 @@ int kicked=0;
                 }
        }
         
-        }
+        
+        
        catch (ClientFailedException ce)
         {
           
