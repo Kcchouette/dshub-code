@@ -67,6 +67,8 @@ abstract public class ADC
            * the msg context modders work now;
            * changed from simple linked list to double one;
            * fixed history and cmdhistory space problem;
+           * changed the client queue, removed the extra thread, hope that now thread count and memory usage is 
+           * with more than 40 % lower ;)
            **/
             
             ;
