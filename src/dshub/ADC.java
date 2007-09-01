@@ -65,6 +65,8 @@ abstract public class ADC
            * added the MSG context parameters;
            * added variables in config file, added the modifiers in GUI;
            * the msg context modders work now;
+           * changed from simple linked list to double one;
+           * fixed history and cmdhistory space problem;
            **/
             
             ;
