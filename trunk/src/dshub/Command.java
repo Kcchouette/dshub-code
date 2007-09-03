@@ -813,20 +813,20 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
          case 'B':
              if(Vars.BMSG!=1)
              { new STAError(cur_client,140,"MSG Invalid Context B");
-                       return;}
+                       return;}break;
          case 'E':
               if(Vars.EMSG!=1)
               {  new STAError(cur_client,140,"MSG Invalid Context E");
-                       return;}
+                       return;}break;
          case 'D':
           if(Vars.DMSG!=1)
           {   new STAError(cur_client,140,"MSG Invalid Context D");
                        return;
-         }
+         }break;
          case 'F':
           if(Vars.FMSG!=1)
            {   new STAError(cur_client,140,"MSG Invalid Context F");
-                       return;}
+                       return;}break;
          case 'H':
               if(Vars.HMSG!=1)
               {   new STAError(cur_client,140,"MSG Invalid Context H");
