@@ -219,7 +219,7 @@ int kicked=0;
         
         try
         {
-     
+      
         ClientSock.setSoTimeout (1000*Vars.Timeout_Login);
         ClientSock.setKeepAlive (true);
          LastKeepAlive=System.currentTimeMillis ();
@@ -235,9 +235,9 @@ int kicked=0;
         sendToClient(ADC.ISID+" "+SessionID);
          
         if(Vars.HubDE.equals (""))
-            sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName));
+            sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
         else
-            sendToClient("IINF HU1 HI1 VE"+CommandParser.retADCStr (Vars.HubVersion)+" NI"+CommandParser.retADCStr(Vars.HubName)+ " DE"+CommandParser.retADCStr(Vars.HubDE));
+            sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
         sendToClient("IMSG "+
             "Running\\sEta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
         while(Queue.First!=null)
@@ -259,13 +259,13 @@ int kicked=0;
        
       
       ClientSock.setSoTimeout (0);
-      
+   
       
       
         while(ClientSock.isConnected () && !ClientSock.isClosed ())
      
        {
-         //this.sleep(20);
+         this.sleep(20);
            
                /* if(!this.ClientSock.isConnected () && this.userok==1)
                     throw new Exception();
@@ -279,17 +279,11 @@ int kicked=0;
                 }
                 
         
-       // if(ClientSock.isClosed())
-        //    System.out.printf("da");
-       try
-       {
-         ClientSock.setSoTimeout (50);
-          //try
-         
-            recvbuf=RS.readLine(); //ClientSock.setSo
-          
-          
-         ClientSock.setSoTimeout (0);
+        if(ClientSock.isClosed())
+            System.out.printf("da");
+          if(RS.ready()) 
+          {
+            recvbuf=RS.readLine();
           //ClientSock.
            // RS.
           
@@ -319,12 +313,6 @@ int kicked=0;
          
          new Command (this,null,"NORMAL");
        }
-       catch(SocketTimeoutException ste)
-          {
-            //System.out.println ("timeout");
-          }
-       
-       }
           while(Queue.First!=null)
                 {
                 this.PS.printf ("%s\n",Queue.First.MSG);
@@ -333,8 +321,7 @@ int kicked=0;
                 }
        }
         
-        
-        
+        }
        catch (ClientFailedException ce)
         {
           
@@ -455,7 +442,7 @@ int kicked=0;
      
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
      {
-         kickmsg=CommandParser.retNormStr (kickmsg);
+         kickmsg=ADC.retNormStr (kickmsg);
          if(this.reg.key && Vars.kick_ops==0)
          {
              whokicked.sendFromBot(""+this.NI+" is op, can't kick him.");
@@ -487,7 +474,7 @@ int kicked=0;
           }
          String brcast="IQUI "+this.SessionID+" ID"+whokicked.SessionID+" TL"+Long.toString (kicktime);
            if(!kickmsg.equals(""))
-               brcast=brcast+" MS"+CommandParser.retADCStr (kickmsg);
+               brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
          new Broadcast(brcast);
            this.sendToClient (brcast);
              
@@ -516,14 +503,14 @@ int kicked=0;
      {
                    if(this.userok==1)
                    {
-                        this.sendToClient ("EMSG DCBA "+this.SessionID+" "+CommandParser.retADCStr (text));
+                        this.sendToClient ("EMSG DCBA "+this.SessionID+" "+ADC.retADCStr (text));
                    }
      }
      public void sendFromBotPM(String text)
      {
                    if(this.userok==1)
                    {
-                        this.sendToClient ("EMSG DCBA "+this.SessionID+" "+CommandParser.retADCStr (text)+" PMDCBA");
+                        this.sendToClient ("EMSG DCBA "+this.SessionID+" "+ADC.retADCStr (text)+" PMDCBA");
                    }
      }
      public void dropMe(ClientHandler whokicked)

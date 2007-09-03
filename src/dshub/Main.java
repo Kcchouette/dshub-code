@@ -373,7 +373,7 @@ public class Main extends Thread
                 {
                     //ok its not a cid, lets check if its some IP address...
                     System.out.println ("Not a CID, Searching...");
-                    if(CommandParser.isIP(aux))
+                    if(ADC.isIP(aux))
                     {
                         System.out.println ("Is IP ...checking if banned...");
                         if(BanList.delban (2,aux))

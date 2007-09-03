@@ -42,36 +42,7 @@ public class CommandParser extends Thread
     static line LastCommand=null;
     static int size=0;
     
-    public static String retNormStr(String blah)
-    {
-        return blah.replaceAll ("\\\\s"," ").replaceAll ("\\\\n","\n").replaceAll ("\\\\\\\\","\\\\");
-    }
-    public static String retADCStr(String blah)
-    {
-         return blah.replaceAll ("\\\\","\\\\\\\\").replaceAll (" ","\\\\s").replaceAll ("\n","\\\\n");
-    }
     
-    public static boolean isIP(String blah)
-    {
-        return blah.matches("\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b");
-        
-       
-    }
-    public static boolean isCID(String blah)
-    {
-        if(blah.length ()!=39)
-            return false;
-        try
-        {
-            Base32.decode (blah);
-        }
-        catch(IllegalArgumentException iae)
-        {
-            return false;
-        }
-        return true;
-       
-    }
     
     
     /** Creates a new instance of CommandParser */
@@ -84,7 +55,7 @@ public class CommandParser extends Thread
     }
     public void run()
     {
-        String recvbuf=retNormStr(cmd.substring (1));
+        String recvbuf=ADC.retNormStr(cmd.substring (1));
         String STR=cmd;
         String NI=cur_client.NI;
                 ;
@@ -482,15 +453,15 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("info "))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the thing to check;
                 while(ST.hasMoreTokens ())
                     aux+=ST.nextToken ();
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 ClientHandler temp=ClientHandler.FirstClient.NextClient;
               
-                if(isIP(aux))//we have an IP address
+                if(ADC.isIP(aux))//we have an IP address
                 {
                     //ClientHandler temp=ClientHandler.FirstClient.NextClient;
               String Nicklist="";
@@ -591,7 +562,7 @@ public class CommandParser extends Thread
         
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 String aux="";
                 if(!(ST.hasMoreTokens ()))
@@ -618,7 +589,7 @@ public class CommandParser extends Thread
                 while (ST.hasMoreTokens ())
                  aux=aux+ST.nextToken ()+" "; //the message to broadcast;
                // aux=aux.substring (0,aux.length ()-1);
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 
                if(extmass.equalsIgnoreCase ("all")) 
                {
@@ -1510,14 +1481,14 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("mynick "))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 String aux="";
                 while (ST.hasMoreTokens ())
                  aux=aux+ST.nextToken ()+" "; //new nick
                 if(!(aux.equals ("")))
                 aux=aux.substring (0,aux.length ()-1);
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 if(aux.length ()<Vars.min_ni)
                 {
                     { 
@@ -1532,7 +1503,7 @@ public class CommandParser extends Thread
                        return;
                     }
                 }
-                if(!Vars.ValidateNick (aux) || isIP(aux) || isCID(aux))
+                if(!Vars.ValidateNick (aux) || ADC.isIP(aux) || ADC.isCID(aux))
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        System.out.println (aux);
@@ -1572,11 +1543,11 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("rename "))
         {
-                    //cur_client.sendFromBot(""+retADCStr("Sorry but renaming features are temporary disabled until DC++ has UCMD's ( because !rename mister bla new nick has 4 entities and its quite hard to guess what is first nick and what is 2nd nick."));
+                    //cur_client.sendFromBot(""+ADC.retADCStr("Sorry but renaming features are temporary disabled until DC++ has UCMD's ( because !rename mister bla new nick has 4 entities and its quite hard to guess what is first nick and what is 2nd nick."));
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to rename;
-               // aux=retADCStr(aux);
+               // aux=ADC.retADCStr(aux);
                 ClientHandler temp=ClientHandler.FirstClient.NextClient;
                 
                 while(temp!=null)
@@ -1609,7 +1580,7 @@ public class CommandParser extends Thread
                        return;
                     }
                 }
-                    if(!Vars.ValidateNick (newnick) || isIP(newnick) || isCID(newnick))
+                    if(!Vars.ValidateNick (newnick) || ADC.isIP(newnick) || ADC.isCID(newnick))
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
@@ -1671,11 +1642,11 @@ public class CommandParser extends Thread
                                cur_client.sendFromBot(""+Text.replaceAll(" ","\\ ") );
                         return;
                     }
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 String aux=ST.nextToken ();
                 
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 
                 ClientHandler temp=ClientHandler.FirstClient.NextClient;
                 ClientHandler tempyprev=ClientHandler.FirstClient;
@@ -3529,7 +3500,7 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("unban"))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
                 {
@@ -3539,7 +3510,7 @@ public class CommandParser extends Thread
                 String aux=ST.nextToken (); //the thing to unban;
                 //al right,now must check if that is a nick, cid or ip
                 //first if its a cid...
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 try
                 {
                     Base32.decode(aux);
@@ -3559,7 +3530,7 @@ public class CommandParser extends Thread
                 {
                     //ok its not a cid, lets check if its some IP address...
                     cur_client.sendFromBot("Not a CID, Searching...");
-                    if(isIP(aux))
+                    if(ADC.isIP(aux))
                     {
                         cur_client.sendFromBot("Is IP ...checking if banned...");
                         if(BanList.delban (2,aux))
@@ -3583,12 +3554,12 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("bancid "))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
                     return;
                 String aux=ST.nextToken (); //the thing to ban;
-                aux=retADCStr (aux);
+                aux=ADC.retADCStr (aux);
                 //al right,now must check if that is a nick, cid or ip
                 //first if its a cid...
                 String reason="";
@@ -3598,9 +3569,9 @@ public class CommandParser extends Thread
                  if(!reason.equals(""))
                 
                         reason=reason.substring (0,reason.length ()-1);
-                reason=retADCStr(reason);
+                reason=ADC.retADCStr(reason);
                // System.out.println (reason);
-               if(isCID(aux))
+               if(ADC.isCID(aux))
                {
                     //ok if we got here it really is a CID so:
                     
@@ -3672,12 +3643,12 @@ public class CommandParser extends Thread
         }
         else if(recvbuf.toLowerCase ().startsWith ("bannick "))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
                     return;
                 String aux=ST.nextToken (); //the thing to ban;
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 //al right,now must check if that is a nick online of offline
                 
                 String reason="";
@@ -3687,7 +3658,7 @@ public class CommandParser extends Thread
                  if(!reason.equals(""))
                 
                         reason=reason.substring (0,reason.length ()-1);
-                    reason=retADCStr(reason);
+                    reason=ADC.retADCStr(reason);
                 ClientHandler temp=ClientHandler.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 while(temp!=null)
@@ -3720,12 +3691,12 @@ public class CommandParser extends Thread
         
         else if(recvbuf.toLowerCase ().startsWith ("banip "))
         {
-                StringTokenizer ST=new StringTokenizer(retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
                     return;
                 String aux=ST.nextToken (); //the thing to ban;
-                aux=retADCStr(aux);
+                aux=ADC.retADCStr(aux);
                 //al right,now must check if that is a  ip or nick
                 //first if its a ip...
                 String reason="";
@@ -3734,8 +3705,8 @@ public class CommandParser extends Thread
                  if(!reason.equals(""))
                 
                         reason=reason.substring (0,reason.length ()-1);
-                reason=retADCStr(reason);
-                 if(isIP(aux))
+                reason=ADC.retADCStr(reason);
+                 if(ADC.isIP(aux))
                  {
                     //ok if we got here it really is a IP so:
                     
@@ -3852,7 +3823,7 @@ public class CommandParser extends Thread
                         
                         Vars.HubName=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("IINF NI"+retADCStr(Vars.HubName));
+                        new Broadcast ("IINF NI"+ADC.retADCStr(Vars.HubName));
                         
                 }
                 else if(aux.toLowerCase().equals ("max_ni"))
@@ -4150,7 +4121,7 @@ public class CommandParser extends Thread
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD NI"+retADCStr(Vars.Opchat_name),10);
+                        new Broadcast ("BINF ABCD NI"+ADC.retADCStr(Vars.Opchat_name),10);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_name"))
@@ -4183,7 +4154,7 @@ public class CommandParser extends Thread
                         
                         Vars.bot_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA NI"+retADCStr(Vars.bot_name));
+                        new Broadcast ("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
                         
                 }
                 else if(aux.toLowerCase ().equals ("opchat_desc"))
@@ -4198,7 +4169,7 @@ public class CommandParser extends Thread
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD DE"+retADCStr(Vars.Opchat_desc),10);
+                        new Broadcast ("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_desc"))
@@ -4213,7 +4184,7 @@ public class CommandParser extends Thread
                         
                         Vars.bot_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA DE"+retADCStr(Vars.bot_desc));
+                        new Broadcast ("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
                         
                 }
                 else if(aux.toLowerCase().equals ("kick_time"))
@@ -4585,7 +4556,7 @@ public class CommandParser extends Thread
                    auxbuf=auxbuf.replaceAll(" ","\\ ");
                    Vars.HubDE=auxbuf;
                    Main.Server.vars.HubDE=auxbuf;
-                   new Broadcast ("IINF DE"+retADCStr(auxbuf));
+                   new Broadcast ("IINF DE"+ADC.retADCStr(auxbuf));
                    new Broadcast("IMSG Topic was changed by "+cur_client.NI+" to \""+Vars.HubDE+"\"");
                    
                }
@@ -4634,7 +4605,7 @@ public class CommandParser extends Thread
             line bb=Broadcast.First;
             while(bb!=null)
             {
-                blah00=blah00+retNormStr(bb.curline);
+                blah00=blah00+ADC.retNormStr(bb.curline);
                 bb=bb.Next;
             }
             
@@ -4646,7 +4617,7 @@ public class CommandParser extends Thread
             line bb=FirstCommand;
             while(bb!=null)
             {
-                blah00=blah00+retNormStr(bb.curline);
+                blah00=blah00+ADC.retNormStr(bb.curline);
                 bb=bb.Next;
             }
             

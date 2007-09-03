@@ -162,7 +162,7 @@ public class Variables implements Serializable
             if(nick_chars.indexOf (nick.charAt (i))==-1)
                 return false;
         
-       if(CommandParser.isIP (nick)) 
+       if(ADC.isIP (nick)) 
            return false;
         return true;
     }
