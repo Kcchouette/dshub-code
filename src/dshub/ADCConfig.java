@@ -40,6 +40,26 @@ public class ADCConfig
         this.msg=msg;
         StringTokenizer TK=new StringTokenizer(msg);
         
+        TK.nextToken();
+        if(!TK.hasMoreTokens())
+        {
+            cur_client.sendFromBot("\nADC Advanced Configuration Settings.\n"+
+                    "---------------------------------------------------------------------------\n"+
+                    "To modify a value use \" adc _context__name_ on/off \"\n"+
+                    "Example : \"adc bmsg off\", where \"b\" is the context,\n"+
+                    "\"msg\" is the name and off is the specifier of what to do.\n"+
+                    "Current Settings : \n"+
+            " MSG :\n"+
+                    "B "+ (Vars.BMSG==1 ? "on":"off")+  "\n"+
+                    "D "+ (Vars.DMSG==1 ? "on":"off")+  "\n"+
+                    "E "+ (Vars.EMSG==1 ? "on":"off")+  "\n"+
+                    "F "+ (Vars.FMSG==1 ? "on":"off")+  "\n"+
+                    "H "+ (Vars.HMSG==1 ? "on":"off") +
+                    ""
+                    
+                    
+                    );
+        }
     }
     
 }

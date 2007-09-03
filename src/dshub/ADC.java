@@ -69,6 +69,9 @@ abstract public class ADC
            * fixed history and cmdhistory space problem;
            * added new file for adc adv config ;
            * moved adc functions from cmd parser to adc class;
+           * fixed adc adv config bug forgot the break in switch;
+           * created primary showup for setting the adc via commands;
+           *
            **/
             
             ;
