@@ -1758,7 +1758,7 @@ if(FMSGcheck.isSelected())
                            
                         Vars.Opchat_desc=Thing;
                         Main.PopMsg("Opchat_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF ABCD DE"+CommandParser.retADCStr(Vars.Opchat_desc),10);
+                        new Broadcast ("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
                         
                         }
           Thing=historylinesfield.getText();
@@ -2331,7 +2331,7 @@ if(FMSGcheck.isSelected())
                    auxbuf=auxbuf;
                    Vars.HubDE=auxbuf;
                    Main.Server.vars.HubDE=auxbuf;
-                   new Broadcast ("IINF DE"+CommandParser.retADCStr(auxbuf));
+                   new Broadcast ("IINF DE"+ADC.retADCStr(auxbuf));
                    new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\".");
                    Main.PopMsg("Topic was changed by Server to \""+Vars.HubDE+"\".");
                    
@@ -2345,7 +2345,7 @@ if(FMSGcheck.isSelected())
           Main.PopMsg ("Hub_Name changed from \""+Vars.HubName+"\" to \""+NowName+"\".");
           Vars.HubName=NowName.toString ();
                        
-          new Broadcast ("IINF NI"+CommandParser.retADCStr(Vars.HubName));
+          new Broadcast ("IINF NI"+ADC.retADCStr(Vars.HubName));
          }
          
          
@@ -2378,7 +2378,7 @@ if(FMSGcheck.isSelected())
                     }
                         Vars.bot_name=Thing;
                         Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF DCBA NI"+CommandParser.retADCStr(Vars.bot_name));
+                        new Broadcast ("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
                         
                         }
           }
@@ -2395,7 +2395,7 @@ if(FMSGcheck.isSelected())
                            
                         Vars.bot_desc=Thing;
                         Main.PopMsg("Bot_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF DCBA DE"+CommandParser.retADCStr(Vars.bot_desc));
+                        new Broadcast ("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
                         
                         }
          

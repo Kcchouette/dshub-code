@@ -67,12 +67,41 @@ abstract public class ADC
            * the msg context modders work now;
            * changed from simple linked list to double one;
            * fixed history and cmdhistory space problem;
-           * changed the client queue, removed the extra thread, hope that now thread count and memory usage is 
-           * with more than 40 % lower ;)
+           * added new file for adc adv config ;
+           * moved adc functions from cmd parser to adc class;
            **/
             
             ;
+    public static String retNormStr(String blah)
+    {
+        return blah.replaceAll ("\\\\s"," ").replaceAll ("\\\\n","\n").replaceAll ("\\\\\\\\","\\\\");
+    }
+    public static String retADCStr(String blah)
+    {
+         return blah.replaceAll ("\\\\","\\\\\\\\").replaceAll (" ","\\\\s").replaceAll ("\n","\\\\n");
+    }
     
+    public static boolean isIP(String blah)
+    {
+        return blah.matches("\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b");
+        
+       
+    }
+    public static boolean isCID(String blah)
+    {
+        if(blah.length ()!=39)
+            return false;
+        try
+        {
+            Base32.decode (blah);
+        }
+        catch(IllegalArgumentException iae)
+        {
+            return false;
+        }
+        return true;
+       
+    }
     
     
 }

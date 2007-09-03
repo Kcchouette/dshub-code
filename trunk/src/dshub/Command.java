@@ -795,7 +795,7 @@ public class Command
                            throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");  
                       else if (State.equals ("NORMAL"))
                       {
-                          new STAError(cur_client,240,"You removed BASE features therefore you can't stay\\on hub anymore.");
+                          new STAError(cur_client,240,"You removed BASE features therefore you can't stay on hub anymore.");
                           return;
                       }
                     
@@ -913,7 +913,11 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                        // ok now lets check that the chat is a command....
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
                        {
-                           cur_client.sendFromBot("[command:] "+CommandParser.retNormStr (message));
+                           cur_client.sendFromBot("[command:] "+ADC.retNormStr (message));
+                           if(message.startsWith("!adc") || message.startsWith("+adc"))//adc adv config panel
+                               new ADCConfig(cur_client,message);
+                           else
+                           
                            new CommandParser(cur_client,message);
                        }
                        else
@@ -941,7 +945,7 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                            // ok now lets check that the chat is a command....
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
                        {
-                           cur_client.sendFromBot("[command:] "+CommandParser.retNormStr(message));
+                           cur_client.sendFromBot("[command:] "+ADC.retNormStr(message));
                            new CommandParser(cur_client,message);
                        }
                            //cur_client.sendToClient ("EMSG DCBA "+cur_client.SessionID+" Hello ! PMDCBA");
@@ -1007,7 +1011,7 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                            // ok now lets check that the chat is a command....
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
                        {
-                           cur_client.sendFromBot("[command:] "+CommandParser.retNormStr(message));
+                           cur_client.sendFromBot("[command:] "+ADC.retNormStr(message));
                            new CommandParser(cur_client,message);
                        }
                        }

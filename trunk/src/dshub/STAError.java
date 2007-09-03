@@ -50,7 +50,7 @@ public class STAError
         cur_client=CH;
         error_code=ec;
         
-        error_desc=CommandParser.retADCStr (error_d).replaceAll ("\\\\sTL"," TL");
+        error_desc=ADC.retADCStr (error_d).replaceAll ("\\\\sTL"," TL");
         String Error_string;
         if(ec==0)
              Error_string="ISTA 000 "+error_desc;
@@ -66,7 +66,7 @@ public class STAError
         cur_client=CH;
         error_code=ec;
         
-        error_desc=CommandParser.retADCStr (error_d);
+        error_desc=ADC.retADCStr (error_d);
         
        
         String Error_string="ISTA "+Integer.toString(error_code)+" "+error_desc+" FL" + FL;
