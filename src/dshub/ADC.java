@@ -73,6 +73,9 @@ abstract public class ADC
            * created primary showup for setting the adc via commands;
            * fixed adc adv panel avail via pm with bot;
            * added adc _context__name shows if on/off;
+           * fixed mass message thingy;
+           * also minor fixes in extended kick n drop;
+           * diffed back to good version of clienthandler, forgot to do that last time;
            *
            **/
             

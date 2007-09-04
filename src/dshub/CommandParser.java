@@ -562,7 +562,7 @@ public class CommandParser extends Thread
         
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
-                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 String aux="";
                 if(!(ST.hasMoreTokens ()))
@@ -573,7 +573,7 @@ public class CommandParser extends Thread
                                 "Extended mass has way more advantages and can be used very efficiently with a large hub.\n"+
                                 "Extended mass features:\n"+
                                 "   Sending to users that match a certain regular expression:\n"+
-                                "      Example: !mass \\\\[RO\\\\].* text -- this command sends mass to all users that have their nick starting with [RO]\n" +
+                                "      Example: !mass \\[RO\\].* text -- this command sends mass to all users that have their nick starting with [RO]\n" +
                                 "      Example: !mass .. text --this command sends mass to all users with 2 letter nicks\n"+
                                 "      This type of mass command accepts just any regular expression.\n"+
                                 "   Sending to users that have their fields checked:\n"+
@@ -582,14 +582,14 @@ public class CommandParser extends Thread
                                 "      Example: !mass su!tcp4 text -- this command just sends text to all passive users.\n"
                                +"Extended mass has the operators >, < , =, !\n"+
                                 "   And a list of possible fields : all ( to everybody ) share, sl (slots), ni (nick length),su(supports, accepts only = or !, example: !mass su=tcp4 text),hn(normal hubs count),hr(registered hub count),ho(op hub count),aw(away, 1 means normal away, 2 means extended away),rg (1- registered, 0 otherwise, registered means not op),op ( 1 -op, 0 - otherwise , op means it has key).";
-                    cur_client.sendToClient ("EMSG DCBA "+cur_client.SessionID+" "+Text);
+                    cur_client.sendFromBot(Text);
                     return;
                 }
                String extmass=ST.nextToken ();
                 while (ST.hasMoreTokens ())
                  aux=aux+ST.nextToken ()+" "; //the message to broadcast;
                // aux=aux.substring (0,aux.length ()-1);
-                aux=ADC.retADCStr(aux);
+                //aux=ADC.retADCStr(aux);
                 
                if(extmass.equalsIgnoreCase ("all")) 
                {
@@ -599,12 +599,13 @@ public class CommandParser extends Thread
                    temp.sendFromBotPM (aux);
                    temp=temp.NextClient;
                }
-               cur_client.sendFromBot("Broadcast sent.");      
+               cur_client.sendFromBot("Broadcast sent.");    
+               return;
                }
                 ClientHandler temp;
                 try
                {
-                            extmass=extmass.replaceAll ("\\\\\\\\","\\\\");
+                            //extmass=extmass.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(extmass);
                              temp=ClientHandler.FirstClient.NextClient;
@@ -1630,7 +1631,7 @@ public class CommandParser extends Thread
                                 "Extended kick has way more advantages and can be used very efficiently with a large hub.\n"+
                                 "Extended kick features:\n"+
                                 "   Kicking users that match a certain regular expression:\n"+
-                                "      Example: !kick \\\\[RO\\\\].* -- this command kicks all users that have their nick starting with [RO]\n" +
+                                "      Example: !kick \\[RO\\].* -- this command kicks all users that have their nick starting with [RO]\n" +
                                 "      Example: !kick .. --this command kicks all users with 2 letter nicks\n"+
                                 "      This type of kick accepts just any regular expression.\n"+
                                 "   Kicking users that have their fields checked:\n"+
@@ -1639,7 +1640,7 @@ public class CommandParser extends Thread
                                         "      Example: !kick su!tcp4 -- this command kicks all passive users.\n"
                                +"Extended kick has the operators >, < , =, !\n"+
                                 "   And a list of possible fields : share, sl (slots), ni (nick length),su(supports, accepts only = or !, example: !kick su=tcp4),hn(normal hubs count),hr(registered hub count),ho(op hub count),aw(away, 1 means normal away, 2 means extended away),rg (1- registered, 0 otherwise, registered means not op),op ( 1 -op, 0 - otherwise , op means it has key).";
-                               cur_client.sendFromBot(""+Text.replaceAll(" ","\\ ") );
+                               cur_client.sendFromBot(Text );
                         return;
                     }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
@@ -1671,7 +1672,7 @@ public class CommandParser extends Thread
                             /***************extended kick**********************/
                         try
                         {
-                            aux=aux.replaceAll ("\\\\\\\\","\\\\");
+                           //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
                              temp=ClientHandler.FirstClient.NextClient;
@@ -2574,7 +2575,7 @@ public class CommandParser extends Thread
                                 "Extended drop has way more advantages and can be used very efficiently with a large hub.\n"+
                                 "Extended drop features:\n"+
                                 "   Kicking users that match a certain regular expression:\n"+
-                                "      Example: !drop \\\\[RO\\\\].* -- this command drops all users that have their nick starting with [RO]\n" +
+                                "      Example: !drop \\[RO\\].* -- this command drops all users that have their nick starting with [RO]\n" +
                                 "      Example: !drop .. --this command drops all users with 2 letter nicks\n"+
                                 "      This type of drop accepts just any regular expression.\n"+
                                 "   Kicking users that have their fields checked:\n"+
@@ -2583,7 +2584,7 @@ public class CommandParser extends Thread
                                         "      Example: !drops su!tcp4 -- this command drops all passive users.\n"
                                +"Extended drop has the operators >, < , =, !\n"+
                                 "   And a list of possible fields : share, sl (slots), ni (nick length),su(supports, accepts only = or !, example: !drop su=tcp4),hn(normal hubs count),hr(registered hub count),ho(op hub count),aw(away, 1 means normal away, 2 means extended away),rg (1- registered, 0 otherwise, registered means not op),op ( 1 -op, 0 - otherwise , op means it has key).";
-                               cur_client.sendFromBot(""+Text.replaceAll(" ","\\ ") );
+                               cur_client.sendFromBot(Text);
                         return;
                     }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
@@ -2606,7 +2607,7 @@ public class CommandParser extends Thread
                             /***************extended kick**********************/
                         try
                         {
-                            aux=aux.replaceAll ("\\\\\\\\","\\\\");
+                            //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
                              temp=ClientHandler.FirstClient.NextClient;
