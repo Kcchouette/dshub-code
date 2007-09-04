@@ -71,6 +71,8 @@ abstract public class ADC
            * moved adc functions from cmd parser to adc class;
            * fixed adc adv config bug forgot the break in switch;
            * created primary showup for setting the adc via commands;
+           * fixed adc adv panel avail via pm with bot;
+           * added adc _context__name shows if on/off;
            *
            **/
             

@@ -32,12 +32,13 @@ import java.util.StringTokenizer;
 public class ADCConfig 
 {
     ClientHandler cur_client;
-    String msg;
+    //String msg;
     /** Creates a new instance of ADCConfig */
     public ADCConfig(ClientHandler CH,String msg) 
     {
         cur_client=CH;
-        this.msg=msg;
+        //this.msg=msg;
+        msg=ADC.retNormStr(msg.substring(1));
         StringTokenizer TK=new StringTokenizer(msg);
         
         TK.nextToken();
@@ -59,7 +60,27 @@ public class ADCConfig
                     
                     
                     );
+            return;
         }
+        String nameValue=TK.nextToken();
+        if(!TK.hasMoreTokens())
+        {
+            String tempStr="\nADC Advanced Configuration Settings.\n"+
+                    "---------------------------------------------------------------------------\n  "+
+                    nameValue.toUpperCase()+" is currently ";
+            if(nameValue.equalsIgnoreCase("BMSG"))
+                tempStr+=(Vars.BMSG==1 ? "on." : "off.");
+            if(nameValue.equalsIgnoreCase("DMSG"))
+                tempStr+=Vars.DMSG==1 ? "on." : "off.";
+            if(nameValue.equalsIgnoreCase("EMSG"))
+                tempStr+=Vars.EMSG==1 ? "on." : "off.";
+            if(nameValue.equalsIgnoreCase("FMSG"))
+                tempStr+=Vars.FMSG==1 ? "on." : "off.";
+            if(nameValue.equalsIgnoreCase("HMSG"))
+                tempStr+=Vars.HMSG==1 ? "on." : "off.";
+            cur_client.sendFromBot(tempStr);
+        }
+        
     }
     
 }
