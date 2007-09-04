@@ -279,14 +279,15 @@ int kicked=0;
                 }
                 
         
-        if(ClientSock.isClosed())
-            System.out.printf("da");
-          if(RS.ready()) 
+       // if(ClientSock.isClosed())
+          //  System.out.printf("da");
+          try
           {
+              ClientSock.setSoTimeout (50);
             recvbuf=RS.readLine();
           //ClientSock.
            // RS.
-          
+          ClientSock.setSoTimeout (0);
             //String auxbuf;
             char aux1='\\';char aux2='n';
             while(RS.ready() && aux1=='\\' && aux2=='n')
@@ -313,6 +314,12 @@ int kicked=0;
          
          new Command (this,null,"NORMAL");
        }
+          catch(SocketTimeoutException ste) 	 
+	           { 	 
+	             //System.out.println ("timeout"); 	 
+	           } 	 
+	  	 
+	        }
           while(Queue.First!=null)
                 {
                 this.PS.printf ("%s\n",Queue.First.MSG);
@@ -321,7 +328,7 @@ int kicked=0;
                 }
        }
         
-        }
+        
        catch (ClientFailedException ce)
         {
           
