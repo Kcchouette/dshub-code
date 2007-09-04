@@ -913,12 +913,19 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                        // ok now lets check that the chat is a command....
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
                        {
-                           cur_client.sendFromBot("[command:] "+ADC.retNormStr (message));
-                           if(message.startsWith("!adc") || message.startsWith("+adc"))//adc adv config panel
-                               new ADCConfig(cur_client,message);
-                           else
                            
-                           new CommandParser(cur_client,message);
+                           if(message.toLowerCase().startsWith("!adc") || message.toLowerCase().startsWith("+adc"))//adc adv config panel
+                           {
+                               cur_client.sendFromBot("[adc:] "+ADC.retNormStr (message));
+                               new ADCConfig(cur_client,message);
+                               
+                           }
+                           else
+                           {
+                               cur_client.sendFromBot("[command:] "+ADC.retNormStr (message));
+                                new CommandParser(cur_client,message);
+                                
+                           }
                        }
                        else
                        
@@ -945,8 +952,18 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                            // ok now lets check that the chat is a command....
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
                        {
-                           cur_client.sendFromBot("[command:] "+ADC.retNormStr(message));
-                           new CommandParser(cur_client,message);
+                           if(message.toLowerCase().startsWith("!adc") || message.toLowerCase().startsWith("+adc"))//adc adv config panel
+                           {
+                               cur_client.sendFromBot("[adc:] "+ADC.retNormStr (message));
+                               new ADCConfig(cur_client,message);
+                               
+                           }
+                           else
+                           {
+                               cur_client.sendFromBot("[command:] "+ADC.retNormStr (message));
+                                new CommandParser(cur_client,message);
+                                
+                           }
                        }
                            //cur_client.sendToClient ("EMSG DCBA "+cur_client.SessionID+" Hello ! PMDCBA");
                            return;
