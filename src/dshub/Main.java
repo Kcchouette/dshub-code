@@ -83,6 +83,11 @@ public class Main extends Thread
             Server.rewriteregs();
             Server.rewriteconfig();
             PopMsg("Closing down hub.");
+        try {
+            sleep(500);
+        } catch (InterruptedException ex) {
+           // ex.printStackTrace();
+        }
             System.exit(0);
        }
        public static void Restart()
@@ -119,7 +124,7 @@ public class Main extends Thread
                 }
                 try{Main.Server.sleep (1000);}catch(Exception e) {}
                 
-             
+             //GUI.di
              
             Main.Server=new HubServer();
          Main.curtime=System.currentTimeMillis();
@@ -333,7 +338,21 @@ public class Main extends Thread
         }
          else if(recvbuf.toLowerCase ().equals("gui"))
         {
-                
+             if(!Main.GUI.isDisplayable())
+                    {
+                        try
+    {
+          Main.GUI=new TestFrame();
+          Main.GUIok=true;
+          Main.GUI.SetStatus("GUI restored...");
+           
+    }
+    catch (Exception e)
+    {
+        System.out.println("GUI not viewable.");
+        Main.GUIok=false;
+    }   
+             }
             if(GUIok)
              if(GUI.isDisplayable ()&& !GUI.isShowing ())
              {

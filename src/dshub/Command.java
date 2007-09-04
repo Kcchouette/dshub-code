@@ -81,8 +81,10 @@ public class Command
                      tempy=tempy.NextClient;
                  }
                  //
-                 cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+Vars.bot_name+" BO1 OP1 DE"+Vars.bot_desc);;
+                 cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
+                 +" BO1 OP1 DE"+ADC.retNormStr(Vars.Opchat_desc));;
+                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));;
                  // cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
                  
@@ -633,7 +635,7 @@ public class Command
                 cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client);
-                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+Vars.bot_name+" BO1 OP1 DE"+Vars.bot_desc);
+                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)+" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));                 
                  cur_client.userok=1; //user is OK, logged in and cool.
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  //ok now that we passed to normal state and user is ok, check if it has UCMD, and if so, send a test command

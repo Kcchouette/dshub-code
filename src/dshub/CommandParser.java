@@ -33,7 +33,7 @@ import java.util.regex.PatternSyntaxException;
  *
  * @author Pietricica
  */
-public class CommandParser extends Thread
+public class CommandParser 
 {
     ClientHandler cur_client;
     String cmd;
@@ -50,8 +50,8 @@ public class CommandParser extends Thread
     {
         cur_client=CH;
         this.cmd=cmd;
-        this.setPriority (NORM_PRIORITY);
-        start();
+        //this.setPriority (NORM_PRIORITY);
+        run();
     }
     public void run()
     {
@@ -99,19 +99,23 @@ public class CommandParser extends Thread
         
         if(recvbuf.toLowerCase ().equals("quit"))
         {
+                
+                cur_client.sendFromBot("Closing down hub...");
                 Main.Server.rewriteregs();
                 Main.Server.rewriteconfig();
-                cur_client.sendFromBot("Closing down hub...");
+                Main.Server.rewritebans();
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                 try
                 {
-                this.sleep (500);
+                //Main.Server.sleep (1000);
                 }
                 catch (Exception e)
                 {
-                    System.exit(0);
+                    //System.exit(0);
+                    System.out.println(e);
                 }
-                  System.exit(0);
+                  //System.exit(0);
+                Main.Exit();
         }
            
        
@@ -170,7 +174,21 @@ public class CommandParser extends Thread
         } 
         else if(recvbuf.toLowerCase ().equals("gui"))
         {
-                
+                    if(!Main.GUI.isDisplayable())
+                    {
+                        try
+    {
+          Main.GUI=new TestFrame();
+          Main.GUIok=true;
+          Main.GUI.SetStatus("GUI restored...");
+           
+    }
+    catch (Exception e)
+    {
+        cur_client.sendFromBot("GUI not viewable.");
+        Main.GUIok=false;
+    }
+                    }
             if(Main.GUIok)
              if(Main.GUI.isDisplayable ()&& !Main.GUI.isShowing ())
              {

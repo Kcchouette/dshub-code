@@ -2781,6 +2781,8 @@ if(FMSGcheck.isSelected())
     private void jButton2ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
     this.setVisible (false);
+    this.dispose();
+    System.gc();
     //Main.GUIok=false;
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -76,18 +76,18 @@ import java.util.Date;
          String retString="";
          if(this.key)   
            {
-                    retString="\\nOperator.";
+                    retString="\nOperator.";
          }
          else
          {
-             retString="\\nRegistered.";
+             retString="\nRegistered.";
          }
          Date d=new Date(this.CreatedOn);
-           retString=retString+" Reg Info:\\nLast Nick : "+this.LastNI+"\\nLast IP: "+this.LastIP+"\\nRegged by: "+this.WhoRegged+" on "+d.toString ();
+           retString=retString+" Reg Info:\nLast Nick : "+this.LastNI+"\nLast IP: "+this.LastIP+"\nRegged by: "+this.WhoRegged+" on "+d.toString ();
         
                   
            
-           return retString.replaceAll (" ","\\ ");
+           return retString;
                     
                             
          
