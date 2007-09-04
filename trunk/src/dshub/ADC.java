@@ -76,7 +76,9 @@ abstract public class ADC
            * fixed mass message thingy;
            * also minor fixes in extended kick n drop;
            * diffed back to good version of clienthandler, forgot to do that last time;
-           *
+           * fixed opchat & bot desc not showing properly;
+           * fixed reginfo badly shown;
+           * tried to reduce mem usage by disposing the GUI when not shown ;
            **/
             
             ;
