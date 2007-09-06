@@ -83,6 +83,7 @@ abstract public class ADC
            * finished msg context changing via command;
            * added STA checkboxes in adc adv panel;
            * added info box on contexts;
+           * added another 2 info boxes on MSG and STA commands;
            **/
             
             ;
