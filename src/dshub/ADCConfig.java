@@ -79,7 +79,106 @@ public class ADCConfig
             if(nameValue.equalsIgnoreCase("HMSG"))
                 tempStr+=Vars.HMSG==1 ? "on." : "off.";
             cur_client.sendFromBot(tempStr);
+            return;
         }
+        String Specifier=TK.nextToken();
+        String tempStr="\nADC Advanced Configuration Settings.\n"+
+                    "---------------------------------------------------------------------------\n  "+
+                    "Setting "+nameValue.toUpperCase();
+            if(nameValue.equalsIgnoreCase("BMSG"))
+            {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.BMSG=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.BMSG=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+            }
+        else if(nameValue.equalsIgnoreCase("DMSG"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.DMSG=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.DMSG=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("EMSG"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.EMSG=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.EMSG=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("FMSG"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.FMSG=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.FMSG=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("HMSG"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.HMSG=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.HMSG=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+                
+            
+            
+            cur_client.sendFromBot(tempStr);
         
     }
     
