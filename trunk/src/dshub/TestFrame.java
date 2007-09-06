@@ -206,6 +206,8 @@ public class TestFrame extends javax.swing.JFrame
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -1335,6 +1337,20 @@ public class TestFrame extends javax.swing.JFrame
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        jButton13.setText("[?]");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setText("[?]");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -1354,13 +1370,12 @@ public class TestFrame extends javax.swing.JFrame
                         .add(jLabel54)
                         .add(15, 15, 15)
                         .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                .add(jLabel53)
-                                .add(BMSGcheck))
+                            .add(jLabel53)
                             .add(DMSGcheck)
                             .add(EMSGcheck)
                             .add(FMSGcheck)
-                            .add(HMSGcheck))
+                            .add(HMSGcheck)
+                            .add(BMSGcheck))
                         .add(65, 65, 65)
                         .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jCheckBox3)
@@ -1371,6 +1386,12 @@ public class TestFrame extends javax.swing.JFrame
                             .add(jLabel55))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 106, Short.MAX_VALUE)))
                 .add(400, 400, 400))
+            .add(jPanel9Layout.createSequentialGroup()
+                .add(107, 107, 107)
+                .add(jButton13)
+                .add(44, 44, 44)
+                .add(jButton14)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1389,8 +1410,8 @@ public class TestFrame extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel54)
-                    .add(BMSGcheck)
-                    .add(BSTA))
+                    .add(BSTA)
+                    .add(BMSGcheck))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(DMSGcheck)
@@ -1407,7 +1428,11 @@ public class TestFrame extends javax.swing.JFrame
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(HMSGcheck)
                     .add(jCheckBox3))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .add(19, 19, 19)
+                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton13)
+                    .add(jButton14))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Advanced", jPanel9);
 
@@ -1496,6 +1521,44 @@ public class TestFrame extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("STA Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("STA is the status command, can be used.\neither for confirming commands\nor signaling some error.\n( B ) no defined purpose for STA.\n"+
+               "( D ) Can be sent to a specified client.\n( E ) same as D.\n( F ) no defined purpose.\n"+
+               "( H ) To be sent to hub."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("MSG Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("MSG is the chat command.\n( B ) is broadcast MSG ( main chat ).\n"+
+               "( D ) is direct msg, used for private message.\n( E ) is used for private message too.\n( F ) can be used by ADC clients.\n"+
+               "( H ) can be used in some messages from clients."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
  JDialog bla =new JDialog();
@@ -2827,6 +2890,8 @@ if(FMSGcheck.isSelected())
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
