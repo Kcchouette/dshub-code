@@ -79,6 +79,10 @@ abstract public class ADC
            * fixed opchat & bot desc not showing properly;
            * fixed reginfo badly shown;
            * tried to reduce mem usage by disposing the GUI when not shown ;
+           * fixed not showing restart/quit message when using command;
+           * finished msg context changing via command;
+           * added STA checkboxes in adc adv panel;
+           * added info box on contexts;
            **/
             
             ;
