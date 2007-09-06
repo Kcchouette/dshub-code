@@ -264,7 +264,7 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
-        jLabel14.setText("Version: DSHub Eta RC2");
+        jLabel14.setText("Version: DSHub Eta RC3");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
