@@ -104,10 +104,18 @@ public class CommandParser
                 Main.Server.rewriteregs();
                 Main.Server.rewriteconfig();
                 Main.Server.rewritebans();
+                while(cur_client.Queue.First!=null)
+                {
+                cur_client.PS.printf ("%s\n",cur_client.Queue.First.MSG);
+                
+                cur_client.Queue.First=cur_client.Queue.First.Next;
+                }
+                cur_client.PS.flush ();
+                
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                 try
                 {
-                //Main.Server.sleep (1000);
+                cur_client.sleep (1000);
                 }
                 catch (Exception e)
                 {
@@ -115,6 +123,7 @@ public class CommandParser
                     System.out.println(e);
                 }
                   //System.exit(0);
+                cur_client.PS.close ();
                 Main.Exit();
         }
            
@@ -128,6 +137,13 @@ public class CommandParser
              Main.Server.restart=true;
               reg_config.First=null;
              BanList.First=null;
+             while(cur_client.Queue.First!=null)
+                {
+                cur_client.PS.printf ("%s\n",cur_client.Queue.First.MSG);
+                
+                cur_client.Queue.First=cur_client.Queue.First.Next;
+                }
+                cur_client.PS.flush ();
                  try{Main.Server.sleep (1500);}catch(Exception e) {}
              System.gc (); //calling garbage collectors
                  if(ClientHandler.FirstClient!=null)
