@@ -86,6 +86,7 @@ abstract public class ADC
            * added another 2 info boxes on MSG and STA commands;
            * created new file CFGConfig and moved all cfg in there;
            * modified cfg commands with [config:] instead of [command:];
+           * created 3 new files, Ext mass, drop and kick, moved code there;
            **/
             
             ;
