@@ -89,6 +89,9 @@ abstract public class ADC
            * created 3 new files, Ext mass, drop and kick, moved code there;
            * added  new config variables , for STA contexts;
            * validated boxes in gui, and added in panel and modifiers via command;
+           * fixed broadcasting same stuff to sender too;
+           * fixed broadcasting feature searches to all;
+           * created new file SCH for sch command;
            **/
             
             ;
