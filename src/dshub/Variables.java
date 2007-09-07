@@ -97,6 +97,12 @@ public class Variables implements Serializable
      int FMSG;
      int HMSG;
      
+     int BSTA;
+     int DSTA;
+     int ESTA;
+     int FSTA;
+     int HSTA;
+     
       public Variables()
       {
           Timeout_Login=Vars.Timeout_Login;
@@ -152,6 +158,12 @@ public class Variables implements Serializable
       EMSG=Vars.EMSG;
       FMSG=Vars.FMSG;
       HMSG=Vars.HMSG;
+      
+      BSTA=Vars.BSTA;
+      DSTA=Vars.DSTA;
+      ESTA=Vars.ESTA;
+      FSTA=Vars.FSTA;
+      HSTA=Vars.HSTA;
       }
 }
  class Vars
@@ -230,4 +242,10 @@ public class Variables implements Serializable
     static int EMSG=1;
     static int FMSG=1;
     static int HMSG=1;
+    
+    static int BSTA=0;
+    static int DSTA=1;
+    static int ESTA=1;
+    static int FSTA=0;
+    static int HSTA=1;
 }

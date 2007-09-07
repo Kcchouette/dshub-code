@@ -201,11 +201,11 @@ public class TestFrame extends javax.swing.JFrame
         HMSGcheck = new javax.swing.JCheckBox();
         jLabel55 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
-        BSTA = new javax.swing.JCheckBox();
-        DSTA = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        BSTAcheck = new javax.swing.JCheckBox();
+        DSTAcheck = new javax.swing.JCheckBox();
+        ESTAcheck = new javax.swing.JCheckBox();
+        FSTAcheck = new javax.swing.JCheckBox();
+        HSTAcheck = new javax.swing.JCheckBox();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -1317,25 +1317,50 @@ public class TestFrame extends javax.swing.JFrame
             }
         });
 
-        BSTA.setText("B");
-        BSTA.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BSTA.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BSTAcheck.setText("B");
+        BSTAcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BSTAcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BSTAcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSTAcheckActionPerformed(evt);
+            }
+        });
 
-        DSTA.setText("D");
-        DSTA.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        DSTA.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DSTAcheck.setText("D");
+        DSTAcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        DSTAcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DSTAcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DSTAcheckActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("E");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ESTAcheck.setText("E");
+        ESTAcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        ESTAcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ESTAcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ESTAcheckActionPerformed(evt);
+            }
+        });
 
-        jCheckBox2.setText("F");
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FSTAcheck.setText("F");
+        FSTAcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        FSTAcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FSTAcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FSTAcheckActionPerformed(evt);
+            }
+        });
 
-        jCheckBox3.setText("H");
-        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HSTAcheck.setText("H");
+        HSTAcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        HSTAcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HSTAcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HSTAcheckActionPerformed(evt);
+            }
+        });
 
         jButton13.setText("[?]");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -1378,11 +1403,11 @@ public class TestFrame extends javax.swing.JFrame
                             .add(BMSGcheck))
                         .add(65, 65, 65)
                         .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jCheckBox3)
-                            .add(jCheckBox2)
-                            .add(jCheckBox1)
-                            .add(DSTA)
-                            .add(BSTA)
+                            .add(HSTAcheck)
+                            .add(FSTAcheck)
+                            .add(ESTAcheck)
+                            .add(DSTAcheck)
+                            .add(BSTAcheck)
                             .add(jLabel55))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 106, Short.MAX_VALUE)))
                 .add(400, 400, 400))
@@ -1410,24 +1435,24 @@ public class TestFrame extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel54)
-                    .add(BSTA)
+                    .add(BSTAcheck)
                     .add(BMSGcheck))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(DMSGcheck)
-                    .add(DSTA))
+                    .add(DSTAcheck))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(EMSGcheck)
-                    .add(jCheckBox1))
+                    .add(ESTAcheck))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(FMSGcheck)
-                    .add(jCheckBox2))
+                    .add(FSTAcheck))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(HMSGcheck)
-                    .add(jCheckBox3))
+                    .add(HSTAcheck))
                 .add(19, 19, 19)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton13)
@@ -1521,6 +1546,76 @@ public class TestFrame extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSTAcheckActionPerformed
+if(HSTAcheck.isSelected())
+             
+         {
+             Main.PopMsg("HSTA changed from \"0\" to \"1\".");
+             Vars.HSTA=1;
+         }
+         else
+         {
+             Main.PopMsg("HSTA changed from \"1\" to \"0\".");
+             Vars.HSTA=0;
+         }
+    }//GEN-LAST:event_HSTAcheckActionPerformed
+
+    private void FSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSTAcheckActionPerformed
+if(FSTAcheck.isSelected())
+             
+         {
+             Main.PopMsg("FSTA changed from \"0\" to \"1\".");
+             Vars.FSTA=1;
+         }
+         else
+         {
+             Main.PopMsg("FSTA changed from \"1\" to \"0\".");
+             Vars.FSTA=0;
+         }
+    }//GEN-LAST:event_FSTAcheckActionPerformed
+
+    private void ESTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ESTAcheckActionPerformed
+if(ESTAcheck.isSelected())
+             
+         {
+             Main.PopMsg("ESTA changed from \"0\" to \"1\".");
+             Vars.ESTA=1;
+         }
+         else
+         {
+             Main.PopMsg("ESTA changed from \"1\" to \"0\".");
+             Vars.ESTA=0;
+         }
+    }//GEN-LAST:event_ESTAcheckActionPerformed
+
+    private void DSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSTAcheckActionPerformed
+if(DSTAcheck.isSelected())
+             
+         {
+             Main.PopMsg("DSTA changed from \"0\" to \"1\".");
+             Vars.DSTA=1;
+         }
+         else
+         {
+             Main.PopMsg("DSTA changed from \"1\" to \"0\".");
+             Vars.DSTA=0;
+         }
+    }//GEN-LAST:event_DSTAcheckActionPerformed
+
+    private void BSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSTAcheckActionPerformed
+        if(BSTAcheck.isSelected())
+             
+         {
+             Main.PopMsg("BSTA changed from \"0\" to \"1\".");
+             Vars.BSTA=1;
+         }
+         else
+         {
+             Main.PopMsg("BSTA changed from \"1\" to \"0\".");
+             Vars.BSTA=0;
+         }
+    }//GEN-LAST:event_BSTAcheckActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
 JDialog bla =new JDialog();
@@ -2818,6 +2913,26 @@ if(FMSGcheck.isSelected())
             FMSGcheck.setSelected (true);
         else
             FMSGcheck.setSelected(false); 
+        if(Vars.BSTA==1)
+            BSTAcheck.setSelected (true);
+        else
+            BSTAcheck.setSelected(false);    
+        if(Vars.ESTA==1)
+            ESTAcheck.setSelected (true);
+        else
+            ESTAcheck.setSelected(false); 
+        if(Vars.DSTA==1)
+            DSTAcheck.setSelected (true);
+        else
+            DSTAcheck.setSelected(false); 
+        if(Vars.HSTA==1)
+            HSTAcheck.setSelected (true);
+        else
+            HSTAcheck.setSelected(false); 
+        if(Vars.FSTA==1)
+            FSTAcheck.setSelected (true);
+        else
+            FSTAcheck.setSelected(false); 
 
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -2872,12 +2987,15 @@ if(FMSGcheck.isSelected())
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AccountTable;
     private javax.swing.JCheckBox BMSGcheck;
-    private javax.swing.JCheckBox BSTA;
+    private javax.swing.JCheckBox BSTAcheck;
     private javax.swing.JCheckBox DMSGcheck;
-    private javax.swing.JCheckBox DSTA;
+    private javax.swing.JCheckBox DSTAcheck;
     private javax.swing.JCheckBox EMSGcheck;
+    private javax.swing.JCheckBox ESTAcheck;
     private javax.swing.JCheckBox FMSGcheck;
+    private javax.swing.JCheckBox FSTAcheck;
     private javax.swing.JCheckBox HMSGcheck;
+    private javax.swing.JCheckBox HSTAcheck;
     private javax.swing.JTextArea LogText;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
@@ -2900,9 +3018,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

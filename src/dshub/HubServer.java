@@ -383,6 +383,12 @@ public class HubServer extends Thread
       Vars.DMSG=vars.DMSG;
       Vars.HMSG=vars.HMSG;
       Vars.FMSG=vars.FMSG;
+      
+      Vars.BSTA=vars.BSTA;
+      Vars.ESTA=vars.ESTA;
+      Vars.DSTA=vars.DSTA;
+      Vars.FSTA=vars.FSTA;
+      Vars.HSTA=vars.HSTA;
         
         in.close();
 
