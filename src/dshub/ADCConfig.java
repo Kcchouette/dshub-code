@@ -27,7 +27,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author Administrator
+ * @author Pietricica
  */
 public class ADCConfig 
 {

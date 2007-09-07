@@ -922,6 +922,12 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                                new ADCConfig(cur_client,message);
                                
                            }
+                           else if(message.toLowerCase().startsWith("!cfg") || message.toLowerCase().startsWith("+cfg"))//config settings
+                           {
+                               cur_client.sendFromBot("[config:] "+ADC.retNormStr (message));
+                               new CommandParser(cur_client,message);
+                               
+                           }
                            else
                            {
                                cur_client.sendFromBot("[command:] "+ADC.retNormStr (message));
@@ -958,6 +964,12 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                            {
                                cur_client.sendFromBot("[adc:] "+ADC.retNormStr (message));
                                new ADCConfig(cur_client,message);
+                               
+                           }
+                           else if(message.toLowerCase().startsWith("!cfg") || message.toLowerCase().startsWith("+cfg"))//config settings
+                           {
+                               cur_client.sendFromBot("[config:] "+ADC.retNormStr (message));
+                               new CommandParser(cur_client,message);
                                
                            }
                            else

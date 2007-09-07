@@ -84,6 +84,8 @@ abstract public class ADC
            * added STA checkboxes in adc adv panel;
            * added info box on contexts;
            * added another 2 info boxes on MSG and STA commands;
+           * created new file CFGConfig and moved all cfg in there;
+           * modified cfg commands with [config:] instead of [command:];
            **/
             
             ;
