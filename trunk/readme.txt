@@ -1,3 +1,5 @@
+DSHUB readme.txt
+
 1. Installation
 Installation is OS dependent. If you want to install DSHub I presume that you have the necessary OS knowledge to handle possible situations. If you don't , consider twice using this software. I also assume that you are familiar with DC++ clients and hubs, and have minimal knowledge of Internet. Again, if you don't, consider again using this software and don't just send mail to admins asking why program doesn't work, or this kind of problems. DSHub is a software for people that know what they want and what they do.
 1.1 Linux installation
@@ -83,7 +85,7 @@ At this moment the prompt ">" indicates that hub is running and waiting commands
 
 [ DSHub is being closed by quit command in its console, you can see in first line that it prints].
 2. Hub Commands
-DSHub Beta accepts commands from starting console. Whether your OS is Linux , Mac , Windows or any other, commands are same.
+DSHub accepts commands from starting console. Whether your OS is Linux , Mac , Windows or any other, commands are same.
 2.1. Help
 First command you should know is help. Just type help at the prompt[">"] and you will see available commands. DSHub is self explanatory so here will be just a brief of available commands. Any man can handle himself in DSHub if he has a minimal knowledge of shell.
 2.2. Quit
@@ -92,4 +94,4 @@ quit just exits hub.
 Cfg modifies hub variables. Cfg list to see all, cfg <varname> <newval> to change a variable.
 2.4. Stats
 Stats command gives info about PC hub runs on, and current hub statistics.
-Other commands are software built-in and will be added later in this manual
+Other commands are software built-in and will be added later in this readme, please consult the Manual.
