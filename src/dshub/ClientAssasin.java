@@ -49,10 +49,11 @@ public class ClientAssasin extends Thread
             
             while(temp.NextClient!=null )
             {
+                ClientHandler x=temp.NextClient;
                 if(temp.NextClient.userok==1)
                 if((System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)>Long.parseLong ("240000"))
                 {
-              
+                  
                     try
                     {
                         temp.NextClient.OS.write (0x0a);
@@ -64,7 +65,7 @@ public class ClientAssasin extends Thread
             cur_client.PrevClient.NextClient=cur_client.NextClient;
             if(cur_client.NextClient!=null)
            cur_client.NextClient.PrevClient=cur_client.PrevClient;
-         ClientHandler x=temp.NextClient;
+         
          new Broadcast("IQUI "+temp.NextClient.SessionID);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
              Main.PopMsg(x.NI+" was dropped due to timeout."+(System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)/1000);
@@ -81,27 +82,28 @@ public class ClientAssasin extends Thread
                }
                     }
                }
-                if(temp.NextClient.InQueueSearch!=null)
-                if(temp.NextClient.userok==1)
+                if(x.kicked!=1)
+                if(x.InQueueSearch!=null)
+                if(x.userok==1)
                 {
                   
-                    double x=1;
-                        for(int i=0;i<temp.NextClient.search_step;i++)
-                            x*=((double)Vars.search_log_base)/1000;
-                        x*=1000;
-                        long xx=(long)x;
-                        if(temp.NextClient.search_step>=Vars.search_steps)
+                    double xy=1;
+                        for(int i=0;i<x.search_step;i++)
+                            xy*=((double)Vars.search_log_base)/1000;
+                        xy*=1000;
+                        long xx=(long)xy;
+                        if(x.search_step>=Vars.search_steps)
                             xx=Vars.search_spam_reset*1000;
                   // System.out.println(xx);
-                    if((System.currentTimeMillis ()-temp.NextClient.Lastsearch)>xx)
+                    if((System.currentTimeMillis ()-x.Lastsearch)>xx)
                     {
                     
-                        if(temp.NextClient.InQueueSearch.startsWith("B"))
-                            new Broadcast(temp.NextClient.InQueueSearch);
+                        if(x.InQueueSearch.startsWith("B"))
+                            new Broadcast(x.InQueueSearch);
                         else
-                            new Broadcast(temp.NextClient.InQueueSearch,1);
-                        temp.NextClient.InQueueSearch=null;
-                        temp.NextClient.Lastsearch=System.currentTimeMillis ();
+                            new Broadcast(x.InQueueSearch,1);
+                        x.InQueueSearch=null;
+                       x.Lastsearch=System.currentTimeMillis ();
                     }
                     
                 }
