@@ -39,7 +39,7 @@ package dshub;
             curline=str;
         }
     }
-public class Broadcast extends Thread
+public class Broadcast
 {
     int state=0;
     /*state =0 normal, to all
@@ -62,7 +62,7 @@ public class Broadcast extends Thread
         this.STR=STR;
         
         cur_client=bla;
-        start();
+        run();
     }
      public Broadcast (String STR, int active)
     {
@@ -70,13 +70,13 @@ public class Broadcast extends Thread
         
         state=active; // 1 - active only
         //10 - ops only
-        start();
+        run();
     }
     public Broadcast (String STR)
     {
         
         this.STR=STR;
-        start();
+        run();
     }
      public void   sendToAll(ClientHandler CH)
     {
@@ -144,11 +144,21 @@ public class Broadcast extends Thread
         }
          
            
-              
+             
             
-        if((CH.userok==1 && CH!=cur_client) || (CH.userok==1 && state==1 && CH.ACTIVE==1))
+        if((CH.userok==1 && CH!=cur_client) || (CH!=cur_client && CH.userok==1 && state==1 && CH.ACTIVE==1))
         {
              if(state==10 && !CH.reg.key)
+             {
+                 CH=CH.NextClient;
+                 continue;
+             }
+             if(CH.ACTIVE!=1 && state==1)
+             {
+                 CH=CH.NextClient;
+                 continue;
+             }
+             if(!STR.startsWith ("E") && CH==cur_client)
              {
                  CH=CH.NextClient;
                  continue;
