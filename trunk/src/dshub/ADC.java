@@ -92,6 +92,8 @@ abstract public class ADC
            * fixed broadcasting same stuff to sender too;
            * fixed broadcasting feature searches to all;
            * created new file SCH for sch command;
+           * created new file STA for sta command, also made possible D/E sta;
+           * tried to fix clientassasin on bug when only quit was sent but client still conn;
            **/
             
             ;

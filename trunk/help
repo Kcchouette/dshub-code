@@ -1,4 +1,5 @@
 Available commands:
+                        adc -- ADC advanced configuration panel, setting contexts for each command 
                         port x -- Where x is the new port hub is supposed to run on.
                         reg CID/online user nick -- Reg the new CID with no password ( by default) or the CID of the online user specified by nick.
                         ureg CID/online user nick -- Unregs the CID/user's CID from database.

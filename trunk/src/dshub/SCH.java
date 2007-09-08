@@ -3,7 +3,7 @@
  *
  * Created on 07 septembrie 2007, 18:34
  *
-  * DSHub ADC HubSoft
+ * DSHub ADC HubSoft
  * Copyright (C) 2007  Pietricica
  *
  * This program is free software; you can redistribute it and/or
