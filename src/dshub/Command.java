@@ -1092,6 +1092,10 @@ if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='C' && Issued_Com
  {
     new SCH(cur_client,Issued_Command,State);
 }
+ if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='T' && Issued_Command.charAt (3)=='A')
+ {
+    new STA(cur_client,Issued_Command,State);
+}
                     
        
         
