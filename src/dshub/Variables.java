@@ -103,6 +103,48 @@ public class Variables implements Serializable
      int FSTA;
      int HSTA;
      
+      int BCTM;
+     int DCTM;
+     int ECTM;
+     int FCTM;
+     int HCTM;
+    
+     int BRCM;
+     int DRCM;
+     int ERCM;
+     int FRCM;
+     int HRCM;
+    
+     int BINF;
+     int DINF;
+     int EINF;
+     int FINF;
+     int HINF;
+    
+     int BSCH;
+     int DSCH;
+     int ESCH;
+     int FSCH;
+     int HSCH;
+    
+     int BRES;
+     int DRES;
+     int ERES;
+     int FRES;
+     int HRES;
+    
+     int BPAS;
+     int DPAS;
+     int EPAS;
+     int FPAS;
+     int HPAS;
+    
+     int BSUP;
+     int DSUP;
+     int ESUP;
+     int FSUP;
+     int HSUP;
+     
       public Variables()
       {
           Timeout_Login=Vars.Timeout_Login;
@@ -164,6 +206,48 @@ public class Variables implements Serializable
       ESTA=Vars.ESTA;
       FSTA=Vars.FSTA;
       HSTA=Vars.HSTA;
+      
+      BCTM=Vars.BCTM;
+      DCTM=Vars.DCTM;
+      ECTM=Vars.ECTM;
+      FCTM=Vars.FCTM;
+      HCTM=Vars.HCTM;
+      
+      BRCM=Vars.BRCM;
+      DRCM=Vars.DRCM;
+      ERCM=Vars.ERCM;
+      FRCM=Vars.FRCM;
+      HRCM=Vars.HRCM;
+      
+      BINF=Vars.BINF;
+      DINF=Vars.DINF;
+      EINF=Vars.EINF;
+      FINF=Vars.FINF;
+      HINF=Vars.HINF;
+      
+      BSCH=Vars.BSCH;
+      DSCH=Vars.DSCH;
+      ESCH=Vars.ESCH;
+      FSCH=Vars.FSCH;
+      HSCH=Vars.HSCH;
+      
+      BRES=Vars.BRES;
+      DRES=Vars.DRES;
+      ERES=Vars.ERES;
+      FRES=Vars.FRES;
+      HRES=Vars.HRES;
+       
+      BPAS=Vars.BPAS;
+      DPAS=Vars.DPAS;
+      EPAS=Vars.EPAS;
+      FPAS=Vars.FPAS;
+      HPAS=Vars.HPAS;
+      
+      BSUP=Vars.BSUP;
+      DSUP=Vars.DSUP;
+      ESUP=Vars.ESUP;
+      FSUP=Vars.FSUP;
+      HSUP=Vars.HSUP;
       }
 }
  class Vars
@@ -248,4 +332,46 @@ public class Variables implements Serializable
     static int ESTA=1;
     static int FSTA=0;
     static int HSTA=1;
+    
+    static int BCTM=0;
+    static int DCTM=1;
+    static int ECTM=1;
+    static int FCTM=0;
+    static int HCTM=0;
+    
+    static int BRCM=0;
+    static int DRCM=1;
+    static int ERCM=1;
+    static int FRCM=0;
+    static int HRCM=0;
+    
+    static int BINF=1;
+    static int DINF=0;
+    static int EINF=0;
+    static int FINF=0;
+    static int HINF=0;
+    
+    static int BSCH=1;
+    static int DSCH=1;
+    static int ESCH=1;
+    static int FSCH=1;
+    static int HSCH=0;
+    
+    static int BRES=0;
+    static int DRES=1;
+    static int ERES=1;
+    static int FRES=0;
+    static int HRES=0;
+    
+    static int BPAS=0;
+    static int DPAS=0;
+    static int EPAS=0;
+    static int FPAS=0;
+    static int HPAS=1;
+    
+    static int BSUP=0;
+    static int DSUP=0;
+    static int ESUP=0;
+    static int FSUP=0;
+    static int HSUP=1;
 }

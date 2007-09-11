@@ -95,6 +95,8 @@ abstract public class ADC
            * created new file STA for sta command, also made possible D/E sta;
            * tried to fix clientassasin on bug when only quit was sent but client still conn;
            * moved info command to separate file, corrected bug when showing \s in tag;
+           * added boxes for CTM command;
+           * created variables for all the rest of commands, added to config file;
            **/
             
             ;

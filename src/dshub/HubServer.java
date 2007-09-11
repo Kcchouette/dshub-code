@@ -275,7 +275,7 @@ public class HubServer extends Thread
             }
             catch (IOException e)
             {
-                System.out.println(e);
+                Main.PopMsg(e.toString());
             }
     }
     public static void  rewritebans()
@@ -295,7 +295,7 @@ public class HubServer extends Thread
             }
             catch (IOException e)
             {
-                System.out.println(e);
+                Main.PopMsg(e.toString());
             }
     }
     public static void  rewriteregs()
@@ -316,7 +316,7 @@ public class HubServer extends Thread
             }
             catch (IOException e)
             {
-                System.out.println(e);
+                Main.PopMsg(e.toString());
             }
     }
      public  void reloadconfig() 
@@ -389,6 +389,48 @@ public class HubServer extends Thread
       Vars.DSTA=vars.DSTA;
       Vars.FSTA=vars.FSTA;
       Vars.HSTA=vars.HSTA;
+      
+      Vars.BCTM=vars.BCTM;
+      Vars.DCTM=vars.DCTM;
+      Vars.ECTM=vars.ECTM;
+      Vars.FCTM=vars.FCTM;
+      Vars.HCTM=vars.HCTM;
+      
+      Vars.BRCM=vars.BRCM;
+      Vars.DRCM=vars.DRCM;
+      Vars.ERCM=vars.ERCM;
+      Vars.FRCM=vars.FRCM;
+      Vars.HRCM=vars.HRCM;
+      
+      Vars.BINF=vars.BINF;
+      Vars.DINF=vars.DINF;
+      Vars.EINF=vars.EINF;
+      Vars.FINF=vars.FINF;
+      Vars.HINF=vars.HINF;
+      
+      Vars.BSCH=vars.BSCH;
+      Vars.DSCH=vars.DSCH;
+      Vars.ESCH=vars.ESCH;
+      Vars.FSCH=vars.FSCH;
+      Vars.HSCH=vars.HSCH;
+      
+      Vars.BRES=vars.BRES;
+      Vars.DRES=vars.DRES;
+      Vars.ERES=vars.ERES;
+      Vars.FRES=vars.FRES;
+      Vars.HRES=vars.HRES;
+       
+      Vars.BPAS=vars.BPAS;
+      Vars.DPAS=vars.DPAS;
+      Vars.EPAS=vars.EPAS;
+      Vars.FPAS=vars.FPAS;
+      Vars.HPAS=vars.HPAS;
+      
+      Vars.BSUP=vars.BSUP;
+      Vars.DSUP=vars.DSUP;
+      Vars.ESUP=vars.ESUP;
+      Vars.FSUP=vars.FSUP;
+      Vars.HSUP=vars.HSUP;
         
         in.close();
 
