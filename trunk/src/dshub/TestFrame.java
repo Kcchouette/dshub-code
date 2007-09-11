@@ -189,6 +189,9 @@ public class TestFrame extends javax.swing.JFrame
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
@@ -215,9 +218,34 @@ public class TestFrame extends javax.swing.JFrame
         FCTMcheck = new javax.swing.JCheckBox();
         HCTMcheck = new javax.swing.JCheckBox();
         jButton15 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jLabel57 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jButton16 = new javax.swing.JButton();
+        jLabel58 = new javax.swing.JLabel();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jButton17 = new javax.swing.JButton();
+        jLabel59 = new javax.swing.JLabel();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jButton18 = new javax.swing.JButton();
+        jLabel60 = new javax.swing.JLabel();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jButton19 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         StatusLabel = new javax.swing.JLabel();
@@ -1256,6 +1284,31 @@ public class TestFrame extends javax.swing.JFrame
         );
         jTabbedPane1.addTab("Log", jPanel12);
 
+        jPanel4.setToolTipText("Some Help ...");
+        jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(127, 127, 127)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 498, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(37, 37, 37)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Help", null, jPanel4, "Some Help...");
+
         jPanel9.setToolTipText("ADC advanced configuration panel");
         jLabel51.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel51.setText("The ADC advanced configuration Panel.");
@@ -1413,6 +1466,126 @@ public class TestFrame extends javax.swing.JFrame
             }
         });
 
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel57.setText("RCM");
+
+        jCheckBox1.setText("B");
+        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox2.setText("D");
+        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox3.setText("E");
+        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox4.setText("F");
+        jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox5.setText("H");
+        jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jButton16.setText("[?]");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel58.setText("INF");
+
+        jCheckBox6.setText("B");
+        jCheckBox6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox6.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox7.setText("D");
+        jCheckBox7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox7.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox8.setText("E");
+        jCheckBox8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox8.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox9.setText("F");
+        jCheckBox9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox9.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox10.setText("H");
+        jCheckBox10.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox10.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jButton17.setText("[?]");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel59.setText("SCH");
+
+        jCheckBox11.setText("B");
+        jCheckBox11.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox11.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox12.setText("D");
+        jCheckBox12.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox12.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox13.setText("E");
+        jCheckBox13.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox13.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox14.setText("F");
+        jCheckBox14.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox14.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox15.setText("H");
+        jCheckBox15.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox15.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jButton18.setText("[?]");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel60.setText("RES");
+
+        jCheckBox16.setText("B");
+        jCheckBox16.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox16.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox17.setText("D");
+        jCheckBox17.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox17.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox18.setText("E");
+        jCheckBox18.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox18.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox19.setText("F");
+        jCheckBox19.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox19.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox20.setText("H");
+        jCheckBox20.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox20.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jButton19.setText("[?]");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -1426,118 +1599,198 @@ public class TestFrame extends javax.swing.JFrame
                             .add(jPanel9Layout.createSequentialGroup()
                                 .add(jLabel51)
                                 .add(82, 82, 82)
+                                .add(jButton12))))
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel9Layout.createSequentialGroup()
                                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jButton12)
-                                    .add(jLabel56)
                                     .add(jPanel9Layout.createSequentialGroup()
-                                        .add(2, 2, 2)
+                                        .add(194, 194, 194)
                                         .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(DCTMcheck)
-                                            .add(BCTMcheck)
-                                            .add(ECTMcheck)
-                                            .add(FCTMcheck)
-                                            .add(HCTMcheck)))))))
-                    .add(jPanel9Layout.createSequentialGroup()
-                        .add(25, 25, 25)
-                        .add(jLabel54)
-                        .add(15, 15, 15)
-                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel53)
-                            .add(DMSGcheck)
-                            .add(EMSGcheck)
-                            .add(FMSGcheck)
-                            .add(HMSGcheck)
-                            .add(BMSGcheck))
-                        .add(65, 65, 65)
-                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel55)
-                            .add(BSTAcheck)
-                            .add(HSTAcheck)
-                            .add(FSTAcheck)
-                            .add(ESTAcheck)
-                            .add(DSTAcheck)))
-                    .add(jPanel9Layout.createSequentialGroup()
-                        .add(107, 107, 107)
-                        .add(jButton13)
-                        .add(44, 44, 44)
-                        .add(jButton14)
-                        .add(43, 43, 43)
-                        .add(jButton15)))
-                .addContainerGap(393, Short.MAX_VALUE))
+                                            .add(jLabel56)
+                                            .add(jPanel9Layout.createSequentialGroup()
+                                                .add(2, 2, 2)
+                                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                                    .add(DCTMcheck)
+                                                    .add(BCTMcheck)
+                                                    .add(ECTMcheck)
+                                                    .add(FCTMcheck)
+                                                    .add(HCTMcheck)))))
+                                    .add(jPanel9Layout.createSequentialGroup()
+                                        .add(13, 13, 13)
+                                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel53)
+                                            .add(DMSGcheck)
+                                            .add(EMSGcheck)
+                                            .add(FMSGcheck)
+                                            .add(HMSGcheck)
+                                            .add(BMSGcheck))
+                                        .add(65, 65, 65)
+                                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel55)
+                                            .add(BSTAcheck)
+                                            .add(HSTAcheck)
+                                            .add(FSTAcheck)
+                                            .add(ESTAcheck)
+                                            .add(DSTAcheck))))
+                                .add(64, 64, 64)
+                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel57)
+                                    .add(jCheckBox1)
+                                    .add(jCheckBox2)
+                                    .add(jCheckBox3)
+                                    .add(jCheckBox4)
+                                    .add(jCheckBox5))
+                                .add(62, 62, 62)
+                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel58)
+                                    .add(jCheckBox6)
+                                    .add(jCheckBox7)
+                                    .add(jCheckBox8)
+                                    .add(jCheckBox9)
+                                    .add(jCheckBox10))
+                                .add(61, 61, 61)
+                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel59)
+                                    .add(jCheckBox11)
+                                    .add(jCheckBox13)
+                                    .add(jCheckBox12)
+                                    .add(jCheckBox14)
+                                    .add(jCheckBox15))
+                                .add(62, 62, 62)
+                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jCheckBox20)
+                                    .add(jCheckBox19)
+                                    .add(jCheckBox18)
+                                    .add(jCheckBox17)
+                                    .add(jCheckBox16)
+                                    .add(jLabel60)))
+                            .add(jPanel9Layout.createSequentialGroup()
+                                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jLabel54)
+                                    .add(jPanel9Layout.createSequentialGroup()
+                                        .add(jButton13)
+                                        .add(44, 44, 44)
+                                        .add(jButton14)
+                                        .add(43, 43, 43)
+                                        .add(jButton15)
+                                        .add(46, 46, 46)
+                                        .add(jButton16)
+                                        .add(38, 38, 38)
+                                        .add(jButton17)))
+                                .add(41, 41, 41)
+                                .add(jButton18)
+                                .add(41, 41, 41)
+                                .add(jButton19)))))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel51)
-                    .add(jButton12))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel52)
-                .add(24, 24, 24)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel53)
-                    .add(jLabel55)
-                    .add(jLabel56))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel54)
-                    .add(BSTAcheck)
-                    .add(BMSGcheck)
-                    .add(BCTMcheck))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(DMSGcheck)
-                    .add(DSTAcheck)
-                    .add(DCTMcheck))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(EMSGcheck)
-                    .add(ESTAcheck)
-                    .add(ECTMcheck))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(FMSGcheck)
-                    .add(FSTAcheck)
-                    .add(FCTMcheck))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(HMSGcheck)
-                    .add(HSTAcheck)
-                    .add(HCTMcheck))
+                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(jLabel59)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox11)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox12)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox13)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox14)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox15))
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(jLabel60)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox16)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox17)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox18)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox19)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jCheckBox20))
+                    .add(jPanel9Layout.createSequentialGroup()
+                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel51)
+                            .add(jButton12))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel52)
+                        .add(5, 5, 5)
+                        .add(jLabel54)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(jPanel9Layout.createSequentialGroup()
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(jLabel53)
+                                        .add(jLabel55)
+                                        .add(jLabel56))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(BSTAcheck)
+                                        .add(BMSGcheck)
+                                        .add(BCTMcheck))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(DMSGcheck)
+                                        .add(DSTAcheck)
+                                        .add(DCTMcheck))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(EMSGcheck)
+                                        .add(ESTAcheck)
+                                        .add(ECTMcheck))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(FMSGcheck)
+                                        .add(FSTAcheck)
+                                        .add(FCTMcheck))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(HMSGcheck)
+                                        .add(HSTAcheck)
+                                        .add(HCTMcheck)))
+                                .add(jPanel9Layout.createSequentialGroup()
+                                    .add(jLabel57)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jCheckBox1)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jCheckBox2)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jCheckBox3)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jCheckBox4)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jCheckBox5)))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .add(jLabel58)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jCheckBox6)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jCheckBox7)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jCheckBox8)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jCheckBox9)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jCheckBox10)))))
                 .add(19, 19, 19)
                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton13)
                     .add(jButton15)
-                    .add(jButton14))
+                    .add(jButton14)
+                    .add(jButton16)
+                    .add(jButton17)
+                    .add(jButton18)
+                    .add(jButton19))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Advanced", jPanel9);
-
-        jPanel4.setToolTipText("Some Help ...");
-        jTextArea1.setColumns(20);
-        jTextArea1.setEditable(false);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(127, 127, 127)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 498, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(37, 37, 37)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jTabbedPane1.addTab("Help", null, jPanel4, "Some Help...");
 
         jButton3.setText("RESTART HUB");
         jButton3.setToolTipText("Restarts hub with current settings.");
@@ -1600,6 +1853,82 @@ public class TestFrame extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("RES Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("RES is the search result command,\nis used to reply to searches.\n( B ) No defined purpose.\n"+
+               "( D ) Reply to a single user.\n( E ) same as D.\n( F ) No defined purpose.\n"+
+               "( H ) No defined purpose."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("SCH Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("SCH is the search command,\nis used to search for files.\n( B ) Send search request to all other clients.\n"+
+               "( D ) Search on a single user.\n( E ) same as D.\n( F ) Search featured clients.\n"+
+               "( H ) No defined purpose."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("INF Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("INF is the information specifier command,\nis used to tell other clients about\none's ADC client.\n( B ) Send info to all other clients.\n"+
+               "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"+
+               "( H ) No defined purpose."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (300,400);
+        bla.setTitle ("RCM Command");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("CTM is the reverse connect to me command,\nis used for requesting a direct\nconnection from another client,\nby a passive TCP user.\n( B ) No defined purpose.\n"+
+               "( D ) Requesting from other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
+               "( H ) No defined purpose."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
 JDialog bla =new JDialog();
         JPanel jp=new JPanel();
@@ -1608,8 +1937,8 @@ JDialog bla =new JDialog();
         bla.setTitle ("CTM Command");
         
        bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("CTM is the connect to me command,\nis used for requesting a direct\nconnection from another client.\n( B ) no defined purpose.\n"+
-               "( D ) Connecting to other client.\n( E ) same as D.\n( F ) no defined purpose.\n"+
+       JTextArea jl=new JTextArea("CTM is the connect to me command,\nis used for requesting a direct\nconnection from another client.\n( B ) No defined purpose.\n"+
+               "( D ) Connecting to other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
                "( H ) No defined purpose."
                
                );
@@ -3089,6 +3418,10 @@ if(FMSGcheck.isSelected())
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -3097,6 +3430,26 @@ if(FMSGcheck.isSelected())
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3149,7 +3502,11 @@ if(FMSGcheck.isSelected())
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
