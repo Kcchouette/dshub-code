@@ -97,6 +97,7 @@ abstract public class ADC
            * moved info command to separate file, corrected bug when showing \s in tag;
            * added boxes for CTM command;
            * created variables for all the rest of commands, added to config file;
+           * added boxes for other commands in the GUI;
            **/
             
             ;
