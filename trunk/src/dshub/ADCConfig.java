@@ -50,11 +50,28 @@ public class ADCConfig
                     "Example : \"adc bmsg off\", where \"b\" is the context,\n"+
                     "\"msg\" is the name and off is the specifier of what to do.\n"+
                     "Current Settings : \n"+
-            " MSG :     STA:\n"+
-                    "B "+ (Vars.BMSG==1 ? "on":"off")+  "        B "+ (Vars.BSTA==1 ? "on":"off")+  "\n"+
-                    "D "+ (Vars.DMSG==1 ? "on":"off")+  "        D "+ (Vars.DSTA==1 ? "on":"off")+ "\n"+
-                    "E "+ (Vars.EMSG==1 ? "on":"off")+  "        E "+ (Vars.ESTA==1 ? "on":"off")+"\n"+
-                    "F "+ (Vars.FMSG==1 ? "on":"off")+  "        F "+ (Vars.FSTA==1 ? "on":"off")+"\n"+
+            " MSG :     STA:     CTM:      RCM:     INF:       SCH:       RES:      PAS:      SUP:\n"+
+                    "B "+ (Vars.BMSG==1 ? "on":"off")+  "        B "+ (Vars.BSTA==1 ? "on":"off")+ 
+                    "       B "+ (Vars.BCTM==1 ? "on":"off")+"       B "+ (Vars.BRCM==1 ? "on":"off")+
+                    "       B "+ (Vars.BINF==1 ? "on":"off")+"       B "+ (Vars.BSCH==1 ? "on":"off")+
+                    "       B "+ (Vars.BRES==1 ? "on":"off")+"       B "+ (Vars.BPAS==1 ? "on":"off")+
+                    "       B "+ (Vars.BSUP==1 ? "on":"off")+
+                    
+                    "\n"+
+                    
+                    "D "+ (Vars.DMSG==1 ? "on":"off")+  "        D "+ (Vars.DSTA==1 ? "on":"off")+ 
+                    "      D "+ (Vars.DCTM==1 ? "on":"off")+"       D "+ (Vars.DRCM==1 ? "on":"off")+
+                    "       D "+ (Vars.DINF==1 ? "on":"off")+"      D "+ (Vars.DSCH==1 ? "on":"off")+
+                    "       D "+ (Vars.DRES==1 ? "on":"off")+"      D "+ (Vars.DPAS==1 ? "on":"off")+
+                    "       D "+ (Vars.DSUP==1 ? "on":"off")+
+                    "\n"+
+                    
+                    "E "+ (Vars.EMSG==1 ? "on":"off")+  "        E "+ (Vars.ESTA==1 ? "on":"off")+
+                    
+                    "\n"+
+                    "F "+ (Vars.FMSG==1 ? "on":"off")+  "        F "+ (Vars.FSTA==1 ? "on":"off")+
+                    
+                    "\n"+
                     "H "+ (Vars.HMSG==1 ? "on":"off") + "        H "+ (Vars.HSTA==1 ? "on":"off") +
                     ""
                     

@@ -100,6 +100,7 @@ abstract public class ADC
            * added boxes for other commands in the GUI;
            * after hours of trying to make checkboxes( stupid java editor), finally done them;
            * made initial checks on checkboxes;
+           * started work for modifying via command;
            **/
             
             ;
