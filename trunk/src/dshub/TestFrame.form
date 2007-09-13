@@ -1884,7 +1884,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -1952,97 +1952,212 @@
                                       <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FRCMcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HRCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ERCMcheck" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DRCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BRCMcheck" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="9" pref="9" max="9" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BINFcheck" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HINFcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FINFcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EINFcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DINFcheck" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jButton18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jButton16" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="jButton18" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="32" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jButton17" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="jButton20" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton19" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HSCHcheck" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BSCHcheck" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DSCHcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ESCHcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FSCHcheck" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                                      <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FREScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="HREScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BREScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DREScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EREScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jButton20" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel61" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="DPAScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HPAScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FPAScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EPAScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BPAScheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="BSUPcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DSUPcheck" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ESUPcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FSUPcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HSUPcheck" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="jButton19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="jButton21" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel56" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel56" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="BCTMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DCTMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ECTMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="FCTMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="HCTMcheck" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="BSTAcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DSTAcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ESTAcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="FSTAcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="HSTAcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jButton14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="BRCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="DRCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ERCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="FRCMcheck" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="HRCMcheck" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="BINFcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="BSCHcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="DINFcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="DSCHcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="EINFcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ESCHcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="FINFcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="FSCHcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="HINFcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="HSCHcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BCTMcheck" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="DCTMcheck" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ECTMcheck" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FCTMcheck" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="HCTMcheck" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="1">
                                   <Component id="BMSGcheck" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="DMSGcheck" min="-2" max="-2" attributes="0"/>
@@ -2055,81 +2170,46 @@
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="jButton13" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="BSTAcheck" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DSTAcheck" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ESTAcheck" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="FSTAcheck" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="HSTAcheck" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox10" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="jButton19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="BREScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BPAScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="BSUPcheck" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jButton18" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="138" pref="138" max="138" attributes="0"/>
-                                              <Component id="jButton17" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBox11" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBox12" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBox13" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBox14" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="DREScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DPAScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DSUPcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="EREScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="EPAScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ESUPcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="FREScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FPAScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FSUPcheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="HREScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HPAScheck" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="HSUPcheck" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton16" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="156" max="32767" attributes="0"/>
@@ -2451,7 +2531,7 @@
                 <Property name="text" type="java.lang.String" value="RCM"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+            <Component class="javax.swing.JCheckBox" name="BRCMcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="B"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2464,7 +2544,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+            <Component class="javax.swing.JCheckBox" name="DRCMcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="D"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2477,7 +2557,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+            <Component class="javax.swing.JCheckBox" name="ERCMcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="E"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2490,7 +2570,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+            <Component class="javax.swing.JCheckBox" name="FRCMcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="F"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2503,7 +2583,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+            <Component class="javax.swing.JCheckBox" name="HRCMcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="H"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2552,6 +2632,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="[?]"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton20ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel58">
               <Properties>
@@ -2561,7 +2644,7 @@
                 <Property name="text" type="java.lang.String" value="INF"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+            <Component class="javax.swing.JCheckBox" name="BINFcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="B"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2574,7 +2657,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+            <Component class="javax.swing.JCheckBox" name="DINFcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="D"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2587,7 +2670,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+            <Component class="javax.swing.JCheckBox" name="EINFcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="E"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2600,7 +2683,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+            <Component class="javax.swing.JCheckBox" name="FINFcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="F"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2613,7 +2696,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox10">
+            <Component class="javax.swing.JCheckBox" name="HINFcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="H"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2634,7 +2717,7 @@
                 <Property name="text" type="java.lang.String" value="SCH"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox11">
+            <Component class="javax.swing.JCheckBox" name="BSCHcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="B"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2647,7 +2730,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+            <Component class="javax.swing.JCheckBox" name="DSCHcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="D"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2660,7 +2743,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox13">
+            <Component class="javax.swing.JCheckBox" name="ESCHcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="E"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2673,7 +2756,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox14">
+            <Component class="javax.swing.JCheckBox" name="FSCHcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="F"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2686,7 +2769,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox15">
+            <Component class="javax.swing.JCheckBox" name="HSCHcheck">
               <Properties>
                 <Property name="text" type="java.lang.String" value="H"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2698,6 +2781,233 @@
                   <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel60">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="RES"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="BREScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="B"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="DREScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="D"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="EREScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="FREScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="HREScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="H"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel61">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="PAS"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="BPAScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="B"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="DPAScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="D"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="EPAScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="FPAScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="HPAScheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="H"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel62">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="SUP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="BSUPcheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="B"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="DSUPcheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="D"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ESUPcheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="FSUPcheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="HSUPcheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="H"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="[?]"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton21ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
