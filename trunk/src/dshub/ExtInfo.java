@@ -106,8 +106,8 @@ public class ExtInfo
                else
                {
                     
-                    String blah11="User Info\nNick "+temp.NI+"\nCID "+temp.ID+"\nShare Size "+temp.SS+ " Bytes\n"+
-                            "Description "+temp.DE+"\nTag ";
+                    String blah11="User Info\nNick "+ADC.retNormStr(temp.NI)+"\nCID "+temp.ID+"\nShare Size "+temp.SS+ " Bytes\n"+
+                            "Description "+ADC.retNormStr(temp.DE)+"\nTag ";
                     
                     String Tag="<"+ADC.retNormStr (temp.VE)+",M:";
                     if(temp.ACTIVE==1)
