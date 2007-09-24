@@ -102,6 +102,7 @@ abstract public class ADC
            * made initial checks on checkboxes;
            * started work for modifying via command;
            * finished the adc cmd panel;
+           * created a CTM file for ctm command;
            **/
             
             ;
