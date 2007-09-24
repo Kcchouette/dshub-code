@@ -145,6 +145,46 @@ public class ADCConfig
                 tempStr+=Vars.FINF==1 ? "on." : "off.";
             else if(nameValue.equalsIgnoreCase("HINF"))
                 tempStr+=Vars.HINF==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("BSCH"))
+                tempStr+=(Vars.BSCH==1 ? "on." : "off.");
+            else if(nameValue.equalsIgnoreCase("DSCH"))
+                tempStr+=Vars.DSCH==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("ESCH"))
+                tempStr+=Vars.ESCH==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("FSCH"))
+                tempStr+=Vars.FSCH==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("HSCH"))
+                tempStr+=Vars.HSCH==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("BRES"))
+                tempStr+=(Vars.BRES==1 ? "on." : "off.");
+            else if(nameValue.equalsIgnoreCase("DRES"))
+                tempStr+=Vars.DRES==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("ERES"))
+                tempStr+=Vars.ERES==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("FRES"))
+                tempStr+=Vars.FRES==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("HRES"))
+                tempStr+=Vars.HRES==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("BPAS"))
+                tempStr+=(Vars.BPAS==1 ? "on." : "off.");
+            else if(nameValue.equalsIgnoreCase("DPAS"))
+                tempStr+=Vars.DPAS==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("EPAS"))
+                tempStr+=Vars.EPAS==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("FPAS"))
+                tempStr+=Vars.FPAS==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("HPAS"))
+                tempStr+=Vars.HPAS==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("BSUP"))
+                tempStr+=(Vars.BPAS==1 ? "on." : "off.");
+            else if(nameValue.equalsIgnoreCase("DSUP"))
+                tempStr+=Vars.DSUP==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("ESUP"))
+                tempStr+=Vars.ESUP==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("FSUP"))
+                tempStr+=Vars.FSUP==1 ? "on." : "off.";
+            else if(nameValue.equalsIgnoreCase("HSUP"))
+                tempStr+=Vars.HSUP==1 ? "on." : "off.";
             cur_client.sendFromBot(tempStr);
             return;
         }
@@ -603,7 +643,367 @@ public class ADCConfig
                 return;
             }
         }
-                
+          else if(nameValue.equalsIgnoreCase("BSCH"))
+            {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.BSCH=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.BSCH=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+            }
+        else if(nameValue.equalsIgnoreCase("DSCH"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.DSCH=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.DSCH=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("ESCH"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.ESCH=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.ESCH=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("FSCH"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.FSCH=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.FSCH=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("HSCH"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.HSCH=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.HSCH=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }      
+        
+        else if(nameValue.equalsIgnoreCase("BRES"))
+            {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.BRES=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.BRES=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+            }
+        else if(nameValue.equalsIgnoreCase("DRES"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.DRES=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.DRES=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("ERES"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.ERES=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.ERES=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("FRES"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.FRES=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.FRES=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("HRES"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.HRES=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.HRES=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }      
+        else if(nameValue.equalsIgnoreCase("BPAS"))
+            {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.BPAS=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.BPAS=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+            }
+        else if(nameValue.equalsIgnoreCase("DPAS"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.DPAS=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.DPAS=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("EPAS"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.EPAS=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.EPAS=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("FPAS"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.FPAS=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.FPAS=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("HPAS"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.HPAS=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.HPAS=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }      
+        else if(nameValue.equalsIgnoreCase("BSUP"))
+            {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.BSUP=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.BSUP=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+            }
+        else if(nameValue.equalsIgnoreCase("DSUP"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.DSUP=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.DSUP=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("ESUP"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.ESUP=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.ESUP=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("FSUP"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.FSUP=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.FSUP=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }
+        else if(nameValue.equalsIgnoreCase("HSUP"))
+        {
+            if (Specifier.equalsIgnoreCase("on"))
+            {
+                Vars.HSUP=1;
+                tempStr+=" on.";
+            }
+            else if(Specifier.equalsIgnoreCase("off"))
+            {
+                Vars.HSUP=0;
+                tempStr+=" off.";
+            }
+            else
+            {
+                cur_client.sendFromBot("Invalid Specifier.");
+                return;
+            }
+        }      
             
             
             cur_client.sendFromBot(tempStr);

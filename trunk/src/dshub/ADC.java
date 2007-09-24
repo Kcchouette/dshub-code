@@ -101,6 +101,7 @@ abstract public class ADC
            * after hours of trying to make checkboxes( stupid java editor), finally done them;
            * made initial checks on checkboxes;
            * started work for modifying via command;
+           * finished the adc cmd panel;
            **/
             
             ;
