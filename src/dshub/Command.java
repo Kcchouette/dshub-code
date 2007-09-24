@@ -1130,30 +1130,7 @@ if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='C' && Issued_Com
             }
             else if(Issued_Command.startsWith("DCTM ")) //direct connect to me
             {
-                if(cur_client.ACTIVE==0)
-                    return;
-                StringTokenizer tok=new StringTokenizer(Issued_Command);
-                String aux=tok.nextToken();
-                aux=tok.nextToken();
-                if(!aux.equals(cur_client.SessionID))
-                {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
-                      return ;
-                }
-                aux=tok.nextToken();
-                //now must look for the aux SID...
-                ClientHandler temp=cur_client.FirstClient.NextClient;
-                while(temp!=null)
-                {
-                    if(temp.SessionID.equals(aux))
-                        break;
-                    temp=temp.NextClient;
-                }
-                if(temp==null)//talking to inexisting client
-                    return; //not kick, maybe the other client just left after he sent the msg;
-                aux=tok.nextToken(); // this is the string representing protocol, next token is port, next token is TO
-               
-                temp.sendToClient(Issued_Command);
+                new CTM(cur_client,State, Issued_Command);
             }
             else if(Issued_Command.startsWith("DRCM ")) //reverse connect to me
             {
