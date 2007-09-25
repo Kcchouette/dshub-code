@@ -1086,57 +1086,29 @@ if(Issued_Command.charAt(1)=='M' && Issued_Command.charAt (2)=='S' && Issued_Com
                        return;
                    }
 }
-       /******************************SCH COMMAND****************************/   
+         
                 
 if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='C' && Issued_Command.charAt (3)=='H')
- {
+{
     new SCH(cur_client,Issued_Command,State);
 }
- if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='T' && Issued_Command.charAt (3)=='A')
- {
+if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='T' && Issued_Command.charAt (3)=='A')
+{
     new STA(cur_client,Issued_Command,State);
 }
-                    
-       
+if(Issued_Command.substring(1).startsWith("RES ")) //direct search result, only active to passive must send this
+{
+    new RES(cur_client,State,Issued_Command);
+}
+else if(Issued_Command.substring(1).startsWith("CTM ")) //direct connect to me
+{
+    new CTM(cur_client,State, Issued_Command);
+}
+else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
+{
+    new RCM(cur_client, State, Issued_Command);
+}
         
-             if(Issued_Command.charAt(0)=='D') //direct command, must send to target_sid only
-        {
-            
-             if(Issued_Command.startsWith("DRES ")) //direct search result, only active to passive must send this
-            {
-               //  System.out.println (Issued_Command);
-                StringTokenizer tok=new StringTokenizer(Issued_Command);
-                String aux=tok.nextToken();
-                aux=tok.nextToken();
-                if(!aux.equals(cur_client.SessionID))
-                {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
-                      return ;
-                }
-                aux=tok.nextToken();
-                //now must look for the aux SID...
-                ClientHandler temp=cur_client.FirstClient.NextClient;
-                while(temp!=null)
-                {
-                    if(temp.SessionID.equals(aux))
-                        break;
-                    temp=temp.NextClient;
-                }
-                if(temp==null)//talking to inexisting client
-                    return; //not kick, maybe the other client just left after he sent the msg;
-                aux=tok.nextToken(); // this is the effective result
-               
-                temp.sendToClient(Issued_Command);
-            }
-            else if(Issued_Command.substring(1).startsWith("CTM ")) //direct connect to me
-            {
-                new CTM(cur_client,State, Issued_Command);
-            }
-            else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
-            {
-                new RCM(cur_client, State, Issued_Command);
-            }
-        }
             
         
     
