@@ -104,6 +104,8 @@ abstract public class ADC
            * finished the adc cmd panel;
            * created a CTM file for ctm command;
            * created new RCM file moved rcm command there;
+           * created also new file for RES;
+           * enabled support for ERES ECTM and ERCM;
            **/
             
             ;
