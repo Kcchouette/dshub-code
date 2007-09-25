@@ -1,7 +1,7 @@
 /*
- * CTM.java
+ * RCM.java
  *
- * Created on 24 septembrie 2007, 19:57
+ * Created on 25 septembrie 2007, 12:39
  *
  * DSHub ADC HubSoft
  * Copyright (C) 2007  Pietricica
@@ -29,43 +29,41 @@ import java.util.StringTokenizer;
  *
  * @author Pietricica
  */
-public class CTM
+public class RCM 
 {
     
-    /** Creates a new instance of CTM */
-    public CTM (ClientHandler cur_client, String State,String Issued_Command)throws STAException
+    /** Creates a new instance of RCM */
+    public RCM(ClientHandler cur_client,String State, String Issued_Command) throws STAException
     {
-        if(cur_client.ACTIVE==0)
-           new STAError(cur_client,140,"Error: Must be TCP active to use CTM.");
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-           new STAError(cur_client,140,"CTM Invalid State.");
+            new STAError(cur_client,140,"RCM Invalid State.");
       
      switch(Issued_Command.charAt(0))
      {
          case 'B':
-             if(Vars.BCTM!=1)
-             { new STAError(cur_client,140,"CTM Invalid Context B");
+             if(Vars.BRCM!=1)
+             { new STAError(cur_client,140,"RCM Invalid Context B");
                        return;}break;
          case 'E':
-              if(Vars.ECTM!=1)
-              {  new STAError(cur_client,140,"CTM Invalid Context E");
+              if(Vars.ERCM!=1)
+              {  new STAError(cur_client,140,"RCM Invalid Context E");
                        return;}break;
          case 'D':
-          if(Vars.DCTM!=1)
-          {   new STAError(cur_client,140,"CTM Invalid Context D");
+          if(Vars.DRCM!=1)
+          {   new STAError(cur_client,140,"RCM Invalid Context D");
                        return;
          }break;
          case 'F':
-          if(Vars.FCTM!=1)
-           {   new STAError(cur_client,140,"CTM Invalid Context F");
+          if(Vars.FRCM!=1)
+           {   new STAError(cur_client,140,"RCM Invalid Context F");
                        return;}break;
          case 'H':
-              if(Vars.HCTM!=1)
-              {   new STAError(cur_client,140,"CTM Invalid Context H");
+              if(Vars.HRCM!=1)
+              {   new STAError(cur_client,140,"RCM Invalid Context H");
                        return;}
                  
      }
-     if(Issued_Command.charAt(0)=='D' || Issued_Command.charAt (0)=='E')
+        if(Issued_Command.charAt(0)=='D' || Issued_Command.charAt (0)=='E')
      {
                 StringTokenizer tok=new StringTokenizer(Issued_Command);
                 String aux=tok.nextToken();
@@ -91,7 +89,7 @@ public class CTM
                 temp.sendToClient(Issued_Command);
                 if(Issued_Command.charAt(0)=='E')
                     cur_client.sendToClient(Issued_Command);
-     }
+        }
     }
     
 }

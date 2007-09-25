@@ -103,6 +103,7 @@ abstract public class ADC
            * started work for modifying via command;
            * finished the adc cmd panel;
            * created a CTM file for ctm command;
+           * created new RCM file moved rcm command there;
            **/
             
             ;
