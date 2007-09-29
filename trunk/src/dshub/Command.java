@@ -757,49 +757,7 @@ public class Command
         /**********************SUP COMMAND******************************/
          if(Issued_Command.charAt(1)=='S' && Issued_Command.charAt (2)=='U' && Issued_Command.charAt (3)=='P')
          {
-                    if(Issued_Command.charAt (0)!='H')
-                    {
-                        if(State.equals ("PROTOCOL"))
-                         throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");
-                        else 
-                        {
-                            new STAError(cur_client,140,"SUP Invalid Context.");
-                            return;
-                        }
-                    } 
-                    if(State.equals ("VERIFY")||State.equals ("IDENTIFY"))
-                        {
-                            new STAError(cur_client,240,"SUP Invalid State.");
-                            return;
-                        }
-                    Issued_Command=Issued_Command.substring(4);
-                    StringTokenizer tok=new StringTokenizer(Issued_Command);
-                    while(tok.hasMoreTokens ())
-                    {
-                        String aux=tok.nextToken ();
-                        if(aux.startsWith ("AD"))
-                        {
-                            aux=aux.substring (2);
-                            if(aux.startsWith ("BAS") && aux.length()==4)
-                                cur_client.base=1;
-                            if(aux.startsWith ("UCM") && aux.length()==4)
-                                cur_client.ucmd=1;
-                        }
-                        else if(aux.startsWith ("RM"))
-                        {
-                            aux=aux.substring (2);
-                            if(aux.startsWith ("UCM") && aux.length()==4)
-                                cur_client.ucmd=0;
-                        }
-                    }
-                    if(cur_client.base==0)
-                      if(State.equals("PROTOCOL"))
-                           throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");  
-                      else if (State.equals ("NORMAL"))
-                      {
-                          new STAError(cur_client,240,"You removed BASE features therefore you can't stay on hub anymore.");
-                          return;
-                      }
+                   new SUP(cur_client, State, Issued_Command);
                     
          }
                     

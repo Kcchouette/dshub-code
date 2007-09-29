@@ -107,6 +107,7 @@ abstract public class ADC
            * created also new file for RES;
            * enabled support for ERES ECTM and ERCM;
            * modified MSG cmd to new file;
+           * moved SUP to new file;
            **/
             
             ;
