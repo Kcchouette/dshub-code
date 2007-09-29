@@ -108,6 +108,8 @@ abstract public class ADC
            * enabled support for ERES ECTM and ERCM;
            * modified MSG cmd to new file;
            * moved SUP to new file;
+           * added modders for PAS as well;
+           * fixed linked list banning bug ( thanks Spader for spotting );
            **/
             
             ;

@@ -682,6 +682,32 @@ public class Command
                 /************************PAS COMMAND****************************/
         if(Issued_Command.charAt (1)=='P'&& Issued_Command.charAt (2)=='A' && Issued_Command.charAt (3)=='S')
         {
+                    
+                    switch(Issued_Command.charAt(0))
+     {
+         case 'B':
+             if(Vars.BPAS!=1)
+             { new STAError(cur_client,140,"PAS Invalid Context B");
+                       return;}break;
+         case 'E':
+              if(Vars.EPAS!=1)
+              {  new STAError(cur_client,140,"PAS Invalid Context E");
+                       return;}break;
+         case 'D':
+          if(Vars.DPAS!=1)
+          {   new STAError(cur_client,140,"PAS Invalid Context D");
+                       return;
+         }break;
+         case 'F':
+          if(Vars.FPAS!=1)
+           {   new STAError(cur_client,140,"PAS Invalid Context F");
+                       return;}break;
+         case 'H':
+              if(Vars.HPAS!=1)
+              {   new STAError(cur_client,140,"PAS Invalid Context H");
+                       return;}
+                 
+     }
                     if(reg_config.isReg (cur_client.ID)==0)
                     {
                         new STAError(cur_client,140,"Not registered.");

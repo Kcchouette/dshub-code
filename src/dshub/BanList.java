@@ -50,6 +50,7 @@ class bans implements Serializable
             if(System.currentTimeMillis()-temp.timeofban-temp.time<0 || temp.time==-1)
             {
             bans[i]=temp;
+            
             i++;
             }
             temp=temp.Next;
@@ -91,6 +92,7 @@ public class  BanList
             First=BAN;
         else
         {
+            BAN.Next=First.Next;
             First.Next=BAN;
         }
         }
@@ -102,6 +104,8 @@ public class  BanList
             First=BAN;
         else
         {
+            
+            BAN.Next=First.Next;
             First.Next=BAN;
         }
     }

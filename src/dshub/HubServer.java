@@ -511,7 +511,10 @@ public class HubServer extends Thread
         bcfg=(bans)inreg.readObject ();
 
         for(int i=1;i<bcfg.i;i++)
+        {
+            bcfg.bans[i].Next=null;
             BanList.addban (bcfg.bans[i]);
+        }
 
         
 
