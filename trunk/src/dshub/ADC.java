@@ -110,6 +110,10 @@ abstract public class ADC
            * moved SUP to new file;
            * added modders for PAS as well;
            * fixed linked list banning bug ( thanks Spader for spotting );
+           * added button for account editing;
+           * modified first page;
+           * created AccountEditer.java for a new jframe to edit account proppies;
+           * added first fields into account editing window;
            **/
             
             ;
