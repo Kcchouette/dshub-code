@@ -36,7 +36,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author  Administrator
+ * @author  Pietricica
  */
 public class TestFrame extends javax.swing.JFrame 
 {
@@ -46,7 +46,7 @@ public class TestFrame extends javax.swing.JFrame
     {
        
         initComponents ();
-        java.awt.EventQueue.invokeLater (new Runnable ()
+        /*java.awt.EventQueue.invokeLater (new Runnable ()
         {
             public void run ()
             {
@@ -54,7 +54,7 @@ public class TestFrame extends javax.swing.JFrame
                 
                 
             }
-        });
+        });*/
     }
     
    
@@ -330,10 +330,6 @@ public class TestFrame extends javax.swing.JFrame
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(189, 189, 189)
-                .add(jLabel5)
-                .addContainerGap(209, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -344,11 +340,8 @@ public class TestFrame extends javax.swing.JFrame
                             .add(jLabel4)))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(267, 267, 267)
-                        .add(jLabel6))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(197, 197, 197)
-                        .add(jLabel8)))
-                .addContainerGap(207, Short.MAX_VALUE))
+                        .add(jLabel6)))
+                .addContainerGap(280, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(615, Short.MAX_VALUE)
                 .add(jLabel14)
@@ -359,17 +352,25 @@ public class TestFrame extends javax.swing.JFrame
                 .addContainerGap(326, Short.MAX_VALUE))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(180, 180, 180)
+                .add(jLabel8)
+                .addContainerGap(224, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(161, 161, 161)
                 .add(jLabel9)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(163, 163, 163)
+                .add(jLabel5)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel14)
-                .add(7, 7, 7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel5)
-                .add(23, 23, 23)
+                .add(24, 24, 24)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
@@ -2120,8 +2121,12 @@ public class TestFrame extends javax.swing.JFrame
 
     private void jButton22ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton22ActionPerformed
     {//GEN-HEADEREND:event_jButton22ActionPerformed
-AccountEditer Acc1=new AccountEditer();
-Acc1.setVisible (true);
+      int row=AccountTable.getSelectedRow ();
+      if(row==-1)
+          return;
+      String CID=(String)AccountTable.getModel().getValueAt (row,0);
+      AccountEditer Acc1=new AccountEditer(CID);
+      Acc1.setVisible (true);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
