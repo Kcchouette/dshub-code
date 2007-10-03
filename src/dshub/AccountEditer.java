@@ -22,6 +22,8 @@
 
 package dshub;
 
+import java.util.Date;
+
 /**
  *
  * @author  Pietricica
@@ -60,6 +62,12 @@ public class AccountEditer extends javax.swing.JFrame
         accNI = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         accIP = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        accOwn = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        accRegTime = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        checkkey = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Account");
@@ -104,10 +112,29 @@ public class AccountEditer extends javax.swing.JFrame
         accNI.setEditable(false);
         accNI.setPreferredSize(new java.awt.Dimension(400, 20));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel4.setText("Last IP address used:");
 
         accIP.setEditable(false);
         accIP.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel5.setText("Regged by:");
+
+        accOwn.setEditable(false);
+        accOwn.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel6.setText("Regged at:");
+
+        accRegTime.setEditable(false);
+        accRegTime.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        jLabel7.setText("Account Properties");
+
+        checkkey.setText("Operator's Key");
+        checkkey.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkkey.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,29 +143,35 @@ public class AccountEditer extends javax.swing.JFrame
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(263, 263, 263)
-                        .add(jButton1))
-                    .add(layout.createSequentialGroup()
                         .add(28, 28, 28)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel2)
                             .add(jLabel3)
+                            .add(jLabel5)
+                            .add(jLabel4)
+                            .add(jLabel6)
                             .add(jLabel1)
-                            .add(jLabel4))
+                            .add(jLabel7)
+                            .add(checkkey))
                         .add(22, 22, 22)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                 .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 400, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(layout.createSequentialGroup()
+                        .add(299, 299, 299)
+                        .add(jButton1)))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(25, 25, 25)
+            .add(layout.createSequentialGroup()
+                .add(19, 19, 19)
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -147,10 +180,22 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(jLabel3)
                     .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel4)
-                    .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 328, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel6))
+                .add(34, 34, 34)
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(checkkey)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 205, Short.MAX_VALUE)
                 .add(jButton1))
         );
         pack();
@@ -164,6 +209,9 @@ nod curAcc=reg_config.getnod (CID);
 accCID.setText(CID);
 accNI.setText (curAcc.LastNI);
 accIP.setText (curAcc.LastIP);
+accOwn.setText(curAcc.WhoRegged);
+
+accRegTime.setText(new Date(curAcc.CreatedOn).toString ());
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -186,11 +234,17 @@ this.dispose ();
     private javax.swing.JTextField accCID;
     private javax.swing.JTextField accIP;
     private javax.swing.JTextField accNI;
+    private javax.swing.JTextField accOwn;
+    private javax.swing.JTextField accRegTime;
+    private javax.swing.JCheckBox checkkey;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
     
 }
