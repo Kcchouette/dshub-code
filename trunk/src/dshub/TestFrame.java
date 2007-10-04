@@ -266,7 +266,7 @@ public class TestFrame extends javax.swing.JFrame
         jLabel13 = new javax.swing.JLabel();
         StatusLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("DSHub ADC HubSoft created by Pietricica");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
