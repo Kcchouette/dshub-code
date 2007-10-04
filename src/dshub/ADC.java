@@ -114,6 +114,8 @@ abstract public class ADC
            * modified first page;
            * created AccountEditer.java for a new jframe to edit account proppies;
            * added first fields into account editing window;
+           * clicking X on main window now does nothing, need to click Exit to close;
+           * added more fields to the edit account window;
            **/
             
             ;
