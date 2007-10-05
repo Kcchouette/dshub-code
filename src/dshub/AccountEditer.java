@@ -55,35 +55,45 @@ public class AccountEditer extends javax.swing.JFrame
     private void initComponents()
     {
         jButton1 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        accCID = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        accNI = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        accIP = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        accOwn = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        accRegTime = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        checkkey = new javax.swing.JCheckBox();
-        passsetcheck = new javax.swing.JCheckBox();
-        checkhidden = new javax.swing.JCheckBox();
-        sharecheck = new javax.swing.JCheckBox();
-        jLabel8 = new javax.swing.JLabel();
-        lastlogin = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        timespentonline = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        accNI = new javax.swing.JTextField();
+        accCID = new javax.swing.JTextField();
+        accIP = new javax.swing.JTextField();
+        accOwn = new javax.swing.JTextField();
+        accRegTime = new javax.swing.JTextField();
+        lastlogin = new javax.swing.JTextField();
+        timespentonline = new javax.swing.JTextField();
         timespentonline1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         timespentonline2 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jCheckBox33 = new javax.swing.JCheckBox();
+        checkkey = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        passsetcheck = new javax.swing.JCheckBox();
+        checkhidden = new javax.swing.JCheckBox();
+        sharecheck = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jCheckBox34 = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
@@ -103,22 +113,16 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox20 = new javax.swing.JCheckBox();
         jCheckBox21 = new javax.swing.JCheckBox();
         jCheckBox22 = new javax.swing.JCheckBox();
-        jCheckBox23 = new javax.swing.JCheckBox();
-        jCheckBox24 = new javax.swing.JCheckBox();
-        jCheckBox25 = new javax.swing.JCheckBox();
-        jCheckBox26 = new javax.swing.JCheckBox();
-        jCheckBox27 = new javax.swing.JCheckBox();
-        jCheckBox28 = new javax.swing.JCheckBox();
-        jCheckBox29 = new javax.swing.JCheckBox();
         jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
         jCheckBox31 = new javax.swing.JCheckBox();
         jCheckBox32 = new javax.swing.JCheckBox();
-        jCheckBox33 = new javax.swing.JCheckBox();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jCheckBox34 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Account");
@@ -152,40 +156,173 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel1.setText("Account on");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel6.setText("Regged at:");
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel2.setText("Account CID:");
-
-        accCID.setPreferredSize(new java.awt.Dimension(400, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel3.setText("Last Nick used:");
 
-        accNI.setEditable(false);
-        accNI.setPreferredSize(new java.awt.Dimension(400, 20));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel5.setText("Regged by:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel4.setText("Last IP address used:");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel9.setText("Time spent online:");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel8.setText("Last LogIn:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel10.setText("IP restriction :");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel11.setText("start");
+
+        accNI.setEditable(false);
+        accNI.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        accCID.setPreferredSize(new java.awt.Dimension(400, 20));
+
         accIP.setEditable(false);
         accIP.setPreferredSize(new java.awt.Dimension(400, 20));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel5.setText("Regged by:");
 
         accOwn.setEditable(false);
         accOwn.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel6.setText("Regged at:");
-
         accRegTime.setEditable(false);
         accRegTime.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        jLabel7.setText("Account Properties");
+        lastlogin.setEditable(false);
+        lastlogin.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        timespentonline.setEditable(false);
+        timespentonline.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        timespentonline1.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel12.setText("end");
+
+        timespentonline2.setPreferredSize(new java.awt.Dimension(400, 20));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(28, 28, 28)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(10, 10, 10)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel6)
+                            .add(jLabel2)
+                            .add(jLabel3)
+                            .add(jLabel5)
+                            .add(jLabel4)
+                            .add(jLabel8)
+                            .add(jLabel10)
+                            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(jLabel11)
+                                .add(jLabel9)))
+                        .add(2, 2, 2)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(76, 76, 76)
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                        .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 400, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(lastlogin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(timespentonline, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(6, 6, 6)
+                                .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(22, 22, 22)
+                                .add(jLabel12)
+                                .add(21, 21, 21)
+                                .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 121, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                    .add(jLabel1))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel6))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(lastlogin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel8))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel9)
+                    .add(timespentonline, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel10)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel12)
+                    .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel11)
+                    .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Account", jPanel1);
+
+        jLabel17.setText("if checked !");
+
+        jLabel16.setText("Warning: High risk of security breach");
+
+        jCheckBox33.setText("If password set, allow");
+        jCheckBox33.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox33.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         checkkey.setText("Operator's Key");
         checkkey.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checkkey.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jLabel7.setText("Account Properties");
+
+        jCheckBox2.setText("Override spam security settings");
+        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox3.setText("Can be renamed ?");
+        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox4.setText("Can be kicked ?");
+        jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         passsetcheck.setText("Password set ?");
         passsetcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -202,46 +339,82 @@ public class AccountEditer extends javax.swing.JFrame
         sharecheck.setEnabled(false);
         sharecheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel8.setText("Last LogIn:");
-
-        lastlogin.setEditable(false);
-        lastlogin.setPreferredSize(new java.awt.Dimension(400, 20));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel9.setText("Time spent online:");
-
-        timespentonline.setEditable(false);
-        timespentonline.setPreferredSize(new java.awt.Dimension(400, 20));
-
         jCheckBox1.setText("Override share restrictions");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox2.setText("Override spam security settings");
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jLabel15.setText("& password with no CID check");
 
-        jCheckBox3.setText("Can be renamed ?");
-        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jLabel14.setText("account to be used with last nick");
 
-        jCheckBox4.setText("Can be kicked ?");
-        jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox34.setText("Protect last nick of being used by other users.");
+        jCheckBox34.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox34.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel10.setText("IP restriction :");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel11.setText("start");
-
-        timespentonline1.setPreferredSize(new java.awt.Dimension(400, 20));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel12.setText("end");
-
-        timespentonline2.setPreferredSize(new java.awt.Dimension(400, 20));
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(24, 24, 24)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jCheckBox34)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jLabel16)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel17))
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jCheckBox33)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel14)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel15))
+                    .add(checkkey)
+                    .add(jLabel7)
+                    .add(jCheckBox2)
+                    .add(jCheckBox3)
+                    .add(jCheckBox4)
+                    .add(passsetcheck)
+                    .add(checkhidden)
+                    .add(sharecheck)
+                    .add(jCheckBox1))
+                .addContainerGap(173, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(21, 21, 21)
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(checkkey)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jCheckBox1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jCheckBox2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jCheckBox3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jCheckBox4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(passsetcheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(checkhidden)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(sharecheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox33)
+                    .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel15))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel16)
+                    .add(jLabel17))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jCheckBox34)
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Properties", jPanel2);
 
         jLabel13.setText("Command Availability");
 
@@ -317,37 +490,37 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox22.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox22.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox23.setText("rename command");
-        jCheckBox23.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox23.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jCheckBox24.setText("usercount command");
-        jCheckBox24.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox24.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jCheckBox25.setText("topic command");
-        jCheckBox25.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox25.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jCheckBox26.setText("cfg ( hub configuration panel)");
-        jCheckBox26.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox26.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jCheckBox27.setText("stats command");
-        jCheckBox27.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox27.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jCheckBox28.setText("gui command");
-        jCheckBox28.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox28.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox30.setText("help command");
+        jCheckBox30.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox30.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jCheckBox29.setText("about command");
         jCheckBox29.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox29.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox30.setText("help command");
-        jCheckBox30.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox30.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox28.setText("gui command");
+        jCheckBox28.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox28.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox27.setText("stats command");
+        jCheckBox27.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox27.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox26.setText("cfg ( hub configuration panel)");
+        jCheckBox26.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox26.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox25.setText("topic command");
+        jCheckBox25.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox25.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox24.setText("usercount command");
+        jCheckBox24.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox24.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jCheckBox23.setText("rename command");
+        jCheckBox23.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox23.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jCheckBox31.setText("restart hub command");
         jCheckBox31.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -357,21 +530,109 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox32.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox32.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox33.setText("If password set, allow");
-        jCheckBox33.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox33.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jLabel14.setText("account to be used with last nick");
-
-        jLabel15.setText("& password with no CID check");
-
-        jLabel16.setText("Warning: High risk of security breach");
-
-        jLabel17.setText("if checked !");
-
-        jCheckBox34.setText("Protect last nick of being used by other users.");
-        jCheckBox34.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox34.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(29, 29, 29)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel13)
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jCheckBox5)
+                            .add(jCheckBox6)
+                            .add(jCheckBox7)
+                            .add(jCheckBox8)
+                            .add(jCheckBox9)
+                            .add(jCheckBox10)
+                            .add(jCheckBox11)
+                            .add(jCheckBox12)
+                            .add(jCheckBox13))
+                        .add(19, 19, 19)
+                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jCheckBox14)
+                            .add(jCheckBox15)
+                            .add(jCheckBox16)
+                            .add(jCheckBox17)
+                            .add(jCheckBox18)
+                            .add(jCheckBox19)
+                            .add(jCheckBox20)
+                            .add(jCheckBox21)
+                            .add(jCheckBox22))
+                        .add(32, 32, 32)
+                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jCheckBox30)
+                            .add(jCheckBox29)
+                            .add(jCheckBox28)
+                            .add(jCheckBox27)
+                            .add(jCheckBox26)
+                            .add(jCheckBox25)
+                            .add(jCheckBox24)
+                            .add(jCheckBox23)))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(83, 83, 83)
+                        .add(jCheckBox31)
+                        .add(78, 78, 78)
+                        .add(jCheckBox32)))
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(38, 38, 38)
+                .add(jLabel13)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox5)
+                    .add(jCheckBox14)
+                    .add(jCheckBox23))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox6)
+                    .add(jCheckBox15)
+                    .add(jCheckBox24))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox7)
+                    .add(jCheckBox16)
+                    .add(jCheckBox25))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox8)
+                    .add(jCheckBox17)
+                    .add(jCheckBox26))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox9)
+                    .add(jCheckBox18)
+                    .add(jCheckBox27))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox10)
+                    .add(jCheckBox19)
+                    .add(jCheckBox28))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox11)
+                    .add(jCheckBox20)
+                    .add(jCheckBox29))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox12)
+                    .add(jCheckBox21)
+                    .add(jCheckBox30))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox13)
+                    .add(jCheckBox22))
+                .add(16, 16, 16)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jCheckBox31)
+                    .add(jCheckBox32))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Commands", jPanel3);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -381,227 +642,19 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel17)
-                            .add(jLabel16)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jCheckBox33)
-                                    .add(jLabel6)
-                                    .add(jLabel2)
-                                    .add(jLabel3)
-                                    .add(jLabel5)
-                                    .add(jLabel4)
-                                    .add(jLabel1)
-                                    .add(jLabel9)
-                                    .add(jLabel8)
-                                    .add(checkkey)
-                                    .add(jLabel7)
-                                    .add(jCheckBox2)
-                                    .add(jCheckBox3)
-                                    .add(jCheckBox4)
-                                    .add(passsetcheck)
-                                    .add(checkhidden)
-                                    .add(sharecheck)
-                                    .add(jLabel10)
-                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                        .add(jLabel11)
-                                        .add(jCheckBox1)))
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(layout.createSequentialGroup()
-                                        .add(2, 2, 2)
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(layout.createSequentialGroup()
-                                                .add(54, 54, 54)
-                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                                    .add(layout.createSequentialGroup()
-                                                        .add(22, 22, 22)
-                                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                                                .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                                .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 400, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                                            .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                            .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                            .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                            .add(lastlogin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                                                    .add(timespentonline, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                                            .add(layout.createSequentialGroup()
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                .add(28, 28, 28)
-                                                .add(jLabel12)
-                                                .add(21, 21, 21)
-                                                .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                                    .add(layout.createSequentialGroup()
-                                        .add(77, 77, 77)
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jLabel13)
-                                            .add(layout.createSequentialGroup()
-                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(jCheckBox5)
-                                                    .add(jCheckBox6)
-                                                    .add(jCheckBox7)
-                                                    .add(jCheckBox8)
-                                                    .add(jCheckBox9)
-                                                    .add(jCheckBox10)
-                                                    .add(jCheckBox11)
-                                                    .add(jCheckBox12)
-                                                    .add(jCheckBox13))
-                                                .add(19, 19, 19)
-                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(jCheckBox14)
-                                                    .add(jCheckBox15)
-                                                    .add(jCheckBox16)
-                                                    .add(jCheckBox17)
-                                                    .add(jCheckBox18)
-                                                    .add(jCheckBox19)
-                                                    .add(jCheckBox20)
-                                                    .add(jCheckBox21)
-                                                    .add(jCheckBox22))
-                                                .add(32, 32, 32)
-                                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                                    .add(jCheckBox30)
-                                                    .add(jCheckBox29)
-                                                    .add(jCheckBox28)
-                                                    .add(jCheckBox27)
-                                                    .add(jCheckBox26)
-                                                    .add(jCheckBox25)
-                                                    .add(jCheckBox24)
-                                                    .add(jCheckBox23)))))))
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel15)
-                                    .add(jLabel14))
-                                .add(173, 173, 173)
-                                .add(jCheckBox31)
-                                .add(78, 78, 78)
-                                .add(jCheckBox32))))
+                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
-                        .add(363, 363, 363)
-                        .add(jButton1))
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jCheckBox34)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .add(304, 304, 304)
+                        .add(jButton1)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(14, 14, 14)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(accCID, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(accNI, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(accIP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(accOwn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(accRegTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel6))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(lastlogin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel8))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel9)
-                    .add(timespentonline, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel10)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel12)
-                    .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel11))
-                .add(20, 20, 20)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(jLabel13))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(checkkey)
-                    .add(jCheckBox5)
-                    .add(jCheckBox14)
-                    .add(jCheckBox23))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox1)
-                    .add(jCheckBox6)
-                    .add(jCheckBox15)
-                    .add(jCheckBox24))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox2)
-                    .add(jCheckBox7)
-                    .add(jCheckBox16)
-                    .add(jCheckBox25))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox3)
-                    .add(jCheckBox8)
-                    .add(jCheckBox17)
-                    .add(jCheckBox26))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox4)
-                    .add(jCheckBox9)
-                    .add(jCheckBox18)
-                    .add(jCheckBox27))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(passsetcheck)
-                    .add(jCheckBox10)
-                    .add(jCheckBox19)
-                    .add(jCheckBox28))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(checkhidden)
-                    .add(jCheckBox11)
-                    .add(jCheckBox20)
-                    .add(jCheckBox29))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(sharecheck)
-                    .add(jCheckBox12)
-                    .add(jCheckBox21)
-                    .add(jCheckBox30))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox13)
-                    .add(jCheckBox22)
-                    .add(jCheckBox33))
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel14)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel15)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel16)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel17))
-                    .add(layout.createSequentialGroup()
-                        .add(16, 16, 16)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jCheckBox31)
-                            .add(jCheckBox32))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox34)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 24, Short.MAX_VALUE)
-                .add(jButton1)
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE)
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 438, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(24, 24, 24)
+                .add(jButton1))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -714,6 +767,10 @@ this.dispose ();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField lastlogin;
     private javax.swing.JCheckBox passsetcheck;
     private javax.swing.JCheckBox sharecheck;
