@@ -475,14 +475,11 @@ public class CommandParser
            
                 
             
-                String blah="Death Squad Hub "+Vars.HubVersion+". Running on " + 
-                        Main.Proppies.getProperty("os.name")
-                       +" "+ Main.Proppies.getProperty("os.version")
-                       +" "+Main.Proppies.getProperty("os.arch")+"\n"+
+                
                         
-                         Main.HelpText.substring(0,Main.HelpText.length ()-1).replaceAll ("\\x0a","\\\n");
+                         //Main.HelpText.substring(0,Main.HelpText.length ()-1).replaceAll ("\\x0a","\\\n");
                         ;
-                cur_client.sendFromBot (blah);
+                cur_client.sendFromBot (cur_client.reg.myHelp.getHelp());
                
         }
         else if(recvbuf.toLowerCase ().startsWith ("info "))

@@ -125,7 +125,7 @@ public class HubServer extends Thread
         
         ADC.MOTD=ADC.MOTD;
       
-        try 
+       /* try 
         {
             File HelpFile=new File(myPath+"help");
             FileReader fr = new FileReader(HelpFile); 
@@ -141,7 +141,7 @@ public class HubServer extends Thread
         {
             Main.HelpText="No Help File found.";
         }
-        
+        */
         try 
         {
             File MotdFile=new File(myPath+"motd");

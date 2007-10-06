@@ -43,7 +43,7 @@ public class Main extends Thread
     static HubServer Server;
     static Properties Proppies;
     static String auxhelp;
-       static String HelpText="";
+      
        static String MOTD="";
        static long curtime;
     static TestFrame GUI;
@@ -327,10 +327,12 @@ public class Main extends Thread
             
         if(recvbuf.toLowerCase ().equals("help"))
         {
+                nod ServerNode=new nod();
+                ServerNode.myMask=new CommandMask(1);
                 
-                System.out.printf("Death Squad Hub "+Vars.HubVersion+". Running on %s %s %s\n"+
+                System.out.printf(
                         
-                         HelpText+"\n",
+                         ServerNode.myHelp.getHelp ()+"\n",
                         Proppies.getProperty("os.name"),
                         Proppies.getProperty("os.version"),
                         Proppies.getProperty("os.arch"));
