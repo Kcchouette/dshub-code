@@ -122,6 +122,8 @@ abstract public class ADC
            * removed the necesity of "help" file;
            * the help in the console is generated with a full account mask;
            * moved all buttons in account edit in a nice tabbed pane;
+           * continued work on accounts panel, buttons work but do nothing atm;
+           * saved command maskes, now need to modify access via CommandParser;
            **/
             
             ;

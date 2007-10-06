@@ -600,45 +600,45 @@
                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="adc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="port" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="reg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ureg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="listreg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mass" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="kick" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="drop" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="unban" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox20" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bancid" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="banip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bannick" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="history" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmdhistory" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="info" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hideme" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="password" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mynick" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox30" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox25" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="help" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="about" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gui" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stats" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cfg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="topic" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usercount" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rename" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="jCheckBox31" min="-2" max="-2" attributes="0"/>
+                              <Component id="restart" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Component id="jCheckBox32" min="-2" max="-2" attributes="0"/>
+                              <Component id="quit" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="90" max="32767" attributes="0"/>
@@ -652,61 +652,61 @@
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox23" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="adc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bancid" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rename" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="port" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="banip" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="usercount" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox25" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="reg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bannick" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="topic" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox26" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ureg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="history" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cfg" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox27" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="listreg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdhistory" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="stats" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox19" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox28" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="info" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="gui" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox29" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="kick" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="hideme" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="about" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox30" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="drop" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="help" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="unban" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mynick" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox31" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox32" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="restart" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="quit" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="66" max="32767" attributes="0"/>
                   </Group>
@@ -719,7 +719,7 @@
                 <Property name="text" type="java.lang.String" value="Command Availability"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+            <Component class="javax.swing.JCheckBox" name="adc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="adc ( ADC advanced control panel)"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -732,7 +732,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+            <Component class="javax.swing.JCheckBox" name="port">
               <Properties>
                 <Property name="text" type="java.lang.String" value="port changing"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -745,7 +745,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+            <Component class="javax.swing.JCheckBox" name="reg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="reg command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -758,7 +758,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+            <Component class="javax.swing.JCheckBox" name="ureg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ureg command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -771,7 +771,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+            <Component class="javax.swing.JCheckBox" name="listreg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="listreg command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -784,7 +784,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox10">
+            <Component class="javax.swing.JCheckBox" name="mass">
               <Properties>
                 <Property name="text" type="java.lang.String" value="mass command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -797,7 +797,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox11">
+            <Component class="javax.swing.JCheckBox" name="kick">
               <Properties>
                 <Property name="text" type="java.lang.String" value="kick command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -810,7 +810,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+            <Component class="javax.swing.JCheckBox" name="drop">
               <Properties>
                 <Property name="text" type="java.lang.String" value="drop command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -823,7 +823,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox13">
+            <Component class="javax.swing.JCheckBox" name="unban">
               <Properties>
                 <Property name="text" type="java.lang.String" value="unban command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -836,7 +836,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox14">
+            <Component class="javax.swing.JCheckBox" name="bancid">
               <Properties>
                 <Property name="text" type="java.lang.String" value="bancid command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -849,7 +849,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox15">
+            <Component class="javax.swing.JCheckBox" name="banip">
               <Properties>
                 <Property name="text" type="java.lang.String" value="banip command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -862,7 +862,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox16">
+            <Component class="javax.swing.JCheckBox" name="bannick">
               <Properties>
                 <Property name="text" type="java.lang.String" value="bannick command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -875,7 +875,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox17">
+            <Component class="javax.swing.JCheckBox" name="history">
               <Properties>
                 <Property name="text" type="java.lang.String" value="history command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -888,7 +888,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox18">
+            <Component class="javax.swing.JCheckBox" name="cmdhistory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="cmdhistory command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -901,7 +901,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox19">
+            <Component class="javax.swing.JCheckBox" name="info">
               <Properties>
                 <Property name="text" type="java.lang.String" value="info command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -914,7 +914,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox20">
+            <Component class="javax.swing.JCheckBox" name="hideme">
               <Properties>
                 <Property name="text" type="java.lang.String" value="hideme command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -927,7 +927,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox21">
+            <Component class="javax.swing.JCheckBox" name="password">
               <Properties>
                 <Property name="text" type="java.lang.String" value="password command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -940,7 +940,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox22">
+            <Component class="javax.swing.JCheckBox" name="mynick">
               <Properties>
                 <Property name="text" type="java.lang.String" value="mynick command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -953,7 +953,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox30">
+            <Component class="javax.swing.JCheckBox" name="help">
               <Properties>
                 <Property name="text" type="java.lang.String" value="help command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -966,7 +966,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox29">
+            <Component class="javax.swing.JCheckBox" name="about">
               <Properties>
                 <Property name="text" type="java.lang.String" value="about command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -979,7 +979,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox28">
+            <Component class="javax.swing.JCheckBox" name="gui">
               <Properties>
                 <Property name="text" type="java.lang.String" value="gui command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -992,7 +992,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox27">
+            <Component class="javax.swing.JCheckBox" name="stats">
               <Properties>
                 <Property name="text" type="java.lang.String" value="stats command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1005,7 +1005,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox26">
+            <Component class="javax.swing.JCheckBox" name="cfg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="cfg ( hub configuration panel)"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1018,7 +1018,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox25">
+            <Component class="javax.swing.JCheckBox" name="topic">
               <Properties>
                 <Property name="text" type="java.lang.String" value="topic command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1031,7 +1031,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox24">
+            <Component class="javax.swing.JCheckBox" name="usercount">
               <Properties>
                 <Property name="text" type="java.lang.String" value="usercount command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1044,7 +1044,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox23">
+            <Component class="javax.swing.JCheckBox" name="rename">
               <Properties>
                 <Property name="text" type="java.lang.String" value="rename command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1057,7 +1057,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox31">
+            <Component class="javax.swing.JCheckBox" name="restart">
               <Properties>
                 <Property name="text" type="java.lang.String" value="restart hub command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1070,7 +1070,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox32">
+            <Component class="javax.swing.JCheckBox" name="quit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="quit hub command"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
