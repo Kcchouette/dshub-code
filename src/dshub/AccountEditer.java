@@ -31,12 +31,13 @@ import java.util.Date;
 public class AccountEditer extends javax.swing.JFrame
 {
     String CID;
-    
+    nod curAcc;
     /** Creates new form AccountEditer */
     public AccountEditer (String regCID)
     {
         initComponents ();
         CID=regCID;
+        curAcc=reg_config.getnod (CID);
         /* java.awt.EventQueue.invokeLater (new Runnable ()
         {
             public void run ()
@@ -95,34 +96,34 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox34 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
-        jCheckBox16 = new javax.swing.JCheckBox();
-        jCheckBox17 = new javax.swing.JCheckBox();
-        jCheckBox18 = new javax.swing.JCheckBox();
-        jCheckBox19 = new javax.swing.JCheckBox();
-        jCheckBox20 = new javax.swing.JCheckBox();
-        jCheckBox21 = new javax.swing.JCheckBox();
-        jCheckBox22 = new javax.swing.JCheckBox();
-        jCheckBox30 = new javax.swing.JCheckBox();
-        jCheckBox29 = new javax.swing.JCheckBox();
-        jCheckBox28 = new javax.swing.JCheckBox();
-        jCheckBox27 = new javax.swing.JCheckBox();
-        jCheckBox26 = new javax.swing.JCheckBox();
-        jCheckBox25 = new javax.swing.JCheckBox();
-        jCheckBox24 = new javax.swing.JCheckBox();
-        jCheckBox23 = new javax.swing.JCheckBox();
-        jCheckBox31 = new javax.swing.JCheckBox();
-        jCheckBox32 = new javax.swing.JCheckBox();
+        adc = new javax.swing.JCheckBox();
+        port = new javax.swing.JCheckBox();
+        reg = new javax.swing.JCheckBox();
+        ureg = new javax.swing.JCheckBox();
+        listreg = new javax.swing.JCheckBox();
+        mass = new javax.swing.JCheckBox();
+        kick = new javax.swing.JCheckBox();
+        drop = new javax.swing.JCheckBox();
+        unban = new javax.swing.JCheckBox();
+        bancid = new javax.swing.JCheckBox();
+        banip = new javax.swing.JCheckBox();
+        bannick = new javax.swing.JCheckBox();
+        history = new javax.swing.JCheckBox();
+        cmdhistory = new javax.swing.JCheckBox();
+        info = new javax.swing.JCheckBox();
+        hideme = new javax.swing.JCheckBox();
+        password = new javax.swing.JCheckBox();
+        mynick = new javax.swing.JCheckBox();
+        help = new javax.swing.JCheckBox();
+        about = new javax.swing.JCheckBox();
+        gui = new javax.swing.JCheckBox();
+        stats = new javax.swing.JCheckBox();
+        cfg = new javax.swing.JCheckBox();
+        topic = new javax.swing.JCheckBox();
+        usercount = new javax.swing.JCheckBox();
+        rename = new javax.swing.JCheckBox();
+        restart = new javax.swing.JCheckBox();
+        quit = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -419,117 +420,117 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel13.setText("Command Availability");
 
-        jCheckBox5.setText("adc ( ADC advanced control panel)");
-        jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        adc.setText("adc ( ADC advanced control panel)");
+        adc.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        adc.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox6.setText("port changing");
-        jCheckBox6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox6.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        port.setText("port changing");
+        port.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        port.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox7.setText("reg command");
-        jCheckBox7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox7.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        reg.setText("reg command");
+        reg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        reg.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox8.setText("ureg command");
-        jCheckBox8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox8.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ureg.setText("ureg command");
+        ureg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        ureg.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox9.setText("listreg command");
-        jCheckBox9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox9.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        listreg.setText("listreg command");
+        listreg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        listreg.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox10.setText("mass command");
-        jCheckBox10.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox10.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        mass.setText("mass command");
+        mass.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        mass.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox11.setText("kick command");
-        jCheckBox11.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox11.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        kick.setText("kick command");
+        kick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        kick.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox12.setText("drop command");
-        jCheckBox12.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox12.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        drop.setText("drop command");
+        drop.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        drop.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox13.setText("unban command");
-        jCheckBox13.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox13.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        unban.setText("unban command");
+        unban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        unban.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox14.setText("bancid command");
-        jCheckBox14.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox14.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        bancid.setText("bancid command");
+        bancid.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        bancid.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox15.setText("banip command");
-        jCheckBox15.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox15.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        banip.setText("banip command");
+        banip.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        banip.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox16.setText("bannick command");
-        jCheckBox16.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox16.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        bannick.setText("bannick command");
+        bannick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        bannick.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox17.setText("history command");
-        jCheckBox17.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox17.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        history.setText("history command");
+        history.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        history.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox18.setText("cmdhistory command");
-        jCheckBox18.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox18.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        cmdhistory.setText("cmdhistory command");
+        cmdhistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cmdhistory.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox19.setText("info command");
-        jCheckBox19.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox19.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        info.setText("info command");
+        info.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        info.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox20.setText("hideme command");
-        jCheckBox20.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox20.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        hideme.setText("hideme command");
+        hideme.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        hideme.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox21.setText("password command");
-        jCheckBox21.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox21.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        password.setText("password command");
+        password.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        password.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox22.setText("mynick command");
-        jCheckBox22.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox22.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        mynick.setText("mynick command");
+        mynick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        mynick.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox30.setText("help command");
-        jCheckBox30.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox30.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        help.setText("help command");
+        help.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        help.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox29.setText("about command");
-        jCheckBox29.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox29.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        about.setText("about command");
+        about.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        about.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox28.setText("gui command");
-        jCheckBox28.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox28.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        gui.setText("gui command");
+        gui.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        gui.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox27.setText("stats command");
-        jCheckBox27.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox27.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        stats.setText("stats command");
+        stats.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        stats.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox26.setText("cfg ( hub configuration panel)");
-        jCheckBox26.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox26.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        cfg.setText("cfg ( hub configuration panel)");
+        cfg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cfg.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox25.setText("topic command");
-        jCheckBox25.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox25.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        topic.setText("topic command");
+        topic.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        topic.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox24.setText("usercount command");
-        jCheckBox24.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox24.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        usercount.setText("usercount command");
+        usercount.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        usercount.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox23.setText("rename command");
-        jCheckBox23.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox23.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        rename.setText("rename command");
+        rename.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        rename.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox31.setText("restart hub command");
-        jCheckBox31.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox31.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        restart.setText("restart hub command");
+        restart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        restart.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox32.setText("quit hub command");
-        jCheckBox32.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox32.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        quit.setText("quit hub command");
+        quit.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        quit.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -541,41 +542,41 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(jLabel13)
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jCheckBox5)
-                            .add(jCheckBox6)
-                            .add(jCheckBox7)
-                            .add(jCheckBox8)
-                            .add(jCheckBox9)
-                            .add(jCheckBox10)
-                            .add(jCheckBox11)
-                            .add(jCheckBox12)
-                            .add(jCheckBox13))
+                            .add(adc)
+                            .add(port)
+                            .add(reg)
+                            .add(ureg)
+                            .add(listreg)
+                            .add(mass)
+                            .add(kick)
+                            .add(drop)
+                            .add(unban))
                         .add(19, 19, 19)
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jCheckBox14)
-                            .add(jCheckBox15)
-                            .add(jCheckBox16)
-                            .add(jCheckBox17)
-                            .add(jCheckBox18)
-                            .add(jCheckBox19)
-                            .add(jCheckBox20)
-                            .add(jCheckBox21)
-                            .add(jCheckBox22))
+                            .add(bancid)
+                            .add(banip)
+                            .add(bannick)
+                            .add(history)
+                            .add(cmdhistory)
+                            .add(info)
+                            .add(hideme)
+                            .add(password)
+                            .add(mynick))
                         .add(32, 32, 32)
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jCheckBox30)
-                            .add(jCheckBox29)
-                            .add(jCheckBox28)
-                            .add(jCheckBox27)
-                            .add(jCheckBox26)
-                            .add(jCheckBox25)
-                            .add(jCheckBox24)
-                            .add(jCheckBox23)))
+                            .add(help)
+                            .add(about)
+                            .add(gui)
+                            .add(stats)
+                            .add(cfg)
+                            .add(topic)
+                            .add(usercount)
+                            .add(rename)))
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(83, 83, 83)
-                        .add(jCheckBox31)
+                        .add(restart)
                         .add(78, 78, 78)
-                        .add(jCheckBox32)))
+                        .add(quit)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -585,52 +586,52 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(jLabel13)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox5)
-                    .add(jCheckBox14)
-                    .add(jCheckBox23))
+                    .add(adc)
+                    .add(bancid)
+                    .add(rename))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox6)
-                    .add(jCheckBox15)
-                    .add(jCheckBox24))
+                    .add(port)
+                    .add(banip)
+                    .add(usercount))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox7)
-                    .add(jCheckBox16)
-                    .add(jCheckBox25))
+                    .add(reg)
+                    .add(bannick)
+                    .add(topic))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox8)
-                    .add(jCheckBox17)
-                    .add(jCheckBox26))
+                    .add(ureg)
+                    .add(history)
+                    .add(cfg))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox9)
-                    .add(jCheckBox18)
-                    .add(jCheckBox27))
+                    .add(listreg)
+                    .add(cmdhistory)
+                    .add(stats))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox10)
-                    .add(jCheckBox19)
-                    .add(jCheckBox28))
+                    .add(mass)
+                    .add(info)
+                    .add(gui))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox11)
-                    .add(jCheckBox20)
-                    .add(jCheckBox29))
+                    .add(kick)
+                    .add(hideme)
+                    .add(about))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox12)
-                    .add(jCheckBox21)
-                    .add(jCheckBox30))
+                    .add(drop)
+                    .add(password)
+                    .add(help))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox13)
-                    .add(jCheckBox22))
+                    .add(unban)
+                    .add(mynick))
                 .add(16, 16, 16)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox31)
-                    .add(jCheckBox32))
+                    .add(restart)
+                    .add(quit))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Commands", jPanel3);
@@ -711,6 +712,129 @@ else
 
 lastlogin.setText (curAcc.TimeOnline+"");
 timespentonline.setText (curAcc.TimeOnline+" seconds.");
+
+
+if(curAcc.myMask.adc)
+        
+           adc.setSelected (true);
+        
+        else
+            adc.setSelected (false);
+        if(curAcc.myMask.port)
+        
+           port.setSelected (true);
+        
+        else
+            port.setSelected (false);
+        if(curAcc.myMask.reg)
+           reg.setSelected (true);
+        else
+            reg.setSelected (false);
+        if(curAcc.myMask.ureg)
+           ureg.setSelected (true);
+        else
+            ureg.setSelected (false);
+        if(curAcc.myMask.listreg)
+           listreg.setSelected (true);
+        else
+            listreg.setSelected (false);
+         if(curAcc.myMask.mass)
+           mass.setSelected (true);
+        else
+            mass.setSelected (false);
+        if(curAcc.myMask.kick)
+           kick.setSelected (true);
+        else
+            kick.setSelected (false);
+         if(curAcc.myMask.drop)
+           drop.setSelected (true);
+        else
+            drop.setSelected (false);
+         if(curAcc.myMask.unban)
+           unban.setSelected (true);
+        else
+            unban.setSelected (false);
+         if(curAcc.myMask.bancid)
+           bancid.setSelected (true);
+        else
+            bancid.setSelected (false);
+         if(curAcc.myMask.banip)
+           banip.setSelected (true);
+        else
+            banip.setSelected (false);
+         if(curAcc.myMask.bannick)
+           bannick.setSelected (true);
+        else
+            bannick.setSelected (false);
+         if(curAcc.myMask.history)
+           history.setSelected (true);
+        else
+            history.setSelected (false);
+        if(curAcc.myMask.cmdhistory)
+           cmdhistory.setSelected (true);
+        else
+            cmdhistory.setSelected (false);
+         if(curAcc.myMask.info)
+           info.setSelected (true);
+        else
+            info.setSelected (false);
+        if(curAcc.myMask.hideme)
+           hideme.setSelected (true);
+        else
+            hideme.setSelected (false);
+         if(curAcc.myMask.password)
+           password.setSelected (true);
+        else
+            password.setSelected (false);
+        if(curAcc.myMask.mynick)
+           mynick.setSelected (true);
+        else
+            mynick.setSelected (false);
+        if(curAcc.myMask.rename)
+           rename.setSelected (true);
+        else
+            rename.setSelected (false);
+
+        if(curAcc.myMask.usercount)
+           usercount.setSelected (true);
+        else
+            usercount.setSelected (false);
+        if(curAcc.myMask.topic)
+           topic.setSelected (true);
+        else
+            topic.setSelected (false);
+        if(curAcc.myMask.cfg)
+           cfg.setSelected (true);
+        else
+            cfg.setSelected (false);
+        if(curAcc.myMask.stats)
+           stats.setSelected (true);
+        else
+            stats.setSelected (false);
+        if(curAcc.myMask.gui)
+           gui.setSelected (true);
+        else
+            gui.setSelected (false);
+       if(curAcc.myMask.about)
+           about.setSelected (true);
+        else
+            about.setSelected (false);
+        if(curAcc.myMask.help)
+           help.setSelected (true);
+        else
+            help.setSelected (false);
+       if(curAcc.myMask.hideme)
+           hideme.setSelected (true);
+        else
+            hideme.setSelected (false);
+       if(curAcc.myMask.restart)
+           restart.setSelected (true);
+        else
+            restart.setSelected (false);
+        if(curAcc.myMask.quit)
+           quit.setSelected (true);
+        else
+            quit.setSelected (false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -721,7 +845,128 @@ timespentonline.setText (curAcc.TimeOnline+" seconds.");
 
     private void jButton1ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-this.setVisible (false);
+
+        if(adc.isSelected())
+        
+            curAcc.myMask.adc=true;
+        
+        else
+            curAcc.myMask.adc=false;
+        if(port.isSelected())
+            curAcc.myMask.port=true;
+        else
+            curAcc.myMask.port=false;
+        if(reg.isSelected())
+            curAcc.myMask.reg=true;
+        else 
+            curAcc.myMask.reg=false;
+        if(ureg.isSelected())
+            curAcc.myMask.ureg=true;
+        else
+            curAcc.myMask.ureg=false;
+        if(listreg.isSelected())
+            curAcc.myMask.listreg=true;
+        else
+            curAcc.myMask.listreg=false;
+        if(mass.isSelected())
+            curAcc.myMask.mass=true;
+        else
+            curAcc.myMask.mass=false;
+        if(kick.isSelected())
+            curAcc.myMask.kick=true;
+        else
+            curAcc.myMask.kick=false;
+        if(drop.isSelected())
+            curAcc.myMask.drop=true;
+        else
+            curAcc.myMask.drop=false;
+        if(unban.isSelected())
+            curAcc.myMask.unban=true;
+        else
+            curAcc.myMask.unban=false;
+        if(bancid.isSelected())
+            curAcc.myMask.bancid=true;
+        else
+            curAcc.myMask.bancid=false;
+        if(banip.isSelected())
+            curAcc.myMask.banip=true;
+        else
+            curAcc.myMask.banip=false;
+        if(bannick.isSelected())
+            curAcc.myMask.bannick=true;
+        else
+            curAcc.myMask.bannick=false;
+        if(history.isSelected())
+            curAcc.myMask.history=true;
+        else
+            curAcc.myMask.history=false;
+        if(cmdhistory.isSelected())
+            curAcc.myMask.cmdhistory=true;
+        else
+            curAcc.myMask.cmdhistory=false;
+        if(info.isSelected())
+            curAcc.myMask.info=true;
+        else
+            curAcc.myMask.info=false;
+        if(hideme.isSelected())
+            curAcc.myMask.hideme=true;
+        else
+            curAcc.myMask.hideme=false;
+        if(password.isSelected())
+            curAcc.myMask.password=true;
+        else
+            curAcc.myMask.password=false;
+        if(mynick.isSelected())
+            curAcc.myMask.mynick=true;
+        else
+            curAcc.myMask.mynick=false;
+        if(rename.isSelected())
+            curAcc.myMask.rename=true;
+        else
+            curAcc.myMask.rename=false;
+        if(usercount.isSelected())
+            curAcc.myMask.usercount=true;
+        else
+            curAcc.myMask.usercount=false;
+        if(topic.isSelected())
+            curAcc.myMask.topic=true;
+        else
+            curAcc.myMask.topic=false;
+        if(cfg.isSelected())
+            curAcc.myMask.cfg=true;
+        else
+            curAcc.myMask.cfg=false;
+        if(stats.isSelected())
+            curAcc.myMask.stats=true;
+        else
+            curAcc.myMask.stats=false;
+        if(gui.isSelected())
+            curAcc.myMask.gui=true;
+        else
+            curAcc.myMask.gui=false;
+        if(about.isSelected())
+            curAcc.myMask.about=true;
+        else
+            curAcc.myMask.about=false;
+        if(help.isSelected())
+            curAcc.myMask.help=true;
+        else
+            curAcc.myMask.help=false;
+        if(hideme.isSelected())
+            curAcc.myMask.hideme=true;
+        else
+            curAcc.myMask.hideme=false;
+        if(restart.isSelected())
+            curAcc.myMask.restart=true;
+        else
+            curAcc.myMask.restart=false;
+        if(quit.isSelected())
+            curAcc.myMask.quit=true;
+        else
+            curAcc.myMask.quit=false;
+                
+        
+        this.setVisible (false);
 this.dispose ();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -730,51 +975,36 @@ this.dispose ();
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox about;
     private javax.swing.JTextField accCID;
     private javax.swing.JTextField accIP;
     private javax.swing.JTextField accNI;
     private javax.swing.JTextField accOwn;
     private javax.swing.JTextField accRegTime;
+    private javax.swing.JCheckBox adc;
+    private javax.swing.JCheckBox bancid;
+    private javax.swing.JCheckBox banip;
+    private javax.swing.JCheckBox bannick;
+    private javax.swing.JCheckBox cfg;
     private javax.swing.JCheckBox checkhidden;
     private javax.swing.JCheckBox checkkey;
+    private javax.swing.JCheckBox cmdhistory;
+    private javax.swing.JCheckBox drop;
+    private javax.swing.JCheckBox gui;
+    private javax.swing.JCheckBox help;
+    private javax.swing.JCheckBox hideme;
+    private javax.swing.JCheckBox history;
+    private javax.swing.JCheckBox info;
     private javax.swing.JTextField ipend;
     private javax.swing.JTextField ipstart;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
-    private javax.swing.JCheckBox jCheckBox16;
-    private javax.swing.JCheckBox jCheckBox17;
-    private javax.swing.JCheckBox jCheckBox18;
-    private javax.swing.JCheckBox jCheckBox19;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox20;
-    private javax.swing.JCheckBox jCheckBox21;
-    private javax.swing.JCheckBox jCheckBox22;
-    private javax.swing.JCheckBox jCheckBox23;
-    private javax.swing.JCheckBox jCheckBox24;
-    private javax.swing.JCheckBox jCheckBox25;
-    private javax.swing.JCheckBox jCheckBox26;
-    private javax.swing.JCheckBox jCheckBox27;
-    private javax.swing.JCheckBox jCheckBox28;
-    private javax.swing.JCheckBox jCheckBox29;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox30;
-    private javax.swing.JCheckBox jCheckBox31;
-    private javax.swing.JCheckBox jCheckBox32;
     private javax.swing.JCheckBox jCheckBox33;
     private javax.swing.JCheckBox jCheckBox34;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -796,10 +1026,25 @@ this.dispose ();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JCheckBox kick;
     private javax.swing.JTextField lastlogin;
+    private javax.swing.JCheckBox listreg;
+    private javax.swing.JCheckBox mass;
+    private javax.swing.JCheckBox mynick;
     private javax.swing.JCheckBox passsetcheck;
+    private javax.swing.JCheckBox password;
+    private javax.swing.JCheckBox port;
+    private javax.swing.JCheckBox quit;
+    private javax.swing.JCheckBox reg;
+    private javax.swing.JCheckBox rename;
+    private javax.swing.JCheckBox restart;
     private javax.swing.JCheckBox sharecheck;
+    private javax.swing.JCheckBox stats;
     private javax.swing.JTextField timespentonline;
+    private javax.swing.JCheckBox topic;
+    private javax.swing.JCheckBox unban;
+    private javax.swing.JCheckBox ureg;
+    private javax.swing.JCheckBox usercount;
     // End of variables declaration//GEN-END:variables
     
 }
