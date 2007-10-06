@@ -116,6 +116,12 @@ abstract public class ADC
            * added first fields into account editing window;
            * clicking X on main window now does nothing, need to click Exit to close;
            * added more fields to the edit account window;
+           * created 2 more files, one for the command masking of each account;
+           * modified regconfig to include them;
+           * the second file generates a help file according to mask;
+           * removed the necesity of "help" file;
+           * the help in the console is generated with a full account mask;
+           * moved all buttons in account edit in a nice tabbed pane;
            **/
             
             ;

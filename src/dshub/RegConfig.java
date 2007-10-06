@@ -42,6 +42,9 @@ import java.util.Date;
         boolean HideShare;
         boolean HideMe;
         
+        CommandMask myMask;
+        HelpFile myHelp;
+        
         nod()
         {
             CID=null;
@@ -58,6 +61,8 @@ import java.util.Date;
             CreatedOn=0L;
             LastLogin=0L;
             TimeOnline=0L;
+            myMask=new CommandMask();
+            myHelp=new HelpFile(this);
         }
       protected  nod  clone()
         {

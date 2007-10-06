@@ -1,10 +1,42 @@
-Available commands:
-                        adc -- ADC advanced configuration panel, setting contexts for each command 
+/*
+ * CommandMask.java
+ *
+ * Created on 06 octombrie 2007, 15:37
+ *
+ * DSHub ADC HubSoft
+ * Copyright (C) 2007  Pietricica
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+package dshub;
+
+import java.io.Serializable;
+
+/**
+ *
+ * @author Pietricica
+ */
+public class CommandMask implements Serializable
+{
+    /*
                         port x -- Where x is the new port hub is supposed to run on.
                         reg CID/online user nick -- Reg the new CID with no password ( by default) or the CID of the online user specified by nick.
                         ureg CID/online user nick -- Unregs the CID/user's CID from database.
                         listreg -- Lists the current registered CIDs
-	        mass -- Broadcast message, can take extended params
+	                mass -- Broadcast message, can take extended params
                         kick -- Kicks out the user given by nick , add extra words for reason/Extended kick type kick for info
                         drop -- A kick with no reason or ban time, just drop/Extended drop type !drop for info
                         unban -- Unbans the specified, looking in CID/IP/nick order
@@ -27,3 +59,25 @@ Available commands:
                         help -- This screen.
                         restart -- Restarts hub.
                         quit -- Shuts down hub.
+*/
+    boolean adc,port,reg,ureg,listreg,mass,kick,drop,unban,banip,bancid,bannick,history,cmdhistory,info,hideme,password,mynick,rename,usercount,topic,
+            cfg,gui,stats,about,help,restart,quit;
+    
+    /** Creates a new instance of CommandMask */
+    public CommandMask ()  
+    {
+        adc=port=reg=ureg=listreg=mass=kick=drop=unban=banip=bancid=bannick=history=cmdhistory=info=hideme=password=rename=usercount=topic=
+            cfg=gui=stats=about=restart=quit=false;
+        mynick=help=true;
+    }
+    public CommandMask ( int i)
+    {
+        if(i==1)
+        {
+            adc=port=reg=ureg=listreg=mass=kick=drop=unban=banip=bancid=bannick=history=cmdhistory=info=hideme=password=rename=usercount=topic=
+            cfg=gui=stats=about=restart=quit=true;
+        mynick=help=true;
+        }
+    }
+    
+}

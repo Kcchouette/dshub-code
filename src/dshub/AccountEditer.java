@@ -74,9 +74,9 @@ public class AccountEditer extends javax.swing.JFrame
         accRegTime = new javax.swing.JTextField();
         lastlogin = new javax.swing.JTextField();
         timespentonline = new javax.swing.JTextField();
-        timespentonline1 = new javax.swing.JTextField();
+        ipstart = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        timespentonline2 = new javax.swing.JTextField();
+        ipend = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -123,6 +123,7 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox23 = new javax.swing.JCheckBox();
         jCheckBox31 = new javax.swing.JCheckBox();
         jCheckBox32 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Account");
@@ -145,7 +146,7 @@ public class AccountEditer extends javax.swing.JFrame
             }
         });
 
-        jButton1.setText("Close");
+        jButton1.setText("Save and Close");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -203,12 +204,12 @@ public class AccountEditer extends javax.swing.JFrame
         timespentonline.setEditable(false);
         timespentonline.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        timespentonline1.setPreferredSize(new java.awt.Dimension(400, 20));
+        ipstart.setPreferredSize(new java.awt.Dimension(400, 20));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel12.setText("end");
 
-        timespentonline2.setPreferredSize(new java.awt.Dimension(400, 20));
+        ipend.setPreferredSize(new java.awt.Dimension(400, 20));
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,11 +246,11 @@ public class AccountEditer extends javax.swing.JFrame
                                     .add(timespentonline, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(6, 6, 6)
-                                .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(ipstart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(22, 22, 22)
                                 .add(jLabel12)
                                 .add(21, 21, 21)
-                                .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 121, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                .add(ipend, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 121, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(jLabel1))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -291,10 +292,10 @@ public class AccountEditer extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel12)
-                    .add(timespentonline1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ipstart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel11)
-                    .add(timespentonline2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(148, Short.MAX_VALUE))
+                    .add(ipend, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Account", jPanel1);
 
@@ -343,7 +344,7 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel15.setText("& password with no CID check");
+        jLabel15.setText("& password with no matter what CID used");
 
         jLabel14.setText("account to be used with last nick");
 
@@ -378,7 +379,7 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(checkhidden)
                     .add(sharecheck)
                     .add(jCheckBox1))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -412,7 +413,7 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(jLabel17))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jCheckBox34)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Properties", jPanel2);
 
@@ -630,34 +631,55 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jCheckBox31)
                     .add(jCheckBox32))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Commands", jPanel3);
+
+        jButton2.setText("Discard");
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(304, 304, 304)
-                        .add(jButton1)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(275, Short.MAX_VALUE)
+                .add(jButton1)
+                .add(272, 272, 272))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(293, Short.MAX_VALUE)
+                .add(jButton2)
+                .add(294, 294, 294))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 438, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(24, 24, 24)
-                .add(jButton1))
+                .addContainerGap()
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 363, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(36, 36, 36)
+                .add(jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton2)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
+    {//GEN-HEADEREND:event_jButton2ActionPerformed
+this.setVisible (false);
+this.dispose ();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowGainedFocus (java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowGainedFocus
     {//GEN-HEADEREND:event_formWindowGainedFocus
@@ -715,7 +737,10 @@ this.dispose ();
     private javax.swing.JTextField accRegTime;
     private javax.swing.JCheckBox checkhidden;
     private javax.swing.JCheckBox checkkey;
+    private javax.swing.JTextField ipend;
+    private javax.swing.JTextField ipstart;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -775,8 +800,6 @@ this.dispose ();
     private javax.swing.JCheckBox passsetcheck;
     private javax.swing.JCheckBox sharecheck;
     private javax.swing.JTextField timespentonline;
-    private javax.swing.JTextField timespentonline1;
-    private javax.swing.JTextField timespentonline2;
     // End of variables declaration//GEN-END:variables
     
 }
