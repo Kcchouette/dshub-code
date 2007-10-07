@@ -995,10 +995,45 @@ if(curAcc.myMask.adc)
         
         
         if(checkkey.isSelected())
+        {
+            if(!curAcc.key)
+            { 
+            
+            ClientHandler temp=ClientHandler.FirstClient.NextClient;
+            while(temp!=null)
+            {
+                if(temp.ID.equals (curAcc.CID))
+                    break;
+                temp=temp.NextClient;
+            }
+            if(temp!=null)//if registered guy is online
+            {
+                new Broadcast("BINF "+temp.SessionID+" OP1 RG");
+            }
+            }
             curAcc.key=true;
+        }
         else
+        {
+             if(curAcc.key)
+            { 
+            
+            ClientHandler temp=ClientHandler.FirstClient.NextClient;
+            while(temp!=null)
+            {
+                if(temp.ID.equals (curAcc.CID))
+                    break;
+                temp=temp.NextClient;
+            }
+            if(temp!=null)//if registered guy is online
+            {
+                new Broadcast("BINF "+temp.SessionID+" OP RG1");
+            }
+            }
             curAcc.key=false;
-        
+        }
+            
+        Main.Server.rewriteregs ();
         this.setVisible (false);
 this.dispose ();
     }//GEN-LAST:event_jButton1ActionPerformed
