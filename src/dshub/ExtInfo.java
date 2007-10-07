@@ -107,7 +107,7 @@ public class ExtInfo
                {
                     
                     String blah11="User Info\nNick "+ADC.retNormStr(temp.NI)+"\nCID "+temp.ID+"\nShare Size "+temp.SS+ " Bytes\n"+
-                            "Description "+ADC.retNormStr(temp.DE)+"\nTag ";
+                            "Description "+(temp.DE!=null?ADC.retNormStr(temp.DE):"")+"\nTag ";
                     
                     String Tag="<"+ADC.retNormStr (temp.VE)+",M:";
                     if(temp.ACTIVE==1)

@@ -131,6 +131,8 @@ abstract public class ADC
            * key setting on gui works now, still need to make it instantly not on reconnect;
            * improved partially the registration info shown on reg and info commands;
            * key allocating and removing works instantly now;
+           * fixed bug when thread crashed on !info if user had null description ( tnx Toast for spotting);
+           * fixed bug on Key allocating when wrong hub count was made;
            **/
             
             ;
