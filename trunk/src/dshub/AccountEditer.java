@@ -124,6 +124,7 @@ public class AccountEditer extends javax.swing.JFrame
         rename = new javax.swing.JCheckBox();
         restart = new javax.swing.JCheckBox();
         quit = new javax.swing.JCheckBox();
+        listban = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -532,6 +533,10 @@ public class AccountEditer extends javax.swing.JFrame
         quit.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         quit.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        listban.setText("listban command");
+        listban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        listban.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -564,6 +569,7 @@ public class AccountEditer extends javax.swing.JFrame
                             .add(mynick))
                         .add(32, 32, 32)
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(listban)
                             .add(help)
                             .add(about)
                             .add(gui)
@@ -627,7 +633,8 @@ public class AccountEditer extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(unban)
-                    .add(mynick))
+                    .add(mynick)
+                    .add(listban))
                 .add(16, 16, 16)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(restart)
@@ -835,6 +842,10 @@ if(curAcc.myMask.adc)
            quit.setSelected (true);
         else
             quit.setSelected (false);
+        if(curAcc.myMask.listban)
+           listban.setSelected (true);
+        else
+            listban.setSelected (false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -964,6 +975,10 @@ if(curAcc.myMask.adc)
             curAcc.myMask.quit=true;
         else
             curAcc.myMask.quit=false;
+        if(listban.isSelected())
+            curAcc.myMask.listban=true;
+        else
+            curAcc.myMask.listban=false;
                 
         
         this.setVisible (false);
@@ -1028,6 +1043,7 @@ this.dispose ();
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JCheckBox kick;
     private javax.swing.JTextField lastlogin;
+    private javax.swing.JCheckBox listban;
     private javax.swing.JCheckBox listreg;
     private javax.swing.JCheckBox mass;
     private javax.swing.JCheckBox mynick;
