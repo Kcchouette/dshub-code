@@ -42,7 +42,7 @@ abstract public class ADC
    static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
-"At the moment of this release ( September 2007 ), the following ADC clients were available:\n"+
+"At the moment of this release ( October 2007 ), the following ADC clients were available:\n"+
 "dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69*, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
 "Some ADC reminders:\n"+
@@ -130,6 +130,7 @@ abstract public class ADC
            * all regs still enter opchat, need to fix that;
            * key setting on gui works now, still need to make it instantly not on reconnect;
            * improved partially the registration info shown on reg and info commands;
+           * key allocating and removing works instantly now;
            **/
             
             ;
