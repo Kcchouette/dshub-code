@@ -162,6 +162,7 @@ public class Main extends Thread
                         else
                         {
                             reg_config.addReg (temp.ID,temp.NI,"Server");
+                            temp.reg=reg_config.getnod (temp.ID);
                             PopMsg("User "+temp.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("User "+temp.NI+" found with given CID, added with no password, he should set one.");
@@ -170,8 +171,8 @@ public class Main extends Thread
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+" HO"+temp.HO+" HN"+temp.HN);
+                            
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         
                         }
@@ -211,7 +212,7 @@ public class Main extends Thread
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=reg_config.getnod (temp.ID);
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
@@ -258,7 +259,7 @@ public class Main extends Thread
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=reg_config.getnod (temp.ID);
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
@@ -460,7 +461,7 @@ public class Main extends Thread
                             temp.OP="";
                             temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
                             temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" OP"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=new nod();
                             System.out.println ("User "+temp.NI+" with CID "+aux+" found, deleted.");
                      }
@@ -491,7 +492,7 @@ public class Main extends Thread
                             temp.OP="";
                             temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
                             temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" OP"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=new nod();
                         }
                 }

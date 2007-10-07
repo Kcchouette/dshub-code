@@ -42,6 +42,10 @@ import java.util.Date;
         boolean HideShare;
         boolean HideMe;
         
+        boolean overrideshare;
+        boolean overridespam;
+        boolean kickable,renameable;
+        
         CommandMask myMask;
         HelpFile myHelp;
         
@@ -58,6 +62,8 @@ import java.util.Date;
             HideShare=false;
             HideMe=false;
             WhoRegged=null;
+            overrideshare=overridespam=false;
+            kickable=renameable=true;
             CreatedOn=0L;
             LastLogin=0L;
             TimeOnline=0L;
@@ -89,7 +95,11 @@ import java.util.Date;
          }
          Date d=new Date(this.CreatedOn);
            retString=retString+" Reg Info:\nLast Nick : "+this.LastNI+"\nLast IP: "+this.LastIP+"\nRegged by: "+this.WhoRegged+" on "+d.toString ();
-        
+           retString+="\nLast LogIn: "+this.LastLogin+"\nTime Online: "+this.TimeOnline+"\nOverride share restrictions?"+(this.overrideshare ? "yes" : "no")
+           +"\nOverride spam settings?"+(this.overridespam?"yes":"no")+"\nCan be renamed?"+(this.renameable?"yes":"no")+
+                   "\nPassword set?"+(this.Password.length ()>0?"yes":"no")+"\nIs hidden?"+(this.HideMe?"yes":"no")+
+                   "\nShare hidden?"+(this.HideShare?"yes":"no")+"\n"
+        ;
                   
            
            return retString;
@@ -154,7 +164,7 @@ class reg_config
          newreg=new nod();
         newreg.CID=CID;
         newreg.Password="";
-        newreg.key=true;
+        newreg.key=false;
         newreg.isreg=true;
         newreg.LastNI=LastNI;
         newreg.WhoRegged=WhoRegged;

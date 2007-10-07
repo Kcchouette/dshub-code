@@ -594,55 +594,55 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="port" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="reg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ureg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="listreg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="mass" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="kick" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="drop" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="unban" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="about" min="-2" max="-2" attributes="0"/>
+                                  <Component id="adc" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bancid" min="-2" max="-2" attributes="0"/>
+                                  <Component id="banip" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bannick" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cfg" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmdhistory" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gui" min="-2" max="-2" attributes="0"/>
+                                  <Component id="help" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="bancid" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="banip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="bannick" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="history" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmdhistory" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="info" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="hideme" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="password" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="mynick" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="mynick" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="info" min="-2" max="-2" attributes="0"/>
+                                          <Component id="kick" min="-2" max="-2" attributes="0"/>
+                                          <Component id="listban" min="-2" max="-2" attributes="0"/>
+                                          <Component id="listreg" min="-2" max="-2" attributes="0"/>
+                                          <Component id="mass" min="-2" max="-2" attributes="0"/>
+                                          <Component id="password" min="-2" max="-2" attributes="0"/>
+                                          <Component id="port" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="quit" min="-2" max="-2" attributes="0"/>
+                                          <Component id="unban" min="-2" max="-2" attributes="0"/>
+                                          <Component id="reg" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rename" min="-2" max="-2" attributes="0"/>
+                                          <Component id="restart" min="-2" max="-2" attributes="0"/>
+                                          <Component id="stats" min="-2" max="-2" attributes="0"/>
+                                          <Component id="usercount" min="-2" max="-2" attributes="0"/>
+                                          <Component id="topic" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ureg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="hideme" min="-2" max="-2" attributes="0"/>
+                                  <Component id="history" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="listban" min="-2" max="-2" attributes="0"/>
-                                  <Component id="help" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="about" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="gui" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stats" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cfg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="topic" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="usercount" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rename" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="restart" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Component id="quit" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="90" max="32767" attributes="0"/>
+                      <EmptySpace pref="134" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -652,65 +652,72 @@
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="adc" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bancid" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rename" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="about" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="adc" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bancid" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="banip" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bannick" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cfg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmdhistory" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="drop" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="port" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="banip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="usercount" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="reg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bannick" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="topic" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ureg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="history" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cfg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="listreg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdhistory" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="stats" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="mass" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="info" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="gui" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="kick" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="hideme" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="about" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="drop" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="help" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="unban" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="mynick" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="listban" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="help" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="port" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="restart" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="quit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="66" max="32767" attributes="0"/>
+                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <Component id="hideme" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="history" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="info" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="kick" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="listban" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="listreg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="mass" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="mynick" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <Component id="quit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="reg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rename" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="restart" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="stats" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="topic" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="unban" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ureg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="usercount" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

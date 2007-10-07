@@ -126,6 +126,10 @@ abstract public class ADC
            * saved command maskes, now need to modify access via CommandParser;
            * command allocation from gui works now, and access is set via Command parser;
            * profiles are almost done, need to create a command that sets access via client too;
+           * fixed showing key for all regs no matter if they had or not;
+           * all regs still enter opchat, need to fix that;
+           * key setting on gui works now, still need to make it instantly not on reconnect;
+           * improved partially the registration info shown on reg and info commands;
            **/
             
             ;
