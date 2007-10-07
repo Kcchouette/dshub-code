@@ -319,7 +319,7 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel7.setText("Developer: Pietry (Pietricica)");
 
-        jLabel8.setText("Special Thanks to MAGY for GUI ideas and to Spader for nice testing :)");
+        jLabel8.setText("Special Thanks to MAGY for GUI ideas and to Spader and Toast for nice testing :)");
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
@@ -351,10 +351,6 @@ public class TestFrame extends javax.swing.JFrame
                 .add(jLabel7)
                 .addContainerGap(326, Short.MAX_VALUE))
             .add(jPanel1Layout.createSequentialGroup()
-                .add(180, 180, 180)
-                .add(jLabel8)
-                .addContainerGap(224, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
                 .add(161, 161, 161)
                 .add(jLabel9)
                 .addContainerGap(209, Short.MAX_VALUE))
@@ -362,6 +358,10 @@ public class TestFrame extends javax.swing.JFrame
                 .add(163, 163, 163)
                 .add(jLabel5)
                 .addContainerGap(235, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(153, 153, 153)
+                .add(jLabel8)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

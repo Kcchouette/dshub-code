@@ -1008,7 +1008,7 @@ if(curAcc.myMask.adc)
             }
             if(temp!=null)//if registered guy is online
             {
-                new Broadcast("BINF "+temp.SessionID+" OP1 RG");
+                new Broadcast("BINF "+temp.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)-1));
             }
             }
             curAcc.key=true;
@@ -1027,7 +1027,7 @@ if(curAcc.myMask.adc)
             }
             if(temp!=null)//if registered guy is online
             {
-                new Broadcast("BINF "+temp.SessionID+" OP RG1");
+                new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)+1));
             }
             }
             curAcc.key=false;
