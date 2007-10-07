@@ -344,7 +344,7 @@ public class CommandParser
                             temp.OP="";
                             temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
                             temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" OP"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=new nod();
                             cur_client.sendFromBot("User "+temp.NI+" with CID "+aux+" found, deleted.");
                     }
@@ -380,7 +380,7 @@ public class CommandParser
                             temp.OP="";
                             temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
                             temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" OP"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=new nod();
                         }
                 }
@@ -432,7 +432,7 @@ public class CommandParser
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=reg_config.getnod (temp.ID);
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         
@@ -466,7 +466,7 @@ public class CommandParser
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=reg_config.getnod (temp.ID);
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
@@ -504,7 +504,7 @@ public class CommandParser
                             temp.OP="1";
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" OP1"+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
                             temp.reg=reg_config.getnod (temp.ID);
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
