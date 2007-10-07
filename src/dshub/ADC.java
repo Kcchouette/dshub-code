@@ -124,6 +124,8 @@ abstract public class ADC
            * moved all buttons in account edit in a nice tabbed pane;
            * continued work on accounts panel, buttons work but do nothing atm;
            * saved command maskes, now need to modify access via CommandParser;
+           * command allocation from gui works now, and access is set via Command parser;
+           * profiles are almost done, need to create a command that sets access via client too;
            **/
             
             ;

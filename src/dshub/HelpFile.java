@@ -23,11 +23,13 @@
 
 package dshub;
 
+import java.io.Serializable;
+
 /**
  * Help File generator;
  * @author Pietricica
  */
-public class HelpFile
+public class HelpFile implements Serializable
 {
     nod curAcc;
     /** Creates a new instance of HelpFile */
@@ -99,6 +101,8 @@ public class HelpFile
             Help+="info -- Lists some useful information about a user,ip or cid.\n";
         if(curAcc.myMask.kick)
             Help+="kick -- Kicks out the user given by nick, add extra words for reason/Extended kick; use with no arguments for info.\n";
+        if(curAcc.myMask.listban)
+            Help+="listban -- Lists the current banned CIDs/IPs/nicks.\n";
         if(curAcc.myMask.listreg)
             Help+="listreg -- Lists the current registered CIDs.\n";
         if(curAcc.myMask.mass)
@@ -112,7 +116,7 @@ public class HelpFile
         if(curAcc.myMask.quit)
             Help+="quit -- Shuts down hub.\n";
         if(curAcc.myMask.reg)
-            Help+="reg CID/online user nick -- Reg the new CID with no password (by default) or the CID of the online user specified by nick.\nIf already registered, display registration info.\n";
+            Help+="reg CID/online user nick -- Reg the new CID with no password (by default) or the CID of the online user specified by nick.\n                                  If already registered, display registration info.\n";
         if(curAcc.myMask.rename)
             Help+="rename -- Renames the user given by nick to new nick given.\n";
         if(curAcc.myMask.restart)

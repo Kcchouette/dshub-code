@@ -99,6 +99,11 @@ public class CommandParser
         
         if(recvbuf.toLowerCase ().equals("quit"))
         {
+                    if(!cur_client.reg.myMask.quit)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 
                 cur_client.sendFromBot("Closing down hub...");
                 Main.Server.rewriteregs();
@@ -130,6 +135,11 @@ public class CommandParser
        
        else if(recvbuf.toLowerCase ().equals ("restart"))
             {
+                    if(!cur_client.reg.myMask.restart)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             cur_client.sendFromBot("Restarting.... Wait 5 seconds...");
                  Main.Server.rewriteregs();
                Main. Server.rewriteconfig();
@@ -175,6 +185,11 @@ public class CommandParser
           }
         if(recvbuf.toLowerCase ().startsWith("password"))
         {
+                    if(!cur_client.reg.myMask.password)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 String aux=ST.nextToken ();
@@ -190,6 +205,11 @@ public class CommandParser
         } 
         else if(recvbuf.toLowerCase ().equals("gui"))
         {
+                    if(!cur_client.reg.myMask.gui)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                     if(!Main.GUI.isDisplayable())
                     {
                         try
@@ -217,6 +237,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("hideme"))
         {
+                    if(!cur_client.reg.myMask.hideme)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                     if(!cur_client.reg.HideMe)
                     {
                new Broadcast("BINF "+cur_client.SessionID+" HI1");
@@ -233,6 +258,11 @@ public class CommandParser
         } 
         else if(recvbuf.toLowerCase ().equals("listreg"))
         {
+                    if(!cur_client.reg.myMask.listreg)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             String blah00="List :\n";
             nod n=reg_config.First;
             while(n!=null)
@@ -249,6 +279,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("listban"))
         {
+                    if(!cur_client.reg.myMask.listban)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             String blah00="Ban List :\n";
             ban n=BanList.First;
             while(n!=null)
@@ -278,6 +313,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("ureg"))
         {
+                     if(!cur_client.reg.myMask.ureg)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -349,6 +389,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("reg"))
         {
+                     if(!cur_client.reg.myMask.reg)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -473,7 +518,11 @@ public class CommandParser
         else if(recvbuf.toLowerCase ().equals("help"))
         {
            
-                
+                 if(!cur_client.reg.myMask.help)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             
                 
                         
@@ -484,15 +533,30 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("info "))
         {
+                     if(!cur_client.reg.myMask.info)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 new ExtInfo(cur_client,recvbuf);
         }
         
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
+                     if(!cur_client.reg.myMask.mass)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             new ExtMass(cur_client,recvbuf);
         }
         else if(recvbuf.toLowerCase ().startsWith ("mynick "))
         {
+                     if(!cur_client.reg.myMask.mynick)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 String aux="";
@@ -555,6 +619,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("rename "))
         {
+                     if(!cur_client.reg.myMask.rename)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                     //cur_client.sendFromBot(""+ADC.retADCStr("Sorry but renaming features are temporary disabled until DC++ has UCMD's ( because !rename mister bla new nick has 4 entities and its quite hard to guess what is first nick and what is 2nd nick."));
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
@@ -633,14 +702,29 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("kick"))
         {
+                     if(!cur_client.reg.myMask.kick)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                    new ExtKick(cur_client,recvbuf);
         }
         else if(recvbuf.toLowerCase ().startsWith ("drop"))
         {
+                     if(!cur_client.reg.myMask.drop)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                     new ExtDrop(cur_client,recvbuf);
         }
         else if(recvbuf.toLowerCase ().startsWith ("unban"))
         {
+                     if(!cur_client.reg.myMask.unban)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -695,6 +779,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("bancid "))
         {
+                     if(!cur_client.reg.myMask.bancid)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -784,6 +873,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("bannick "))
         {
+                     if(!cur_client.reg.myMask.bannick)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -832,6 +926,11 @@ public class CommandParser
         
         else if(recvbuf.toLowerCase ().startsWith ("banip "))
         {
+                     if(!cur_client.reg.myMask.banip)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
@@ -926,10 +1025,20 @@ public class CommandParser
        
        else if (recvbuf.toLowerCase ().startsWith("cfg"))
         {
+                     if(!cur_client.reg.myMask.cfg)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 new CFGConfig(cur_client,recvbuf);
         }
         else if(recvbuf.toLowerCase ().startsWith("topic"))
         {
+                     if(!cur_client.reg.myMask.topic)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                if(recvbuf.toLowerCase ().equals("topic"))
                {
                if(!Vars.HubDE.equals (""))
@@ -964,6 +1073,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("port "))
         {
+                     if(!cur_client.reg.myMask.port)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 try
                 {
             int x=Integer.parseInt(recvbuf.substring(5));
@@ -984,6 +1098,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
+                     if(!cur_client.reg.myMask.usercount)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 int i=0,j=0;
                 ClientHandler temp=ClientHandler.FirstClient.NextClient;
                 while(temp!=null)
@@ -997,10 +1116,20 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("about"))
         {
+                     if(!cur_client.reg.myMask.about)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 cur_client.sendFromBot("\n"+Vars.About.replaceAll(" ","\\ ").replaceAll ("\\x0a","\\\n"));
         }
         else if(recvbuf.toLowerCase ().equals("history"))
         {
+                     if(!cur_client.reg.myMask.history)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             String blah00="History:\n";
             line bb=Broadcast.First;
             while(bb!=null)
@@ -1013,6 +1142,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("cmdhistory"))
         {
+                     if(!cur_client.reg.myMask.cmdhistory)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
             String blah00="Command History:\n";
             line bb=FirstCommand;
             while(bb!=null)
@@ -1025,6 +1159,11 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("stats"))
         {
+                     if(!cur_client.reg.myMask.stats)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
                 Runtime myRun=Runtime.getRuntime();
                
                        //Proppies.getProperty();
