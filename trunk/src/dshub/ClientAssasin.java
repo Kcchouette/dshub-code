@@ -57,6 +57,7 @@ public class ClientAssasin extends Thread
                     try
                     {
                         temp.NextClient.OS.write (0x0a);
+                        temp.NextClient.LastKeepAlive=System.currentTimeMillis ();
                     }
                     catch(Exception e)
                     {
