@@ -84,13 +84,13 @@ public class AccountEditer extends javax.swing.JFrame
         jCheckBox33 = new javax.swing.JCheckBox();
         checkkey = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        overridespam = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         passsetcheck = new javax.swing.JCheckBox();
         checkhidden = new javax.swing.JCheckBox();
         sharecheck = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        overrideshare = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jCheckBox34 = new javax.swing.JCheckBox();
@@ -315,9 +315,9 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel7.setText("Account Properties");
 
-        jCheckBox2.setText("Override spam security settings");
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        overridespam.setText("Override spam security settings");
+        overridespam.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        overridespam.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jCheckBox3.setText("Can be renamed ?");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -342,9 +342,9 @@ public class AccountEditer extends javax.swing.JFrame
         sharecheck.setEnabled(false);
         sharecheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox1.setText("Override share restrictions");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        overrideshare.setText("Override share restrictions");
+        overrideshare.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        overrideshare.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jLabel15.setText("& password with no matter what CID used");
 
@@ -374,13 +374,13 @@ public class AccountEditer extends javax.swing.JFrame
                         .add(jLabel15))
                     .add(checkkey)
                     .add(jLabel7)
-                    .add(jCheckBox2)
+                    .add(overridespam)
                     .add(jCheckBox3)
                     .add(jCheckBox4)
                     .add(passsetcheck)
                     .add(checkhidden)
                     .add(sharecheck)
-                    .add(jCheckBox1))
+                    .add(overrideshare))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -391,9 +391,9 @@ public class AccountEditer extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(checkkey)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox1)
+                .add(overrideshare)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox2)
+                .add(overridespam)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jCheckBox3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -729,6 +729,15 @@ if(curAcc.HideShare)
 else
     sharecheck.setSelected (false);
 
+if(curAcc.overrideshare)
+    overrideshare.setSelected (true);
+else
+    overrideshare.setSelected (false);
+if(curAcc.overridespam)
+    overridespam.setSelected (true);
+else
+    overridespam.setSelected (false);
+
 lastlogin.setText (curAcc.TimeOnline+"");
 timespentonline.setText (curAcc.TimeOnline+" seconds.");
 
@@ -1032,6 +1041,14 @@ if(curAcc.myMask.adc)
             }
             curAcc.key=false;
         }
+        if(overrideshare.isSelected ())
+          curAcc.overrideshare=true;
+        else
+            curAcc.overrideshare=false;
+        if(overridespam.isSelected ())
+          curAcc.overridespam=true;
+        else
+            curAcc.overridespam=false;
             
         Main.Server.rewriteregs ();
         this.setVisible (false);
@@ -1067,8 +1084,6 @@ this.dispose ();
     private javax.swing.JTextField ipstart;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox33;
     private javax.swing.JCheckBox jCheckBox34;
@@ -1100,6 +1115,8 @@ this.dispose ();
     private javax.swing.JCheckBox listreg;
     private javax.swing.JCheckBox mass;
     private javax.swing.JCheckBox mynick;
+    private javax.swing.JCheckBox overrideshare;
+    private javax.swing.JCheckBox overridespam;
     private javax.swing.JCheckBox passsetcheck;
     private javax.swing.JCheckBox password;
     private javax.swing.JCheckBox port;
