@@ -341,10 +341,13 @@ public class CommandParser
                     {
                             temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
                             temp.sendToClient ("IQUI ABCD");
-                            temp.OP="";
-                            temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
-                            temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
+                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
+                            if(temp.reg.key)
+                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
+                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             temp.reg=new nod();
                             cur_client.sendFromBot("User "+temp.NI+" with CID "+aux+" found, deleted.");
                     }
@@ -377,10 +380,14 @@ public class CommandParser
                             cur_client.sendFromBot("User "+temp.NI+" deleted.");
                             temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
                             temp.sendToClient ("IQUI ABCD");
-                            temp.OP="";
-                            temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
-                            temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
+                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
+                            if(temp.reg.key)
+                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
+                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
                             temp.reg=new nod();
                         }
                 }
@@ -426,14 +433,19 @@ public class CommandParser
                         else
                         {
                             reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
+                            temp.reg=reg_config.getnod (temp.ID);
                             cur_client.sendFromBot("User "+temp.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
+                            
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         
                         }
@@ -460,14 +472,19 @@ public class CommandParser
                             return;
                         }
                             reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
+                            temp.reg=reg_config.getnod (temp.ID);
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("User "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
+                            
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
                         }
@@ -498,14 +515,19 @@ public class CommandParser
                             return;
                         }
                             reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
+                            temp.reg=reg_config.getnod (temp.ID);
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("User "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
+                            
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
                         }

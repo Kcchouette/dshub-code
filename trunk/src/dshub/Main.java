@@ -168,10 +168,13 @@ public class Main extends Thread
                                 Main.GUI.SetStatus ("User "+temp.NI+" found with given CID, added with no password, he should set one.");
                             temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+" HO"+temp.HO+" HN"+temp.HN);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         
@@ -204,16 +207,21 @@ public class Main extends Thread
                             return;
                         }
                             reg_config.addReg (temp.ID,temp.NI,"Server");
+                            temp.reg=reg_config.getnod (temp.ID);
                             PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                             temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
+                           
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
                             
@@ -251,16 +259,21 @@ public class Main extends Thread
                             return;
                         }
                             reg_config.addReg (temp.ID,temp.NI,"Server");
+                            temp.reg=reg_config.getnod (temp.ID);
                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                             temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            temp.OP="1";
+                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
+                            if(temp.reg.key)
                             temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=reg_config.getnod (temp.ID);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                            
+                            
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
                 }

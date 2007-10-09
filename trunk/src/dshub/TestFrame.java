@@ -2524,10 +2524,13 @@ if(FMSGcheck.isSelected())
                     {
                     temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.sendToClient ("IQUI ABCD");
-                            temp.OP="";
-                            temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
-                            temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" OP"+" HO"+temp.HO+" HN"+temp.HN);
+                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
+                            if(temp.reg.key)
+                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                            else
+                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
+                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
+                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             temp.reg=new nod();
                             Main.PopMsg("User "+temp.NI+" with CID "+CID+" found, deleted.");
                      }
