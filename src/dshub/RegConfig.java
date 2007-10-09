@@ -45,9 +45,11 @@ import java.util.Date;
         boolean overrideshare;
         boolean overridespam;
         boolean kickable,renameable;
+        boolean accountflyable;
         
         CommandMask myMask;
         HelpFile myHelp;
+        boolean nickprotected;
         
         nod()
         {
@@ -63,6 +65,7 @@ import java.util.Date;
             HideMe=false;
             WhoRegged=null;
             overrideshare=overridespam=false;
+            accountflyable=false;
             kickable=renameable=true;
             CreatedOn=0L;
             LastLogin=0L;
@@ -107,6 +110,18 @@ import java.util.Date;
                             
          
      }
+      public boolean setFlyable(boolean x)
+      {
+          if(x)
+          {
+              if(this.Password.length ()<1)
+                  return false;
+              this.accountflyable=true;
+          }
+          else
+              this.accountflyable=false;
+          return true;
+      }
         
   }
         

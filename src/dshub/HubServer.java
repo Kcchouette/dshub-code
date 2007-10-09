@@ -114,6 +114,7 @@ public class HubServer extends Thread
             
             
         }
+        //myPath="";
         //System.out.println (myPath);
         start();    
        

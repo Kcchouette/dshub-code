@@ -136,6 +136,8 @@ abstract public class ADC
            * fixed issue on ClientAssassin that checked dead clients @ 5secs instead of 2 mins;
            * checks for override spam and share are functional, need to change what they do
            * creating premise for getting rid of ops_override_spam and share;
+           * fixed hub counts on key and registered on reg and ureg;
+           * almost finished boxes in account edit;
            **/
             
             ;

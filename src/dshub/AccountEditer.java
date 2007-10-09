@@ -81,19 +81,19 @@ public class AccountEditer extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jCheckBox33 = new javax.swing.JCheckBox();
+        checkflyable = new javax.swing.JCheckBox();
         checkkey = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         overridespam = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        checkrenameable = new javax.swing.JCheckBox();
+        checkkickable = new javax.swing.JCheckBox();
         passsetcheck = new javax.swing.JCheckBox();
         checkhidden = new javax.swing.JCheckBox();
         sharecheck = new javax.swing.JCheckBox();
         overrideshare = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jCheckBox34 = new javax.swing.JCheckBox();
+        checknickprotect = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         adc = new javax.swing.JCheckBox();
@@ -305,9 +305,9 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel16.setText("Warning: High risk of security breach");
 
-        jCheckBox33.setText("If password set, allow");
-        jCheckBox33.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox33.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkflyable.setText("Flyable. If password set, allow");
+        checkflyable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkflyable.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         checkkey.setText("Operator's Key");
         checkkey.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -319,13 +319,13 @@ public class AccountEditer extends javax.swing.JFrame
         overridespam.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         overridespam.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox3.setText("Can be renamed ?");
-        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkrenameable.setText("Can be renamed ?");
+        checkrenameable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkrenameable.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox4.setText("Can be kicked ?");
-        jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkkickable.setText("Can be kicked ?");
+        checkkickable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkkickable.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         passsetcheck.setText("Password set ?");
         passsetcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -350,9 +350,9 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel14.setText("account to be used with last nick");
 
-        jCheckBox34.setText("Protect last nick of being used by other users.");
-        jCheckBox34.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox34.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checknickprotect.setText("Protect last nick of being used by other users.");
+        checknickprotect.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checknickprotect.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -361,13 +361,13 @@ public class AccountEditer extends javax.swing.JFrame
             .add(jPanel2Layout.createSequentialGroup()
                 .add(24, 24, 24)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox34)
+                    .add(checknickprotect)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jLabel16)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel17))
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(jCheckBox33)
+                        .add(checkflyable)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel14)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -375,13 +375,13 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(checkkey)
                     .add(jLabel7)
                     .add(overridespam)
-                    .add(jCheckBox3)
-                    .add(jCheckBox4)
+                    .add(checkrenameable)
+                    .add(checkkickable)
                     .add(passsetcheck)
                     .add(checkhidden)
                     .add(sharecheck)
                     .add(overrideshare))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -395,9 +395,9 @@ public class AccountEditer extends javax.swing.JFrame
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(overridespam)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox3)
+                .add(checkrenameable)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox4)
+                .add(checkkickable)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(passsetcheck)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -406,7 +406,7 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(sharecheck)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox33)
+                    .add(checkflyable)
                     .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel15))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -414,7 +414,7 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(jLabel16)
                     .add(jLabel17))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox34)
+                .add(checknickprotect)
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Properties", jPanel2);
@@ -737,6 +737,29 @@ if(curAcc.overridespam)
     overridespam.setSelected (true);
 else
     overridespam.setSelected (false);
+if(curAcc.renameable)
+    checkrenameable.setSelected (true);
+else
+    checkrenameable.setSelected (false);
+if(curAcc.kickable)
+    checkkickable.setSelected (true);
+else
+    checkkickable.setSelected (false);
+
+if(curAcc.nickprotected)
+    checknickprotect.setSelected (true);
+else
+    checknickprotect.setSelected (false);
+if(curAcc.Password.length ()<1)
+    checkflyable.setEnabled (false);
+else
+    checkflyable.setEnabled (true);
+if(curAcc.accountflyable)
+    checkflyable.setSelected (true);
+else
+    checkflyable.setSelected (false);
+
+
 
 lastlogin.setText (curAcc.TimeOnline+"");
 timespentonline.setText (curAcc.TimeOnline+" seconds.");
@@ -1018,6 +1041,8 @@ if(curAcc.myMask.adc)
             if(temp!=null)//if registered guy is online
             {
                 new Broadcast("BINF "+temp.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)-1));
+                temp.HO=Integer.toString (Integer.parseInt (temp.HO)+1);
+                temp.HR=Integer.toString (Integer.parseInt (temp.HR)-1);
             }
             }
             curAcc.key=true;
@@ -1037,6 +1062,8 @@ if(curAcc.myMask.adc)
             if(temp!=null)//if registered guy is online
             {
                 new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)+1));
+                temp.HO=Integer.toString (Integer.parseInt (temp.HO)-1);
+                temp.HR=Integer.toString (Integer.parseInt (temp.HR)+1);
             }
             }
             curAcc.key=false;
@@ -1049,9 +1076,30 @@ if(curAcc.myMask.adc)
           curAcc.overridespam=true;
         else
             curAcc.overridespam=false;
+        if(checkrenameable.isSelected ())
+          curAcc.renameable=true;
+        else
+            curAcc.renameable=false;
+       if(checkkickable.isSelected ())
+          curAcc.kickable=true;
+        else
+            curAcc.kickable=false;
+       if(checkflyable.isSelected ())
+       {
+          if(!curAcc.setFlyable (true))
+              Main.GUI.SetStatus ("Error: To be flyable, account needs a password.");
+       }
+        else
+          curAcc.setFlyable (false);
             
+         if(checknickprotect.isSelected ())
+          curAcc.nickprotected=true;
+        else
+            curAcc.nickprotected=false;
+        
         Main.Server.rewriteregs ();
-        this.setVisible (false);
+        
+this.setVisible (false);
 this.dispose ();
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -1071,8 +1119,12 @@ this.dispose ();
     private javax.swing.JCheckBox banip;
     private javax.swing.JCheckBox bannick;
     private javax.swing.JCheckBox cfg;
+    private javax.swing.JCheckBox checkflyable;
     private javax.swing.JCheckBox checkhidden;
     private javax.swing.JCheckBox checkkey;
+    private javax.swing.JCheckBox checkkickable;
+    private javax.swing.JCheckBox checknickprotect;
+    private javax.swing.JCheckBox checkrenameable;
     private javax.swing.JCheckBox cmdhistory;
     private javax.swing.JCheckBox drop;
     private javax.swing.JCheckBox gui;
@@ -1084,10 +1136,6 @@ this.dispose ();
     private javax.swing.JTextField ipstart;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox33;
-    private javax.swing.JCheckBox jCheckBox34;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

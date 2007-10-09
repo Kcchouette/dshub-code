@@ -355,14 +355,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox34" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checknickprotect" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jCheckBox33" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkflyable" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -371,14 +371,14 @@
                           <Component id="checkkey" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="overridespam" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkrenameable" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkkickable" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="passsetcheck" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="checkhidden" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="sharecheck" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="overrideshare" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="115" max="32767" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -394,9 +394,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="overridespam" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkrenameable" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkkickable" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="passsetcheck" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -405,7 +405,7 @@
                       <Component id="sharecheck" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox33" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkflyable" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -415,7 +415,7 @@
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCheckBox34" min="-2" max="-2" attributes="0"/>
+                      <Component id="checknickprotect" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -432,9 +432,9 @@
                 <Property name="text" type="java.lang.String" value="Warning: High risk of security breach"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox33">
+            <Component class="javax.swing.JCheckBox" name="checkflyable">
               <Properties>
-                <Property name="text" type="java.lang.String" value="If password set, allow"/>
+                <Property name="text" type="java.lang.String" value="Flyable. If password set, allow"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                     <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -476,7 +476,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+            <Component class="javax.swing.JCheckBox" name="checkrenameable">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Can be renamed ?"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -489,7 +489,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+            <Component class="javax.swing.JCheckBox" name="checkkickable">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Can be kicked ?"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -567,7 +567,7 @@
                 <Property name="text" type="java.lang.String" value="account to be used with last nick"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox34">
+            <Component class="javax.swing.JCheckBox" name="checknickprotect">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Protect last nick of being used by other users."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
