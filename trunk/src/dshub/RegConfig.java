@@ -44,6 +44,7 @@ import java.util.Date;
         
         boolean overrideshare;
         boolean overridespam;
+        boolean overridefull;
         boolean kickable,renameable;
         boolean accountflyable;
         
@@ -65,6 +66,7 @@ import java.util.Date;
             HideMe=false;
             WhoRegged=null;
             overrideshare=overridespam=false;
+            overridefull=false;
             accountflyable=false;
             kickable=renameable=true;
             CreatedOn=0L;

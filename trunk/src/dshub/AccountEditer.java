@@ -94,6 +94,7 @@ public class AccountEditer extends javax.swing.JFrame
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         checknickprotect = new javax.swing.JCheckBox();
+        hubfullcheck = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         adc = new javax.swing.JCheckBox();
@@ -354,6 +355,10 @@ public class AccountEditer extends javax.swing.JFrame
         checknickprotect.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checknickprotect.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        hubfullcheck.setText("Can enter on hub full ?");
+        hubfullcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        hubfullcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -372,14 +377,15 @@ public class AccountEditer extends javax.swing.JFrame
                         .add(jLabel14)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel15))
-                    .add(checkkey)
-                    .add(jLabel7)
-                    .add(overridespam)
                     .add(checkrenameable)
                     .add(checkkickable)
                     .add(passsetcheck)
                     .add(checkhidden)
                     .add(sharecheck)
+                    .add(hubfullcheck)
+                    .add(checkkey)
+                    .add(jLabel7)
+                    .add(overridespam)
                     .add(overrideshare))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
@@ -394,6 +400,8 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(overrideshare)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(overridespam)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(hubfullcheck)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(checkrenameable)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -415,7 +423,7 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(jLabel17))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(checknickprotect)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Properties", jPanel2);
 
@@ -758,6 +766,10 @@ if(curAcc.accountflyable)
     checkflyable.setSelected (true);
 else
     checkflyable.setSelected (false);
+if(curAcc.overridefull)
+    hubfullcheck.setSelected (true);
+else
+    hubfullcheck.setSelected (false);
 
 
 
@@ -1034,6 +1046,7 @@ if(curAcc.myMask.adc)
             ClientHandler temp=ClientHandler.FirstClient.NextClient;
             while(temp!=null)
             {
+                if(temp.userok==1)
                 if(temp.ID.equals (curAcc.CID))
                     break;
                 temp=temp.NextClient;
@@ -1092,10 +1105,10 @@ if(curAcc.myMask.adc)
         else
           curAcc.setFlyable (false);
             
-         if(checknickprotect.isSelected ())
-          curAcc.nickprotected=true;
+         if(hubfullcheck.isSelected ())
+          curAcc.overridefull=true;
         else
-            curAcc.nickprotected=false;
+            curAcc.overridefull=false;
         
         Main.Server.rewriteregs ();
         
@@ -1131,6 +1144,7 @@ this.dispose ();
     private javax.swing.JCheckBox help;
     private javax.swing.JCheckBox hideme;
     private javax.swing.JCheckBox history;
+    private javax.swing.JCheckBox hubfullcheck;
     private javax.swing.JCheckBox info;
     private javax.swing.JTextField ipend;
     private javax.swing.JTextField ipstart;
