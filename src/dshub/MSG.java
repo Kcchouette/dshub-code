@@ -85,8 +85,8 @@ public class MSG
                    
                     if(message.length ()>Vars.max_chat_msg )
                    {
-                       if(!(message.charAt (0)=='!' && cur_client.reg.key) && !(message.charAt (0)=='+' && cur_client.reg.key)
-                       && !(cur_client.reg.key && Vars.ops_override_spam==1))
+                       if(
+                        !(cur_client.reg.overridespam))
                        {
                        new STAError(cur_client,140,"Message exceeds maximum lenght.");
                        return;
@@ -115,18 +115,15 @@ public class MSG
                    {
                        if(now-cur_client.LastChatMsg<Vars.chat_interval)
                        {
-                           if(cur_client.reg.key)
-                               if(Vars.ops_override_spam!=1)
+                           if(!cur_client.reg.overridespam)
+                               
                                {
                        new STAError(cur_client,000,"Chatting Too Fast. Minimum chat interval "+String.valueOf (Vars.chat_interval)+" .You made "+String.valueOf (now-cur_client.LastChatMsg)+".");
                            return;
                                }
-                           if(!cur_client.reg.key)
-                               {
-                       new STAError(cur_client,000,"Chatting Too Fast. Minimum chat interval "+String.valueOf (Vars.chat_interval)+" .You made "+String.valueOf (now-cur_client.LastChatMsg)+".");
-                           return;
-                               }
+                           
                        }
+                       
                        else
                      cur_client.LastChatMsg=now;
                    }

@@ -593,22 +593,7 @@ public class CFGConfig
                     cur_client.sendFromBot("Invalid number");
                    } 
                 }
-                else if(aux.toLowerCase().equals ("ops_override_spam"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.ops_override_spam;
-                        Vars.ops_override_spam=Integer.parseInt (aux);
-                        cur_client.sendFromBot("Ops_override_spam changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
-                        Main.Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    cur_client.sendFromBot("Invalid number");
-                   } 
-                }
+                
                 else if(aux.toLowerCase().equals ("keep_alive_interval"))
                 {
                     aux=ST.nextToken ();
@@ -749,7 +734,6 @@ public class CFGConfig
                             +          "   kick_ops                "  +Vars.kick_ops+"      -- 0 = ops can't be kicked/banned, other value = they can be kicked/banned.\n"
                             +          "   rename_ops              "  +Vars.rename_ops+"        -- 0 = ops can't be renamed, other value = they can be.\n"
                             +          "   ops_override_full       "  +Vars.ops_override_full+"         -- 1 = ops can enter full hub, other value = they can't.\n"
-                            +          "   ops_override_spam       "  +Vars.ops_override_spam+"         -- 1 = ops can override spam settings, other value = they can't.\n"
                             +          "   history_lines           "  +Vars.history_lines+"         -- Number of lines to keep in chat history.\n"
                             +          "   opchat_name             "  +Vars.Opchat_name+"       -- The Operator Chat Bot Nick.\n"
                             +          "   opchat_desc             "  +Vars.Opchat_desc+"       -- The Operator Chat Bot Description.\n"

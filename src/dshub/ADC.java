@@ -38,7 +38,7 @@ abstract public class ADC
     /**  ISID = session id string for connecting client*/
     static String ISID="ISID";
     
-    /** IINF hub info parsing to connecting client*/
+    /** The default motd.*/
    static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
@@ -138,6 +138,8 @@ abstract public class ADC
            * creating premise for getting rid of ops_override_spam and share;
            * fixed hub counts on key and registered on reg and ureg;
            * almost finished boxes in account edit;
+           * fixed bug when adding key and button did not work ( asking CID on not userok);
+           * removed variable ops_override_spam, every reg has its own;
            **/
             
             ;

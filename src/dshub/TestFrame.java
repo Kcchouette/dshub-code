@@ -137,7 +137,6 @@ public class TestFrame extends javax.swing.JFrame
         maxchatmsgfield = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         opsoverridefullcheck = new javax.swing.JCheckBox();
-        opsoverridespamcheck = new javax.swing.JCheckBox();
         chatintervalfield = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         keepalivefield = new javax.swing.JTextField();
@@ -810,18 +809,6 @@ public class TestFrame extends javax.swing.JFrame
             }
         });
 
-        opsoverridespamcheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        opsoverridespamcheck.setText("Ops override spam settings.");
-        opsoverridespamcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        opsoverridespamcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        opsoverridespamcheck.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                opsoverridespamcheckActionPerformed(evt);
-            }
-        });
-
         chatintervalfield.setText("500");
 
         jLabel43.setFont(new java.awt.Font("Tahoma", 0, 10));
@@ -886,7 +873,6 @@ public class TestFrame extends javax.swing.JFrame
                     .add(xxxLayout.createSequentialGroup()
                         .add(28, 28, 28)
                         .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(opsoverridespamcheck)
                             .add(opsoverridefullcheck)
                             .add(xxxLayout.createSequentialGroup()
                                 .add(maxchatmsgfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -929,9 +915,7 @@ public class TestFrame extends javax.swing.JFrame
                     .add(jLabel38))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(opsoverridefullcheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(opsoverridespamcheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(25, 25, 25)
                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(chatintervalfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel43))
@@ -3083,22 +3067,6 @@ if(FMSGcheck.isSelected())
         
     }//GEN-LAST:event_opsoverridefullcheckActionPerformed
 
-    private void opsoverridespamcheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_opsoverridespamcheckActionPerformed
-    {//GEN-HEADEREND:event_opsoverridespamcheckActionPerformed
-// TODO add your handling code here:
-         if(opsoverridespamcheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Ops_override_spam changed from \"0\" to \"1\".");
-             Vars.ops_override_spam=1;
-         }
-         else
-         {
-             Main.PopMsg("Ops_override_spam changed from \"1\" to \"0\".");
-             Vars.ops_override_spam=0;
-         }
-    }//GEN-LAST:event_opsoverridespamcheckActionPerformed
-
     private void regonlycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_regonlycheckActionPerformed
     {//GEN-HEADEREND:event_regonlycheckActionPerformed
 // TODO add your handling code here:
@@ -3508,7 +3476,6 @@ if(FMSGcheck.isSelected())
    kick_ops                0      -- 0 = ops can't be kicked/banned, other value = they can be kicked/banned.
    rename_ops              0        -- 0 = ops can't be renamed, other value = they can be.
    ops_override_full       1         -- 1 = ops can enter full hub, other value = they can't.
-   ops_override_spam       1         -- 1 = ops can override spam settings, other value = they can't.
    history_lines           50         -- Number of lines to keep in chat history.
    opchat_name             OpChat       -- The Operator Chat Bot Nick.
    opchat_desc             BoT       -- The Operator Chat Bot Description.
@@ -3573,10 +3540,6 @@ if(FMSGcheck.isSelected())
         else
             opsoverridefullcheck.setSelected(false);
        
-        if(Vars.ops_override_spam==1)
-            opsoverridespamcheck.setSelected(true);
-        else
-            opsoverridespamcheck.setSelected(false);
         
         historylinesfield.setText(Integer.toString(Vars.history_lines));
         
@@ -4041,7 +4004,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
     private javax.swing.JCheckBox opsoverridefullcheck;
-    private javax.swing.JCheckBox opsoverridespamcheck;
     private javax.swing.JTextField portfield;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox renameopscheck;

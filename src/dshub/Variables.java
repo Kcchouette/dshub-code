@@ -79,7 +79,7 @@ public class Variables implements Serializable
      int reg_only;
      int max_users;
      int ops_override_full;
-     int ops_override_spam;
+
      int chat_interval;
      int keep_alive_interval;
      int savelogs;
@@ -183,7 +183,7 @@ public class Variables implements Serializable
       Msg_Full=Vars.Msg_Full;
       ops_override_full=Vars.ops_override_full;
       chat_interval=Vars.chat_interval;
-      ops_override_spam=Vars.ops_override_spam;
+
       keep_alive_interval=Vars.keep_alive_interval;
       savelogs=Vars.savelogs;
       automagic_search=Vars.automagic_search;
@@ -305,7 +305,7 @@ public class Variables implements Serializable
     static int reg_only=0;
     static int max_users=1000;
     static int ops_override_full=1;
-    static int ops_override_spam=1;
+
     static int chat_interval=500;//millis
     static int keep_alive_interval=120;//seconds
     static int savelogs=1;
