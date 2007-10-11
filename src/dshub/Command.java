@@ -415,6 +415,28 @@ public class Command
                         }
                     }
                     //else System.out.println("no nick ban");
+                ClientHandler temp=cur_client.FirstClient.NextClient;
+                int i=0;
+               while(temp!=null)
+               {
+                   if(temp.userok!=0 && !temp.equals (cur_client))
+                   {
+                   if(temp.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
+                   {
+                       new STAError(cur_client,222,"Nick taken, please choose another");
+                       return;
+                   }
+                   
+                   if(temp.ID.equals(cur_client.ID))
+                   {
+                       new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
+                       return;
+                   }
+                   i++;
+                   }
+                   temp=temp.NextClient;
+                   
+               }
                     // now must check if hub is full...
                     if(State.equals ("PROTOCOL")) //otherwise is already connected, no point in checking this
                     {
@@ -425,24 +447,13 @@ public class Command
                             cur_client.HI="1";
                         }
                         
-                 int i=0;
-                ClientHandler temp0=ClientHandler.FirstClient;
-                while(temp0!=null)
-                {
-                    if(temp0.userok==1)
-                    i++;
-                    temp0=temp0.NextClient;
-                }
-                   if(Vars.max_users<=i && Vars.ops_override_full!=1)
+                
+                   if(Vars.max_users<=i && !cur_client.reg.overridefull)
                    {
                     new STAError(cur_client,211,"Hello there. Hub is full, there are "+String.valueOf (i)+" users online.\n"+Vars.Msg_Full );
                     return;
                    }
-                   if(Vars.max_users<=i && Vars.ops_override_full==1 && !cur_client.reg.key)
-                   {
-                    new STAError(cur_client,211,"Hello there. Hub is full, there are "+String.valueOf (i)+" users online.\n"+Vars.Msg_Full );
-                    return;
-                   }
+                  
                     
                  }
                     if(cur_client.SS==null && Vars.min_share!=0)
@@ -490,25 +501,7 @@ public class Command
                        new STAError(cur_client,240,"Your client sent weird info, Protocol Error.");
                        return;
                     }
-               ClientHandler temp=cur_client.FirstClient.NextClient;
-               while(temp!=null)
-               {
-                   if(temp.userok!=0 && !temp.equals (cur_client))
-                   {
-                   if(temp.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
-                   {
-                       new STAError(cur_client,222,"Nick taken, please choose another");
-                       return;
-                   }
-                   
-                   if(temp.ID.equals(cur_client.ID))
-                   {
-                       new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
-                       return;
-                   }
-                   }
-                   temp=temp.NextClient;
-               }
+               
                if(cur_client.ID.equals (Main.Server.OpChatCid))
                {
                     new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");

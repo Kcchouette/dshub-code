@@ -100,10 +100,131 @@ import java.util.Date;
          }
          Date d=new Date(this.CreatedOn);
            retString=retString+" Reg Info:\nLast Nick : "+this.LastNI+"\nLast IP: "+this.LastIP+"\nRegged by: "+this.WhoRegged+" on "+d.toString ();
-           retString+="\nLast LogIn: "+this.LastLogin+"\nTime Online: "+this.TimeOnline+"\nOverride share restrictions?"+(this.overrideshare ? "yes" : "no")
-           +"\nOverride spam settings?"+(this.overridespam?"yes":"no")+"\nCan be renamed?"+(this.renameable?"yes":"no")+
-                   "\nPassword set?"+(this.Password.length ()>0?"yes":"no")+"\nIs hidden?"+(this.HideMe?"yes":"no")+
-                   "\nShare hidden?"+(this.HideShare?"yes":"no")+"\n"
+           retString+="\nLast LogIn: "+this.LastLogin+"\nTime Online: "+this.TimeOnline+"\nOverride share restrictions? "+(this.overrideshare ? "yes" : "no")
+           +"\nOverride spam settings? "+(this.overridespam? "yes":"no")+"\nCan be renamed? "+(this.renameable?"yes":"no")+
+                   "\nPassword set? "+(this.Password.length ()>0?"yes":"no")+"\nIs hidden? "+(this.HideMe?"yes":"no")+
+                   "\nShare hidden? "+(this.HideShare?"yes":"no")+"\n"+"\nFlyable? "+(this.HideShare?"yes":"no")+"\n"+
+                   "\nLast nick protected? "+(this.HideShare?"yes":"no")+"\n"+
+                   "\n---------------------Profile----------------------\n";
+           String Help=retString;
+           nod curAcc=this;
+                   if(this.myMask.about)
+            Help+="+about";
+                   else
+                       Help+="-about";
+           
+        if(curAcc.myMask.adc)
+            Help+="+adc";
+        else
+            Help+="-adc";
+        if(curAcc.myMask.bancid)
+            Help+="+bancid";
+        else
+            Help+="-bancid";
+        if(curAcc.myMask.banip)
+            Help+="+banip";
+        else
+            Help+="-banip";
+        if(curAcc.myMask.bannick)
+            Help+="+bannick";
+        else
+            Help+="-bannick";
+        if(curAcc.myMask.cfg)
+            Help+="+cfg";
+        else
+            Help+="-cfg";
+        if(curAcc.myMask.cmdhistory)
+            Help+="+cmdhistory";
+        else
+            Help+="-cmdhistory";
+        if(curAcc.myMask.drop)
+            Help+="+drop";
+        else
+            Help+="-drop";
+        if(curAcc.myMask.gui)    
+            Help+="+gui";
+        else
+            Help+="-gui";
+        if(curAcc.myMask.help)
+            Help+="+help";
+        else
+            Help+="-help";
+        if(curAcc.myMask.hideme)
+            Help+="+hideme";
+        else
+            Help+="-hideme";
+        if(curAcc.myMask.history)
+            Help+="+history";
+        else
+            Help+="-history";
+        if(curAcc.myMask.info)
+            Help+="+info";
+        else
+            Help+="-info";
+        if(curAcc.myMask.kick)
+            Help+="+kick";
+        else
+            Help+="-kick";
+        if(curAcc.myMask.listban)
+            Help+="+listban";
+        else
+            Help+="-listban";
+        if(curAcc.myMask.listreg)
+            Help+="+listreg";
+        else
+            Help+="-listreg";
+        if(curAcc.myMask.mass)
+            Help+="+mass";
+        else
+            Help+="-mass";
+        if(curAcc.myMask.mynick)
+            Help+="+mynick";
+        else
+            Help+="-mynick";
+        if(curAcc.myMask.password)
+            Help+="+password";
+        else
+            Help+="-password";
+        if(curAcc.myMask.port)
+            Help+="+port";
+        else
+            Help+="-port";
+        if(curAcc.myMask.quit)
+            Help+="+quit";
+        else
+            Help+="-quit";
+        if(curAcc.myMask.reg)
+            Help+="+reg";
+        else
+            Help+="-reg";
+        if(curAcc.myMask.rename)
+            Help+="+rename";
+        else
+            Help+="-rename";
+        if(curAcc.myMask.restart)
+            Help+="+restart";
+        else
+            Help+="-restart";
+        if(curAcc.myMask.stats)
+            Help+="+stats";
+        else
+            Help+="-stats";
+        if(curAcc.myMask.topic)
+            Help+="+topic";
+        else
+            Help+="-topic";
+        if(curAcc.myMask.unban)
+            Help+="+unban";
+        else
+            Help+="-unban";
+        if(curAcc.myMask.ureg)
+            Help+="+ureg";
+        else
+            Help+="-ureg";
+        if(curAcc.myMask.usercount)
+            Help+="+usercount";
+        else
+            Help+="-usercount";
         ;
                   
            

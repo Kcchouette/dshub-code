@@ -140,6 +140,8 @@ abstract public class ADC
            * almost finished boxes in account edit;
            * fixed bug when adding key and button did not work ( asking CID on not userok);
            * removed variable ops_override_spam, every reg has its own;
+           * done with override hub full command, some checkboxes still do nothing;
+           * improved reg information on !reg and !info;
            **/
             
             ;
