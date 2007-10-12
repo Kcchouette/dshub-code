@@ -89,6 +89,8 @@ public class HelpFile implements Serializable
             Help+="cmdhistory -- Lists the last history_lines from given commands by logged users.\n";
         if(curAcc.myMask.drop)
             Help+="drop -- A kick with no reason or ban time, just drop/Extended drop; use with no arguments to show info.\n";
+        if(curAcc.myMask.grant)
+            Help+="grant -- Offers the posibility of editing an account's profile; use with no arguments for info.\n";
         if(curAcc.myMask.gui)    
             Help+="gui -- Brings up the gui to server if available.\n";
         if(curAcc.myMask.help)
