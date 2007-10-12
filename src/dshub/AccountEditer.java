@@ -1083,7 +1083,8 @@ if(curAcc.myMask.adc)
             ClientHandler temp=ClientHandler.FirstClient.NextClient;
             while(temp!=null)
             {
-                if(temp.ID.equals (curAcc.CID))
+                if(temp.userok==1)
+                   if(temp.ID.equals (curAcc.CID))
                     break;
                 temp=temp.NextClient;
             }

@@ -203,7 +203,7 @@ public class CommandParser
                 cur_client.sendFromBot("Your password is now "+aux+".");
                
         } 
-       if(recvbuf.toLowerCase ().startsWith("grant"))
+       else if(recvbuf.toLowerCase ().startsWith("grant"))
         {
                     if(!cur_client.reg.myMask.grant)
                     {
