@@ -203,6 +203,16 @@ public class CommandParser
                 cur_client.sendFromBot("Your password is now "+aux+".");
                
         } 
+       if(recvbuf.toLowerCase ().startsWith("grant"))
+        {
+                    if(!cur_client.reg.myMask.grant)
+                    {
+                        cur_client.sendFromBot("Access denied.");
+                        return;
+                    }
+                 new GrantCmd(cur_client,recvbuf);
+               
+        } 
         else if(recvbuf.toLowerCase ().equals("gui"))
         {
                     if(!cur_client.reg.myMask.gui)

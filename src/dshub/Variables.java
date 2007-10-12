@@ -78,7 +78,7 @@ public class Variables implements Serializable
      int rename_ops;
      int reg_only;
      int max_users;
-     int ops_override_full;
+
 
      int chat_interval;
      int keep_alive_interval;
@@ -181,8 +181,8 @@ public class Variables implements Serializable
       nick_chars=Vars.nick_chars;
       max_users=Vars.max_users;
       Msg_Full=Vars.Msg_Full;
-      ops_override_full=Vars.ops_override_full;
-      chat_interval=Vars.chat_interval;
+
+
 
       keep_alive_interval=Vars.keep_alive_interval;
       savelogs=Vars.savelogs;
@@ -304,7 +304,7 @@ public class Variables implements Serializable
     static int rename_ops=0;
     static int reg_only=0;
     static int max_users=1000;
-    static int ops_override_full=1;
+
 
     static int chat_interval=500;//millis
     static int keep_alive_interval=120;//seconds

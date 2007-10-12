@@ -142,6 +142,10 @@ abstract public class ADC
            * removed variable ops_override_spam, every reg has its own;
            * done with override hub full command, some checkboxes still do nothing;
            * improved reg information on !reg and !info;
+           * removed variable ops_override_full from testframe and cfg;
+           * all accounts have their own override;
+           * added a grant command to GUI and reg configuration;
+           * added a grant command file to handle grants command;
            **/
             
             ;

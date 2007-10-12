@@ -367,7 +367,7 @@ public class HubServer extends Thread
       Vars.nick_chars=vars.nick_chars;
       Vars.max_users=vars.max_users;
       Vars.Msg_Full=vars.Msg_Full;
-      Vars.ops_override_full=vars.ops_override_full;
+
      
       Vars.chat_interval=vars.chat_interval;
       Vars.keep_alive_interval=vars.keep_alive_interval;

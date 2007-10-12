@@ -136,7 +136,6 @@ public class TestFrame extends javax.swing.JFrame
         xxx = new javax.swing.JPanel();
         maxchatmsgfield = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        opsoverridefullcheck = new javax.swing.JCheckBox();
         chatintervalfield = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         keepalivefield = new javax.swing.JTextField();
@@ -797,18 +796,6 @@ public class TestFrame extends javax.swing.JFrame
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel38.setText("Maximum chat message size, integer.");
 
-        opsoverridefullcheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        opsoverridefullcheck.setText("Ops can enter even if hub is full.");
-        opsoverridefullcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        opsoverridefullcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        opsoverridefullcheck.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                opsoverridefullcheckActionPerformed(evt);
-            }
-        });
-
         chatintervalfield.setText("500");
 
         jLabel43.setFont(new java.awt.Font("Tahoma", 0, 10));
@@ -873,7 +860,6 @@ public class TestFrame extends javax.swing.JFrame
                     .add(xxxLayout.createSequentialGroup()
                         .add(28, 28, 28)
                         .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(opsoverridefullcheck)
                             .add(xxxLayout.createSequentialGroup()
                                 .add(maxchatmsgfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(25, 25, 25)
@@ -913,9 +899,7 @@ public class TestFrame extends javax.swing.JFrame
                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(maxchatmsgfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel38))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(opsoverridefullcheck)
-                .add(25, 25, 25)
+                .add(44, 44, 44)
                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(chatintervalfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel43))
@@ -3050,23 +3034,6 @@ if(FMSGcheck.isSelected())
         SetStatus("Restrictions settings saved.");
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void opsoverridefullcheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_opsoverridefullcheckActionPerformed
-    {//GEN-HEADEREND:event_opsoverridefullcheckActionPerformed
-// TODO add your handling code here:
-        if(opsoverridefullcheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Ops_override_full changed from \"0\" to \"1\".");
-             Vars.ops_override_full=1;
-         }
-         else
-         {
-             Main.PopMsg("Ops_override_full changed from \"1\" to \"0\".");
-             Vars.ops_override_full=0;
-         }
-        
-    }//GEN-LAST:event_opsoverridefullcheckActionPerformed
-
     private void regonlycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_regonlycheckActionPerformed
     {//GEN-HEADEREND:event_regonlycheckActionPerformed
 // TODO add your handling code here:
@@ -3475,7 +3442,6 @@ if(FMSGcheck.isSelected())
    max_users               1000         -- Maximum number of online users, integer.
    kick_ops                0      -- 0 = ops can't be kicked/banned, other value = they can be kicked/banned.
    rename_ops              0        -- 0 = ops can't be renamed, other value = they can be.
-   ops_override_full       1         -- 1 = ops can enter full hub, other value = they can't.
    history_lines           50         -- Number of lines to keep in chat history.
    opchat_name             OpChat       -- The Operator Chat Bot Nick.
    opchat_desc             BoT       -- The Operator Chat Bot Description.
@@ -3535,10 +3501,7 @@ if(FMSGcheck.isSelected())
         else
             renameopscheck.setSelected(false);
        
-         if(Vars.ops_override_full==1)
-            opsoverridefullcheck.setSelected(true);
-        else
-            opsoverridefullcheck.setSelected(false);
+         
        
         
         historylinesfield.setText(Integer.toString(Vars.history_lines));
@@ -4003,7 +3966,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextArea nickcharsfield;
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
-    private javax.swing.JCheckBox opsoverridefullcheck;
     private javax.swing.JTextField portfield;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox renameopscheck;
