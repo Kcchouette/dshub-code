@@ -431,7 +431,96 @@ public class GrantCmd
                modnod.myMask.usercount=attribute;
               cur_client.sendFromBot(" usercount modified to "+attribute);
              }
-            
+            else  if(what.equals("flyable"))
+             {
+                if(cur_client.reg.accountflyable==false)
+                {
+                    cur_client.sendFromBot("flyable - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.accountflyable=attribute;
+               
+              cur_client.sendFromBot(" flyable modified to "+attribute);
+             }
+            else  if(what.equals("key"))
+             {
+                if(cur_client.reg.key==false)
+                {
+                    cur_client.sendFromBot("key - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.key=attribute;
+               
+              cur_client.sendFromBot(" key modified to "+attribute);
+             }
+            else  if(what.equals("kickable"))
+             {
+                if(cur_client.reg.kickable==false)
+                {
+                    cur_client.sendFromBot("kickable - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.kickable=attribute;
+               
+              cur_client.sendFromBot(" kickable modified to "+attribute);
+             }
+            else  if(what.equals("nickprotected"))
+             {
+                if(cur_client.reg.nickprotected==false)
+                {
+                    cur_client.sendFromBot("nickprotected - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.nickprotected=attribute;
+               
+              cur_client.sendFromBot(" nickprotected modified to "+attribute);
+             }
+            else  if(what.equals("overridefull"))
+             {
+                if(cur_client.reg.overridefull==false)
+                {
+                    cur_client.sendFromBot("overridefull - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.overridefull=attribute;
+               
+              cur_client.sendFromBot(" overridefull modified to "+attribute);
+             }
+            else  if(what.equals("overrideshare"))
+             {
+                if(cur_client.reg.overrideshare==false)
+                {
+                    cur_client.sendFromBot("overrideshare - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.overrideshare=attribute;
+               
+              cur_client.sendFromBot(" overrideshare modified to "+attribute);
+             }
+            else  if(what.equals("overridespam"))
+             {
+                if(cur_client.reg.overridespam==false)
+                {
+                    cur_client.sendFromBot("overridespam - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.overridespam=attribute;
+               
+              cur_client.sendFromBot(" overridespam modified to "+attribute);
+             }
+            else  if(what.equals("renameable"))
+             {
+                if(cur_client.reg.renameable==false)
+                {
+                    cur_client.sendFromBot("renameable - can't grant a feature you don't possess.");
+                    return;
+                }
+               modnod.renameable=attribute;
+               
+              cur_client.sendFromBot(" renameable modified to "+attribute);
+             }
+            else
+                cur_client.sendFromBot(" unknown feature ");
         if(x<0 && y<0)
             break;//over
     }

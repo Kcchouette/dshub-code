@@ -1,4 +1,4 @@
-          * fixed cfg spaces in setting topic hub name etc.
+           * fixed cfg spaces in setting topic hub name etc.
            * fixed small gui stuff in opchat desc & name;
            * added advanced adc config panel;
            * added the MSG context parameters;
@@ -87,3 +87,6 @@
            * added a grant command file to handle grants command;
            * created grants for most commands, need to make for attributes too;
            * need to fix show up to be in just one message ( on grant );
+           * fixed bug that also showed unknown cmd on password;
+           * fixed same bug on removing key ( like the one adding );
+           * added grant for account options as well ;
