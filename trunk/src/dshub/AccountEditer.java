@@ -126,6 +126,7 @@ public class AccountEditer extends javax.swing.JFrame
         restart = new javax.swing.JCheckBox();
         quit = new javax.swing.JCheckBox();
         listban = new javax.swing.JCheckBox();
+        grant = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -545,6 +546,10 @@ public class AccountEditer extends javax.swing.JFrame
         listban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         listban.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        grant.setText("grant command");
+        grant.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        grant.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -564,84 +569,39 @@ public class AccountEditer extends javax.swing.JFrame
                             .add(cfg)
                             .add(cmdhistory)
                             .add(gui)
-                            .add(help))
+                            .add(grant))
                         .add(16, 16, 16)
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel3Layout.createSequentialGroup()
-                                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(mynick)
-                                    .add(info)
-                                    .add(kick)
-                                    .add(listban)
-                                    .add(listreg)
-                                    .add(mass)
-                                    .add(password)
-                                    .add(port))
-                                .add(37, 37, 37)
-                                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(quit)
-                                    .add(unban)
-                                    .add(reg)
-                                    .add(rename)
-                                    .add(restart)
-                                    .add(stats)
-                                    .add(usercount)
-                                    .add(topic)
-                                    .add(ureg)))
+                            .add(mynick)
+                            .add(info)
+                            .add(kick)
+                            .add(listban)
+                            .add(listreg)
+                            .add(mass)
                             .add(hideme)
-                            .add(history))))
-                .addContainerGap(134, Short.MAX_VALUE))
+                            .add(history)
+                            .add(password)
+                            .add(help))
+                        .add(36, 36, 36)
+                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(port)
+                            .add(quit)
+                            .add(unban)
+                            .add(reg)
+                            .add(rename)
+                            .add(restart)
+                            .add(stats)
+                            .add(usercount)
+                            .add(topic)
+                            .add(ureg))))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
-                .add(38, 38, 38)
-                .add(jLabel13)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(about)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(adc)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(bancid)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(banip)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(bannick)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cfg)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cmdhistory)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(drop)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(gui)
-                    .add(password))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(help)
-                    .add(port))
-                .addContainerGap(76, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(58, Short.MAX_VALUE)
-                .add(hideme)
+                .add(port)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(history)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(info)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(kick)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(listban)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(listreg)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(mass)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(mynick)
-                .add(118, 118, 118))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
                 .add(quit)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(reg)
@@ -659,7 +619,54 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(ureg)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(usercount)
-                .add(97, 97, 97))
+                .add(76, 76, 76))
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(38, 38, 38)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(jLabel13)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(about))
+                    .add(help))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(hideme)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(history)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(info)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(kick)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(listban)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(listreg)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(mass)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(mynick))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(adc)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(bancid)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(banip)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(bannick)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cfg)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cmdhistory)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(drop)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(grant)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(password)
+                    .add(gui))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Commands", jPanel3);
 
@@ -902,6 +909,10 @@ if(curAcc.myMask.adc)
            listban.setSelected (true);
         else
             listban.setSelected (false);
+        if(curAcc.myMask.grant)
+           grant.setSelected (true);
+        else
+            grant.setSelected (false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -1035,6 +1046,10 @@ if(curAcc.myMask.adc)
             curAcc.myMask.listban=true;
         else
             curAcc.myMask.listban=false;
+        if(grant.isSelected())
+            curAcc.myMask.grant=true;
+        else
+            curAcc.myMask.grant=false;
                 
         
         
@@ -1140,6 +1155,7 @@ this.dispose ();
     private javax.swing.JCheckBox checkrenameable;
     private javax.swing.JCheckBox cmdhistory;
     private javax.swing.JCheckBox drop;
+    private javax.swing.JCheckBox grant;
     private javax.swing.JCheckBox gui;
     private javax.swing.JCheckBox help;
     private javax.swing.JCheckBox hideme;

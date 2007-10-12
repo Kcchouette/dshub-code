@@ -103,9 +103,9 @@ import java.util.Date;
            retString+="\nLast LogIn: "+this.LastLogin+"\nTime Online: "+this.TimeOnline+"\nOverride share restrictions? "+(this.overrideshare ? "yes" : "no")
            +"\nOverride spam settings? "+(this.overridespam? "yes":"no")+"\nCan be renamed? "+(this.renameable?"yes":"no")+
                    "\nPassword set? "+(this.Password.length ()>0?"yes":"no")+"\nIs hidden? "+(this.HideMe?"yes":"no")+
-                   "\nShare hidden? "+(this.HideShare?"yes":"no")+"\n"+"\nFlyable? "+(this.HideShare?"yes":"no")+"\n"+
-                   "\nLast nick protected? "+(this.HideShare?"yes":"no")+"\n"+
-                   "\n---------------------Profile----------------------\n";
+                   "\nShare hidden? "+(this.HideShare?"yes":"no")+"\nFlyable? "+(this.HideShare?"yes":"no")+"\n"+
+                   "Last nick protected? "+(this.HideShare?"yes":"no")+"\n"+
+                   "---------------------Profile----------------------\n";
            String Help=retString;
            nod curAcc=this;
                    if(this.myMask.about)
@@ -141,6 +141,10 @@ import java.util.Date;
             Help+="+drop";
         else
             Help+="-drop";
+           if(curAcc.myMask.grant)
+            Help+="+grant";
+        else
+            Help+="-grant";
         if(curAcc.myMask.gui)    
             Help+="+gui";
         else
@@ -226,9 +230,41 @@ import java.util.Date;
         else
             Help+="-usercount";
         ;
+        if(curAcc.accountflyable)
+            Help+="+flyable";
+        else
+            Help+="-flyable";
+        if(curAcc.key)
+            Help+="+key";
+        else
+            Help+="-key";
+        if(curAcc.kickable)
+            Help+="+kickable";
+        else
+            Help+="-kickable";
+        if(curAcc.nickprotected)
+            Help+="+nickprotected";
+        else
+            Help+="-nickprotected";
+        if(curAcc.overridefull)
+            Help+="+overridefull";
+        else
+            Help+="-overridefull";
+        if(curAcc.overrideshare)
+            Help+="+overrideshare";
+        else
+            Help+="-overrideshare";
+        if(curAcc.overridespam)
+            Help+="+overridespam";
+        else
+            Help+="-overridespam";
+        if(curAcc.renameable)
+            Help+="+renameable";
+        else
+            Help+="-renameable";
                   
            
-           return retString;
+           return Help;
                     
                             
          

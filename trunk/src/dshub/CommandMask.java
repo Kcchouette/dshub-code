@@ -61,13 +61,13 @@ public class CommandMask implements Serializable
                         quit -- Shuts down hub.
 */
     boolean adc,port,reg,ureg,listreg,mass,kick,drop,unban,banip,bancid,bannick,history,cmdhistory,info,hideme,password,mynick,rename,usercount,topic,
-            cfg,gui,stats,about,help,restart,quit,listban;
+            cfg,gui,stats,about,help,restart,quit,listban,grant;
     
     /** Creates a new instance of CommandMask */
     public CommandMask ()  
     {
         adc=port=reg=ureg=listreg=mass=kick=drop=unban=banip=bancid=bannick=history=cmdhistory=info=hideme=rename=usercount=topic=
-            cfg=gui=stats=about=restart=quit=listban=false;
+            cfg=gui=stats=about=restart=quit=listban=grant=false;
         mynick=help=password=true;
     }
     public CommandMask ( int i)
@@ -75,7 +75,7 @@ public class CommandMask implements Serializable
         if(i==1)
         {
             adc=port=reg=ureg=listreg=mass=kick=drop=unban=banip=bancid=bannick=history=cmdhistory=info=hideme=password=rename=usercount=topic=
-            cfg=gui=stats=about=restart=quit=listban=true;
+            cfg=gui=stats=about=restart=quit=listban=grant=true;
         mynick=help=true;
         }
     }
