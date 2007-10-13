@@ -47,13 +47,14 @@ public class GrantCmd
             }
         String who=curcmd.nextToken();
         nod modnod=null;
+        ClientHandler temp=ClientHandler.FirstClient.NextClient;
         if(ADC.isCID(who))
         {
              modnod=reg_config.getnod(who);
         }
         else
         {
-            ClientHandler temp=ClientHandler.FirstClient.NextClient;
+            
             while(temp!=null)
             {
                 if(temp.userok==1)
@@ -78,13 +79,14 @@ public class GrantCmd
         }
         String what=curcmd.nextToken();
         String aux=what;
-        cur_client.sendFromBot("Editing Account: "+modnod.CID+"\n");
+        String toSend="";
+        toSend+="Editing Account: "+modnod.CID+"\n";
     while(aux!=null)    
     {
         what=aux;
         if(!what.startsWith("+") && !what.startsWith("-"))
         {
-            cur_client.sendFromBot("Invalid argument supplied. Use with no arguments to see usage tipx.");
+            toSend+="Invalid argument supplied. Use with no arguments to see usage tipx.\n";
                 return;
             
         }
@@ -116,416 +118,477 @@ public class GrantCmd
             
         if(what.equalsIgnoreCase("adc"))
         {
-              cur_client.reg.myMask.adc=attribute;
-              cur_client.sendFromBot(" adc modified to "+attribute);
+               if(cur_client.reg.myMask.adc==false)
+                {
+                    toSend+="adc - can't grant a feature you don't possess.\n";
+                    return;
+                }
+              modnod.myMask.adc=attribute;
+              toSend+=" adc modified to "+attribute+"\n";
         }
             
         else  if(what.equals("about"))
              {
                 if(cur_client.reg.myMask.about==false)
                 {
-                    cur_client.sendFromBot("about - can't grant a feature you don't possess.");
+                    toSend+="about - can't grant a feature you don't possess.\n";
                     return;
                 }
               modnod.myMask.about=attribute;
-              cur_client.sendFromBot(" about modified to "+attribute);
+              toSend+=" about modified to "+attribute+"\n";
              }
             else  if(what.equals("bancid"))
              {
                 if(cur_client.reg.myMask.bancid==false)
                 {
-                    cur_client.sendFromBot("bancid - can't grant a feature you don't possess.");
+                    toSend+="bancid - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.bancid=attribute;
-              cur_client.sendFromBot(" bancid modified to "+attribute);
+              toSend+=" bancid modified to "+attribute+"\n";
              }
             else  if(what.equals("banip"))
              {
                 if(cur_client.reg.myMask.banip==false)
                 {
-                    cur_client.sendFromBot("banip - can't grant a feature you don't possess.");
+                    toSend+="banip - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.banip=attribute;
-              cur_client.sendFromBot(" banip modified to "+attribute);
+              toSend+=" banip modified to "+attribute+"\n";
              }
              else  if(what.equals("bannick"))
              {
                 if(cur_client.reg.myMask.bannick==false)
                 {
-                    cur_client.sendFromBot("bannick - can't grant a feature you don't possess.");
+                    toSend+="bannick - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.bannick=attribute;
-              cur_client.sendFromBot(" bannick modified to "+attribute);
+              toSend+=" bannick modified to "+attribute+"\n";
              }
              else  if(what.equals("cfg"))
              {
                 if(cur_client.reg.myMask.cfg==false)
                 {
-                    cur_client.sendFromBot("cfg - can't grant a feature you don't possess.");
+                    toSend+="cfg - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.cfg=attribute;
-              cur_client.sendFromBot(" cfg modified to "+attribute);
+              toSend+=" cfg modified to "+attribute+"\n";
              }
              else  if(what.equals("cmdhistory"))
              {
                 if(cur_client.reg.myMask.cmdhistory==false)
                 {
-                    cur_client.sendFromBot("cmdhistory - can't grant a feature you don't possess.");
+                    toSend+="cmdhistory - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.cmdhistory=attribute;
-              cur_client.sendFromBot(" cmdhistory modified to "+attribute);
+              toSend+=" cmdhistory modified to "+attribute+"\n";
              }
              else  if(what.equals("drop"))
              {
                 if(cur_client.reg.myMask.drop==false)
                 {
-                    cur_client.sendFromBot("drop - can't grant a feature you don't possess.");
+                    toSend+="drop - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.drop=attribute;
-              cur_client.sendFromBot(" drop modified to "+attribute);
+              toSend+=" drop modified to "+attribute+"\n";
              }
             else  if(what.equals("grant"))
              {
                 if(cur_client.reg.myMask.grant==false)
                 {
-                    cur_client.sendFromBot("grant - can't grant a feature you don't possess.");
+                    toSend+="grant - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.drop=attribute;
-              cur_client.sendFromBot(" grant modified to "+attribute);
+              toSend+=" grant modified to "+attribute+"\n";
              }
              else  if(what.equals("gui"))
              {
                 if(cur_client.reg.myMask.gui==false)
                 {
-                    cur_client.sendFromBot("gui - can't grant a feature you don't possess.");
+                    toSend+="gui - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.gui=attribute;
-              cur_client.sendFromBot(" gui modified to "+attribute);
+              toSend+=" gui modified to "+attribute+"\n";
              }
              else  if(what.equals("help"))
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    cur_client.sendFromBot("help - can't grant a feature you don't possess.");
+                    toSend+="help - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.help=attribute;
-              cur_client.sendFromBot(" help modified to "+attribute);
+              toSend+=" help modified to "+attribute+"\n";
              }
             else  if(what.equals("hideme"))
              {
                 if(cur_client.reg.myMask.hideme==false)
                 {
-                    cur_client.sendFromBot("hideme - can't grant a feature you don't possess.");
+                    toSend+="hideme - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.hideme=attribute;
-              cur_client.sendFromBot(" hideme modified to "+attribute);
+              toSend+=" hideme modified to "+attribute+"\n";
              }
             else  if(what.equals("history"))
              {
                 if(cur_client.reg.myMask.history==false)
                 {
-                    cur_client.sendFromBot("history - can't grant a feature you don't possess.");
+                    toSend+="history - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.history=attribute;
-              cur_client.sendFromBot(" history modified to "+attribute);
+              toSend+=" history modified to "+attribute+"\n";
              }
             else  if(what.equals("info"))
              {
                 if(cur_client.reg.myMask.info==false)
                 {
-                    cur_client.sendFromBot("info - can't grant a feature you don't possess.");
+                    toSend+="info - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.info=attribute;
-              cur_client.sendFromBot(" info modified to "+attribute);
+              toSend+=" info modified to "+attribute+"\n";
              }
             else  if(what.equals("kick"))
              {
                 if(cur_client.reg.myMask.kick==false)
                 {
-                    cur_client.sendFromBot("kick - can't grant a feature you don't possess.");
+                    toSend+="kick - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.kick=attribute;
-              cur_client.sendFromBot(" kick modified to "+attribute);
+              toSend+=" kick modified to "+attribute+"\n";
              }
             else  if(what.equals("help"))
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    cur_client.sendFromBot("help - can't grant a feature you don't possess.");
+                    toSend+="help - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.help=attribute;
-              cur_client.sendFromBot(" help modified to "+attribute);
+              toSend+=" help modified to "+attribute+"\n";
              }
             else  if(what.equals("listban"))
              {
                 if(cur_client.reg.myMask.listban==false)
                 {
-                    cur_client.sendFromBot("listban - can't grant a feature you don't possess.");
+                    toSend+="listban - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.listban=attribute;
-              cur_client.sendFromBot(" listban modified to "+attribute);
+              toSend+=" listban modified to "+attribute+"\n";
              }
             else  if(what.equals("listreg"))
              {
                 if(cur_client.reg.myMask.listreg==false)
                 {
-                    cur_client.sendFromBot("listreg - can't grant a feature you don't possess.");
+                    toSend+="listreg - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.listreg=attribute;
-              cur_client.sendFromBot(" listreg modified to "+attribute);
+              toSend+=" listreg modified to "+attribute+"\n";
              }
             else  if(what.equals("mass"))
              {
                 if(cur_client.reg.myMask.mass==false)
                 {
-                    cur_client.sendFromBot("mass - can't grant a feature you don't possess.");
+                    toSend+="mass - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.mass=attribute;
-              cur_client.sendFromBot(" mynick modified to "+attribute);
+              toSend+=" mynick modified to "+attribute+"\n";
              }
             else  if(what.equals("mynick"))
              {
                 if(cur_client.reg.myMask.mynick==false)
                 {
-                    cur_client.sendFromBot("mynick - can't grant a feature you don't possess.");
+                    toSend+="mynick - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.mynick=attribute;
-              cur_client.sendFromBot(" mynick modified to "+attribute);
+              toSend+=" mynick modified to "+attribute+"\n";
              }
            
             else  if(what.equals("password"))
              {
                 if(cur_client.reg.myMask.password==false)
                 {
-                    cur_client.sendFromBot("password - can't grant a feature you don't possess.");
+                    toSend+="password - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.password=attribute;
-              cur_client.sendFromBot(" password modified to "+attribute);
+              toSend+=" password modified to "+attribute+"\n";
              }
             else  if(what.equals("port"))
              {
                 if(cur_client.reg.myMask.port==false)
                 {
-                    cur_client.sendFromBot("port - can't grant a feature you don't possess.");
+                    toSend+="port - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.port=attribute;
-              cur_client.sendFromBot(" port modified to "+attribute);
+              toSend+=" port modified to "+attribute+"\n";
              }
             else  if(what.equals("quit"))
              {
                 if(cur_client.reg.myMask.quit==false)
                 {
-                    cur_client.sendFromBot("quit - can't grant a feature you don't possess.");
+                    toSend+="quit - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.quit=attribute;
-              cur_client.sendFromBot(" quit modified to "+attribute);
+              toSend+=" quit modified to "+attribute+"\n";
              }
             else  if(what.equals("reg"))
              {
                 if(cur_client.reg.myMask.reg==false)
                 {
-                    cur_client.sendFromBot("reg - can't grant a feature you don't possess.");
+                    toSend+="reg - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.reg=attribute;
-              cur_client.sendFromBot(" reg modified to "+attribute);
+              toSend+=" reg modified to "+attribute+"\n";
              }
             else  if(what.equals("rename"))
              {
                 if(cur_client.reg.myMask.rename==false)
                 {
-                    cur_client.sendFromBot("rename - can't grant a feature you don't possess.");
+                    toSend+="rename - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.rename=attribute;
-              cur_client.sendFromBot(" rename modified to "+attribute);
+              toSend+=" rename modified to "+attribute+"\n";
              }
             else  if(what.equals("restart"))
              {
                 if(cur_client.reg.myMask.restart==false)
                 {
-                    cur_client.sendFromBot("restart - can't grant a feature you don't possess.");
+                    toSend+="restart - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.restart=attribute;
-              cur_client.sendFromBot(" restart modified to "+attribute);
+              toSend+=" restart modified to "+attribute+"\n";
              }
             else  if(what.equals("stats"))
              {
                 if(cur_client.reg.myMask.stats==false)
                 {
-                    cur_client.sendFromBot("stats - can't grant a feature you don't possess.");
+                   toSend+="stats - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.stats=attribute;
-              cur_client.sendFromBot(" stats modified to "+attribute);
+              toSend+=" stats modified to "+attribute+"\n";
              }
             else  if(what.equals("help"))
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    cur_client.sendFromBot("help - can't grant a feature you don't possess.");
+                    toSend+="help - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.help=attribute;
-              cur_client.sendFromBot(" help modified to "+attribute);
+              toSend+=" help modified to "+attribute+"\n";
              }
             else  if(what.equals("topic"))
              {
                 if(cur_client.reg.myMask.topic==false)
                 {
-                    cur_client.sendFromBot("topic - can't grant a feature you don't possess.");
+                    toSend+="topic - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.topic=attribute;
-              cur_client.sendFromBot(" topic modified to "+attribute);
+              toSend+=" topic modified to "+attribute+"\n";
              }
             else  if(what.equals("unban"))
              {
                 if(cur_client.reg.myMask.unban==false)
                 {
-                    cur_client.sendFromBot("unban - can't grant a feature you don't possess.");
+                    toSend+="unban - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.unban=attribute;
-              cur_client.sendFromBot(" unban modified to "+attribute);
+              toSend+=" unban modified to "+attribute+"\n";
              }
             else  if(what.equals("ureg"))
              {
                 if(cur_client.reg.myMask.ureg==false)
                 {
-                    cur_client.sendFromBot("ureg - can't grant a feature you don't possess.");
+                    toSend+="ureg - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.ureg=attribute;
-              cur_client.sendFromBot(" ureg modified to "+attribute);
+              toSend+=" ureg modified to "+attribute+"\n";
              }
             else  if(what.equals("usercount"))
              {
                 if(cur_client.reg.myMask.usercount==false)
                 {
-                    cur_client.sendFromBot("usercount - can't grant a feature you don't possess.");
+                    toSend+="usercount - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.myMask.usercount=attribute;
-              cur_client.sendFromBot(" usercount modified to "+attribute);
+              toSend+=" usercount modified to "+attribute+"\n";
              }
             else  if(what.equals("flyable"))
              {
                 if(cur_client.reg.accountflyable==false)
                 {
-                    cur_client.sendFromBot("flyable - can't grant a feature you don't possess.");
+                    toSend+="flyable - can't grant a feature you don't possess.\n";
                     return;
+                }
+                if(!modnod.setFlyable (true))
+                {
+                   toSend+="Error: To be flyable, account needs a password.\n";
+                   return;
                 }
                modnod.accountflyable=attribute;
                
-              cur_client.sendFromBot(" flyable modified to "+attribute);
+              toSend+=" flyable modified to "+attribute+"\n";
              }
             else  if(what.equals("key"))
              {
                 if(cur_client.reg.key==false)
                 {
-                    cur_client.sendFromBot("key - can't grant a feature you don't possess.");
+                    toSend+="key - can't grant a feature you don't possess.\n";
                     return;
                 }
-               modnod.key=attribute;
+               if(attribute)
+                 {
+                        if(!modnod.key)
+                        { 
+            
+                        ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                         while(tempx!=null)
+                        {
+                          if(tempx.userok==1)
+                                if(tempx.ID.equals (modnod.CID))
+                                  break;
+                        tempx=tempx.NextClient;
+                        }
+                        if(tempx!=null)//if registered guy is online
+                        {
+                                 new Broadcast("BINF "+tempx.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)-1));
+                                 tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)+1);
+                                    tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)-1);
+                                    tempx.RG="";
+                                    tempx.OP="1";
+                         }
+                        }
+                    modnod.key=true;
+                }
+                 else
+                {
+                 if(modnod.key)
+                { 
+            
+                ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                 while(tempx!=null)
+                {
+                        if(tempx.userok==1)
+                             if(tempx.ID.equals (modnod.CID))
+                             break;
+                        tempx=tempx.NextClient;
+                 }
+                 if(tempx!=null)//if registered guy is online
+                    {
+                         new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)+1));
+                         tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)-1);
+                         tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)+1);
+                         tempx.RG="1";
+                         temp.OP="";
+                    }
+                 }
+                modnod.key=false;
+                }
                
-              cur_client.sendFromBot(" key modified to "+attribute);
+              toSend+=" key modified to "+attribute+"\n";
              }
             else  if(what.equals("kickable"))
              {
-                if(cur_client.reg.kickable==false)
+                if(cur_client.reg.kickable==true)
                 {
-                    cur_client.sendFromBot("kickable - can't grant a feature you don't possess.");
+                    toSend+="kickable - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.kickable=attribute;
                
-              cur_client.sendFromBot(" kickable modified to "+attribute);
+              toSend+=" kickable modified to "+attribute+"\n";
              }
             else  if(what.equals("nickprotected"))
              {
                 if(cur_client.reg.nickprotected==false)
                 {
-                    cur_client.sendFromBot("nickprotected - can't grant a feature you don't possess.");
+                    toSend+="nickprotected - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.nickprotected=attribute;
                
-              cur_client.sendFromBot(" nickprotected modified to "+attribute);
+              toSend+=" nickprotected modified to "+attribute+"\n";
              }
             else  if(what.equals("overridefull"))
              {
                 if(cur_client.reg.overridefull==false)
                 {
-                    cur_client.sendFromBot("overridefull - can't grant a feature you don't possess.");
+                    toSend+="overridefull - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.overridefull=attribute;
                
-              cur_client.sendFromBot(" overridefull modified to "+attribute);
+              toSend+=" overridefull modified to "+attribute+"\n";
              }
             else  if(what.equals("overrideshare"))
              {
                 if(cur_client.reg.overrideshare==false)
                 {
-                    cur_client.sendFromBot("overrideshare - can't grant a feature you don't possess.");
+                    toSend+="overrideshare - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.overrideshare=attribute;
                
-              cur_client.sendFromBot(" overrideshare modified to "+attribute);
+              toSend+=" overrideshare modified to "+attribute+"\n";
              }
             else  if(what.equals("overridespam"))
              {
                 if(cur_client.reg.overridespam==false)
                 {
-                    cur_client.sendFromBot("overridespam - can't grant a feature you don't possess.");
+                    toSend+="overridespam - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.overridespam=attribute;
                
-              cur_client.sendFromBot(" overridespam modified to "+attribute);
+              toSend+=" overridespam modified to "+attribute+"\n";
              }
             else  if(what.equals("renameable"))
              {
-                if(cur_client.reg.renameable==false)
+                if(cur_client.reg.renameable==true)
                 {
-                    cur_client.sendFromBot("renameable - can't grant a feature you don't possess.");
+                    toSend+="renameable - can't grant a feature you don't possess.\n";
                     return;
                 }
                modnod.renameable=attribute;
                
-              cur_client.sendFromBot(" renameable modified to "+attribute);
+              toSend+=" renameable modified to "+attribute+"\n";
              }
             else
-                cur_client.sendFromBot(" unknown feature ");
+                toSend+=" unknown feature \n";
         if(x<0 && y<0)
             break;//over
     }
             
-        
+      cur_client.sendFromBot(toSend+"Done.") ;
+      if(temp!=null)
+          if(temp.NI.equals(who) || temp.ID.equals(who))
+              temp.sendFromBotPM("Your profile has been changed by "+cur_client.NI+".\n"+modnod.getRegInfo());
+      
     }
     
 }

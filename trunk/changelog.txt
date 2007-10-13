@@ -90,3 +90,8 @@
            * fixed bug that also showed unknown cmd on password;
            * fixed same bug on removing key ( like the one adding );
            * added grant for account options as well ;
+           * moved changelog to separate file;
+           * fixed bug when key was not sent to new users;
+           * modified grant command to send everything in one string;
+           * secured flyable via grant command;
+           * added a message from bot when profile changed ;
