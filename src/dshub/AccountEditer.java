@@ -1071,6 +1071,8 @@ if(curAcc.myMask.adc)
                 new Broadcast("BINF "+temp.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)-1));
                 temp.HO=Integer.toString (Integer.parseInt (temp.HO)+1);
                 temp.HR=Integer.toString (Integer.parseInt (temp.HR)-1);
+                temp.RG="";
+                temp.OP="1";
             }
             }
             curAcc.key=true;
@@ -1093,6 +1095,8 @@ if(curAcc.myMask.adc)
                 new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)+1));
                 temp.HO=Integer.toString (Integer.parseInt (temp.HO)-1);
                 temp.HR=Integer.toString (Integer.parseInt (temp.HR)+1);
+                temp.OP="";
+                temp.RG="1";
             }
             }
             curAcc.key=false;
