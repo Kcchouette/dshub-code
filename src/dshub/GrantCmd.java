@@ -583,15 +583,14 @@ public class GrantCmd
             else  if(what.equals("all"))
              {
                 
-               modnod.renameable=modnod.kickable=modnod.accountflyable=false;
-               modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
-               modnod.myMask=new CommandMask(1);
                
-              toSend+=" All granted.\n";
+               aux="+about+adc+bancid+banip+bannick+cfg+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               ;
+              //toSend+=" All granted.\n";
              }
             else
                 toSend+=" unknown feature \n";
-        if(x<0 && y<0)
+        if(x<0 && y<0 && !aux.startsWith("+"))
             break;//over
     }
             
@@ -997,13 +996,12 @@ public GrantCmd(String cmd)
                 
               // modnod.renameable=modnod.kickable=modnod.accountflyable=false;
               // modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
-               modnod.myMask=new CommandMask(1);
-               
-              toSend+=" All granted.\n";
+               aux="+about+adc+bancid+banip+bannick+cfg+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               ;
              }
             else
                 toSend+=" unknown feature \n";
-        if(x<0 && y<0)
+        if(x<0 && y<0 && !aux.startsWith("+"))
             break;//over
     }
             
