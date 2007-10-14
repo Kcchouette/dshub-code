@@ -98,3 +98,4 @@
            * added grant command to console as well;
            * added all feature in grant, grant nick/CID +all gives all privileges;
            * updated help on grant command, added a list of attributes in there;
+           * fixed security bug on grant all that could bring unwanted privileges;
