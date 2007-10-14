@@ -6,7 +6,7 @@ Installation is OS dependent. If you want to install DSHub I presume that you ha
 
 For a Linux OS installation, i will provide an example. Let's consider your user name is user, e.g. your home dirrectory is /home/user. Also consider the installation in this directory.
 
-First you need the JRE [ Java Runtime Environment ] version 1.5 the least. Most Linux distributions come with built-in Java Interpreter from GNU. Unless you know what you're doing and the GNU interpreter is JRE 1.5 compatibile, install a Sun Microsystems Inc. JRE.
+First you need the JRE [ Java Runtime Environment ] version 1.6 the least. Most Linux distributions come with built-in Java Interpreter from GNU. Unless you know what you're doing and the GNU interpreter is JRE 1.5 compatibile, install a Sun Microsystems Inc. JRE.
 
 That is System-based installation and its not covered in this manual.
 
@@ -56,7 +56,7 @@ and to detach from it again type Ctrl+a, d
 
 For a Windows OS installation, i will provide an example. Consider a directory for installation, that suits you best.
 
-First you need the JRE [ Java Runtime Environment ] version 1.5 the least. Sun provides the JRE downloadable from their site http://java.sun.com  Java installation is not covered in this manual.
+First you need the JRE [ Java Runtime Environment ] version 1.6 the least. Sun provides the JRE downloadable from their site http://java.sun.com  Java installation is not covered in this manual.
 
 After you have java installed, you can start using the software. Copy DSHub files into your new directory. Make sure that java.exe [ aka the Java interpreter] is in your path variable so it can be run from any directory in your pc.
 
