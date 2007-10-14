@@ -523,6 +523,12 @@ public class Main extends Thread
                
                
         } 
+        else if(recvbuf.toLowerCase ().startsWith("grant"))
+        {
+                new GrantCmd(recvbuf);
+               
+               
+        } 
         else if (recvbuf.toLowerCase ().startsWith("cfg"))
         {
                 if(recvbuf.equals ("cfg"))
