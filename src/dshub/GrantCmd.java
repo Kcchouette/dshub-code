@@ -41,7 +41,9 @@ public class GrantCmd
             {
             String Help="\nThe grant command:\n"+
                     "Usage grant user/CID [[+-]attribute1]*"+
-                    "\n      +attribute adds the atribute to the registered user, - removes it.";
+                    "\n      +attribute adds the atribute to the registered user, - removes it."+
+            "\n      [+-]all adds all possible attributes."+
+            "\n    List of attributes: about adc bancid banip bannick cfg cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected overridefull overrideshare overridespam renameable";
             cur_client.sendFromBot(Help);
             return;
             }
@@ -578,6 +580,15 @@ public class GrantCmd
                
               toSend+=" renameable modified to "+attribute+"\n";
              }
+            else  if(what.equals("all"))
+             {
+                
+               modnod.renameable=modnod.kickable=modnod.accountflyable=false;
+               modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
+               modnod.myMask=new CommandMask(1);
+               
+              toSend+=" All granted.\n";
+             }
             else
                 toSend+=" unknown feature \n";
         if(x<0 && y<0)
@@ -588,6 +599,418 @@ public class GrantCmd
       if(temp!=null)
           if(temp.NI.equals(who) || temp.ID.equals(who))
               temp.sendFromBotPM("Your profile has been changed by "+cur_client.NI+".\n"+modnod.getRegInfo());
+      
+    }
+    
+
+public GrantCmd(String cmd)
+    {
+        
+        
+        StringTokenizer curcmd=new StringTokenizer(cmd);
+        curcmd.nextToken();
+        if(!curcmd.hasMoreTokens())
+            {
+             String Help="\nThe grant command:\n"+
+                    "Usage grant user/CID [[+-]attribute1]*"+
+                    "\n      +attribute adds the atribute to the registered user, - removes it."+
+            "\n      [+-]all adds all possible attributes."+
+            "\n    List of attributes: about adc bancid banip bannick cfg cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected overridefull overrideshare overridespam renameable";
+            System.out.println(Help);
+            return;
+            }
+        String who=curcmd.nextToken();
+        nod modnod=null;
+        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+        if(ADC.isCID(who))
+        {
+             modnod=reg_config.getnod(who);
+        }
+        else
+        {
+            
+            while(temp!=null)
+            {
+                if(temp.userok==1)
+                    if(temp.NI.equalsIgnoreCase(who))
+                    {
+                        modnod=reg_config.getnod(temp.ID);
+                        break;
+                    }
+                temp=temp.NextClient;
+                        
+            }
+            if(temp==null)
+            {
+                System.out.println("Invalid argument supplied. Use with no arguments to see usage tip.");
+                return;
+            }
+        }
+        if(!curcmd.hasMoreTokens())
+        {
+            System.out.println(modnod.getRegInfo());
+            return;
+        }
+        String what=curcmd.nextToken();
+        String aux=what;
+        String toSend="";
+        toSend+="Editing Account: "+modnod.CID+"\n";
+    while(aux!=null)    
+    {
+        what=aux;
+        if(!what.startsWith("+") && !what.startsWith("-"))
+        {
+            toSend+="Invalid argument supplied. Use with no arguments to see usage tipx.\n";
+                return;
+            
+        }
+        boolean attribute=false;
+        if(what.startsWith("+"))
+            attribute=true;
+            
+        what=what.substring(1);
+        int x=what.indexOf('+');
+        int y=what.indexOf('-');
+        int z=0;
+        if(x<0 && y<0)
+            z=what.length();//over
+        else 
+          if(x>0 && y>0)
+          {
+            if(x>y)
+                z=y;
+            else z=x;
+          }
+          else if(x>0)
+              z=x;
+          else
+              z=y;
+        
+        
+            what=what.substring(0,z);
+            aux=aux.substring(z+1);
+            
+        if(what.equalsIgnoreCase("adc"))
+        {
+               
+              modnod.myMask.adc=attribute;
+              toSend+=" adc modified to "+attribute+"\n";
+        }
+            
+        else  if(what.equals("about"))
+             {
+                
+              modnod.myMask.about=attribute;
+              toSend+=" about modified to "+attribute+"\n";
+             }
+            else  if(what.equals("bancid"))
+             {
+               
+               modnod.myMask.bancid=attribute;
+              toSend+=" bancid modified to "+attribute+"\n";
+             }
+            else  if(what.equals("banip"))
+             {
+               
+               modnod.myMask.banip=attribute;
+              toSend+=" banip modified to "+attribute+"\n";
+             }
+             else  if(what.equals("bannick"))
+             {
+               
+               modnod.myMask.bannick=attribute;
+              toSend+=" bannick modified to "+attribute+"\n";
+             }
+             else  if(what.equals("cfg"))
+             {
+                
+               modnod.myMask.cfg=attribute;
+              toSend+=" cfg modified to "+attribute+"\n";
+             }
+             else  if(what.equals("cmdhistory"))
+             {
+              
+               modnod.myMask.cmdhistory=attribute;
+              toSend+=" cmdhistory modified to "+attribute+"\n";
+             }
+             else  if(what.equals("drop"))
+             {
+               
+               modnod.myMask.drop=attribute;
+              toSend+=" drop modified to "+attribute+"\n";
+             }
+            else  if(what.equals("grant"))
+             {
+                
+               modnod.myMask.drop=attribute;
+              toSend+=" grant modified to "+attribute+"\n";
+             }
+             else  if(what.equals("gui"))
+             {
+                
+               modnod.myMask.gui=attribute;
+              toSend+=" gui modified to "+attribute+"\n";
+             }
+             else  if(what.equals("help"))
+             {
+                
+               modnod.myMask.help=attribute;
+              toSend+=" help modified to "+attribute+"\n";
+             }
+            else  if(what.equals("hideme"))
+             {
+                
+               modnod.myMask.hideme=attribute;
+              toSend+=" hideme modified to "+attribute+"\n";
+             }
+            else  if(what.equals("history"))
+             {
+                
+               modnod.myMask.history=attribute;
+              toSend+=" history modified to "+attribute+"\n";
+             }
+            else  if(what.equals("info"))
+             {
+                
+               modnod.myMask.info=attribute;
+              toSend+=" info modified to "+attribute+"\n";
+             }
+            else  if(what.equals("kick"))
+             {
+                
+               modnod.myMask.kick=attribute;
+              toSend+=" kick modified to "+attribute+"\n";
+             }
+            else  if(what.equals("help"))
+             {
+               
+               modnod.myMask.help=attribute;
+              toSend+=" help modified to "+attribute+"\n";
+             }
+            else  if(what.equals("listban"))
+             {
+                
+               modnod.myMask.listban=attribute;
+              toSend+=" listban modified to "+attribute+"\n";
+             }
+            else  if(what.equals("listreg"))
+             {
+                
+               modnod.myMask.listreg=attribute;
+              toSend+=" listreg modified to "+attribute+"\n";
+             }
+            else  if(what.equals("mass"))
+             {
+               
+               modnod.myMask.mass=attribute;
+              toSend+=" mynick modified to "+attribute+"\n";
+             }
+            else  if(what.equals("mynick"))
+             {
+                
+               modnod.myMask.mynick=attribute;
+              toSend+=" mynick modified to "+attribute+"\n";
+             }
+           
+            else  if(what.equals("password"))
+             {
+                
+               modnod.myMask.password=attribute;
+              toSend+=" password modified to "+attribute+"\n";
+             }
+            else  if(what.equals("port"))
+             {
+               
+               modnod.myMask.port=attribute;
+              toSend+=" port modified to "+attribute+"\n";
+             }
+            else  if(what.equals("quit"))
+             {
+                
+               modnod.myMask.quit=attribute;
+              toSend+=" quit modified to "+attribute+"\n";
+             }
+            else  if(what.equals("reg"))
+             {
+               
+               modnod.myMask.reg=attribute;
+              toSend+=" reg modified to "+attribute+"\n";
+             }
+            else  if(what.equals("rename"))
+             {
+                
+               modnod.myMask.rename=attribute;
+              toSend+=" rename modified to "+attribute+"\n";
+             }
+            else  if(what.equals("restart"))
+             {
+               
+               modnod.myMask.restart=attribute;
+              toSend+=" restart modified to "+attribute+"\n";
+             }
+            else  if(what.equals("stats"))
+             {
+               
+               modnod.myMask.stats=attribute;
+              toSend+=" stats modified to "+attribute+"\n";
+             }
+            else  if(what.equals("help"))
+             {
+                
+               modnod.myMask.help=attribute;
+              toSend+=" help modified to "+attribute+"\n";
+             }
+            else  if(what.equals("topic"))
+             {
+                
+               modnod.myMask.topic=attribute;
+              toSend+=" topic modified to "+attribute+"\n";
+             }
+            else  if(what.equals("unban"))
+             {
+                
+               modnod.myMask.unban=attribute;
+              toSend+=" unban modified to "+attribute+"\n";
+             }
+            else  if(what.equals("ureg"))
+             {
+                
+               modnod.myMask.ureg=attribute;
+              toSend+=" ureg modified to "+attribute+"\n";
+             }
+            else  if(what.equals("usercount"))
+             {
+                
+               modnod.myMask.usercount=attribute;
+              toSend+=" usercount modified to "+attribute+"\n";
+             }
+            else  if(what.equals("flyable"))
+             {
+                
+                if(!modnod.setFlyable (true))
+                {
+                   toSend+="Error: To be flyable, account needs a password.\n";
+                   return;
+                }
+               modnod.accountflyable=attribute;
+               
+              toSend+=" flyable modified to "+attribute+"\n";
+             }
+            else  if(what.equals("key"))
+             {
+                
+               if(attribute)
+                 {
+                        if(!modnod.key)
+                        { 
+            
+                        ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                         while(tempx!=null)
+                        {
+                          if(tempx.userok==1)
+                                if(tempx.ID.equals (modnod.CID))
+                                  break;
+                        tempx=tempx.NextClient;
+                        }
+                        if(tempx!=null)//if registered guy is online
+                        {
+                                 new Broadcast("BINF "+tempx.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)-1));
+                                 tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)+1);
+                                    tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)-1);
+                                    tempx.RG="";
+                                    tempx.OP="1";
+                         }
+                        }
+                    modnod.key=true;
+                }
+                 else
+                {
+                 if(modnod.key)
+                { 
+            
+                ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                 while(tempx!=null)
+                {
+                        if(tempx.userok==1)
+                             if(tempx.ID.equals (modnod.CID))
+                             break;
+                        tempx=tempx.NextClient;
+                 }
+                 if(tempx!=null)//if registered guy is online
+                    {
+                         new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)+1));
+                         tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)-1);
+                         tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)+1);
+                         tempx.RG="1";
+                         temp.OP="";
+                    }
+                 }
+                modnod.key=false;
+                }
+               
+              toSend+=" key modified to "+attribute+"\n";
+             }
+            else  if(what.equals("kickable"))
+             {
+                
+               modnod.kickable=attribute;
+               
+              toSend+=" kickable modified to "+attribute+"\n";
+             }
+            else  if(what.equals("nickprotected"))
+             {
+               
+               modnod.nickprotected=attribute;
+               
+              toSend+=" nickprotected modified to "+attribute+"\n";
+             }
+            else  if(what.equals("overridefull"))
+             {
+                
+               modnod.overridefull=attribute;
+               
+              toSend+=" overridefull modified to "+attribute+"\n";
+             }
+            else  if(what.equals("overrideshare"))
+             {
+                
+               modnod.overrideshare=attribute;
+               
+              toSend+=" overrideshare modified to "+attribute+"\n";
+             }
+            else  if(what.equals("overridespam"))
+             {
+                
+               modnod.overridespam=attribute;
+               
+              toSend+=" overridespam modified to "+attribute+"\n";
+             }
+            else  if(what.equals("renameable"))
+             {
+                
+               modnod.renameable=attribute;
+               
+              toSend+=" renameable modified to "+attribute+"\n";
+             }
+            else  if(what.equals("all"))
+             {
+                
+              // modnod.renameable=modnod.kickable=modnod.accountflyable=false;
+              // modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
+               modnod.myMask=new CommandMask(1);
+               
+              toSend+=" All granted.\n";
+             }
+            else
+                toSend+=" unknown feature \n";
+        if(x<0 && y<0)
+            break;//over
+    }
+            
+      System.out.println(toSend+"Done.") ;
+      if(temp!=null)
+          if(temp.NI.equals(who) || temp.ID.equals(who))
+              temp.sendFromBotPM("Your profile has been changed by Server.\n"+modnod.getRegInfo());
       
     }
     
