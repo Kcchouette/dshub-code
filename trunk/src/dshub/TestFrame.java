@@ -158,8 +158,6 @@ public class TestFrame extends javax.swing.JFrame
         jLabel33 = new javax.swing.JLabel();
         opchatdescfield = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        kickopscheck = new javax.swing.JCheckBox();
-        renameopscheck = new javax.swing.JCheckBox();
         historylinesfield = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         kicktimefield = new javax.swing.JTextField();
@@ -947,44 +945,6 @@ public class TestFrame extends javax.swing.JFrame
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel34.setText("The Operator Chat Bot Description.");
 
-        kickopscheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        kickopscheck.setText("Ops can be kicked by other ops.");
-        kickopscheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        kickopscheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        kickopscheck.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                kickopscheckActionPerformed(evt);
-            }
-        });
-        kickopscheck.addPropertyChangeListener(new java.beans.PropertyChangeListener()
-        {
-            public void propertyChange(java.beans.PropertyChangeEvent evt)
-            {
-                kickopscheckPropertyChange(evt);
-            }
-        });
-        kickopscheck.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
-                kickopscheckStateChanged(evt);
-            }
-        });
-
-        renameopscheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        renameopscheck.setText("Ops can be renamed by other ops.");
-        renameopscheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        renameopscheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        renameopscheck.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                renameopscheckActionPerformed(evt);
-            }
-        });
-
         historylinesfield.setText("50");
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 10));
@@ -1027,8 +987,6 @@ public class TestFrame extends javax.swing.JFrame
                     .add(kickopsLayout.createSequentialGroup()
                         .add(28, 28, 28)
                         .add(kickopsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(renameopscheck)
-                            .add(kickopscheck)
                             .add(kickopsLayout.createSequentialGroup()
                                 .add(kickopsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -1069,11 +1027,7 @@ public class TestFrame extends javax.swing.JFrame
                 .add(kickopsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel34))
-                .add(16, 16, 16)
-                .add(kickopscheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(renameopscheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(54, 54, 54)
                 .add(kickopsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel39))
@@ -3050,53 +3004,6 @@ if(FMSGcheck.isSelected())
          }
     }//GEN-LAST:event_regonlycheckActionPerformed
 
-    private void renameopscheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_renameopscheckActionPerformed
-    {//GEN-HEADEREND:event_renameopscheckActionPerformed
-// TODO add your handling code here:
-        if(renameopscheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Rename_ops changed from \"0\" to \"1\".");
-             Vars.rename_ops=1;
-         }
-         else
-         {
-             Main.PopMsg("Rename_ops changed from \"1\" to \"0\".");
-             Vars.rename_ops=0;
-         }
-    }//GEN-LAST:event_renameopscheckActionPerformed
-
-    private void kickopscheckPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_kickopscheckPropertyChange
-    {//GEN-HEADEREND:event_kickopscheckPropertyChange
-// TODO add your handling code here:
-       
-    }//GEN-LAST:event_kickopscheckPropertyChange
-
-    private void kickopscheckStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_kickopscheckStateChanged
-    {//GEN-HEADEREND:event_kickopscheckStateChanged
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_kickopscheckStateChanged
-
-    private void kickopscheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_kickopscheckActionPerformed
-    {//GEN-HEADEREND:event_kickopscheckActionPerformed
-// TODO add your handling code here
-        //jCheckBox1.
-       //  SetStatus ("bla");
-         if(kickopscheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Kick_ops changed from \"0\" to \"1\".");
-             Vars.kick_ops=1;
-         }
-         else
-         {
-             Main.PopMsg("Kick_ops changed from \"1\" to \"0\".");
-             Vars.kick_ops=0;
-         }
-        
-    }//GEN-LAST:event_kickopscheckActionPerformed
-
     void insertLog(String bla)
     {
        LogText.append (bla+"\n");
@@ -3440,8 +3347,6 @@ if(FMSGcheck.isSelected())
    min_sch_chars           3      -- Minimum search chars, integer.
    max_chat_msg            512       -- Maximum chat message size, integer.
    max_users               1000         -- Maximum number of online users, integer.
-   kick_ops                0      -- 0 = ops can't be kicked/banned, other value = they can be kicked/banned.
-   rename_ops              0        -- 0 = ops can't be renamed, other value = they can be.
    history_lines           50         -- Number of lines to keep in chat history.
    opchat_name             OpChat       -- The Operator Chat Bot Nick.
    opchat_desc             BoT       -- The Operator Chat Bot Description.
@@ -3491,15 +3396,7 @@ if(FMSGcheck.isSelected())
        
         maxusersfield.setText (Integer.toString(Vars.max_users));
        
-        if(Vars.kick_ops==1)
-            kickopscheck.setSelected(true);
-        else
-            kickopscheck.setSelected(false);
-       
-         if(Vars.rename_ops==1)
-            renameopscheck.setSelected(true);
-        else
-            renameopscheck.setSelected(false);
+      
        
          
        
@@ -3942,7 +3839,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField keepalivefield;
     private javax.swing.JPanel kickops;
-    private javax.swing.JCheckBox kickopscheck;
     private javax.swing.JTextField kicktimefield;
     private javax.swing.JTextField maxchatmsgfield;
     private javax.swing.JTextField maxdefield;
@@ -3968,7 +3864,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextField opchatnamefield;
     private javax.swing.JTextField portfield;
     private javax.swing.JCheckBox regonlycheck;
-    private javax.swing.JCheckBox renameopscheck;
     private javax.swing.JCheckBox savelogscheck;
     private javax.swing.JTextField searchlogbasefield;
     private javax.swing.JTextField searchspamresetfield;

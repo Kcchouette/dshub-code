@@ -957,8 +957,8 @@ public class ExtDrop
                              }
                             /*****************extended drop*******************/
                }
-               else if(temp.reg.isreg && Vars.kick_ops==0)
-                         cur_client.sendFromBot("Can't drop other ops.");
+               else if(!temp.reg.kickable)
+                         cur_client.sendFromBot("This user can't be dropped.");
                 else
                   {
                     //actual dropping.

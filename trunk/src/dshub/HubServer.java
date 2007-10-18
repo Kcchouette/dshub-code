@@ -357,12 +357,12 @@ public class HubServer extends Thread
       Vars.max_sch_chars=vars.max_sch_chars;
       Vars.max_chat_msg=vars.max_chat_msg;
       Vars.history_lines=vars.history_lines;
-      Vars.kick_ops=vars.kick_ops;
+
       Vars.Opchat_name=vars.Opchat_name;
       Vars.Opchat_desc=vars.Opchat_desc;
       Vars.kick_time=vars.kick_time;
       Vars.Msg_Banned=vars.Msg_Banned;
-      Vars.rename_ops=vars.rename_ops;
+
       Vars.reg_only=vars.reg_only;
       Vars.nick_chars=vars.nick_chars;
       Vars.max_users=vars.max_users;
