@@ -65,7 +65,7 @@ public class Command
              cur_client.OP="1";
         }
         
-        
+        cur_client.reg.LastLogin=System.currentTimeMillis();
         
           //ok now must send to cur_client the inf of all others
                

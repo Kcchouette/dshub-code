@@ -966,8 +966,8 @@ public class ExtKick
                              }
                             /*****************extended kick*******************/
                }
-               else if(temp.reg.isreg && Vars.kick_ops==0)
-                         cur_client.sendFromBot("Can't kick other ops.");
+               else if(!temp.reg.kickable)
+                         cur_client.sendFromBot("This user is unkickable.");
                 else
                   {
                     //actual kicking.

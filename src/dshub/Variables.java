@@ -72,10 +72,10 @@ public class Variables implements Serializable
      int min_sch_chars;
      int max_sch_chars;
      int max_chat_msg;
-     int kick_ops;
+
      int history_lines;
      int kick_time;
-     int rename_ops;
+
      int reg_only;
      int max_users;
 
@@ -170,13 +170,13 @@ public class Variables implements Serializable
       min_sch_chars=Vars.min_sch_chars;
       max_sch_chars=Vars.max_sch_chars;
       max_chat_msg=Vars.max_chat_msg;
-      kick_ops=Vars.kick_ops;
+
       history_lines=Vars.history_lines;
       Opchat_name=Vars.Opchat_name;
       Opchat_desc=Vars.Opchat_desc;
       kick_time=Vars.kick_time;
       Msg_Banned=Vars.Msg_Banned;
-      rename_ops=Vars.rename_ops;
+
       reg_only=Vars.reg_only;
       nick_chars=Vars.nick_chars;
       max_users=Vars.max_users;
@@ -298,10 +298,10 @@ public class Variables implements Serializable
     static int min_sch_chars=3;
     static int max_sch_chars=256;
     static int max_chat_msg=512;
-    static int kick_ops=0;
+
     static int history_lines=50;
     static int kick_time=300;
-    static int rename_ops=0;
+
     static int reg_only=0;
     static int max_users=1000;
 

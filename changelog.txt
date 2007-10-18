@@ -99,3 +99,6 @@
            * added all feature in grant, grant nick/CID +all gives all privileges;
            * updated help on grant command, added a list of attributes in there;
            * fixed security bug on grant all that could bring unwanted privileges;
+           * account.LastLogin works now, on both reg info and GUI;
+           * kickable and renameable works now for all registered users;
+           * removed variable kick_ops and rename_ops;

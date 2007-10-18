@@ -780,7 +780,7 @@ else
 
 
 
-lastlogin.setText (curAcc.TimeOnline+"");
+lastlogin.setText (new Date(curAcc.LastLogin).toString());
 timespentonline.setText (curAcc.TimeOnline+" seconds.");
 
 

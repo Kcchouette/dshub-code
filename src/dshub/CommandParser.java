@@ -672,8 +672,8 @@ public class CommandParser
                         }
                if(temp==null)
                          cur_client.sendFromBot("No such user online.");
-               else if(temp.reg.key && Vars.rename_ops==0)
-                         cur_client.sendFromBot("Can't rename other ops.");
+               else if(!temp.reg.renameable)
+                         cur_client.sendFromBot("This registered user cannot be renamed.");
               
                 else
                   {
@@ -847,8 +847,8 @@ public class CommandParser
                            // tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(temp.reg.isreg && Vars.kick_ops==0)
-                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" but it belongs to"+temp.NI+", can't ban other ops.Not banned.");}
+                       if(!temp.reg.kickable )
+                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.NI+", but is not kickable.");}
                        
                        else
                        {
@@ -860,8 +860,8 @@ public class CommandParser
                     
                  else
                  {
-                     if(reg_config.isReg (aux)==2 && Vars.kick_ops==0)
-                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" but it belongs to"+temp.NI+", can't ban other ops.Not banned.");}
+                     if(!(reg_config.getnod (aux).kickable))
+                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.NI+", but is not kickable.");}
                      else
                      {
                          cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning....");
@@ -884,8 +884,8 @@ public class CommandParser
                             //tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(temp.reg.isreg && Vars.kick_ops==0)
-                         cur_client.sendFromBot("Found user "+temp.NI+" with CID "+temp.ID+", can't ban other ops.Not banned.");
+                       if(!(temp.reg.kickable ))
+                         cur_client.sendFromBot("Found user "+temp.NI+" with CID "+temp.ID+", but its unkickable.");
                        else
                        {
                         //BanList.addban (3,temp.ID,-1,cur_client.NI,reason);
@@ -936,8 +936,8 @@ public class CommandParser
                            // tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(temp.reg.isreg && Vars.kick_ops==0)
-                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+" but it belongs to an op, can't ban other ops.Not banned.");}
+                       if(!temp.reg.kickable)
+                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+" but it belongs to an unkickable reg.");}
                        else
                        {
                         //BanList.addban (1,aux,-1,cur_client.NI,reason);
@@ -989,8 +989,8 @@ public class CommandParser
                             if(temp.userok==1) 
                                 if( temp.ClientSock.getInetAddress().getHostAddress().equals(aux))
                                 {
-                         if(temp.reg.isreg && Vars.kick_ops==0)
-                         {cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found IP "+aux+" but it belongs to "+temp.NI+", can't ban other ops. Not banned.");cur_client.sendFromBot("Done.");
+                         if(!temp.reg.kickable)
+                         {cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found IP "+aux+" belonging to "+temp.NI+", but its unkickable. Not banned.");cur_client.sendFromBot("Done.");
                          return;}
                                 }
                             temp=temp.NextClient;
@@ -1032,8 +1032,8 @@ public class CommandParser
                         }
                 if(temp!=null)
                 {  
-                        if(temp.reg.isreg && Vars.kick_ops==0)
-                         cur_client.sendFromBot("Found user "+temp.NI+" with IP "+temp.ClientSock.getInetAddress().getHostAddress()+", can't ban other ops.Not banned.");
+                        if(!temp.reg.kickable)
+                         cur_client.sendFromBot("Found user "+temp.NI+" with IP "+temp.ClientSock.getInetAddress().getHostAddress()+", but its unkickable.Not banned.");
                        else
                        {
                         

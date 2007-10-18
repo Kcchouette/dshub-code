@@ -796,22 +796,7 @@ public class Main extends Thread
                     System.out.println("Invalid number");
                    } 
                 }
-                else if(aux.toLowerCase().equals ("max_chat_msg"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.kick_ops;
-                        Vars.kick_ops=Integer.parseInt (aux);
-                        System.out.printf("Kick_ops changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
-                        Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    System.out.println("Invalid number");
-                   } 
-                }
+                
                 else if(aux.toLowerCase().equals ("history_lines"))
                 {
                     aux=ST.nextToken ();
@@ -969,38 +954,8 @@ public class Main extends Thread
                         //new Broadcast ("IINF NI"+Vars.HubName);
                         
                 }
-                else if(aux.toLowerCase().equals ("kick_ops"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.kick_ops;
-                        Vars.kick_ops=Integer.parseInt (aux);
-                        System.out.println("Kick_ops changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
-                        Main.Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    System.out.println( "Invalid number");
-                   } 
-                }
-                else if(aux.toLowerCase().equals ("rename_ops"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.rename_ops;
-                        Vars.rename_ops=Integer.parseInt (aux);
-                        System.out.println("Rename_ops changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
-                        Main.Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    System.out.println( "Invalid number");
-                   } 
-                }
+                
+               
                 else if(aux.toLowerCase().equals ("reg_only"))
                 {
                     aux=ST.nextToken ();
@@ -1249,8 +1204,6 @@ public class Main extends Thread
                             +          "   min_sch_chars           "  +Vars.min_sch_chars+" -- Minimum search chars, integer.\n"
                             +          "   max_chat_msg            "  +Vars.max_chat_msg+" -- Maximum chat message size, integer.\n"
                             +          "   max_users               "  +Vars.max_users+" -- Maximum number of online users, integer.\n"
-                            +          "   kick_ops                "  +Vars.kick_ops+" -- 0 = ops can't be kicked/banned, other value = they can be kicked/banned.\n"
-                            +          "   rename_ops              "  +Vars.rename_ops+" -- 0 = ops can't be renamed, other value = they can be.\n"
                             +          "   history_lines           "  +Vars.history_lines+" -- Number of lines to keep in chat history.\n"
                             +          "   opchat_name             "  +Vars.Opchat_name+" -- The Operator Chat Bot Nick.\n"
                             +          "   opchat_desc             "  +Vars.Opchat_desc+" -- The Operator Chat Bot Description.\n"

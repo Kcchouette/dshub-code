@@ -450,9 +450,9 @@ int kicked=0;
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
      {
          kickmsg=ADC.retNormStr (kickmsg);
-         if(this.reg.key && Vars.kick_ops==0)
+         if(!this.reg.kickable)
          {
-             whokicked.sendFromBot(""+this.NI+" is op, can't kick him.");
+             whokicked.sendFromBot(""+this.NI+" is unkickable.");
              return;
          }
          //ClientHandler tempy=FirstClient;
@@ -522,9 +522,9 @@ int kicked=0;
      }
      public void dropMe(ClientHandler whokicked)
      {
-         if(this.reg.key && Vars.kick_ops==0)
+         if(!this.reg.kickable)
          {
-             whokicked.sendFromBot(""+this.NI+" is op, can't drop him.");
+             whokicked.sendFromBot(""+this.NI+" is undroppable.");
              return;
          }
          //ClientHandler tempy=FirstClient;
