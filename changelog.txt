@@ -102,3 +102,7 @@
            * account.LastLogin works now, on both reg info and GUI;
            * kickable and renameable works now for all registered users;
            * removed variable kick_ops and rename_ops;
+           * removed variable keep_alive_interval since its not needed anymore;
+           * made TimeSpent online;
+           * fixed bugs on cmd line cfg-ing some variables;
+           * fixed not showing messages about password on login;

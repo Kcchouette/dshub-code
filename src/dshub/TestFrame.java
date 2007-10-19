@@ -138,8 +138,6 @@ public class TestFrame extends javax.swing.JFrame
         jLabel38 = new javax.swing.JLabel();
         chatintervalfield = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
-        keepalivefield = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         automagicsearchfield = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -799,11 +797,6 @@ public class TestFrame extends javax.swing.JFrame
         jLabel43.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel43.setText("Interval between chat lines, millis, Integer.");
 
-        keepalivefield.setText("120");
-
-        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel44.setText("Interval between keep_alive messages, seconds, Integer.");
-
         jButton10.setText("Save Settings");
         jButton10.addActionListener(new java.awt.event.ActionListener()
         {
@@ -864,7 +857,6 @@ public class TestFrame extends javax.swing.JFrame
                                 .add(jLabel38))
                             .add(xxxLayout.createSequentialGroup()
                                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, keepalivefield)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, chatintervalfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, automagicsearchfield)
                                     .add(org.jdesktop.layout.GroupLayout.LEADING, searchlogbasefield)
@@ -879,7 +871,6 @@ public class TestFrame extends javax.swing.JFrame
                                         .add(jButton5))
                                     .add(jLabel16)
                                     .add(jLabel15)
-                                    .add(jLabel44)
                                     .add(jLabel43)))
                             .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 468, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(xxxLayout.createSequentialGroup()
@@ -901,11 +892,7 @@ public class TestFrame extends javax.swing.JFrame
                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(chatintervalfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel43))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(keepalivefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel44))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(32, 32, 32)
                 .add(xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(automagicsearchfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel15))
@@ -2654,23 +2641,7 @@ if(FMSGcheck.isSelected())
                    {
                    chatintervalfield.setText(Integer.toString(Vars.chat_interval));
                    } 
-        Thing=keepalivefield.getText();
-          try
-          {
-                        int aucsy=Vars.keep_alive_interval;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                            if(Integer.parseInt (Thing)<20)
-                                throw new NumberFormatException();
-                        Vars.keep_alive_interval=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Keep_alive_interval changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.keep_alive_interval+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   keepalivefield.setText(Integer.toString(Vars.keep_alive_interval));
-                   } 
+        
         Thing=automagicsearchfield.getText();
           try
           {
@@ -3356,7 +3327,6 @@ if(FMSGcheck.isSelected())
    reg_only                0      -- 1 = registered only hub. 0 = otherwise.
    nick_chars              ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:         -- Chars that could be used for a nick, String.
    chat_interval           500         -- Interval between chat lines, millis, Integer.
-   keep_alive_interval     120         -- Interval between keep_alive messages, seconds, Integer.
 */
         portfield.setText (Integer.toString (Vars.Default_Port));
        
@@ -3426,7 +3396,7 @@ if(FMSGcheck.isSelected())
        
         chatintervalfield.setText(Integer.toString(Vars.chat_interval));
        
-        keepalivefield.setText(Integer.toString(Vars.keep_alive_interval));
+
         automagicsearchfield.setText(Integer.toString(Vars.automagic_search));
         searchlogbasefield.setText(Integer.toString(Vars.search_log_base));
         searchstepsfield.setText(Integer.toString(Vars.search_steps));
@@ -3789,7 +3759,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
@@ -3837,7 +3806,6 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField keepalivefield;
     private javax.swing.JPanel kickops;
     private javax.swing.JTextField kicktimefield;
     private javax.swing.JTextField maxchatmsgfield;

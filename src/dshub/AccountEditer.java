@@ -781,7 +781,7 @@ else
 
 
 lastlogin.setText (new Date(curAcc.LastLogin).toString());
-timespentonline.setText (curAcc.TimeOnline+" seconds.");
+timespentonline.setText (curAcc.TimeOnline/1000+" seconds.");
 
 
 if(curAcc.myMask.adc)

@@ -455,7 +455,8 @@ public class CommandParser
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
-                            
+                            temp.reg.isreg=true;
+                            temp.LoggedAt=System.currentTimeMillis();
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         
                         }
@@ -494,7 +495,8 @@ public class CommandParser
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
-                            
+                            temp.reg.isreg=true;
+                            temp.LoggedAt=System.currentTimeMillis();
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
                         }
@@ -537,7 +539,7 @@ public class CommandParser
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
-                            
+                            temp.LoggedAt=System.currentTimeMillis();
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
                         }

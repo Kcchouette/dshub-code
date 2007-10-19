@@ -96,6 +96,8 @@ public class Command
                  //cur_client.sendFromBot ("gay");
                  cur_client.sendFromBot(cur_client.reg.HideMe ? "You are currently hidden." : "");
                  
+                 cur_client.LoggedAt=System.currentTimeMillis();
+                 
                     
                
                
@@ -579,8 +581,8 @@ public class Command
                    {
                        if(cur_client.reg.Password.equals (""))//no pass defined ( yet)
                        {
-                           cur_client.sendFromBot("Registered, no password required. Though, its recomandable to set one.");
-                           cur_client.sendFromBot("Authenticated.");
+                           cur_client.Queue.addMsg("IMSG Registered,\\sno\\spassword\\srequired.\\sThough,\\sits\\srecomandable\\sto\\sset\\sone.");
+                           cur_client.Queue.addMsg("IMSG Authenticated.");
                         
                          
                          cur_client.reg.LastNI=cur_client.NI;
@@ -589,7 +591,7 @@ public class Command
                          return;
                            
                        }
-                       cur_client.sendFromBot("Registered, type your password.");
+                       cur_client.Queue.addMsg("IMSG Registered,\\stype\\syour\\spassword.");
                        /* creates some hash for the GPA random data*/
                        Tiger myTiger = new Tiger();
 						
@@ -845,6 +847,7 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
             if(cur_client.FirstClient.NextClient!=null && cur_client.userok==1)
             {
             new Broadcast("IQUI "+cur_client.SessionID);
+            cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                   
             }
            cur_client.PrevClient.NextClient=cur_client.NextClient;
