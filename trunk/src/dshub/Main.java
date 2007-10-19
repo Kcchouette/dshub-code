@@ -156,7 +156,8 @@ public class Main extends Thread
                             PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
                              if(Main.GUIok)
                                 Main.GUI.SetStatus ("CID added with no password, he should set one.");
-                             
+                             nod x=reg_config.getnod(aux);
+                             x.isreg=true;
                              
                         }   
                         else
@@ -177,6 +178,8 @@ public class Main extends Thread
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.reg.isreg=true;
+                            temp.LoggedAt=System.currentTimeMillis();
                         
                         }
                         
@@ -221,7 +224,8 @@ public class Main extends Thread
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
-                           
+                           temp.reg.isreg=true;
+                           temp.LoggedAt=System.currentTimeMillis();
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
                             
@@ -273,7 +277,8 @@ public class Main extends Thread
                             temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
                             new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
                             
-                            
+                            temp.LoggedAt=System.currentTimeMillis();
+                            temp.reg.isreg=true;
                             temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
                         }
                 }
@@ -1075,28 +1080,7 @@ public class Main extends Thread
                    System.out.println("Invalid number");
                    } 
                 }
-                else if(aux.toLowerCase().equals ("keep_alive_interval"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.keep_alive_interval;
-                        int x=Integer.parseInt (aux);
-                        if(x<30)
-                        {
-                            System.out.println ("With that value, hub will have a lag...");
-                            return;
-                        }
-                        Vars.keep_alive_interval=x;
-                        System.out.println ("Keep_Alive_Interval changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
-                        Main.Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    System.out.println ("Invalid number");
-                   } 
-                }
+                
                  else if(aux.toLowerCase().equals ("automagic_search"))
                 {
                     aux=ST.nextToken ();
@@ -1120,7 +1104,7 @@ public class Main extends Thread
                     aux=ST.nextToken ();
                     try
                     {
-                        int aucsy=Vars.keep_alive_interval;
+                        int aucsy=Vars.search_log_base;
                         int x=Integer.parseInt (aux);
                        
                         Vars.search_log_base=x;
@@ -1213,7 +1197,6 @@ public class Main extends Thread
                             +          "   reg_only                "  +Vars.reg_only+" -- 1 = registered only hub. 0 = otherwise.\n"
                             +          "   nick_chars              "  +Vars.nick_chars+" -- Chars that could be used for a nick, String."
                             +          "   chat_interval           "  +Vars.chat_interval+"         -- Interval between chat lines, millis, Integer.\n"
-                            +          "   keep_alive_interval     "  +Vars.keep_alive_interval+"         -- Interval between keep_alive messages, seconds, Integer.\n"
                             +          "   save_logs               "  +Vars.savelogs+"         -- 1 = logs are saved to file, 0 otherwise.\n"
                             +          "   automagic_search        "  +Vars.automagic_search+"         -- Interval between automagic searches for each user, seconds, Integer.\n"
                             +          "   search_log_base         "  +Vars.search_log_base+"         -- Logarithmic base for user searches interval,millis, Integer.\n"

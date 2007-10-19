@@ -81,7 +81,7 @@ public class Variables implements Serializable
 
 
      int chat_interval;
-     int keep_alive_interval;
+
      int savelogs;
      int automagic_search;
      int search_log_base;
@@ -184,7 +184,7 @@ public class Variables implements Serializable
 
 
 
-      keep_alive_interval=Vars.keep_alive_interval;
+
       savelogs=Vars.savelogs;
       automagic_search=Vars.automagic_search;
       search_log_base=Vars.search_log_base;
@@ -307,7 +307,7 @@ public class Variables implements Serializable
 
 
     static int chat_interval=500;//millis
-    static int keep_alive_interval=120;//seconds
+
     static int savelogs=1;
     static int automagic_search=36;
     static int search_log_base=2000;

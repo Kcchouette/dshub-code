@@ -370,7 +370,7 @@ public class HubServer extends Thread
 
      
       Vars.chat_interval=vars.chat_interval;
-      Vars.keep_alive_interval=vars.keep_alive_interval;
+
       Vars.savelogs=vars.savelogs;
       Vars.automagic_search=vars.automagic_search;
       Vars.search_log_base=vars.search_log_base;

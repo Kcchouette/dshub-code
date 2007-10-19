@@ -65,6 +65,7 @@ public class ClientHandler extends Thread
     int ACTIVE=0;
     int quit=0;
     
+    long LoggedAt=0l;
     ClientQueue Queue;
     nod reg;
     ban myban;
@@ -335,6 +336,7 @@ int kicked=0;
         }
         catch(Exception sta)
         {
+            
             if(kicked==1)
                 return;
             //System.out.println (sta);
@@ -351,6 +353,7 @@ int kicked=0;
           if(this.userok==1) //if he ever logged in... else is no point in sending QUI
           {
                  new Broadcast("IQUI "+SessionID);
+                 this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
                     // System.out.printf ("[disconnected:] %s\n",this.NI);  
           }
            this.PrevClient.NextClient=this.NextClient;
@@ -374,7 +377,7 @@ int kicked=0;
             
             }
             
-    
+        
         
         
         //System.out.println ("ok, some guy left "+this.NI);
@@ -480,6 +483,7 @@ int kicked=0;
                    
           }
          String brcast="IQUI "+this.SessionID+" ID"+whokicked.SessionID+" TL"+Long.toString (kicktime);
+         this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
            if(!kickmsg.equals(""))
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
          new Broadcast(brcast);
@@ -535,7 +539,7 @@ int kicked=0;
          
          new Broadcast("IQUI "+this.SessionID);
            this.sendToClient ("IQUI "+this.SessionID+" ID"+whokicked.SessionID);
-             
+             this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
                //tempy.NextClient=this.NextClient;
            this.PrevClient.NextClient=this.NextClient;
            if(this.NextClient!=null)

@@ -549,28 +549,7 @@ public class CFGConfig
                    } 
                 }
                 
-                else if(aux.toLowerCase().equals ("keep_alive_interval"))
-                {
-                    aux=ST.nextToken ();
-                    try
-                    {
-                        int aucsy=Vars.keep_alive_interval;
-                        int x=Integer.parseInt (aux);
-                        if(x<30)
-                        {
-                            cur_client.sendFromBot("With that value, hub will have a lag...");
-                            return;
-                        }
-                        Vars.keep_alive_interval=x;
-                        cur_client.sendFromBot("Keep_Alive_Interval changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
-                        Main.Server.rewriteconfig();
-                    }
-                    
-                    catch(NumberFormatException nfe)
-                   {
-                    cur_client.sendFromBot("Invalid number");
-                   } 
-                }
+               
                 else if(aux.toLowerCase().equals ("save_logs"))
                 {
                     aux=ST.nextToken ();
@@ -695,7 +674,6 @@ public class CFGConfig
                             +          "   reg_only                "  +Vars.reg_only+"      -- 1 = registered only hub. 0 = otherwise.\n"
                             +          "   nick_chars              "  +Vars.nick_chars+"         -- Chars that could be used for a nick, String.\n"
                             +          "   chat_interval           "  +Vars.chat_interval+"         -- Interval between chat lines, millis, Integer.\n"
-                            +          "   keep_alive_interval     "  +Vars.keep_alive_interval+"         -- Interval between keep_alive messages, seconds, Integer.\n"
                             +          "   save_logs               "  +Vars.savelogs+"         -- 1 = logs are saved to file, 0 otherwise.\n"
                             +          "   automagic_search        "  +Vars.automagic_search+"         -- Interval between automagic searches for each user, seconds, Integer.\n"
                             +          "   search_log_base         "  +Vars.search_log_base+"         -- Logarithmic base for user searches interval, millis, Integer.\n"

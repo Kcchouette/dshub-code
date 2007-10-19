@@ -70,6 +70,7 @@ public class ClientAssasin extends Thread
          new Broadcast("IQUI "+temp.NextClient.SessionID);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
              Main.PopMsg(x.NI+" was dropped due to timeout."+(System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)/1000);
+             x.reg.TimeOnline+=System.currentTimeMillis()-x.LoggedAt;
                //temp.NextClient=x.NextClient;
              
                 x.kicked=1;    
