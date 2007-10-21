@@ -683,10 +683,6 @@ public class AccountEditer extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(275, Short.MAX_VALUE)
                 .add(jButton1)
@@ -695,6 +691,10 @@ public class AccountEditer extends javax.swing.JFrame
                 .addContainerGap(293, Short.MAX_VALUE)
                 .add(jButton2)
                 .add(294, 294, 294))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -781,7 +781,7 @@ else
 
 
 lastlogin.setText (new Date(curAcc.LastLogin).toString());
-timespentonline.setText (curAcc.TimeOnline/1000+" seconds.");
+timespentonline.setText (TimeConv.getStrTime(curAcc.TimeOnline));
 
 
 if(curAcc.myMask.adc)
