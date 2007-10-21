@@ -277,6 +277,7 @@ import java.util.Date;
               if(this.Password.length ()<1)
                   return false;
               this.accountflyable=true;
+              this.nickprotected=false;
           }
           else
               this.accountflyable=false;
@@ -390,6 +391,18 @@ class reg_config
             temp=temp.Next;
         }
         return 0;
+    }
+     
+    static public nod isNickRegFl(String nick)
+    {
+        nod x=First;
+        while(x!=null)
+        {
+            if(x.LastNI.equalsIgnoreCase(nick)&& x.accountflyable)
+                return x;
+            x=x.Next;
+        }
+        return null;
     }
     static public nod getnod(String CID)
     {
