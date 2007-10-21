@@ -74,6 +74,7 @@ import java.util.Date;
             TimeOnline=0L;
             myMask=new CommandMask();
             myHelp=new HelpFile(this);
+            nickprotected=true;
         }
       protected  nod  clone()
         {
@@ -425,5 +426,18 @@ class reg_config
         temp.Next=temp.Next.Next;
         reg_count--;
         return true;
+    }
+    
+    static public boolean nickReserved(String nick,String CID)
+    {
+     nod x= reg_config.First;
+        while(x!=null)
+        {
+         if(!x.CID.equals(CID))
+            if(x.nickprotected && x.LastNI.equalsIgnoreCase(nick))
+                return true;
+            x=x.Next;
+        }
+     return false;
     }
 }

@@ -112,3 +112,6 @@
       # is a parsing delimitator. If a number is 0, it can be skipped.
       Example : #1w#3h#55m#2s = 1 week , 0 days, 3 hours, 55 minutes 2 seconds and 0 millis.
            * updated TimeOnline in the new specifier;
+           * fixed that users cannot have a CID nick;
+           * made nickprotected ok, and by default any reg user has its nick protected ( reg advantage);
+           * also made about command as available by default for new regs.

@@ -613,12 +613,18 @@ public class CommandParser
                        return;
                     }
                 }
-                if(!Vars.ValidateNick (aux) || ADC.isIP(aux) || ADC.isCID(aux))
+                if(!Vars.ValidateNick (aux))
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        System.out.println (aux);
                        return;
                    }
+                if(reg_config.nickReserved(aux,cur_client.ID))
+                {
+                    
+                   cur_client.sendFromBot("Nick reserved. Please choose another.");
+                    return;
+                }
                 
                     ClientHandler tempy=ClientHandler.FirstClient.NextClient;
                 
@@ -695,11 +701,17 @@ public class CommandParser
                        return;
                     }
                 }
-                    if(!Vars.ValidateNick (newnick) || ADC.isIP(newnick) || ADC.isCID(newnick))
+                    if(!Vars.ValidateNick (newnick) )
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
+                 if(reg_config.nickReserved(newnick,temp.ID))
+                {
+                    
+                   cur_client.sendFromBot("Nick reserved. Please choose another.");
+                    return;
+                }
                     ClientHandler tempy=ClientHandler.FirstClient.NextClient;
                 
                 while(tempy!=null)

@@ -141,15 +141,18 @@ public class Command
                         {
                      
                             
-                            if(!State.equals ("PROTOCOL"))
-                                if(cur_client.reg.isreg)
-                            cur_client.reg.LastNI=cur_client.NI;
+                            
                    if(!Vars.ValidateNick (aux.substring (2)))
                    {
                        new STAError(cur_client,222,"Nick not valid, please choose another");
                        return;
                    }
-                             cur_client.NI=aux.substring(2);
+                   cur_client.NI=aux.substring(2);
+                   
+                            if(!State.equals ("PROTOCOL"))
+                                if(cur_client.reg.isreg)
+                                     cur_client.reg.LastNI=cur_client.NI;
+                        
                             cur_inf=cur_inf+" NI"+cur_client.NI;
                         }
                         else if(aux.startsWith("PD"))//the PiD
@@ -379,6 +382,8 @@ public class Command
                     if(!cur_client.reg.isreg)
                             cur_client.HN=String.valueOf(Integer.parseInt(cur_client.HN)+1);
                     }
+                    
+                    
                     /* check if user is banned first*/
                     cur_client.myban=BanList.getban (3,cur_client.ID);
                     if(cur_client.myban==null)
@@ -439,6 +444,13 @@ public class Command
                    temp=temp.NextClient;
                    
                }
+                
+                if(reg_config.nickReserved(cur_client.NI,cur_client.ID))
+                {
+                    int x=(State.equals("PROTOCOL"))?240:140;
+                    new STAError(cur_client,x,"Nick reserved. Please choose another.");
+                    return;
+                }
                     // now must check if hub is full...
                     if(State.equals ("PROTOCOL")) //otherwise is already connected, no point in checking this
                     {
