@@ -1129,6 +1129,10 @@ if(curAcc.myMask.adc)
           curAcc.overridefull=true;
         else
             curAcc.overridefull=false;
+        if(checknickprotect.isSelected ())
+          curAcc.nickprotected=true;
+        else
+            curAcc.nickprotected=false;
         
         Main.Server.rewriteregs ();
         

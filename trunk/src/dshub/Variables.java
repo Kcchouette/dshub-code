@@ -260,6 +260,9 @@ public class Variables implements Serializable
         
        if(ADC.isIP (nick)) 
            return false;
+        if(ADC.isCID(nick))
+            return false;
+       
         return true;
     }
      

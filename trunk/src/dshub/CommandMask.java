@@ -67,8 +67,8 @@ public class CommandMask implements Serializable
     public CommandMask ()  
     {
         adc=port=reg=ureg=listreg=mass=kick=drop=unban=banip=bancid=bannick=cmdhistory=info=hideme=rename=usercount=topic=
-            cfg=gui=stats=about=restart=quit=listban=grant=false;
-        mynick=help=password=history=true;
+            cfg=gui=stats=restart=quit=listban=grant=false;
+        mynick=help=password=history=about=true;
     }
     public CommandMask ( int i)
     {
