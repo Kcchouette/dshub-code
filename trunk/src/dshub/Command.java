@@ -617,11 +617,35 @@ public class Command
                        cur_client.sendToClient ("IGPA "+cur_client.RandomData);
                        return;
                    }
-                   else if(Vars.reg_only==1)
+                   else
+                   {
+                       nod k;
+                       k=reg_config.isNickRegFl(cur_client.NI);
+                       if(k!=null)
+                       {
+                           cur_client.Queue.addMsg("IMSG Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
+                           
+                         /* creates some hash for the GPA random data*/
+                       Tiger myTiger = new Tiger();
+						
+                    myTiger.engineReset();
+                myTiger.init();	
+                byte [] T=Long.toString(System.currentTimeMillis()).getBytes(); //taken from cur time
+             myTiger.engineUpdate(T,0,T.length);
+				
+                 byte[] finalTiger = myTiger.engineDigest();
+                 cur_client.RandomData =Base32.encode (finalTiger);
+                       cur_client.sendToClient ("IGPA "+cur_client.RandomData);
+                       cur_client.reg=k;
+                       return;
+                       }
+                       else if(Vars.reg_only==1)
                    {
                        new STAError(cur_client,226,"Registered only hub.");
                        return;
                    }
+                   }
+                    
                }
                
                
@@ -715,7 +739,11 @@ public class Command
                        return;}
                  
      }
-                    if(reg_config.isReg (cur_client.ID)==0)
+                    nod k;
+                    
+                    if((k=reg_config.isNickRegFl(cur_client.NI))!=null)
+                        cur_client.reg=k;
+                    if(!cur_client.reg.isreg )
                     {
                         new STAError(cur_client,140,"Not registered.");
                         return;
@@ -768,14 +796,19 @@ public class Command
                  }
               if(realpas.equals(Issued_Command.substring (5)))
               {
-                        cur_client.sendFromBot("Authenticated.");
+                        cur_client.Queue.addMsg("IMSG Authenticated.");
                         
                          cur_client.sendFromBot(ADC.MOTD);
                          if(cur_client.reg.HideMe)
-                            cur_client.sendFromBot("You are currently hidden.");
+                            cur_client.Queue.addMsg("IMSG You\\sare\\scurrently\\shidden.");
                          //System.out.println ("pwla");
                          cur_client.reg.LastNI=cur_client.NI;
-                        
+                        // cur_client.reg.LastNI=cur_client.NI;
+                         cur_client.reg.LastIP=cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                         
+                         if(!cur_client.ID.equals(cur_client.reg.CID))
+                        cur_client.Queue.addMsg("IMSG Account\\sCID\\supdated\\sto\\s"+cur_client.ID);
+                         cur_client.reg.CID=cur_client.ID;
               }
               else
               {

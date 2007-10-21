@@ -307,7 +307,7 @@ public class AccountEditer extends javax.swing.JFrame
 
         jLabel16.setText("Warning: High risk of security breach");
 
-        checkflyable.setText("Flyable. If password set, allow");
+        checkflyable.setText("Flyable.");
         checkflyable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checkflyable.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
@@ -348,9 +348,9 @@ public class AccountEditer extends javax.swing.JFrame
         overrideshare.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         overrideshare.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel15.setText("& password with no matter what CID used");
+        jLabel15.setText("& password with no matter what CID used )");
 
-        jLabel14.setText("account to be used with last nick");
+        jLabel14.setText("( If password set, allow account to be used with last nick");
 
         checknickprotect.setText("Protect last nick of being used by other users.");
         checknickprotect.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -372,12 +372,6 @@ public class AccountEditer extends javax.swing.JFrame
                         .add(jLabel16)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel17))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(checkflyable)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel14)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel15))
                     .add(checkrenameable)
                     .add(checkkickable)
                     .add(passsetcheck)
@@ -387,8 +381,14 @@ public class AccountEditer extends javax.swing.JFrame
                     .add(checkkey)
                     .add(jLabel7)
                     .add(overridespam)
-                    .add(overrideshare))
-                .addContainerGap(73, Short.MAX_VALUE))
+                    .add(overrideshare)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(checkflyable)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel14)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel15)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

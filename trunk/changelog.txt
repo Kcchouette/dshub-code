@@ -115,3 +115,7 @@
            * fixed that users cannot have a CID nick;
            * made nickprotected ok, and by default any reg user has its nick protected ( reg advantage);
            * also made about command as available by default for new regs.
+           * account flyable is now available !
+Account flyable means that : if account has a password set, the last nick used will be possible to be used to 
+log in to account, if password is ok. Then, the CID of the new client is being memorized for the account. 
+To be flyable, the nick must NOT be protected, so when you check flyable, its being auto deactivated.

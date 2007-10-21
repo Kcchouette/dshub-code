@@ -453,6 +453,8 @@ public class GrantCmd
                    return;
                 }
                modnod.accountflyable=attribute;
+                if(attribute=true)
+                   modnod.nickprotected=false;
                
               toSend+=" flyable modified to "+attribute+"\n";
              }
@@ -892,6 +894,8 @@ public GrantCmd(String cmd)
                    return;
                 }
                modnod.accountflyable=attribute;
+               if(attribute=true)
+                   modnod.nickprotected=false;
                
               toSend+=" flyable modified to "+attribute+"\n";
              }
