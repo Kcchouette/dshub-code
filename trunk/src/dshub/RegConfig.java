@@ -100,7 +100,7 @@ import java.util.Date;
          }
          Date d=new Date(this.CreatedOn);
            retString=retString+" Reg Info:\nLast Nick : "+this.LastNI+"\nLast IP: "+this.LastIP+"\nRegged by: "+this.WhoRegged+" on "+d.toString ();
-           retString+="\nLast LogIn: "+new Date(this.LastLogin).toString()+"\nTime Online: "+this.TimeOnline/1000+"seconds.\nOverride share restrictions? "+(this.overrideshare ? "yes" : "no")
+           retString+="\nLast LogIn: "+new Date(this.LastLogin).toString()+"\nTime Online: "+TimeConv.getStrTime(this.TimeOnline)+"\nOverride share restrictions? "+(this.overrideshare ? "yes" : "no")
            +"\nOverride spam settings? "+(this.overridespam? "yes":"no")+"\nCan be renamed? "+(this.renameable?"yes":"no")+
                    "\nPassword set? "+(this.Password.length ()>0?"yes":"no")+"\nIs hidden? "+(this.HideMe?"yes":"no")+
                    "\nShare hidden? "+(this.HideShare?"yes":"no")+"\nFlyable? "+(this.HideShare?"yes":"no")+"\n"+

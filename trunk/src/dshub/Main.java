@@ -293,7 +293,13 @@ public class Main extends Thread
     {
         System.out.println ("Initializing DSHub Eta ...");
         curtime=System.currentTimeMillis();
+       /* try{
+            long x;
+        System.out.println(x=TimeConv.getLongTime("#5h"));
+        System.out.println(TimeConv.getStrTime(x));
         
+        ;}catch(Exception e){System.out.println(e);}
+        */
     try
     {
           GUI=new TestFrame();
