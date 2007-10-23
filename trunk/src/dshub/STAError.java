@@ -23,6 +23,8 @@ package dshub;
  */
 
 /**
+ * Provides a simple way to throw STA exceptions to clients 
+ *( when clients send abnormal or erroneous messages ).
  *
  * @author Pietricica
  */

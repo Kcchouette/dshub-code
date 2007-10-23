@@ -30,6 +30,8 @@ import java.util.zip.*;
 import java.util.Calendar;
 
 /**
+ * Basic hub server listener and socket receiver, sends users to each's thread after connecting.
+ * Handles the hub databases kept in files ( regs, config and bans).
  *
  * @author Pietricica
  */

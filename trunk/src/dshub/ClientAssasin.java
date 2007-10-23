@@ -24,6 +24,8 @@
 package dshub;
 
 /**
+ * Permanent thread that keeps clients connected ( meaning killing the ones who
+ * are disconnected). Also sends delayed searches and will be used for cronlike jobs.
  *
  * @author Pietricica
  */

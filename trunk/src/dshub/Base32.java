@@ -24,6 +24,7 @@
 package dshub;
 
 /**
+ * Conversions from bytearray to base32 and viceversa
  *
  * @author Thanks To Mr. Pretorian for providing 
  *

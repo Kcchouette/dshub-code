@@ -28,6 +28,8 @@ import java.util.regex.PatternSyntaxException;
 
 /**
  *
+ * The client drop command, also with extended call.
+ *
  * @author Pietricica
  */
 public class ExtDrop 

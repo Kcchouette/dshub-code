@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Implementation of the ADC SUP command, feature checker of clients.
  *
  * @author Pietricica
  */

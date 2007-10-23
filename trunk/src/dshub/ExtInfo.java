@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * The client Info command, also with extended call.
  *
  * @author Pietricica
  */

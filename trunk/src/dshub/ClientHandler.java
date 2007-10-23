@@ -29,6 +29,8 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 /**
+ * Main client class, keeps all info regarding a client, also provides forward and backlinks to other clients.
+ * Also implements disconnecting methods.
  *
  * @author Pietricica
  */

@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ *The ADC advanced configuration panel main file ( for commands only, via client or tty )
  *
  * @author Pietricica
  */

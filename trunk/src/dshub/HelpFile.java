@@ -26,7 +26,7 @@ package dshub;
 import java.io.Serializable;
 
 /**
- * Help File generator;
+ * Help File generator class, dynamically.
  * @author Pietricica
  */
 public class HelpFile implements Serializable

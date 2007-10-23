@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Implementation of the MSG command in ADC protocol.
  *
  * @author Pietricica
  */

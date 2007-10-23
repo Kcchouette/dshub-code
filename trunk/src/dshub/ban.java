@@ -25,6 +25,8 @@ package dshub;
 import java.io.Serializable;
 
 /**
+ * Serializable ban class that allows bans to be kept in linked list in memory
+ * and to be written to file .
  *
  * @author Pietricica
  */

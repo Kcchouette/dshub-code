@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Class that basically implements the CTM adc command.
  *
  * @author Pietricica
  */

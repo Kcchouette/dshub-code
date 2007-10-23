@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * The main hub configuration utility, is called when via command or tty a configuration wants changed.
  *
  * @author Pietricica
  */

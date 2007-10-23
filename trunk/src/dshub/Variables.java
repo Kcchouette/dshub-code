@@ -25,6 +25,8 @@ package dshub;
 import java.io.Serializable;
 
 /**
+ * Basic hub variables to be kept in config file.
+ * Serializable and static class.
  *
  * @author Pietricica
  */

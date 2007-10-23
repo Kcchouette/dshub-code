@@ -36,6 +36,11 @@ class NotCompatibleStringException extends Exception
 }
 
 /**
+ * Basic Time intervals manangement. Converts from long millis to time format and viceversa.
+ * the compatible format is : #xxxw#xxd#xxh#xxm#xxs#xx. where xxx stands for any numbers;
+ * and w= weeks, d days, h hours m minutes, s seconds, . milliseconds.
+ * # is a parsing delimitator. If a number is 0, it can be skipped.
+ * Example : #1w#3h#55m#2s = 1 week , 0 days, 3 hours, 55 minutes 2 seconds and 0 millis.
  *
  * @author Pietricica
  */

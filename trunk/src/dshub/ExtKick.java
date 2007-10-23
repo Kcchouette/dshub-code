@@ -27,6 +27,7 @@ import java.util.StringTokenizer;
 import java.util.regex.PatternSyntaxException;
 
 /**
+ * The client kick command, also with extended call.
  *
  * @author Pietricica
  */

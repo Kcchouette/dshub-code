@@ -31,6 +31,9 @@ import java.net.*;
 
 
 /**
+ * DSHub main class, contains main function ( to call when start application )
+ * Provides registration functions, calls the GUI.
+ * Listens to System.in in tty for commands ( if run via java command line )
  *
  * @author Pietricica
  */

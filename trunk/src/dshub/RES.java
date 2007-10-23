@@ -26,6 +26,8 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ *  Basic implementation of the ADC RES command.
+ *
  *
  * @author Pietricica
  */

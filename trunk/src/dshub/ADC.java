@@ -25,6 +25,8 @@ package dshub;
 import java.lang.String;
 
 /**
+ *This class is the main storage place for ADC command that hub has to send.
+ *Also contains functions to modify strings from normal to ADC type and viceversa.
  *
  * @author Pietricica
  */
