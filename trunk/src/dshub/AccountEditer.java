@@ -23,6 +23,9 @@
 package dshub;
 
 import java.util.Date;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -127,6 +130,7 @@ public class AccountEditer extends javax.swing.JFrame
         quit = new javax.swing.JCheckBox();
         listban = new javax.swing.JCheckBox();
         grant = new javax.swing.JCheckBox();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -550,6 +554,15 @@ public class AccountEditer extends javax.swing.JFrame
         grant.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         grant.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        jButton3.setText("[?]");
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -595,6 +608,10 @@ public class AccountEditer extends javax.swing.JFrame
                             .add(topic)
                             .add(ureg))))
                 .addContainerGap(135, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(282, Short.MAX_VALUE)
+                .add(jButton3)
+                .add(302, 302, 302))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -666,7 +683,9 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(password)
                     .add(gui))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                .add(jButton3)
+                .addContainerGap())
         );
         jTabbedPane1.addTab("Commands", jPanel3);
 
@@ -709,6 +728,53 @@ public class AccountEditer extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize (800,600);
+        bla.setTitle ("What this means ?");
+        
+       bla.getContentPane ().add (jp);
+       JTextArea jl=new JTextArea("about -- The program credits.\n"+
+"adc -- ADC advanced configuration panel, setting contexts for each command.\n"+
+"bancid -- Bans a given cid or the cid of the given online user.\n"+
+"banip -- Bans a given ip or the ip of the given online user.\n"+
+"bannick -- Bans a given nick, drops if nick online.\n"+
+"cfg -- The hub variables.\n"+
+"cmdhistory -- Lists the last history_lines from given commands by logged users.\n"+
+"drop -- A kick with no reason or ban time, just drop/Extended drop; use with no arguments to show info.\n"+
+"gui -- Brings up the gui to server if available.\n"+
+"help -- This screen.\n"+
+"hideme -- Toggles if you are hidden or not in userlist.\n"+
+"history -- Lists the last history_lines from chat.\n"+
+"info -- Lists some useful information about a user,ip or cid.\n"+
+"kick -- Kicks out the user given by nick, add extra words for reason/Extended kick; use with no arguments for info.\n"+
+"listban -- Lists the current banned CIDs/IPs/nicks.\n"+
+"listreg -- Lists the current registered CIDs.\n"+
+"mass -- Broadcast message, takes extended parameters; use with no arguments for info.\n"+
+"mynick -- Changes your nick to new specified one.\n"+
+"password newpass -- Changes your current password, where newpass is the new password.\n"+
+"port x -- Change default port to which hub is listening to x.\n"+
+"quit -- Shuts down hub.\n"+
+"reg CID/online user nick -- Reg the new CID with no password (by default) or the CID of the online user specified by nick.\n"+
+"                                 If already registered, display registration info.\n"+
+"rename -- Renames the user given by nick to new nick given.\n"+
+"restart -- Restarts hub.\n"+
+"stats -- Hub statistics.\n"+
+"topic newtopic -- Where newtopic is the new desired topic; use with no arguments to delete current topic.\n"+
+"unban -- Unbans the specified, looking in CID/IP/nick order.\n"+
+"ureg CID/online user nick -- Unregs the CID/user's CID from database.\n"+
+"usercount -- Info about the current user count."
+               
+               );
+      // jl.setSize (100,30);
+        jp.add (jl);
+       // jp.add(new JLabel("test"));
+        bla.setVisible (true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
@@ -1175,6 +1241,7 @@ this.dispose ();
     private javax.swing.JTextField ipstart;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
