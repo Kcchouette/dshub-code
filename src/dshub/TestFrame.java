@@ -35,6 +35,9 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Basic GUI for DSHub ( TestFrame is a test name that was converted into main GUI, didnt change it after 
+ * I decided to make a GUI )
+ * Provides all hub configuration, accounts, and adc adv config panel.
  *
  * @author  Pietricica
  */

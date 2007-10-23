@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Basic implementation of ADC SCH command.
  *
  * @author Pietricica
  */

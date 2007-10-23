@@ -24,6 +24,8 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * The grant command, that is called either via client , either via tty.
+ * Provides posiblity of adding/removing the registered properties dynamically. 
  *
  * @author Pietricica
  */
@@ -307,7 +309,7 @@ public class GrantCmd
                     return;
                 }
                modnod.myMask.mass=attribute;
-              toSend+=" mynick modified to "+attribute+"\n";
+              toSend+=" mass modified to "+attribute+"\n";
              }
             else  if(what.equals("mynick"))
              {
@@ -804,7 +806,7 @@ public GrantCmd(String cmd)
              {
                
                modnod.myMask.mass=attribute;
-              toSend+=" mynick modified to "+attribute+"\n";
+              toSend+=" mass modified to "+attribute+"\n";
              }
             else  if(what.equals("mynick"))
              {

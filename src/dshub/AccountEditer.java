@@ -28,6 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
+ * The account editing Frame , profile-like options for registered users;
  *
  * @author  Pietricica
  */

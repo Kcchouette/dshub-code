@@ -27,6 +27,7 @@ import java.util.StringTokenizer;
 import java.util.regex.PatternSyntaxException;
 
 /**
+ * The client mass command, also with extended call.
  *
  * @author Pietricica
  */

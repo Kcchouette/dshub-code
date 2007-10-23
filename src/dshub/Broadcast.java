@@ -24,6 +24,7 @@
 package dshub;
 
 /**
+ * Provides broadcasts and feature broadcasts constructors to all connected clients.
  *
  * @author Pietricica
  */

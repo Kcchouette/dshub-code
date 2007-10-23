@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Basic implementation of the ADC RCM command.
  *
  * @author Pietricica
  */

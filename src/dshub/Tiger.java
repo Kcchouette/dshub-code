@@ -24,6 +24,7 @@
 package dshub;
 
 /**
+ *  Tiger Algorithm hash implementation.
  *
  * @author Thanks to Mr. Pretorian for Providing
  */

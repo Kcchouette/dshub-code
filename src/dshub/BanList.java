@@ -27,6 +27,8 @@ import java.io.Serializable;
 
 /**
  *
+ *A public class which holds a list of bans, and a ban class for a singular ban.
+ *
  * @author Pietricica
  */
 

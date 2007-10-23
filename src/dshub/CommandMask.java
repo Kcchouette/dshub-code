@@ -26,6 +26,8 @@ package dshub;
 import java.io.Serializable;
 
 /**
+ * Basic command mask for each registered user, keeps registration information about
+ * account possibilites.
  *
  * @author Pietricica
  */

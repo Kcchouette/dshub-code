@@ -26,6 +26,7 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * Basic implementation of ADC STA command, in client to hub context.
  *
  * @author Pietricica
  */

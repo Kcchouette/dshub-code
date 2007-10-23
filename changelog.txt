@@ -120,3 +120,6 @@ Account flyable means that : if account has a password set, the last nick used w
 log in to account, if password is ok. Then, the CID of the new client is being memorized for the account. 
 To be flyable, the nick must NOT be protected, so when you check flyable, its being auto deactivated.
            * added a help panel on GUI commands which describes all commands;
+           * fixed one bad show up when granting mass command;
+           * added class comment on each class;
+           * generated a javadoc for DSHub.

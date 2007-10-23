@@ -25,6 +25,9 @@ package dshub;
 import java.io.IOException;
 
 /**
+ * Basic message queue for a specific user, keeps messages in a chained list and sends them periodically,
+ * to avoid bottleneck on specific slowlike users, allows broadcasts to go on.
+ *
  *
  * @author Pietricica
  */

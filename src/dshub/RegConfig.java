@@ -289,6 +289,7 @@ import java.util.Date;
     
 
 /**
+ * Provides a chained list of registered users, and each account's information
  *
  * @author Pietricica
  */

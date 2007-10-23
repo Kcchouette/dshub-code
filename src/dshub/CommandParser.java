@@ -30,6 +30,8 @@ import java.util.regex.PatternSyntaxException;
 
 
 /**
+ * Basic client commands sent to hub via mainchat or pm to hub bot.
+ * Provides configuration in hub functionality.
  *
  * @author Pietricica
  */

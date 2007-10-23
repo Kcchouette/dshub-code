@@ -29,8 +29,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 /**
+ * Provides a parsing for each ADC command received from client, and makes the states transitions
+ * Updates all information and ensures stability.
  *
- * @author Administrator
+ *
+ * @author Pietricica
  */
 
 class CommandException extends Exception
