@@ -41,6 +41,7 @@ public class CTM
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
            new STAError(cur_client,140,"CTM Invalid State.");
       
+        
      switch(Issued_Command.charAt(0))
      {
          case 'B':
@@ -66,6 +67,18 @@ public class CTM
                        return;}
                  
      }
+     if(cur_client.LastCTM!=0)
+     {
+         if(System.currentTimeMillis()-cur_client.LastCTM<1000*30)
+         {
+             new STAError(cur_client,0,"CTM spam.");
+             return;
+         }
+         else
+             cur_client.LastCTM=System.currentTimeMillis();
+     }
+     else
+         cur_client.LastCTM=System.currentTimeMillis();
      if(Issued_Command.charAt(0)=='D' || Issued_Command.charAt (0)=='E')
      {
                 StringTokenizer tok=new StringTokenizer(Issued_Command);

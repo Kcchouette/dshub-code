@@ -76,6 +76,9 @@ public class ClientHandler extends Thread
     long LastChatMsg;
     long LastKeepAlive;
     
+    long LastCTM;
+    long LastINF;
+    
 /** The CID of the client. Mandatory for C-C connections.*/
 String ID;
 /**The PID of the client. Hubs must check that the Tiger(PID) == CID and then discard the field before broadcasting it to other clients. Must not be sent in C-C connections.*/
@@ -154,6 +157,7 @@ int kicked=0;
     int base; 
     /** Client Connect time in millis as Syste.gettimemillis() ; ;)*/
     long ConnectTimeMillis;
+    String cur_inf;
     public ClientHandler()
     {
         
@@ -175,6 +179,9 @@ int kicked=0;
       sid=null;
       myban=null;
       LastChatMsg=0;
+      LastCTM=0L;
+      LastINF=0L;
+      cur_inf=null;
       
         ConnectTimeMillis=System.currentTimeMillis();
        
@@ -241,8 +248,8 @@ int kicked=0;
             sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
         else
             sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
-        sendToClient("IMSG "+
-            "Running\\sEta\\sVersion\\sof\\sDSHub.\nIMSG Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+        sendToClient("ISTA 000 "+
+            "Running\\sEta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
         while(Queue.First!=null)
                 {
                 this.PS.printf ("%s\n",Queue.First.MSG);

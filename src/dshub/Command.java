@@ -121,6 +121,26 @@ public class Command
                       return ;
                     }
                     
+                    
+                    if(cur_client.cur_inf!=null)
+                    {
+                    StringTokenizer inftok=new StringTokenizer(cur_client.cur_inf.substring(5));
+                    
+                    while(inftok.hasMoreTokens())
+                    {
+                        String y=inftok.nextToken();
+                        if(Issued_Command.contains(y.substring(0,2)))
+                        {
+                            cur_client.cur_inf=cur_client.cur_inf.substring(0,cur_client.cur_inf.indexOf(y))+cur_client.cur_inf.substring(cur_client.cur_inf.indexOf(y)+y.length());
+                            inftok=new StringTokenizer(cur_client.cur_inf);
+                        }
+                        
+                    }
+                    Issued_Command+=cur_client.cur_inf.substring(5);
+                      tok=new StringTokenizer(Issued_Command);
+                    tok.nextToken();
+                    }
+                    //System.out.println(Issued_Command);
                     while(tok.hasMoreElements())
                     {
                        
@@ -596,8 +616,8 @@ public class Command
                    {
                        if(cur_client.reg.Password.equals (""))//no pass defined ( yet)
                        {
-                           cur_client.Queue.addMsg("IMSG Registered,\\sno\\spassword\\srequired.\\sThough,\\sits\\srecomandable\\sto\\sset\\sone.");
-                           cur_client.Queue.addMsg("IMSG Authenticated.");
+                           cur_client.Queue.addMsg("ISTA 000 Registered,\\sno\\spassword\\srequired.\\sThough,\\sits\\srecomandable\\sto\\sset\\sone.");
+                           cur_client.Queue.addMsg("ISTA 000 Authenticated.");
                         
                          
                          cur_client.reg.LastNI=cur_client.NI;
@@ -606,7 +626,7 @@ public class Command
                          return;
                            
                        }
-                       cur_client.Queue.addMsg("IMSG Registered,\\stype\\syour\\spassword.");
+                       cur_client.Queue.addMsg("ISTA 000 Registered,\\stype\\syour\\spassword.");
                        /* creates some hash for the GPA random data*/
                        Tiger myTiger = new Tiger();
 						
@@ -626,7 +646,7 @@ public class Command
                        k=reg_config.isNickRegFl(cur_client.NI);
                        if(k!=null)
                        {
-                           cur_client.Queue.addMsg("IMSG Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
+                           cur_client.Queue.addMsg("ISTA 000 Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
                            
                          /* creates some hash for the GPA random data*/
                        Tiger myTiger = new Tiger();
@@ -682,8 +702,14 @@ public class Command
                
                if(State.equals ("NORMAL"))
                {
-                  
-                   new Broadcast(cur_inf);
+                  if(System.currentTimeMillis()-cur_client.LastINF>(1000*120L))
+                  {
+                    new Broadcast(cur_inf);
+                    cur_client.LastINF=System.currentTimeMillis();
+                  }
+                  else
+                      cur_client.cur_inf=cur_inf;
+                      
                }
                
     }
@@ -708,7 +734,33 @@ public class Command
                         new STAError(cur_client,140,"INF Invalid Context.");
                         return;
                     }
-                    
+                         switch(Issued_Command.charAt(0))
+     {
+         case 'B':
+             if(Vars.BINF!=1)
+             { new STAError(cur_client,140,"INF Invalid Context B");
+                       return;}break;
+         case 'E':
+              if(Vars.EINF!=1)
+              {  new STAError(cur_client,140,"INF Invalid Context E");
+                       return;}break;
+         case 'D':
+          if(Vars.DINF!=1)
+          {   new STAError(cur_client,140,"INF Invalid Context D");
+                       return;
+         }break;
+         case 'F':
+          if(Vars.FINF!=1)
+           {   new STAError(cur_client,140,"INF Invalid Context F");
+                       return;}break;
+         case 'H':
+              if(Vars.HINF!=1)
+              {   new STAError(cur_client,140,"INF Invalid Context H");
+                       return;}
+                 
+     }
+                         
+                         
                handleINF();
                
               }
