@@ -51,15 +51,27 @@ public class ClientAssasin extends Thread
             
             while(temp.NextClient!=null )
             {
+                long curtime=System.currentTimeMillis();
                 ClientHandler x=temp.NextClient;
                 if(temp.NextClient.userok==1)
-                if((System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)>Long.parseLong ("240000"))
+                {
+                    if(temp.NextClient.cur_inf!=null)
+                        if(curtime-temp.NextClient.LastINF>(1000*120L))
+                    {
+                        new Broadcast(temp.NextClient.cur_inf);
+                        temp.NextClient.LastINF=curtime;
+                        temp.NextClient.cur_inf=null;
+                        
+                        }
+                }
+                if(temp.NextClient.userok==1)
+                if((curtime-temp.NextClient.LastKeepAlive)>Long.parseLong ("240000"))
                 {
                   
                     try
                     {
                         temp.NextClient.OS.write (0x0a);
-                        temp.NextClient.LastKeepAlive=System.currentTimeMillis ();
+                        temp.NextClient.LastKeepAlive=curtime;
                     }
                     catch(Exception e)
                     {
@@ -71,8 +83,8 @@ public class ClientAssasin extends Thread
          
          new Broadcast("IQUI "+temp.NextClient.SessionID);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
-             Main.PopMsg(x.NI+" was dropped due to timeout."+(System.currentTimeMillis ()-temp.NextClient.LastKeepAlive)/1000);
-             x.reg.TimeOnline+=System.currentTimeMillis()-x.LoggedAt;
+             Main.PopMsg(x.NI+" was dropped due to timeout."+(curtime-temp.NextClient.LastKeepAlive)/1000);
+             x.reg.TimeOnline+=curtime-x.LoggedAt;
                //temp.NextClient=x.NextClient;
              
                 x.kicked=1;    
@@ -99,7 +111,7 @@ public class ClientAssasin extends Thread
                         if(x.search_step>=Vars.search_steps)
                             xx=Vars.search_spam_reset*1000;
                   // System.out.println(xx);
-                    if((System.currentTimeMillis ()-x.Lastsearch)>xx)
+                    if((curtime-x.Lastsearch)>xx)
                     {
                     
                         if(x.InQueueSearch.startsWith("B"))
@@ -107,7 +119,7 @@ public class ClientAssasin extends Thread
                         else
                             new Broadcast(x.InQueueSearch,1);
                         x.InQueueSearch=null;
-                       x.Lastsearch=System.currentTimeMillis ();
+                       x.Lastsearch=curtime;
                     }
                     
                 }
