@@ -127,3 +127,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * moved login commands to STA instead of MSG ( to avoid state early transition)
            * fixed adc adv config panel for INF ( forgot about it :D)
            * created remembering system for old INF's... to be sent every 2 mins interval;
+           * modified ctm spamming a bit;
+           * TAG: ETA;

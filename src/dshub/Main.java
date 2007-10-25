@@ -341,11 +341,14 @@ public class Main extends Thread
         InputStreamReader b=new InputStreamReader(System.in);
         BufferedReader bla=new BufferedReader(b);
         
+        
         try{
+            
             while(true)
             {
                 
             String recvbuf=bla.readLine();
+            //System.out.println(recvbuf);
         //System.out.println(bla.readLine());
        // System.out.println(recvbuf);
         if(recvbuf.toLowerCase ().equals("quit"))
