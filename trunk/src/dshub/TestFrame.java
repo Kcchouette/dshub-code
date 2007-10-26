@@ -83,6 +83,7 @@ public class TestFrame extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -320,13 +321,27 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel9.setText("Also lots of thanks to all who helped me and all beta testers and contributors.");
 
-        jLabel14.setText("Version: DSHub Eta RC6");
+        jLabel14.setText("Version: DSHub Theta RC1");
+
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/ds.jpg")));
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
+                .add(278, 278, 278)
+                .add(jLabel7)
+                .addContainerGap(326, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(161, 161, 161)
+                .add(jLabel9)
+                .addContainerGap(209, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(153, 153, 153)
+                .add(jLabel8)
+                .addContainerGap(200, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -337,28 +352,18 @@ public class TestFrame extends javax.swing.JFrame
                             .add(jLabel4)))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(267, 267, 267)
-                        .add(jLabel6)))
-                .addContainerGap(280, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(615, Short.MAX_VALUE)
-                .add(jLabel14)
-                .addContainerGap())
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(278, 278, 278)
-                .add(jLabel7)
-                .addContainerGap(326, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(161, 161, 161)
-                .add(jLabel9)
-                .addContainerGap(209, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(163, 163, 163)
-                .add(jLabel5)
-                .addContainerGap(235, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(153, 153, 153)
-                .add(jLabel8)
-                .addContainerGap(200, Short.MAX_VALUE))
+                        .add(jLabel6))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(163, 163, 163)
+                        .add(jLabel5)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 97, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(jLabel14)
+                        .addContainerGap())
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(jLabel44)
+                        .add(25, 25, 25))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -366,23 +371,26 @@ public class TestFrame extends javax.swing.JFrame
                 .addContainerGap()
                 .add(jLabel14)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel5)
-                .add(24, 24, 24)
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
-                .add(40, 40, 40)
-                .add(jLabel6)
-                .add(28, 28, 28)
-                .add(jLabel7)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel8)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel9)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jLabel5)
+                        .add(24, 24, 24)
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel4)
+                        .add(40, 40, 40)
+                        .add(jLabel6)
+                        .add(28, 28, 28)
+                        .add(jLabel7)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel8)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel9))
+                    .add(jLabel44))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("About", null, jPanel1, "About DSHub...");
@@ -3597,6 +3605,9 @@ if(FMSGcheck.isSelected())
             FSUPcheck.setSelected (true);
         else
             FSUPcheck.setSelected(false); 
+        
+        
+       
 
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -3763,6 +3774,7 @@ if(FMSGcheck.isSelected())
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
