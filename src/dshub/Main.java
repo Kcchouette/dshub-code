@@ -294,7 +294,7 @@ public class Main extends Thread
      */
     public static void main(String [] args) 
     {
-        System.out.println ("Initializing DSHub Eta ...");
+        System.out.println ("Initializing DSHub Theta ...");
         curtime=System.currentTimeMillis();
        /* try{
             long x;

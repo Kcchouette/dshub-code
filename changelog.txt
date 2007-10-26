@@ -129,3 +129,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created remembering system for old INF's... to be sent every 2 mins interval;
            * modified ctm spamming a bit;
            * TAG: ETA;
+           * changed to Theta;
+           * added the DS logo to main page :)
