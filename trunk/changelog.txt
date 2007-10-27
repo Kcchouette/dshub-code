@@ -131,3 +131,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * TAG: ETA;
            * changed to Theta;
            * added the DS logo to main page :)
+           * added a forbidden words panel ( chat control ) ( thansk to naccio );
+           * naccio is now DSHub dev
+           * fixed bug when registering a CID who was not used before, nobody could connect;
+           * fixed bug when hidden, message " you are hidden " was sent twice;

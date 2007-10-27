@@ -60,8 +60,8 @@ import java.util.Date;
             key=false;
             
             isreg=false;
-            LastNI=null;
-            LastIP=null;
+            LastNI="";
+            LastIP="";
             HideShare=false;
             HideMe=false;
             WhoRegged=null;
@@ -399,6 +399,7 @@ class reg_config
         nod x=First;
         while(x!=null)
         {
+            if(x.LastNI!=null)
             if(x.LastNI.equalsIgnoreCase(nick)&& x.accountflyable)
                 return x;
             x=x.Next;
@@ -448,6 +449,7 @@ class reg_config
         while(x!=null)
         {
          if(!x.CID.equals(CID))
+             if(x.LastNI!=null)
             if(x.nickprotected && x.LastNI.equalsIgnoreCase(nick))
                 return true;
             x=x.Next;
