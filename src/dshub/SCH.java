@@ -101,9 +101,10 @@ public class SCH
                         new STAError(cur_client,140,"Search too short.");
                         return;
                     }
+                    long curtime=System.currentTimeMillis();
                     if(automagic==false)
                     {
-                    if(System.currentTimeMillis ()-cur_client.Lastsearch>Vars.search_spam_reset*1000)
+                    if(curtime-cur_client.Lastsearch>Vars.search_spam_reset*1000)
                         cur_client.search_step=0;
                     else if(cur_client.search_step<Vars.search_steps)
                     {
@@ -114,7 +115,7 @@ public class SCH
                         long xx=(long)x;
                         
                         //System.out.println(xx+ "ok");
-                        if(System.currentTimeMillis ()-cur_client.Lastsearch<xx)
+                        if(curtime-cur_client.Lastsearch<xx)
                         {
                             //cur_client.sendToClient (Issued_Command);
                             String [] Messages=Vars.Msg_Search_Spam.split ("\\\n");
@@ -137,7 +138,7 @@ public class SCH
                         long xx=Vars.search_spam_reset*1000;
                         
                         //System.out.println(xx);
-                        if(System.currentTimeMillis ()-cur_client.Lastsearch<xx)
+                        if(curtime-cur_client.Lastsearch<xx)
                         {
                             //cur_client.sendToClient (Issued_Command);
                             String [] Messages=Vars.Msg_Search_Spam.split ("\\\n");
@@ -154,16 +155,16 @@ public class SCH
                     }
                     
                     cur_client.search_step++;
-                    cur_client.Lastsearch=System.currentTimeMillis ();
+                    cur_client.Lastsearch=curtime;
                     }
                     else 
                     {
-                        if(System.currentTimeMillis ()-cur_client.Lastautomagic<Vars.automagic_search*1000)
+                        if(curtime-cur_client.Lastautomagic<Vars.automagic_search*1000)
                         {
                             
                             return;
                         }
-                        cur_client.Lastautomagic=System.currentTimeMillis ();
+                        cur_client.Lastautomagic=curtime;
                             
                     }
                     if(Issued_Command.charAt (0)=='B')

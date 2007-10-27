@@ -854,8 +854,7 @@ public class Command
                         cur_client.Queue.addMsg("IMSG Authenticated.");
                         
                          cur_client.sendFromBot(ADC.MOTD);
-                         if(cur_client.reg.HideMe)
-                            cur_client.Queue.addMsg("IMSG You\\sare\\scurrently\\shidden.");
+                         
                          //System.out.println ("pwla");
                          cur_client.reg.LastNI=cur_client.NI;
                         // cur_client.reg.LastNI=cur_client.NI;
