@@ -211,7 +211,7 @@ public class HubServer extends Thread
        }
            
            Main.PopMsg("Server created. Listening on port "+port+".");
-        new ClientHandler();
+        new ClientNod();
         MyCalendar=Calendar.getInstance();
         if(Main.GUIok)
            {
@@ -251,10 +251,10 @@ public class HubServer extends Thread
              {
              
              }
-        ClientHandler newclient=new ClientHandler(s);
-       newclient.NextClient=ClientHandler.FirstClient.NextClient;
-       ClientHandler.FirstClient.NextClient=newclient;
-       newclient.PrevClient=ClientHandler.FirstClient;
+        ClientNod newclient=new ClientNod(s);
+       newclient.NextClient=ClientNod.FirstClient.NextClient;
+       ClientNod.FirstClient.NextClient=newclient;
+       newclient.PrevClient=ClientNod.FirstClient;
        if(newclient.NextClient!=null)
        newclient.NextClient.PrevClient=newclient;
 

@@ -49,7 +49,7 @@ public class Broadcast
      *state=2 to all except newest client
      **/
     String STR;
-    ClientHandler cur_client=null;
+    ClientNod cur_client=null;
     
     
     static line First=null;
@@ -59,7 +59,7 @@ public class Broadcast
    
     static int size=0;
     /** Creates a new instance of Broadcast */
-    public Broadcast (String STR, ClientHandler bla)
+    public Broadcast (String STR, ClientNod bla)
     {
         this.STR=STR;
         
@@ -80,7 +80,7 @@ public class Broadcast
         this.STR=STR;
         run();
     }
-     public void   sendToAll(ClientHandler CH)
+     public void   sendToAll(ClientNod CH)
     {
        
          String NI="";
@@ -90,15 +90,15 @@ public class Broadcast
          if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))
         {
              NI=Vars.bot_name;
-             if(CH.userok==1)
+             if(CH.cur_client.userok==1)
                  
              if(STR.startsWith ("BMSG "))   
-             if(CH.SessionID.equals (STR.substring (5,9)))
+             if(CH.cur_client.SessionID.equals (STR.substring (5,9)))
              {
-                NI=CH.NI;
+                NI=CH.cur_client.NI;
              }
              
-       if((STR.startsWith ("BMSG ") && CH.SessionID.equals (STR.substring (5,9))) || STR.startsWith ("IMSG "))
+       if((STR.startsWith ("BMSG ") && CH.cur_client.SessionID.equals (STR.substring (5,9))) || STR.startsWith ("IMSG "))
         if(First==null)
         {
                  line bla;
@@ -148,14 +148,14 @@ public class Broadcast
            
              
             
-        if((CH.userok==1 && CH!=cur_client) || (CH!=cur_client && CH.userok==1 && state==1 && CH.ACTIVE==1))
+        if((CH.cur_client.userok==1 && CH!=cur_client) || (CH!=cur_client && CH.cur_client.userok==1 && state==1 && CH.cur_client.ACTIVE==1))
         {
-             if(state==10 && !CH.reg.key)
+             if(state==10 && !CH.cur_client.reg.key)
              {
                  CH=CH.NextClient;
                  continue;
              }
-             if(CH.ACTIVE!=1 && state==1)
+             if(CH.cur_client.ACTIVE!=1 && state==1)
              {
                  CH=CH.NextClient;
                  continue;
@@ -166,9 +166,9 @@ public class Broadcast
                  continue;
              }
            if(STR.startsWith ("IMSG "))
-             CH.sendFromBot (STR.substring (5)); 
+             CH.cur_client.sendFromBot (STR.substring (5)); 
            else
-               CH.Queue.addMsg (STR);
+               CH.cur_client.Queue.addMsg (STR);
         }
         CH=CH.NextClient;
         }
@@ -179,9 +179,9 @@ public class Broadcast
     
     public void run()
     {
-        if(ClientHandler.FirstClient!=null)
-        if(ClientHandler.FirstClient.NextClient!=null)
-       sendToAll(ClientHandler.FirstClient.NextClient);
+        if(ClientNod.FirstClient!=null)
+        if(ClientNod.FirstClient.NextClient!=null)
+       sendToAll(ClientNod.FirstClient.NextClient);
        
     }
     

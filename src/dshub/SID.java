@@ -49,13 +49,13 @@ public class SID
             x.nextBytes(cursid);
             ok=1;
             
-            ClientHandler temp=cur_client.FirstClient.NextClient;
+            ClientNod temp=ClientNod.FirstClient.NextClient;
         
             while(temp!=null)
             {
                 
             
-              if(cursid.equals (temp.sid) )
+              if(cursid.equals (temp.cur_client.sid) )
                  ok=0;
               if(Base32.encode (cursid).substring (0,4).equals ("ABCD"))
                   ok=0;

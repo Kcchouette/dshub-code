@@ -47,51 +47,51 @@ public class ClientAssasin extends Thread
         
         while(!Main.Server.restart)
         {
-            ClientHandler temp=ClientHandler.FirstClient;
+            ClientNod temp=ClientNod.FirstClient;
             
             while(temp.NextClient!=null )
             {
                 long curtime=System.currentTimeMillis();
-                ClientHandler x=temp.NextClient;
-                if(temp.NextClient.userok==1)
+                ClientNod x=temp.NextClient;
+                if(temp.NextClient.cur_client.userok==1)
                 {
-                    if(temp.NextClient.cur_inf!=null)
-                        if(curtime-temp.NextClient.LastINF>(1000*120L))
+                    if(temp.NextClient.cur_client.cur_inf!=null)
+                        if(curtime-temp.NextClient.cur_client.LastINF>(1000*120L))
                     {
-                        new Broadcast(temp.NextClient.cur_inf);
-                        temp.NextClient.LastINF=curtime;
-                        temp.NextClient.cur_inf=null;
+                        new Broadcast(temp.NextClient.cur_client.cur_inf);
+                        temp.NextClient.cur_client.LastINF=curtime;
+                        temp.NextClient.cur_client.cur_inf=null;
                         
                         }
                 }
-                if(temp.NextClient.userok==1)
-                if((curtime-temp.NextClient.LastKeepAlive)>Long.parseLong ("240000"))
+                if(temp.NextClient.cur_client.userok==1)
+                if((curtime-temp.NextClient.cur_client.LastKeepAlive)>Long.parseLong ("240000"))
                 {
                   
                     try
                     {
-                        temp.NextClient.OS.write (0x0a);
-                        temp.NextClient.LastKeepAlive=curtime;
+                        temp.NextClient.cur_client.OS.write (0x0a);
+                        temp.NextClient.cur_client.LastKeepAlive=curtime;
                     }
                     catch(Exception e)
                     {
                     
-                   ClientHandler cur_client=temp.NextClient; 
+                   ClientNod cur_client=temp.NextClient; 
             cur_client.PrevClient.NextClient=cur_client.NextClient;
             if(cur_client.NextClient!=null)
               cur_client.NextClient.PrevClient=cur_client.PrevClient;
          
-         new Broadcast("IQUI "+temp.NextClient.SessionID,cur_client);
+         new Broadcast("IQUI "+temp.NextClient.cur_client.SessionID,cur_client);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
-             Main.PopMsg(x.NI+" was dropped due to timeout."+(curtime-temp.NextClient.LastKeepAlive)/1000);
-             x.reg.TimeOnline+=curtime-x.LoggedAt;
+             Main.PopMsg(x.cur_client.NI+" was dropped due to timeout."+(curtime-temp.NextClient.cur_client.LastKeepAlive)/1000);
+             x.cur_client.reg.TimeOnline+=curtime-x.cur_client.LoggedAt;
                //temp.NextClient=x.NextClient;
              
-                x.kicked=1;    
+                x.cur_client.kicked=1;    
                try
               {
-              x.sleep (200);
-               x.ClientSock.close();
+              x.cur_client.sleep (200);
+               x.cur_client.ClientSock.close();
               }
              catch (Exception ef)
                {
@@ -99,28 +99,28 @@ public class ClientAssasin extends Thread
                 x=null;
                     }
                }
-                if(x.kicked!=1)
-                if(x.InQueueSearch!=null)
-                if(x.userok==1)
+                if(x.cur_client.kicked!=1)
+                if(x.cur_client.InQueueSearch!=null)
+                if(x.cur_client.userok==1)
                 {
                   
                     double xy=1;
-                        for(int i=0;i<x.search_step;i++)
+                        for(int i=0;i<x.cur_client.search_step;i++)
                             xy*=((double)Vars.search_log_base)/1000;
                         xy*=1000;
                         long xx=(long)xy;
-                        if(x.search_step>=Vars.search_steps)
+                        if(x.cur_client.search_step>=Vars.search_steps)
                             xx=Vars.search_spam_reset*1000;
                   // System.out.println(xx);
-                    if((curtime-x.Lastsearch)>xx)
+                    if((curtime-x.cur_client.Lastsearch)>xx)
                     {
                     
-                        if(x.InQueueSearch.startsWith("B"))
-                            new Broadcast(x.InQueueSearch);
+                        if(x.cur_client.InQueueSearch.startsWith("B"))
+                            new Broadcast(x.cur_client.InQueueSearch);
                         else
-                            new Broadcast(x.InQueueSearch,1);
-                        x.InQueueSearch=null;
-                       x.Lastsearch=curtime;
+                            new Broadcast(x.cur_client.InQueueSearch,1);
+                        x.cur_client.InQueueSearch=null;
+                       x.cur_client.Lastsearch=curtime;
                     }
                     
                 }

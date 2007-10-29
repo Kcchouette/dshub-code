@@ -211,10 +211,10 @@ public class MSG
                        else
                        if(!pmsid.equals ("ABCD"))
                        {
-                       ClientHandler temp=cur_client.FirstClient.NextClient;
+                       ClientNod temp=ClientNod.FirstClient.NextClient;
                        while(temp!=null)
                        {
-                       if(temp.SessionID.equals(pmsid))
+                       if(temp.cur_client.SessionID.equals(pmsid))
                            break;
                        temp=temp.NextClient;
                       }
@@ -224,7 +224,7 @@ public class MSG
                             return;
                        }
                        
-                      temp.sendToClient(Issued_Command);
+                      temp.cur_client.sendToClient(Issued_Command);
                       
                       
                       }
@@ -234,12 +234,12 @@ public class MSG
                            //must send to all ops...
                            
                            //cant broadcast coz must send each;s SID
-                           ClientHandler temp=cur_client.FirstClient.NextClient;
+                           ClientNod temp=ClientNod.FirstClient.NextClient;
                            while(temp!=null)
                            {
-                               if(temp.userok==1)
-                                   if(temp.reg.isreg && !temp.equals (cur_client))
-                               temp.sendToClient("EMSG "+cur_client.SessionID+" "+temp.SessionID+ " "+message + " PMABCD");
+                               if(temp.cur_client.userok==1)
+                                   if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
+                               temp.cur_client.sendToClient("EMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
                                temp=temp.NextClient;
                            }
                            
@@ -275,10 +275,10 @@ public class MSG
                        else  
                        if(!pmsid.equals ("ABCD"))
                        {
-                       ClientHandler temp=cur_client.FirstClient.NextClient;
+                       ClientNod temp=ClientNod.FirstClient.NextClient;
                        while(temp!=null)
                        {
-                       if(temp.SessionID.equals(pmsid))
+                       if(temp.cur_client.SessionID.equals(pmsid))
                            break;
                        temp=temp.NextClient;
                         }
@@ -287,18 +287,18 @@ public class MSG
                             new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
                             return;
                        }
-                      temp.sendToClient(Issued_Command);
+                      temp.cur_client.sendToClient(Issued_Command);
                        }
                        else
                        {
                            //talking to bot
                            //must send to all ops...
                            
-                           ClientHandler temp=cur_client.FirstClient.NextClient;
+                           ClientNod temp=ClientNod.FirstClient.NextClient;
                            while(temp!=null)
                            {
-                               if(temp.reg.isreg && !temp.equals (cur_client))
-                               temp.sendToClient("DMSG "+cur_client.SessionID+" "+temp.SessionID+ " "+message + " PMABCD");
+                               if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
+                               temp.cur_client.sendToClient("DMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
                                temp=temp.NextClient;
                            }
                            

@@ -58,9 +58,7 @@ public class ClientHandler extends Thread
     PrintStream PS;
     BufferedReader RS;
     
-    ClientHandler NextClient;
-    ClientHandler PrevClient;//added in zeta rc6
-    static ClientHandler FirstClient;
+    ClientNod myNod;
     
     int logged_in=0;
     int userok=0;
@@ -158,18 +156,13 @@ int kicked=0;
     /** Client Connect time in millis as Syste.gettimemillis() ; ;)*/
     long ConnectTimeMillis;
     String cur_inf;
-    public ClientHandler()
-    {
-        
-        NextClient=null;
-        PrevClient=null;
-        FirstClient=this;
-    }
+    
     /** Creates a new instance of ClientHandler */
-    public ClientHandler(Socket s) 
+    public ClientHandler(Socket s,ClientNod my) 
     {
         /*do not asume that client have BASE features*/
-        user_count++;
+        ClientHandler.user_count++;
+        myNod=my;
         base=0;
         ucmd=0;
         ClientSock=s;
@@ -185,7 +178,7 @@ int kicked=0;
       
         ConnectTimeMillis=System.currentTimeMillis();
        
-        NextClient=null;
+        
         //FirstClient=first;
         
         setPriority(NORM_PRIORITY);
@@ -361,13 +354,11 @@ int kicked=0;
             }*/
           if(this.userok==1) //if he ever logged in... else is no point in sending QUI
           {
-                 new Broadcast("IQUI "+SessionID,this);
+                 new Broadcast("IQUI "+SessionID,this.myNod);
                  this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
                     // System.out.printf ("[disconnected:] %s\n",this.NI);  
           }
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-           this.NextClient.PrevClient=this.PrevClient;
+           myNod.killMe();
             //tempy.NextClient=tempy.NextClient.NextClient;
             while(Queue.First!=null)
                 {
@@ -460,66 +451,7 @@ int kicked=0;
     }
      
      
-     public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
-     {
-         kickmsg=ADC.retNormStr (kickmsg);
-         if(!this.reg.kickable)
-         {
-             whokicked.sendFromBot(""+this.NI+" is unkickable.");
-             return;
-         }
-         //ClientHandler tempy=FirstClient;
-        // while(tempy.NextClient!=this)
-          //   tempy=tempy.NextClient;
-        // ClientHandler temp=tempy.NextClient;
-         if(kicktime!=-1)
-         {
-             if(bantype==3)
-         BanList.addban (bantype,this.ID,1000*kicktime,whokicked.NI,kickmsg);
-             else if(bantype==2)
-                     BanList.addban (bantype,this.ClientSock.getInetAddress().getHostAddress(),1000*kicktime,whokicked.NI,kickmsg);
-              else if(bantype==1)
-                     BanList.addban (bantype,this.NI,1000*kicktime,whokicked.NI,kickmsg);
-        }
-         else
-          {
-         
-          if(bantype==3)
-        BanList.addban (bantype,this.ID,kicktime,whokicked.NI,kickmsg);
-             else if(bantype==2)
-                     BanList.addban (bantype,this.ClientSock.getInetAddress().getHostAddress(),kicktime,whokicked.NI,kickmsg);
-              else if(bantype==1)
-                     BanList.addban (bantype,this.NI,kicktime,whokicked.NI,kickmsg);
-                   
-          }
-         String brcast="IQUI "+this.SessionID+" ID"+whokicked.SessionID+" TL"+Long.toString (kicktime);
-         this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
-           if(!kickmsg.equals(""))
-               brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
-         new Broadcast(brcast);
-           this.sendToClient (brcast);
-             
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-           this.NextClient.PrevClient=this.PrevClient;
-             this. kicked=1;
-                    
-               try
-              {
-              this.sleep (200);
-               this.ClientSock.close();
-              }
-             catch (Exception e)
-               {
-               }
-             whokicked.sendFromBot("Kicked user "+this.NI+" with CID "+this.ID+" out in flames.");
-             Main.PopMsg (whokicked.NI+" kicked user "+this.NI+" with CID " + this.ID+" out in flames.");
-                    Main.Server.rewritebans ();
-     }
-     public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype)
-     {
-     kickMeOut( whokicked, kickmsg,bantype,Long.parseLong (Integer.toString (Vars.kick_time)));
-     }
+    
      public void sendFromBot(String text)
      {
                    if(this.userok==1)
@@ -534,39 +466,7 @@ int kicked=0;
                         this.sendToClient ("EMSG DCBA "+this.SessionID+" "+ADC.retADCStr (text)+" PMDCBA");
                    }
      }
-     public void dropMe(ClientHandler whokicked)
-     {
-         if(!this.reg.kickable)
-         {
-             whokicked.sendFromBot(""+this.NI+" is undroppable.");
-             return;
-         }
-         //ClientHandler tempy=FirstClient;
-        // while(tempy.NextClient!=this)
-         //    tempy=tempy.NextClient;
-        // ClientHandler temp=tempy.NextClient;
-         
-         
-         new Broadcast("IQUI "+this.SessionID);
-           this.sendToClient ("IQUI "+this.SessionID+" ID"+whokicked.SessionID);
-             this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
-               //tempy.NextClient=this.NextClient;
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-           this.NextClient.PrevClient=this.PrevClient;
-             this. kicked=1;
-                    
-               try
-              {
-              this.sleep (200);
-               this.ClientSock.close();
-              }
-             catch (Exception e)
-               {
-               }
-             whokicked.sendFromBot("Dropped user "+this.NI+" with CID "+this.ID+" down from the sky.");
-                  //  Main.Server.rewritebans ();
-     }
+   
      
      
     

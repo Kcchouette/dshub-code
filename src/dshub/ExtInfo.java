@@ -42,16 +42,16 @@ public class ExtInfo
                 while(ST.hasMoreTokens ())
                     aux+=ST.nextToken ();
                 aux=ADC.retADCStr(aux);
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
               
                 if(ADC.isIP(aux))//we have an IP address
                 {
-                    //ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    //ClientNod temp=ClientNod.FirstClient.NextClient;
               String Nicklist="";
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ClientSock.getInetAddress().getHostAddress().equals(aux.toLowerCase ())))
-                                Nicklist=Nicklist+temp.NI+"\n";
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux.toLowerCase ())))
+                                Nicklist=Nicklist+temp.cur_client.NI+"\n";
                             temp=temp.NextClient;
                             
                         }
@@ -71,17 +71,17 @@ public class ExtInfo
                         {
                             Base32.decode (aux);
                             //ok if we are here, its a CID
-                             temp=ClientHandler.FirstClient.NextClient;
+                             temp=ClientNod.FirstClient.NextClient;
              
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(aux)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 break;
                             temp=temp.NextClient;
                             
                         }
                if(temp!=null)
-                  cur_client.sendFromBot("CID "+aux+" is used by:\n"+temp.NI);
+                  cur_client.sendFromBot("CID "+aux+" is used by:\n"+temp.cur_client.NI);
                else 
                   cur_client.sendFromBot("Nobody is using "+aux);
                             return;
@@ -94,10 +94,10 @@ public class ExtInfo
                     
                     
                     
-                temp=ClientHandler.FirstClient.NextClient;
+                temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                             
@@ -107,33 +107,33 @@ public class ExtInfo
                else
                {
                     
-                    String blah11="User Info\nNick "+ADC.retNormStr(temp.NI)+"\nCID "+temp.ID+"\nShare Size "+temp.SS+ " Bytes\n"+
-                            "Description "+(temp.DE!=null?ADC.retNormStr(temp.DE):"")+"\nTag ";
+                    String blah11="User Info\nNick "+ADC.retNormStr(temp.cur_client.NI)+"\nCID "+temp.cur_client.ID+"\nShare Size "+temp.cur_client.SS+ " Bytes\n"+
+                            "Description "+(temp.cur_client.DE!=null?ADC.retNormStr(temp.cur_client.DE):"")+"\nTag ";
                     
-                    String Tag="<"+ADC.retNormStr (temp.VE)+",M:";
-                    if(temp.ACTIVE==1)
+                    String Tag="<"+ADC.retNormStr (temp.cur_client.VE)+",M:";
+                    if(temp.cur_client.ACTIVE==1)
                         Tag=Tag+"A";
                     else Tag=Tag+"P";
-                    Tag=Tag+",H:"+temp.HN+"/";
-                    if(temp.HR!=null)
-                                Tag=Tag+temp.HR+"/";
+                    Tag=Tag+",H:"+temp.cur_client.HN+"/";
+                    if(temp.cur_client.HR!=null)
+                                Tag=Tag+temp.cur_client.HR+"/";
                     else Tag=Tag+"?";
-                    if(temp.HO!=null)
-                                Tag=Tag+temp.HO;
+                    if(temp.cur_client.HO!=null)
+                                Tag=Tag+temp.cur_client.HO;
                     else Tag=Tag+"?";
                             
                             Tag=Tag+",S:";
-                    if(temp.SL!=null)
+                    if(temp.cur_client.SL!=null)
                             
-                            Tag=Tag+temp.SL+">";
+                            Tag=Tag+temp.cur_client.SL+">";
                     else
                         Tag=Tag+"?>";
                             blah11=blah11+Tag+"\nSupports "
-                                    + ((temp.SU!=null) ? temp.SU : "nothing special")+"\nIp address "+temp.ClientSock.getInetAddress().getHostAddress();
-                     if(temp.reg.isreg)   
+                                    + ((temp.cur_client.SU!=null) ? temp.cur_client.SU : "nothing special")+"\nIp address "+temp.cur_client.ClientSock.getInetAddress().getHostAddress();
+                     if(temp.cur_client.reg.isreg)   
                      {
                                 
-                            blah11=blah11+temp.reg.getRegInfo();
+                            blah11=blah11+temp.cur_client.reg.getRegInfo();
                      }
                     
                      else

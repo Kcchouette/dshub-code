@@ -2643,26 +2643,26 @@ if(FMSGcheck.isSelected())
                     n=n.Next;
                      }
                     }
-                    ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    ClientNod temp=ClientNod.FirstClient.NextClient;
                      while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(CID)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(CID)))
                                 break;
                             temp=temp.NextClient;
                         }
                      if(temp!=null)
                     {
-                    temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.sendToClient ("IQUI ABCD");
-                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                    temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
-                            temp.reg=new nod();
-                            Main.PopMsg("User "+temp.NI+" with CID "+CID+" found, deleted.");
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.reg=new nod();
+                            Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
                      }
                      else
                          Main.PopMsg("Reg "+CID+" deleted.");
@@ -2739,13 +2739,13 @@ if(FMSGcheck.isSelected())
                             {
                                 throw new Exception();
                             }
-                            ClientHandler tempy=null;
-                             if(ClientHandler.FirstClient!=null)
-                                tempy=ClientHandler.FirstClient.NextClient;
+                            ClientNod tempy=null;
+                             if(ClientNod.FirstClient!=null)
+                                tempy=ClientNod.FirstClient.NextClient;
                 
                         while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(Thing.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(Thing.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -3279,13 +3279,13 @@ if(FMSGcheck.isSelected())
                             {
                                 throw new Exception();
                             }
-                            ClientHandler tempy=null;
-                             if(ClientHandler.FirstClient!=null)
-                                tempy=ClientHandler.FirstClient.NextClient;
+                            ClientNod tempy=null;
+                             if(ClientNod.FirstClient!=null)
+                                tempy=ClientNod.FirstClient.NextClient;
                 
                         while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(Thing.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(Thing.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -3353,12 +3353,12 @@ if(FMSGcheck.isSelected())
                
                        
                 int i=0,j=0;
-                if(ClientHandler.FirstClient!=null)
+                if(ClientNod.FirstClient!=null)
                 {
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;
@@ -3485,12 +3485,12 @@ if(FMSGcheck.isSelected())
                
                        
                 int i=0,j=0;
-                if(ClientHandler.FirstClient!=null)
+                if(ClientNod.FirstClient!=null)
                 {
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;

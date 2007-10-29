@@ -63,12 +63,12 @@ public class ExtDrop
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to drop;
                 
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                             //tempyprev=tempyprev.NextClient;
@@ -82,15 +82,15 @@ public class ExtDrop
                             //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
-                             temp=ClientHandler.FirstClient.NextClient;
+                             temp=ClientNod.FirstClient.NextClient;
                              //tempyprev=ClientHandler.FirstClient;
                             while(temp!=null)
                             {
-                                 temp=ClientHandler.FirstClient.NextClient;
+                                 temp=ClientNod.FirstClient.NextClient;
                             // tempyprev=ClientHandler.FirstClient;
                             while(temp!=null)
                             {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().matches (aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                            // tempyprev=tempyprev.NextClient;
@@ -133,10 +133,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -159,10 +159,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -185,10 +185,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -211,10 +211,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -237,10 +237,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -263,10 +263,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()>Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -293,10 +293,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024<Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -319,10 +319,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)<Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -345,10 +345,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)<Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -371,10 +371,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)<Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -397,10 +397,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()<Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -423,10 +423,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)<Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -453,10 +453,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024==Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -479,10 +479,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -505,10 +505,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -531,10 +531,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -557,10 +557,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.OP)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.OP)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -583,10 +583,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -609,10 +609,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -629,10 +629,10 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -655,10 +655,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -681,10 +681,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -712,10 +712,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024!=Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -738,10 +738,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -764,10 +764,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.AW)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.AW)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -790,10 +790,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -816,10 +816,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -842,10 +842,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -868,10 +868,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -888,10 +888,10 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(!tempz.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -914,10 +914,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -940,10 +940,10 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)!=Number )
                                              tempz.dropMe (cur_client);
                                          tempz=tempz.NextClient;
                                      }
@@ -959,7 +959,7 @@ public class ExtDrop
                              }
                             /*****************extended drop*******************/
                }
-               else if(!temp.reg.kickable)
+               else if(!temp.cur_client.reg.kickable)
                          cur_client.sendFromBot("This user can't be dropped.");
                 else
                   {

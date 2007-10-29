@@ -74,13 +74,13 @@ public class Command
                
         
         
-                 ClientHandler tempy=cur_client.FirstClient.NextClient;
+                 ClientNod tempy=ClientNod.FirstClient.NextClient;
 
                  while(tempy!=null)
                  {
                     // System.out.println (tempy.NI);
-                     if(tempy.userok==1 && !tempy.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
-                   cur_client.sendToClient(tempy.getINF ()); 
+                     if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
+                   cur_client.sendToClient(tempy.cur_client.getINF ()); 
                      tempy=tempy.NextClient;
                  }
                  //
@@ -92,7 +92,7 @@ public class Command
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
                  
                //ok now must send INF to all clients
-                 new Broadcast(cur_client.getINF (),cur_client);
+                 new Broadcast(cur_client.getINF (),cur_client.myNod);
                  cur_client.userok=1; //user is OK, logged in and cool.
                  cur_client.sendFromBot(ADC.MOTD);
                  //System.out.println("gay");
@@ -445,19 +445,19 @@ public class Command
                         }
                     }
                     //else System.out.println("no nick ban");
-                ClientHandler temp=cur_client.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 int i=0;
                while(temp!=null)
                {
-                   if(temp.userok!=0 && !temp.equals (cur_client))
+                   if(temp.cur_client.userok!=0 && !temp.cur_client.equals (cur_client))
                    {
-                   if(temp.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
+                   if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
                    {
                        new STAError(cur_client,222,"Nick taken, please choose another");
                        return;
                    }
                    
-                   if(temp.ID.equals(cur_client.ID))
+                   if(temp.cur_client.ID.equals(cur_client.ID))
                    {
                        new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
                        return;
@@ -675,20 +675,20 @@ public class Command
                //ok now must send to cur_client client the inf of all others
                if(State.equals ("PROTOCOL"))
                {
-                 ClientHandler tempy=cur_client.FirstClient.NextClient;
+                 ClientNod tempy=ClientNod.FirstClient.NextClient;
 
                  while(tempy!=null)
                  {
                     // System.out.println (tempy.NI);
-                     if(tempy.userok==1 && !tempy.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
-                   cur_client.sendToClient(tempy.getINF ()); 
+                     if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
+                   cur_client.sendToClient(tempy.cur_client.getINF ()); 
                      tempy=tempy.NextClient;
                  }
                 
                  
                 cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
                //ok now must send INF to all clients
-                 new Broadcast(cur_client.getINF (),cur_client);
+                 new Broadcast(cur_client.getINF (),cur_client.myNod);
                  cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)+" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));                 
                  cur_client.userok=1; //user is OK, logged in and cool.
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
@@ -937,21 +937,14 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
            
            // ClientHandler tempy=cur_client.FirstClient.NextClient;
            // ClientHandler tempyprev=cur_client.FirstClient;
-           /* while (!tempy.equals(cur_client))
-            {
-                tempyprev=tempyprev.NextClient;
-                tempy=tempy.NextClient;
-            }
-            tempyprev.NextClient=tempy.NextClient;*/
-            if(cur_client.FirstClient.NextClient!=null && cur_client.userok==1)
+           
+            if(ClientNod.FirstClient.NextClient!=null && cur_client.userok==1)
             {
             new Broadcast("IQUI "+cur_client.SessionID);
             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                   
             }
-           cur_client.PrevClient.NextClient=cur_client.NextClient;
-           if(cur_client.NextClient!=null)
-           cur_client.NextClient.PrevClient=cur_client.PrevClient;
+           cur_client.myNod.killMe();
             try{
             cur_client.ClientSock.close();
             cur_client=null;
