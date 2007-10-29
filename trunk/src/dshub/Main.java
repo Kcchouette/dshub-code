@@ -296,6 +296,34 @@ public class Main extends Thread
     {
         System.out.println ("Initializing DSHub Theta ...");
         curtime=System.currentTimeMillis();
+                      /*     Tiger myTiger = new Tiger();
+						
+		              myTiger.engineReset();
+		                myTiger.init();	
+                               String result1="aabbcc";
+                               byte [] b1=result1.getBytes();
+                                
+		         myTiger.engineUpdate(b1,0,b1.length);
+				
+		            byte[] final1 = myTiger.engineDigest();
+		        System.out.println("all in one "+Base32.encode (final1));
+                        
+                        Tiger myTiger2=new Tiger();
+                        myTiger2.engineReset();
+                        myTiger2.init();
+                        String resultx="aa";
+                        String resulty="bbcc";
+                        byte [] bx=resultx.getBytes();
+                        myTiger.engineUpdate(bx,0,bx.length);
+                        
+                        byte [] blaa=myTiger.engineDigest();
+                       
+                        //myTiger.engineUpdate(blaa,0,blaa.length);
+                        byte [] by=resulty.getBytes();
+                        myTiger.engineUpdate(by,0,by.length);
+                        byte[] final2 = myTiger.engineDigest();
+		        System.out.println("separately "+Base32.encode (final2));
+                        */
        /* try{
             long x;
         System.out.println(x=TimeConv.getLongTime("#5h"));

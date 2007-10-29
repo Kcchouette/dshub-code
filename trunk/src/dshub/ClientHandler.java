@@ -298,6 +298,8 @@ int kicked=0;
           //ClientSock.
            // RS.
           ClientSock.setSoTimeout (0);
+          if(recvbuf==null)
+              new Command (this,null,"NORMAL");
             //String auxbuf;
             char aux1='\\';char aux2='n';
             while(RS.ready() && aux1=='\\' && aux2=='n')
@@ -314,15 +316,13 @@ int kicked=0;
          this.LastKeepAlive=System.currentTimeMillis ();
         // System.out.println ("OK, the value is : "+LastKeepAlive/1000);
          StringTokenizer TK;
-         if(recvbuf!=null)
-         {
+         
              TK=new StringTokenizer(recvbuf,"\n");
              while(TK.hasMoreTokens ())
                  new Command(this,TK.nextToken (),"NORMAL");
-         }
-         else
          
-         new Command (this,null,"NORMAL");
+         
+         
        }
           catch(SocketTimeoutException ste) 	 
 	           { 	 
@@ -361,7 +361,7 @@ int kicked=0;
             }*/
           if(this.userok==1) //if he ever logged in... else is no point in sending QUI
           {
-                 new Broadcast("IQUI "+SessionID);
+                 new Broadcast("IQUI "+SessionID,this);
                  this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
                     // System.out.printf ("[disconnected:] %s\n",this.NI);  
           }
@@ -379,6 +379,7 @@ int kicked=0;
             {
                 this.sleep (100);
                 ClientSock.close();
+                
             }
             catch (Exception e)
             {

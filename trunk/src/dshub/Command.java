@@ -954,6 +954,7 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
            cur_client.NextClient.PrevClient=cur_client.PrevClient;
             try{
             cur_client.ClientSock.close();
+            cur_client=null;
             }
             catch (IOException e)
             {

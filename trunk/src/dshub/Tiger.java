@@ -28,6 +28,7 @@ package dshub;
  *
  * @author Thanks to Mr. Pretorian for Providing
  */
+import java.io.Serializable;
 import java.security.DigestException;
 import java.security.MessageDigest;
 
@@ -50,7 +51,7 @@ import java.security.MessageDigest;
  * algorithm, and only includes Adler32 or CRC32 (in java.util.zip),
  * and MD4, MD5 or SHA1 (in javax.crypto.Mac, included in the SUN JCE).
  */
-public final class Tiger extends MessageDigest implements Cloneable {
+public final class Tiger extends MessageDigest implements Cloneable , Serializable{
 
     /**
      * This implementation returns a fixed-size digest.
