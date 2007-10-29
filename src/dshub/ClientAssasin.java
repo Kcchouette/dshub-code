@@ -79,9 +79,9 @@ public class ClientAssasin extends Thread
                    ClientHandler cur_client=temp.NextClient; 
             cur_client.PrevClient.NextClient=cur_client.NextClient;
             if(cur_client.NextClient!=null)
-           cur_client.NextClient.PrevClient=cur_client.PrevClient;
+              cur_client.NextClient.PrevClient=cur_client.PrevClient;
          
-         new Broadcast("IQUI "+temp.NextClient.SessionID);
+         new Broadcast("IQUI "+temp.NextClient.SessionID,cur_client);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
              Main.PopMsg(x.NI+" was dropped due to timeout."+(curtime-temp.NextClient.LastKeepAlive)/1000);
              x.reg.TimeOnline+=curtime-x.LoggedAt;
@@ -96,6 +96,7 @@ public class ClientAssasin extends Thread
              catch (Exception ef)
                {
                }
+                x=null;
                     }
                }
                 if(x.kicked!=1)

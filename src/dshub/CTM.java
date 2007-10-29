@@ -70,8 +70,11 @@ public class CTM
      
          if(System.currentTimeMillis()-cur_client.LastCTM<1000*30)
          {
+         if(!(cur_client.reg.overridespam))
+         {
              new STAError(cur_client,0,"CTM spam.");
              return;
+         }
          }
          else
              cur_client.LastCTM=System.currentTimeMillis();

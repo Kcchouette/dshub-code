@@ -23,11 +23,7 @@
 
 package dshub;
 
-/**
- * Provides broadcasts and feature broadcasts constructors to all connected clients.
- *
- * @author Pietricica
- */
+
  class line
     {
         public String curline;
@@ -40,6 +36,11 @@ package dshub;
             curline=str;
         }
     }
+ /**
+ * Provides broadcasts and feature broadcasts constructors to all connected clients.
+ *
+ * @author Pietricica
+ */
 public class Broadcast
 {
     int state=0;

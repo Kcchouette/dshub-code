@@ -136,3 +136,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixed bug when registering a CID who was not used before, nobody could connect;
            * fixed bug when hidden, message " you are hidden " was sent twice;
            * rearranged boxes in adc adv panel using absolute layout;
+           * CTM spam is now overriden by ops with attr;
+           * modified client assasin a bit;
