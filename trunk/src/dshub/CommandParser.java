@@ -158,9 +158,9 @@ public class CommandParser
                 cur_client.PS.flush ();
                  try{Main.Server.sleep (1500);}catch(Exception e) {}
              System.gc (); //calling garbage collectors
-                 if(ClientHandler.FirstClient!=null)
+                 if(ClientNod.FirstClient!=null)
                 {
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                
                 try{
                 Socket asock=new Socket("127.0.0.1",Main.Server.port);}catch(Exception e) {}
@@ -170,7 +170,7 @@ public class CommandParser
                     try
             {
                 //this.sleep (100);
-                temp.ClientSock.close();
+                temp.cur_client.ClientSock.close();
             }
             catch (Exception e)
             {            }
@@ -342,26 +342,26 @@ public class CommandParser
                 Base32.decode (aux);
                 if(reg_config.unreg (aux))
                 {
-                    ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    ClientNod temp=ClientNod.FirstClient.NextClient;
                      while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(aux)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 break;
                             temp=temp.NextClient;
                         }
                     if(temp!=null)
                     {
-                            temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
-                            temp.sendToClient ("IQUI ABCD");
-                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
+                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
-                            temp.reg=new nod();
-                            cur_client.sendFromBot("User "+temp.NI+" with CID "+aux+" found, deleted.");
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.reg=new nod();
+                            cur_client.sendFromBot("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
                     }
                     else
                         cur_client.sendFromBot("Reg deleted.");
@@ -374,33 +374,33 @@ public class CommandParser
                 catch (IllegalArgumentException iae)
                 {
                     cur_client.sendFromBot("Not a valid CID, checking for possible users...");
-                      ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                      ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
                         if(temp==null)
                             cur_client.sendFromBot("No such client online.");
-                        else if(!temp.reg.isreg)
+                        else if(!temp.cur_client.reg.isreg)
                           cur_client.sendFromBot("Client exists but not registered.");
                         else
                         {
-                            reg_config.unreg(temp.ID);
-                            Main.PopMsg (cur_client.NI+" deleted the reg "+temp.ID);
-                            cur_client.sendFromBot("User "+temp.NI+" deleted.");
-                            temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
-                            temp.sendToClient ("IQUI ABCD");
-                            if(temp.reg.key){temp.OP="";}else{temp.RG="";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)-1);
+                            reg_config.unreg(temp.cur_client.ID);
+                            Main.PopMsg (cur_client.NI+" deleted the reg "+temp.cur_client.ID);
+                            cur_client.sendFromBot("User "+temp.cur_client.NI+" deleted.");
+                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
+                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)-1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.reg=new nod();
+                            temp.cur_client.reg=new nod();
                         }
                 }
                 Main.Server.rewriteregs ();
@@ -429,10 +429,10 @@ public class CommandParser
                             cur_client.sendFromBot(""+reg_config.getnod (aux).getRegInfo ());
                             return;
                         }
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(aux)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -444,22 +444,22 @@ public class CommandParser
                         }   
                         else
                         {
-                            reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
-                            temp.reg=reg_config.getnod (temp.ID);
-                            cur_client.sendFromBot("User "+temp.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.reg.isreg=true;
-                            temp.LoggedAt=System.currentTimeMillis();
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.isreg=true;
+                            temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
                         
                         }
                         Main.PopMsg (cur_client.NI+" regged the CID "+aux);
@@ -468,10 +468,10 @@ public class CommandParser
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -479,28 +479,29 @@ public class CommandParser
                         { cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("No such client online.");}
                         else
                         {
-                         if(reg_config.isReg (temp.ID)>0)
+                         if(reg_config.isReg (temp.cur_client.ID)>0)
                         {
-                            cur_client.sendFromBot(""+reg_config.getnod (temp.ID).getRegInfo ());
+                            cur_client.sendFromBot(""+reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                             return;
                         }
-                            reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
-                            temp.reg=reg_config.getnod (temp.ID);
-                            cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("User "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
+                            cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.reg.isreg=true;
-                            temp.LoggedAt=System.currentTimeMillis();
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
-                            Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
+                            temp.cur_client.reg.isreg=true;
+                            temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
                         }
                             
                     }
@@ -512,10 +513,10 @@ public class CommandParser
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                        while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -523,27 +524,28 @@ public class CommandParser
                         {  cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("No such client online.");}
                         else
                         {
-                            if(reg_config.isReg (temp.ID)>0)
+                            if(reg_config.isReg (temp.cur_client.ID)>0)
                         {
-                            cur_client.sendFromBot(""+reg_config.getnod (temp.ID).getRegInfo ());
+                            cur_client.sendFromBot(""+reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                             return;
                         }
-                            reg_config.addReg (temp.ID,temp.NI,cur_client.NI);
-                            temp.reg=reg_config.getnod (temp.ID);
-                            cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("User "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...".replaceAll(" ","\\ "));
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
+                            cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.LoggedAt=System.currentTimeMillis();
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
-                            Main.PopMsg (cur_client.NI+" regged the CID "+temp.ID);
+                            temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
                         }
                 }
                 
@@ -628,11 +630,11 @@ public class CommandParser
                     return;
                 }
                 
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -671,18 +673,18 @@ public class CommandParser
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to rename;
                // aux=ADC.retADCStr(aux);
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                            
                         }
                if(temp==null)
                          cur_client.sendFromBot("No such user online.");
-               else if(!temp.reg.renameable)
+               else if(!temp.cur_client.reg.renameable)
                          cur_client.sendFromBot("This registered user cannot be renamed.");
               
                 else
@@ -708,17 +710,17 @@ public class CommandParser
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
-                 if(reg_config.nickReserved(newnick,temp.ID))
+                 if(reg_config.nickReserved(newnick,temp.cur_client.ID))
                 {
                     
                    cur_client.sendFromBot("Nick reserved. Please choose another.");
                     return;
                 }
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(newnick.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(newnick.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -738,13 +740,13 @@ public class CommandParser
                        cur_client.sendFromBot("Nick taken, please choose another.");
                        return;
                     }
-                    new Broadcast("BINF "+temp.SessionID+" NI"+newnick);
+                    new Broadcast("BINF "+temp.cur_client.SessionID+" NI"+newnick);
                     
                     
                     
-                    cur_client.sendFromBot("Renamed user "+temp.NI+" to "+newnick);
-                     new Broadcast("IMSG "+temp.NI+" is now known as "+newnick);
-                     temp.NI=newnick;
+                    cur_client.sendFromBot("Renamed user "+temp.cur_client.NI+" to "+newnick);
+                     new Broadcast("IMSG "+temp.cur_client.NI+" is now known as "+newnick);
+                     temp.cur_client.NI=newnick;
                     
                 }
         }
@@ -853,18 +855,18 @@ public class CommandParser
                {
                     //ok if we got here it really is a CID so:
                     
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                            // tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(!temp.reg.kickable )
-                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.NI+", but is not kickable.");}
+                       if(!temp.cur_client.reg.kickable )
+                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
                        
                        else
                        {
@@ -877,7 +879,7 @@ public class CommandParser
                  else
                  {
                      if(!(reg_config.getnod (aux).kickable))
-                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.NI+", but is not kickable.");}
+                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
                      else
                      {
                          cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning....");
@@ -890,18 +892,18 @@ public class CommandParser
                 {
                     //ok its not a cid, lets check if its some IP address...
                     cur_client.sendFromBot("Not a CID, Searching for a nick...");
-                    ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    ClientNod temp=ClientNod.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                             //tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(!(temp.reg.kickable ))
-                         cur_client.sendFromBot("Found user "+temp.NI+" with CID "+temp.ID+", but its unkickable.");
+                       if(!(temp.cur_client.reg.kickable ))
+                         cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with CID "+temp.cur_client.ID+", but its unkickable.");
                        else
                        {
                         //BanList.addban (3,temp.ID,-1,cur_client.NI,reason);
@@ -942,17 +944,17 @@ public class CommandParser
                 
                         reason=reason.substring (0,reason.length ()-1);
                     reason=ADC.retADCStr(reason);
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                            // tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
-                       if(!temp.reg.kickable)
+                       if(!temp.cur_client.reg.kickable)
                        { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+" but it belongs to an unkickable reg.");}
                        else
                        {
@@ -998,25 +1000,27 @@ public class CommandParser
                  {
                     //ok if we got here it really is a IP so:
                     
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                // ClientHandler tempyprev=ClientHandler.FirstClient;
                   while(temp!=null)
                   {
-                            if(temp.userok==1) 
-                                if( temp.ClientSock.getInetAddress().getHostAddress().equals(aux))
+                            if(temp.cur_client.userok==1) 
+                                if( temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux))
                                 {
-                         if(!temp.reg.kickable)
-                         {cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found IP "+aux+" belonging to "+temp.NI+", but its unkickable. Not banned.");cur_client.sendFromBot("Done.");
+                         if(!temp.cur_client.reg.kickable)
+                         {cur_client.sendFromBot("Searching...");
+                          cur_client.sendFromBot("Found IP "+aux+" belonging to "+temp.cur_client.NI+", but its unkickable. Not banned.");
+                          cur_client.sendFromBot("Done.");
                          return;}
                                 }
                             temp=temp.NextClient;
                   }
-                temp=ClientHandler.FirstClient.NextClient;
+                temp=ClientNod.FirstClient.NextClient;
                 int kickedsome=0;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) 
-                                if( temp.ClientSock.getInetAddress().getHostAddress().equals(aux))
+                            if(temp.cur_client.userok==1) 
+                                if( temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux))
                                 {
                          
                         temp.kickMeOut (cur_client,reason,2,-1L);}
@@ -1037,23 +1041,23 @@ public class CommandParser
                 {
                     //ok its not a ip, lets check if its some nick...
                     cur_client.sendFromBot("Not a IP, Searching for a nick...");
-                    ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    ClientNod temp=ClientNod.FirstClient.NextClient;
                 //ClientHandler tempyprev=ClientHandler.FirstClient;
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( temp.NI.toLowerCase ().equals(aux.toLowerCase ()))
+                            if(temp.cur_client.userok==1) if( temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ()))
                                 break;
                             temp=temp.NextClient;
                             //tempyprev=tempyprev.NextClient;
                         }
                 if(temp!=null)
                 {  
-                        if(!temp.reg.kickable)
-                         cur_client.sendFromBot("Found user "+temp.NI+" with IP "+temp.ClientSock.getInetAddress().getHostAddress()+", but its unkickable.Not banned.");
+                        if(!temp.cur_client.reg.kickable)
+                         cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with IP "+temp.cur_client.ClientSock.getInetAddress().getHostAddress()+", but its unkickable.Not banned.");
                        else
                        {
                         
-                      cur_client.sendFromBot("Found user "+aux+" with IP "+temp.ClientSock.getInetAddress ().getHostAddress ()+", banning..");
+                      cur_client.sendFromBot("Found user "+aux+" with IP "+temp.cur_client.ClientSock.getInetAddress ().getHostAddress ()+", banning..");
                      
                    
                         temp.kickMeOut (cur_client,reason,2,-1L);
@@ -1094,7 +1098,7 @@ public class CommandParser
                if(!Vars.HubDE.equals(""))
                {
                cur_client.sendFromBot("Topic \""+Vars.HubDE+"\" deleted.");
-               new Broadcast("IMSG Topic was deleted by "+cur_client.NI,cur_client);
+               new Broadcast("IMSG Topic was deleted by "+cur_client.NI,cur_client.myNod);
                }
                else
                cur_client.sendFromBot("There wasn't any topic anyway.");
@@ -1152,10 +1156,10 @@ public class CommandParser
                         return;
                     }
                 int i=0,j=0;
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;
@@ -1216,10 +1220,10 @@ public class CommandParser
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;

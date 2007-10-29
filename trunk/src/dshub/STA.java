@@ -60,11 +60,11 @@ public class STA
                  return ;
             }
             String dsid=TK.nextToken ();
-            ClientHandler target=ClientHandler.FirstClient.NextClient
+            ClientNod target=ClientNod.FirstClient.NextClient
                     ;
             while(target!=null)
             {
-                if(target.SessionID.equals (dsid))
+                if(target.cur_client.SessionID.equals (dsid))
                     break;
             }
             if(target==null)
@@ -73,7 +73,7 @@ public class STA
                 return ;
             }
                  
-            target.sendToClient (recvbuf);
+            target.cur_client.sendToClient (recvbuf);
             
             
         }
@@ -93,11 +93,11 @@ public class STA
                  return ;
             }
             String esid=TK.nextToken ();
-            ClientHandler target=ClientHandler.FirstClient.NextClient
+            ClientNod target=ClientNod.FirstClient.NextClient
                     ;
             while(target!=null)
             {
-                if(target.SessionID.equals (esid))
+                if(target.cur_client.SessionID.equals (esid))
                     break;
             }
             if(target==null)
@@ -106,7 +106,7 @@ public class STA
                 return ;
             }
                  
-            target.sendToClient (recvbuf);
+            target.cur_client.sendToClient (recvbuf);
             cur_client.sendToClient (recvbuf);
         }
         else if(recvbuf.charAt (0)=='F')

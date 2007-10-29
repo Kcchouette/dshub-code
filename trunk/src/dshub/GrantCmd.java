@@ -51,7 +51,7 @@ public class GrantCmd
             }
         String who=curcmd.nextToken();
         nod modnod=null;
-        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+        ClientNod temp=ClientNod.FirstClient.NextClient;
         if(ADC.isCID(who))
         {
              modnod=reg_config.getnod(who);
@@ -61,10 +61,10 @@ public class GrantCmd
             
             while(temp!=null)
             {
-                if(temp.userok==1)
-                    if(temp.NI.equalsIgnoreCase(who))
+                if(temp.cur_client.userok==1)
+                    if(temp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=reg_config.getnod(temp.ID);
+                        modnod=reg_config.getnod(temp.cur_client.ID);
                         break;
                     }
                 temp=temp.NextClient;
@@ -472,21 +472,21 @@ public class GrantCmd
                         if(!modnod.key)
                         { 
             
-                        ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                        ClientNod tempx=ClientNod.FirstClient.NextClient;
                          while(tempx!=null)
                         {
-                          if(tempx.userok==1)
-                                if(tempx.ID.equals (modnod.CID))
+                          if(tempx.cur_client.userok==1)
+                                if(tempx.cur_client.ID.equals (modnod.CID))
                                   break;
                         tempx=tempx.NextClient;
                         }
                         if(tempx!=null)//if registered guy is online
                         {
-                                 new Broadcast("BINF "+tempx.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)-1));
-                                 tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)+1);
-                                    tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)-1);
-                                    tempx.RG="";
-                                    tempx.OP="1";
+                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
+                                 tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
+                                    tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
+                                    tempx.cur_client.RG="";
+                                    tempx.cur_client.OP="1";
                          }
                         }
                     modnod.key=true;
@@ -496,21 +496,21 @@ public class GrantCmd
                  if(modnod.key)
                 { 
             
-                ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                ClientNod tempx=ClientNod.FirstClient.NextClient;
                  while(tempx!=null)
                 {
-                        if(tempx.userok==1)
-                             if(tempx.ID.equals (modnod.CID))
+                        if(tempx.cur_client.userok==1)
+                             if(tempx.cur_client.ID.equals (modnod.CID))
                              break;
                         tempx=tempx.NextClient;
                  }
                  if(tempx!=null)//if registered guy is online
                     {
-                         new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)+1));
-                         tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)-1);
-                         tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)+1);
-                         tempx.RG="1";
-                         temp.OP="";
+                         new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
+                         tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
+                         tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
+                         tempx.cur_client.RG="1";
+                         temp.cur_client.OP="";
                     }
                  }
                 modnod.key=false;
@@ -600,8 +600,8 @@ public class GrantCmd
             
       cur_client.sendFromBot(toSend+"Done.") ;
       if(temp!=null)
-          if(temp.NI.equals(who) || temp.ID.equals(who))
-              temp.sendFromBotPM("Your profile has been changed by "+cur_client.NI+".\n"+modnod.getRegInfo());
+          if(temp.cur_client.NI.equals(who) || temp.cur_client.ID.equals(who))
+              temp.cur_client.sendFromBotPM("Your profile has been changed by "+cur_client.NI+".\n"+modnod.getRegInfo());
       
     }
     
@@ -624,7 +624,7 @@ public GrantCmd(String cmd)
             }
         String who=curcmd.nextToken();
         nod modnod=null;
-        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+        ClientNod temp=ClientNod.FirstClient.NextClient;
         if(ADC.isCID(who))
         {
              modnod=reg_config.getnod(who);
@@ -634,10 +634,10 @@ public GrantCmd(String cmd)
             
             while(temp!=null)
             {
-                if(temp.userok==1)
-                    if(temp.NI.equalsIgnoreCase(who))
+                if(temp.cur_client.userok==1)
+                    if(temp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=reg_config.getnod(temp.ID);
+                        modnod=reg_config.getnod(temp.cur_client.ID);
                         break;
                     }
                 temp=temp.NextClient;
@@ -909,21 +909,21 @@ public GrantCmd(String cmd)
                         if(!modnod.key)
                         { 
             
-                        ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                        ClientNod tempx=ClientNod.FirstClient.NextClient;
                          while(tempx!=null)
                         {
-                          if(tempx.userok==1)
-                                if(tempx.ID.equals (modnod.CID))
+                          if(tempx.cur_client.userok==1)
+                                if(tempx.cur_client.ID.equals (modnod.CID))
                                   break;
                         tempx=tempx.NextClient;
                         }
                         if(tempx!=null)//if registered guy is online
                         {
-                                 new Broadcast("BINF "+tempx.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)-1));
-                                 tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)+1);
-                                    tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)-1);
-                                    tempx.RG="";
-                                    tempx.OP="1";
+                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
+                                 tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
+                                    tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
+                                    tempx.cur_client.RG="";
+                                    tempx.cur_client.OP="1";
                          }
                         }
                     modnod.key=true;
@@ -933,21 +933,21 @@ public GrantCmd(String cmd)
                  if(modnod.key)
                 { 
             
-                ClientHandler tempx=ClientHandler.FirstClient.NextClient;
+                ClientNod tempx=ClientNod.FirstClient.NextClient;
                  while(tempx!=null)
                 {
-                        if(tempx.userok==1)
-                             if(tempx.ID.equals (modnod.CID))
+                        if(tempx.cur_client.userok==1)
+                             if(tempx.cur_client.ID.equals (modnod.CID))
                              break;
                         tempx=tempx.NextClient;
                  }
                  if(tempx!=null)//if registered guy is online
                     {
-                         new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.HR)+1));
-                         tempx.HO=Integer.toString (Integer.parseInt (tempx.HO)-1);
-                         tempx.HR=Integer.toString (Integer.parseInt (tempx.HR)+1);
-                         tempx.RG="1";
-                         temp.OP="";
+                         new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
+                         tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
+                         tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
+                         tempx.cur_client.RG="1";
+                         temp.cur_client.OP="";
                     }
                  }
                 modnod.key=false;
@@ -1013,8 +1013,8 @@ public GrantCmd(String cmd)
             
       System.out.println(toSend+"Done.") ;
       if(temp!=null)
-          if(temp.NI.equals(who) || temp.ID.equals(who))
-              temp.sendFromBotPM("Your profile has been changed by Server.\n"+modnod.getRegInfo());
+          if(temp.cur_client.NI.equals(who) || temp.cur_client.ID.equals(who))
+              temp.cur_client.sendFromBotPM("Your profile has been changed by Server.\n"+modnod.getRegInfo());
       
     }
     

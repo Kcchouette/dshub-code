@@ -338,11 +338,11 @@ public class CFGConfig
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(new_name.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -371,11 +371,11 @@ public class CFGConfig
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(new_name.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            

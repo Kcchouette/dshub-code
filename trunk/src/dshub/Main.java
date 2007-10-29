@@ -105,9 +105,9 @@ public class Main extends Thread
              BanList.First=null;
              System.gc (); //calling garbage collectors
              try{Main.Server.sleep (1500);}catch(Exception e) {}
-                if(ClientHandler.FirstClient!=null)
+                if(ClientNod.FirstClient!=null)
                 {
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 
                 try
                 {
@@ -118,7 +118,7 @@ public class Main extends Thread
                     try
             {
                 //this.sleep (100);
-                temp.ClientSock.close();
+                temp.cur_client.ClientSock.close();
             }
             catch (Exception e)
             {            }
@@ -146,10 +146,10 @@ public class Main extends Thread
                             System.out.println (reg_config.getnod (aux).getRegInfo ());
                             return;
                         }
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(aux)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -165,24 +165,24 @@ public class Main extends Thread
                         }   
                         else
                         {
-                            reg_config.addReg (temp.ID,temp.NI,"Server");
-                            temp.reg=reg_config.getnod (temp.ID);
-                            PopMsg("User "+temp.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            PopMsg("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("User "+temp.NI+" found with given CID, added with no password, he should set one.");
-                            temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                                Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
-                            temp.reg.isreg=true;
-                            temp.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.isreg=true;
+                            temp.cur_client.LoggedAt=System.currentTimeMillis();
                         
                         }
                         
@@ -190,10 +190,10 @@ public class Main extends Thread
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -205,31 +205,31 @@ public class Main extends Thread
                         }
                         else
                         {
-                         if(reg_config.isReg (temp.ID)>0)
+                         if(reg_config.isReg (temp.cur_client.ID)>0)
                         {
-                            System.out.println (reg_config.getnod (temp.ID).getRegInfo ());
+                            System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                              if(Main.GUIok)
                                 Main.GUI.SetStatus ("Already regged.");
                             return;
                         }
-                            reg_config.addReg (temp.ID,temp.NI,"Server");
-                            temp.reg=reg_config.getnod (temp.ID);
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
-                            temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                           temp.reg.isreg=true;
-                           temp.LoggedAt=System.currentTimeMillis();
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
+                           temp.cur_client.reg.isreg=true;
+                           temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
                         }
                             
                     }
@@ -241,10 +241,10 @@ public class Main extends Thread
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                        ClientNod temp=ClientNod.FirstClient.NextClient;
                        while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -258,31 +258,31 @@ public class Main extends Thread
                         }
                         else
                         {
-                            if(reg_config.isReg (temp.ID)>0)
+                            if(reg_config.isReg (temp.cur_client.ID)>0)
                         {
-                           System.out.println (reg_config.getnod (temp.ID).getRegInfo ());
+                           System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Already regged.");
                             return;
                         }
-                            reg_config.addReg (temp.ID,temp.NI,"Server");
-                            temp.reg=reg_config.getnod (temp.ID);
-                           PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.NI+" found with CID "+temp.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                           PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
-                            temp.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
-                            if(temp.reg.key){temp.OP="1";}else{temp.RG="1";};
-                            if(temp.reg.key)
-                            temp.HO=String.valueOf(Integer.parseInt(temp.HO)+1);
+                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
+                            if(temp.cur_client.reg.key)
+                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
                             else
-                              temp.HR=String.valueOf(Integer.parseInt(temp.HR)+1);  
-                            temp.HN=String.valueOf(Integer.parseInt(temp.HN)-1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP1":"RG1")+(temp.reg.key?" HO":" HR")+(temp.reg.key?temp.HO:temp.HR)+" HN"+temp.HN);
+                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
+                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.LoggedAt=System.currentTimeMillis();
-                            temp.reg.isreg=true;
-                            temp.reg.LastIP=temp.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            temp.cur_client.reg.isreg=true;
+                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
                         }
                 }
                 
@@ -505,23 +505,23 @@ public class Main extends Thread
                 Base32.decode (aux);
                 if(reg_config.unreg (aux))
                 {
-                    ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                    ClientNod temp=ClientNod.FirstClient.NextClient;
                      while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.ID.equals(aux)))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 break;
                             temp=temp.NextClient;
                         }
                      if(temp!=null)
                     {
-                    temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.sendToClient ("IQUI ABCD");
-                            temp.OP="";
-                            temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
-                            temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=new nod();
-                            System.out.println ("User "+temp.NI+" with CID "+aux+" found, deleted.");
+                    temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.OP="";
+                            temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
+                            temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
+                            temp.cur_client.reg=new nod();
+                            System.out.println ("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
                      }
                      else
                          System.out.println ("Reg deleted.");
@@ -532,10 +532,10 @@ public class Main extends Thread
                 catch (IllegalArgumentException iae)
                 {
                     System.out.println ("Not a valid CID, checking for possible users...");
-                      ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                      ClientNod temp=ClientNod.FirstClient.NextClient;
                        while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                         }
@@ -543,15 +543,15 @@ public class Main extends Thread
                             System.out.println ("No such client online.");
                         else
                         {
-                            reg_config.unreg(temp.ID);
-                           System.out.println ("User "+temp.NI+" deleted.");
-                            temp.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.sendToClient ("IQUI ABCD");
-                            temp.OP="";
-                            temp.HO=Integer.toString (Integer.parseInt(temp.HO)-1);
-                            temp.HN=Integer.toString (Integer.parseInt(temp.HN)+1);
-                            new Broadcast("BINF "+temp.SessionID+" "+(temp.reg.key?"OP":"RG")+""+" HO"+temp.HO+" HN"+temp.HN);
-                            temp.reg=new nod();
+                            reg_config.unreg(temp.cur_client.ID);
+                           System.out.println ("User "+temp.cur_client.NI+" deleted.");
+                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.OP="";
+                            temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
+                            temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
+                            temp.cur_client.reg=new nod();
                         }
                 }
                 Main.Server.rewriteregs ();
@@ -876,11 +876,11 @@ public class Main extends Thread
                        System.out.println("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(new_name.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -909,11 +909,11 @@ public class Main extends Thread
                        System.out.println("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientHandler tempy=ClientHandler.FirstClient.NextClient;
+                    ClientNod tempy=ClientNod.FirstClient.NextClient;
                 
                 while(tempy!=null)
                         {
-                            if(tempy.userok==1) if( (tempy.NI.toLowerCase ().equals(new_name.toLowerCase ())))
+                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
                                 break;
                             tempy=tempy.NextClient;
                            
@@ -1307,10 +1307,10 @@ public class Main extends Thread
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
                 int i=0,j=0;
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;
@@ -1327,10 +1327,10 @@ public class Main extends Thread
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.userok==1)
+                    if(temp.cur_client.userok==1)
                     i++;
                     else j++;
                     temp=temp.NextClient;

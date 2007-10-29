@@ -91,10 +91,10 @@ public class CTM
                 }
                 aux=tok.nextToken();
                 //now must look for the aux SID...
-                ClientHandler temp=cur_client.FirstClient.NextClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
-                    if(temp.SessionID.equals(aux))
+                    if(temp.cur_client.SessionID.equals(aux))
                         break;
                     temp=temp.NextClient;
                 }
@@ -102,7 +102,7 @@ public class CTM
                     return; //not kick, maybe the other client just left after he sent the msg;
                 aux=tok.nextToken(); // this is the string representing protocol, next token is port, next token is TO
                
-                temp.sendToClient(Issued_Command);
+                temp.cur_client.sendToClient(Issued_Command);
                 if(Issued_Command.charAt(0)=='E')
                     cur_client.sendToClient(Issued_Command);
      }

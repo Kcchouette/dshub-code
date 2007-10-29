@@ -1125,21 +1125,21 @@ if(curAcc.myMask.adc)
             if(!curAcc.key)
             { 
             
-            ClientHandler temp=ClientHandler.FirstClient.NextClient;
+            ClientNod temp=ClientNod.FirstClient.NextClient;
             while(temp!=null)
             {
-                if(temp.userok==1)
-                if(temp.ID.equals (curAcc.CID))
+                if(temp.cur_client.userok==1)
+                if(temp.cur_client.ID.equals (curAcc.CID))
                     break;
                 temp=temp.NextClient;
             }
             if(temp!=null)//if registered guy is online
             {
-                new Broadcast("BINF "+temp.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)-1));
-                temp.HO=Integer.toString (Integer.parseInt (temp.HO)+1);
-                temp.HR=Integer.toString (Integer.parseInt (temp.HR)-1);
-                temp.RG="";
-                temp.OP="1";
+                new Broadcast("BINF "+temp.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)-1));
+                temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)+1);
+                temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)-1);
+                temp.cur_client.RG="";
+                temp.cur_client.OP="1";
             }
             }
             curAcc.key=true;
@@ -1149,21 +1149,21 @@ if(curAcc.myMask.adc)
              if(curAcc.key)
             { 
             
-            ClientHandler temp=ClientHandler.FirstClient.NextClient;
+            ClientNod temp=ClientNod.FirstClient.NextClient;
             while(temp!=null)
             {
-                if(temp.userok==1)
-                   if(temp.ID.equals (curAcc.CID))
+                if(temp.cur_client.userok==1)
+                   if(temp.cur_client.ID.equals (curAcc.CID))
                     break;
                 temp=temp.NextClient;
             }
             if(temp!=null)//if registered guy is online
             {
-                new Broadcast("BINF "+temp.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.HR)+1));
-                temp.HO=Integer.toString (Integer.parseInt (temp.HO)-1);
-                temp.HR=Integer.toString (Integer.parseInt (temp.HR)+1);
-                temp.OP="";
-                temp.RG="1";
+                new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)+1));
+                temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)-1);
+                temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)+1);
+                temp.cur_client.OP="";
+                temp.cur_client.RG="1";
             }
             }
             curAcc.key=false;

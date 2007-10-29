@@ -64,8 +64,8 @@ public class ExtKick
                 
                 aux=ADC.retADCStr(aux);
                 
-                ClientHandler temp=ClientHandler.FirstClient.NextClient;
-                ClientHandler tempyprev=ClientHandler.FirstClient;
+                ClientNod temp=ClientNod.FirstClient.NextClient;
+                ClientNod tempyprev=ClientNod.FirstClient;
                 String kickmsg="";
                     while(ST.hasMoreTokens ())
                         kickmsg=kickmsg+ST.nextToken ()+" ";
@@ -76,7 +76,7 @@ public class ExtKick
                         kickmsg=kickmsg.substring (0,kickmsg.length ()-1);
                 while(temp!=null)
                         {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                             tempyprev=tempyprev.NextClient;
@@ -90,15 +90,15 @@ public class ExtKick
                            //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
-                             temp=ClientHandler.FirstClient.NextClient;
-                             tempyprev=ClientHandler.FirstClient;
+                             temp=ClientNod.FirstClient.NextClient;
+                             tempyprev=ClientNod.FirstClient;
                             while(temp!=null)
                             {
-                                 temp=ClientHandler.FirstClient.NextClient;
-                             tempyprev=ClientHandler.FirstClient;
+                                 temp=ClientNod.FirstClient.NextClient;
+                             tempyprev=ClientNod.FirstClient;
                             while(temp!=null)
                             {
-                            if(temp.userok==1) if( (temp.NI.toLowerCase ().matches (aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (aux.toLowerCase ())))
                                 break;
                             temp=temp.NextClient;
                             tempyprev=tempyprev.NextClient;
@@ -141,10 +141,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -167,10 +167,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -193,10 +193,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -219,10 +219,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -245,10 +245,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -271,10 +271,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()>Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -301,10 +301,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024<Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -327,10 +327,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)<Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -353,10 +353,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)<Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -379,10 +379,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)<Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -405,10 +405,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()<Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -431,10 +431,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)<Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)<Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -461,10 +461,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024==Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.cur_client.userok==1)
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -487,10 +487,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -513,10 +513,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -539,10 +539,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -565,10 +565,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.OP)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.OP)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -591,10 +591,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -617,10 +617,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -637,10 +637,10 @@ public class ExtKick
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -663,10 +663,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -689,10 +689,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)==Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -720,10 +720,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SS)/1024/1024!=Number )//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.cur_client.userok==1)
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -746,10 +746,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -772,10 +772,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.AW)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.AW)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -798,10 +798,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.RG)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -824,10 +824,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HO)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HO)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -850,10 +850,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HR)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HR)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -876,10 +876,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.HN)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.HN)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -896,10 +896,10 @@ public class ExtKick
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(!tempz.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
+                                     {if(tempz.cur_client.userok==1)
+                                         if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -922,10 +922,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(tempz.NI.length ()!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -948,10 +948,10 @@ public class ExtKick
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientHandler tempz=ClientHandler.FirstClient.NextClient;
+                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
-                                     {if(tempz.userok==1)
-                                         if(Long.parseLong (tempz.SL)!=Number )
+                                     {if(tempz.cur_client.userok==1)
+                                         if(Long.parseLong (tempz.cur_client.SL)!=Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
@@ -967,7 +967,7 @@ public class ExtKick
                              }
                             /*****************extended kick*******************/
                }
-               else if(!temp.reg.kickable)
+               else if(!temp.cur_client.reg.kickable)
                          cur_client.sendFromBot("This user is unkickable.");
                 else
                   {
