@@ -46,6 +46,7 @@ public class Main extends Thread
     static HubServer Server;
     static Properties Proppies;
     static String auxhelp;
+    public static BanWordsList listaBanate;
       
        static String MOTD="";
        static long curtime;
@@ -85,6 +86,10 @@ public class Main extends Thread
        {
             Server.rewriteregs();
             Server.rewriteconfig();
+            
+            //save Banned Words List
+            listaBanate.printFile("banwlist.txt");
+            
             PopMsg("Closing down hub.");
         try {
             sleep(500);
@@ -293,9 +298,15 @@ public class Main extends Thread
      * @param args the command line arguments
      */
     public static void main(String [] args) 
-    {
+    {   
+        //
         System.out.println ("Initializing DSHub Theta ...");
         curtime=System.currentTimeMillis();
+        
+        //init banned words list
+        listaBanate=new BanWordsList();
+        listaBanate.loadFile("banwlist.txt");
+        
                       /*     Tiger myTiger = new Tiger();
 						
 		              myTiger.engineReset();
