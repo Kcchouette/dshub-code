@@ -33,36 +33,27 @@ public class ClientNod
 {
     
     ClientHandler cur_client;
-    ClientNod NextClient=null;
-    ClientNod PrevClient=null;
+    ClientNod NextClient;
+    ClientNod PrevClient;
     
-    static ClientNod FirstClient=null;
+    static ClientNod FirstClient;
     
     /** Creates a new instance of ClientNod */
-   
-    public ClientNod()
+    public ClientNod(Socket s)
     {
-       
-       
-       
-      
-        //FirstClient=this;
-       cur_client=new ClientHandler(this);
         NextClient=null;
-        PrevClient=null;
-           
-        
-    }
-    public ClientNod(int i)
-    {
-       
-       FirstClient=this;
-       cur_client=new ClientHandler();
-           
+        cur_client=new ClientHandler(s,this);
         
     }
     
-   
+    public ClientNod()
+    {
+        
+        NextClient=null;
+        PrevClient=null;
+        FirstClient=this;
+        cur_client=null;
+    }
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
      {
          kickmsg=ADC.retNormStr (kickmsg);
@@ -109,7 +100,7 @@ public class ClientNod
                     
                try
               {
-             // cur_client.sleep (200);
+              cur_client.sleep (200);
                cur_client.ClientSock.close();
               }
              catch (Exception e)
@@ -147,7 +138,7 @@ public class ClientNod
                     
                try
               {
-              //cur_client.sleep (200);
+              cur_client.sleep (200);
                cur_client.ClientSock.close();
               }
              catch (Exception e)

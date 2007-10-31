@@ -23,9 +23,6 @@
 
 package dshub;
 
-import java.io.IOException;
-import org.xsocket.ClosedConnectionException;
-
 
  class line
     {
@@ -83,7 +80,7 @@ public class Broadcast
         this.STR=STR;
         run();
     }
-     public void   sendToAll(ClientNod CH) 
+     public void   sendToAll(ClientNod CH)
     {
        
          String NI="";
@@ -171,9 +168,7 @@ public class Broadcast
            if(STR.startsWith ("IMSG "))
              CH.cur_client.sendFromBot (STR.substring (5)); 
            else
-               
-               CH.cur_client.sendToClient(STR);
-               
+               CH.cur_client.Queue.addMsg (STR);
         }
         CH=CH.NextClient;
         }
@@ -182,7 +177,7 @@ public class Broadcast
         
     }
     
-    public void run() 
+    public void run()
     {
         if(ClientNod.FirstClient!=null)
         if(ClientNod.FirstClient.NextClient!=null)
