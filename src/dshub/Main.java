@@ -50,9 +50,9 @@ public class Main extends Thread
       
        static String MOTD="";
        static long curtime;
-    public static TestFrame GUI;
+    static TestFrame GUI;
     
-    public static boolean GUIok=true;
+    static boolean GUIok=true;
     public static void PopMsg(String bla)   
     {
         System.out.println (bla);
