@@ -27,6 +27,14 @@ import java.io.*;
 import java.lang.Integer;
 import java.util.Date;
 import java.util.StringTokenizer;
+import org.xsocket.stream.IConnectHandler;
+import org.xsocket.stream.IConnectionScoped;
+
+import org.xsocket.stream.IDataHandler;
+import org.xsocket.stream.INonBlockingConnection;
+import org.xsocket.stream.ITimeoutHandler;
+import org.xsocket.stream.IDisconnectHandler;
+import org.xsocket.stream.NonBlockingConnection;
 
 /**
  * Main client class, keeps all info regarding a client, also provides forward and backlinks to other clients.
@@ -47,7 +55,7 @@ class ClientFailedException extends Exception
     }
 };
 
-public class ClientHandler extends Thread
+public class ClientHandler implements IDataHandler,IConnectHandler,ITimeoutHandler,IDisconnectHandler,IConnectionScoped
 {
     /** main client socket*/
     Socket ClientSock;
@@ -66,16 +74,19 @@ public class ClientHandler extends Thread
     int quit=0;
     
     long LoggedAt=0l;
-    ClientQueue Queue;
+    
     nod reg;
     ban myban;
     String RandomData;
+    
+    String RealAddress;
     
     long LastChatMsg;
     long LastKeepAlive;
     
     long LastCTM;
     long LastINF;
+    INonBlockingConnection x;
     
 /** The CID of the client. Mandatory for C-C connections.*/
 String ID;
@@ -156,17 +167,18 @@ int kicked=0;
     /** Client Connect time in millis as Syste.gettimemillis() ; ;)*/
     long ConnectTimeMillis;
     String cur_inf;
-    
+    String State="PROTOCOL";
     /** Creates a new instance of ClientHandler */
-    public ClientHandler(Socket s,ClientNod my) 
+   
+    public ClientHandler(ClientNod my)
     {
-        /*do not asume that client have BASE features*/
-        ClientHandler.user_count++;
-        myNod=my;
+    myNod=my;
+     ClientHandler.user_count++;
+        
         base=0;
         ucmd=0;
-        ClientSock=s;
-        Queue=new ClientQueue(this);
+        
+      
         
         
       sid=null;
@@ -176,24 +188,31 @@ int kicked=0;
       LastINF=0L;
       cur_inf=null;
       
-        ConnectTimeMillis=System.currentTimeMillis();
+      
+        
        
         
         //FirstClient=first;
         
-        setPriority(NORM_PRIORITY);
-        start();
-    }
-    
-    public void run ()
-    {
-        
+        //setPriority(NORM_PRIORITY);
+        //start();
         SID cursid=new SID(this);
         SessionID=Base32.encode (cursid.cursid).substring (0,4);
         sid=cursid.cursid;
+    }
+    public ClientHandler()
+    {
+        
+    }
+    public void run ()
+    {
+        
+        
 
         LastKeepAlive=0L;
-        try
+        
+        
+       /* try
         {
         IS=ClientSock.getInputStream();
         OS=ClientSock.getOutputStream();
@@ -263,17 +282,14 @@ int kicked=0;
       
       ClientSock.setSoTimeout (0);
    
+      */
       
-      
-        while(ClientSock.isConnected () && !ClientSock.isClosed ())
+     /*   while(ClientSock.isConnected () && !ClientSock.isClosed ())
      
        {
-         this.sleep(20);
+        // this.sleep(20);
            
-               /* if(!this.ClientSock.isConnected () && this.userok==1)
-                    throw new Exception();
-                if(this.ClientSock.isClosed ())
-                    break;*/
+               
                 while(Queue.First!=null)
                 {
                 this.PS.printf ("%s\n",Queue.First.MSG);
@@ -342,17 +358,7 @@ int kicked=0;
             if(kicked==1)
                 return;
            
-            //System.out.println (sta);
-           /*ClientHandler tempy=FirstClient;
-            //ClientHandler tempyprev=FirstClient;
             
-            while (!tempy.NextClient.equals(this) && tempy.NextClient!=null)
-            {
-                
-                tempy=tempy.NextClient;
-                if(tempy.NextClient==null)
-                    break;
-            }*/
           if(this.userok==1) //if he ever logged in... else is no point in sending QUI
           {
                  new Broadcast("IQUI "+SessionID,this.myNod);
@@ -369,7 +375,7 @@ int kicked=0;
                 }
             try
             {
-                this.sleep (100);
+              //  this.sleep (100);
                 ClientSock.close();
                 
             }
@@ -380,7 +386,7 @@ int kicked=0;
             }
             
         
-        
+        */
         
         //System.out.println ("ok, some guy left "+this.NI);
        //user_count--; 
@@ -388,12 +394,124 @@ int kicked=0;
     /** sends the bla String in RAW to client.
      *adds the \n ending char ;)
      */
+    
+    public boolean onData(INonBlockingConnection con) throws IOException 
+    {
+       // System.out.println("x");
+     String data = con.readStringByDelimiter("\n");
+     x=con;
+     System.out.println(State);
+try
+{
+     new Command(this,data,State);
+}
+catch (Exception e)
+{
+    System.out.println(e);
+}
+    
+     return true;
+
+  }
+    
+     public boolean onConnect(INonBlockingConnection con) throws IOException
+    {
+       // System.out.println("conectat.");
+       ConnectTimeMillis=System.currentTimeMillis();
+       RealAddress=con.getRemoteAddress().getHostAddress();
+        return true;
+    }
+     
+     public boolean onIdleTimeout(INonBlockingConnection con) throws IOException 
+     {
+         try
+         {
+        x.write("\n");
+       // System.out.println("[sent]: "+bla);
+         }
+         catch (Exception e)
+         {
+           onDisconnect(con);
+         }
+        return true;
+     }
+     public boolean onConnectionTimeout(INonBlockingConnection con) throws IOException 
+     {
+     //System.out.println("timeout.");
+     onDisconnect(con);
+        return true;
+     }
+     public boolean onDisconnect(INonBlockingConnection con) throws IOException
+     {
+        // System.out.println("disconnect.");
+         if(kicked==1)
+                return true;
+           
+            
+          if(this.userok==1) //if he ever logged in... else is no point in sending QUI
+          {
+                 new Broadcast("IQUI "+SessionID,this.myNod);
+                 this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
+                    // System.out.printf ("[disconnected:] %s\n",this.NI);  
+          }
+             this.myNod.killMe();
+        return true;
+     }
+     
+     public Object clone() throws CloneNotSupportedException 
+     {
+          ClientHandler copy = (ClientHandler) super.clone();
+          
+          copy.myNod=HubServer.AddClient();
+          copy.myNod.cur_client=copy;
+          ClientNod newnod=copy.myNod;
+          newnod.NextClient=ClientNod.FirstClient.NextClient;
+       ClientNod.FirstClient.NextClient=newnod;
+       newnod.PrevClient=ClientNod.FirstClient;
+       if(newnod.NextClient!=null)
+          newnod.NextClient.PrevClient=newnod;
+     ClientHandler.user_count++;
+        
+        copy.base=0;
+       copy. ucmd=0;
+        
+      
+        
+        
+      copy.sid=null;
+     copy. myban=null;
+      copy. LastChatMsg=0;
+      copy. LastCTM=0L;
+      copy. LastINF=0L;
+      copy. cur_inf=null;
+      
+      
+        
+       
+        
+        //FirstClient=first;
+        
+        //setPriority(NORM_PRIORITY);
+        //start();
+        SID  cursid=new SID(copy);
+         copy.SessionID=Base32.encode (cursid.cursid).substring (0,4);
+         copy.sid=cursid.cursid;
+          return copy;
+      }
      public void sendToClient(String bla)
     {
-        
-         this.Queue.addMsg (bla);
-        //System.out.println("[sent]: "+bla);
-    
+          
+         try
+         {
+        x.write(bla+"\n");
+       // System.out.println("[sent]: "+bla);
+         }
+         catch (Exception e)
+         {
+             System.out.println(e.getStackTrace());
+         }
+         //this.Queue.addMsg (bla);
+       
     }
      
      public String getINF()

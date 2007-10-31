@@ -28,6 +28,8 @@ import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.zip.*;
 import java.util.Calendar;
+import org.xsocket.stream.IMultithreadedServer;
+import org.xsocket.stream.MultithreadedServer;
 
 /**
  * Basic hub server listener and socket receiver, sends users to each's thread after connecting.
@@ -195,7 +197,7 @@ public class HubServer extends Thread
           }
           catch ( Exception e)
           {}
-       try
+       /*try
        {
            MainSocket=new ServerSocket(port);
        }
@@ -208,22 +210,37 @@ public class HubServer extends Thread
                
            }
            return;
-       }
-           
-           Main.PopMsg("Server created. Listening on port "+port+".");
-        new ClientNod();
-        MyCalendar=Calendar.getInstance();
-        if(Main.GUIok)
-           {
-               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
-               
-           }
-        Date d=new Date(Main.curtime);
-        Main.PopMsg("Start Time:"+d.toString ());
-        System.out.print("\n>");
+       }*/
+         ;
+           MyCalendar=Calendar.getInstance();
+           myAssasin=new ClientAssasin();//temporary removed
+        //Date d=new Date(Main.curtime);
+        //Main.PopMsg("Start Time:"+d.toString ());
+        //System.out.print("\n>");
+           try
+         {
+         IMultithreadedServer srv = new MultithreadedServer(Vars.Default_Port,  new ClientNod(1).cur_client);
+         srv.run();
+         
+         }
+         catch(UnknownHostException uhe)
+         {
+             System.out.println("Can't Start server, unknown host.");
+             return;
+         }
+         catch(IOException ioe)
+         {
+             System.out.println("IOException "+ioe);
+             return;
+         }
+        //Main.PopMsg("Server created. Listening on port "+port+".");
+      //  
         
-         myAssasin=new ClientAssasin();//temporary removed
-       try 
+        
+        // 
+         
+         
+      /* try 
        {
            while(!restart)
                AddClient(MainSocket.accept());
@@ -235,28 +252,20 @@ public class HubServer extends Thread
         try
         {MainSocket.close ();}
         catch( Exception e)
-        {}
+        {}*/
     }
     
-    public void AddClient(Socket s)
+    public static ClientNod AddClient()
     {
-     
+     //ClientHandler newclient= new ClientHandler();
         if(restart)
-            return;
-        try
-        {
-             this.sleep (30);
-        }
-             catch(InterruptedException ie)
-             {
-             
-             }
-        ClientNod newclient=new ClientNod(s);
-       newclient.NextClient=ClientNod.FirstClient.NextClient;
-       ClientNod.FirstClient.NextClient=newclient;
-       newclient.PrevClient=ClientNod.FirstClient;
-       if(newclient.NextClient!=null)
-       newclient.NextClient.PrevClient=newclient;
+            return null;
+        ;
+        ClientNod newnod=new ClientNod();
+       // ClientHandler newClientH=newnod.cur_client;
+       
+       
+       return newnod;
 
         
     }
