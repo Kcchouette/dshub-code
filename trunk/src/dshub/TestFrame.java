@@ -166,6 +166,7 @@ public class TestFrame extends javax.swing.JFrame
         jLabel14 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -442,14 +443,12 @@ public class TestFrame extends javax.swing.JFrame
 
         jLabel65.setText("This program integrates the xSocket library written by Gregor Roth http://xsocket.sf.net/ ");
 
+        jLabel66.setText("CoDeveloper: Naccio");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(278, 278, 278)
-                .add(jLabel7)
-                .addContainerGap(326, Short.MAX_VALUE))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(153, 153, 153)
                 .add(jLabel8)
@@ -464,11 +463,18 @@ public class TestFrame extends javax.swing.JFrame
                             .add(jLabel3)
                             .add(jLabel4)))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(267, 267, 267)
-                        .add(jLabel6))
-                    .add(jPanel1Layout.createSequentialGroup()
                         .add(163, 163, 163)
-                        .add(jLabel5)))
+                        .add(jLabel5))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(267, 267, 267)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel6)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(20, 20, 20)
+                                .add(jLabel66))
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(10, 10, 10)
+                                .add(jLabel7)))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 97, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -505,8 +511,10 @@ public class TestFrame extends javax.swing.JFrame
                         .add(jLabel4)
                         .add(40, 40, 40)
                         .add(jLabel6)
-                        .add(28, 28, 28)
+                        .add(8, 8, 8)
                         .add(jLabel7)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel66)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel8)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -4278,6 +4286,7 @@ if(FMSGcheck.isSelected())
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
