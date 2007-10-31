@@ -140,3 +140,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * modified client assasin a bit;
            * created another class ClientNod that will take a client handler, and its supposed to handle the linked list;
            * modified all program to integrate new client nod class;
+           * created 2 new files for handling banned words and their list;
+           * partly integrated into GUI;

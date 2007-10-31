@@ -341,6 +341,7 @@ int kicked=0;
             
             if(kicked==1)
                 return;
+           
             //System.out.println (sta);
            /*ClientHandler tempy=FirstClient;
             //ClientHandler tempyprev=FirstClient;

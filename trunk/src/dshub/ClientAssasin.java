@@ -65,7 +65,7 @@ public class ClientAssasin extends Thread
                         }
                 }
                 if(temp.NextClient.cur_client.userok==1)
-                if((curtime-temp.NextClient.cur_client.LastKeepAlive)>Long.parseLong ("240000"))
+                if((curtime-temp.NextClient.cur_client.LastKeepAlive)>240000L)
                 {
                   
                     try
@@ -76,16 +76,14 @@ public class ClientAssasin extends Thread
                     catch(Exception e)
                     {
                     
-                   ClientNod cur_client=temp.NextClient; 
-            cur_client.PrevClient.NextClient=cur_client.NextClient;
-            if(cur_client.NextClient!=null)
-              cur_client.NextClient.PrevClient=cur_client.PrevClient;
+                   
          
-         new Broadcast("IQUI "+temp.NextClient.cur_client.SessionID,cur_client);
+         new Broadcast("IQUI "+temp.NextClient.cur_client.SessionID,x);
           // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
              Main.PopMsg(x.cur_client.NI+" was dropped due to timeout."+(curtime-temp.NextClient.cur_client.LastKeepAlive)/1000);
              x.cur_client.reg.TimeOnline+=curtime-x.cur_client.LoggedAt;
                //temp.NextClient=x.NextClient;
+             
              
                 x.cur_client.kicked=1;    
                try
@@ -96,6 +94,7 @@ public class ClientAssasin extends Thread
              catch (Exception ef)
                {
                }
+                x.killMe();
                 x=null;
                     }
                }
