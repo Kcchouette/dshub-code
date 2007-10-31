@@ -142,3 +142,8 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * modified all program to integrate new client nod class;
            * created 2 new files for handling banned words and their list;
            * partly integrated into GUI;
+           * Integrated xSocket library into DSHub : http://xsocket.sf.net , thanks BlackSonar for suggesting
+           * this change completely modifies the access system, the threading and thread pool system;
+           * removed client queue class;
+           * modified other classes to integrate xSocket;
+           * some things like timeouts, or i dont know what, might not work, please report. 

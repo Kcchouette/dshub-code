@@ -48,7 +48,8 @@ public class ClientAssasin extends Thread
         while(!Main.Server.restart)
         {
             ClientNod temp=ClientNod.FirstClient;
-            
+            if(temp==null)
+                return;
             while(temp.NextClient!=null )
             {
                 long curtime=System.currentTimeMillis();
@@ -88,7 +89,7 @@ public class ClientAssasin extends Thread
                 x.cur_client.kicked=1;    
                try
               {
-              x.cur_client.sleep (200);
+             // x.cur_client.sleep (200);
                x.cur_client.ClientSock.close();
               }
              catch (Exception ef)
