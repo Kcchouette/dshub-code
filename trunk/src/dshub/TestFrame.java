@@ -112,9 +112,24 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.kicked;
         if (jRadioButton3.isSelected())
             prop = prop | BannedWord.noAction;
-        System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
-                jRadioButton3.isSelected());
-        System.out.println("sss - "+prop+" - sss");
+       // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
+       //         jRadioButton3.isSelected());
+        //System.out.println("sss - "+prop+" - sss");
+        return prop;
+    }
+    
+    public long getClientAddPr(){
+        long prop=0;
+        
+        if (jRadioButton7.isSelected())
+            prop = prop | BannedWord.dropped;
+        if (jRadioButton8.isSelected())
+            prop = prop | BannedWord.kicked;
+        if (jRadioButton9.isSelected())
+            prop = prop | BannedWord.noAction;
+       // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
+       //         jRadioButton3.isSelected());
+        //System.out.println("sss - "+prop+" - sss");
         return prop;
     }
     
@@ -127,13 +142,32 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.replaced;
         if (jRadioButton6.isSelected())
             prop = prop | BannedWord.modified;
-        System.out.println(prop);
+       // System.out.println(prop);
+        return prop;
+    }
+     public long getWordAddPr(){
+        long prop=0;
+        
+        if (jRadioButton10.isSelected())
+            prop = prop | BannedWord.hidden;
+        if (jRadioButton11.isSelected())
+            prop = prop | BannedWord.replaced;
+        if (jRadioButton12.isSelected())
+            prop = prop | BannedWord.modified;
+       // System.out.println(prop);
         return prop;
     }
     
     public String getRepl(){
         if (jRadioButton6.isSelected()){
             return jTextField3.getText();
+        }
+        return "";
+    }
+    
+    public String getAddRepl(){
+        if (jRadioButton12.isSelected()){
+            return jTextField5.getText();
         }
         return "";
     }
@@ -1648,6 +1682,11 @@ public class TestFrame extends javax.swing.JFrame
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Forbidden Words List"));
         jButton25.setText("Delete");
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton25MouseClicked(evt);
+            }
+        });
 
         jButton24.setText("Clear List");
         jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2261,6 +2300,11 @@ public class TestFrame extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton25MouseClicked
+
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
 // TODO add your handling code here:
         
@@ -2346,15 +2390,21 @@ public class TestFrame extends javax.swing.JFrame
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
 // TODO add your handling code here:
-        /*
+                        
         String banWord=jTextField2.getText();
         int l=banWord.length();
         
         if (l!=0){
-            DefaultListModel modelLista=(DefaultListModel) jList1.getModel();
-            
-            modelLista.add(0,banWord);
-        }*/
+            if (listaBanate.searchEl(banWord)==-1){
+                DefaultListModel modelLista=(DefaultListModel) jList1.getModel();
+                modelLista.add(0,banWord);
+            }
+            long prop=0;
+            String repl="";
+            prop=prop | this.getClientAddPr() | this.getWordAddPr();
+            repl+= this.getAddRepl();
+            listaBanate.add(banWord,prop,repl);
+        }
     }//GEN-LAST:event_jButton23MouseClicked
 
     private void jRadioButton12StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton12StateChanged
