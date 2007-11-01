@@ -197,7 +197,7 @@ public class BanWordsList {
         }
         
         char[] buff = new char[(int)f.length()+1];
-        System.out.println(f.length());
+        //System.out.println(f.length());
         int n;
         try{
             n=fi.read(buff);
