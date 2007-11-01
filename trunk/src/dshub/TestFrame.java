@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or any later version.
-
+ 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
+ 
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -24,6 +24,9 @@
 package dshub;
 
 
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.StringTokenizer;
 import javax.swing.Icon;
@@ -37,27 +40,25 @@ import javax.swing.ListModel;
 import javax.swing.DefaultListModel;
 
 /**
- * Basic GUI for DSHub ( TestFrame is a test name that was converted into main GUI, didnt change it after 
+ * Basic GUI for DSHub ( TestFrame is a test name that was converted into main GUI, didnt change it after
  * I decided to make a GUI )
  * Provides all hub configuration, accounts, and adc adv config panel.
  *
  * @author  Pietricica
  */
-public class TestFrame extends javax.swing.JFrame 
-{
+public class TestFrame extends javax.swing.JFrame {
     BanWordsList listaBanate;
     /** Creates new form TestFrame */
-    public TestFrame ()
-    {
-       
-        initComponents ();
+    public TestFrame() {
+        
+        initComponents();
         /*java.awt.EventQueue.invokeLater (new Runnable ()
         {
             public void run ()
             {
                // setVisible (true);
-                
-                
+         
+         
             }
         });*/
         
@@ -72,14 +73,23 @@ public class TestFrame extends javax.swing.JFrame
         }
     }
     
+    public void refreshListaBanate(){
+        DefaultListModel modelLista = (DefaultListModel) jList1.getModel();
+        modelLista.removeAllElements();
+        int i,n=listaBanate.size();
+        for (i=0;i<n;i++){
+            modelLista.addElement(listaBanate.elementAt(i));
+        }
+    }
+    
     public void selectPr(long prop,String repl){
-            jRadioButton1.setSelected(false);
-            jRadioButton2.setSelected(false);
-            jRadioButton4.setSelected(false);
-            jRadioButton5.setSelected(false);
-            jRadioButton6.setSelected(false);
-            jTextField3.setEditable(false);
-            jTextField3.setText("");
+        jRadioButton1.setSelected(false);
+        jRadioButton2.setSelected(false);
+        jRadioButton4.setSelected(false);
+        jRadioButton5.setSelected(false);
+        jRadioButton6.setSelected(false);
+        jTextField3.setEditable(false);
+        jTextField3.setText("");
         if ( (prop & BannedWord.dropped) != 0 ){
             jRadioButton1.setSelected(true);
         }
@@ -112,8 +122,8 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.kicked;
         if (jRadioButton3.isSelected())
             prop = prop | BannedWord.noAction;
-       // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
-       //         jRadioButton3.isSelected());
+        // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
+        //         jRadioButton3.isSelected());
         //System.out.println("sss - "+prop+" - sss");
         return prop;
     }
@@ -127,8 +137,8 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.kicked;
         if (jRadioButton9.isSelected())
             prop = prop | BannedWord.noAction;
-       // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
-       //         jRadioButton3.isSelected());
+        // System.out.println(jRadioButton1.isSelected()+" "+jRadioButton2.isSelected()+" "+
+        //         jRadioButton3.isSelected());
         //System.out.println("sss - "+prop+" - sss");
         return prop;
     }
@@ -142,10 +152,10 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.replaced;
         if (jRadioButton6.isSelected())
             prop = prop | BannedWord.modified;
-       // System.out.println(prop);
+        // System.out.println(prop);
         return prop;
     }
-     public long getWordAddPr(){
+    public long getWordAddPr(){
         long prop=0;
         
         if (jRadioButton10.isSelected())
@@ -154,7 +164,7 @@ public class TestFrame extends javax.swing.JFrame
             prop = prop | BannedWord.replaced;
         if (jRadioButton12.isSelected())
             prop = prop | BannedWord.modified;
-       // System.out.println(prop);
+        // System.out.println(prop);
         return prop;
     }
     
@@ -171,7 +181,7 @@ public class TestFrame extends javax.swing.JFrame
         }
         return "";
     }
-   
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -1471,14 +1481,8 @@ public class TestFrame extends javax.swing.JFrame
 
         jTextField3.setEditable(false);
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField3KeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField3KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField3KeyTyped(evt);
             }
         });
 
@@ -1530,10 +1534,25 @@ public class TestFrame extends javax.swing.JFrame
         jLabel63.setText("File:");
 
         jButton26.setText("Load");
+        jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton26MouseClicked(evt);
+            }
+        });
 
         jButton27.setText("Append");
+        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton27MouseClicked(evt);
+            }
+        });
 
         jButton28.setText("Save");
+        jButton28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton28MouseClicked(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel16Layout = new org.jdesktop.layout.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1575,7 +1594,17 @@ public class TestFrame extends javax.swing.JFrame
 
         jPanel16Layout.linkSize(new java.awt.Component[] {jLabel63, jTextField4}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Add Word"));
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Add / Edit Word"));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField2MousePressed(evt);
+            }
+        });
 
         jLabel64.setText("Word:");
 
@@ -1695,6 +1724,11 @@ public class TestFrame extends javax.swing.JFrame
             }
         });
 
+        jList1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jList1KeyReleased(evt);
+            }
+        });
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MouseClicked(evt);
@@ -2300,70 +2334,151 @@ public class TestFrame extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+    private void jButton28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton28MouseClicked
+// TODO add your handling code here:
+        //cc
+        String path=jTextField4.getText();
+        listaBanate.printFile(path);        
+    }//GEN-LAST:event_jButton28MouseClicked
+
+    private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
+// TODO add your handling code here:
+        String path=jTextField4.getText();
+        File f=new File(path);
+        if (f.isFile()){
+           // listaBanate.clean();
+            listaBanate.loadFile(path);
+            this.refreshListaBanate();
+        }
+    }//GEN-LAST:event_jButton27MouseClicked
+
+    private void jButton26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseClicked
+// TODO add your handling code here:
+        String path=jTextField4.getText();
+        File f=new File(path);
+        if (f.isFile()){
+            listaBanate.clean();
+            listaBanate.loadFile(path);
+            this.refreshListaBanate();
+        }
+    }//GEN-LAST:event_jButton26MouseClicked
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+// TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String banWord=jTextField2.getText();
+            int l=banWord.length();
+        
+            if (l!=0){
+                if (listaBanate.searchEl(banWord)==-1){
+                    DefaultListModel modelLista=(DefaultListModel) jList1.getModel();
+                    modelLista.add(0,banWord);
+                }
+                long prop=0;
+                String repl="";
+                prop=prop | this.getClientAddPr() | this.getWordAddPr();
+                repl+= this.getAddRepl();
+                listaBanate.add(banWord,prop,repl);
+            }
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2MousePressed
+
+    private void jList1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyReleased
 // TODO add your handling code here:
         
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE){
+            int[] indici=jList1.getSelectedIndices();
+            listaBanate.removeElementsAt(indici);
+            DefaultListModel modelLista=(DefaultListModel)jList1.getModel();
+            
+            Arrays.sort(indici);
+            for (int i=indici.length-1;i>=0;i--){
+                modelLista.removeElementAt(indici[i]);
+            }
+            
+            return;
+        }
+        
+        int[] indici=jList1.getSelectedIndices();
+        
+        int i,n;
+        n=indici.length;
+        if (n==0){
+            selectPr(BannedWord.dropped | BannedWord.hidden,"");
+            return;
+        }
+        long prop=listaBanate.getPrAt(indici[0]);
+        String repl=listaBanate.getReplAt(indici[0]);
+        selectPr(prop,repl);
+    }//GEN-LAST:event_jList1KeyReleased
+                
+    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+// TODO add your handling code here:
+        int[] indici=jList1.getSelectedIndices();
+        listaBanate.removeElementsAt(indici);
+        DefaultListModel modelLista=(DefaultListModel)jList1.getModel();
+           
+        Arrays.sort(indici);
+        for (int i=indici.length-1;i>=0;i--){
+            modelLista.removeElementAt(indici[i]);
+        }
+        
     }//GEN-LAST:event_jButton25MouseClicked
-
+    
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
 // TODO add your handling code here:
         
         long prop=getWordPr();
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,
-        jTextField3.getText());
+                jTextField3.getText());
     }//GEN-LAST:event_jTextField3KeyReleased
-
-    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextField3KeyPressed
-
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-// TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3KeyTyped
-
+            
     private void jRadioButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton6MouseClicked
 // TODO add your handling code here:
         long prop=getWordPr();
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,
                 jTextField3.getText());
     }//GEN-LAST:event_jRadioButton6MouseClicked
-
+    
     private void jRadioButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton5MouseClicked
 // TODO add your handling code here:
         long prop=getWordPr();
         jTextField3.setText("");
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,"");
     }//GEN-LAST:event_jRadioButton5MouseClicked
-
+    
     private void jRadioButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton4MouseClicked
 // TODO add your handling code here:
         long prop=getWordPr();
         jTextField3.setText("");
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,"");
     }//GEN-LAST:event_jRadioButton4MouseClicked
-
+    
     private void jRadioButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton3MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr();
-       // System.out.println(prop);
+        // System.out.println(prop);
         listaBanate.modifyMultiClientPrAt(jList1.getSelectedIndices(),prop);
     }//GEN-LAST:event_jRadioButton3MouseClicked
-
+    
     private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr();
         //System.out.println(prop);
         listaBanate.modifyMultiClientPrAt(jList1.getSelectedIndices(),prop);
     }//GEN-LAST:event_jRadioButton2MouseClicked
-
+    
     private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr();
-       // System.out.println(prop);
+        // System.out.println(prop);
         listaBanate.modifyMultiClientPrAt(jList1.getSelectedIndices(),prop);
     }//GEN-LAST:event_jRadioButton1MouseClicked
-
+    
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
 // TODO add your handling code here:
         int[] indici=jList1.getSelectedIndices();
@@ -2383,14 +2498,14 @@ public class TestFrame extends javax.swing.JFrame
                 repl="";
             };
         }
-        */
-       // System.out.println(prop);
+         */
+        // System.out.println(prop);
         selectPr(prop,repl);
     }//GEN-LAST:event_jList1MouseClicked
-
+    
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
 // TODO add your handling code here:
-                        
+        
         String banWord=jTextField2.getText();
         int l=banWord.length();
         
@@ -2406,35 +2521,38 @@ public class TestFrame extends javax.swing.JFrame
             listaBanate.add(banWord,prop,repl);
         }
     }//GEN-LAST:event_jButton23MouseClicked
-
+    
     private void jRadioButton12StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton12StateChanged
 // TODO add your handling code here:
         jTextField5.setEditable(jRadioButton12.isSelected());
     }//GEN-LAST:event_jRadioButton12StateChanged
-
+    
     private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
 // TODO add your handling code here:
-          
+        listaBanate.clean();
+        DefaultListModel modelLista=(DefaultListModel)jList1.getModel();
+            
+        modelLista.removeAllElements();      
     }//GEN-LAST:event_jButton24MouseClicked
-
+    
     private void jRadioButton6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton6StateChanged
 // TODO add your handling code here:
         jTextField3.setEditable(jRadioButton6.isSelected());
         
     }//GEN-LAST:event_jRadioButton6StateChanged
-
+    
     private void jButton22ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton22ActionPerformed
     {//GEN-HEADEREND:event_jButton22ActionPerformed
-      int row=AccountTable.getSelectedRow ();
-      if(row==-1)
-          return;
-      String CID=(String)AccountTable.getModel().getValueAt (row,0);
-      AccountEditer Acc1=new AccountEditer(CID);
-      Acc1.setVisible (true);
+        int row=AccountTable.getSelectedRow();
+        if(row==-1)
+            return;
+        String CID=(String)AccountTable.getModel().getValueAt(row,0);
+        AccountEditer Acc1=new AccountEditer(CID);
+        Acc1.setVisible(true);
     }//GEN-LAST:event_jButton22ActionPerformed
-
+    
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
         bla.setSize(300,400);
@@ -2451,9 +2569,9 @@ JDialog bla =new JDialog();
         // jp.add(new JLabel("test"));
         bla.setVisible(true);
     }//GEN-LAST:event_jButton21ActionPerformed
-
+    
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-  JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
         bla.setSize(300,400);
@@ -2470,9 +2588,9 @@ JDialog bla =new JDialog();
         // jp.add(new JLabel("test"));
         bla.setVisible(true);
     }//GEN-LAST:event_jButton20ActionPerformed
-
+    
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-      JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
         bla.setSize(300,400);
@@ -2487,1114 +2605,962 @@ JDialog bla =new JDialog();
         // jl.setSize (100,30);
         jp.add(jl);
         // jp.add(new JLabel("test"));
-        bla.setVisible(true);  
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton19ActionPerformed
-
+    
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-JDialog bla =new JDialog();
-        JPanel jp=new JPanel();
-        
-        bla.setSize (300,400);
-        bla.setTitle ("INF Command");
-        
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("INF is the information specifier command,\nis used to tell other clients about\none's ADC client.\n( B ) Send info to all other clients.\n"+
-               "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"+
-               "( H ) No defined purpose."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
-    }//GEN-LAST:event_jButton18ActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-
         JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("SCH Command");
+        bla.setSize(300,400);
+        bla.setTitle("INF Command");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("SCH is the search command,\nis used to search for files.\n( B ) Send search request to all other clients.\n"+
-               "( D ) Search on a single user.\n( E ) same as D.\n( F ) Search featured clients.\n"+
-               "( H ) No defined purpose."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("INF is the information specifier command,\nis used to tell other clients about\none's ADC client.\n( B ) Send info to all other clients.\n"+
+                "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"+
+                "( H ) No defined purpose."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
+    }//GEN-LAST:event_jButton18ActionPerformed
+    
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        
+        JDialog bla =new JDialog();
+        JPanel jp=new JPanel();
+        
+        bla.setSize(300,400);
+        bla.setTitle("SCH Command");
+        
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("SCH is the search command,\nis used to search for files.\n( B ) Send search request to all other clients.\n"+
+                "( D ) Search on a single user.\n( E ) same as D.\n( F ) Search featured clients.\n"+
+                "( H ) No defined purpose."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton17ActionPerformed
-
+    
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("RCM Command");
+        bla.setSize(300,400);
+        bla.setTitle("RCM Command");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("RCM is the reverse connect to me command,\nis used for requesting a direct\nconnection from another client,\nby a passive TCP user.\n( B ) No defined purpose.\n"+
-               "( D ) Requesting from other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
-               "( H ) No defined purpose."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("RCM is the reverse connect to me command,\nis used for requesting a direct\nconnection from another client,\nby a passive TCP user.\n( B ) No defined purpose.\n"+
+                "( D ) Requesting from other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
+                "( H ) No defined purpose."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton16ActionPerformed
-
+    
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("CTM Command");
+        bla.setSize(300,400);
+        bla.setTitle("CTM Command");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("CTM is the connect to me command,\nis used for requesting a direct\nconnection from another client.\n( B ) No defined purpose.\n"+
-               "( D ) Connecting to other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
-               "( H ) No defined purpose."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("CTM is the connect to me command,\nis used for requesting a direct\nconnection from another client.\n( B ) No defined purpose.\n"+
+                "( D ) Connecting to other client.\n( E ) same as D.\n( F ) No defined purpose.\n"+
+                "( H ) No defined purpose."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton15ActionPerformed
-
+    
     private void HSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSTAcheckActionPerformed
-if(HSTAcheck.isSelected())
-             
-         {
-             Main.PopMsg("HSTA changed from \"0\" to \"1\".");
-             Vars.HSTA=1;
-         }
-         else
-         {
-             Main.PopMsg("HSTA changed from \"1\" to \"0\".");
-             Vars.HSTA=0;
-         }
+        if(HSTAcheck.isSelected())
+            
+        {
+            Main.PopMsg("HSTA changed from \"0\" to \"1\".");
+            Vars.HSTA=1;
+        } else {
+            Main.PopMsg("HSTA changed from \"1\" to \"0\".");
+            Vars.HSTA=0;
+        }
     }//GEN-LAST:event_HSTAcheckActionPerformed
-
+    
     private void FSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSTAcheckActionPerformed
-if(FSTAcheck.isSelected())
-             
-         {
-             Main.PopMsg("FSTA changed from \"0\" to \"1\".");
-             Vars.FSTA=1;
-         }
-         else
-         {
-             Main.PopMsg("FSTA changed from \"1\" to \"0\".");
-             Vars.FSTA=0;
-         }
+        if(FSTAcheck.isSelected())
+            
+        {
+            Main.PopMsg("FSTA changed from \"0\" to \"1\".");
+            Vars.FSTA=1;
+        } else {
+            Main.PopMsg("FSTA changed from \"1\" to \"0\".");
+            Vars.FSTA=0;
+        }
     }//GEN-LAST:event_FSTAcheckActionPerformed
-
+    
     private void ESTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ESTAcheckActionPerformed
-if(ESTAcheck.isSelected())
-             
-         {
-             Main.PopMsg("ESTA changed from \"0\" to \"1\".");
-             Vars.ESTA=1;
-         }
-         else
-         {
-             Main.PopMsg("ESTA changed from \"1\" to \"0\".");
-             Vars.ESTA=0;
-         }
+        if(ESTAcheck.isSelected())
+            
+        {
+            Main.PopMsg("ESTA changed from \"0\" to \"1\".");
+            Vars.ESTA=1;
+        } else {
+            Main.PopMsg("ESTA changed from \"1\" to \"0\".");
+            Vars.ESTA=0;
+        }
     }//GEN-LAST:event_ESTAcheckActionPerformed
-
+    
     private void DSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSTAcheckActionPerformed
-if(DSTAcheck.isSelected())
-             
-         {
-             Main.PopMsg("DSTA changed from \"0\" to \"1\".");
-             Vars.DSTA=1;
-         }
-         else
-         {
-             Main.PopMsg("DSTA changed from \"1\" to \"0\".");
-             Vars.DSTA=0;
-         }
+        if(DSTAcheck.isSelected())
+            
+        {
+            Main.PopMsg("DSTA changed from \"0\" to \"1\".");
+            Vars.DSTA=1;
+        } else {
+            Main.PopMsg("DSTA changed from \"1\" to \"0\".");
+            Vars.DSTA=0;
+        }
     }//GEN-LAST:event_DSTAcheckActionPerformed
-
+    
     private void BSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSTAcheckActionPerformed
         if(BSTAcheck.isSelected())
-             
-         {
-             Main.PopMsg("BSTA changed from \"0\" to \"1\".");
-             Vars.BSTA=1;
-         }
-         else
-         {
-             Main.PopMsg("BSTA changed from \"1\" to \"0\".");
-             Vars.BSTA=0;
-         }
+            
+        {
+            Main.PopMsg("BSTA changed from \"0\" to \"1\".");
+            Vars.BSTA=1;
+        } else {
+            Main.PopMsg("BSTA changed from \"1\" to \"0\".");
+            Vars.BSTA=0;
+        }
     }//GEN-LAST:event_BSTAcheckActionPerformed
-
+    
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("STA Command");
+        bla.setSize(300,400);
+        bla.setTitle("STA Command");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("STA is the status command, can be used.\neither for confirming commands\nor signaling some error.\n( B ) no defined purpose for STA.\n"+
-               "( D ) Can be sent to a specified client.\n( E ) same as D.\n( F ) no defined purpose.\n"+
-               "( H ) To be sent to hub."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("STA is the status command, can be used.\neither for confirming commands\nor signaling some error.\n( B ) no defined purpose for STA.\n"+
+                "( D ) Can be sent to a specified client.\n( E ) same as D.\n( F ) no defined purpose.\n"+
+                "( H ) To be sent to hub."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
-
+    
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("MSG Command");
+        bla.setSize(300,400);
+        bla.setTitle("MSG Command");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("MSG is the chat command.\n( B ) is broadcast MSG ( main chat ).\n"+
-               "( D ) is direct msg, used for private message.\n( E ) is used for private message too.\n( F ) can be used by ADC clients.\n"+
-               "( H ) can be used in some messages from clients."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("MSG is the chat command.\n( B ) is broadcast MSG ( main chat ).\n"+
+                "( D ) is direct msg, used for private message.\n( E ) is used for private message too.\n( F ) can be used by ADC clients.\n"+
+                "( H ) can be used in some messages from clients."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
-
+    
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
- JDialog bla =new JDialog();
+        JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("What are this contexts about ?");
+        bla.setSize(300,400);
+        bla.setTitle("What are this contexts about ?");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("ADC uses a context for each command.\nThat is necessary because every command can be\n"+
-               "treated differently according to it's context.\nThe context for each command that you can change:\nBroadcast ( B ) is the context in which.\n"+
-               "the command is being sent to all clients connected.\nDirect Message ( D ) is intended for a single user\nand coming from a single user\n"+
-               "This is tipically used for requesting direct\nconnection, or perhaps private message.\nDirect Echo Message ( E ) is much alike D,\n"+
-               "except that the message is sent to first\nuser too ( echoing it ).\nFeature Broadcast ( F ) is much alike ( B ),\n"+
-               "except that the broadcast is not sent to all,\nbut to users that have some feature,\nlike passive searching (sending to active only).\n"+
-               "To Hub only ( H ) is a message from a single client\nintended for hub only, like \nnegotiating protocol features."
-               
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("ADC uses a context for each command.\nThat is necessary because every command can be\n"+
+                "treated differently according to it's context.\nThe context for each command that you can change:\nBroadcast ( B ) is the context in which.\n"+
+                "the command is being sent to all clients connected.\nDirect Message ( D ) is intended for a single user\nand coming from a single user\n"+
+                "This is tipically used for requesting direct\nconnection, or perhaps private message.\nDirect Echo Message ( E ) is much alike D,\n"+
+                "except that the message is sent to first\nuser too ( echoing it ).\nFeature Broadcast ( F ) is much alike ( B ),\n"+
+                "except that the broadcast is not sent to all,\nbut to users that have some feature,\nlike passive searching (sending to active only).\n"+
+                "To Hub only ( H ) is a message from a single client\nintended for hub only, like \nnegotiating protocol features."
+                
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
     }//GEN-LAST:event_jButton12ActionPerformed
-
+    
     private void HMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_HMSGcheckActionPerformed
     {//GEN-HEADEREND:event_HMSGcheckActionPerformed
-if(HMSGcheck.isSelected())
-             
-         {
-             Main.PopMsg("HMSG changed from \"0\" to \"1\".");
-             Vars.HMSG=1;
-         }
-         else
-         {
-             Main.PopMsg("HMSG changed from \"1\" to \"0\".");
-             Vars.HMSG=0;
-         }
+        if(HMSGcheck.isSelected())
+            
+        {
+            Main.PopMsg("HMSG changed from \"0\" to \"1\".");
+            Vars.HMSG=1;
+        } else {
+            Main.PopMsg("HMSG changed from \"1\" to \"0\".");
+            Vars.HMSG=0;
+        }
     }//GEN-LAST:event_HMSGcheckActionPerformed
-
+    
     private void FMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_FMSGcheckActionPerformed
     {//GEN-HEADEREND:event_FMSGcheckActionPerformed
-if(FMSGcheck.isSelected())
-             
-         {
-             Main.PopMsg("FMSG changed from \"0\" to \"1\".");
-             Vars.FMSG=1;
-         }
-         else
-         {
-             Main.PopMsg("FMSG changed from \"1\" to \"0\".");
-             Vars.FMSG=0;
-         }
+        if(FMSGcheck.isSelected())
+            
+        {
+            Main.PopMsg("FMSG changed from \"0\" to \"1\".");
+            Vars.FMSG=1;
+        } else {
+            Main.PopMsg("FMSG changed from \"1\" to \"0\".");
+            Vars.FMSG=0;
+        }
     }//GEN-LAST:event_FMSGcheckActionPerformed
-
+    
     private void EMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_EMSGcheckActionPerformed
     {//GEN-HEADEREND:event_EMSGcheckActionPerformed
- if(EMSGcheck.isSelected())
-             
-         {
-             Main.PopMsg("EMSG changed from \"0\" to \"1\".");
-             Vars.EMSG=1;
-         }
-         else
-         {
-             Main.PopMsg("EMSG changed from \"1\" to \"0\".");
-             Vars.EMSG=0;
-         }
+        if(EMSGcheck.isSelected())
+            
+        {
+            Main.PopMsg("EMSG changed from \"0\" to \"1\".");
+            Vars.EMSG=1;
+        } else {
+            Main.PopMsg("EMSG changed from \"1\" to \"0\".");
+            Vars.EMSG=0;
+        }
     }//GEN-LAST:event_EMSGcheckActionPerformed
-
+    
     private void DMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_DMSGcheckActionPerformed
     {//GEN-HEADEREND:event_DMSGcheckActionPerformed
- if(DMSGcheck.isSelected())
-             
-         {
-             Main.PopMsg("DMSG changed from \"0\" to \"1\".");
-             Vars.DMSG=1;
-         }
-         else
-         {
-             Main.PopMsg("DMSG changed from \"1\" to \"0\".");
-             Vars.DMSG=0;
-         }
+        if(DMSGcheck.isSelected())
+            
+        {
+            Main.PopMsg("DMSG changed from \"0\" to \"1\".");
+            Vars.DMSG=1;
+        } else {
+            Main.PopMsg("DMSG changed from \"1\" to \"0\".");
+            Vars.DMSG=0;
+        }
     }//GEN-LAST:event_DMSGcheckActionPerformed
-
+    
     private void BMSGcheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_BMSGcheckActionPerformed
     {//GEN-HEADEREND:event_BMSGcheckActionPerformed
-
+        
         if(BMSGcheck.isSelected())
-             
-         {
-             Main.PopMsg("BMSG changed from \"0\" to \"1\".");
-             Vars.BMSG=1;
-         }
-         else
-         {
-             Main.PopMsg("BMSG changed from \"1\" to \"0\".");
-             Vars.BMSG=0;
-         }
+            
+        {
+            Main.PopMsg("BMSG changed from \"0\" to \"1\".");
+            Vars.BMSG=1;
+        } else {
+            Main.PopMsg("BMSG changed from \"1\" to \"0\".");
+            Vars.BMSG=0;
+        }
     }//GEN-LAST:event_BMSGcheckActionPerformed
-
     
-
+    
+    
     private void AccountTableKeyPressed (java.awt.event.KeyEvent evt)//GEN-FIRST:event_AccountTableKeyPressed
     {//GEN-HEADEREND:event_AccountTableKeyPressed
 // TODO add your handling code here:
         //SetStatus("lesbo");
-       
-        if(evt.getKeyCode ()==evt.VK_DELETE)
-           // SetStatus("gay");
+        
+        if(evt.getKeyCode()==evt.VK_DELETE)
+            // SetStatus("gay");
         {
             //need to ureg that reg
-          //  int row=AccountTable.getEditingRow ();
-            int row=AccountTable.getSelectedRow ();
-            String CID=(String)AccountTable.getModel().getValueAt (row,0);
-           // Main.PopMsg(CID);
-            if(reg_config.unreg (CID))
-                {
-                DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel ();
-                    nod n=reg_config.First;
-                    int regcount=0;
-                    while(n!=null)
-                    {
-                         regcount++;
-                         n=n.Next;
-                    }
-        
-                 if(regcount!=AccountModel.getRowCount ())
-                 {
-                         AccountModel.setRowCount (0) ;
-                          n=reg_config.First;
-                 while(n!=null)
-                {
-                     String blah00="";
-                     Date d=new Date(n.CreatedOn);
-                    if(n.LastNI!=null)
-                         blah00=n.LastNI;
-                     else
-                          blah00="Never seen online.";
-                
-                    AccountModel.addRow (new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString()});
+            //  int row=AccountTable.getEditingRow ();
+            int row=AccountTable.getSelectedRow();
+            String CID=(String)AccountTable.getModel().getValueAt(row,0);
+            // Main.PopMsg(CID);
+            if(reg_config.unreg(CID)) {
+                DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
+                nod n=reg_config.First;
+                int regcount=0;
+                while(n!=null) {
+                    regcount++;
                     n=n.Next;
-                     }
-                    }
-                    ClientNod temp=ClientNod.FirstClient.NextClient;
-                     while(temp!=null)
-                        {
-                            if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(CID)))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                     if(temp!=null)
-                    {
-                    temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.cur_client.sendToClient ("IQUI ABCD");
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
-                            temp.cur_client.reg=new nod();
-                            Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
-                     }
-                     else
-                         Main.PopMsg("Reg "+CID+" deleted.");
                 }
+                
+                if(regcount!=AccountModel.getRowCount()) {
+                    AccountModel.setRowCount(0) ;
+                    n=reg_config.First;
+                    while(n!=null) {
+                        String blah00="";
+                        Date d=new Date(n.CreatedOn);
+                        if(n.LastNI!=null)
+                            blah00=n.LastNI;
+                        else
+                            blah00="Never seen online.";
+                        
+                        AccountModel.addRow(new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString()});
+                        n=n.Next;
+                    }
+                }
+                ClientNod temp=ClientNod.FirstClient.NextClient;
+                while(temp!=null) {
+                    if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(CID)))
+                        break;
+                    temp=temp.NextClient;
+                }
+                if(temp!=null) {
+                    temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                    temp.cur_client.sendToClient("IQUI ABCD");
+                    if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
+                    if(temp.cur_client.reg.key)
+                        temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
+                    else
+                        temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);
+                    temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
+                    new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                    temp.cur_client.reg=new nod();
+                    Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
+                } else
+                    Main.PopMsg("Reg "+CID+" deleted.");
+            }
             
             SetStatus("Reg Deleted");
         }
     }//GEN-LAST:event_AccountTableKeyPressed
-
+    
     private void AccountTableKeyTyped (java.awt.event.KeyEvent evt)//GEN-FIRST:event_AccountTableKeyTyped
     {//GEN-HEADEREND:event_AccountTableKeyTyped
 // TODO add your handling code here:
         
     }//GEN-LAST:event_AccountTableKeyTyped
-
+    
     private void jScrollPane2KeyPressed (java.awt.event.KeyEvent evt)//GEN-FIRST:event_jScrollPane2KeyPressed
     {//GEN-HEADEREND:event_jScrollPane2KeyPressed
 // TODO add your handling code here:
         
     }//GEN-LAST:event_jScrollPane2KeyPressed
-
+    
     private void jButton5ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
     {//GEN-HEADEREND:event_jButton5ActionPerformed
 // TODO add your handling code here:
         JDialog bla =new JDialog();
         JPanel jp=new JPanel();
         
-        bla.setSize (300,400);
-        bla.setTitle ("What this means ?");
+        bla.setSize(300,400);
+        bla.setTitle("What this means ?");
         
-       bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("DSHub has now powerful searching features.\nFirst, we need to make a distinction between the\nautomagic "+
-               "and the user searches.\n First type is made by client at a regular interval\nand DSHub keeps a liniar spam setting.\n"+
-               " Second type are user searches ( manual searches )\nthat the user takes.\nFor this type (because of the human factor)\n"+
-               "DSHub keeps a logarithmic spam setting.\nThis way, the 2nd search is at search_log_base\ninterval, but third, is at search_log_base^2\n"+
-               "and so on, until the power gets to max_steps.\n After this point, the user needs to wait\nsearch_spam_reset seconds to get his burst back.\n"+
-               "The searches are being kept in queue ( not ignored !)\nand are processed once the timeout is completed\nso user doesnt need to search again\n"+
-               "but just wait for his search to be completed.\nThe messages appears as a fictive result\nin his search box, which will be filled\n"+
-               "once the search string is being sent to others.\n"
-               );
-      // jl.setSize (100,30);
-        jp.add (jl);
-       // jp.add(new JLabel("test"));
-        bla.setVisible (true);
-       // jc.add (new JLabel("Blabla"));
+        bla.getContentPane().add(jp);
+        JTextArea jl=new JTextArea("DSHub has now powerful searching features.\nFirst, we need to make a distinction between the\nautomagic "+
+                "and the user searches.\n First type is made by client at a regular interval\nand DSHub keeps a liniar spam setting.\n"+
+                " Second type are user searches ( manual searches )\nthat the user takes.\nFor this type (because of the human factor)\n"+
+                "DSHub keeps a logarithmic spam setting.\nThis way, the 2nd search is at search_log_base\ninterval, but third, is at search_log_base^2\n"+
+                "and so on, until the power gets to max_steps.\n After this point, the user needs to wait\nsearch_spam_reset seconds to get his burst back.\n"+
+                "The searches are being kept in queue ( not ignored !)\nand are processed once the timeout is completed\nso user doesnt need to search again\n"+
+                "but just wait for his search to be completed.\nThe messages appears as a fictive result\nin his search box, which will be filled\n"+
+                "once the search string is being sent to others.\n"
+                );
+        // jl.setSize (100,30);
+        jp.add(jl);
+        // jp.add(new JLabel("test"));
+        bla.setVisible(true);
+        // jc.add (new JLabel("Blabla"));
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void savelogscheckActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_savelogscheckActionPerformed
     {//GEN-HEADEREND:event_savelogscheckActionPerformed
 // TODO add your handling code here:
         if(savelogscheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Save_logs changed from \"0\" to \"1\".");
-             Vars.savelogs=1;
-         }
-         else
-         {
-             Main.PopMsg("Save_logs changed from \"1\" to \"0\".");
-             Vars.savelogs=0;
-         }
+            //Main.PopMsg("clicked");
+        {
+            Main.PopMsg("Save_logs changed from \"0\" to \"1\".");
+            Vars.savelogs=1;
+        } else {
+            Main.PopMsg("Save_logs changed from \"1\" to \"0\".");
+            Vars.savelogs=0;
+        }
     }//GEN-LAST:event_savelogscheckActionPerformed
-
+    
     private void jButton11ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton11ActionPerformed
     {//GEN-HEADEREND:event_jButton11ActionPerformed
 // TODO add your handling code here:
         String Thing=opchatnamefield.getText();
-          try
-          {
-                        String aucsy=Vars.Opchat_name;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                            if(!Vars.ValidateNick(Thing))
-                            {
-                                throw new Exception();
-                            }
-                            ClientNod tempy=null;
-                             if(ClientNod.FirstClient!=null)
-                                tempy=ClientNod.FirstClient.NextClient;
+        try {
+            String aucsy=Vars.Opchat_name;
+            if(!(aucsy.equals(Thing))) {
+                if(!Vars.ValidateNick(Thing)) {
+                    throw new Exception();
+                }
+                ClientNod tempy=null;
+                if(ClientNod.FirstClient!=null)
+                    tempy=ClientNod.FirstClient.NextClient;
                 
-                        while(tempy!=null)
-                        {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(Thing.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
-                      // System.out.println("Nick taken, please choose another.");
-                       throw new Exception();
-                    }
-                        Vars.Opchat_name=Thing;
-                        Main.PopMsg("Opchat_name changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF ABCD NI"+Vars.Opchat_name,10);
-                        
-                        }
-          }
-          catch (Exception e)
-          {
-              opchatnamefield.setText (Vars.Opchat_name);
-          }
+                while(tempy!=null) {
+                    if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
+                        break;
+                    tempy=tempy.NextClient;
+                    
+                }
+                if(tempy!=null) {
+                    // System.out.println("Nick taken, please choose another.");
+                    throw new Exception();
+                }
+                Vars.Opchat_name=Thing;
+                Main.PopMsg("Opchat_name changed from \""+aucsy+"\" to \""+Thing+"\".");
+                new Broadcast("BINF ABCD NI"+Vars.Opchat_name,10);
+                
+            }
+        } catch (Exception e) {
+            opchatnamefield.setText(Vars.Opchat_name);
+        }
         Thing=opchatdescfield.getText();
-         
-                        String aucsy=Vars.Opchat_desc;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                           
-                        Vars.Opchat_desc=Thing;
-                        Main.PopMsg("Opchat_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
-                        
-                        }
-          Thing=historylinesfield.getText();
-          try
-          {
-                        int aucs=Vars.history_lines;
-                        if(aucs!=Integer.parseInt(Thing))
-                        {
-                        Vars.history_lines=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("History_lines changed from \""+Integer.toString (aucs)+"\" to \""+Vars.history_lines+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   historylinesfield.setText(Integer.toString(Vars.history_lines));
-                   } 
-          Thing=kicktimefield.getText();
-          try
-          {
-                        int aucs=Vars.kick_time;
-                        if(aucs!=Integer.parseInt(Thing))
-                        {
-                        Vars.kick_time=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Kick_time changed from \""+Integer.toString (aucs)+"\" to \""+Vars.kick_time+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   kicktimefield.setText(Integer.toString(Vars.kick_time));
-                   } 
-          Thing=msgbannedfield.getText();
-         
-                         aucsy=Vars.Msg_Banned;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                           
-                        Vars.Msg_Banned=Thing;
-                        Main.PopMsg("Msg_Banned changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        
-                        }
-            Thing=msgfullfield.getText();
-         
-                         aucsy=Vars.Msg_Full;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                           
-                        Vars.Msg_Full=Thing;
-                        Main.PopMsg("Msg_Full changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        
-                        }
-                         SetStatus("Miscellaneous settings saved.");
+        
+        String aucsy=Vars.Opchat_desc;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Opchat_desc=Thing;
+            Main.PopMsg("Opchat_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
+            new Broadcast("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
+            
+        }
+        Thing=historylinesfield.getText();
+        try {
+            int aucs=Vars.history_lines;
+            if(aucs!=Integer.parseInt(Thing)) {
+                Vars.history_lines=Integer.parseInt(Thing.toString());
+                Main.PopMsg("History_lines changed from \""+Integer.toString(aucs)+"\" to \""+Vars.history_lines+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            historylinesfield.setText(Integer.toString(Vars.history_lines));
+        }
+        Thing=kicktimefield.getText();
+        try {
+            int aucs=Vars.kick_time;
+            if(aucs!=Integer.parseInt(Thing)) {
+                Vars.kick_time=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Kick_time changed from \""+Integer.toString(aucs)+"\" to \""+Vars.kick_time+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            kicktimefield.setText(Integer.toString(Vars.kick_time));
+        }
+        Thing=msgbannedfield.getText();
+        
+        aucsy=Vars.Msg_Banned;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Msg_Banned=Thing;
+            Main.PopMsg("Msg_Banned changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        Thing=msgfullfield.getText();
+        
+        aucsy=Vars.Msg_Full;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Msg_Full=Thing;
+            Main.PopMsg("Msg_Full changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        SetStatus("Miscellaneous settings saved.");
     }//GEN-LAST:event_jButton11ActionPerformed
-
+    
     private void jButton10ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton10ActionPerformed
     {//GEN-HEADEREND:event_jButton10ActionPerformed
 // TODO add your handling code here:
         String Thing=maxchatmsgfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_chat_msg;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_chat_msg=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_chat_msg changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_chat_msg+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   maxchatmsgfield.setText(Integer.toString(Vars.max_chat_msg));
-                   } 
+        try {
+            int aucsy=Vars.max_chat_msg;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_chat_msg=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_chat_msg changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_chat_msg+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxchatmsgfield.setText(Integer.toString(Vars.max_chat_msg));
+        }
         Thing=chatintervalfield.getText();
-          try
-          {
-                        int aucsy=Vars.chat_interval;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.chat_interval=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Chat_interval changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.chat_interval+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   chatintervalfield.setText(Integer.toString(Vars.chat_interval));
-                   } 
+        try {
+            int aucsy=Vars.chat_interval;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.chat_interval=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Chat_interval changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.chat_interval+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            chatintervalfield.setText(Integer.toString(Vars.chat_interval));
+        }
         
         Thing=automagicsearchfield.getText();
-          try
-          {
-                        int aucsy=Vars.automagic_search;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                            
-                        Vars.automagic_search=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Automagic_search changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.automagic_search+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   automagicsearchfield.setText(Integer.toString(Vars.automagic_search));
-                   } 
+        try {
+            int aucsy=Vars.automagic_search;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                
+                Vars.automagic_search=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Automagic_search changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.automagic_search+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            automagicsearchfield.setText(Integer.toString(Vars.automagic_search));
+        }
         Thing=searchlogbasefield.getText();
-          try
-          {
-                        int aucsy=Vars.search_log_base;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                            
-                        Vars.search_log_base=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Search_log_base changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.search_log_base+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   searchlogbasefield.setText(Integer.toString(Vars.search_log_base));
-                   } 
+        try {
+            int aucsy=Vars.search_log_base;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                
+                Vars.search_log_base=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Search_log_base changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.search_log_base+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            searchlogbasefield.setText(Integer.toString(Vars.search_log_base));
+        }
         Thing=searchstepsfield.getText();
-          try
-          {
-                        int aucsy=Vars.search_steps;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                            
-                        Vars.search_steps=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Search_steps changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.search_steps+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   searchstepsfield.setText(Integer.toString(Vars.search_steps));
-                   } 
-         Thing=searchspamresetfield.getText();
-          try
-          {
-                        int aucsy=Vars.search_spam_reset;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                            
-                        Vars.search_spam_reset=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Search_spam_reset changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.search_spam_reset+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   searchspamresetfield.setText(Integer.toString(Vars.search_spam_reset));
-                   } 
-         
-         Thing=msgsearchspamfield.getText();
-         
-                         String aucsy=Vars.Msg_Search_Spam;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                           
-                        Vars.Msg_Search_Spam=Thing;
-                        Main.PopMsg("Msg_Search_Spam changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        
-                        }
-                         
-          SetStatus("Spam settings saved.");
+        try {
+            int aucsy=Vars.search_steps;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                
+                Vars.search_steps=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Search_steps changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.search_steps+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            searchstepsfield.setText(Integer.toString(Vars.search_steps));
+        }
+        Thing=searchspamresetfield.getText();
+        try {
+            int aucsy=Vars.search_spam_reset;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                
+                Vars.search_spam_reset=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Search_spam_reset changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.search_spam_reset+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            searchspamresetfield.setText(Integer.toString(Vars.search_spam_reset));
+        }
+        
+        Thing=msgsearchspamfield.getText();
+        
+        String aucsy=Vars.Msg_Search_Spam;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Msg_Search_Spam=Thing;
+            Main.PopMsg("Msg_Search_Spam changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        
+        SetStatus("Spam settings saved.");
     }//GEN-LAST:event_jButton10ActionPerformed
-
+    
     private void jButton9ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton9ActionPerformed
     {//GEN-HEADEREND:event_jButton9ActionPerformed
 // TODO add your handling code here:
         String Thing=maxusersfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_users;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_users=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_users changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_users+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   maxusersfield.setText(Integer.toString(Vars.max_users));
-                   } 
-         Thing=nickcharsfield.getText();
-          
-                        String aucsy=Vars.nick_chars;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                        Vars.nick_chars=Thing;
-                        Main.PopMsg("Nick_chars changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        }
-                       nickcharsfield.setText ( aucsy);
-              Thing=maxschcharsfield.getText();
-          try
-          {
-                         int aucs=Vars.max_sch_chars;
-                        if(aucs!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_sch_chars=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_sch_chars changed from \""+Integer.toString (aucs)+"\" to \""+Vars.max_sch_chars+"\".");
-                        }
-                        
-           }   
-                   catch(NumberFormatException nfe)
-                   {
-                   maxschcharsfield.setText(Integer.toString(Vars.max_sch_chars));
-                   }    
-              
-              SetStatus("Restrictions settings saved.");
-          
+        try {
+            int aucsy=Vars.max_users;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_users=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_users changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_users+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxusersfield.setText(Integer.toString(Vars.max_users));
+        }
+        Thing=nickcharsfield.getText();
+        
+        String aucsy=Vars.nick_chars;
+        if(!(aucsy.equals(Thing))) {
+            Vars.nick_chars=Thing;
+            Main.PopMsg("Nick_chars changed from \""+aucsy+"\" to \""+Thing+"\".");
+        }
+        nickcharsfield.setText( aucsy);
+        Thing=maxschcharsfield.getText();
+        try {
+            int aucs=Vars.max_sch_chars;
+            if(aucs!=Integer.parseInt(Thing)) {
+                Vars.max_sch_chars=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_sch_chars changed from \""+Integer.toString(aucs)+"\" to \""+Vars.max_sch_chars+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxschcharsfield.setText(Integer.toString(Vars.max_sch_chars));
+        }
+        
+        SetStatus("Restrictions settings saved.");
+        
     }//GEN-LAST:event_jButton9ActionPerformed
-
+    
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton8ActionPerformed
     {//GEN-HEADEREND:event_jButton8ActionPerformed
 // TODO add your handling code here:
         /** timeout_login*/
-          String Thing=fieldtimeout.getText();
-          try
-          {
-                        int aucsy=Vars.Timeout_Login;
-                        int aux=Integer.parseInt (Thing);
-                        if(aucsy!=aux)
-                        {
-                        Vars.Timeout_Login=aux;
-                       Main.PopMsg("Timeout_Login changed from \""+Integer.toString (aucsy)+"\" to \""+Thing+"\".");
-                        } 
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   // System.out.println("Invalid number");
-                        fieldtimeout.setText(Integer.toString(Vars.Timeout_Login));
-                   } 
+        String Thing=fieldtimeout.getText();
+        try {
+            int aucsy=Vars.Timeout_Login;
+            int aux=Integer.parseInt(Thing);
+            if(aucsy!=aux) {
+                Vars.Timeout_Login=aux;
+                Main.PopMsg("Timeout_Login changed from \""+Integer.toString(aucsy)+"\" to \""+Thing+"\".");
+            }
+        } catch(NumberFormatException nfe) {
+            // System.out.println("Invalid number");
+            fieldtimeout.setText(Integer.toString(Vars.Timeout_Login));
+        }
         
         Thing=maxnifield.getText();
-          try
-          {
-                        int aucsy=Vars.max_ni;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_ni=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_ni changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_ni+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxnifield.setText(Integer.toString(Vars.max_ni));
-                   } 
-          Thing=minnifield.getText();
-          try
-          {
-                        int aucsy=Vars.min_ni;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.min_ni=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Min_ni changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.min_ni+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   minnifield.setText(Integer.toString(Vars.min_ni));
-                   } 
-            Thing=maxdefield.getText();
-          try
-          {
-                        int aucsy=Vars.max_de;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_de=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_de changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_de+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxdefield.setText(Integer.toString(Vars.max_de));
-                    }
-          Thing=maxsharefield.getText();
-          try
-          {
-                        Long aucsy=Vars.max_share;
-                        if(aucsy!=Long.parseLong(Thing))
-                        {
-                        Vars.max_share=Long.parseLong (Thing.toString ());
-                        Main.PopMsg("Max_share changed from \""+Long.toString (aucsy)+"\" to \""+Vars.max_share+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxsharefield.setText(Long.toString(Vars.min_share));
-                   } 
-          Thing=minsharefield.getText();
-          try
-          {
-                        Long aucsy=Vars.min_share;
-                        if(aucsy!=Long.parseLong(Thing))
-                        {
-                        Vars.min_share=Long.parseLong (Thing.toString ());
-                        Main.PopMsg("Min_share changed from \""+Long.toString (aucsy)+"\" to \""+Vars.min_share+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   minsharefield.setText(Long.toString(Vars.min_share));
-                   } 
-          Thing=maxslfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_sl;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_sl=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_sl changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_sl+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxslfield.setText(Integer.toString(Vars.max_sl));
-                   } 
-          Thing=minslfield.getText();
-          try
-          {
-                        int aucsy=Vars.min_sl;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.min_sl=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Min_sl changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.min_sl+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   minslfield.setText(Integer.toString(Vars.min_sl));
-                   } 
-          Thing=maxemfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_em;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_em=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_em changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_em+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxemfield.setText(Integer.toString(Vars.max_em));
-                   } 
-          Thing=maxhubsopfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_hubs_op;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_hubs_op=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_hubs_op changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_hubs_op+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxhubsopfield.setText(Integer.toString(Vars.max_hubs_op));
-                   } 
-           Thing=maxhubsregfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_hubs_reg;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_hubs_reg=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_hubs_reg changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_hubs_reg+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxhubsregfield.setText(Integer.toString(Vars.max_hubs_reg));
-                   } 
-           Thing=maxhubsuserfield.getText();
-          try
-          {
-                        int aucsy=Vars.max_hubs_user;
-                        if(aucsy!=Integer.parseInt(Thing))
-                        {
-                        Vars.max_hubs_user=Integer.parseInt (Thing.toString ());
-                        Main.PopMsg("Max_hubs_user changed from \""+Integer.toString (aucsy)+"\" to \""+Vars.max_hubs_user+"\".");
-                        }
-                        
-           }   
-                    catch(NumberFormatException nfe)
-                   {
-                   maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_user));
-                   } 
-          
-         Main.Server.rewriteconfig();
+        try {
+            int aucsy=Vars.max_ni;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_ni=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_ni changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_ni+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxnifield.setText(Integer.toString(Vars.max_ni));
+        }
+        Thing=minnifield.getText();
+        try {
+            int aucsy=Vars.min_ni;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.min_ni=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Min_ni changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.min_ni+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            minnifield.setText(Integer.toString(Vars.min_ni));
+        }
+        Thing=maxdefield.getText();
+        try {
+            int aucsy=Vars.max_de;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_de=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_de changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_de+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxdefield.setText(Integer.toString(Vars.max_de));
+        }
+        Thing=maxsharefield.getText();
+        try {
+            Long aucsy=Vars.max_share;
+            if(aucsy!=Long.parseLong(Thing)) {
+                Vars.max_share=Long.parseLong(Thing.toString());
+                Main.PopMsg("Max_share changed from \""+Long.toString(aucsy)+"\" to \""+Vars.max_share+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxsharefield.setText(Long.toString(Vars.min_share));
+        }
+        Thing=minsharefield.getText();
+        try {
+            Long aucsy=Vars.min_share;
+            if(aucsy!=Long.parseLong(Thing)) {
+                Vars.min_share=Long.parseLong(Thing.toString());
+                Main.PopMsg("Min_share changed from \""+Long.toString(aucsy)+"\" to \""+Vars.min_share+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            minsharefield.setText(Long.toString(Vars.min_share));
+        }
+        Thing=maxslfield.getText();
+        try {
+            int aucsy=Vars.max_sl;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_sl=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_sl changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_sl+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxslfield.setText(Integer.toString(Vars.max_sl));
+        }
+        Thing=minslfield.getText();
+        try {
+            int aucsy=Vars.min_sl;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.min_sl=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Min_sl changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.min_sl+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            minslfield.setText(Integer.toString(Vars.min_sl));
+        }
+        Thing=maxemfield.getText();
+        try {
+            int aucsy=Vars.max_em;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_em=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_em changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_em+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxemfield.setText(Integer.toString(Vars.max_em));
+        }
+        Thing=maxhubsopfield.getText();
+        try {
+            int aucsy=Vars.max_hubs_op;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_hubs_op=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_hubs_op changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_hubs_op+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxhubsopfield.setText(Integer.toString(Vars.max_hubs_op));
+        }
+        Thing=maxhubsregfield.getText();
+        try {
+            int aucsy=Vars.max_hubs_reg;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_hubs_reg=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_hubs_reg changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_hubs_reg+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxhubsregfield.setText(Integer.toString(Vars.max_hubs_reg));
+        }
+        Thing=maxhubsuserfield.getText();
+        try {
+            int aucsy=Vars.max_hubs_user;
+            if(aucsy!=Integer.parseInt(Thing)) {
+                Vars.max_hubs_user=Integer.parseInt(Thing.toString());
+                Main.PopMsg("Max_hubs_user changed from \""+Integer.toString(aucsy)+"\" to \""+Vars.max_hubs_user+"\".");
+            }
+            
+        } catch(NumberFormatException nfe) {
+            maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_user));
+        }
+        
+        Main.Server.rewriteconfig();
         SetStatus("Restrictions settings saved.");
     }//GEN-LAST:event_jButton8ActionPerformed
-
+    
     private void regonlycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_regonlycheckActionPerformed
     {//GEN-HEADEREND:event_regonlycheckActionPerformed
 // TODO add your handling code here:
         if(regonlycheck.isSelected())
-             //Main.PopMsg("clicked");
-         {
-             Main.PopMsg("Reg_only changed from \"0\" to \"1\".");
-             Vars.reg_only=1;
-         }
-         else
-         {
-             Main.PopMsg("Reg_only changed from \"1\" to \"0\".");
-             Vars.reg_only=0;
-         }
+            //Main.PopMsg("clicked");
+        {
+            Main.PopMsg("Reg_only changed from \"0\" to \"1\".");
+            Vars.reg_only=1;
+        } else {
+            Main.PopMsg("Reg_only changed from \"1\" to \"0\".");
+            Vars.reg_only=0;
+        }
     }//GEN-LAST:event_regonlycheckActionPerformed
-
-    void insertLog(String bla)
-    {
-       LogText.append (bla+"\n");
+    
+    void insertLog(String bla) {
+        LogText.append(bla+"\n");
     }
     
     private void jButton7ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
     {//GEN-HEADEREND:event_jButton7ActionPerformed
 // TODO add your handling code here:
-        String thenewport= portfield.getText ();
-         //System.out.println (newport);
-         try
-         {
-             int x=Integer.parseInt (thenewport);
-             if(x!=Vars.Default_Port)
-             if(x>3 && x<65000)
-             {
-                 int y=Vars.Default_Port;
-         Vars.Default_Port=x;
-         //Main.Server.vars.Default_Port=x;
-         Main.PopMsg ("New Default Port change from "+y+" to "+x+".");
-             }
-         }
-         catch (Exception e)
-         {
-         }
-         String newtopic= topicfield.getText ();
-         if(!(newtopic.equals (Vars.HubDE)))
-          if(newtopic.equals (""))
-               {
-                   
-               new Broadcast("IINF DE");
-               if(!Vars.HubDE.equals(""))
-               {
-               //System.out.println("Topic \""+Vars.HubDE+"\" deleted.");
-               new Broadcast("IMSG Topic was deleted by Server.");
-               Main.PopMsg ("Topic was deleted by Server.");
-               }
-               else
-               //System.out.println("There wasn't any topic anyway.");
-               Vars.HubDE="";
-               Main.Server.vars.HubDE="";
-
-               
-               }
-               else
-               {
-                   String auxbuf=newtopic;
-                   
-                   
-                  Vars.HubDE=Vars.HubDE;
-                  // System.out.println("Topic changed from \""+Vars.HubDE+"\" "+"to \""+auxbuf+"\".");
-                   auxbuf=auxbuf;
-                   Vars.HubDE=auxbuf;
-                   Main.Server.vars.HubDE=auxbuf;
-                   new Broadcast ("IINF DE"+ADC.retADCStr(auxbuf));
-                   new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\".");
-                   Main.PopMsg("Topic was changed by Server to \""+Vars.HubDE+"\".");
-                   
-               }
-           /**hub name*/
-         String NowName=namefield.getText ();
-                                      
-         if(!(NowName.equals(Vars.HubName)))
-         {
-          
-          Main.PopMsg ("Hub_Name changed from \""+Vars.HubName+"\" to \""+NowName+"\".");
-          Vars.HubName=NowName.toString ();
-                       
-          new Broadcast ("IINF NI"+ADC.retADCStr(Vars.HubName));
-         }
-         
-         
-         /**bot_name*/
-         String Thing=botnamefield.getText();
-          try
-          {
-                        String aucsy=Vars.bot_name;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                            if(!Vars.ValidateNick(Thing))
-                            {
-                                throw new Exception();
-                            }
-                            ClientNod tempy=null;
-                             if(ClientNod.FirstClient!=null)
-                                tempy=ClientNod.FirstClient.NextClient;
+        String thenewport= portfield.getText();
+        //System.out.println (newport);
+        try {
+            int x=Integer.parseInt(thenewport);
+            if(x!=Vars.Default_Port)
+                if(x>3 && x<65000) {
+                int y=Vars.Default_Port;
+                Vars.Default_Port=x;
+                //Main.Server.vars.Default_Port=x;
+                Main.PopMsg("New Default Port change from "+y+" to "+x+".");
+                }
+        } catch (Exception e) {
+        }
+        String newtopic= topicfield.getText();
+        if(!(newtopic.equals(Vars.HubDE)))
+            if(newtopic.equals("")) {
+            
+            new Broadcast("IINF DE");
+            if(!Vars.HubDE.equals("")) {
+                //System.out.println("Topic \""+Vars.HubDE+"\" deleted.");
+                new Broadcast("IMSG Topic was deleted by Server.");
+                Main.PopMsg("Topic was deleted by Server.");
+            } else
+                //System.out.println("There wasn't any topic anyway.");
+                Vars.HubDE="";
+            Main.Server.vars.HubDE="";
+            
+            
+            } else {
+            String auxbuf=newtopic;
+            
+            
+            Vars.HubDE=Vars.HubDE;
+            // System.out.println("Topic changed from \""+Vars.HubDE+"\" "+"to \""+auxbuf+"\".");
+            auxbuf=auxbuf;
+            Vars.HubDE=auxbuf;
+            Main.Server.vars.HubDE=auxbuf;
+            new Broadcast("IINF DE"+ADC.retADCStr(auxbuf));
+            new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\".");
+            Main.PopMsg("Topic was changed by Server to \""+Vars.HubDE+"\".");
+            
+            }
+        /**hub name*/
+        String NowName=namefield.getText();
+        
+        if(!(NowName.equals(Vars.HubName))) {
+            
+            Main.PopMsg("Hub_Name changed from \""+Vars.HubName+"\" to \""+NowName+"\".");
+            Vars.HubName=NowName.toString();
+            
+            new Broadcast("IINF NI"+ADC.retADCStr(Vars.HubName));
+        }
+        
+        
+        /**bot_name*/
+        String Thing=botnamefield.getText();
+        try {
+            String aucsy=Vars.bot_name;
+            if(!(aucsy.equals(Thing))) {
+                if(!Vars.ValidateNick(Thing)) {
+                    throw new Exception();
+                }
+                ClientNod tempy=null;
+                if(ClientNod.FirstClient!=null)
+                    tempy=ClientNod.FirstClient.NextClient;
                 
-                        while(tempy!=null)
-                        {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(Thing.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
-                      // System.out.println("Nick taken, please choose another.");
-                       throw new Exception();
-                    }
-                        Vars.bot_name=Thing;
-                        Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
-                        
-                        }
-          }
-          catch (Exception e)
-          {
-              botnamefield.setText (Vars.bot_name);
-          }
-         /**bot desc*/
-         Thing=botdescfield.getText();
-         
-                        String aucsy=Vars.bot_desc;
-                        if(!(aucsy.equals (Thing)))
-                        {
-                           
-                        Vars.bot_desc=Thing;
-                        Main.PopMsg("Bot_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-                        new Broadcast ("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
-                        
-                        }
-         
-         
-                        
-         Main.Server.rewriteconfig();
-         
-         
-         
-         SetStatus("Main settings saved.");
+                while(tempy!=null) {
+                    if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
+                        break;
+                    tempy=tempy.NextClient;
+                    
+                }
+                if(tempy!=null) {
+                    // System.out.println("Nick taken, please choose another.");
+                    throw new Exception();
+                }
+                Vars.bot_name=Thing;
+                Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
+                new Broadcast("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
+                
+            }
+        } catch (Exception e) {
+            botnamefield.setText(Vars.bot_name);
+        }
+        /**bot desc*/
+        Thing=botdescfield.getText();
+        
+        String aucsy=Vars.bot_desc;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.bot_desc=Thing;
+            Main.PopMsg("Bot_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
+            new Broadcast("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
+            
+        }
+        
+        
+        
+        Main.Server.rewriteconfig();
+        
+        
+        
+        SetStatus("Main settings saved.");
         
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    
     private void portfieldFocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_portfieldFocusLost
     {//GEN-HEADEREND:event_portfieldFocusLost
 // TODO add your handling code here:
         
     }//GEN-LAST:event_portfieldFocusLost
-
+    
     private void portfieldKeyTyped (java.awt.event.KeyEvent evt)//GEN-FIRST:event_portfieldKeyTyped
     {//GEN-HEADEREND:event_portfieldKeyTyped
 // TODO add your handling code here:
         
     }//GEN-LAST:event_portfieldKeyTyped
-
+    
     private void portfieldActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_portfieldActionPerformed
     {//GEN-HEADEREND:event_portfieldActionPerformed
 // TODO add your handling code here:
-       
+        
     }//GEN-LAST:event_portfieldActionPerformed
-
+    
     private void jButton6ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
 // TODO add your handling code here:
-         Runtime myRun=Runtime.getRuntime();
-               
-                       
-                int i=0,j=0;
-                if(ClientNod.FirstClient!=null)
-                {
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
-                {
-                    if(temp.cur_client.userok==1)
+        Runtime myRun=Runtime.getRuntime();
+        
+        
+        int i=0,j=0;
+        if(ClientNod.FirstClient!=null) {
+            ClientNod temp=ClientNod.FirstClient.NextClient;
+            while(temp!=null) {
+                if(temp.cur_client.userok==1)
                     i++;
-                    else j++;
-                    temp=temp.NextClient;
-                }
-                }
-                
-                long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
-               // up=345345343;
-                long days=up/(3600000*24);
-                long hours =up/3600000-24*days;
-                long minutes=up/60000-60*hours-24*60*days;
-                long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-                long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
-                
-                String uptime="";
-                if(days!=0)
-                    uptime=Long.toString (days)+" Days ";
-                if(hours!=0 || (hours==0 && days!=0))
-                    uptime=uptime+Long.toString (hours)+" Hours ";
-                if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-                    uptime=uptime+Long.toString (minutes)+" Minutes ";
-                if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-                    uptime=uptime+Long.toString (seconds)+" Seconds ";
-                uptime=uptime+Long.toString (millis)+ " Millis";
-                 Date b=new Date(Main.curtime       );
-               jTextArea2.setText (
-                  "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
-                  "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
-                  "  Java Runtime Environment "+Main.Proppies.getProperty("java.version")+" from "+Main.Proppies.getProperty("java.vendor")+"\n"+
-                  "  Java Virtual Machine "+Main.Proppies.getProperty("java.vm.specification.version")+"\n"+
-                  "  Available CPU's to JVM "+Integer.toString (myRun.availableProcessors())+"\n"+
-                  "  Available Memory to JVM: "+Long.toString(myRun.maxMemory())+" Bytes, where free: "+Long.toString(myRun.freeMemory())+" Bytes\n"+
-                  "Hub Statistics:\n"+
-                  "  Online users: "+Integer.toString (i)+"\n"+
-                  "  Connecting users: "+Integer.toString(j)+"\n"+
-                  "  Uptime: "+uptime+".\n"+
-                       "  Start Time: "+b.toString ());
+                else j++;
+                temp=temp.NextClient;
+            }
+        }
+        
+        long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
+        // up=345345343;
+        long days=up/(3600000*24);
+        long hours =up/3600000-24*days;
+        long minutes=up/60000-60*hours-24*60*days;
+        long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
+        long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
+        
+        String uptime="";
+        if(days!=0)
+            uptime=Long.toString(days)+" Days ";
+        if(hours!=0 || (hours==0 && days!=0))
+            uptime=uptime+Long.toString(hours)+" Hours ";
+        if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
+            uptime=uptime+Long.toString(minutes)+" Minutes ";
+        if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
+            uptime=uptime+Long.toString(seconds)+" Seconds ";
+        uptime=uptime+Long.toString(millis)+ " Millis";
+        Date b=new Date(Main.curtime       );
+        jTextArea2.setText(
+                "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
+                "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
+                "  Java Runtime Environment "+Main.Proppies.getProperty("java.version")+" from "+Main.Proppies.getProperty("java.vendor")+"\n"+
+                "  Java Virtual Machine "+Main.Proppies.getProperty("java.vm.specification.version")+"\n"+
+                "  Available CPU's to JVM "+Integer.toString(myRun.availableProcessors())+"\n"+
+                "  Available Memory to JVM: "+Long.toString(myRun.maxMemory())+" Bytes, where free: "+Long.toString(myRun.freeMemory())+" Bytes\n"+
+                "Hub Statistics:\n"+
+                "  Online users: "+Integer.toString(i)+"\n"+
+                "  Connecting users: "+Integer.toString(j)+"\n"+
+                "  Uptime: "+uptime+".\n"+
+                "  Start Time: "+b.toString());
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jPanel6MouseMoved (java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseMoved
     {//GEN-HEADEREND:event_jPanel6MouseMoved
 // TODO add your handling code here:
         
-       
+        
     }//GEN-LAST:event_jPanel6MouseMoved
-
+    
     private void jPanel6MouseClicked (java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseClicked
     {//GEN-HEADEREND:event_jPanel6MouseClicked
 // TODO add your handling code here:
         
     }//GEN-LAST:event_jPanel6MouseClicked
-
+    
     private void jPanel6FocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusLost
     {//GEN-HEADEREND:event_jPanel6FocusLost
 // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6FocusLost
-
+    
     private void jPanel6FocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusGained
     {//GEN-HEADEREND:event_jPanel6FocusGained
         
     }//GEN-LAST:event_jPanel6FocusGained
-
+    
     private void formWindowGainedFocus (java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowGainedFocus
     {//GEN-HEADEREND:event_formWindowGainedFocus
         
@@ -3603,32 +3569,29 @@ if(FMSGcheck.isSelected())
         /**setting window name*/
         //System.out.println("gay");
         
-        this.setTitle (Vars.HubName+" running on "+Vars.HubVersion+" A New Generation 2007");
+        this.setTitle(Vars.HubName+" running on "+Vars.HubVersion+" A New Generation 2007");
         //jLabel51.setIcon (new Icon("ds.bmp"));
         //addImage(jPanel1, "ds.bmp");
         /**showing accounts*/
         
-        DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel ();
-        AccountTable.setAutoResizeMode (AccountTable.AUTO_RESIZE_OFF);
-        AccountTable.getColumnModel ().getColumn (0).setPreferredWidth (AccountTable.getWidth ()/5);
-        AccountTable.getColumnModel ().getColumn (1).setPreferredWidth (AccountTable.getWidth ()/5);
-        AccountTable.getColumnModel ().getColumn (2).setPreferredWidth (AccountTable.getWidth ()/5);
-        AccountTable.getColumnModel ().getColumn (3).setPreferredWidth (AccountTable.getWidth ()/5);
-        AccountTable.getColumnModel ().getColumn (4).setPreferredWidth (AccountTable.getWidth ()/5);
+        DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
+        AccountTable.setAutoResizeMode(AccountTable.AUTO_RESIZE_OFF);
+        AccountTable.getColumnModel().getColumn(0).setPreferredWidth(AccountTable.getWidth()/5);
+        AccountTable.getColumnModel().getColumn(1).setPreferredWidth(AccountTable.getWidth()/5);
+        AccountTable.getColumnModel().getColumn(2).setPreferredWidth(AccountTable.getWidth()/5);
+        AccountTable.getColumnModel().getColumn(3).setPreferredWidth(AccountTable.getWidth()/5);
+        AccountTable.getColumnModel().getColumn(4).setPreferredWidth(AccountTable.getWidth()/5);
         nod n=reg_config.First;
         int regcount=0;
-        while(n!=null)
-        {
+        while(n!=null) {
             regcount++;
             n=n.Next;
         }
         
-        if(regcount!=AccountModel.getRowCount ())
-        {
-           AccountModel.setRowCount (0) ;
-        n=reg_config.First;
-            while(n!=null)
-            {
+        if(regcount!=AccountModel.getRowCount()) {
+            AccountModel.setRowCount(0) ;
+            n=reg_config.First;
+            while(n!=null) {
                 String blah00="";
                 Date d=new Date(n.CreatedOn);
                 if(n.LastNI!=null)
@@ -3636,78 +3599,76 @@ if(FMSGcheck.isSelected())
                 else
                     blah00="Never seen online.";
                 
-                AccountModel.addRow (new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString()});
+                AccountModel.addRow(new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString()});
                 n=n.Next;
             }
         }
-          //  blah00=blah00.substring (0,blah00.length ()-2);
-           // System.out.println (blah00);
-
-        /**setting stuff*/
-        jTextArea1.setText ("DSHub is ADC software so you need an ADC compatibile client.\n"+
-"At the moment of this release ( October 2007 ), the following ADC clients were available:\n"+
-"dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
-"So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
-"Some ADC reminders:\n"+
-"-- You need to connect to address adc://\n"+
-"-- There is no default port, every time one must be specified ( like 411 on NMDC)\n"+
-"-- Accounts are on CID not nick ( you can use what nick you want )\n"+
-"-- Clients that are not ADC compat or dont use the address correctly will just hang up and you will see them at Connecting Users in stats command.\n"+
-        "Oh and another thing, NMDC hublists dont work with ADC, so i got 2 fine lists that support ADC for you:\n"+
-        "  www.hubtracker.com\n"+
-        "  www.adchublist.com\n"+
-        "Thanks for using DSHub and I hope you will have as much fun using it as I had creating it ;)\n\n"+
-                "For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub");
-                
-         Runtime myRun=Runtime.getRuntime();
-               
-                       
-                int i=0,j=0;
-                if(ClientNod.FirstClient!=null)
-                {
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
-                {
-                    if(temp.cur_client.userok==1)
-                    i++;
-                    else j++;
-                    temp=temp.NextClient;
-                }
-                }
-                
-                long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
-               // up=345345343;
-                long days=up/(3600000*24);
-                long hours =up/3600000-24*days;
-                long minutes=up/60000-60*hours-24*60*days;
-                long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-                long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
-                
-                String uptime="";
-                if(days!=0)
-                    uptime=Long.toString (days)+" Days ";
-                if(hours!=0 || (hours==0 && days!=0))
-                    uptime=uptime+Long.toString (hours)+" Hours ";
-                if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-                    uptime=uptime+Long.toString (minutes)+" Minutes ";
-                if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-                    uptime=uptime+Long.toString (seconds)+" Seconds ";
-                uptime=uptime+Long.toString (millis)+ " Millis";
-                 Date b=new Date(Main.curtime       );
-               jTextArea2.setText (
-                  "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
-                  "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
-                  "  Java Runtime Environment "+Main.Proppies.getProperty("java.version")+" from "+Main.Proppies.getProperty("java.vendor")+"\n"+
-                  "  Java Virtual Machine "+Main.Proppies.getProperty("java.vm.specification.version")+"\n"+
-                  "  Available CPU's to JVM "+Integer.toString (myRun.availableProcessors())+"\n"+
-                  "  Available Memory to JVM: "+Long.toString(myRun.maxMemory())+" Bytes, where free: "+Long.toString(myRun.freeMemory())+" Bytes\n"+
-                  "Hub Statistics:\n"+
-                  "  Online users: "+Integer.toString (i)+"\n"+
-                  "  Connecting users: "+Integer.toString(j)+"\n"+
-                  "  Uptime: "+uptime+".\n"+
-                       "  Start Time: "+b.toString ());
+        //  blah00=blah00.substring (0,blah00.length ()-2);
+        // System.out.println (blah00);
         
-       
+        /**setting stuff*/
+        jTextArea1.setText("DSHub is ADC software so you need an ADC compatibile client.\n"+
+                "At the moment of this release ( October 2007 ), the following ADC clients were available:\n"+
+                "dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+                "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
+                "Some ADC reminders:\n"+
+                "-- You need to connect to address adc://\n"+
+                "-- There is no default port, every time one must be specified ( like 411 on NMDC)\n"+
+                "-- Accounts are on CID not nick ( you can use what nick you want )\n"+
+                "-- Clients that are not ADC compat or dont use the address correctly will just hang up and you will see them at Connecting Users in stats command.\n"+
+                "Oh and another thing, NMDC hublists dont work with ADC, so i got 2 fine lists that support ADC for you:\n"+
+                "  www.hubtracker.com\n"+
+                "  www.adchublist.com\n"+
+                "Thanks for using DSHub and I hope you will have as much fun using it as I had creating it ;)\n\n"+
+                "For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub");
+        
+        Runtime myRun=Runtime.getRuntime();
+        
+        
+        int i=0,j=0;
+        if(ClientNod.FirstClient!=null) {
+            ClientNod temp=ClientNod.FirstClient.NextClient;
+            while(temp!=null) {
+                if(temp.cur_client.userok==1)
+                    i++;
+                else j++;
+                temp=temp.NextClient;
+            }
+        }
+        
+        long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
+        // up=345345343;
+        long days=up/(3600000*24);
+        long hours =up/3600000-24*days;
+        long minutes=up/60000-60*hours-24*60*days;
+        long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
+        long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
+        
+        String uptime="";
+        if(days!=0)
+            uptime=Long.toString(days)+" Days ";
+        if(hours!=0 || (hours==0 && days!=0))
+            uptime=uptime+Long.toString(hours)+" Hours ";
+        if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
+            uptime=uptime+Long.toString(minutes)+" Minutes ";
+        if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
+            uptime=uptime+Long.toString(seconds)+" Seconds ";
+        uptime=uptime+Long.toString(millis)+ " Millis";
+        Date b=new Date(Main.curtime       );
+        jTextArea2.setText(
+                "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
+                "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
+                "  Java Runtime Environment "+Main.Proppies.getProperty("java.version")+" from "+Main.Proppies.getProperty("java.vendor")+"\n"+
+                "  Java Virtual Machine "+Main.Proppies.getProperty("java.vm.specification.version")+"\n"+
+                "  Available CPU's to JVM "+Integer.toString(myRun.availableProcessors())+"\n"+
+                "  Available Memory to JVM: "+Long.toString(myRun.maxMemory())+" Bytes, where free: "+Long.toString(myRun.freeMemory())+" Bytes\n"+
+                "Hub Statistics:\n"+
+                "  Online users: "+Integer.toString(i)+"\n"+
+                "  Connecting users: "+Integer.toString(j)+"\n"+
+                "  Uptime: "+uptime+".\n"+
+                "  Start Time: "+b.toString());
+        
+        
 /*
  * max_em                  128        -- Maximum e-mail string size, integer.
    max_hubs_op             100       -- Maximum hubs where user is op, integer.
@@ -3726,325 +3687,323 @@ if(FMSGcheck.isSelected())
    reg_only                0      -- 1 = registered only hub. 0 = otherwise.
    nick_chars              ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:         -- Chars that could be used for a nick, String.
    chat_interval           500         -- Interval between chat lines, millis, Integer.
-*/
-        portfield.setText (Integer.toString (Vars.Default_Port));
-       
-        topicfield.setText (Vars.HubDE);
+ */
+        portfield.setText(Integer.toString(Vars.Default_Port));
         
-        fieldtimeout.setText (Integer.toString (Vars.Timeout_Login));
+        topicfield.setText(Vars.HubDE);
         
-        namefield.setText (Vars.HubName);
-       
-        maxnifield.setText (Integer.toString (Vars.max_ni));
-       
-        minnifield.setText(Integer.toString (Vars.min_ni));
-       
-        maxdefield.setText (Integer.toString (Vars.max_de));
-      
-        maxsharefield.setText (Long.toString (Vars.max_share));
+        fieldtimeout.setText(Integer.toString(Vars.Timeout_Login));
         
-        minsharefield.setText (Long.toString (Vars.min_share));
+        namefield.setText(Vars.HubName);
         
-        maxslfield.setText (Integer.toString (Vars.max_sl));
-       
-        minslfield.setText (Integer.toString (Vars.min_sl));
-       
-        maxemfield.setText (Integer.toString (Vars.max_em));
-       
-        maxhubsopfield.setText (Integer.toString (Vars.max_hubs_op));
-       
-        maxhubsuserfield.setText(Integer.toString (Vars.max_hubs_reg));
-       
-        maxhubsuserfield.setText (Integer.toString (Vars.max_hubs_user));
+        maxnifield.setText(Integer.toString(Vars.max_ni));
+        
+        minnifield.setText(Integer.toString(Vars.min_ni));
+        
+        maxdefield.setText(Integer.toString(Vars.max_de));
+        
+        maxsharefield.setText(Long.toString(Vars.max_share));
+        
+        minsharefield.setText(Long.toString(Vars.min_share));
+        
+        maxslfield.setText(Integer.toString(Vars.max_sl));
+        
+        minslfield.setText(Integer.toString(Vars.min_sl));
+        
+        maxemfield.setText(Integer.toString(Vars.max_em));
+        
+        maxhubsopfield.setText(Integer.toString(Vars.max_hubs_op));
+        
+        maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_reg));
+        
+        maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_user));
         
         maxschcharsfield.setText(Integer.toString(Vars.max_sch_chars));
-       
+        
         minschcharsfield.setText(Integer.toString(Vars.min_sch_chars));
-      
+        
         maxchatmsgfield.setText(Integer.toString(Vars.max_chat_msg));
-       
-        maxusersfield.setText (Integer.toString(Vars.max_users));
-       
-      
-       
-         
-       
+        
+        maxusersfield.setText(Integer.toString(Vars.max_users));
+        
+        
+        
+        
+        
         
         historylinesfield.setText(Integer.toString(Vars.history_lines));
         
-        opchatnamefield.setText (Vars.Opchat_name);
-       
+        opchatnamefield.setText(Vars.Opchat_name);
+        
         opchatdescfield.setText(Vars.Opchat_desc);
-       
+        
         kicktimefield.setText(Integer.toString(Vars.kick_time));
-       
+        
         msgbannedfield.setText(Vars.Msg_Banned);
         
-         msgfullfield.setText(Vars.Msg_Full);
+        msgfullfield.setText(Vars.Msg_Full);
         
         if(Vars.reg_only==1)
             regonlycheck.setSelected(true);
         else
             regonlycheck.setSelected(false);
-          if(Vars.savelogs==1)
+        if(Vars.savelogs==1)
             savelogscheck.setSelected(true);
         else
             savelogscheck.setSelected(false);
-       
-        nickcharsfield.setText (Vars.nick_chars);
-       
+        
+        nickcharsfield.setText(Vars.nick_chars);
+        
         chatintervalfield.setText(Integer.toString(Vars.chat_interval));
-       
-
+        
+        
         automagicsearchfield.setText(Integer.toString(Vars.automagic_search));
         searchlogbasefield.setText(Integer.toString(Vars.search_log_base));
         searchstepsfield.setText(Integer.toString(Vars.search_steps));
         msgsearchspamfield.setText(Vars.Msg_Search_Spam);
-        searchspamresetfield.setText (Integer.toString (Vars.search_spam_reset));
-        botnamefield.setText (Vars.bot_name);
-       
+        searchspamresetfield.setText(Integer.toString(Vars.search_spam_reset));
+        botnamefield.setText(Vars.bot_name);
+        
         botdescfield.setText(Vars.bot_desc);
         
         if(Vars.BMSG==1)
-            BMSGcheck.setSelected (true);
+            BMSGcheck.setSelected(true);
         else
-            BMSGcheck.setSelected(false);    
+            BMSGcheck.setSelected(false);
         if(Vars.EMSG==1)
-            EMSGcheck.setSelected (true);
+            EMSGcheck.setSelected(true);
         else
-            EMSGcheck.setSelected(false); 
+            EMSGcheck.setSelected(false);
         if(Vars.DMSG==1)
-            DMSGcheck.setSelected (true);
+            DMSGcheck.setSelected(true);
         else
-            DMSGcheck.setSelected(false); 
+            DMSGcheck.setSelected(false);
         if(Vars.HMSG==1)
-            HMSGcheck.setSelected (true);
+            HMSGcheck.setSelected(true);
         else
-            HMSGcheck.setSelected(false); 
+            HMSGcheck.setSelected(false);
         if(Vars.FMSG==1)
-            FMSGcheck.setSelected (true);
+            FMSGcheck.setSelected(true);
         else
-            FMSGcheck.setSelected(false); 
+            FMSGcheck.setSelected(false);
         if(Vars.BSTA==1)
-            BSTAcheck.setSelected (true);
+            BSTAcheck.setSelected(true);
         else
-            BSTAcheck.setSelected(false);    
+            BSTAcheck.setSelected(false);
         if(Vars.ESTA==1)
-            ESTAcheck.setSelected (true);
+            ESTAcheck.setSelected(true);
         else
-            ESTAcheck.setSelected(false); 
+            ESTAcheck.setSelected(false);
         if(Vars.DSTA==1)
-            DSTAcheck.setSelected (true);
+            DSTAcheck.setSelected(true);
         else
-            DSTAcheck.setSelected(false); 
+            DSTAcheck.setSelected(false);
         if(Vars.HSTA==1)
-            HSTAcheck.setSelected (true);
+            HSTAcheck.setSelected(true);
         else
-            HSTAcheck.setSelected(false); 
+            HSTAcheck.setSelected(false);
         if(Vars.FSTA==1)
-            FSTAcheck.setSelected (true);
+            FSTAcheck.setSelected(true);
         else
-            FSTAcheck.setSelected(false); 
+            FSTAcheck.setSelected(false);
         
         if(Vars.BCTM==1)
-            BCTMcheck.setSelected (true);
+            BCTMcheck.setSelected(true);
         else
-            BCTMcheck.setSelected(false);    
+            BCTMcheck.setSelected(false);
         if(Vars.ECTM==1)
-            ECTMcheck.setSelected (true);
+            ECTMcheck.setSelected(true);
         else
-            ECTMcheck.setSelected(false); 
+            ECTMcheck.setSelected(false);
         if(Vars.DCTM==1)
-            DCTMcheck.setSelected (true);
+            DCTMcheck.setSelected(true);
         else
-            DCTMcheck.setSelected(false); 
+            DCTMcheck.setSelected(false);
         if(Vars.HCTM==1)
-            HCTMcheck.setSelected (true);
+            HCTMcheck.setSelected(true);
         else
-            HCTMcheck.setSelected(false); 
+            HCTMcheck.setSelected(false);
         if(Vars.FCTM==1)
-            FCTMcheck.setSelected (true);
+            FCTMcheck.setSelected(true);
         else
-            FCTMcheck.setSelected(false); 
+            FCTMcheck.setSelected(false);
         
         if(Vars.BRCM==1)
-            BRCMcheck.setSelected (true);
+            BRCMcheck.setSelected(true);
         else
-            BRCMcheck.setSelected(false);    
+            BRCMcheck.setSelected(false);
         if(Vars.ERCM==1)
-            ERCMcheck.setSelected (true);
+            ERCMcheck.setSelected(true);
         else
-            ERCMcheck.setSelected(false); 
+            ERCMcheck.setSelected(false);
         if(Vars.DRCM==1)
-            DRCMcheck.setSelected (true);
+            DRCMcheck.setSelected(true);
         else
-            DRCMcheck.setSelected(false); 
+            DRCMcheck.setSelected(false);
         if(Vars.HRCM==1)
-            HRCMcheck.setSelected (true);
+            HRCMcheck.setSelected(true);
         else
-            HRCMcheck.setSelected(false); 
+            HRCMcheck.setSelected(false);
         if(Vars.FRCM==1)
-            FRCMcheck.setSelected (true);
+            FRCMcheck.setSelected(true);
         else
-            FRCMcheck.setSelected(false); 
+            FRCMcheck.setSelected(false);
         
         if(Vars.BINF==1)
-            BINFcheck.setSelected (true);
+            BINFcheck.setSelected(true);
         else
-            BINFcheck.setSelected(false);    
+            BINFcheck.setSelected(false);
         if(Vars.EINF==1)
-            EINFcheck.setSelected (true);
+            EINFcheck.setSelected(true);
         else
-            EINFcheck.setSelected(false); 
+            EINFcheck.setSelected(false);
         if(Vars.DINF==1)
-            DINFcheck.setSelected (true);
+            DINFcheck.setSelected(true);
         else
-            DINFcheck.setSelected(false); 
+            DINFcheck.setSelected(false);
         if(Vars.HINF==1)
-            HINFcheck.setSelected (true);
+            HINFcheck.setSelected(true);
         else
-            HINFcheck.setSelected(false); 
+            HINFcheck.setSelected(false);
         if(Vars.FINF==1)
-            FINFcheck.setSelected (true);
+            FINFcheck.setSelected(true);
         else
-            FINFcheck.setSelected(false); 
+            FINFcheck.setSelected(false);
         
         if(Vars.BSCH==1)
-            BSCHcheck.setSelected (true);
+            BSCHcheck.setSelected(true);
         else
-            BSCHcheck.setSelected(false);    
+            BSCHcheck.setSelected(false);
         if(Vars.ESCH==1)
-            ESCHcheck.setSelected (true);
+            ESCHcheck.setSelected(true);
         else
-            ESCHcheck.setSelected(false); 
+            ESCHcheck.setSelected(false);
         if(Vars.DSCH==1)
-            DSCHcheck.setSelected (true);
+            DSCHcheck.setSelected(true);
         else
-            DSCHcheck.setSelected(false); 
+            DSCHcheck.setSelected(false);
         if(Vars.HSCH==1)
-            HSCHcheck.setSelected (true);
+            HSCHcheck.setSelected(true);
         else
-            HSCHcheck.setSelected(false); 
+            HSCHcheck.setSelected(false);
         if(Vars.FSCH==1)
-            FSCHcheck.setSelected (true);
+            FSCHcheck.setSelected(true);
         else
-            FSCHcheck.setSelected(false); 
+            FSCHcheck.setSelected(false);
         
         if(Vars.BRES==1)
-            BREScheck.setSelected (true);
+            BREScheck.setSelected(true);
         else
-            BREScheck.setSelected(false);    
+            BREScheck.setSelected(false);
         if(Vars.ERES==1)
-            EREScheck.setSelected (true);
+            EREScheck.setSelected(true);
         else
-            EREScheck.setSelected(false); 
+            EREScheck.setSelected(false);
         if(Vars.DRES==1)
-            DREScheck.setSelected (true);
+            DREScheck.setSelected(true);
         else
-            DREScheck.setSelected(false); 
+            DREScheck.setSelected(false);
         if(Vars.HRES==1)
-            HREScheck.setSelected (true);
+            HREScheck.setSelected(true);
         else
-            HREScheck.setSelected(false); 
+            HREScheck.setSelected(false);
         if(Vars.FRES==1)
-            FREScheck.setSelected (true);
+            FREScheck.setSelected(true);
         else
-            FREScheck.setSelected(false); 
+            FREScheck.setSelected(false);
         
         if(Vars.BPAS==1)
-            BPAScheck.setSelected (true);
+            BPAScheck.setSelected(true);
         else
-            BPAScheck.setSelected(false);    
+            BPAScheck.setSelected(false);
         if(Vars.EPAS==1)
-            EPAScheck.setSelected (true);
+            EPAScheck.setSelected(true);
         else
-            EPAScheck.setSelected(false); 
+            EPAScheck.setSelected(false);
         if(Vars.DPAS==1)
-            DPAScheck.setSelected (true);
+            DPAScheck.setSelected(true);
         else
-            DPAScheck.setSelected(false); 
+            DPAScheck.setSelected(false);
         if(Vars.HPAS==1)
-            HPAScheck.setSelected (true);
+            HPAScheck.setSelected(true);
         else
-            HPAScheck.setSelected(false); 
+            HPAScheck.setSelected(false);
         if(Vars.FPAS==1)
-            FPAScheck.setSelected (true);
+            FPAScheck.setSelected(true);
         else
-            FPAScheck.setSelected(false); 
+            FPAScheck.setSelected(false);
         
         if(Vars.BSUP==1)
-            BSUPcheck.setSelected (true);
+            BSUPcheck.setSelected(true);
         else
-            BSUPcheck.setSelected(false);    
+            BSUPcheck.setSelected(false);
         if(Vars.ESUP==1)
-            ESUPcheck.setSelected (true);
+            ESUPcheck.setSelected(true);
         else
-            ESUPcheck.setSelected(false); 
+            ESUPcheck.setSelected(false);
         if(Vars.DSUP==1)
-            DSUPcheck.setSelected (true);
+            DSUPcheck.setSelected(true);
         else
-            DSUPcheck.setSelected(false); 
+            DSUPcheck.setSelected(false);
         if(Vars.HSUP==1)
-            HSUPcheck.setSelected (true);
+            HSUPcheck.setSelected(true);
         else
-            HSUPcheck.setSelected(false); 
+            HSUPcheck.setSelected(false);
         if(Vars.FSUP==1)
-            FSUPcheck.setSelected (true);
+            FSUPcheck.setSelected(true);
         else
-            FSUPcheck.setSelected(false); 
+            FSUPcheck.setSelected(false);
         
         
         
-       
-
+        
+        
     }//GEN-LAST:event_formWindowGainedFocus
-
+    
     private void jButton4ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
 //clicked reg...
-        Main.Reg (jTextField1.getText ());
-       ((DefaultTableModel) AccountTable.getModel ()).setRowCount (0) ;
+        Main.Reg(jTextField1.getText());
+        ((DefaultTableModel) AccountTable.getModel()).setRowCount(0) ;
         nod n=reg_config.First;
-            while(n!=null)
-            {
-                String blah00="";
-                Date d=new Date(n.CreatedOn);
-                if(n.LastNI!=null)
-                    blah00=n.LastNI;
-                else
-                    blah00="Never seen online.";
-                
-                ((DefaultTableModel) AccountTable.getModel ()).addRow (new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString ()});
-                n=n.Next;
-            }
+        while(n!=null) {
+            String blah00="";
+            Date d=new Date(n.CreatedOn);
+            if(n.LastNI!=null)
+                blah00=n.LastNI;
+            else
+                blah00="Never seen online.";
+            
+            ((DefaultTableModel) AccountTable.getModel()).addRow(new Object[]{n.CID,blah00,n.LastIP,n.WhoRegged,d.toString()});
+            n=n.Next;
+        }
         Main.Server.rewriteregs();
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
     private void jButton3ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-       SetStatus("Restarting... Wait 5 seconds....");
-       Main.Restart ();
-    
+        SetStatus("Restarting... Wait 5 seconds....");
+        Main.Restart();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jButton2ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-    this.setVisible (false);
-    this.dispose();
-    System.gc();
-    //Main.GUIok=false;
+        this.setVisible(false);
+        this.dispose();
+        System.gc();
+        //Main.GUIok=false;
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void jButton1ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        Main.Exit ();
+        Main.Exit();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
     
-    public void SetStatus (String newstring)
-    {
-        StatusLabel.setText (newstring);
+    public void SetStatus(String newstring) {
+        StatusLabel.setText(newstring);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4280,7 +4239,7 @@ if(FMSGcheck.isSelected())
     private javax.swing.JTextField topicfield;
     private javax.swing.JPanel xxx;
     // End of variables declaration//GEN-END:variables
-
-   // private JPanel jPanel1;
+    
+    // private JPanel jPanel1;
     
 }

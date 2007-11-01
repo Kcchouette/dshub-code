@@ -229,6 +229,7 @@ public class BanWordsList {
                 append(cuv,prop,repl);
             }
         }catch(Exception e){
+            //cc
             System.out.println("Invalid File Format");
             System.out.println(e.toString());
         }
