@@ -153,3 +153,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * implemented MINA as a library http://mina.apache.org having a test on it;
            * SVN is UNSTABLE, need to retest everything;
            * from now on, mina and slf4j log4j libraries are mandatory for working;
+           * testframe main page modifications, removed xsocket license.
