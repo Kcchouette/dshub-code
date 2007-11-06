@@ -262,7 +262,7 @@ public class HubServer extends Thread
         Main.PopMsg("Start Time:"+d.toString ());
         System.out.print("\n>");
         
-        // myAssasin=new ClientAssasin();//temporary removed
+         myAssasin=new ClientAssasin();//temporary removed
       /* try 
        {
            while(!restart)

@@ -64,40 +64,8 @@ public class ClientAssasin extends Thread
                         
                         }
                 }
-                if(temp.NextClient.cur_client.userok==1)
-                if((curtime-temp.NextClient.cur_client.LastKeepAlive)>240000L)
-                {
-                  
-                    try
-                    {
-                        temp.NextClient.cur_client.OS.write (0x0a);
-                        temp.NextClient.cur_client.LastKeepAlive=curtime;
-                    }
-                    catch(Exception e)
-                    {
-                    
-                   
-         
-         new Broadcast("IQUI "+temp.NextClient.cur_client.SessionID,x);
-          // x.sendToClient ("IQUI "+temp.NextClient.SessionID);
-             Main.PopMsg(x.cur_client.NI+" was dropped due to timeout."+(curtime-temp.NextClient.cur_client.LastKeepAlive)/1000);
-             x.cur_client.reg.TimeOnline+=curtime-x.cur_client.LoggedAt;
-               //temp.NextClient=x.NextClient;
-             
-             
-                x.cur_client.kicked=1;    
-               try
-              {
-             // x.cur_client.sleep (200);
-              // x.cur_client.ClientSock.close();
-              }
-             catch (Exception ef)
-               {
-               }
-                x.killMe();
-                x=null;
-                    }
-               }
+                
+                
                 if(x.cur_client.kicked!=1)
                 if(x.cur_client.InQueueSearch!=null)
                 if(x.cur_client.userok==1)

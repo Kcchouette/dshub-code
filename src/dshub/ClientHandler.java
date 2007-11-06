@@ -54,11 +54,7 @@ public class ClientHandler
     /** main client socket*/
     //Socket ClientSock;
     
-    InputStream IS;
-    OutputStream OS;
-    
-    PrintStream PS;
-    BufferedReader RS;
+   
     
     ClientNod myNod;
     
@@ -68,7 +64,7 @@ public class ClientHandler
     int quit=0;
     
     long LoggedAt=0l;
-    ClientQueue Queue;
+    
     nod reg;
     ban myban;
     String RandomData;

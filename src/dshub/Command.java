@@ -101,6 +101,7 @@ public class Command
                  
                  cur_client.LoggedAt=System.currentTimeMillis();
                  cur_client.State="NORMAL";
+                 cur_client.sendFromBot( ADC.MOTD);
                  
                     
                
@@ -617,8 +618,8 @@ public class Command
                    {
                        if(cur_client.reg.Password.equals (""))//no pass defined ( yet)
                        {
-                           cur_client.Queue.addMsg("ISTA 000 Registered,\\sno\\spassword\\srequired.\\sThough,\\sits\\srecomandable\\sto\\sset\\sone.");
-                           cur_client.Queue.addMsg("ISTA 000 Authenticated.");
+                           cur_client.sendToClient("ISTA 000 Registered,\\sno\\spassword\\srequired.\\sThough,\\sits\\srecomandable\\sto\\sset\\sone.");
+                           cur_client.sendToClient("ISTA 000 Authenticated.");
                         
                          
                          cur_client.reg.LastNI=cur_client.NI;
@@ -627,7 +628,7 @@ public class Command
                          return;
                            
                        }
-                       cur_client.Queue.addMsg("ISTA 000 Registered,\\stype\\syour\\spassword.");
+                       cur_client.sendToClient("ISTA 000 Registered,\\stype\\syour\\spassword.");
                        /* creates some hash for the GPA random data*/
                        Tiger myTiger = new Tiger();
 						
@@ -648,7 +649,7 @@ public class Command
                        k=reg_config.isNickRegFl(cur_client.NI);
                        if(k!=null)
                        {
-                           cur_client.Queue.addMsg("ISTA 000 Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
+                           cur_client.sendToClient("ISTA 000 Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
                            
                          /* creates some hash for the GPA random data*/
                        Tiger myTiger = new Tiger();
@@ -702,6 +703,7 @@ public class Command
                      cur_client.sendToClient ("ICMD Test CT1 TTTest");
                  }
                  cur_client.State="NORMAL";
+                 cur_client.sendFromBot( ADC.MOTD);
                  return;
                }
                
@@ -856,7 +858,7 @@ public class Command
                  }
               if(realpas.equals(Issued_Command.substring (5)))
               {
-                        cur_client.Queue.addMsg("IMSG Authenticated.");
+                        cur_client.sendToClient("IMSG Authenticated.");
                         
                          cur_client.sendFromBot(ADC.MOTD);
                          
@@ -866,7 +868,7 @@ public class Command
                          cur_client.reg.LastIP=cur_client.RealIP;
                          
                          if(!cur_client.ID.equals(cur_client.reg.CID))
-                        cur_client.Queue.addMsg("IMSG Account\\sCID\\supdated\\sto\\s"+cur_client.ID);
+                        cur_client.sendToClient("IMSG Account\\sCID\\supdated\\sto\\s"+cur_client.ID);
                          cur_client.reg.CID=cur_client.ID;
               }
               else

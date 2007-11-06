@@ -155,3 +155,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * from now on, mina and slf4j log4j libraries are mandatory for working;
            * testframe main page modifications, removed xsocket license.
            * minor updates on MINA integration;
+           * accounts work again;
+           * more fixes;
+           * Client Assassin is enabled;
+           * SVN testable;
