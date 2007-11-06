@@ -110,28 +110,7 @@ public class Main extends Thread
              BanList.First=null;
              System.gc (); //calling garbage collectors
              try{Main.Server.sleep (1500);}catch(Exception e) {}
-                if(ClientNod.FirstClient!=null)
-                {
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                
-                try
-                {
-                Socket asock=new Socket("127.0.0.1",Main.Server.port);}catch(Exception e) {}
-                while(temp!=null)
-                {
-                    //closing all sockets...
-                    try
-            {
-                //this.sleep (100);
-               // temp.cur_client.ClientSock.close();
-            }
-            catch (Exception e)
-            {            }
-                    temp=temp.NextClient;
-                }
-                }
-                try{Main.Server.sleep (1000);}catch(Exception e) {}
-                
+                ClientNod.FirstClient=null;
              //GUI.di
              
             Main.Server=new HubServer();
