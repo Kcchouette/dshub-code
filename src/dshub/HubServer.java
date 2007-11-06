@@ -235,9 +235,11 @@ public class HubServer extends Thread
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+        
         //DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
-        
+        cfg.getSessionConfig().setKeepAlive(true);
+        cfg.getSessionConfig().setReceiveBufferSize(2048);
         try
         {
 
@@ -245,8 +247,9 @@ public class HubServer extends Thread
         } catch (IOException ex)
         {
             ex.printStackTrace();
+            
         }
-        //System.out.println("MINA Time server started.");
+        
            Main.PopMsg("Server created. Listening on port "+port+".");
         
         MyCalendar=Calendar.getInstance();
