@@ -100,6 +100,7 @@ public class Command
                  cur_client.sendFromBot(cur_client.reg.HideMe ? "You are currently hidden." : "");
                  
                  cur_client.LoggedAt=System.currentTimeMillis();
+                 cur_client.State="NORMAL";
                  
                     
                
@@ -198,12 +199,12 @@ public class Command
                             cur_client.I4=aux.substring(2);
               if(aux.substring (2).equals("0.0.0.0")||aux.substring (2).equals ("localhost") )//only if active client
               {
-               cur_client.I4=cur_client.ClientSock.getInetAddress().getHostAddress();
+               cur_client.I4=cur_client.RealIP;
               }
               
                   
-              else if(!aux.substring (2).equals (cur_client.ClientSock.getInetAddress().getHostAddress()) && !aux.substring (2).equals ("") 
-              && !cur_client.ClientSock.getInetAddress().getHostAddress().equals ("127.0.0.1"))
+              else if(!aux.substring (2).equals (cur_client.RealIP) && !aux.substring (2).equals ("") 
+              && !cur_client.RealIP.equals ("127.0.0.1"))
               {
                    new STAError(cur_client,243,"Wrong IP address supplied.","I4");
                    return;
@@ -412,8 +413,8 @@ public class Command
                     if(cur_client.myban==null)
                     {
                        
-                    cur_client.myban=BanList.getban (2,cur_client.ClientSock.getInetAddress().getHostAddress());
-                    
+                    cur_client.myban=BanList.getban (2,(cur_client.RealIP));
+                    //System.out.println(cur_client.mySession.getRemoteAddress().toString());
                     }
                     if(cur_client.myban==null)
                     {
@@ -621,7 +622,7 @@ public class Command
                         
                          
                          cur_client.reg.LastNI=cur_client.NI;
-                         cur_client.reg.LastIP=cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                         cur_client.reg.LastIP=cur_client.RealIP;
                          completeLogIn();
                          return;
                            
@@ -638,6 +639,7 @@ public class Command
                  byte[] finalTiger = myTiger.engineDigest();
                  cur_client.RandomData =Base32.encode (finalTiger);
                        cur_client.sendToClient ("IGPA "+cur_client.RandomData);
+                       cur_client.State="VERIFY";
                        return;
                    }
                    else
@@ -660,6 +662,7 @@ public class Command
                  cur_client.RandomData =Base32.encode (finalTiger);
                        cur_client.sendToClient ("IGPA "+cur_client.RandomData);
                        cur_client.reg=k;
+                       cur_client.State="VERIFY";
                        return;
                        }
                        else if(Vars.reg_only==1)
@@ -698,6 +701,8 @@ public class Command
                      //ok, he is ucmd ok, so
                      cur_client.sendToClient ("ICMD Test CT1 TTTest");
                  }
+                 cur_client.State="NORMAL";
+                 return;
                }
                
                if(State.equals ("NORMAL"))
@@ -858,7 +863,7 @@ public class Command
                          //System.out.println ("pwla");
                          cur_client.reg.LastNI=cur_client.NI;
                         // cur_client.reg.LastNI=cur_client.NI;
-                         cur_client.reg.LastIP=cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                         cur_client.reg.LastIP=cur_client.RealIP;
                          
                          if(!cur_client.ID.equals(cur_client.reg.CID))
                         cur_client.Queue.addMsg("IMSG Account\\sCID\\supdated\\sto\\s"+cur_client.ID);
@@ -926,7 +931,7 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
      *request... Command class does not check params.
      *Function throws CommandException if smth is wrong.
      */
-    public Command(ClientHandler CH, String Issued_command, String state) throws ClientFailedException, STAException,CommandException
+    public Command(ClientHandler CH, String Issued_command) throws ClientFailedException, STAException,CommandException
     {
         cur_client=CH;
      // System.out.printf("["+cur_client.NI+"]:%s\n",Issued_command);
@@ -945,13 +950,10 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
                   
             }
            cur_client.myNod.killMe();
-            try{
-            cur_client.ClientSock.close();
+            
+            //cur_client.ClientSock.close();
             cur_client=null;
-            }
-            catch (IOException e)
-            {
-            }
+            
             
            
              throw new ClientFailedException("Client Disconnected.\n");
@@ -968,7 +970,7 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
        
     
         Issued_Command=Issued_command;
-        State=state;
+        State=cur_client.State;
         HandleIssuedCommand();
     }
     

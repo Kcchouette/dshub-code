@@ -31,13 +31,16 @@ package dshub;
 
 class STAException extends Exception
 {
+    int x;
     STAException()
     {
         super();
     };
-    STAException(String bla)
+    STAException(String bla,int x)
     {
         super(bla);
+        this.x=x;
+        
     }
 };
 
@@ -61,7 +64,7 @@ public class STAError
        
         cur_client.sendToClient(Error_string);
         if(ec>200)
-        throw new STAException(Error_string);
+        throw new STAException(Error_string,ec);
     }
     public STAError(ClientHandler CH,int ec,String error_d, String FL) throws STAException
     {
@@ -75,7 +78,7 @@ public class STAError
          
         cur_client.sendToClient(Error_string);
         if(ec>200)
-        throw new STAException(Error_string);
+        throw new STAException(Error_string,ec);
     }
     
 }

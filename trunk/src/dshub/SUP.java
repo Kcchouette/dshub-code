@@ -101,6 +101,20 @@ public class SUP
                           new STAError(cur_client,240,"You removed BASE features therefore you can't stay on hub anymore.");
                           return;
                       }
+                    if(State.equals("PROTOCOL"))
+                    {
+                   cur_client. sendToClient(ADC.Init);
+         
+       
+        cur_client.sendToClient(ADC.ISID+" "+cur_client.SessionID);
+         
+        if(Vars.HubDE.equals (""))
+            cur_client.sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
+        else
+           cur_client. sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
+       cur_client. sendToClient("ISTA 000 "+
+            "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+                    }
     }
     
 }

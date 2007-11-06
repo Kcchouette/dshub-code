@@ -122,7 +122,7 @@ public class CommandParser
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                 try
                 {
-                cur_client.sleep (1000);
+               // cur_client.sleep (1000);
                 }
                 catch (Exception e)
                 {
@@ -170,7 +170,7 @@ public class CommandParser
                     try
             {
                 //this.sleep (100);
-                temp.cur_client.ClientSock.close();
+              //  temp.cur_client.ClientSock.close();
             }
             catch (Exception e)
             {            }
@@ -459,7 +459,7 @@ public class CommandParser
                             
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                         
                         }
                         Main.PopMsg (cur_client.NI+" regged the CID "+aux);
@@ -500,7 +500,7 @@ public class CommandParser
                             
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
                         }
                             
@@ -544,7 +544,7 @@ public class CommandParser
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
                         }
                 }
@@ -1005,7 +1005,7 @@ public class CommandParser
                   while(temp!=null)
                   {
                             if(temp.cur_client.userok==1) 
-                                if( temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux))
+                                if( temp.cur_client.RealIP.equals(aux))
                                 {
                          if(!temp.cur_client.reg.kickable)
                          {cur_client.sendFromBot("Searching...");
@@ -1020,7 +1020,7 @@ public class CommandParser
                 while(temp!=null)
                         {
                             if(temp.cur_client.userok==1) 
-                                if( temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux))
+                                if( temp.cur_client.RealIP.equals(aux))
                                 {
                          
                         temp.kickMeOut (cur_client,reason,2,-1L);}
@@ -1053,11 +1053,11 @@ public class CommandParser
                 if(temp!=null)
                 {  
                         if(!temp.cur_client.reg.kickable)
-                         cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with IP "+temp.cur_client.ClientSock.getInetAddress().getHostAddress()+", but its unkickable.Not banned.");
+                         cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with IP "+temp.cur_client.RealIP+", but its unkickable.Not banned.");
                        else
                        {
                         
-                      cur_client.sendFromBot("Found user "+aux+" with IP "+temp.cur_client.ClientSock.getInetAddress ().getHostAddress ()+", banning..");
+                      cur_client.sendFromBot("Found user "+aux+" with IP "+temp.cur_client.RealIP+", banning..");
                      
                    
                         temp.kickMeOut (cur_client,reason,2,-1L);

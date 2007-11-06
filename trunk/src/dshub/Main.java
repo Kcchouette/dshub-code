@@ -123,7 +123,7 @@ public class Main extends Thread
                     try
             {
                 //this.sleep (100);
-                temp.cur_client.ClientSock.close();
+               // temp.cur_client.ClientSock.close();
             }
             catch (Exception e)
             {            }
@@ -185,7 +185,7 @@ public class Main extends Thread
                             temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                         
@@ -234,7 +234,7 @@ public class Main extends Thread
                             
                            temp.cur_client.reg.isreg=true;
                            temp.cur_client.LoggedAt=System.currentTimeMillis();
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                         }
                             
                     }
@@ -287,7 +287,7 @@ public class Main extends Thread
                             
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.isreg=true;
-                            temp.cur_client.reg.LastIP=temp.cur_client.ClientSock.getInetAddress ().getHostAddress ();
+                            temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                         }
                 }
                 

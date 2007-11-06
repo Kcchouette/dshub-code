@@ -23,37 +23,38 @@
 
 package dshub;
 
-import java.net.Socket;
+
+
 
 /**
  * A class that keeps a ClientHandler thread instance and connections to other nods
  * @author Administrator
  */
-public class ClientNod
+public class ClientNod 
 {
     
     ClientHandler cur_client;
     ClientNod NextClient;
     ClientNod PrevClient;
     
-    static ClientNod FirstClient;
+    static ClientNod FirstClient=new ClientNod(1);
     
     /** Creates a new instance of ClientNod */
-    public ClientNod(Socket s)
+    public ClientNod()
     {
         NextClient=null;
-        cur_client=new ClientHandler(s,this);
+        cur_client=new ClientHandler();
+        if(FirstClient==null)
+            FirstClient=this;
+        cur_client.myNod=this;
+        
+    }
+    public ClientNod(int x)
+    {
         
     }
     
-    public ClientNod()
-    {
-        
-        NextClient=null;
-        PrevClient=null;
-        FirstClient=this;
-        cur_client=null;
-    }
+  
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
      {
          kickmsg=ADC.retNormStr (kickmsg);
@@ -71,7 +72,7 @@ public class ClientNod
              if(bantype==3)
          BanList.addban (bantype,cur_client.ID,1000*kicktime,whokicked.NI,kickmsg);
              else if(bantype==2)
-                     BanList.addban (bantype,cur_client.ClientSock.getInetAddress().getHostAddress(),1000*kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,cur_client.RealIP,1000*kicktime,whokicked.NI,kickmsg);
               else if(bantype==1)
                      BanList.addban (bantype,cur_client.NI,1000*kicktime,whokicked.NI,kickmsg);
         }
@@ -81,7 +82,7 @@ public class ClientNod
           if(bantype==3)
         BanList.addban (bantype,cur_client.ID,kicktime,whokicked.NI,kickmsg);
              else if(bantype==2)
-                     BanList.addban (bantype,cur_client.ClientSock.getInetAddress().getHostAddress(),kicktime,whokicked.NI,kickmsg);
+                     BanList.addban (bantype,cur_client.RealIP,kicktime,whokicked.NI,kickmsg);
               else if(bantype==1)
                      BanList.addban (bantype,cur_client.NI,kicktime,whokicked.NI,kickmsg);
                    
@@ -100,8 +101,8 @@ public class ClientNod
                     
                try
               {
-              cur_client.sleep (200);
-               cur_client.ClientSock.close();
+              //cur_client.sleep (200);
+               //cur_client.ClientSock.close();
               }
              catch (Exception e)
                {
@@ -138,8 +139,8 @@ public class ClientNod
                     
                try
               {
-              cur_client.sleep (200);
-               cur_client.ClientSock.close();
+            //  cur_client.sleep (200);
+              // cur_client.ClientSock.close();
               }
              catch (Exception e)
                {
