@@ -50,7 +50,7 @@ public class ExtInfo
               String Nicklist="";
                 while(temp!=null)
                         {
-                            if(temp.cur_client.userok==1) if( (temp.cur_client.ClientSock.getInetAddress().getHostAddress().equals(aux.toLowerCase ())))
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.RealIP.equals(aux.toLowerCase ())))
                                 Nicklist=Nicklist+temp.cur_client.NI+"\n";
                             temp=temp.NextClient;
                             
@@ -129,7 +129,7 @@ public class ExtInfo
                     else
                         Tag=Tag+"?>";
                             blah11=blah11+Tag+"\nSupports "
-                                    + ((temp.cur_client.SU!=null) ? temp.cur_client.SU : "nothing special")+"\nIp address "+temp.cur_client.ClientSock.getInetAddress().getHostAddress();
+                                    + ((temp.cur_client.SU!=null) ? temp.cur_client.SU : "nothing special")+"\nIp address "+temp.cur_client.RealIP;
                      if(temp.cur_client.reg.isreg)   
                      {
                                 

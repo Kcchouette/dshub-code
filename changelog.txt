@@ -148,3 +148,8 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * modified other classes to integrate xSocket;
            * some things like timeouts, or i dont know what, might not work, please report. 
            * xSocket doesnt work , reverted.
+           * the chat control GUI works now ( naccio);
+           * all thats' left is the maqin functionality with msg class;
+           * implemented MINA as a library http://mina.apache.org having a test on it;
+           * SVN is UNSTABLE, need to retest everything;
+           * from now on, mina and slf4j log4j libraries are mandatory for working;

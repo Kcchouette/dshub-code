@@ -88,8 +88,8 @@ public class ClientAssasin extends Thread
                 x.cur_client.kicked=1;    
                try
               {
-              x.cur_client.sleep (200);
-               x.cur_client.ClientSock.close();
+             // x.cur_client.sleep (200);
+              // x.cur_client.ClientSock.close();
               }
              catch (Exception ef)
                {

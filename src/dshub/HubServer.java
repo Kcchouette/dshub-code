@@ -24,10 +24,23 @@ package dshub;
 
 import java.net.*;
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.StringTokenizer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.zip.*;
 import java.util.Calendar;
+import org.apache.mina.common.ByteBuffer;
+import org.apache.mina.common.DefaultIoFilterChainBuilder;
+import org.apache.mina.common.IoAcceptor;
+import org.apache.mina.common.SimpleByteBufferAllocator;
+import org.apache.mina.filter.LoggingFilter;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
+import org.apache.mina.filter.executor.ExecutorFilter;
+import org.apache.mina.transport.socket.nio.SocketAcceptor;
+import org.apache.mina.transport.socket.nio.SocketAcceptorConfig;
 
 /**
  * Basic hub server listener and socket receiver, sends users to each's thread after connecting.
@@ -195,7 +208,7 @@ public class HubServer extends Thread
           }
           catch ( Exception e)
           {}
-       try
+      /* try
        {
            MainSocket=new ServerSocket(port);
        }
@@ -209,9 +222,33 @@ public class HubServer extends Thread
            }
            return;
        }
-           
+           */
+       //   new ClientNod();
+        ByteBuffer.setUseDirectBuffers(false);
+        ByteBuffer.setAllocator(new SimpleByteBufferAllocator());
+        
+        
+        
+        ExecutorService x=Executors.newCachedThreadPool();
+        
+        IoAcceptor acceptor = new SocketAcceptor(Runtime.getRuntime().availableProcessors() + 1, x);
+        SocketAcceptorConfig cfg = new SocketAcceptorConfig();
+        cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
+        cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+        //DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
+        //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
+        
+        try
+        {
+
+            acceptor.bind( new InetSocketAddress(port), new SimpleHandler(), cfg);
+        } catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+        //System.out.println("MINA Time server started.");
            Main.PopMsg("Server created. Listening on port "+port+".");
-        new ClientNod();
+        
         MyCalendar=Calendar.getInstance();
         if(Main.GUIok)
            {
@@ -222,8 +259,8 @@ public class HubServer extends Thread
         Main.PopMsg("Start Time:"+d.toString ());
         System.out.print("\n>");
         
-         myAssasin=new ClientAssasin();//temporary removed
-       try 
+        // myAssasin=new ClientAssasin();//temporary removed
+      /* try 
        {
            while(!restart)
                AddClient(MainSocket.accept());
@@ -235,28 +272,22 @@ public class HubServer extends Thread
         try
         {MainSocket.close ();}
         catch( Exception e)
-        {}
+        {}*/
     }
     
-    public void AddClient(Socket s)
+    public static ClientNod AddClient()
     {
-     
+     //ClientHandler ret;
         if(restart)
-            return;
-        try
-        {
-             this.sleep (30);
-        }
-             catch(InterruptedException ie)
-             {
-             
-             }
-        ClientNod newclient=new ClientNod(s);
+            return null;
+       
+        ClientNod newclient=new ClientNod();
        newclient.NextClient=ClientNod.FirstClient.NextClient;
        ClientNod.FirstClient.NextClient=newclient;
        newclient.PrevClient=ClientNod.FirstClient;
        if(newclient.NextClient!=null)
        newclient.NextClient.PrevClient=newclient;
+       return newclient;
 
         
     }

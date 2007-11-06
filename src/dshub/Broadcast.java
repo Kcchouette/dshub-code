@@ -168,7 +168,7 @@ public class Broadcast
            if(STR.startsWith ("IMSG "))
              CH.cur_client.sendFromBot (STR.substring (5)); 
            else
-               CH.cur_client.Queue.addMsg (STR);
+               CH.cur_client.sendToClient(STR);
         }
         CH=CH.NextClient;
         }
