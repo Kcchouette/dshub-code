@@ -44,8 +44,15 @@ public class SimpleHandler extends IoHandlerAdapter
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
-		t.printStackTrace();
-		session.close();
+		//System.out.println(t.getMessage());
+                if((t.getMessage().contains("IOException")))
+                {
+		  session.close();
+                return;
+                }
+                 if((t.getMessage().contains("BufferDataException: Line is too long")))
+                    new STAError((ClientHandler)(session.getAttachment()),000,"Message exceeds buffer.");
+                else ;
     }
 
 	public void messageReceived(IoSession session, Object msg) throws Exception 
@@ -73,14 +80,23 @@ public class SimpleHandler extends IoHandlerAdapter
                 }
                 
 	}
+        public void sessionIdle(IoSession session, IdleStatus status) throws Exception
+        {
+            //ok, we're in idle
+            ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+            cur_client.sendToClient("");
+            
+        }
         public void sessionClosed(IoSession session) throws Exception
         {
+            
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
             if(cur_client.userok==1)
             {
                 new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
             }
             cur_client.myNod.killMe();
+            
         }
 
 	public void sessionCreated(IoSession session) throws Exception 
@@ -94,6 +110,7 @@ public class SimpleHandler extends IoHandlerAdapter
                 ClientHandler cur_client=(ClientHandler)HubServer.AddClient().cur_client;
                 session.setAttachment(cur_client);
               session.setIdleTime( IdleStatus.READER_IDLE, 120 );
+              
               cur_client.mySession=session;
               StringTokenizer ST=new StringTokenizer(cur_client.mySession.getRemoteAddress().toString(),"/:");
               cur_client.RealIP=ST.nextToken();
@@ -102,7 +119,7 @@ public class SimpleHandler extends IoHandlerAdapter
         cur_client.SessionID=Base32.encode (cursid.cursid).substring (0,4);
         cur_client.sid=cursid.cursid;
 
-        cur_client.LastKeepAlive=0L;
+        
 	}
     
 }
