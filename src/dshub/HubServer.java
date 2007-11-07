@@ -69,6 +69,9 @@ public class HubServer extends Thread
    static boolean restart;
    
    static String myPath;
+   IoAcceptor acceptor;
+   ExecutorService x;
+   InetSocketAddress address;
    Calendar MyCalendar;
     /** Creates a new instance of HubServer */
     public HubServer() 
@@ -139,38 +142,22 @@ public class HubServer extends Thread
     public void run()
     {
         
-        ADC.MOTD=ADC.MOTD;
+        
       
-       /* try 
-        {
-            File HelpFile=new File(myPath+"help");
-            FileReader fr = new FileReader(HelpFile); 
-            BufferedReader br = new BufferedReader(fr); 
-            Main.HelpText="";Main.MOTD="";
-            while ( (Main.auxhelp=br.readLine()) != null ) 
-            { 
-            Main.HelpText=Main.HelpText+Main.auxhelp+"\n";
-            } 
-            br.close ();
-        }
-        catch (IOException e)
-        {
-            Main.HelpText="No Help File found.";
-        }
-        */
+       
         try 
         {
             File MotdFile=new File(myPath+"motd");
             FileReader mr = new FileReader(MotdFile); 
             BufferedReader mb = new BufferedReader(mr); 
-            
+            Main.MOTD="";
             while ( (Main.auxhelp=mb.readLine()) != null ) 
             { 
             Main.MOTD=Main.MOTD+Main.auxhelp+"\n";
             } 
             mb.close ();
             Main.MOTD=Main.MOTD.substring (0,Main.MOTD.length ()-1);
-            ADC.MOTD=Main.MOTD;//.replaceAll ("\\x0a","\\\n").replaceAll (" ","\\ ");
+            ADC.MOTD=Main.MOTD;
         }
         catch (IOException e)
         {
@@ -208,30 +195,16 @@ public class HubServer extends Thread
           }
           catch ( Exception e)
           {}
-      /* try
-       {
-           MainSocket=new ServerSocket(port);
-       }
-      catch (IOException e)
-       {
-           Main.PopMsg("Network problem in attempt to listen to localhost:"+Vars.Default_Port+"  "+e.getMessage());
-           if(Main.GUIok)
-           {
-               Main.GUI.SetStatus (e.getMessage ());
-               
-           }
-           return;
-       }
-           */
+      
        //   new ClientNod();
         ByteBuffer.setUseDirectBuffers(false);
         ByteBuffer.setAllocator(new SimpleByteBufferAllocator());
         
         
         
-        ExecutorService x=Executors.newCachedThreadPool();
+        x=Executors.newCachedThreadPool();
         
-        IoAcceptor acceptor = new SocketAcceptor(Runtime.getRuntime().availableProcessors() + 1, x);
+        acceptor = new SocketAcceptor(Runtime.getRuntime().availableProcessors() + 1, x);
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
@@ -240,10 +213,11 @@ public class HubServer extends Thread
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
         cfg.getSessionConfig().setKeepAlive(true);
         cfg.getSessionConfig().setReceiveBufferSize(2048);
+        address=new InetSocketAddress(port);
         try
         {
 
-            acceptor.bind( new InetSocketAddress(port), new SimpleHandler(), cfg);
+            acceptor.bind( address, new SimpleHandler(), cfg);
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -277,7 +251,11 @@ public class HubServer extends Thread
         catch( Exception e)
         {}*/
     }
-    
+    public void shutdown()
+    {
+        acceptor.unbind(address);
+        x.shutdown();
+    }
     public static ClientNod AddClient()
     {
      //ClientHandler ret;

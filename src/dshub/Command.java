@@ -101,7 +101,7 @@ public class Command
                  
                  cur_client.LoggedAt=System.currentTimeMillis();
                  cur_client.State="NORMAL";
-                 cur_client.sendFromBot( ADC.MOTD);
+                 //cur_client.sendFromBot( ADC.MOTD);
                  
                     
                
@@ -938,32 +938,10 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
         cur_client=CH;
      // System.out.printf("["+cur_client.NI+"]:%s\n",Issued_command);
         
-       if(Issued_command==null)
-       { 
-             //this means client is disconnected
-           
-           // ClientHandler tempy=cur_client.FirstClient.NextClient;
-           // ClientHandler tempyprev=cur_client.FirstClient;
-           
-            if(ClientNod.FirstClient.NextClient!=null && cur_client.userok==1)
-            {
-            new Broadcast("IQUI "+cur_client.SessionID);
-            cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-                  
-            }
-           cur_client.myNod.killMe();
-            
-            //cur_client.ClientSock.close();
-            cur_client=null;
-            
-            
-           
-             throw new ClientFailedException("Client Disconnected.\n");
-          
-       }
+       
             
        //System.out.printf("[Received]:%s\n",Issued_command);
-       else if(Issued_command.equals(""))
+       if(Issued_command.equals(""))
        {
             //System.out.println("("+cur_client.NI+")"+System.currentTimeMillis ()/1000);
             return;

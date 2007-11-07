@@ -108,11 +108,11 @@ public class Main extends Thread
               
              reg_config.First=null;
              BanList.First=null;
-             System.gc (); //calling garbage collectors
-             try{Main.Server.sleep (1500);}catch(Exception e) {}
+             ClientNod.FirstClient=null;
+            
                 ClientNod.FirstClient=null;
-             //GUI.di
-             
+             Server.shutdown();
+             System.gc (); //calling garbage collectors
             Main.Server=new HubServer();
          Main.curtime=System.currentTimeMillis();
          Main.Proppies=System.getProperties();

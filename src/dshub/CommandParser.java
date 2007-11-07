@@ -135,11 +135,12 @@ public class CommandParser
               reg_config.First=null;
              BanList.First=null;
              
-             System.gc (); //calling garbage collectors
+             
                  ClientNod.FirstClient=null;
                 Main.PopMsg ("Hub restarted by "+cur_client.NI);
              
-             
+             Main.Server.shutdown();
+             System.gc (); //calling garbage collectors
             Main.Server=new HubServer();
          Main.curtime=System.currentTimeMillis();
          Main.Proppies=System.getProperties();

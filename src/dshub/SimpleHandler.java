@@ -41,6 +41,7 @@ public class SimpleHandler extends IoHandlerAdapter
     /** Creates a new instance of SimpleHandler */
     public SimpleHandler()
     {
+        ClientNod.FirstClient=new ClientNod(1);
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
@@ -91,7 +92,7 @@ public class SimpleHandler extends IoHandlerAdapter
         {
             
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-            if(cur_client.userok==1)
+            if(cur_client.userok==1 && cur_client.kicked!=1)
             {
                 new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
             }
