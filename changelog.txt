@@ -163,3 +163,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixed double motd on restart ( will be deprecated when cronlike jobs will be added );
            * fixed restarting;
            * fixed client assassin;
+           * enabled Chat Control.

@@ -208,7 +208,7 @@ public class GrantCmd
                     toSend+="grant - can't grant a feature you don't possess.\n";
                     return;
                 }
-               modnod.myMask.drop=attribute;
+               modnod.myMask.grant=attribute;
               toSend+=" grant modified to "+attribute+"\n";
              }
              else  if(what.equals("gui"))
@@ -745,7 +745,7 @@ public GrantCmd(String cmd)
             else  if(what.equals("grant"))
              {
                 
-               modnod.myMask.drop=attribute;
+               modnod.myMask.grant=attribute;
               toSend+=" grant modified to "+attribute+"\n";
              }
              else  if(what.equals("gui"))

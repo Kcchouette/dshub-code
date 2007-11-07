@@ -93,6 +93,61 @@ public class MSG
                        return;
                        }
                    }
+                   int index=Main.listaBanate.isOK(message);
+                   System.out.println(index);
+                   if(index!=-1)//not ok
+                   {
+                       long what=Main.listaBanate.getPrAt(index);
+                       /* 
+                         static final long dropped=1;
+    static final long kicked=2;
+    static final long noAction=4;
+    static final long hidden=8;
+    static final long replaced=16;
+    static final long modified=32;
+    static final long allclient=7;
+    static final long allword=56;*/
+                     //  long what=56;
+                       System.out.println(what);
+                       if(what % 2 ==1)
+                       {
+                           new STAError(cur_client,201,"You typed forbidden word.");
+                          // System.out.println("flag contine 1");
+                       }
+                       what /=2;
+                        if(what % 2 ==1)
+                        {
+                           //System.out.println("flag contine 2");
+                           cur_client.myNod.kickMeByBot("You typed forbidden word.",3);
+                        }
+                       what/=2;
+                        if(what % 2 ==1)
+                        {
+                           //System.out.println("flag contine 4");
+                           ;
+                        }   
+                       what/=2;
+                        if(what % 2 ==1)
+                        {
+                           //System.out.println("flag contine 8");
+                           ;
+                           return;
+                        } 
+                       what/=2;
+                        if(what % 2 ==1)
+                        {
+                           //System.out.println("flag contine 16");
+                           Issued_Command=Issued_Command.replace(message,"****");
+                           
+                        } 
+                       what/=2;
+                        if(what % 2 ==1)
+                        {
+                           //System.out.println("flag contine 32");
+                           Issued_Command=Issued_Command.replace(message,Main.listaBanate.getReplAt(index));
+                           
+                        } 
+                   }
                    String thissid=null;
                    int me=0;
                     while(tok.hasMoreElements())
