@@ -37,7 +37,7 @@ public class ClientNod
     ClientNod NextClient;
     ClientNod PrevClient;
     
-    static ClientNod FirstClient=new ClientNod(1);
+    static ClientNod FirstClient;
     
     /** Creates a new instance of ClientNod */
     public ClientNod()
@@ -92,21 +92,12 @@ public class ClientNod
            if(!kickmsg.equals(""))
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
          new Broadcast(brcast);
-           cur_client.sendToClient (brcast);
+          
+             cur_client.kicked=1;
+           this.cur_client.mySession.close();
              
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-           this.NextClient.PrevClient=this.PrevClient;
-             cur_client. kicked=1;
                     
-               try
-              {
-              //cur_client.sleep (200);
-               //cur_client.ClientSock.close();
-              }
-             catch (Exception e)
-               {
-               }
+               
              whokicked.sendFromBot("Kicked user "+cur_client.NI+" with CID "+cur_client.ID+" out in flames.");
              Main.PopMsg (whokicked.NI+" kicked user "+cur_client.NI+" with CID " + cur_client.ID+" out in flames.");
                     Main.Server.rewritebans ();
@@ -122,29 +113,18 @@ public class ClientNod
              whokicked.sendFromBot(""+cur_client.NI+" is undroppable.");
              return;
          }
-         //ClientHandler tempy=FirstClient;
-        // while(tempy.NextClient!=this)
-         //    tempy=tempy.NextClient;
-        // ClientHandler temp=tempy.NextClient;
+        
          
          
-         new Broadcast("IQUI "+cur_client.SessionID);
-           cur_client.sendToClient ("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID);
+         new Broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID);
+           
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-               //tempy.NextClient=this.NextClient;
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-           this.NextClient.PrevClient=this.PrevClient;
+               
              cur_client. kicked=1;
+           this.cur_client.mySession.close();
+             
                     
-               try
-              {
-            //  cur_client.sleep (200);
-              // cur_client.ClientSock.close();
-              }
-             catch (Exception e)
-               {
-               }
+              
              whokicked.sendFromBot("Dropped user "+cur_client.NI+" with CID "+cur_client.ID+" down from the sky.");
                   //  Main.Server.rewritebans ();
      }
@@ -154,6 +134,7 @@ public class ClientNod
            this.PrevClient.NextClient=this.NextClient;
            if(this.NextClient!=null)
               this.NextClient.PrevClient=this.PrevClient;
+          // System.out.println("killed");
            
        }
     

@@ -48,9 +48,22 @@ public class ClientAssasin extends Thread
         while(!Main.Server.restart)
         {
             ClientNod temp=ClientNod.FirstClient;
-            
+            if(temp==null)
+            {
+                try
+                {
+                    this.sleep(1000);
+                } catch (InterruptedException ex)
+                {
+                    
+                }
+                continue;
+            }
+                    
             while(temp.NextClient!=null )
             {
+                if(temp==null)
+                    break;
                 long curtime=System.currentTimeMillis();
                 ClientNod x=temp.NextClient;
                 if(temp.NextClient.cur_client.userok==1)
@@ -107,7 +120,8 @@ public class ClientAssasin extends Thread
         catch(Exception e)
         {
         }
-            
+            if(temp==null)
+                    break;
         }
     }
     

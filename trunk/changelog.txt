@@ -159,3 +159,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * more fixes;
            * Client Assassin is enabled;
            * SVN testable;
+           * fixed kicking and dropping;
+           * fixed double motd on restart ( will be deprecated when cronlike jobs will be added );
+           * fixed restarting;
+           * fixed client assassin;
