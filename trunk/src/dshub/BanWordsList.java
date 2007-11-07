@@ -24,7 +24,8 @@
 package dshub;
 
 /**
- *
+ * A list of banned words.
+ * 
  * @author naccio
  */
 
@@ -44,10 +45,10 @@ public class BanWordsList {
     public int size(){
         return bannedWords.size();
     }
-    
+    /**///searches word by name
+        ///returns its index*/
     public int searchEl(String s){
-        ///searches word by name
-        ///returns its index
+        
         for (int i=0;i<bannedWords.size();i++){
             BannedWord cuv=(BannedWord)bannedWords.elementAt(i);
             if (s.equals(cuv.cuvant))
@@ -55,16 +56,15 @@ public class BanWordsList {
         };
         return -1;
     }
-    
-    
+    /**modifies the name of the word at index*/
     public void modifyStrAt(int index,String s){
-        ///modifies the name of the word at index
+        
         BannedWord cuv=(BannedWord)bannedWords.elementAt(index);
         cuv.setWord(s);
     }
-    
+    /** ///replaces word name with another*/
     public void modifyStr(String s,String news){
-        ///replaces word name with another
+       
         int n=searchEl(s);
         if (n==-1){
             System.out.println("The word you want to modify is not in the list");
@@ -72,15 +72,15 @@ public class BanWordsList {
         }
         modifyStrAt(n,news);
     }
-    
+    /**  ///modifies propreties at index */
     public void modifyPrAt(int index,long prop,String repl){
-        ///modifies propreties at index
+       
         BannedWord cuv=(BannedWord)bannedWords.elementAt(index);
         cuv.setFlags(prop,repl);
     }
-    
+    /**  ///modifies propreties by name */
     public void modifyPr(String s,long prop,String repl){
-        ///modifies propreties by name
+       
         int n=searchEl(s);
         if (n==-1){
             System.out.println("The word you want to modify is not in the list");
@@ -88,9 +88,9 @@ public class BanWordsList {
         }
         modifyPrAt(n,prop,repl);
     }
-    
+    /** ///modifies client propreties for multiple selection */
     public void modifyMultiClientPrAt(int[] list,long prop){
-        ///modifies client propreties for multiple selection
+        
         prop=prop&BannedWord.allclient;
      //   System.out.println("%%%%%");
      //   System.out.println("prop:");
@@ -111,9 +111,9 @@ public class BanWordsList {
         }
        // System.out.println("&&&&&");
     }
-    
+    /** ///modifies word propreties for multiple selection */
     public void modifyMultiWordPrAt(int[] list,long prop,String repl){
-        ///modifies word propreties for multiple selection
+        
         prop=prop&BannedWord.allword;
         long curpr;
         for (int i=0;i<list.length;i++){          
@@ -124,9 +124,9 @@ public class BanWordsList {
             cuv.setFlags(curpr,repl);
         }
     }
-    
+    /** ///adds an element at the begining of the list */
     public void add(String s,long proprietati,String replacement){
-        ///adds an element at the begining of the list
+        
         int x=searchEl(s);
         if (x==-1){
             BannedWord altCuvant=new BannedWord(s,proprietati,replacement);
@@ -140,9 +140,9 @@ public class BanWordsList {
             cuv.setFlags(proprietati,replacement);
         }
     }
-    
+    /**  ///adds an element at the end of the list */
     public void append(String s,long proprietati,String replacement){
-        ///adds an element at the end of the list
+       
         int x=searchEl(s);
         if (x==-1){
             BannedWord altCuvant=new BannedWord(s,proprietati,replacement);
@@ -156,14 +156,14 @@ public class BanWordsList {
             cuv.setFlags(proprietati,replacement);
         }
     }
-    
+    /** //cleans the list */
     public void clean(){
-        ///cleans the list
+        
         bannedWords.removeAllElements();
     }
-    
+    /** /// prints to file */
     public void printFile(String path){
-        /// prints to file
+        
         FileWriter fo;
         try {
             fo=new FileWriter(path);
@@ -178,9 +178,9 @@ public class BanWordsList {
             System.out.println(e.toString());
         }
     }
-    
+    /** ///loads list from file */
     public void loadFile(String path){
-        ///loads list from file
+        
         FileReader fi;
         File f;
         try{
@@ -234,18 +234,18 @@ public class BanWordsList {
             System.out.println(e.toString());
         }
     }
-    
+    /** ///removes word at index*/
     public void removeElAt(int index){
-        ///removes word at index
+        
         try{
             bannedWords.removeElementAt(index);
         }catch(Exception e){
             System.out.println(e.toString());
         }
     }
-    
+    /**  ///removes word by name */
     public void removeElement(String s){
-        ///removes word by name
+       
         int i;
         BannedWord cuv;
         try{
@@ -260,38 +260,48 @@ public class BanWordsList {
             System.out.println(e.toString());
         }
     }
-    
+    /**  ///removes multiple words given by names */
     public void removeElements(String[] list){
-        ///removes multiple words given by names
+       
         int i;
         for (i=0;i<list.length;i++){
             removeElement(list[i]);
         }
     }
-    
+    /** ///removes multiple words given by indexes */
     public void removeElementsAt(int[] list){
-        ///removes multiple words given by indexes
+        
         int i;
         java.util.Arrays.sort(list);
         for (i=list.length-1;i>=0;i--){
             removeElAt(list[i]);
         }
     }
-    
+    /** ///returns the name of the word at index */
     public String elementAt(int index){
-        ///returns the name of the word at index
+        
         BannedWord cuv;
         cuv=(BannedWord)bannedWords.elementAt(index);
         return cuv.getWord();
     }
-    
+    /**  ///returns flags at index
+     static final long dropped=1;
+    static final long kicked=2;
+    static final long noAction=4;
+    static final long hidden=8;
+    static final long replaced=16;
+    static final long modified=32;
+    static final long allclient=7;
+    static final long allword=56;
+     
+     */
     public long getPrAt(int index){
-        ///returns flags at index
+       
         BannedWord cuv;
         cuv=(BannedWord)bannedWords.elementAt(index);
         return cuv.getFlags();
     }
-    
+    /** unkown */
     public long getPr(String s){
         int n=searchEl(s);
         if (n==-1){
@@ -300,16 +310,16 @@ public class BanWordsList {
         }
         return getPrAt(n);
     }
-    
+    /** ///returns replacement at index */
     public String getReplAt(int index){
-        ///returns replacement at index
+        
         BannedWord cuv;
         cuv=(BannedWord)bannedWords.elementAt(index);
         return cuv.getReplacement();
     }
-    
+    /**  ///returns replacement of the word */
     public String getRepl(String s){
-        ///returns replacement of the word
+       
         int n=searchEl(s);
         if (n==-1){
             System.out.println("The word is not in the list");
@@ -317,9 +327,9 @@ public class BanWordsList {
         }
         return getReplAt(n);
     }
-    
+    /** ///generates a String version of the vector */
     public String toString(){
-        ///generates a String version of the vector
+        
         String v="";
         int i;
         for (i=0;i<bannedWords.size();i++){
@@ -332,6 +342,17 @@ public class BanWordsList {
             }
         }
         return v;
+    }
+    
+    /** 0 if string passes all checks
+     *index otherwise
+     **/
+    public int isOK(String str)
+    {
+        for(int i=0;i<size();i++)
+            if(str.matches(".*"+((BannedWord)(bannedWords.elementAt(i))).cuvant+".*"))
+                return i;
+        return -1;
     }
     
 }

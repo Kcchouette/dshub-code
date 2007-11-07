@@ -102,6 +102,58 @@ public class ClientNod
              Main.PopMsg (whokicked.NI+" kicked user "+cur_client.NI+" with CID " + cur_client.ID+" out in flames.");
                     Main.Server.rewritebans ();
      }
+     public void kickMeByBot(String kickmsg,int bantype,Long kicktime)
+     {
+         kickmsg=ADC.retNormStr (kickmsg);
+         if(!cur_client.reg.kickable)
+         {
+             
+             return;
+         }
+         //ClientHandler tempy=FirstClient;
+        // while(tempy.NextClient!=this)
+          //   tempy=tempy.NextClient;
+        // ClientHandler temp=tempy.NextClient;
+         if(kicktime!=-1)
+         {
+             if(bantype==3)
+         BanList.addban (bantype,cur_client.ID,1000*kicktime,Vars.bot_name,kickmsg);
+             else if(bantype==2)
+                     BanList.addban (bantype,cur_client.RealIP,1000*kicktime,Vars.bot_name,kickmsg);
+              else if(bantype==1)
+                     BanList.addban (bantype,cur_client.NI,1000*kicktime,Vars.bot_name,kickmsg);
+        }
+         else
+          {
+         
+          if(bantype==3)
+        BanList.addban (bantype,cur_client.ID,kicktime,Vars.bot_name,kickmsg);
+             else if(bantype==2)
+                     BanList.addban (bantype,cur_client.RealIP,kicktime,Vars.bot_name,kickmsg);
+              else if(bantype==1)
+                     BanList.addban (bantype,cur_client.NI,kicktime,Vars.bot_name,kickmsg);
+                   
+          }
+         String brcast="IQUI "+cur_client.SessionID+" IDDCBA TL"+Long.toString (kicktime);
+         cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
+           if(!kickmsg.equals(""))
+               brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
+         new Broadcast(brcast);
+          
+             cur_client.kicked=1;
+           this.cur_client.mySession.close();
+             
+                    
+               
+             
+             Main.PopMsg (Vars.bot_name+" kicked user "+cur_client.NI+" with CID " + cur_client.ID+" out in flames.");
+                    Main.Server.rewritebans ();
+     }
+     
+      public void kickMeByBot(String kickmsg,int bantype)
+      {
+             kickMeByBot( kickmsg, bantype,Long.parseLong (Integer.toString (Vars.kick_time)));
+      }
      public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype)
      {
      kickMeOut( whokicked, kickmsg,bantype,Long.parseLong (Integer.toString (Vars.kick_time)));
