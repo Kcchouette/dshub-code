@@ -111,7 +111,8 @@ public class CommandParser
                 Main.Server.rewriteregs();
                 Main.Server.rewriteconfig();
                 Main.Server.rewritebans();
-               
+               //save Banned Words List
+            Main.listaBanate.printFile(Main.myPath+"banwlist.txt");
                 
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                

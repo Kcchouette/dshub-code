@@ -37,6 +37,8 @@ import java.net.*;
  *
  * @author Pietricica
  */
+
+
 public class Main extends Thread
 {
     
@@ -51,7 +53,7 @@ public class Main extends Thread
        static String MOTD="";
        static long curtime;
     static TestFrame GUI;
-    
+    static String myPath;
     static boolean GUIok=true;
     public static void PopMsg(String bla)   
     {
@@ -61,7 +63,7 @@ public class Main extends Thread
         Date d=new Date(Main.curtime);
         if(Vars.savelogs==1)
         {
-            File logFile=new File(HubServer.myPath+d.toString ().replaceAll (" ","_").replaceAll (":","_")+".log");
+            File logFile=new File(Main.myPath+d.toString ().replaceAll (" ","_").replaceAll (":","_")+".log");
             FileOutputStream logOutput=null;
             try
             {
@@ -81,14 +83,72 @@ public class Main extends Thread
         }
     }
     
-    
+    public static void init()
+    {
+        ClassLoader cl = ClassLoader.getSystemClassLoader (  )  ;
+       String bla= System.getProperty ("java.class.path");
+       String bla2=System.getProperty ("user.dir");
+       ;
+       String separator=System.getProperty ("file.separator");
+       String pathsep=System.getProperty("path.separator");
+         
+      bla=bla.replace ('\\',separator.charAt (0));
+      bla=bla.replace ('/',separator.charAt (0));
+       if(!bla2.endsWith (separator))
+           bla2=bla2+separator;
+        
+        myPath=bla2+bla;
+        // System.out.println (myPath);
+        
+             int x=myPath.lastIndexOf(separator.charAt (0));
+         if(x!=-1)
+         myPath=myPath.substring (0,x+1);
+        
+       
+        //if("c:\\blaaa".matches("[a-zA-Z]:\\\\.*"))
+        //System.out.println("ok");
+        if(bla.matches("[a-zA-Z]:\\\\.*"))
+        {
+           int y= bla.indexOf (';');
+           while(y!=-1)
+           {
+               bla=bla.substring (y+1,bla.length ());
+                 y= bla.indexOf (';');
+           }
+           
+           myPath=bla;
+           if(myPath.endsWith (".jar")|| myPath.endsWith (".jar"+separator))
+           {
+               myPath=myPath.substring (0,myPath.lastIndexOf (separator));
+           }
+           if(!myPath.endsWith (separator))
+               myPath=myPath+separator;
+          // System.out.println (myPath);
+        }
+        if(System.getProperty("os.name").equals("Linux"))
+        {
+            StringTokenizer st1=new StringTokenizer(myPath,pathsep);
+            String aux=st1.nextToken();
+            //System.out.println(myPath);
+            while(!(aux.toLowerCase().contains("dshub.jar".toLowerCase())) && st1.hasMoreTokens())
+                aux=st1.nextToken();
+           // if(!st1.hasMoreTokens())
+            {
+              //  Main.PopMsg("FAIL. Java Classpath Error.");
+             //   return;
+            }
+            myPath=aux;
+            
+            
+        }
+    }
        public static void Exit()
        {
             Server.rewriteregs();
             Server.rewriteconfig();
             
             //save Banned Words List
-            listaBanate.printFile("banwlist.txt");
+            listaBanate.printFile(Main.myPath+"banwlist.txt");
             
             PopMsg("Closing down hub.");
         try {
@@ -281,10 +341,10 @@ public class Main extends Thread
         //
         System.out.println ("Initializing DSHub Theta ...");
         curtime=System.currentTimeMillis();
-        
-        //init banned words list
-        listaBanate=new BanWordsList();
-        listaBanate.loadFile("banwlist.txt");
+        init();
+            //init banned words list
+        Main.listaBanate=new BanWordsList();
+        Main.listaBanate.loadFile(Main.myPath+"banwlist.txt");
         
                       /*     Tiger myTiger = new Tiger();
 						
@@ -328,7 +388,7 @@ public class Main extends Thread
     }
     catch (Exception e)
     {
-        System.out.println ("GUI not viewable.");
+        System.out.println ("GUI not viewable. "+e);
         GUIok=false;
     }
         

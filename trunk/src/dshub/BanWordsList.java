@@ -204,13 +204,16 @@ public class BanWordsList {
         try{
             fi=new FileReader(path);
             f=new File(path);
-        }catch(Exception e){
-            System.out.println("Invalid File");
-            System.out.println(e.toString());
+        }
+        catch(Exception e)
+        {
+            //System.out.println("Invalid File");
+            //System.out.println(e.toString());
+            printFile(path);
             return;
         }
         if (!f.isFile()){
-            System.out.println("The path must be a file");
+            //System.out.println("The path must be a file");
             return;
         }
         
@@ -220,8 +223,9 @@ public class BanWordsList {
         try{
             n=fi.read(buff);
         }catch(Exception e){
-            System.out.println("File not readable");
-            System.out.println(e.toString());
+            //System.out.println("File not readable");
+            //System.out.println(e.toString());
+            printFile(path);
             return;
         }
         String buffer=new String(buff);
@@ -362,7 +366,7 @@ public class BanWordsList {
         return v;
     }
     
-    /** 0 if string passes all checks
+    /** -1 if string passes all checks
      *index otherwise
      **/
     public int isOK(String str)
