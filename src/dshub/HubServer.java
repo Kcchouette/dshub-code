@@ -68,7 +68,7 @@ public class HubServer extends Thread
    static String SecurityCid;
    static boolean restart;
    
-   static String myPath;
+   
    IoAcceptor acceptor;
    ExecutorService x;
    InetSocketAddress address;
@@ -76,66 +76,11 @@ public class HubServer extends Thread
     /** Creates a new instance of HubServer */
     public HubServer() 
     {
-        ClassLoader cl = ClassLoader.getSystemClassLoader (  )  ;
-       String bla= System.getProperty ("java.class.path");
-       String bla2=System.getProperty ("user.dir");
-       ;
-       String separator=System.getProperty ("file.separator");
-       String pathsep=System.getProperty("path.separator");
-         
-      bla=bla.replace ('\\',separator.charAt (0));
-      bla=bla.replace ('/',separator.charAt (0));
-       if(!bla2.endsWith (separator))
-           bla2=bla2+separator;
         
-        myPath=bla2+bla;
-        // System.out.println (myPath);
-        
-             int x=myPath.lastIndexOf(separator.charAt (0));
-         if(x!=-1)
-         myPath=myPath.substring (0,x+1);
-        
-        setPriority(NORM_PRIORITY+1);
-        //if("c:\\blaaa".matches("[a-zA-Z]:\\\\.*"))
-        //System.out.println("ok");
-        if(bla.matches("[a-zA-Z]:\\\\.*"))
-        {
-           int y= bla.indexOf (';');
-           while(y!=-1)
-           {
-               bla=bla.substring (y+1,bla.length ());
-                 y= bla.indexOf (';');
-           }
-           
-           myPath=bla;
-           if(myPath.endsWith (".jar")|| myPath.endsWith (".jar"+separator))
-           {
-               myPath=myPath.substring (0,myPath.lastIndexOf (separator));
-           }
-           if(!myPath.endsWith (separator))
-               myPath=myPath+separator;
-          // System.out.println (myPath);
-        }
-        if(System.getProperty("os.name").equals("Linux"))
-        {
-            StringTokenizer st1=new StringTokenizer(myPath,pathsep);
-            String aux=st1.nextToken();
-            //System.out.println(myPath);
-            while(!(aux.toLowerCase().contains("dshub.jar".toLowerCase())) && st1.hasMoreTokens())
-                aux=st1.nextToken();
-           // if(!st1.hasMoreTokens())
-            {
-              //  Main.PopMsg("FAIL. Java Classpath Error.");
-             //   return;
-            }
-            myPath=aux;
-            
-            
-        }
         //myPath="";
         //System.out.println (myPath);
         start();    
-       
+        setPriority(NORM_PRIORITY+1);
 
     } 
     
@@ -147,7 +92,7 @@ public class HubServer extends Thread
        
         try 
         {
-            File MotdFile=new File(myPath+"motd");
+            File MotdFile=new File(Main.myPath+"motd");
             FileReader mr = new FileReader(MotdFile); 
             BufferedReader mb = new BufferedReader(mr); 
             Main.MOTD="";
@@ -189,6 +134,7 @@ public class HubServer extends Thread
 				
 	 finalTiger = myTiger2.engineDigest();
 	  SecurityCid=Base32.encode (finalTiger);
+      
           try
           {
         this.sleep (500);
@@ -208,7 +154,7 @@ public class HubServer extends Thread
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
-        
+        MyCalendar=Calendar.getInstance();
         //DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
         cfg.getSessionConfig().setKeepAlive(true);
@@ -218,25 +164,39 @@ public class HubServer extends Thread
         {
 
             acceptor.bind( address, new SimpleHandler(), cfg);
-        } catch (IOException ex)
+            if(Main.GUIok)
+           {
+               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
+               
+           }
+            Main.PopMsg("Server created. Listening on port "+port+".");
+            Date d=new Date(Main.curtime);
+        Main.PopMsg("Start Time:"+d.toString ());
+        System.out.print("\n>");
+        
+         myAssasin=new ClientAssasin();//temporary removed
+        } 
+        catch( java.net.BindException jbe)
+        {
+            Main.PopMsg("Network problem. Unable to listen on port "+port+"."+jbe);
+            if(Main.GUIok)
+           {
+               Main.GUI.SetStatus ("Network problem. Unable to listen on port "+port+"."+jbe);
+               
+           }
+            return;
+        }
+        catch (IOException ex)
         {
             ex.printStackTrace();
             
         }
         
-           Main.PopMsg("Server created. Listening on port "+port+".");
+           
         
-        MyCalendar=Calendar.getInstance();
-        if(Main.GUIok)
-           {
-               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
-               
-           }
-        Date d=new Date(Main.curtime);
-        Main.PopMsg("Start Time:"+d.toString ());
-        System.out.print("\n>");
         
-         myAssasin=new ClientAssasin();//temporary removed
+        
+        
       /* try 
        {
            while(!restart)
@@ -276,7 +236,7 @@ public class HubServer extends Thread
     public static void  rewriteconfig()
     {
         File MainConfigFile;
-        MainConfigFile=new File(myPath+"config");
+        MainConfigFile=new File(Main.myPath+"config");
       
          try 
             {
@@ -296,7 +256,7 @@ public class HubServer extends Thread
     public static void  rewritebans()
     {
         File MainBanFile;
-        MainBanFile=new File(myPath+"banlist");
+        MainBanFile=new File(Main.myPath+"banlist");
       
          try 
             {
@@ -317,7 +277,7 @@ public class HubServer extends Thread
     {
         File MainRegFile;
 
-        MainRegFile=new File(myPath+"regs");
+        MainRegFile=new File(Main.myPath+"regs");
          try 
             {
            
@@ -337,7 +297,7 @@ public class HubServer extends Thread
      public  void reloadconfig() 
     {
         File MainConfigFile;
-        MainConfigFile=new File(myPath+"config");
+        MainConfigFile=new File(Main.myPath+"config");
        
         try
         {
@@ -473,7 +433,7 @@ public class HubServer extends Thread
     {
         File MainRegFile;
         
-        MainRegFile=new File(myPath+"regs");
+        MainRegFile=new File(Main.myPath+"regs");
         try
         {
       
@@ -514,7 +474,7 @@ public class HubServer extends Thread
     {
         File MainBanFile;
         
-        MainBanFile=new File(myPath+"banlist");
+        MainBanFile=new File(Main.myPath+"banlist");
         try
         {
       

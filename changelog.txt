@@ -164,3 +164,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixed restarting;
            * fixed client assassin;
            * enabled Chat Control.
+           * added a browse window to chat control ( naccio );
+           * fixed error message when address in use;
+           * added some status messages for chat control;
