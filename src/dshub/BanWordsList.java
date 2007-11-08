@@ -34,6 +34,7 @@ import java.io.FileReader;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.io.FileWriter;
+import java.util.regex.PatternSyntaxException;
 
 public class BanWordsList {
     Vector bannedWords;
@@ -124,9 +125,23 @@ public class BanWordsList {
             cuv.setFlags(curpr,repl);
         }
     }
+    
+    public boolean ver_regex(String s){
+        try{
+            "".matches(s);
+        }catch(PatternSyntaxException e){
+            return false;
+        }
+        return true;
+    }
+    
     /** ///adds an element at the begining of the list */
     public void add(String s,long proprietati,String replacement){
         
+        if (!ver_regex(s)){
+            System.out.println("Error: "+s+" is not a valid regex");
+            return;
+        }
         int x=searchEl(s);
         if (x==-1){
             BannedWord altCuvant=new BannedWord(s,proprietati,replacement);
@@ -142,7 +157,10 @@ public class BanWordsList {
     }
     /**  ///adds an element at the end of the list */
     public void append(String s,long proprietati,String replacement){
-       
+       if (!ver_regex(s)){
+            System.out.println("Error: "+s+" is not a valid regex");
+            return;
+        }
         int x=searchEl(s);
         if (x==-1){
             BannedWord altCuvant=new BannedWord(s,proprietati,replacement);
