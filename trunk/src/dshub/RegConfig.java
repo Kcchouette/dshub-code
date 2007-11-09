@@ -134,6 +134,10 @@ import java.util.Date;
             Help+="+cfg";
         else
             Help+="-cfg";
+        if(curAcc.myMask.chatcontrol)
+            Help+="+chatcontrol";
+        else
+            Help+="-chatcontrol";
         if(curAcc.myMask.cmdhistory)
             Help+="+cmdhistory";
         else

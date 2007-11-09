@@ -132,6 +132,7 @@ public class AccountEditer extends javax.swing.JFrame
         listban = new javax.swing.JCheckBox();
         grant = new javax.swing.JCheckBox();
         jButton3 = new javax.swing.JButton();
+        chatcontrol = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -433,127 +434,160 @@ public class AccountEditer extends javax.swing.JFrame
         );
         jTabbedPane1.addTab("Properties", jPanel2);
 
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel13.setText("Command Availability");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         adc.setText("adc ( ADC advanced control panel)");
         adc.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         adc.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(adc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         port.setText("port changing");
         port.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         port.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(port, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
 
         reg.setText("reg command");
         reg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         reg.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
         ureg.setText("ureg command");
         ureg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ureg.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(ureg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
         listreg.setText("listreg command");
         listreg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         listreg.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(listreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         mass.setText("mass command");
         mass.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         mass.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(mass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         kick.setText("kick command");
         kick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         kick.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(kick, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         drop.setText("drop command");
         drop.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         drop.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(drop, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         unban.setText("unban command");
         unban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         unban.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(unban, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         bancid.setText("bancid command");
         bancid.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         bancid.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(bancid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         banip.setText("banip command");
         banip.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         banip.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(banip, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         bannick.setText("bannick command");
         bannick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         bannick.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(bannick, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         history.setText("history command");
         history.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         history.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(history, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         cmdhistory.setText("cmdhistory command");
         cmdhistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cmdhistory.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(cmdhistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         info.setText("info command");
         info.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         info.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
         hideme.setText("hideme command");
         hideme.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         hideme.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(hideme, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
         password.setText("password command");
         password.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         password.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
 
         mynick.setText("mynick command");
         mynick.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         mynick.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(mynick, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         help.setText("help command");
         help.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         help.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(help, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
         about.setText("about command");
         about.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         about.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(about, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         gui.setText("gui command");
         gui.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         gui.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(gui, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         stats.setText("stats command");
         stats.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         stats.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         cfg.setText("cfg ( hub configuration panel)");
         cfg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cfg.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(cfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         topic.setText("topic command");
         topic.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         topic.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(topic, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
         usercount.setText("usercount command");
         usercount.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         usercount.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(usercount, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         rename.setText("rename command");
         rename.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         rename.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(rename, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         restart.setText("restart hub command");
         restart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         restart.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         quit.setText("quit hub command");
         quit.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         quit.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(quit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
 
         listban.setText("listban command");
         listban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         listban.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(listban, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
         grant.setText("grant command");
         grant.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         grant.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(grant, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jButton3.setText("[?]");
         jButton3.addActionListener(new java.awt.event.ActionListener()
@@ -564,130 +598,13 @@ public class AccountEditer extends javax.swing.JFrame
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
-                .add(29, 29, 29)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel13)
-                    .add(jPanel3Layout.createSequentialGroup()
-                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(drop)
-                            .add(about)
-                            .add(adc)
-                            .add(bancid)
-                            .add(banip)
-                            .add(bannick)
-                            .add(cfg)
-                            .add(cmdhistory)
-                            .add(gui)
-                            .add(grant))
-                        .add(16, 16, 16)
-                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(mynick)
-                            .add(info)
-                            .add(kick)
-                            .add(listban)
-                            .add(listreg)
-                            .add(mass)
-                            .add(hideme)
-                            .add(history)
-                            .add(password)
-                            .add(help))
-                        .add(36, 36, 36)
-                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(port)
-                            .add(quit)
-                            .add(unban)
-                            .add(reg)
-                            .add(rename)
-                            .add(restart)
-                            .add(stats)
-                            .add(usercount)
-                            .add(topic)
-                            .add(ureg))))
-                .addContainerGap(135, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
-                .add(jButton3)
-                .add(302, 302, 302))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .add(port)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(quit)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(reg)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(rename)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(restart)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(stats)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(topic)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(unban)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(ureg)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(usercount)
-                .add(76, 76, 76))
-            .add(jPanel3Layout.createSequentialGroup()
-                .add(38, 38, 38)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel3Layout.createSequentialGroup()
-                        .add(jLabel13)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(about))
-                    .add(help))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel3Layout.createSequentialGroup()
-                        .add(hideme)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(history)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(info)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(kick)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(listban)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(listreg)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(mass)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(mynick))
-                    .add(jPanel3Layout.createSequentialGroup()
-                        .add(adc)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(bancid)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(banip)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(bannick)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cfg)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cmdhistory)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(drop)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(grant)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(password)
-                    .add(gui))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
-                .add(jButton3)
-                .addContainerGap())
-        );
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+
+        chatcontrol.setText("chat control");
+        chatcontrol.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        chatcontrol.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(chatcontrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
         jTabbedPane1.addTab("Commands", jPanel3);
 
         jButton2.setText("Discard");
@@ -980,6 +897,10 @@ if(curAcc.myMask.adc)
            grant.setSelected (true);
         else
             grant.setSelected (false);
+        if(curAcc.myMask.chatcontrol)
+           chatcontrol.setSelected (true);
+        else
+            chatcontrol.setSelected (false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -1117,6 +1038,10 @@ if(curAcc.myMask.adc)
             curAcc.myMask.grant=true;
         else
             curAcc.myMask.grant=false;
+        if(chatcontrol.isSelected())
+            curAcc.myMask.chatcontrol=true;
+        else
+            curAcc.myMask.chatcontrol=false;
                 
         
         
@@ -1223,6 +1148,7 @@ this.dispose ();
     private javax.swing.JCheckBox banip;
     private javax.swing.JCheckBox bannick;
     private javax.swing.JCheckBox cfg;
+    private javax.swing.JCheckBox chatcontrol;
     private javax.swing.JCheckBox checkflyable;
     private javax.swing.JCheckBox checkhidden;
     private javax.swing.JCheckBox checkkey;

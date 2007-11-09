@@ -140,7 +140,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * modified client assasin a bit;
            * created another class ClientNod that will take a client handler, and its supposed to handle the linked list;
            * modified all program to integrate new client nod class;
-           * created 2 new files for handling banned words and their list;
+           * created 2 new files for handling banned words and their list (naccio);
            * partly integrated into GUI;
            * Integrated xSocket library into DSHub : http://xsocket.sf.net , thanks BlackSonar for suggesting
            * this change completely modifies the access system, the threading and thread pool system;
@@ -167,3 +167,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * added a browse window to chat control ( naccio );
            * fixed error message when address in use;
            * added some status messages for chat control;
+           * added a message box that specifies if added regex is invalid ( on chat control ) ( naccio );
+           * created new file ChatControlCmd for a new command via client;
+           * made framework for new command's integration;

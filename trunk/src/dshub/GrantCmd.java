@@ -181,6 +181,16 @@ public class GrantCmd
                modnod.myMask.cfg=attribute;
               toSend+=" cfg modified to "+attribute+"\n";
              }
+            else  if(what.equals("chatcontrol"))
+             {
+                if(cur_client.reg.myMask.chatcontrol==false)
+                {
+                    toSend+="chatcontrol - can't grant a feature you don't possess.\n";
+                    return;
+                }
+               modnod.myMask.chatcontrol=attribute;
+              toSend+=" chatcontrol modified to "+attribute+"\n";
+             }
              else  if(what.equals("cmdhistory"))
              {
                 if(cur_client.reg.myMask.cmdhistory==false)
@@ -589,7 +599,7 @@ public class GrantCmd
                 
                
                aux="+about+adc+bancid+banip+bannick+cfg+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               ;
+               +"-renameable-kickable+overrideshare+overridespam+overridefull+nickprotected+key";
               //toSend+=" All granted.\n";
              }
             else
@@ -729,6 +739,12 @@ public GrantCmd(String cmd)
                 
                modnod.myMask.cfg=attribute;
               toSend+=" cfg modified to "+attribute+"\n";
+             }
+            else  if(what.equals("chatcontrol"))
+             {
+                
+               modnod.myMask.chatcontrol=attribute;
+              toSend+=" chatcontrol modified to "+attribute+"\n";
              }
              else  if(what.equals("cmdhistory"))
              {
@@ -1002,8 +1018,8 @@ public GrantCmd(String cmd)
                 
               // modnod.renameable=modnod.kickable=modnod.accountflyable=false;
               // modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
-               aux="+about+adc+bancid+banip+bannick+cfg+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               ;
+               aux="+about+adc+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               +"-renameable-kickable+overrideshare+overridespam+overridefull+nickprotected+key";
              }
             else
                 toSend+=" unknown feature \n";

@@ -720,6 +720,15 @@ public class CommandParser
                     }
                    new ExtKick(cur_client,recvbuf);
         }
+        else if(recvbuf.toLowerCase ().startsWith ("chatcontrol"))
+        {
+                     if(!cur_client.reg.myMask.chatcontrol)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
+                   new ChatControlCmd(cur_client,recvbuf);
+        }
         else if(recvbuf.toLowerCase ().startsWith ("drop"))
         {
                      if(!cur_client.reg.myMask.drop)
