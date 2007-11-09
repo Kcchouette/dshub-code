@@ -85,6 +85,8 @@ public class HelpFile implements Serializable
             Help+="bannick -- Bans a given nick, drops if nick online.\n";
         if(curAcc.myMask.cfg)
             Help+="cfg -- The hub variables.\n";
+        if(curAcc.myMask.chatcontrol)
+            Help+="chatcontrol -- An simple interface to handle chat control forbidden words.\n";
         if(curAcc.myMask.cmdhistory)
             Help+="cmdhistory -- Lists the last history_lines from given commands by logged users.\n";
         if(curAcc.myMask.drop)
