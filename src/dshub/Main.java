@@ -429,6 +429,17 @@ public class Main extends Thread
             //System.out.println(recvbuf);
         //System.out.println(bla.readLine());
        // System.out.println(recvbuf);
+            if(recvbuf==null)
+            {
+                    try
+                    {
+                        sleep(500);
+                    } catch (InterruptedException ex)
+                    {
+                        ;
+                    }
+                continue;
+            }
         if(recvbuf.toLowerCase ().equals("quit"))
         {
               Exit();

@@ -93,8 +93,10 @@ public class MSG
                        return;
                        }
                    }
+                   if(!cur_client.reg.overridespam)
+                   {
                    int index=Main.listaBanate.isOK(message);
-                   System.out.println(index);
+                   //System.out.println(index);
                    if(index!=-1)//not ok
                    {
                        long what=Main.listaBanate.getPrAt(index);
@@ -147,6 +149,7 @@ public class MSG
                            Issued_Command=Issued_Command.replace(message,Main.listaBanate.getReplAt(index));
                            
                         } 
+                   }
                    }
                    String thissid=null;
                    int me=0;
