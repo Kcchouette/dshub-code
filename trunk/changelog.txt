@@ -171,3 +171,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created new file ChatControlCmd for a new command via client;
            * made framework for new command's integration;
            * added help both in help and in command with no parameters;
+           * continued work on chatcontrolcmd;

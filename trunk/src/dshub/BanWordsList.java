@@ -360,10 +360,23 @@ public class BanWordsList {
                         ((BannedWord) bannedWords.elementAt(i)).getFlags()+";:"+
                         ((BannedWord) bannedWords.elementAt(i)).getReplacement()+"\n";
             }catch(Exception e){
-                System.out.println(e.toString());
+                //System.out.println(e.toString());
             }
         }
         return v;
+    }
+    public String List(){
+        
+        String v="";
+        int i;
+        for (i=0;i<bannedWords.size();i++){
+           
+                v+= "\n"+((BannedWord) bannedWords.elementAt(i)).getWord()+" flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i;
+                        
+            
+           
+        }
+        return v.substring(0,v.equals("")?0:v.length()-1);
     }
     
     /** -1 if string passes all checks
