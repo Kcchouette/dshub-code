@@ -170,3 +170,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * added a message box that specifies if added regex is invalid ( on chat control ) ( naccio );
            * created new file ChatControlCmd for a new command via client;
            * made framework for new command's integration;
+           * added help both in help and in command with no parameters;
