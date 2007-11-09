@@ -2728,7 +2728,7 @@ public class TestFrame extends javax.swing.JFrame {
         String banWord=jTextField2.getText();
         int l=banWord.length();
         if (!listaBanate.ver_regex(banWord)){
-            JOptionPane.showMessageDialog(null,banWord+"is an invalid regex",
+            JOptionPane.showMessageDialog(null,banWord+" is an invalid Regular Expression.",
                     "Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
