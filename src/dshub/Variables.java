@@ -60,6 +60,9 @@ public class Variables implements Serializable
 
       String Msg_Search_Spam;
       
+      String SecurityCid;
+      String OpChatCid;
+      
      int max_ni;
      int min_ni;
      int max_de;
@@ -178,6 +181,10 @@ public class Variables implements Serializable
       Opchat_desc=Vars.Opchat_desc;
       kick_time=Vars.kick_time;
       Msg_Banned=Vars.Msg_Banned;
+      
+      SecurityCid=Vars.SecurityCid;
+      OpChatCid=Vars.OpChatCid;
+      
 
       reg_only=Vars.reg_only;
       nick_chars=Vars.nick_chars;
@@ -288,6 +295,31 @@ public class Variables implements Serializable
     static String Opchat_desc="BoT";
     static String bot_name="DSHub";
     static String bot_desc="www.death-squad.ro/dshub";
+    
+    static String SecurityCid;
+    static String OpChatCid;
+    static
+    {
+        Tiger myTiger = new Tiger();
+						
+	myTiger.engineReset();
+	myTiger.init();	
+       byte [] T=Long.toString(System.currentTimeMillis()).getBytes();
+        myTiger.engineUpdate(T,0,T.length);
+				
+	 byte[] finalTiger = myTiger.engineDigest();
+	  Vars.OpChatCid=Base32.encode (finalTiger);
+          Tiger myTiger2 = new Tiger();
+						
+	myTiger2.engineReset();
+	myTiger2.init();	
+        T=Long.toString(System.currentTimeMillis()+2).getBytes();
+        myTiger2.engineUpdate(T,0,T.length);
+				
+	 finalTiger = myTiger2.engineDigest();
+	  Vars.SecurityCid=Base32.encode (finalTiger);
+          
+    }
     
     static int max_ni=64;
     static int min_ni=1;

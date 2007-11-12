@@ -82,9 +82,9 @@ public class Command
              if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
-           inf=inf+"BINF ABCD ID"+Main.Server.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
+           inf=inf+"BINF ABCD ID"+Vars.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
                  +" BO1 OP1 DE"+ADC.retNormStr(Vars.Opchat_desc);
-                 inf+="\nBINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 inf+="\nBINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
                  
                  inf+=cur_client.getINF ();  //sending inf about itself too
@@ -543,12 +543,12 @@ public class Command
                        return;
                     }
                
-               if(cur_client.ID.equals (Main.Server.OpChatCid))
+               if(cur_client.ID.equals (Vars.OpChatCid))
                {
                     new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
                        return;
                }
-                if(cur_client.ID.equals (Main.Server.SecurityCid))
+                if(cur_client.ID.equals (Vars.SecurityCid))
                {
                     new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
                        return;
@@ -692,7 +692,7 @@ public class Command
              if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
-           inf=inf.substring(0,inf.length()-1)+"BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+           inf=inf.substring(0,inf.length()-1)+"BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
                  
                  inf+=cur_client.getINF ();  //sending inf about itself too
