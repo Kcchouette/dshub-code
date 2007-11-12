@@ -31,6 +31,7 @@
            * fixed broadcasting same stuff to sender too;
            * fixed broadcasting feature searches to all;
            * created new file SCH for sch command;
+           * integrated new library mina jmx;
            * created new file STA for sta command, also made possible D/E sta;
            * tried to fix clientassasin on bug when only quit was sent but client still conn;
            * moved info command to separate file, corrected bug when showing \s in tag;
@@ -172,3 +173,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * made framework for new command's integration;
            * added help both in help and in command with no parameters;
            * continued work on chatcontrolcmd;
+           * modified broadcasting a bit;
+           * tried different variants for messaging, maybe queueing;

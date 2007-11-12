@@ -53,7 +53,11 @@ public class SimpleHandler extends IoHandlerAdapter
                 }
                  if((t.getMessage().contains("BufferDataException: Line is too long")))
                     new STAError((ClientHandler)(session.getAttachment()),000,"Message exceeds buffer.");
-                else ;
+                else 
+                {
+		  session.close();
+                return;
+                };
     }
 
 	public void messageReceived(IoSession session, Object msg) throws Exception 

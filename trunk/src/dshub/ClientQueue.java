@@ -31,7 +31,7 @@ import java.io.IOException;
  *
  * @author Pietricica
  */
-public class ClientQueue 
+public class ClientQueue
 {
     
     ClientHandler cur_client;

@@ -26,6 +26,7 @@ import java.io.*;
 import java.text.DateFormat;
 import java.util.*;
 import java.net.*;
+import org.apache.mina.common.IoSession;
 
 
 
@@ -1377,6 +1378,10 @@ public class Main extends Thread
                     temp=temp.NextClient;
                 }
                 System.out.printf("Current user count: %d. In progress users: %d.\n",i,j);
+        }
+       else if(recvbuf.toLowerCase ().equals("sessions"))
+        {
+              
         }
         else if(recvbuf.toLowerCase ().equals("about"))
         {
