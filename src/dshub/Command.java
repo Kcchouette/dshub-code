@@ -28,6 +28,7 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import org.apache.mina.common.IoSession;
 /**
  * Provides a parsing for each ADC command received from client, and makes the states transitions
  * Updates all information and ensures stability.
@@ -73,23 +74,24 @@ public class Command
           //ok now must send to cur_client the inf of all others
                
         
-        
-                 ClientNod tempy=ClientNod.FirstClient.NextClient;
-
-                 while(tempy!=null)
-                 {
-                    // System.out.println (tempy.NI);
-                     if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
-                   cur_client.sendToClient(tempy.cur_client.getINF ()); 
-                     tempy=tempy.NextClient;
-                 }
-                 //
-                 cur_client.sendToClient ("BINF ABCD ID"+Main.Server.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
-                 +" BO1 OP1 DE"+ADC.retNormStr(Vars.Opchat_desc));;
-                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
-                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));;
-                 // cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
-                 cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
+         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
+         String inf="\n";
+             for(int i=0;i<x.length;i++)
+        {
+             ClientNod tempy=((ClientHandler)(x[i].getAttachment())).myNod;
+             if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
+                   inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
+        }
+           inf=inf+"BINF ABCD ID"+Main.Server.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
+                 +" BO1 OP1 DE"+ADC.retNormStr(Vars.Opchat_desc);
+                 inf+="\nBINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
+                 
+                 inf+=cur_client.getINF ();  //sending inf about itself too
+         cur_client.sendToClient(inf);
+                
+                 
+               
                  
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
@@ -679,21 +681,27 @@ public class Command
                //ok now must send to cur_client client the inf of all others
                if(State.equals ("PROTOCOL"))
                {
-                 ClientNod tempy=ClientNod.FirstClient.NextClient;
-
-                 while(tempy!=null)
-                 {
-                    // System.out.println (tempy.NI);
-                     if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
-                   cur_client.sendToClient(tempy.cur_client.getINF ()); 
-                     tempy=tempy.NextClient;
-                 }
-                
+                 //ok now must send to cur_client the inf of all others
+               
+        
+         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
+         String inf="\n";
+             for(int j=0;j<x.length;j++)
+        {
+             ClientNod tempy=((ClientHandler)(x[j].getAttachment())).myNod;
+             if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
+                   inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
+        }
+           inf=inf.substring(0,inf.length()-1)+"BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
                  
-                cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
+                 inf+=cur_client.getINF ();  //sending inf about itself too
+         cur_client.sendToClient(inf);
+         
+         
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
-                 cur_client.sendToClient ("BINF DCBA ID"+Main.Server.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)+" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));                 
+                                 
                  cur_client.userok=1; //user is OK, logged in and cool.
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  //ok now that we passed to normal state and user is ok, check if it has UCMD, and if so, send a test command

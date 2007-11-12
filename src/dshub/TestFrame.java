@@ -3758,7 +3758,12 @@ public class TestFrame extends javax.swing.JFrame {
                 "  Online users: "+Integer.toString(i)+"\n"+
                 "  Connecting users: "+Integer.toString(j)+"\n"+
                 "  Uptime: "+uptime+".\n"+
-                "  Start Time: "+b.toString());
+                "  Start Time: "+b.toString()+
+                "  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
+                "  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()+
+                "  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
+                
+                );
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jPanel6MouseMoved (java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseMoved
@@ -3831,7 +3836,7 @@ public class TestFrame extends javax.swing.JFrame {
         
         /**setting stuff*/
         jTextArea1.setText("DSHub is ADC software so you need an ADC compatibile client.\n"+
-                "At the moment of this release ( October 2007 ), the following ADC clients were available:\n"+
+                "At the moment of this release ( November 2007 ), the following ADC clients were available:\n"+
                 "dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
                 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
                 "Some ADC reminders:\n"+

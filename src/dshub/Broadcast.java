@@ -23,6 +23,8 @@
 
 package dshub;
 
+import org.apache.mina.common.IoSession;
+
 
  class line
     {
@@ -80,13 +82,16 @@ public class Broadcast
         this.STR=STR;
         run();
     }
-     public void   sendToAll(ClientNod CH)
+     public void   sendToAll()
     {
        
          String NI="";
          
-        do
+         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
+             for(int i=0;i<x.length;i++)
         {
+          //  x[i]= ((IoSession) (x[i]));
+        ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
          if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))
         {
              NI=Vars.bot_name;
@@ -152,17 +157,17 @@ public class Broadcast
         {
              if(state==10 && !CH.cur_client.reg.key)
              {
-                 CH=CH.NextClient;
+                 
                  continue;
              }
              if(CH.cur_client.ACTIVE!=1 && state==1)
              {
-                 CH=CH.NextClient;
+                 
                  continue;
              }
              if(!STR.startsWith ("E") && CH==cur_client)
              {
-                 CH=CH.NextClient;
+                
                  continue;
              }
            if(STR.startsWith ("IMSG "))
@@ -170,18 +175,17 @@ public class Broadcast
            else
                CH.cur_client.sendToClient(STR);
         }
-        CH=CH.NextClient;
+        
         }
-        while(CH!=null);
+        
             //System.out.printf ("Broadcasting to %s: %s\n",CH.NI,STR);
         
     }
     
     public void run()
     {
-        if(ClientNod.FirstClient!=null)
-        if(ClientNod.FirstClient.NextClient!=null)
-       sendToAll(ClientNod.FirstClient.NextClient);
+       
+       sendToAll();
        
     }
     

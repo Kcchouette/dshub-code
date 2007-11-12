@@ -39,6 +39,7 @@ import org.apache.mina.filter.LoggingFilter;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.executor.ExecutorFilter;
+import org.apache.mina.integration.jmx.IoServiceManager;
 import org.apache.mina.transport.socket.nio.SocketAcceptor;
 import org.apache.mina.transport.socket.nio.SocketAcceptorConfig;
 
@@ -67,10 +68,11 @@ public class HubServer extends Thread
    static String OpChatCid;
    static String SecurityCid;
    static boolean restart;
-   
+   static IoServiceManager IOSM;
+   static ServiceManager SM;
    
    IoAcceptor acceptor;
-   ExecutorService x;
+   ExecutorService x,y;
    InetSocketAddress address;
    Calendar MyCalendar;
     /** Creates a new instance of HubServer */
@@ -149,16 +151,21 @@ public class HubServer extends Thread
         
         
         x=Executors.newCachedThreadPool();
-        
+       // y=Executors.newCachedThreadPool();
         acceptor = new SocketAcceptor(Runtime.getRuntime().availableProcessors() + 1, x);
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
         MyCalendar=Calendar.getInstance();
-        //DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
-        //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
+       // DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
+       //   filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
         cfg.getSessionConfig().setKeepAlive(true);
         cfg.getSessionConfig().setReceiveBufferSize(2048);
+        //cfg.getSessionConfig().
+        
+        IOSM=new IoServiceManager(acceptor);
+        SM=new ServiceManager(acceptor);
+        IOSM.startCollectingStats(2000);
         address=new InetSocketAddress(port);
         try
         {
@@ -175,6 +182,7 @@ public class HubServer extends Thread
         System.out.print("\n>");
         
          myAssasin=new ClientAssasin();//temporary removed
+       //  ClientExecutor myExecutor=new ClientExecutor();
         } 
         catch( java.net.BindException jbe)
         {

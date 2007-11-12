@@ -79,6 +79,8 @@ public class ClientHandler
     
     String RealIP;
     
+   ClientQueue Queue;
+    
 /** The CID of the client. Mandatory for C-C connections.*/
 String ID;
 /**The PID of the client. Hubs must check that the Tiger(PID) == CID and then discard the field before broadcasting it to other clients. Must not be sent in C-C connections.*/
@@ -170,7 +172,7 @@ int kicked=0;
         base=0;
         ucmd=0;
        // ClientSock=s;
-        //Queue=new ClientQueue(this);
+       // Queue=new ClientQueue(this);
         
         
       sid=null;
@@ -376,9 +378,10 @@ int kicked=0;
      public void sendToClient(String bla)
     {
         
-        // this.Queue.addMsg (bla);
+         //this.Queue.addMsg (bla);
         //System.out.println("[sent]: "+bla);
-        mySession.write(bla);
+         mySession.write(bla);
+       
     
     }
      
