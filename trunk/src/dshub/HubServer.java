@@ -65,8 +65,7 @@ public class HubServer extends Thread
    static Variables vars;
    static  RegConfig rcfg;
    static bans bcfg;
-   static String OpChatCid;
-   static String SecurityCid;
+   
    static boolean restart;
    static IoServiceManager IOSM;
    static ServiceManager SM;
@@ -118,24 +117,7 @@ public class HubServer extends Thread
        reloadbans();
        
        port=vars.Default_Port;
-       Tiger myTiger = new Tiger();
-						
-	myTiger.engineReset();
-	myTiger.init();	
-       byte [] T=Long.toString(System.currentTimeMillis()).getBytes();
-        myTiger.engineUpdate(T,0,T.length);
-				
-	 byte[] finalTiger = myTiger.engineDigest();
-	  OpChatCid=Base32.encode (finalTiger);
-          Tiger myTiger2 = new Tiger();
-						
-	myTiger2.engineReset();
-	myTiger2.init();	
-        T=Long.toString(System.currentTimeMillis()+2).getBytes();
-        myTiger2.engineUpdate(T,0,T.length);
-				
-	 finalTiger = myTiger2.engineDigest();
-	  SecurityCid=Base32.encode (finalTiger);
+       
       
           try
           {
@@ -350,7 +332,9 @@ public class HubServer extends Thread
       Vars.max_users=vars.max_users;
       Vars.Msg_Full=vars.Msg_Full;
 
-     
+     Vars.OpChatCid=vars.OpChatCid;
+     Vars.SecurityCid=vars.SecurityCid;
+      
       Vars.chat_interval=vars.chat_interval;
 
       Vars.savelogs=vars.savelogs;
@@ -421,6 +405,7 @@ public class HubServer extends Thread
         catch ( FileNotFoundException fnfe)
         {
             //file not found so were gonna make it
+             Main.PopMsg("Generated new PID/CID for OpChat and Hub Security.");
            rewriteconfig();
 
             
@@ -429,6 +414,7 @@ public class HubServer extends Thread
         catch (IOException e)
         {
             Main.PopMsg("Error accesing config files.Attempting overwrite with default values.");
+            Main.PopMsg("Generated new PID/CID for OpChat and Hub Security.");
             rewriteconfig();
         }
          catch(ClassNotFoundException e)
