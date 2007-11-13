@@ -1432,7 +1432,9 @@ public class Main extends Thread
                   "Hub Statistics:\n"+
                   "  Online users: %d\n"+
                   "  Connecting users: %d\n"+
-                  "  Uptime: %s\n"
+                  "  Uptime: %s\n"+
+                       "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
+                "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
                        
                     
                    ,Proppies.getProperty("os.name") ,  Proppies.getProperty("os.version"),

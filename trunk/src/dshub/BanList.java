@@ -25,42 +25,6 @@
 package dshub;
 import java.io.Serializable;
 
-/**
- *
- *A public class which holds a list of bans, and a ban class for a singular ban.
- *
- * @author Pietricica
- */
-
-class bans implements Serializable
-{
-      
-    
-    ban [] bans;
-    int i;
-    public bans ()
-    {
-        bans= new ban[1000];
-        
-       
-        if(BanList.First==null)
-            return ;
-        ban temp=BanList.First;
-        i=1;
-        while(temp!=null)
-        {
-            if(System.currentTimeMillis()-temp.timeofban-temp.time<0 || temp.time==-1)
-            {
-            bans[i]=temp;
-            
-            i++;
-            }
-            temp=temp.Next;
-        }
-        
-        
-    }
-}
 public class  BanList
 {
     
@@ -131,7 +95,7 @@ public class  BanList
                   return true;
                 }
                     
-                else if(bantype==2 && whatever.equals (tempy.ip))
+                 if(bantype==2 && whatever.equals (tempy.ip))
                 {
                 if(tempy==First)
                       First=tempy.Next;//deleted
@@ -139,7 +103,7 @@ public class  BanList
                       tempyprev.Next=tempy.Next;//deleted
                     return true;
                 }
-                else if(bantype==3 && whatever.equals (tempy.cid))
+                 if(bantype==3 && whatever.equals (tempy.cid))
                 {
                 if(tempy==First)
                       First=tempy.Next;//deleted
@@ -172,4 +136,40 @@ public class  BanList
         return null;
     }
     
+}
+/**
+ *
+ *A public class which holds a list of bans, and a ban class for a singular ban.
+ *
+ * @author Pietricica
+ */
+
+class bans implements Serializable
+{
+      
+    
+    ban [] bans;
+    int i;
+    public bans ()
+    {
+        bans= new ban[1000];
+        
+       
+        if(BanList.First==null)
+            return ;
+        ban temp=BanList.First;
+        i=1;
+        while(temp!=null)
+        {
+            if(System.currentTimeMillis()-temp.timeofban-temp.time<0 || temp.time==-1)
+            {
+            bans[i]=temp;
+            
+            i++;
+            }
+            temp=temp.Next;
+        }
+        
+        
+    }
 }

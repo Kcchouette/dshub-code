@@ -34,7 +34,10 @@ import java.util.Calendar;
 import org.apache.mina.common.ByteBuffer;
 import org.apache.mina.common.DefaultIoFilterChainBuilder;
 import org.apache.mina.common.IoAcceptor;
+import org.apache.mina.common.IoServiceConfig;
+import org.apache.mina.common.PooledByteBufferAllocator;
 import org.apache.mina.common.SimpleByteBufferAllocator;
+import org.apache.mina.common.ThreadModel;
 import org.apache.mina.filter.LoggingFilter;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
@@ -128,26 +131,32 @@ public class HubServer extends Thread
       
        //   new ClientNod();
         ByteBuffer.setUseDirectBuffers(false);
-        ByteBuffer.setAllocator(new SimpleByteBufferAllocator());
+        ByteBuffer.setAllocator(new PooledByteBufferAllocator());
         
         
         
         x=Executors.newCachedThreadPool();
-       // y=Executors.newCachedThreadPool();
-        acceptor = new SocketAcceptor(Runtime.getRuntime().availableProcessors() + 1, x);
+        y=Executors.newCachedThreadPool();
+        acceptor = new SocketAcceptor(5, x);
+        
+        IoServiceConfig acceptorConfig = acceptor.getDefaultConfig();
+        acceptorConfig.setThreadModel(ThreadModel.MANUAL);
+        
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
         MyCalendar=Calendar.getInstance();
-       // DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
-       //   filterChainBuilder.addLast("threadPool", new ExecutorFilter(x));
+       DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
+          filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
         cfg.getSessionConfig().setKeepAlive(true);
-        cfg.getSessionConfig().setReceiveBufferSize(2048);
-        //cfg.getSessionConfig().
         
+        cfg.getSessionConfig().setReceiveBufferSize(102400);
+         cfg.getSessionConfig().setSendBufferSize(102400);
+        //cfg.getSessionConfig().
+        System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
         IOSM=new IoServiceManager(acceptor);
         SM=new ServiceManager(acceptor);
-        IOSM.startCollectingStats(2000);
+        IOSM.startCollectingStats(10000);
         address=new InetSocketAddress(port);
         try
         {

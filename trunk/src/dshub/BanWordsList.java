@@ -31,9 +31,9 @@ package dshub;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.io.FileWriter;
 import java.util.regex.PatternSyntaxException;
 
 public class BanWordsList {
@@ -126,7 +126,7 @@ public class BanWordsList {
         }
     }
     
-    public boolean ver_regex(String s){
+    public static boolean ver_regex(String s){
         try{
             "".matches(s);
         }catch(PatternSyntaxException e){
@@ -365,7 +365,8 @@ public class BanWordsList {
         }
         return v;
     }
-    public String List(){
+    public String List()
+    {
         
         String v="";
         int i;

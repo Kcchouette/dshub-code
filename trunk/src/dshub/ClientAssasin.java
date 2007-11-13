@@ -66,44 +66,39 @@ public class ClientAssasin extends Thread
                     break;
                 long curtime=System.currentTimeMillis();
                 ClientNod x=temp.NextClient;
-                if(temp.NextClient.cur_client.userok==1)
-                {
-                    if(temp.NextClient.cur_client.cur_inf!=null)
-                        if(curtime-temp.NextClient.cur_client.LastINF>(1000*120L))
-                    {
-                        new Broadcast(temp.NextClient.cur_client.cur_inf);
-                        temp.NextClient.cur_client.LastINF=curtime;
-                        temp.NextClient.cur_client.cur_inf=null;
-                        
-                        }
-                }
+                if (((temp.NextClient.cur_client.userok==1)
+						&& (temp.NextClient.cur_client.cur_inf!=null))
+						&& (curtime-temp.NextClient.cur_client.LastINF>(1000*120L))) {
+					new Broadcast(temp.NextClient.cur_client.cur_inf);
+					temp.NextClient.cur_client.LastINF=curtime;
+					temp.NextClient.cur_client.cur_inf=null;
+				}
                 
                 
-                if(x.cur_client.kicked!=1)
-                if(x.cur_client.InQueueSearch!=null)
-                if(x.cur_client.userok==1)
-                {
-                  
-                    double xy=1;
-                        for(int i=0;i<x.cur_client.search_step;i++)
-                            xy*=((double)Vars.search_log_base)/1000;
-                        xy*=1000;
-                        long xx=(long)xy;
-                        if(x.cur_client.search_step>=Vars.search_steps)
-                            xx=Vars.search_spam_reset*1000;
-                  // System.out.println(xx);
-                    if((curtime-x.cur_client.Lastsearch)>xx)
-                    {
-                    
-                        if(x.cur_client.InQueueSearch.startsWith("B"))
-                            new Broadcast(x.cur_client.InQueueSearch);
-                        else
-                            new Broadcast(x.cur_client.InQueueSearch,1);
-                        x.cur_client.InQueueSearch=null;
-                       x.cur_client.Lastsearch=curtime;
-                    }
-                    
-                }
+                if (((x.cur_client.kicked!=1)
+						&& (x.cur_client.InQueueSearch!=null))
+						&& (x.cur_client.userok==1)) {
+						  
+						    double xy=1;
+						        for(int i=0;i<x.cur_client.search_step;i++)
+						            xy*=((double)Vars.search_log_base)/1000;
+						        xy*=1000;
+						        long xx=(long)xy;
+						        if(x.cur_client.search_step>=Vars.search_steps)
+						            xx=Vars.search_spam_reset*1000;
+						  // System.out.println(xx);
+						    if((curtime-x.cur_client.Lastsearch)>xx)
+						    {
+						    
+						        if(x.cur_client.InQueueSearch.startsWith("B"))
+						            new Broadcast(x.cur_client.InQueueSearch);
+						        else
+						            new Broadcast(x.cur_client.InQueueSearch,1);
+						        x.cur_client.InQueueSearch=null;
+						       x.cur_client.Lastsearch=curtime;
+						    }
+						    
+						}
                  temp=temp.NextClient;
                  if(temp==null)
                      break;

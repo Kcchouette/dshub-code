@@ -22,7 +22,7 @@
  */
 
 package dshub;
-import java.io.IOException;
+
 
 /**
  * Basic message queue for a specific user, keeps messages in a chained list and sends them periodically,
@@ -36,7 +36,7 @@ public class ClientQueue
     
     ClientHandler cur_client;
     
-    public class msgnod
+   static public class msgnod
     {
         String MSG;
         msgnod Next;
@@ -71,9 +71,6 @@ public class ClientQueue
        
     }
     
-    public void run()
-    {
-        
-    }
+    
     
 }
