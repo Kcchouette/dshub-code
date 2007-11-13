@@ -178,3 +178,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * hub bot and opchat CID is now in config, it doesnt reset on each restart anymore;
            * some cleanup;
            * chatcontrol add command now works;
+           * chatcontrol mod command done ;)

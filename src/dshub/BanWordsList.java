@@ -80,14 +80,15 @@ public class BanWordsList {
         cuv.setFlags(prop,repl);
     }
     /**  ///modifies propreties by name */
-    public void modifyPr(String s,long prop,String repl){
+    public boolean modifyPr(String s,long prop,String repl){
        
         int n=searchEl(s);
         if (n==-1){
-            System.out.println("The word you want to modify is not in the list");
-            return;
+            //System.out.println("The word you want to modify is not in the list");
+            return false;
         }
         modifyPrAt(n,prop,repl);
+        return true;
     }
     /** ///modifies client propreties for multiple selection */
     public void modifyMultiClientPrAt(int[] list,long prop){
@@ -136,11 +137,11 @@ public class BanWordsList {
     }
     
     /** ///adds an element at the begining of the list */
-    public void add(String s,long proprietati,String replacement){
+    public boolean add(String s,long proprietati,String replacement){
         
         if (!ver_regex(s)){
             System.out.println("Error: "+s+" is not a valid regex");
-            return;
+            return false;
         }
         int x=searchEl(s);
         if (x==-1){
@@ -154,6 +155,7 @@ public class BanWordsList {
             BannedWord cuv=(BannedWord)bannedWords.elementAt(x);
             cuv.setFlags(proprietati,replacement);
         }
+        return true;
     }
     /**  ///adds an element at the end of the list */
     public void append(String s,long proprietati,String replacement){
@@ -372,7 +374,7 @@ public class BanWordsList {
         int i;
         for (i=0;i<bannedWords.size();i++){
            
-                v+= "\n"+((BannedWord) bannedWords.elementAt(i)).getWord()+" flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i;
+                v+= ((BannedWord) bannedWords.elementAt(i)).getWord()+" flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i+"\n";
                         
             
            

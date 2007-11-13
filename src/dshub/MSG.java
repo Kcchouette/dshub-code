@@ -93,7 +93,8 @@ public class MSG
                        return;
                        }
                    }
-                   if(!cur_client.reg.overridespam)
+                   
+                   if(!cur_client.reg.overridespam && !(message.substring(1).toLowerCase().startsWith("chatcontrol")))
                    {
                    int index=Main.listaBanate.isOK(message);
                    //System.out.println(index);
