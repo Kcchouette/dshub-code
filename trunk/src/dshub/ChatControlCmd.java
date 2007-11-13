@@ -111,6 +111,11 @@ public class ChatControlCmd
             cur_client.sendFromBot(Help);
             return;
         }
+        else
+        {
+            cur_client.sendFromBot("Unkown chatcontrol command.");
+            return;
+        }
         if ( what.equalsIgnoreCase("add"))
         {
             String regex=ST.nextToken();
@@ -202,6 +207,129 @@ public class ChatControlCmd
                     repl=repl.substring(0,repl.length()-1);
                     Main.listaBanate.add(regex,(long)flag,repl);
                      cur_client.sendFromBot("Successfully added.");
+                    break;
+                }
+                default:
+                    {
+                cur_client.sendFromBot("Invalid flags.");
+                    return;
+                    }
+                    
+            }
+            if(Main.GUIok)
+            Main.GUI.refreshListaBanate();
+            
+            
+        }
+        else if(what.equalsIgnoreCase("mod"))
+        {
+            String regex=ST.nextToken();
+            int id=-1;
+            try
+            {
+                id=Integer.parseInt(regex);
+            }
+            catch (NumberFormatException nfe)
+            {
+                if(!regex.startsWith("\""))
+            {
+                cur_client.sendFromBot("Regular expression must be enclosed in quotes.");
+                return;
+            }
+            
+            String bla=regex;
+            while(!bla.endsWith("\""))
+            {
+                if(!ST.hasMoreTokens())
+                {
+                    cur_client.sendFromBot("Regular expression must be enclosed in quotes.");
+                    return;
+                }
+                bla=ST.nextToken();
+                regex+=" "+bla;
+                
+            }
+            regex=regex.substring(1,regex.length()-1);
+            }
+            
+            if(Main.listaBanate.size()<id)
+            {
+                cur_client.sendFromBot("Invalid Regular Expression ID.");
+                    return;
+            }
+            
+            if(!ST.hasMoreTokens())
+            {
+                 cur_client.sendFromBot("Must specify the flags.");
+                    return;
+            }
+            String x=ST.nextToken();
+            if(!(x.equalsIgnoreCase("flags")))
+            {
+                cur_client.sendFromBot("Invalid parameter : "+x);
+                    return;
+            }
+            if(!ST.hasMoreTokens())
+            {
+                 cur_client.sendFromBot("Must specify the flags.");
+                    return;
+            }
+            String flags=ST.nextToken();
+            int flag=0;
+            try
+            {
+             flag=Integer.parseInt(flags);
+            }
+            catch (NumberFormatException nfe)
+            {
+                cur_client.sendFromBot("Invalid flags.");
+                    return;
+            }
+            
+            switch(flag)
+            {
+                /* 
+                         static final long dropped=1;
+    static final long kicked=2;
+    static final long noAction=4;
+    static final long hidden=8;
+    static final long replaced=16;
+    static final long modified=32;
+    static final long allclient=7;
+    static final long allword=56;*/
+                case 9:
+                case 17:
+                case 10:
+                case 18:
+                case 20:
+                if(id!=-1)
+                    Main.listaBanate.modifyPrAt(id,(long)flag,"x");
+                else
+                     if(Main.listaBanate.modifyPr(regex,(long)flag,"x")==false)
+                     {
+                          cur_client.sendFromBot("Regular expression doesn't exist.");
+                          return;
+                     }
+                     cur_client.sendFromBot("Successfully modified.");
+                    break;
+                case 34:
+                case 33:
+                case 36:
+                {
+                    if(!ST.hasMoreTokens())
+                    {
+                            cur_client.sendFromBot("Must specify replacement string.");
+                             return;
+                    }
+                    String repl="";
+                    while(ST.hasMoreTokens())
+                        repl+=ST.nextToken()+" ";
+                    repl=repl.substring(0,repl.length()-1);
+                    if(id!=-1)
+                    Main.listaBanate.modifyPrAt(id,(long)flag,repl);
+                else
+                     Main.listaBanate.modifyPr(regex,(long)flag,repl);
+                     cur_client.sendFromBot("Successfully modified.");
                     break;
                 }
                 default:
