@@ -3759,9 +3759,8 @@ public class TestFrame extends javax.swing.JFrame {
                 "  Connecting users: "+Integer.toString(j)+"\n"+
                 "  Uptime: "+uptime+".\n"+
                 "  Start Time: "+b.toString()+
-                "  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
-                "  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()+
-                "  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
+                "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
+                "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
                 
                 );
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -3894,7 +3893,11 @@ public class TestFrame extends javax.swing.JFrame {
                 "  Online users: "+Integer.toString(i)+"\n"+
                 "  Connecting users: "+Integer.toString(j)+"\n"+
                 "  Uptime: "+uptime+".\n"+
-                "  Start Time: "+b.toString());
+                "  Start Time: "+b.toString()+
+                "\n  Bytes red per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteReadThroughput())+
+                "\n  Bytes written per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteWrittenThroughput())
+                
+                );
         
         
 /*

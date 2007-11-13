@@ -1228,7 +1228,9 @@ public class CommandParser
                   "Hub Statistics:\n"+
                   "  Online users: "+Integer.toString (i)+"\n"+
                   "  Connecting users: "+Integer.toString(j)+"\n"+
-                  "  Uptime: "+uptime+"."
+                  "  Uptime: "+uptime+"."+
+                   "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
+                   "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
                        
                     
                   ;

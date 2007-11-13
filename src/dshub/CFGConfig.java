@@ -342,8 +342,9 @@ public class CFGConfig
                 
                 while(tempy!=null)
                         {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
-                                break;
+                            if ((tempy.cur_client.userok==1)
+									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
+								break;
                             tempy=tempy.NextClient;
                            
                         }
@@ -375,8 +376,9 @@ public class CFGConfig
                 
                 while(tempy!=null)
                         {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
-                                break;
+                            if ((tempy.cur_client.userok==1)
+									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
+								break;
                             tempy=tempy.NextClient;
                            
                         }

@@ -35,10 +35,10 @@ abstract public class ADC
     
     
     /**First string to send to connecting client ;)*/
-    static String Init="ISUP ADBASE ADUCM0"; //adding basic ucmds
+    static final String Init="ISUP ADBASE ADUCM0"; //adding basic ucmds
     
     /**  ISID = session id string for connecting client*/
-    static String ISID="ISID";
+    static final String ISID="ISID";
     
     /** The default motd.*/
    static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+

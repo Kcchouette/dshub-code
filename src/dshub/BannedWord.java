@@ -58,6 +58,7 @@ public class BannedWord {
     public BannedWord(String ccuvant,long prop,String repl) {
         cuvant =new String(ccuvant);
         proprietati=prop;
+       
         replacement=new String(repl);
     }
     
