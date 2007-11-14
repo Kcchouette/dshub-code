@@ -259,16 +259,18 @@ public class BanWordsList {
         }
     }
     /** ///removes word at index*/
-    public void removeElAt(int index){
+    public boolean removeElAt(int index){
         
         try{
             bannedWords.removeElementAt(index);
+            return true;
         }catch(Exception e){
-            System.out.println(e.toString());
+           // System.out.println(e.toString());
+            return false;
         }
     }
     /**  ///removes word by name */
-    public void removeElement(String s){
+    public boolean removeElement(String s){
        
         int i;
         BannedWord cuv;
@@ -276,13 +278,17 @@ public class BanWordsList {
             for (i=0;i<bannedWords.size();i++){
                 cuv=(BannedWord) bannedWords.elementAt(i);
                 if ( s.equals(cuv.getWord()) ){
-                    bannedWords.removeElementAt(i);
-                    i--;
+                     bannedWords.removeElementAt(i);
+                     i--;
+                     
+                    return true;
                 }            
             }
         }catch(Exception e){
-            System.out.println(e.toString());
+            return false;
+           // System.out.println(e.toString());
         }
+        return false;
     }
     /**  ///removes multiple words given by names */
     public void removeElements(String[] list){
@@ -370,16 +376,16 @@ public class BanWordsList {
     public String List()
     {
         
-        String v="";
+        String v="\n";
         int i;
         for (i=0;i<bannedWords.size();i++){
            
-                v+= ((BannedWord) bannedWords.elementAt(i)).getWord()+" flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i+"\n";
+                v+= "\""+((BannedWord) bannedWords.elementAt(i)).getWord()+"\"  flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i+"\n";
                         
             
            
         }
-        return v.substring(0,v.equals("")?0:v.length()-1);
+        return v.substring(0,v.length()-1);
     }
     
     /** -1 if string passes all checks

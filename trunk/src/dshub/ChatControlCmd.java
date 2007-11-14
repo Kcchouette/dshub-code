@@ -344,6 +344,55 @@ public class ChatControlCmd
             
             
         }
+        else if(what.equalsIgnoreCase("del"))
+        {
+             String regex=ST.nextToken();
+            int id=-1;
+            try
+            {
+                id=Integer.parseInt(regex);
+            }
+            catch (NumberFormatException nfe)
+            {
+                if(!regex.startsWith("\""))
+            {
+                cur_client.sendFromBot("Regular expression must be enclosed in quotes.");
+                return;
+            }
+            
+            String bla=regex;
+            while(!bla.endsWith("\""))
+            {
+                if(!ST.hasMoreTokens())
+                {
+                    cur_client.sendFromBot("Regular expression must be enclosed in quotes.");
+                    return;
+                }
+                bla=ST.nextToken();
+                regex+=" "+bla;
+                
+            }
+            regex=regex.substring(1,regex.length()-1);
+            }
+            
+            if(Main.listaBanate.size()<=id)
+            {
+                cur_client.sendFromBot("Invalid Regular Expression ID.");
+                    return;
+            }
+            
+            if(id!=-1)
+                    Main.listaBanate.removeElAt(id);
+                else
+                     if(Main.listaBanate.removeElement(regex)==false)
+                     {
+                          cur_client.sendFromBot("Regular expression doesn't exist.");
+                          return;
+                     }
+                     cur_client.sendFromBot("Successfully deleted.");
+         if(Main.GUIok)
+            Main.GUI.refreshListaBanate();
+        }
         
     }
     
