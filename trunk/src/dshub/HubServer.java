@@ -139,21 +139,25 @@ public class HubServer extends Thread
         y=Executors.newCachedThreadPool();
         acceptor = new SocketAcceptor(5, x);
         
-        IoServiceConfig acceptorConfig = acceptor.getDefaultConfig();
-        acceptorConfig.setThreadModel(ThreadModel.MANUAL);
+        
+        
         
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
+        cfg.setThreadModel(ThreadModel.MANUAL);
+        
+         cfg.getSessionConfig().setReceiveBufferSize(102400);
+         cfg.getSessionConfig().setSendBufferSize(102400);
+         
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
         MyCalendar=Calendar.getInstance();
-       DefaultIoFilterChainBuilder filterChainBuilder = acceptor.getDefaultConfig().getFilterChain();
+       DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
           filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
         cfg.getSessionConfig().setKeepAlive(true);
         
-        cfg.getSessionConfig().setReceiveBufferSize(102400);
-         cfg.getSessionConfig().setSendBufferSize(102400);
+       
         //cfg.getSessionConfig().
-        System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
+        //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
         IOSM=new IoServiceManager(acceptor);
         SM=new ServiceManager(acceptor);
         IOSM.startCollectingStats(10000);
