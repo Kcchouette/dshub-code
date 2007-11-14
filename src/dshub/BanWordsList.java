@@ -30,6 +30,7 @@ package dshub;
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.StringTokenizer;
@@ -182,24 +183,25 @@ public class BanWordsList {
         bannedWords.removeAllElements();
     }
     /** /// prints to file */
-    public void printFile(String path){
+    public boolean printFile(String path){
         
         FileWriter fo;
         try {
             fo=new FileWriter(path);
         }catch(Exception e){
-            System.out.println(e.toString());
-            return;
+            
+            return false;
         }
         try{
             fo.write(toString());
             fo.close();
         }catch(Exception e){
-            System.out.println(e.toString());
+            return false;
         }
+        return true;
     }
     /** ///loads list from file */
-    public void loadFile(String path){
+    public boolean loadFile(String path){
         
         FileReader fi;
         File f;
@@ -207,16 +209,20 @@ public class BanWordsList {
             fi=new FileReader(path);
             f=new File(path);
         }
-        catch(Exception e)
+        catch(FileNotFoundException e)
         {
             //System.out.println("Invalid File");
             //System.out.println(e.toString());
             printFile(path);
-            return;
+            return true;
+        }
+        catch(Exception e)
+        {
+            return false;
         }
         if (!f.isFile()){
             //System.out.println("The path must be a file");
-            return;
+            return false;
         }
         
         char[] buff = new char[(int)f.length()+1];
@@ -224,11 +230,15 @@ public class BanWordsList {
         int n;
         try{
             n=fi.read(buff);
-        }catch(Exception e){
+        }catch(FileNotFoundException e){
             //System.out.println("File not readable");
             //System.out.println(e.toString());
             printFile(path);
-            return;
+            return true;
+        }
+        catch(Exception e)
+        {
+            return false;
         }
         String buffer=new String(buff);
         
@@ -254,9 +264,12 @@ public class BanWordsList {
             }
         }catch(Exception e){
             //cc
-            System.out.println("Invalid File Format");
-            System.out.println(e.toString());
+            //System.out.println("Invalid File Format");
+            //System.out.println(e.toString());
+            printFile(path);
+            return true;
         }
+        return true;
     }
     /** ///removes word at index*/
     public boolean removeElAt(int index){

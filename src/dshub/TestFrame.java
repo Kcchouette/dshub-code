@@ -2548,8 +2548,10 @@ public class TestFrame extends javax.swing.JFrame {
 // TODO add your handling code here:
         //cc
         String path=jTextField4.getText();
-        listaBanate.printFile(path);   
+        if(listaBanate.printFile(path)==true) 
          this.SetStatus("List saved.");
+        else
+         this.SetStatus("File access error.");
     }//GEN-LAST:event_jButton28MouseClicked
 
     private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
