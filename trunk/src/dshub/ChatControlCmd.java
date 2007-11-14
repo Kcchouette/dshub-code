@@ -55,7 +55,11 @@ public class ChatControlCmd
              "\nUsage: chatcontrol mod ID/\"regular expression\" flags [modification]."+
                     "\n          -- mods the regular expression already listed given by string or it's unique ID. Parameters are same like on adding.\n"+
                     "\nUsage: chatcontrol del ID/\"regular expression\" "+
-                    "\n          -- deletes the regular expression given by itself or by it's unique ID.";
+                    "\n          -- deletes the regular expression given by itself or by it's unique ID.\n"+
+                    "\nUsage: chatcontrol save \"filename\" "+
+                    "\n          -- saves the current wordlist into file specified by path. For security reasons, you can write to DSHub installation dir only.\n"+
+                    "\nUsage: chatcontrol load \"filename\" "+
+                    "\n          -- load the wordlist configuration from the file specified by path. For security reasons, you can read from DSHub installation dir only."
                     ;
             cur_client.sendFromBot(Help);
             return;
@@ -107,6 +111,22 @@ public class ChatControlCmd
            String Help= "\nUsage: chatcontrol del ID/\"regular expression\" "+
              
            "\n          -- deletes the regular expression given by itself or by it's unique ID.";
+             
+            cur_client.sendFromBot(Help);
+            return;
+        }
+        else if(what.equalsIgnoreCase("save"))
+        {
+           String Help= "\nUsage: chatcontrol save \"filename\" "+
+                    "\n          -- saves the current wordlist into file specified by name.";
+             
+            cur_client.sendFromBot(Help);
+            return;
+        }
+        else if(what.equalsIgnoreCase("load"))
+        {
+           String Help= "\nUsage: chatcontrol load \"filename\" "+
+                    "\n          -- load the wordlist configuration from the file specified by name.";
              
             cur_client.sendFromBot(Help);
             return;
@@ -392,6 +412,72 @@ public class ChatControlCmd
                      cur_client.sendFromBot("Successfully deleted.");
          if(Main.GUIok)
             Main.GUI.refreshListaBanate();
+        }
+        else if(what.equalsIgnoreCase("save"))
+        {
+             String path=ST.nextToken();
+           
+                if(!path.startsWith("\""))
+            {
+                cur_client.sendFromBot("Filename must be enclosed in quotes.");
+                return;
+            }
+            
+            String bla=path;
+            while(!bla.endsWith("\""))
+            {
+                if(!ST.hasMoreTokens())
+                {
+                    cur_client.sendFromBot("Filename must be enclosed in quotes.");
+                    return;
+                }
+                bla=ST.nextToken();
+                path+=" "+bla;
+                
+            }
+            path=path.substring(1,path.length()-1);
+            
+             if(Main.listaBanate.printFile(path)==true)
+        
+           
+                     
+                     cur_client.sendFromBot("Successfully saved.");
+             else
+                 cur_client.sendFromBot("File access error.");
+         
+        }
+        else if(what.equalsIgnoreCase("load"))
+        {
+             String path=ST.nextToken();
+           
+                if(!path.startsWith("\""))
+            {
+                cur_client.sendFromBot("Filename must be enclosed in quotes.");
+                return;
+            }
+            
+            String bla=path;
+            while(!bla.endsWith("\""))
+            {
+                if(!ST.hasMoreTokens())
+                {
+                    cur_client.sendFromBot("Filename must be enclosed in quotes.");
+                    return;
+                }
+                bla=ST.nextToken();
+                path+=" "+bla;
+                
+            }
+            path=path.substring(1,path.length()-1);
+            
+             if(Main.listaBanate.loadFile(path)==true)
+        
+           
+                     
+                     cur_client.sendFromBot("Successfully loaded.");
+             else
+                 cur_client.sendFromBot("File access error.");
+         
         }
         
     }

@@ -182,3 +182,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * added TIGR extension for compatibility with ADC 0.14
            * known problem: cannot set receive buffer.. dont know why
            * chatcontrol del command done;
+           * chatcontrol save and load done;
