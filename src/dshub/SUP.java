@@ -62,6 +62,7 @@ public class SUP
                        return;}
                  
      }
+        
          if(Issued_Command.charAt (0)!='H')
                     {
                         if(State.equals ("PROTOCOL"))
