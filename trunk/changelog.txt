@@ -186,3 +186,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixes;
            * added another checkbox to GUi chat control for opchat notifying;
            * gui chat control checkboxes should have working engine;
+           * private chat and notifying should work now;
+           * they are checked by default on new words;
+           * still need to integrate into chatcontrolcmd;

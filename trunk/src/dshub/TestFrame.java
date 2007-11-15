@@ -2844,7 +2844,7 @@ public class TestFrame extends javax.swing.JFrame {
             String repl="";
             prop=prop | this.getClientAddPr() | this.getWordAddPr();
             repl+= this.getAddRepl();
-            listaBanate.add(banWord,prop,repl);
+            listaBanate.add(banWord,prop+BannedWord.notify+BannedWord.privatechat,repl);
         }
     }//GEN-LAST:event_jButton23MouseClicked
     

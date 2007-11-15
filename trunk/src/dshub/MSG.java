@@ -94,11 +94,14 @@ public class MSG
                        }
                    }
                    
-                   if(!cur_client.reg.overridespam && !(message.substring(1).toLowerCase().startsWith("chatcontrol")))
+                   if(!cur_client.reg.overridespam && !(message.substring(1).toLowerCase().startsWith("chatcontrol")) )
                    {
-                   int index=Main.listaBanate.isOK(message);
+                       int index=Main.listaBanate.isOK(message);
+                    
+                   
                    //System.out.println(index);
                    if(index!=-1)//not ok
+                    if(!((Issued_Command.startsWith("E") || Issued_Command.startsWith("D") ) &&  (Main.listaBanate.getPrAt(index) & BannedWord.privatechat )!=0))
                    {
                        long what=Main.listaBanate.getPrAt(index);
                        /* 
@@ -111,11 +114,12 @@ public class MSG
     static final long allclient=7;
     static final long allword=56;*/
                      //  long what=56;
-                       System.out.println(what);
+                       //System.out.println(what);
                        if(what % 2 ==1)
                        {
                            new STAError(cur_client,201,"You typed forbidden word.");
                           // System.out.println("flag contine 1");
+                           
                        }
                        what /=2;
                         if(what % 2 ==1)
@@ -150,6 +154,24 @@ public class MSG
                            Issued_Command=Issued_Command.replace(message,Main.listaBanate.getReplAt(index));
                            
                         } 
+                       what/=2;
+                       if(what % 2 ==1)
+                       {
+                           ;//private chat too
+                       }
+                       what/=2;
+                       if(what % 2 ==1)
+                       {
+                           ;//notify opchat :
+                           ClientNod temp=ClientNod.FirstClient.NextClient;
+                           while(temp!=null)
+                           {
+                               if(temp.cur_client.reg.isreg )
+                                   temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{"+cur_client.NI+"}\\sused\\sforbidden\\sword\\s:\\s"+message+" "+"PMABCD");
+                               temp=temp.NextClient;
+                           }
+                           //System.out.println("notying");
+                       }
                    }
                    }
                    String thissid=null;
