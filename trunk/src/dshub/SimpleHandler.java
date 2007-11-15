@@ -115,7 +115,10 @@ public class SimpleHandler extends IoHandlerAdapter
 			((SocketSessionConfig) session.getConfig() ).setReceiveBufferSize( 2048 );
 //((SocketSessionConfig) session.getConfig() ).
              //   session.
+                synchronized(ClientNod.FirstClient)
+                {
                 ClientHandler cur_client=(ClientHandler)HubServer.AddClient().cur_client;
+                
                 session.setAttachment(cur_client);
               session.setIdleTime( IdleStatus.READER_IDLE, 120 );
               
@@ -126,7 +129,7 @@ public class SimpleHandler extends IoHandlerAdapter
                SID cursid=new SID(cur_client);
         cur_client.SessionID=Base32.encode (cursid.cursid).substring (0,4);
         cur_client.sid=cursid.cursid;
-
+                }
         
 	}
     

@@ -421,7 +421,7 @@ public class Command
                     }
                     if(cur_client.myban==null)
                     {
-                    cur_client.myban=BanList.getban (1,cur_client.NI.toLowerCase ());
+                    cur_client.myban=BanList.getban (1,cur_client.NI);
                     
                     }
                     if(cur_client.myban!=null) //banned

@@ -125,7 +125,7 @@ public class  BanList
         {
             if(tempy.bantype==bantype)
             
-                if(bantype==1 && whatever.toLowerCase ().equals (tempy.nick))
+                if(bantype==1 && whatever.equalsIgnoreCase (tempy.nick))
                     return tempy;
                 else if(bantype==2 && whatever.equals (tempy.ip))
                     return tempy;
