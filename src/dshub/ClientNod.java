@@ -183,11 +183,13 @@ public class ClientNod
        
        public void killMe()
        {
+           synchronized(FirstClient)
+           {
            this.PrevClient.NextClient=this.NextClient;
            if(this.NextClient!=null)
               this.NextClient.PrevClient=this.PrevClient;
           // System.out.println("killed");
-           
+           }
        }
     
 }
