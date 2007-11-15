@@ -184,3 +184,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * chatcontrol del command done;
            * chatcontrol save and load done;
            * fixes;
+           * added another checkbox to GUi chat control for opchat notifying;
+           * gui chat control checkboxes should have working engine;

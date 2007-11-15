@@ -114,6 +114,19 @@ public class BanWordsList {
         }
        // System.out.println("&&&&&");
     }
+    public void modifyMultiPrAt(int[] list,long prop){
+        
+        
+       
+        for (int i=0;i<list.length;i++)
+        {          
+            BannedWord cuv=(BannedWord)bannedWords.elementAt(list[i]);
+           
+            
+            cuv.setFlags(prop);
+        }
+       // System.out.println("&&&&&");
+    }
     /** ///modifies word propreties for multiple selection */
     public void modifyMultiWordPrAt(int[] list,long prop,String repl){
         
