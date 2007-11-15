@@ -73,6 +73,7 @@ public class TestFrame extends javax.swing.JFrame {
         for (i=0;i<n;i++){
             modelLista.addElement(listaBanate.elementAt(i));
         }
+        
     }
     
     public void refreshListaBanate(){
@@ -90,6 +91,8 @@ public class TestFrame extends javax.swing.JFrame {
         jRadioButton4.setSelected(false);
         jRadioButton5.setSelected(false);
         jRadioButton6.setSelected(false);
+        privatecheck.setSelected(false);
+        notifycheck.setSelected(false);
         jTextField3.setEditable(false);
         jTextField3.setText("");
         if ( (prop & BannedWord.dropped) != 0 ){
@@ -112,6 +115,12 @@ public class TestFrame extends javax.swing.JFrame {
             jRadioButton6.setSelected(true);
             jTextField3.setEditable(true);
             jTextField3.setText(repl);
+        }
+        if ( (prop & BannedWord.privatechat) != 0 ){
+            privatecheck.setSelected(true);
+        }
+        if ( (prop & BannedWord.notify) != 0 ){
+            notifycheck.setSelected(true);
         }
     }
     
@@ -326,7 +335,8 @@ public class TestFrame extends javax.swing.JFrame {
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
         jTextField3 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        privatecheck = new javax.swing.JCheckBox();
+        notifycheck = new javax.swing.JCheckBox();
         jPanel16 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
@@ -1464,8 +1474,10 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel10.setToolTipText("Forbidden words");
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Selected Options"));
+        jPanel11.setFont(new java.awt.Font("Tahoma", 0, 10));
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Client Action"));
         buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Drop");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -1479,6 +1491,7 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton2.setText("Kick");
         jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -1491,6 +1504,7 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton3.setText("No Action");
         jRadioButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton3.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -1522,11 +1536,13 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jRadioButton2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jRadioButton3)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Word Action"));
+        jPanel15.setFont(new java.awt.Font("Tahoma", 0, 10));
         buttonGroup1.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton4.setSelected(true);
         jRadioButton4.setText("Hide Line");
         jRadioButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -1540,6 +1556,7 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton5);
+        jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton5.setText("Replace with *");
         jRadioButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton5.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -1552,21 +1569,22 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton6);
+        jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton6.setText("Modify");
         jRadioButton6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton6.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jRadioButton6.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
-                jRadioButton6StateChanged(evt);
-            }
-        });
         jRadioButton6.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 jRadioButton6MouseClicked(evt);
+            }
+        });
+        jRadioButton6.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                jRadioButton6StateChanged(evt);
             }
         });
 
@@ -1602,40 +1620,69 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jRadioButton6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jCheckBox1.setText(" Private Chat Control ?");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        privatecheck.setFont(new java.awt.Font("Tahoma", 0, 10));
+        privatecheck.setText("Control also Private Chat");
+        privatecheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        privatecheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        privatecheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                privatecheckActionPerformed(evt);
+            }
+        });
+
+        notifycheck.setFont(new java.awt.Font("Tahoma", 0, 10));
+        notifycheck.setText("Notify operator chat on triggered event");
+        notifycheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        notifycheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        notifycheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                notifycheckActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel11Layout.createSequentialGroup()
+                        .add(61, 61, 61)
+                        .add(privatecheck)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jPanel11Layout.createSequentialGroup()
                         .add(10, 10, 10)
-                        .add(jCheckBox1)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(notifycheck, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                    .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(jPanel11Layout.createSequentialGroup()
-                .add(jPanel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(privatecheck)
+                    .add(notifycheck))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "FileList"));
 
+        jLabel63.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel63.setText("File:");
 
         jButton26.setText("Load");
@@ -1696,7 +1743,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton28))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(jLabel63)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
                         .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 341, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton29)))
@@ -1725,13 +1772,6 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel16Layout.linkSize(new java.awt.Component[] {jButton26, jButton27, jButton28}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Add / Edit Word"));
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                jTextField2KeyPressed(evt);
-            }
-        });
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mousePressed(java.awt.event.MouseEvent evt)
@@ -1739,7 +1779,15 @@ public class TestFrame extends javax.swing.JFrame {
                 jTextField2MousePressed(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
+        jLabel64.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel64.setText("Word:");
 
         jButton23.setText("Add");
@@ -1752,33 +1800,39 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         buttonGroup3.add(jRadioButton7);
+        jRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton7.setSelected(true);
         jRadioButton7.setText("Drop");
         jRadioButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton7.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         buttonGroup3.add(jRadioButton8);
+        jRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton8.setText("Kick");
         jRadioButton8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton8.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         buttonGroup3.add(jRadioButton9);
+        jRadioButton9.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton9.setText("No Action");
         jRadioButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton9.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         buttonGroup4.add(jRadioButton10);
+        jRadioButton10.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton10.setSelected(true);
         jRadioButton10.setText("Hide Line");
         jRadioButton10.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton10.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         buttonGroup4.add(jRadioButton11);
+        jRadioButton11.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton11.setText("Replace With *");
         jRadioButton11.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton11.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         buttonGroup4.add(jRadioButton12);
+        jRadioButton12.setFont(new java.awt.Font("Tahoma", 0, 10));
         jRadioButton12.setText("Modify");
         jRadioButton12.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton12.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -1816,12 +1870,13 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(13, 13, 13)
                         .add(jPanel17Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel17Layout.createSequentialGroup()
-                                .add(jRadioButton12)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, Short.MAX_VALUE)
-                                .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jPanel17Layout.createSequentialGroup()
                                 .add(jRadioButton9)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 194, Short.MAX_VALUE)))))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 200, Short.MAX_VALUE))
+                            .add(jPanel17Layout.createSequentialGroup()
+                                .add(jRadioButton12)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 29, Short.MAX_VALUE)
+                                .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(10, 10, 10)))))
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -1842,7 +1897,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jRadioButton10)
                     .add(jRadioButton12)
                     .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel17Layout.linkSize(new java.awt.Component[] {jButton23, jLabel64, jTextField2}, org.jdesktop.layout.GroupLayout.VERTICAL);
@@ -1903,7 +1958,7 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel18Layout.createSequentialGroup()
-                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton24)
@@ -1922,10 +1977,15 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .add(jPanel10Layout.createSequentialGroup()
+                        .add(jPanel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .add(jPanel10Layout.createSequentialGroup()
+                        .add(jPanel16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .add(jPanel10Layout.createSequentialGroup()
+                        .add(jPanel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1933,12 +1993,13 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel10Layout.createSequentialGroup()
-                        .add(jPanel11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel10Layout.createSequentialGroup()
+                        .add(jPanel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .add(jPanel17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(9, 9, 9)))
                 .addContainerGap())
         );
         jTabbedPane1.addTab("Chat Control", jPanel10);
@@ -2521,6 +2582,46 @@ public class TestFrame extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void notifycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_notifycheckActionPerformed
+    {//GEN-HEADEREND:event_notifycheckActionPerformed
+       if(notifycheck.isSelected())
+        {
+            long prop= getClientPr() + getWordPr();
+            if(privatecheck.isSelected())
+                prop+=BannedWord.privatechat;
+            prop+=BannedWord.notify;
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+        else
+        {
+            long prop= getClientPr() + getWordPr();
+            if(privatecheck.isSelected())
+                prop+=BannedWord.privatechat;
+            
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+    }//GEN-LAST:event_notifycheckActionPerformed
+
+    private void privatecheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_privatecheckActionPerformed
+    {//GEN-HEADEREND:event_privatecheckActionPerformed
+        if(privatecheck.isSelected())
+        {
+            long prop= getClientPr() + getWordPr() +BannedWord.privatechat;
+            if(notifycheck.isSelected())
+                prop+=BannedWord.notify;
+            
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+        else
+        {
+            
+            long prop= getClientPr() + getWordPr();
+            if(notifycheck.isSelected())
+                prop+=BannedWord.notify;
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+    }//GEN-LAST:event_privatecheckActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton29ActionPerformed
     {//GEN-HEADEREND:event_jButton29ActionPerformed
@@ -4327,7 +4428,6 @@ public class TestFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -4465,9 +4565,11 @@ public class TestFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea msgsearchspamfield;
     private javax.swing.JTextField namefield;
     private javax.swing.JTextArea nickcharsfield;
+    private javax.swing.JCheckBox notifycheck;
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
     private javax.swing.JTextField portfield;
+    private javax.swing.JCheckBox privatecheck;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox savelogscheck;
     private javax.swing.JTextField searchlogbasefield;

@@ -50,6 +50,8 @@ public class BannedWord {
     static final long hidden=8;
     static final long replaced=16;
     static final long modified=32;
+    static final long privatechat=64;
+    static final long notify=128;
     static final long allclient=7;
     static final long allword=56;
     /** Creates a new instance of BannedWord */
@@ -67,6 +69,10 @@ public class BannedWord {
         proprietati=prop;        
         replacement = new String(repl);
     }
+    public void setFlags(long prop){
+        proprietati=prop;        
+      
+    }
     
     public long getFlags(){
         return proprietati;
@@ -82,5 +88,20 @@ public class BannedWord {
     
     public void setWord(String s){
         cuvant = new String(s);
+    }
+    
+    public void setPrivate(boolean x)
+    {
+        if(x)
+            proprietati=proprietati | privatechat;
+        else
+            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+notify;
+    }
+    public void setNotify(boolean x)
+    {
+         if(x)
+            proprietati=proprietati | notify;
+        else
+            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+privatechat;
     }
 }
