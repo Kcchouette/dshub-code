@@ -48,9 +48,10 @@ public class ChatControlCmd
             "\n          -- adds the regular expression with corresponding flags. The expression must be enclosed in quotes.\n"+
             "The flags are : \n"        +
                     " Drop user 1\n"+" Kick user 2\n"+" Don't do anything to client 4\n"+" Hide the matching word from chat 8\n"+
-    " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+
+    " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+" Control private chat as well 64\n"+
+                    " Report to operator's chat 128\n"+
                     "As you can see, you must not select all flags, but one of each category.\n"+
-                    "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+
+                    "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+"Note: flag 64 and 128 are independent of others.\n"+
                     "Note: The modification parameter is only available for flag including 32.\n"+
              "\nUsage: chatcontrol mod ID/\"regular expression\" flags [modification]."+
                     "\n          -- mods the regular expression already listed given by string or it's unique ID. Parameters are same like on adding.\n"+
@@ -164,17 +165,7 @@ public class ChatControlCmd
                     return;
             }
             
-            if(!ST.hasMoreTokens())
-            {
-                 cur_client.sendFromBot("Must specify the flags.");
-                    return;
-            }
-            String x=ST.nextToken();
-            if(!(x.equalsIgnoreCase("flags")))
-            {
-                cur_client.sendFromBot("Invalid parameter : "+x);
-                    return;
-            }
+           
             if(!ST.hasMoreTokens())
             {
                  cur_client.sendFromBot("Must specify the flags.");
@@ -208,6 +199,21 @@ public class ChatControlCmd
                 case 10:
                 case 18:
                 case 20:
+                case 9+64:
+                case 9+128:
+                case 9+128+64:
+                case 10+64:
+                case 10+128:
+                case 10+128+64:
+                case 17+64:
+                case 17+128:
+                case 17+128+64:
+                case 18+64:
+                case 18+128:
+                case 18+128+64:
+                case 20+64:
+                case 20+128:
+                case 20+128+64:
                 
                     Main.listaBanate.add(regex,(long)flag,"x");
                      cur_client.sendFromBot("Successfully added.");
@@ -215,6 +221,15 @@ public class ChatControlCmd
                 case 34:
                 case 33:
                 case 36:
+                case 34+64:
+                case 33+64:
+                case 36+64:
+                case 34+128:
+                case 33+128:
+                case 36+128:
+                case 34+128+64:
+                case 33+128+64:
+                case 36+128+64:
                 {
                     if(!ST.hasMoreTokens())
                     {
@@ -278,17 +293,7 @@ public class ChatControlCmd
                     return;
             }
             
-            if(!ST.hasMoreTokens())
-            {
-                 cur_client.sendFromBot("Must specify the flags.");
-                    return;
-            }
-            String x=ST.nextToken();
-            if(!(x.equalsIgnoreCase("flags")))
-            {
-                cur_client.sendFromBot("Invalid parameter : "+x);
-                    return;
-            }
+            
             if(!ST.hasMoreTokens())
             {
                  cur_client.sendFromBot("Must specify the flags.");
@@ -317,11 +322,26 @@ public class ChatControlCmd
     static final long modified=32;
     static final long allclient=7;
     static final long allword=56;*/
-                case 9:
+                 case 9:
                 case 17:
                 case 10:
                 case 18:
                 case 20:
+                case 9+64:
+                case 9+128:
+                case 9+128+64:
+                case 10+64:
+                case 10+128:
+                case 10+128+64:
+                case 17+64:
+                case 17+128:
+                case 17+128+64:
+                case 18+64:
+                case 18+128:
+                case 18+128+64:
+                case 20+64:
+                case 20+128:
+                case 20+128+64:
                 if(id!=-1)
                     Main.listaBanate.modifyPrAt(id,(long)flag,"x");
                 else
@@ -335,6 +355,15 @@ public class ChatControlCmd
                 case 34:
                 case 33:
                 case 36:
+                case 34+64:
+                case 33+64:
+                case 36+64:
+                case 34+128:
+                case 33+128:
+                case 36+128:
+                case 34+128+64:
+                case 33+128+64:
+                case 36+128+64:
                 {
                     if(!ST.hasMoreTokens())
                     {

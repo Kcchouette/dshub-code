@@ -189,3 +189,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * private chat and notifying should work now;
            * they are checked by default on new words;
            * still need to integrate into chatcontrolcmd;
+           * chatcontrol now contains flags 128 and 64 for private and notify;
+           * also fixed "flags" in chatcontrol no longer , concorded with help msg now;
