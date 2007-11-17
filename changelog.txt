@@ -191,3 +191,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * still need to integrate into chatcontrolcmd;
            * chatcontrol now contains flags 128 and 64 for private and notify;
            * also fixed "flags" in chatcontrol no longer , concorded with help msg now;
+           * TAG: Theta RC 1;
+           * fixed bug #1833656
+           * added tables for bans GUI ( naccio );
