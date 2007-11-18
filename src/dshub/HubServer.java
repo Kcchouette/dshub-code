@@ -143,7 +143,7 @@ public class HubServer extends Thread
         
         
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
-        cfg.setThreadModel(ThreadModel.MANUAL);
+      // cfg.setThreadModel(ThreadModel.MANUAL);
         
          cfg.getSessionConfig().setReceiveBufferSize(102400);
          cfg.getSessionConfig().setSendBufferSize(102400);
