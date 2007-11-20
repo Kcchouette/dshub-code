@@ -271,6 +271,10 @@ public class Variables implements Serializable
            return false;
         if(ADC.isCID(nick))
             return false;
+        
+        int index=Main.listaBanate.isOK(nick);
+        if(index!=-1)
+            return false;
        
         return true;
     }
