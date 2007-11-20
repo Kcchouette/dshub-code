@@ -198,3 +198,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixed some granting bugs;
            * flyable can be set by any granter now;
            * fixed multilined mass message;
+           * chat control works for email description and nick now;
+           * overrideshare and overridespam better for ops in restrictions;

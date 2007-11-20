@@ -111,6 +111,11 @@ public class Command
               
     }
     
+    boolean ValidateField(String str)
+    {
+        return Main.listaBanate.isOK(str)==-1;
+    }
+    
     synchronized void  handleINF() throws CommandException, STAException
     {
         Issued_Command=Issued_Command.substring(4);
@@ -497,42 +502,64 @@ public class Command
                   
                     
                  }
+               
+                 if(!cur_client.reg.overridespam)
+                if(cur_client.EM!=null)
+                if(!ValidateField(cur_client.EM))
+                { new STAError(cur_client,State.equals("PROTOCOL")?246:146,"E-mail contains forbidden words.");return;}
+                 if(!cur_client.reg.overridespam)
+                if(cur_client.DE!=null)
+                if(!ValidateField(cur_client.DE))
+                { new STAError(cur_client,State.equals("PROTOCOL")?246:146,"Description contains forbidden words");return;}
+                
+                 if(!cur_client.reg.overridespam)
                     if(cur_client.SS==null && Vars.min_share!=0)
                         new STAError(cur_client,246,"Share too small, "+Vars.min_share+" MiB required.","SS");
+                 if(!cur_client.reg.overridespam)
                     if(cur_client.SL==null && Vars.min_sl!=0)
                         new STAError(cur_client,246,"Too few slots, open up more.","SL");
                 //TODO : add without tag allow ?
                     try
                     {
                 //checking all:
+                         if(!cur_client.reg.overridespam)
                     if(cur_client.NI.length ()>Vars.max_ni)
                     {new STAError(cur_client,221,"Nick too large");return;}
+                          if(!cur_client.reg.overridespam)
                     if(cur_client.NI.length ()<Vars.min_ni)
                     {new STAError(cur_client,221,"Nick too small");return;}
+                          if(!cur_client.reg.overridespam)
                     if(cur_client.DE!=null)
                     if(cur_client.DE.length ()>Vars.max_de)
                     {new STAError(cur_client,246,"Description too large","DE");return;}
+                          if(!cur_client.reg.overridespam)
                     if(cur_client.EM!=null)
                     if(cur_client.EM.length ()>Vars.max_em)
                     {new STAError(cur_client,246,"E-mail too large","EM");return;}
+                      if(!cur_client.reg.overrideshare) 
                     if(cur_client.SS!=null)
                     if(Long.parseLong(cur_client.SS)>1024*Vars.max_share*1024)
                     {new STAError(cur_client,246,"Share too large","SS");return;}
+                    if(!cur_client.reg.overrideshare)
                     if(cur_client.SS!=null)
                     if(Long.parseLong(cur_client.SS)<1024*Vars.min_share*1024)
                     {new STAError(cur_client,246,"Share too small "+Vars.min_share+" MiB required.","SS");return;}
+                    if(!cur_client.reg.overrideshare)
                     if(cur_client.SL!=null)
                     if(Integer.parseInt (cur_client.SL)<Vars.min_sl)
                     {new STAError(cur_client,246,"Too few slots, open up more.","SL");return;}
+                    if(!cur_client.reg.overrideshare)
                     if(cur_client.SL!=null)
                     if(Integer.parseInt (cur_client.SL)>Vars.max_sl)
                     {new STAError(cur_client,246,"Too many slots, close some.","SL");return;}
-                    
+                     if(!cur_client.reg.overridespam)
                     if(Integer.parseInt (cur_client.HN)>Vars.max_hubs_user)
                     {new STAError(cur_client,246,"Too many hubs open, close some.","HN");return;}
+                          if(!cur_client.reg.overridespam)
                     if(cur_client.HO!=null)
                     if(Integer.parseInt (cur_client.HO)>Vars.max_hubs_op)
                     {new STAError(cur_client,246,"You are operator on too many hubs. Sorry.","HO");return;}
+                          if(!cur_client.reg.overridespam)
                     if(cur_client.HR!=null)
                     if(Integer.parseInt (cur_client.HR)>Vars.max_hubs_reg)
                     {new STAError(cur_client,246,"You are regged on too many hubs. Sorry.","HR");return;}
@@ -542,7 +569,7 @@ public class Command
                        new STAError(cur_client,240,"Your client sent weird info, Protocol Error.");
                        return;
                     }
-               
+                
                if(cur_client.ID.equals (Vars.OpChatCid))
                {
                     new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
