@@ -37,7 +37,7 @@ public class ExtMass
     /** Creates a new instance of ExtMass */
     public ExtMass(ClientHandler cur_client, String recvbuf) 
     {
-            StringTokenizer ST=new StringTokenizer(recvbuf);
+            StringTokenizer ST=new StringTokenizer(recvbuf," ");
                 ST.nextToken ();
                 String aux="";
                 if(!(ST.hasMoreTokens ()))
@@ -63,8 +63,7 @@ public class ExtMass
                String extmass=ST.nextToken ();
                 while (ST.hasMoreTokens ())
                  aux=aux+ST.nextToken ()+" "; //the message to broadcast;
-               
-                
+                System.out.println(recvbuf);
                if(extmass.equalsIgnoreCase ("all")) 
                {
                ClientNod temp=ClientNod.FirstClient.NextClient;

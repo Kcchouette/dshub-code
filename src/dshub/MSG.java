@@ -65,7 +65,7 @@ public class MSG
                  
      }
                    //System.out.println (Issued_Command) ;
-                    StringTokenizer tok=new StringTokenizer(Issued_Command);
+                    StringTokenizer tok=new StringTokenizer(Issued_Command," ");
                     String aux=tok.nextToken ();
                     if(Issued_Command.charAt (0)=='H') //for hub only, special check
                    {
@@ -83,7 +83,7 @@ public class MSG
                    if(Issued_Command.charAt (0)=='D' || Issued_Command.charAt (0)=='E')
                        pmsid=tok.nextToken ();
                    String message=tok.nextToken ();
-                   
+                  
                     if(message.length ()>Vars.max_chat_msg )
                    {
                        if(
