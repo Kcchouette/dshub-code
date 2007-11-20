@@ -195,3 +195,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * fixed bug #1833656
            * added tables for bans GUI ( naccio );
            * hope that "same cid as" will never occur again;
+           * fixed some granting bugs;
+           * flyable can be set by any granter now;
+           * fixed multilined mass message;

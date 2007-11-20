@@ -85,12 +85,16 @@ public class GrantCmd
         String aux=what;
         String toSend="";
         toSend+="Editing Account: "+modnod.CID+"\n";
+        int x=1,y=1;
     while(aux!=null)    
     {
+        if(x<0 && y<0 && !aux.startsWith("+"))
+            break;//over
         what=aux;
         if(!what.startsWith("+") && !what.startsWith("-"))
         {
-            toSend+="Invalid argument supplied. Use with no arguments to see usage tipx.\n";
+            toSend+="Invalid argument supplied. Use with no arguments to see usage tip.\n";
+            cur_client.sendFromBot(toSend+"Done.") ;
                 return;
             
         }
@@ -99,8 +103,8 @@ public class GrantCmd
             attribute=true;
             
         what=what.substring(1);
-        int x=what.indexOf('+');
-        int y=what.indexOf('-');
+         x=what.indexOf('+');
+         y=what.indexOf('-');
         int z=0;
         if(x<0 && y<0)
             z=what.length();//over
@@ -124,7 +128,7 @@ public class GrantCmd
         {
                if(cur_client.reg.myMask.adc==false)
                 {
-                    toSend+="adc - can't grant a feature you don't possess.\n";
+                    toSend+=" adc - can't grant a feature you don't possess.\n";
                     continue;
                 }
               modnod.myMask.adc=attribute;
@@ -135,7 +139,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.about==false)
                 {
-                    toSend+="about - can't grant a feature you don't possess.\n";
+                    toSend+=" about - can't grant a feature you don't possess.\n";
                     continue;
                 }
               modnod.myMask.about=attribute;
@@ -145,7 +149,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.bancid==false)
                 {
-                    toSend+="bancid - can't grant a feature you don't possess.\n";
+                    toSend+=" bancid - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.bancid=attribute;
@@ -155,7 +159,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.banip==false)
                 {
-                    toSend+="banip - can't grant a feature you don't possess.\n";
+                    toSend+=" banip - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.banip=attribute;
@@ -165,7 +169,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.bannick==false)
                 {
-                    toSend+="bannick - can't grant a feature you don't possess.\n";
+                    toSend+=" bannick - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.bannick=attribute;
@@ -175,7 +179,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.cfg==false)
                 {
-                    toSend+="cfg - can't grant a feature you don't possess.\n";
+                    toSend+=" cfg - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.cfg=attribute;
@@ -185,7 +189,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.chatcontrol==false)
                 {
-                    toSend+="chatcontrol - can't grant a feature you don't possess.\n";
+                    toSend+=" chatcontrol - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.chatcontrol=attribute;
@@ -195,7 +199,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.cmdhistory==false)
                 {
-                    toSend+="cmdhistory - can't grant a feature you don't possess.\n";
+                    toSend+=" cmdhistory - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.cmdhistory=attribute;
@@ -205,7 +209,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.drop==false)
                 {
-                    toSend+="drop - can't grant a feature you don't possess.\n";
+                    toSend+=" drop - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.drop=attribute;
@@ -215,7 +219,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.grant==false)
                 {
-                    toSend+="grant - can't grant a feature you don't possess.\n";
+                    toSend+=" grant - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.grant=attribute;
@@ -225,7 +229,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.gui==false)
                 {
-                    toSend+="gui - can't grant a feature you don't possess.\n";
+                    toSend+=" gui - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.gui=attribute;
@@ -235,7 +239,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    toSend+="help - can't grant a feature you don't possess.\n";
+                    toSend+=" help - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.help=attribute;
@@ -245,7 +249,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.hideme==false)
                 {
-                    toSend+="hideme - can't grant a feature you don't possess.\n";
+                    toSend+=" hideme - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.hideme=attribute;
@@ -255,7 +259,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.history==false)
                 {
-                    toSend+="history - can't grant a feature you don't possess.\n";
+                    toSend+=" history - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.history=attribute;
@@ -265,7 +269,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.info==false)
                 {
-                    toSend+="info - can't grant a feature you don't possess.\n";
+                    toSend+=" info - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.info=attribute;
@@ -275,7 +279,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.kick==false)
                 {
-                    toSend+="kick - can't grant a feature you don't possess.\n";
+                    toSend+=" kick - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.kick=attribute;
@@ -285,7 +289,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    toSend+="help - can't grant a feature you don't possess.\n";
+                    toSend+=" help - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.help=attribute;
@@ -295,7 +299,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.listban==false)
                 {
-                    toSend+="listban - can't grant a feature you don't possess.\n";
+                    toSend+=" listban - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.listban=attribute;
@@ -305,7 +309,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.listreg==false)
                 {
-                    toSend+="listreg - can't grant a feature you don't possess.\n";
+                    toSend+=" listreg - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.listreg=attribute;
@@ -315,7 +319,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.mass==false)
                 {
-                    toSend+="mass - can't grant a feature you don't possess.\n";
+                    toSend+=" mass - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.mass=attribute;
@@ -325,7 +329,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.mynick==false)
                 {
-                    toSend+="mynick - can't grant a feature you don't possess.\n";
+                    toSend+=" mynick - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.mynick=attribute;
@@ -336,7 +340,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.password==false)
                 {
-                    toSend+="password - can't grant a feature you don't possess.\n";
+                    toSend+=" password - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.password=attribute;
@@ -346,7 +350,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.port==false)
                 {
-                    toSend+="port - can't grant a feature you don't possess.\n";
+                    toSend+=" port - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.port=attribute;
@@ -356,7 +360,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.quit==false)
                 {
-                    toSend+="quit - can't grant a feature you don't possess.\n";
+                    toSend+=" quit - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.quit=attribute;
@@ -366,7 +370,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.reg==false)
                 {
-                    toSend+="reg - can't grant a feature you don't possess.\n";
+                    toSend+=" reg - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.reg=attribute;
@@ -376,7 +380,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.rename==false)
                 {
-                    toSend+="rename - can't grant a feature you don't possess.\n";
+                    toSend+=" rename - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.rename=attribute;
@@ -386,7 +390,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.restart==false)
                 {
-                    toSend+="restart - can't grant a feature you don't possess.\n";
+                    toSend+=" restart - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.restart=attribute;
@@ -396,7 +400,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.stats==false)
                 {
-                   toSend+="stats - can't grant a feature you don't possess.\n";
+                   toSend+=" stats - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.stats=attribute;
@@ -406,7 +410,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.help==false)
                 {
-                    toSend+="help - can't grant a feature you don't possess.\n";
+                    toSend+=" help - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.help=attribute;
@@ -416,7 +420,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.topic==false)
                 {
-                    toSend+="topic - can't grant a feature you don't possess.\n";
+                    toSend+=" topic - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.topic=attribute;
@@ -426,7 +430,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.unban==false)
                 {
-                    toSend+="unban - can't grant a feature you don't possess.\n";
+                    toSend+=" unban - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.unban=attribute;
@@ -436,7 +440,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.ureg==false)
                 {
-                    toSend+="ureg - can't grant a feature you don't possess.\n";
+                    toSend+=" ureg - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.ureg=attribute;
@@ -446,7 +450,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.myMask.usercount==false)
                 {
-                    toSend+="usercount - can't grant a feature you don't possess.\n";
+                    toSend+=" usercount - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.myMask.usercount=attribute;
@@ -454,14 +458,10 @@ public class GrantCmd
              }
             else  if(what.equals("flyable"))
              {
-                if(cur_client.reg.accountflyable==false)
-                {
-                    toSend+="flyable - can't grant a feature you don't possess.\n";
-                    continue;
-                }
+                
                 if(!modnod.setFlyable (true))
                 {
-                   toSend+="Error: To be flyable, account needs a password.\n";
+                   toSend+=" Error: To be flyable, account needs a password.\n";
                    continue;
                 }
                modnod.accountflyable=attribute;
@@ -474,7 +474,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.key==false)
                 {
-                    toSend+="key - can't grant a feature you don't possess.\n";
+                    toSend+=" key - can't grant a feature you don't possess.\n";
                     continue;
                 }
                if(attribute)
@@ -532,7 +532,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.kickable==true)
                 {
-                    toSend+="kickable - can't grant a feature you don't possess.\n";
+                    toSend+=" kickable - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.kickable=attribute;
@@ -543,7 +543,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.nickprotected==false)
                 {
-                    toSend+="nickprotected - can't grant a feature you don't possess.\n";
+                    toSend+=" nickprotected - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.nickprotected=attribute;
@@ -554,7 +554,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.overridefull==false)
                 {
-                    toSend+="overridefull - can't grant a feature you don't possess.\n";
+                    toSend+=" overridefull - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.overridefull=attribute;
@@ -565,7 +565,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.overrideshare==false)
                 {
-                    toSend+="overrideshare - can't grant a feature you don't possess.\n";
+                    toSend+=" overrideshare - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.overrideshare=attribute;
@@ -576,7 +576,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.overridespam==false)
                 {
-                    toSend+="overridespam - can't grant a feature you don't possess.\n";
+                    toSend+=" overridespam - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.overridespam=attribute;
@@ -587,7 +587,7 @@ public class GrantCmd
              {
                 if(cur_client.reg.renameable==true)
                 {
-                    toSend+="renameable - can't grant a feature you don't possess.\n";
+                    toSend+=" renameable - can't grant a feature you don't possess.\n";
                     continue;
                 }
                modnod.renameable=attribute;
@@ -909,7 +909,7 @@ public GrantCmd(String cmd)
                 if(!modnod.setFlyable (true))
                 {
                    toSend+="Error: To be flyable, account needs a password.\n";
-                   return;
+                   continue;
                 }
                modnod.accountflyable=attribute;
                if(attribute=true)
