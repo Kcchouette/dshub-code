@@ -406,8 +406,10 @@ public class BanWordsList {
         int i;
         for (i=0;i<bannedWords.size();i++){
            
-                v+= "\""+((BannedWord) bannedWords.elementAt(i)).getWord()+"\"  flags "+((BannedWord) bannedWords.elementAt(i)).getFlags()+"    ID "+i+"\n";
-                        
+                v+= "\""+((BannedWord) bannedWords.elementAt(i)).getWord()+"\"  flags "+((BannedWord) bannedWords.elementAt(i)).getFlags();
+                if((((BannedWord) bannedWords.elementAt(i)).getFlags()&BannedWord.modified)!=0)
+                v+="  replacement "+((BannedWord) bannedWords.elementAt(i)).getReplacement();
+                        v+="    ID "+i+"\n";
             
            
         }
