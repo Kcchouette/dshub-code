@@ -206,3 +206,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created a release.sh release script;
            * removed some unnecesarry debug info;
            * testing on mina settings ( hope to avoid CID collision);
+           * tried to fix issue on INF rescaling;
+           * fixed issue when sending useless emsg from bot on login on registered;
