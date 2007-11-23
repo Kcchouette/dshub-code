@@ -130,10 +130,11 @@ public class Command
                       return ;
                     }
                     
-                    
+                   // cur_client.cur_inf="BINF ADDD EMtest NIbla";
+                    //Issued_Command="ADDD NImu DEblah";
                     if(cur_client.cur_inf!=null)
                     {
-                    StringTokenizer inftok=new StringTokenizer(cur_client.cur_inf.substring(5));
+                    StringTokenizer inftok=new StringTokenizer(cur_client.cur_inf.substring(9));
                     
                     while(inftok.hasMoreTokens())
                     {
@@ -149,7 +150,10 @@ public class Command
                       tok=new StringTokenizer(Issued_Command);
                     tok.nextToken();
                     }
-                    //System.out.println(Issued_Command);
+                    if(Issued_Command.endsWith(" "))
+                        Issued_Command=Issued_Command.substring(0,Issued_Command.length()-1);
+                    
+                   // System.out.println(Issued_Command);
                     while(tok.hasMoreElements())
                     {
                        

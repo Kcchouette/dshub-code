@@ -444,6 +444,8 @@ int kicked=0;
     
      public void sendFromBot(String text)
      {
+         if(text.equals(""))
+             return;
                    if(this.userok==1)
                    {
                         this.sendToClient ("EMSG DCBA "+this.SessionID+" "+ADC.retADCStr (text));
