@@ -114,7 +114,7 @@ public class MSG
     static final long allclient=7;
     static final long allword=56;*/
                      //  long what=56;
-                       System.out.println(what);
+                       //System.out.println(what);
                        boolean ret=false;
                        if(what % 2 ==1)
                        {

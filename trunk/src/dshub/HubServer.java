@@ -74,7 +74,7 @@ public class HubServer extends Thread
    static ServiceManager SM;
    
    IoAcceptor acceptor;
-   ExecutorService x,y;
+   ExecutorService x;//,y;
    InetSocketAddress address;
    Calendar MyCalendar;
     /** Creates a new instance of HubServer */
@@ -136,7 +136,7 @@ public class HubServer extends Thread
         
         
         x=Executors.newCachedThreadPool();
-        y=Executors.newCachedThreadPool();
+      //  y=Executors.newCachedThreadPool();
         acceptor = new SocketAcceptor(5, x);
         
         
@@ -151,8 +151,8 @@ public class HubServer extends Thread
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
         MyCalendar=Calendar.getInstance();
-       DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
-          filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
+      // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
+        //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
         cfg.getSessionConfig().setKeepAlive(true);
         
        
