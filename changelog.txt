@@ -204,3 +204,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * worked on #1835771 hope its solved now;
            * fixed some issues with private and notifying in GUI ( blame naccio );
            * created a release.sh release script;
+           * removed some unnecesarry debug info;
+           * testing on mina settings ( hope to avoid CID collision);
