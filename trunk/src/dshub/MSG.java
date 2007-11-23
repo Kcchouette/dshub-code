@@ -114,7 +114,8 @@ public class MSG
     static final long allclient=7;
     static final long allword=56;*/
                      //  long what=56;
-                       //System.out.println(what);
+                       System.out.println(what);
+                       boolean ret=false;
                        if(what % 2 ==1)
                        {
                            new STAError(cur_client,201,"You typed forbidden word.");
@@ -138,7 +139,7 @@ public class MSG
                         {
                            //System.out.println("flag contine 8");
                            ;
-                           return;
+                           ret=true;
                         } 
                        what/=2;
                         if(what % 2 ==1)
@@ -167,11 +168,12 @@ public class MSG
                            while(temp!=null)
                            {
                                if(temp.cur_client.reg.isreg )
-                                   temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{"+cur_client.NI+"}\\sused\\sforbidden\\sword\\s:\\s"+message+" "+"PMABCD");
+                                   temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{"+cur_client.NI+"}\\sused\\sforbidden\\sword\\s:\\s"+message+" PMABCD");
                                temp=temp.NextClient;
                            }
-                           //System.out.println("notying");
+                          // System.out.println("notying");
                        }
+                       if(ret)return;
                    }
                    }
                    String thissid=null;

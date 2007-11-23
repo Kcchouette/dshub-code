@@ -201,3 +201,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * chat control works for email description and nick now;
            * overrideshare and overridespam better for ops in restrictions;
            * chatcontrol list now prints the modification as well ( if it has one.. );
+           * worked on #1835771 hope its solved now;
+           * fixed some issues with private and notifying in GUI ( blame naccio );
+           * created a release.sh release script;
