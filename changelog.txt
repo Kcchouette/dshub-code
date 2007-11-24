@@ -208,3 +208,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * testing on mina settings ( hope to avoid CID collision);
            * tried to fix issue on INF rescaling;
            * fixed issue when sending useless emsg from bot on login on registered;
+           * GUI look and feel workaround;
+           * made all dialogs modal;
+           * changed button names in account editor;
