@@ -1685,10 +1685,10 @@
                         <Column editable="true" title="Reason" type="java.lang.String">
                           <Data value="bla bla bla"/>
                         </Column>
-                        <Column editable="true" title="Op" type="java.lang.String">
+                        <Column editable="true" title="Who banned" type="java.lang.String">
                           <Data value="[RO][B]adjsaiodjsa"/>
                         </Column>
-                        <Column editable="true" title="Time" type="java.lang.String">
+                        <Column editable="true" title="Time Issued" type="java.lang.String">
                           <Data value="21.10 10:56"/>
                         </Column>
                         <Column editable="true" title="Nick" type="java.lang.String">
@@ -1700,7 +1700,7 @@
                         <Column editable="true" title="CID" type="java.lang.String">
                           <Data value="JDISJADIJSAOIDJSAIOJDOSAJ"/>
                         </Column>
-                        <Column editable="true" title="Remaining" type="java.lang.Long">
+                        <Column editable="true" title="Remaining time" type="java.lang.Long">
                           <Data value="3600000"/>
                         </Column>
                       </Table>

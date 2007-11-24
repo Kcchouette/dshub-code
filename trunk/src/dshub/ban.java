@@ -71,4 +71,16 @@ public class ban implements Serializable
         timeofban=System.currentTimeMillis ();
     }
     
+    public String getTimeLeft()
+    {
+        long TL=System.currentTimeMillis ()-timeofban-time;
+               
+                if(time==-1)
+                    return "Permanent";
+                if(TL<0)
+                    return TimeConv.getStrTime(-TL);
+                
+                    return "Expired";
+    }
+    
 }
