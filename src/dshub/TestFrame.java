@@ -77,6 +77,7 @@ public class TestFrame extends javax.swing.JFrame {
         myIco=new ImageIcon(getClass().getResource("/dshub/ds.jpg"));
         //this.setIconImage(new ImageIcon("/dshub/ds.ico").getImage());
         this.setIconImage(myIco.getImage());
+          refreshInit();
     }
     
     public void refreshListaBanate(){
@@ -1401,7 +1402,7 @@ public class TestFrame extends javax.swing.JFrame {
             },
             new String []
             {
-                "Type", "Reason", "Op", "Time", "Nick", "IP", "CID", "Remaining"
+                "Type", "Reason", "Who banned", "Time Issued", "Nick", "IP", "CID", "Remaining time"
             }
         )
         {
@@ -3924,49 +3925,13 @@ public class TestFrame extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_jPanel6MouseMoved
 // TODO add your handling code here:
         
-        
+       // refreshAll();
     }//GEN-LAST:event_jPanel6MouseMoved
     
-    private void jPanel6MouseClicked (java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseClicked
-    {//GEN-HEADEREND:event_jPanel6MouseClicked
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_jPanel6MouseClicked
-    
-    private void jPanel6FocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusLost
-    {//GEN-HEADEREND:event_jPanel6FocusLost
-// TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6FocusLost
-    
-    private void jPanel6FocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusGained
-    {//GEN-HEADEREND:event_jPanel6FocusGained
-        
-    }//GEN-LAST:event_jPanel6FocusGained
-    
-    public void resizeBanTable(int ty,int r,int o,int t,int n, int i,int c, int re){
-        // how many parts represents each column
-        // preffered call : 
-        int suma=ty+r+o+t+n+i+c+re;
-        DefaultTableModel BanModel=(DefaultTableModel) BanTable.getModel();
-        BanTable.setAutoResizeMode(BanTable.AUTO_RESIZE_OFF);
-        BanTable.getColumnModel().getColumn(0).setPreferredWidth(BanTable.getWidth()*ty/suma);
-        BanTable.getColumnModel().getColumn(1).setPreferredWidth(BanTable.getWidth()*r/suma);
-        BanTable.getColumnModel().getColumn(2).setPreferredWidth(BanTable.getWidth()*o/suma);
-        BanTable.getColumnModel().getColumn(3).setPreferredWidth(BanTable.getWidth()*t/suma);
-        BanTable.getColumnModel().getColumn(4).setPreferredWidth(BanTable.getWidth()*n/suma);
-        BanTable.getColumnModel().getColumn(5).setPreferredWidth(BanTable.getWidth()*i/suma);
-        BanTable.getColumnModel().getColumn(6).setPreferredWidth(BanTable.getWidth()*c/suma);
-        BanTable.getColumnModel().getColumn(7).setPreferredWidth(BanTable.getWidth()*re/suma);
-        
-        
-        
-    }
-    
-    private void formWindowGainedFocus (java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowGainedFocus
-    {//GEN-HEADEREND:event_formWindowGainedFocus
-        
-        resizeBanTable(1,7,6,5,6,7,10,4);
-        
+    public void refreshInit()
+    {
+        resizeBanTable(2,7,6,5,6,7,10,4);
+        insertBans();
         /**setting window name*/
         //System.out.println("gay");
         
@@ -3975,13 +3940,19 @@ public class TestFrame extends javax.swing.JFrame {
         //addImage(jPanel1, "ds.bmp");
         /**showing accounts*/
         
-        DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
+        
         AccountTable.setAutoResizeMode(AccountTable.AUTO_RESIZE_OFF);
         AccountTable.getColumnModel().getColumn(0).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(1).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(2).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(3).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(4).setPreferredWidth(AccountTable.getWidth()/5);
+    }
+    public void refreshAll()
+    {
+        refreshInit();
+        
+        DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
         nod n=reg_config.First;
         int regcount=0;
         while(n!=null) {
@@ -4362,6 +4333,91 @@ public class TestFrame extends javax.swing.JFrame {
         
         
         
+    }
+    private void jPanel6MouseClicked (java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseClicked
+    {//GEN-HEADEREND:event_jPanel6MouseClicked
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel6MouseClicked
+    
+    private void jPanel6FocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusLost
+    {//GEN-HEADEREND:event_jPanel6FocusLost
+// TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6FocusLost
+    
+    private void jPanel6FocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_jPanel6FocusGained
+    {//GEN-HEADEREND:event_jPanel6FocusGained
+        
+    }//GEN-LAST:event_jPanel6FocusGained
+    
+    public void resizeBanTable(int ty,int r,int o,int t,int n, int i,int c, int re){
+        // how many parts represents each column
+        // preffered call : 
+        int suma=ty+r+o+t+n+i+c+re;
+        DefaultTableModel BanModel=(DefaultTableModel) BanTable.getModel();
+        BanTable.setAutoResizeMode(BanTable.AUTO_RESIZE_OFF);
+        BanTable.getColumnModel().getColumn(0).setPreferredWidth(BanTable.getWidth()*ty/suma);
+        BanTable.getColumnModel().getColumn(1).setPreferredWidth(BanTable.getWidth()*r/suma);
+        BanTable.getColumnModel().getColumn(2).setPreferredWidth(BanTable.getWidth()*o/suma);
+        BanTable.getColumnModel().getColumn(3).setPreferredWidth(BanTable.getWidth()*t/suma);
+        BanTable.getColumnModel().getColumn(4).setPreferredWidth(BanTable.getWidth()*n/suma);
+        BanTable.getColumnModel().getColumn(5).setPreferredWidth(BanTable.getWidth()*i/suma);
+        BanTable.getColumnModel().getColumn(6).setPreferredWidth(BanTable.getWidth()*c/suma);
+        BanTable.getColumnModel().getColumn(7).setPreferredWidth(BanTable.getWidth()*re/suma);
+        
+        
+        
+    }
+    
+    public void insertBans()
+    {
+        ban n=BanList.First;
+        int bancount=0;
+        while(n!=null) {
+            bancount++;
+            n=n.Next;
+        }
+        /** 0 -- no ban
+     * 1 -- nick ban
+     * 2 -- ip ban
+     * 3 -- cid ban
+     */
+        DefaultTableModel BanModel=(DefaultTableModel) BanTable.getModel();
+        if(bancount!=BanModel.getRowCount())
+        {
+            BanModel.setRowCount(0) ;
+            n=BanList.First;
+            while(n!=null) {
+                
+                Date d=new Date(n.timeofban);
+               
+               String type;
+                switch(n.bantype)
+                {
+                    case 1:
+                        type="Nick";
+                        break;
+                    case 2:
+                        type="IP";
+                        break;
+                    default:
+                        type="CID";
+                }
+                
+                
+                BanModel.addRow(new Object[]
+                {
+                    type,ADC.retNormStr(n.banreason),n.banop,d.toString(),n.nick,n.ip,n.cid,n.getTimeLeft()
+                });
+                n=n.Next;
+            }
+        }
+    }
+    
+    private void formWindowGainedFocus (java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowGainedFocus
+    {//GEN-HEADEREND:event_formWindowGainedFocus
+refreshAll();        
+       
         
     }//GEN-LAST:event_formWindowGainedFocus
     
