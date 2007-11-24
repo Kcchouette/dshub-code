@@ -49,6 +49,8 @@ public class AccountEditer extends javax.swing.JFrame
                // new AccountEditer ().setVisible (true);
             }
         });*/
+        
+        
     }
     
     /** This method is called from within the constructor to
@@ -156,7 +158,7 @@ public class AccountEditer extends javax.swing.JFrame
             }
         });
 
-        jButton1.setText("Save and Close");
+        jButton1.setText("Save and Return");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -607,7 +609,7 @@ public class AccountEditer extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Commands", jPanel3);
 
-        jButton2.setText("Discard");
+        jButton2.setText("Discard and return");
         jButton2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -620,18 +622,16 @@ public class AccountEditer extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(275, Short.MAX_VALUE)
-                .add(jButton1)
-                .add(272, 272, 272))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .add(jButton2)
-                .add(294, 294, 294))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 636, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(254, 254, 254)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -649,7 +649,7 @@ public class AccountEditer extends javax.swing.JFrame
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-        JDialog bla =new JDialog();
+        JDialog bla =new JDialog(this, true);
         JPanel jp=new JPanel();
         
         bla.setSize (800,600);
@@ -697,6 +697,7 @@ public class AccountEditer extends javax.swing.JFrame
     private void jButton2ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
 this.setVisible (false);
+Main.GUI.setVisible(true);
 this.dispose ();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1129,6 +1130,7 @@ if(curAcc.myMask.adc)
         Main.Server.rewriteregs ();
         
 this.setVisible (false);
+Main.GUI.setVisible(true);
 this.dispose ();
     }//GEN-LAST:event_jButton1ActionPerformed
     

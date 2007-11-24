@@ -384,6 +384,7 @@ public class Main extends Thread
         */
     try
     {
+        javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
           GUI=new TestFrame();
            
     }
