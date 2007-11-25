@@ -212,3 +212,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * made all dialogs modal;
            * changed button names in account editor;
            * Bans GUI work, all bans should be updated to GUI now;
+           * fixed  #1835771 ;
