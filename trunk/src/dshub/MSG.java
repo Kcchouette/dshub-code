@@ -116,9 +116,13 @@ public class MSG
                      //  long what=56;
                        //System.out.println(what);
                        boolean ret=false;
+                       boolean kick=false;
                        if(what % 2 ==1)
                        {
-                           new STAError(cur_client,201,"You typed forbidden word.");
+                          
+                           ret=true;
+                           kick=true;
+                           
                           // System.out.println("flag contine 1");
                            
                        }
@@ -173,7 +177,10 @@ public class MSG
                            }
                           // System.out.println("notying");
                        }
-                       if(ret)return;
+                       if(kick)
+                           new STAError(cur_client,201,"You typed forbidden word.");
+                       if(ret)
+                           return;
                    }
                    }
                    String thissid=null;
