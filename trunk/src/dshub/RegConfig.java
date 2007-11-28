@@ -47,6 +47,7 @@ import java.util.Date;
         boolean overridefull;
         boolean kickable,renameable;
         boolean accountflyable;
+        boolean opchataccess;
         
         CommandMask myMask;
         HelpFile myHelp;
@@ -118,6 +119,10 @@ import java.util.Date;
             Help+="+adc";
         else
             Help+="-adc";
+        if(curAcc.myMask.backup)
+            Help+="+backup";
+        else
+            Help+="-backup";
         if(curAcc.myMask.bancid)
             Help+="+bancid";
         else
@@ -251,6 +256,10 @@ import java.util.Date;
             Help+="+nickprotected";
         else
             Help+="-nickprotected";
+        if(curAcc.opchataccess)
+            Help+="+opchataccess";
+        else
+            Help+="-opchataccess";
         if(curAcc.overridefull)
             Help+="+overridefull";
         else

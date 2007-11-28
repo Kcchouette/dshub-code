@@ -216,3 +216,6 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * updated show up message when profile is changed;
            * created the command +myinf for all users ( regged or not);
            * created a file for the backup command;
+           * solved minor bug when chatcontrol not present in grant all and help message;
+           * created framework for opchat access and backup attribute;
+           * created checkboxes for the two, and granters;

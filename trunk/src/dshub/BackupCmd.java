@@ -42,8 +42,9 @@ public class BackupCmd
             String Help="\nThe backup command:\n"+
                     "Usage backup what [where]"+
                     "\n      \"what\" is one of {all,config,bans,regs} and represents what to backup."+
-            "\n      \"where\" can be specified on for {config,bans,regs} and is a filename for where to save backup. If no \"where\" specified, files are saved as"+
-                    "name.bak , also on specifier all, the same name covention used.";
+            "\n      \"where\" can be specified only for {config,bans,regs} and is a filename for where to save backup. If no \"where\" specified, files are saved as "+
+                    "name.bak ; also on specifier all, the same name covention used."+
+                    "\nExample: !backup config conf.saved";
             
             cur_client.sendFromBot(Help);
             return;

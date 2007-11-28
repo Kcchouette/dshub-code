@@ -45,7 +45,7 @@ public class GrantCmd
                     "Usage grant user/CID [[+-]attribute1]*"+
                     "\n      +attribute adds the atribute to the registered user, - removes it."+
             "\n      [+-]all adds all possible attributes."+
-            "\n    List of attributes: about adc bancid banip bannick cfg cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected overridefull overrideshare overridespam renameable";
+            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected opchataccess overridefull overrideshare overridespam renameable";
             cur_client.sendFromBot(Help);
             return;
             }
@@ -148,6 +148,17 @@ public class GrantCmd
               modnod.myMask.about=attribute;
               toSend+=" about modified to "+attribute+"\n";
                UpdatedInfo+=" about modified to "+attribute+"\n";
+             }
+            else  if(what.equals("backup"))
+             {
+                if(cur_client.reg.myMask.backup==false)
+                {
+                    toSend+=" backup - can't grant a feature you don't possess.\n";
+                    continue;
+                }
+              modnod.myMask.backup=attribute;
+              toSend+=" backup modified to "+attribute+"\n";
+               UpdatedInfo+=" backup modified to "+attribute+"\n";
              }
             else  if(what.equals("bancid"))
              {
@@ -579,6 +590,18 @@ public class GrantCmd
               toSend+=" nickprotected modified to "+attribute+"\n";
               UpdatedInfo+=" "+what+" modified to "+attribute+"\n";
              }
+             else  if(what.equals("opchataccess"))
+             {
+                if(cur_client.reg.opchataccess==false)
+                {
+                    toSend+=" opchataccess - can't grant a feature you don't possess.\n";
+                    continue;
+                }
+               modnod.nickprotected=attribute;
+               
+              toSend+=" opchataccess modified to "+attribute+"\n";
+              UpdatedInfo+=" "+what+" modified to "+attribute+"\n";
+             }
             else  if(what.equals("overridefull"))
              {
                 if(cur_client.reg.overridefull==false)
@@ -631,8 +654,8 @@ public class GrantCmd
              {
                 
                
-               aux="+about+adc+bancid+banip+bannick+cfg+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               +"-renameable+key-kickable+overrideshare+overridespam+overridefull+nickprotected";
+               aux="+about+adc++backup+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               +"-renameable+key-kickable+nickprotected+opchataccess+overrideshare+overridespam+overridefull";
               //toSend+=" All granted.\n";
              }
             else
@@ -662,7 +685,7 @@ public GrantCmd(String cmd)
                     "Usage grant user/CID [[+-]attribute1]*"+
                     "\n      +attribute adds the atribute to the registered user, - removes it."+
             "\n      [+-]all adds all possible attributes."+
-            "\n    List of attributes: about adc bancid banip bannick cfg cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected overridefull overrideshare overridespam renameable";
+            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password port quit reg rename restart stats topic unban ureg usercount flyable key kickable nickprotected opchataccess overridefull overrideshare overridespam renameable";
             System.out.println(Help);
             return;
             }
@@ -750,6 +773,12 @@ public GrantCmd(String cmd)
                 
               modnod.myMask.about=attribute;
               toSend+=" about modified to "+attribute+"\n";
+             }
+             else  if(what.equals("backup"))
+             {
+                
+              modnod.myMask.about=attribute;
+              toSend+=" backup modified to "+attribute+"\n";
              }
             else  if(what.equals("bancid"))
              {
@@ -1020,6 +1049,13 @@ public GrantCmd(String cmd)
                
               toSend+=" nickprotected modified to "+attribute+"\n";
              }
+             else  if(what.equals("opchataccess"))
+             {
+               
+               modnod.nickprotected=attribute;
+               
+              toSend+=" nickprotected modified to "+attribute+"\n";
+             }
             else  if(what.equals("overridefull"))
              {
                 
@@ -1054,7 +1090,7 @@ public GrantCmd(String cmd)
               // modnod.renameable=modnod.kickable=modnod.accountflyable=false;
               // modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
                aux="+about+adc+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               +"-renameable+key-kickable+overrideshare+overridespam+overridefull+nickprotected";
+               +"-renameable+key-kickable+opchataccess+overrideshare+overridespam+overridefull+nickprotected";
              }
             else
                 toSend+=" unknown feature \n";
