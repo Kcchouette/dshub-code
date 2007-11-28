@@ -229,7 +229,7 @@ public class MSG
                            return;
                        }
                        // ok now lets check that the chat is a command....
-                       if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+') //ok.. command mode.
+                       if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+' && !( message.substring(1,message.length()).equalsIgnoreCase("myinf"))) //ok.. command mode.
                        {
                            
                            if(message.toLowerCase().startsWith("!adc") || message.toLowerCase().startsWith("+adc"))//adc adv config panel
@@ -250,6 +250,19 @@ public class MSG
                                 new CommandParser(cur_client,message);
                                 
                            }
+                       }
+                       else if(message.equalsIgnoreCase("+myinf")|| message.equalsIgnoreCase("!myinf"))
+                       {
+                           String toSend;
+                           
+                               toSend="[Your information: ]\n Nick: "+cur_client.NI+"\n SID: {"+cur_client.SessionID+
+                                       "}\n CID: {"+cur_client.ID+"}\n PID: {"+cur_client.PD+"}\n IP address: "+cur_client.RealIP
+                                       ;
+                               if(!cur_client.reg.isreg) 
+                                   toSend+="\nRegular user.";
+                               else
+                                   toSend+=cur_client.reg.getRegInfo();
+                           cur_client.sendFromBot(toSend);
                        }
                        else
                        

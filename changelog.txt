@@ -214,3 +214,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * Bans GUI work, all bans should be updated to GUI now;
            * fixed  #1835771 ;
            * updated show up message when profile is changed;
+           * created the command +myinf for all users ( regged or not);
+           * created a file for the backup command;

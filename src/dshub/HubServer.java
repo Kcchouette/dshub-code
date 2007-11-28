@@ -235,11 +235,14 @@ public class HubServer extends Thread
 
         
     }
-    
-    public static void  rewriteconfig()
+    public static void rewriteconfig()
+    {
+        rewriteconfig("config");
+    }
+    public static void  rewriteconfig(String configName)
     {
         File MainConfigFile;
-        MainConfigFile=new File(Main.myPath+"config");
+        MainConfigFile=new File(Main.myPath+configName);
       
          try 
             {
@@ -256,10 +259,14 @@ public class HubServer extends Thread
                 Main.PopMsg(e.toString());
             }
     }
-    public static void  rewritebans()
+    public static void rewritebans()
+    {
+        rewritebans("banlist");
+    }
+    public static void  rewritebans(String banlistName)
     {
         File MainBanFile;
-        MainBanFile=new File(Main.myPath+"banlist");
+        MainBanFile=new File(Main.myPath+banlistName);
       
          try 
             {
@@ -276,11 +283,16 @@ public class HubServer extends Thread
                 Main.PopMsg(e.toString());
             }
     }
-    public static void  rewriteregs()
+    
+    public static void rewriteregs()
+    {
+        rewriteregs("regs");
+    }
+    public static void  rewriteregs(String regName)
     {
         File MainRegFile;
 
-        MainRegFile=new File(Main.myPath+"regs");
+        MainRegFile=new File(Main.myPath+regName);
          try 
             {
            
