@@ -121,7 +121,7 @@ public class CommandParser
                 Main.Exit();
         }
            
-       
+        
        else if(recvbuf.toLowerCase ().equals ("restart"))
             {
                     if(!cur_client.reg.myMask.restart)
@@ -177,6 +177,15 @@ public class CommandParser
                  new GrantCmd(cur_client,recvbuf);
                
         } 
+         else if(recvbuf.toLowerCase().startsWith("backup"))
+        {
+                     if(!cur_client.reg.myMask.backup)
+                    {
+                        cur_client.sendFromBot("Access denied.");
+                        return;
+                    }
+                 new BackupCmd(cur_client,recvbuf);
+        }
         else if(recvbuf.toLowerCase ().equals("gui"))
         {
                     if(!cur_client.reg.myMask.gui)
