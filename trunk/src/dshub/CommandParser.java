@@ -549,7 +549,10 @@ public class CommandParser
                     }
                 new ExtInfo(cur_client,recvbuf);
         }
-        
+        else if(recvbuf.toLowerCase().startsWith("hubtracker"))
+        {
+                    new HubtrackerCmd();
+        }
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
                      if(!cur_client.reg.myMask.mass)

@@ -680,6 +680,76 @@ public class Main extends Thread
                         new Broadcast ("IINF NI"+Vars.HubName);
                         
                 }
+                
+                else if(aux.toLowerCase ().equals ("hub_host"))
+                {
+                     //  String ucsy=Vars.HubName;
+                       String new_name=ST.nextToken ();
+                      // while(ST.hasMoreTokens ())
+                       //    new_name=new_name+" "+ST.nextToken ();
+                        
+                       
+                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
+                       Vector localAddies=new Vector();
+                       try{
+Enumeration<NetworkInterface> eNI =
+NetworkInterface.getNetworkInterfaces();
+
+NetworkInterface cNI;
+Enumeration<InetAddress> eIA;
+InetAddress cIA;
+
+for(;eNI.hasMoreElements();){
+cNI = eNI.nextElement();
+eIA = cNI.getInetAddresses();
+
+for(;eIA.hasMoreElements();){
+cIA = eIA.nextElement();
+localAddies.add(cIA.getHostAddress());
+//System.out.println("IP Local = " + cIA.getHostAddress());
+}
+}
+}
+catch(SocketException eS)
+{
+System.out.println("Hub_host cannot be resolved or machine hostname badly set.\n");
+continue;
+} 
+                       if(myHost.isUnresolved())
+                       {
+                        System.out.printf("Hub_host cannot be resolved or DNS server failure.\n");
+                       continue;
+                       }
+                       try
+                       {
+                       
+                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
+                        boolean ok=false;
+                        Iterator myIT=localAddies.iterator();
+                        while(myIT.hasNext())
+                        
+                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
+                                     ok=true;
+                       
+                        if(!ok)
+                        {
+                            System.out.printf("The hub_host you provided does not point to one of your eth interfaces. "+
+                                    "Reasons: DNS not correctly set; or you dont have a external real IP (if you are creating"+"" +
+                                    " LAN hub, use your LAN local IP as a hub_host).\n");
+                       return;
+                        }
+                        System.out.printf("Hub_host changed from \""+
+                                Vars.Hub_Host+"\" to \""+new_name+"\".\n");
+                        
+                        Vars.Hub_Host=new_name;
+                        Server.rewriteconfig();
+                       }
+                       catch (UnknownHostException uhe)
+                       {
+                           System.out.println("Hub_host cannot be resolved or DNS server failure.\n");
+                       }
+                        
+                }
                 else if(aux.toLowerCase().equals ("max_ni"))
                 {
                     aux=ST.nextToken ();
@@ -1276,6 +1346,7 @@ public class Main extends Thread
                     System.out.println("Cfg Variables list: \n"+
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
+                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
                             +          "   max_ni                  "  +Vars.max_ni+" -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+" -- Minimum nick size, integer.\n"
                             +          "   max_de                  "  +Vars.max_de+" -- Maximum description size, integer.\n"
