@@ -239,7 +239,7 @@ public class HubServer extends Thread
     {
         rewriteconfig("config");
     }
-    public static void  rewriteconfig(String configName)
+    public static boolean  rewriteconfig(String configName)
     {
         File MainConfigFile;
         MainConfigFile=new File(Main.myPath+configName);
@@ -257,13 +257,15 @@ public class HubServer extends Thread
             catch (IOException e)
             {
                 Main.PopMsg(e.toString());
+                return false;
             }
+        return true;
     }
     public static void rewritebans()
     {
         rewritebans("banlist");
     }
-    public static void  rewritebans(String banlistName)
+    public static boolean  rewritebans(String banlistName)
     {
         File MainBanFile;
         MainBanFile=new File(Main.myPath+banlistName);
@@ -281,14 +283,16 @@ public class HubServer extends Thread
             catch (IOException e)
             {
                 Main.PopMsg(e.toString());
+                return false;
             }
+        return true;
     }
     
     public static void rewriteregs()
     {
         rewriteregs("regs");
     }
-    public static void  rewriteregs(String regName)
+    public static boolean  rewriteregs(String regName)
     {
         File MainRegFile;
 
@@ -307,7 +311,9 @@ public class HubServer extends Thread
             catch (IOException e)
             {
                 Main.PopMsg(e.toString());
+                return false;
             }
+        return true;
     }
      public  void reloadconfig() 
     {
