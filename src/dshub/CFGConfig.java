@@ -653,6 +653,7 @@ public class CFGConfig
                     String blah="Cfg Variables list: \n"+
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
+                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
                             +          "   max_ni                  "  +Vars.max_ni+"        -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+"         -- Minimum nick size, integer.\n"
                             +          "   max_de                  "  +Vars.max_de+"        -- Maximum description size, integer.\n"

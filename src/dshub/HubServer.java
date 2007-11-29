@@ -365,6 +365,8 @@ public class HubServer extends Thread
 
      Vars.OpChatCid=vars.OpChatCid;
      Vars.SecurityCid=vars.SecurityCid;
+     
+     Vars.Hub_Host=vars.Hub_Host;
       
       Vars.chat_interval=vars.chat_interval;
 

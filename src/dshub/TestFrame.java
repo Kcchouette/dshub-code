@@ -242,6 +242,8 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         botdescfield = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
+        hubhostfield = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         fieldtimeout = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -678,6 +680,9 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel49.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel49.setText("Hub security bot description.");
 
+        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel50.setText("Hub host ( address ) ( enter your DNS here )");
+
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -692,10 +697,13 @@ public class TestFrame extends javax.swing.JFrame {
                             .add(portfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(regonlycheck)
                             .add(savelogscheck)
-                            .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, hubhostfield)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, botdescfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .add(18, 18, 18)
                         .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel50)
                             .add(jLabel49)
                             .add(jLabel48)
                             .add(jLabel19)
@@ -733,7 +741,11 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel49))
-                .add(98, 98, 98)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel50))
+                .add(72, 72, 72)
                 .add(jButton7)
                 .add(68, 68, 68))
         );
@@ -4527,6 +4539,7 @@ refreshAll();
     private javax.swing.JTextField chatintervalfield;
     private javax.swing.JTextField fieldtimeout;
     private javax.swing.JTextField historylinesfield;
+    private javax.swing.JTextField hubhostfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -4604,6 +4617,7 @@ refreshAll();
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;

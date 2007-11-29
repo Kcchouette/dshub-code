@@ -221,3 +221,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created checkboxes for the two, and granters;
            * finished the backup command, need to add some backup buttons to GUI now;
            * opchat access should work now;
+           * created a new variable hub_host for the hub host address;
+           * added it to console configuration;
+           * created 2 new files for hubtracker integration module;
+           * preliminary created hubtracker command for hubtracker communication;

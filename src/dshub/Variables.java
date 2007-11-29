@@ -63,6 +63,8 @@ public class Variables implements Serializable
       String SecurityCid;
       String OpChatCid;
       
+      String Hub_Host;
+      
      int max_ni;
      int min_ni;
      int max_de;
@@ -185,6 +187,8 @@ public class Variables implements Serializable
       SecurityCid=Vars.SecurityCid;
       OpChatCid=Vars.OpChatCid;
       
+      Hub_Host=Vars.Hub_Host;
+      
 
       reg_only=Vars.reg_only;
       nick_chars=Vars.nick_chars;
@@ -302,6 +306,8 @@ public class Variables implements Serializable
     
     static String SecurityCid;
     static String OpChatCid;
+    
+    static String Hub_Host="127.0.0.1";
     static
     {
         Tiger myTiger = new Tiger();
