@@ -460,6 +460,20 @@ int kicked=0;
      }
    
      
+     public void putOpchat(boolean x)
+     {
+         if(x==true)
+         {
+             if(this.reg.isreg && this.reg.opchataccess==true)
+                 this.sendToClient("BINF ABCD ID"+Vars.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)+" BO1 OP1 DE"+ADC.retADCStr(Vars.Opchat_desc));
+         }
+         else
+         {
+             if(this.reg.isreg && this.reg.opchataccess==true)
+                  this.sendToClient("IQUI ABCD");
+         }
+     }
+     
      
     
 

@@ -220,3 +220,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created framework for opchat access and backup attribute;
            * created checkboxes for the two, and granters;
            * finished the backup command, need to add some backup buttons to GUI now;
+           * opchat access should work now;

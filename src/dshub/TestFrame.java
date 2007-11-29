@@ -3298,7 +3298,7 @@ public class TestFrame extends javax.swing.JFrame {
                 }
                 if(temp!=null) {
                     temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                    temp.cur_client.sendToClient("IQUI ABCD");
+                    temp.cur_client.putOpchat(false);
                     if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
                     if(temp.cur_client.reg.key)
                         temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);

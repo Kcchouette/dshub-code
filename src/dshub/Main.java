@@ -216,7 +216,7 @@ public class Main extends Thread
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
@@ -263,7 +263,7 @@ public class Main extends Thread
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
@@ -316,7 +316,7 @@ public class Main extends Thread
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
@@ -578,7 +578,7 @@ public class Main extends Thread
                      if(temp!=null)
                     {
                     temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.putOpchat(false);
                             temp.cur_client.OP="";
                             temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
                             temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
@@ -609,7 +609,7 @@ public class Main extends Thread
                             reg_config.unreg(temp.cur_client.ID);
                            System.out.println ("User "+temp.cur_client.NI+" deleted.");
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
-                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.putOpchat(false);
                             temp.cur_client.OP="";
                             temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
                             temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);

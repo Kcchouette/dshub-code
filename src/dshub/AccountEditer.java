@@ -139,7 +139,7 @@ public class AccountEditer extends javax.swing.JFrame
         backupcheck = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Edit Account");
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter()
@@ -373,6 +373,13 @@ public class AccountEditer extends javax.swing.JFrame
         opchatcheck.setText("Operator Chat Access");
         opchatcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         opchatcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        opchatcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                opchatcheckActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -386,9 +393,7 @@ public class AccountEditer extends javax.swing.JFrame
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(checkflyable)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel14)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel15))
+                                .add(jLabel14))
                             .add(overridespam)
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -407,14 +412,17 @@ public class AccountEditer extends javax.swing.JFrame
                                     .add(checkhidden)
                                     .add(passsetcheck)
                                     .add(sharecheck)))
-                            .add(checknickprotect)
-                            .add(opchatcheck)))
+                            .add(opchatcheck)
+                            .add(checknickprotect)))
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(126, 126, 126)
+                        .add(103, 103, 103)
+                        .add(jLabel15))
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(67, 67, 67)
                         .add(jLabel16)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel17)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -439,17 +447,18 @@ public class AccountEditer extends javax.swing.JFrame
                 .add(26, 26, 26)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(checkflyable)
-                    .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel15))
+                    .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel15)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel16)
                     .add(jLabel17))
-                .add(14, 14, 14)
+                .add(21, 21, 21)
                 .add(checknickprotect)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(opchatcheck)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Properties", jPanel2);
 
@@ -669,6 +678,12 @@ public class AccountEditer extends javax.swing.JFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opchatcheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_opchatcheckActionPerformed
+    {//GEN-HEADEREND:event_opchatcheckActionPerformed
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_opchatcheckActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
@@ -1163,9 +1178,48 @@ if(curAcc.myMask.adc)
         else
             curAcc.nickprotected=false;
         if(opchatcheck.isSelected ())
-          curAcc.opchataccess=true;
+        {
+          if(curAcc.opchataccess==false)
+          {
+            curAcc.opchataccess=true;
+          ClientNod temp=ClientNod.FirstClient.NextClient;
+            while(temp!=null)
+            {
+                if(temp.cur_client.userok==1)
+                if(temp.cur_client.ID.equals (curAcc.CID))
+                    break;
+                temp=temp.NextClient;
+            }
+            if(temp!=null)//if registered guy is online
+            {
+              temp.cur_client.putOpchat(true);
+            }
+          
+          
+          }
+        }
         else
-            curAcc.opchataccess=false;
+        {
+            
+            if(curAcc.opchataccess==true)
+          {
+                
+          ClientNod temp=ClientNod.FirstClient.NextClient;
+            while(temp!=null)
+            {
+                if(temp.cur_client.userok==1)
+                if(temp.cur_client.ID.equals (curAcc.CID))
+                    break;
+                temp=temp.NextClient;
+            }
+            if(temp!=null)//if registered guy is online
+            {
+              temp.cur_client.putOpchat(false);
+            }
+          curAcc.opchataccess=false;
+          
+          }
+        }
         
         Main.Server.rewriteregs ();
         

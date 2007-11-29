@@ -82,11 +82,10 @@ public class Command
              if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
-           inf=inf+"BINF ABCD ID"+Vars.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)
-                 +" BO1 OP1 DE"+ADC.retNormStr(Vars.Opchat_desc);
+           
                  inf+="\nBINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
-                 
+                cur_client.putOpchat(true) ;
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);
                 
