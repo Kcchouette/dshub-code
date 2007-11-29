@@ -597,7 +597,43 @@ public class GrantCmd
                     toSend+=" opchataccess - can't grant a feature you don't possess.\n";
                     continue;
                 }
-               modnod.nickprotected=attribute;
+                if(attribute)
+                 {
+                        modnod.opchataccess=true; 
+            
+                        ClientNod tempx=ClientNod.FirstClient.NextClient;
+                         while(tempx!=null)
+                        {
+                          if(tempx.cur_client.userok==1)
+                                if(tempx.cur_client.ID.equals (modnod.CID))
+                                  break;
+                        tempx=tempx.NextClient;
+                        }
+                        if(tempx!=null)//if registered guy is online
+                        {
+                                 tempx.cur_client.putOpchat(true);
+                         }
+                        
+                   
+                }
+                 else
+                {
+                 
+            
+                ClientNod tempx=ClientNod.FirstClient.NextClient;
+                 while(tempx!=null)
+                {
+                        if(tempx.cur_client.userok==1)
+                             if(tempx.cur_client.ID.equals (modnod.CID))
+                             break;
+                        tempx=tempx.NextClient;
+                 }
+                 if(tempx!=null)//if registered guy is online
+                    {
+                       tempx.cur_client.putOpchat(false);
+                    }
+                modnod.opchataccess=attribute;
+                 }
                
               toSend+=" opchataccess modified to "+attribute+"\n";
               UpdatedInfo+=" "+what+" modified to "+attribute+"\n";

@@ -323,7 +323,7 @@ public class CommandParser
                     if(temp!=null)
                     {
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
-                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.putOpchat(false);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
@@ -362,7 +362,7 @@ public class CommandParser
                             Main.PopMsg (cur_client.NI+" deleted the reg "+temp.cur_client.ID);
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" deleted.");
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
-                            temp.cur_client.sendToClient ("IQUI ABCD");
+                            temp.cur_client.putOpchat(false);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
@@ -419,7 +419,7 @@ public class CommandParser
                             temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
@@ -460,7 +460,7 @@ public class CommandParser
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
@@ -505,7 +505,7 @@ public class CommandParser
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
-                            temp.cur_client.sendToClient ("BINF ABCD ID"+Vars.OpChatCid+" NI"+Vars.Opchat_name+" BO1 OP1 DE"+Vars.Opchat_desc);;
+                            temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
                             if(temp.cur_client.reg.key)
                             temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
