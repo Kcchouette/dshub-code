@@ -49,6 +49,66 @@ public class BackupCmd
             cur_client.sendFromBot(Help);
             return;
             }
+        String what=curcmd.nextToken();
+        if(what.equalsIgnoreCase("all"))
+        {
+            String toSend="";
+            
+           if( Main.Server.rewriteconfig("config.bak")==false)
+               toSend+="Error while writing configuration. ";
+            else
+                toSend+="Configuration saved [config.bak]. ";;
+            if(Main.Server.rewriteregs("regs.bak")==false)
+                toSend+="Error while writing regs. ";
+            else
+                toSend+="Regs saved [regs.bak].";;
+             if(Main.Server.rewritebans("bans.bak")==false)
+                toSend+="Error while writing bans. ";
+            else
+                toSend+="Bans saved [bans.bak]. ";
+            
+                cur_client.sendFromBot(toSend+"\nDone.");
+        }
+        else if(what.equalsIgnoreCase("bans"))
+        {
+            String name="bans.bak";
+            if(curcmd.hasMoreTokens())
+                name=curcmd.nextToken();
+              
+            if(Main.Server.rewritebans(name)==true)
+             
+             cur_client.sendFromBot("Bans saved ["+name+"].\nDone.");
+            else
+                 cur_client.sendFromBot("Error while writing bans.\nDone.");
+        }
+         else if(what.equalsIgnoreCase("regs"))
+        {
+             String name="regs.bak";
+            if(curcmd.hasMoreTokens())
+                name=curcmd.nextToken();
+              
+            if(Main.Server.rewriteregs(name)==true)
+             
+             cur_client.sendFromBot("Regs saved ["+name+"].\nDone.");
+            else
+                 cur_client.sendFromBot("Error while writing regs.\nDone.");
+        }
+         else if(what.equalsIgnoreCase("config"))
+        {
+             String name="config.bak";
+            if(curcmd.hasMoreTokens())
+                name=curcmd.nextToken();
+              
+           if( Main.Server.rewriteconfig(name)==true)
+             
+             cur_client.sendFromBot("Configuration saved ["+name+"].\nDone.");
+           else
+               cur_client.sendFromBot("Error while writing configuration.\nDone.");
+        }
+         else
+         {
+            cur_client.sendFromBot("Unknown argument.\nDone.");
+         }
     }
     
 }
