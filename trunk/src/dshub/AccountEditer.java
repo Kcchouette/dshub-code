@@ -23,6 +23,7 @@
 package dshub;
 
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -36,6 +37,7 @@ public class AccountEditer extends javax.swing.JFrame
 {
     String CID;
     nod curAcc;
+    ImageIcon myIco;
     /** Creates new form AccountEditer */
     public AccountEditer (String regCID)
     {
@@ -49,7 +51,9 @@ public class AccountEditer extends javax.swing.JFrame
                // new AccountEditer ().setVisible (true);
             }
         });*/
-        
+        myIco=new ImageIcon(getClass().getResource("/dshub/ds.jpg"));
+        //this.setIconImage(new ImageIcon("/dshub/ds.ico").getImage());
+        this.setIconImage(myIco.getImage());
         
     }
     

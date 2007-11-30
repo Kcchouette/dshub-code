@@ -225,3 +225,4 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * added it to console configuration;
            * created 2 new files for hubtracker integration module;
            * preliminary created hubtracker command for hubtracker communication;
+           * hub_host should work now;

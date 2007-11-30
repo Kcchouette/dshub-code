@@ -683,10 +683,9 @@ public class Main extends Thread
                 
                 else if(aux.toLowerCase ().equals ("hub_host"))
                 {
-                     //  String ucsy=Vars.HubName;
+                     
                        String new_name=ST.nextToken ();
-                      // while(ST.hasMoreTokens ())
-                       //    new_name=new_name+" "+ST.nextToken ();
+                      
                         
                        
                        InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
