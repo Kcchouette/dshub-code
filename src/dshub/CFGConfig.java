@@ -23,7 +23,15 @@
 
 package dshub;
 
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 /**
  * The main hub configuration utility, is called when via command or tty a configuration wants changed.
@@ -75,6 +83,74 @@ public class CFGConfig
                         Vars.HubName=new_name;
                         Main.Server.rewriteconfig();
                         new Broadcast ("IINF NI"+ADC.retADCStr(Vars.HubName));
+                        
+                }
+                else if(aux.toLowerCase ().equals ("hub_host"))
+                {
+                     
+                       String new_name=ST.nextToken ();
+                      
+                        
+                       
+                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
+                       Vector localAddies=new Vector();
+                       try{
+Enumeration<NetworkInterface> eNI =
+NetworkInterface.getNetworkInterfaces();
+
+NetworkInterface cNI;
+Enumeration<InetAddress> eIA;
+InetAddress cIA;
+
+for(;eNI.hasMoreElements();){
+cNI = eNI.nextElement();
+eIA = cNI.getInetAddresses();
+
+for(;eIA.hasMoreElements();){
+cIA = eIA.nextElement();
+localAddies.add(cIA.getHostAddress());
+//System.out.println("IP Local = " + cIA.getHostAddress());
+}
+}
+}
+catch(SocketException eS)
+{
+cur_client.sendFromBot("Hub_host cannot be resolved or machine hostname badly set.");
+return;
+} 
+                       if(myHost.isUnresolved())
+                       {
+                        cur_client.sendFromBot("Hub_host cannot be resolved or DNS server failure.");
+                       return;
+                       }
+                       try
+                       {
+                       
+                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
+                        boolean ok=false;
+                        Iterator myIT=localAddies.iterator();
+                        while(myIT.hasNext())
+                        
+                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
+                                     ok=true;
+                       
+                        if(!ok)
+                        {
+                            cur_client.sendFromBot("The hub_host you provided does not point to one of your eth interfaces. "+
+                                    "Reasons: DNS not correctly set; or you dont have a external real IP (if you are creating"+"" +
+                                    " LAN hub, use your LAN local IP as a hub_host).");
+                       return;
+                        }
+                        cur_client.sendFromBot("Hub_host changed from \""+
+                                Vars.Hub_Host+"\" to \""+new_name+"\".");
+                        
+                        Vars.Hub_Host=new_name;
+                        Main.Server.rewriteconfig();
+                       }
+                       catch (UnknownHostException uhe)
+                       {
+                           cur_client.sendFromBot("Hub_host cannot be resolved or DNS server failure.");
+                       }
                         
                 }
                 else if(aux.toLowerCase().equals ("max_ni"))

@@ -26,9 +26,17 @@ package dshub;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -3852,6 +3860,79 @@ public class TestFrame extends javax.swing.JFrame {
         }
         
         
+        /** hub host */
+          String new_name=hubhostfield.getText();
+                      
+                        
+                       
+                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
+                       Vector localAddies=new Vector();
+                       try{
+Enumeration<NetworkInterface> eNI =
+NetworkInterface.getNetworkInterfaces();
+
+NetworkInterface cNI;
+Enumeration<InetAddress> eIA;
+InetAddress cIA;
+
+for(;eNI.hasMoreElements();){
+cNI = eNI.nextElement();
+eIA = cNI.getInetAddresses();
+
+for(;eIA.hasMoreElements();){
+cIA = eIA.nextElement();
+localAddies.add(cIA.getHostAddress());
+//System.out.println("IP Local = " + cIA.getHostAddress());
+}
+}
+}
+catch(SocketException eS)
+{
+    JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or machine hostname badly set.",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+
+return;
+} 
+                       if(myHost.isUnresolved())
+                       {
+                           JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or DNS server failure.",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+              
+                       return;
+                       }
+                       try
+                       {
+                       
+                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
+                        boolean ok=false;
+                        Iterator myIT=localAddies.iterator();
+                        while(myIT.hasNext())
+                        
+                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
+                                     ok=true;
+                       
+                        if(!ok)
+                        {
+                            JOptionPane.showMessageDialog(null,new_name+" does not point to one of your eth interfaces. "+
+                                    "\nReasons: DNS not correctly set; or you dont have a external real IP \n(if you are creating"+"" +
+                                    " LAN hub, use your LAN local IP as a hub_host).",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+                            
+                       return;
+                        }
+                        Main.PopMsg("Hub_host changed from \""+
+                                Vars.Hub_Host+"\" to \""+new_name+"\".");
+                        
+                        Vars.Hub_Host=new_name;
+                        Main.Server.rewriteconfig();
+                       }
+                       catch (UnknownHostException uhe)
+                       {
+                          JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or DNS server failure.",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+                       }
+                        
+        
         
         Main.Server.rewriteconfig();
         
@@ -3963,6 +4044,8 @@ public class TestFrame extends javax.swing.JFrame {
     public void refreshAll()
     {
         refreshInit();
+        
+        
         
         DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
         nod n=reg_config.First;
@@ -4077,6 +4160,8 @@ public class TestFrame extends javax.swing.JFrame {
    chat_interval           500         -- Interval between chat lines, millis, Integer.
  */
         portfield.setText(Integer.toString(Vars.Default_Port));
+        
+        hubhostfield.setText(Vars.Hub_Host);
         
         topicfield.setText(Vars.HubDE);
         
