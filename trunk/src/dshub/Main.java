@@ -1475,23 +1475,6 @@ continue;
                 
                 long up=System.currentTimeMillis()-curtime; //uptime in millis
                 
-               //up=7657334581L;
-                long days=up/(3600000*24);
-                long hours =up/3600000-24*days;
-                long minutes=up/60000-60*hours-24*60*days;
-                long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-                long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
-                
-                String uptime="";
-                if(days!=0)
-                    uptime=Long.toString (days)+" Days ";
-                if(hours!=0 || (hours==0 && days!=0))
-                    uptime=uptime+Long.toString (hours)+" Hours ";
-                if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-                    uptime=uptime+Long.toString (minutes)+" Minutes ";
-                if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-                    uptime=uptime+Long.toString (seconds)+" Seconds ";
-                uptime=uptime+Long.toString (millis)+ " Millis";
                         
                System.out.printf(
                   "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
@@ -1512,7 +1495,7 @@ continue;
                     Proppies.getProperty("os.arch"),  Proppies.getProperty("java.version") ,
                     Proppies.getProperty("java.vendor"),Proppies.getProperty("java.vm.specification.version"),
                     myRun.availableProcessors(), Long.toString(myRun.maxMemory()) ,Long.toString(myRun.freeMemory())
-                    ,i,j,uptime
+                    ,i,j,TimeConv.getStrTime(up)
                        );
         }
         else if(recvbuf.equals(""))

@@ -32,8 +32,9 @@ import org.apache.mina.integration.jmx.IoServiceManager;
 import org.apache.mina.management.StatCollector;
 
 /**
+ * A class that manages statistics on all open sessions
  *
- * @author Administrator
+ * @author Pietricica
  */
 public class ServiceManager 
 {

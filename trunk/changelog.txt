@@ -226,3 +226,5 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * created 2 new files for hubtracker integration module;
            * preliminary created hubtracker command for hubtracker communication;
            * hub_host should work now;
+           * updated stats command to show uptime in proprietary format;
+           * updated messages to December;

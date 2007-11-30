@@ -26,8 +26,9 @@ package dshub;
 import java.util.StringTokenizer;
 
 /**
+ * A class that implements the backup command
  *
- * @author Administrator
+ * @author Pietricica
  */
 public class BackupCmd
 {

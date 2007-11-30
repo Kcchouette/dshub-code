@@ -1212,25 +1212,8 @@ public class CommandParser
                     temp=temp.NextClient;
                 }
                 
-                long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
-               // up=345345343;
-                long days=up/(3600000*24);
-                long hours =up/3600000-24*days;
-                long minutes=up/60000-60*hours-24*60*days;
-                long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-                long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
-                
-                String uptime="";
-                if(days!=0)
-                    uptime=Long.toString (days)+" Days ";
-                if(hours!=0 || (hours==0 && days!=0))
-                    uptime=uptime+Long.toString (hours)+" Hours ";
-                if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-                    uptime=uptime+Long.toString (minutes)+" Minutes ";
-                if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-                    uptime=uptime+Long.toString (seconds)+" Seconds ";
-                uptime=uptime+Long.toString (millis)+ " Millis";
-                        
+               
+                         long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
                String blah=
                   "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
                   "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
@@ -1241,7 +1224,7 @@ public class CommandParser
                   "Hub Statistics:\n"+
                   "  Online users: "+Integer.toString (i)+"\n"+
                   "  Connecting users: "+Integer.toString(j)+"\n"+
-                  "  Uptime: "+uptime+"."+
+                  "  Uptime: "+TimeConv.getStrTime(up)+
                    "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
                    "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
                        
