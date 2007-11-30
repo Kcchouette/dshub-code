@@ -3978,23 +3978,7 @@ return;
         }
         
         long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
-        // up=345345343;
-        long days=up/(3600000*24);
-        long hours =up/3600000-24*days;
-        long minutes=up/60000-60*hours-24*60*days;
-        long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-        long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
         
-        String uptime="";
-        if(days!=0)
-            uptime=Long.toString(days)+" Days ";
-        if(hours!=0 || (hours==0 && days!=0))
-            uptime=uptime+Long.toString(hours)+" Hours ";
-        if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-            uptime=uptime+Long.toString(minutes)+" Minutes ";
-        if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-            uptime=uptime+Long.toString(seconds)+" Seconds ";
-        uptime=uptime+Long.toString(millis)+ " Millis";
         Date b=new Date(Main.curtime       );
         jTextArea2.setText(
                 "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
@@ -4006,7 +3990,7 @@ return;
                 "Hub Statistics:\n"+
                 "  Online users: "+Integer.toString(i)+"\n"+
                 "  Connecting users: "+Integer.toString(j)+"\n"+
-                "  Uptime: "+uptime+".\n"+
+                "  Uptime: "+TimeConv.getStrTime(up)+"\n"+
                 "  Start Time: "+b.toString()+
                 "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
                 "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
@@ -4075,7 +4059,7 @@ return;
         
         /**setting stuff*/
         jTextArea1.setText("DSHub is ADC software so you need an ADC compatibile client.\n"+
-                "At the moment of this release ( November 2007 ), the following ADC clients were available:\n"+
+                "At the moment of this release ( December 2007 ), the following ADC clients were available:\n"+
                 "dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
                 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
                 "Some ADC reminders:\n"+
@@ -4104,24 +4088,8 @@ return;
         }
         
         long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
-        // up=345345343;
-        long days=up/(3600000*24);
-        long hours =up/3600000-24*days;
-        long minutes=up/60000-60*hours-24*60*days;
-        long seconds=up/1000-60*minutes-60*24*60*days-60*60*hours;
-        long millis=up-1000*seconds-60*1000*24*60*days-1000*60*60*hours-1000*60*minutes;
         
-        String uptime="";
-        if(days!=0)
-            uptime=Long.toString(days)+" Days ";
-        if(hours!=0 || (hours==0 && days!=0))
-            uptime=uptime+Long.toString(hours)+" Hours ";
-        if(minutes!=0 || (minutes==0 && (days!=0 || hours!=0)))
-            uptime=uptime+Long.toString(minutes)+" Minutes ";
-        if(seconds!=0 || (seconds==0 && (days!=0 || hours!=0 || minutes!=0)))
-            uptime=uptime+Long.toString(seconds)+" Seconds ";
-        uptime=uptime+Long.toString(millis)+ " Millis";
-        Date b=new Date(Main.curtime       );
+        Date b=new Date(Main.curtime   );
         jTextArea2.setText(
                 "Death Squad Hub. Version "+Vars.HubVersion+".\n"+
                 "  Running on "+Main.Proppies.getProperty("os.name")+" Version "+Main.Proppies.getProperty("os.version")+" on Architecture "+Main.Proppies.getProperty("os.arch")+"\n"+
@@ -4132,7 +4100,7 @@ return;
                 "Hub Statistics:\n"+
                 "  Online users: "+Integer.toString(i)+"\n"+
                 "  Connecting users: "+Integer.toString(j)+"\n"+
-                "  Uptime: "+uptime+".\n"+
+                "  Uptime: "+TimeConv.getStrTime(up)+"\n"+
                 "  Start Time: "+b.toString()+
                 "\n  Bytes red per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteReadThroughput())+
                 "\n  Bytes written per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteWrittenThroughput())

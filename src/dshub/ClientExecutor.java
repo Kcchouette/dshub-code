@@ -25,7 +25,7 @@ package dshub;
 
 /**
  * A thread that tries to send all messages in the queue;
- * @author Administrator
+ * @author Pietricica
  */
 public class ClientExecutor extends Thread
 {

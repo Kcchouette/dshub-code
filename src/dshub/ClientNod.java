@@ -28,7 +28,7 @@ package dshub;
 
 /**
  * A class that keeps a ClientHandler thread instance and connections to other nods
- * @author Administrator
+ * @author Pietricica
  */
 public class ClientNod 
 {
