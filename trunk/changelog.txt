@@ -1,135 +1,61 @@
-           * fixed cfg spaces in setting topic hub name etc.
-           * fixed small gui stuff in opchat desc & name;
-           * added advanced adc config panel;
-           * added the MSG context parameters;
-           * added variables in config file, added the modifiers in GUI;
-           * the msg context modders work now;
-           * changed from simple linked list to double one;
-           * fixed history and cmdhistory space problem;
-           * added new file for adc adv config ;
-           * moved adc functions from cmd parser to adc class;
-           * fixed adc adv config bug forgot the break in switch;
-           * created primary showup for setting the adc via commands;
-           * fixed adc adv panel avail via pm with bot;
-           * added adc _context__name shows if on/off;
-           * fixed mass message thingy;
-           * also minor fixes in extended kick n drop;
-           * diffed back to good version of clienthandler, forgot to do that last time;
-           * fixed opchat & bot desc not showing properly;
-           * fixed reginfo badly shown;
-           * tried to reduce mem usage by disposing the GUI when not shown ;
-           * fixed not showing restart/quit message when using command;
-           * finished msg context changing via command;
-           * added STA checkboxes in adc adv panel;
-           * added info box on contexts;
-           * added another 2 info boxes on MSG and STA commands;
-           * created new file CFGConfig and moved all cfg in there;
-           * modified cfg commands with [config:] instead of [command:];
-           * created 3 new files, Ext mass, drop and kick, moved code there;
-           * added  new config variables , for STA contexts;
-           * validated boxes in gui, and added in panel and modifiers via command;
-           * fixed broadcasting same stuff to sender too;
-           * fixed broadcasting feature searches to all;
-           * created new file SCH for sch command;
-           * integrated new library mina jmx;
-           * created new file STA for sta command, also made possible D/E sta;
-           * tried to fix clientassasin on bug when only quit was sent but client still conn;
-           * moved info command to separate file, corrected bug when showing \s in tag;
-           * added boxes for CTM command;
-           * created variables for all the rest of commands, added to config file;
-           * added boxes for other commands in the GUI;
-           * after hours of trying to make checkboxes( stupid java editor), finally done them;
-           * made initial checks on checkboxes;
-           * started work for modifying via command;
-           * finished the adc cmd panel;
-           * created a CTM file for ctm command;
-           * created new RCM file moved rcm command there;
-           * created also new file for RES;
-           * enabled support for ERES ECTM and ERCM;
-           * modified MSG cmd to new file;
-           * moved SUP to new file;
-           * added modders for PAS as well;
-           * fixed linked list banning bug ( thanks Spader for spotting );
-           * added button for account editing;
-           * modified first page;
-           * created AccountEditer.java for a new jframe to edit account proppies;
-           * added first fields into account editing window;
-           * clicking X on main window now does nothing, need to click Exit to close;
-           * added more fields to the edit account window;
-           * created 2 more files, one for the command masking of each account;
-           * modified regconfig to include them;
-           * the second file generates a help file according to mask;
-           * removed the necesity of "help" file;
-           * the help in the console is generated with a full account mask;
-           * moved all buttons in account edit in a nice tabbed pane;
-           * continued work on accounts panel, buttons work but do nothing atm;
-           * saved command maskes, now need to modify access via CommandParser;
-           * command allocation from gui works now, and access is set via Command parser;
-           * profiles are almost done, need to create a command that sets access via client too;
-           * fixed showing key for all regs no matter if they had or not;
-           * all regs still enter opchat, need to fix that;
-           * key setting on gui works now, still need to make it instantly not on reconnect;
-           * improved partially the registration info shown on reg and info commands;
-           * key allocating and removing works instantly now;
-           * fixed bug when thread crashed on !info if user had null description ( tnx Toast for spotting);
-           * fixed bug on Key allocating when wrong hub count was made;
-           * fixed issue on ClientAssassin that checked dead clients @ 5secs instead of 2 mins;
-           * checks for override spam and share are functional, need to change what they do
-           * creating premise for getting rid of ops_override_spam and share;
-           * fixed hub counts on key and registered on reg and ureg;
-           * almost finished boxes in account edit;
-           * fixed bug when adding key and button did not work ( asking CID on not userok);
-           * removed variable ops_override_spam, every reg has its own;
-           * done with override hub full command, some checkboxes still do nothing;
-           * improved reg information on !reg and !info;
-           * removed variable ops_override_full from testframe and cfg;
-           * all accounts have their own override;
-           * added a grant command to GUI and reg configuration;
-           * added a grant command file to handle grants command;
-           * created grants for most commands, need to make for attributes too;
-           * need to fix show up to be in just one message ( on grant );
-           * fixed bug that also showed unknown cmd on password;
-           * fixed same bug on removing key ( like the one adding );
-           * added grant for account options as well ;
-           * moved changelog to separate file;
-           * fixed bug when key was not sent to new users;
-           * modified grant command to send everything in one string;
-           * secured flyable via grant command;
-           * added a message from bot when profile changed ;
-           * added grant command to console as well;
-           * added all feature in grant, grant nick/CID +all gives all privileges;
-           * updated help on grant command, added a list of attributes in there;
-           * fixed security bug on grant all that could bring unwanted privileges;
-           * account.LastLogin works now, on both reg info and GUI;
-           * kickable and renameable works now for all registered users;
-           * removed variable kick_ops and rename_ops;
-           * removed variable keep_alive_interval since its not needed anymore;
-           * made TimeSpent online;
-           * fixed bugs on cmd line cfg-ing some variables;
-           * fixed not showing messages about password on login;
-           * added new static file with time conversions, time will be taken in the following form :
-       the compatible format is : #xxxw#xxd#xxh#xxm#xxs#xx. where xxx stands for any numbers;
-      and w= weeks, d days, h hours m minutes, s seconds, . milliseconds.
-      # is a parsing delimitator. If a number is 0, it can be skipped.
-      Example : #1w#3h#55m#2s = 1 week , 0 days, 3 hours, 55 minutes 2 seconds and 0 millis.
-           * updated TimeOnline in the new specifier;
-           * fixed that users cannot have a CID nick;
-           * made nickprotected ok, and by default any reg user has its nick protected ( reg advantage);
-           * also made about command as available by default for new regs.
-           * account flyable is now available !
-Account flyable means that : if account has a password set, the last nick used will be possible to be used to 
-log in to account, if password is ok. Then, the CID of the new client is being memorized for the account. 
-To be flyable, the nick must NOT be protected, so when you check flyable, its being auto deactivated.
-           * added a help panel on GUI commands which describes all commands;
-           * fixed one bad show up when granting mass command;
-           * added class comment on each class;
-           * generated a javadoc for DSHub.
-           * created basic command spam for CTM and INF;
-           * moved login commands to STA instead of MSG ( to avoid state early transition)
-           * fixed adc adv config panel for INF ( forgot about it :D)
-           * created remembering system for old INF's... to be sent every 2 mins interval;
-           * modified ctm spamming a bit;
-           * TAG: ETA;
+*** Theta RC 2 ***
+
+           * proxy boxes should work now, as well the console proxy set;
+           * changelog.txt now includes all changelog since the creation of dshub.
+           * since now, the changes are made in the top of the file not at the end.
+           
+
+
+
+*** changes until 01.12.07 to Theta RC1 ***
+
+           * fixed bug #1833656
+           * added tables for bans GUI ( naccio );
+           * hope that "same cid as" will never occur again;
+           * fixed some granting bugs;
+           * flyable can be set by any granter now;
+           * fixed multilined mass message;
+           * chat control works for email description and nick now;
+           * overrideshare and overridespam better for ops in restrictions;
+           * chatcontrol list now prints the modification as well ( if it has one.. );
+           * worked on #1835771 hope its solved now;
+           * fixed some issues with private and notifying in GUI ( blame naccio );
+           * created a release.sh release script;
+           * removed some unnecesarry debug info;
+           * testing on mina settings ( hope to avoid CID collision);
+           * tried to fix issue on INF rescaling;
+           * fixed issue when sending useless emsg from bot on login on registered;
+           * GUI look and feel workaround;
+           * made all dialogs modal;
+           * changed button names in account editor;
+           * Bans GUI work, all bans should be updated to GUI now;
+           * fixed  #1835771 ;
+           * updated show up message when profile is changed;
+           * created the command +myinf for all users ( regged or not);
+           * created a file for the backup command;
+           * solved minor bug when chatcontrol not present in grant all and help message;
+           * created framework for opchat access and backup attribute;
+           * created checkboxes for the two, and granters;
+           * finished the backup command, need to add some backup buttons to GUI now;
+           * opchat access should work now;
+           * created a new variable hub_host for the hub host address;
+           * added it to console configuration;
+           * created 2 new files for hubtracker integration module;
+           * preliminary created hubtracker command for hubtracker communication;
+           * hub_host should work now;
+           * updated stats command to show uptime in proprietary format;
+           * updated messages to December;
+           * worked on GUI looks on some pages;
+           * grouped some of the buttons in panels;
+           * created boxes for proxy;
+           * created information messages for all status texts for better visibility;
+
+
+
+
+
+*** Theta RC1 16.11.07 ***
+
            * changed to Theta;
            * added the DS logo to main page :)
            * added a forbidden words panel ( chat control ) ( thansk to naccio );
@@ -192,43 +118,437 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * chatcontrol now contains flags 128 and 64 for private and notify;
            * also fixed "flags" in chatcontrol no longer , concorded with help msg now;
            * TAG: Theta RC 1;
-           * fixed bug #1833656
-           * added tables for bans GUI ( naccio );
-           * hope that "same cid as" will never occur again;
-           * fixed some granting bugs;
-           * flyable can be set by any granter now;
-           * fixed multilined mass message;
-           * chat control works for email description and nick now;
-           * overrideshare and overridespam better for ops in restrictions;
-           * chatcontrol list now prints the modification as well ( if it has one.. );
-           * worked on #1835771 hope its solved now;
-           * fixed some issues with private and notifying in GUI ( blame naccio );
-           * created a release.sh release script;
-           * removed some unnecesarry debug info;
-           * testing on mina settings ( hope to avoid CID collision);
-           * tried to fix issue on INF rescaling;
-           * fixed issue when sending useless emsg from bot on login on registered;
-           * GUI look and feel workaround;
-           * made all dialogs modal;
-           * changed button names in account editor;
-           * Bans GUI work, all bans should be updated to GUI now;
-           * fixed  #1835771 ;
-           * updated show up message when profile is changed;
-           * created the command +myinf for all users ( regged or not);
-           * created a file for the backup command;
-           * solved minor bug when chatcontrol not present in grant all and help message;
-           * created framework for opchat access and backup attribute;
-           * created checkboxes for the two, and granters;
-           * finished the backup command, need to add some backup buttons to GUI now;
-           * opchat access should work now;
-           * created a new variable hub_host for the hub host address;
-           * added it to console configuration;
-           * created 2 new files for hubtracker integration module;
-           * preliminary created hubtracker command for hubtracker communication;
-           * hub_host should work now;
-           * updated stats command to show uptime in proprietary format;
-           * updated messages to December;
-           * worked on GUI looks on some pages;
-           * grouped some of the buttons in panels;
-           * created boxes for proxy;
-           * created information messages for all status texts for better visibility;
+
+
+*** Eta version 25.10.07 ***
+
+* fixed cfg spaces in setting topic hub name etc.
+* fixed small gui stuff in opchat desc & name;
+* added advanced adc config panel;
+* added the MSG context parameters;
+* added variables in config file, added the modifiers in GUI;
+* the msg context modders work now;
+* changed from simple linked list to double one;
+* fixed history and cmdhistory space problem;
+* added new file for adc adv config ;
+* moved adc functions from cmd parser to adc class;
+* fixed adc adv config bug forgot the break in switch;
+* created primary showup for setting the adc via commands;
+* fixed adc adv panel avail via pm with bot;
+* added adc _context__name shows if on/off;
+* fixed mass message thingy;
+* also minor fixes in extended kick n drop;
+* diffed back to good version of clienthandler, forgot to do that last time;
+* fixed opchat & bot desc not showing properly;
+* fixed reginfo badly shown;
+* tried to reduce mem usage by disposing the GUI when not shown ;
+* fixed not showing restart/quit message when using command;
+* finished msg context changing via command;
+* added STA checkboxes in adc adv panel;
+* added info box on contexts;
+* added another 2 info boxes on MSG and STA commands;
+* created new file CFGConfig and moved all cfg in there;
+* modified cfg commands with [config:] instead of [command:];
+* created 3 new files, Ext mass, drop and kick, moved code there;
+* added new config variables , for STA contexts;
+* validated boxes in gui, and added in panel and modifiers via command;
+* fixed broadcasting same stuff to sender too;
+* fixed broadcasting feature searches to all;
+* created new file SCH for sch command;
+* created new file STA for sta command, also made possible D/E sta;
+* tried to fix clientassasin on bug when only quit was sent but client still conn;
+* moved info command to separate file, corrected bug when showing \s in tag;
+* added boxes for CTM command;
+* created variables for all the rest of commands, added to config file;
+* added boxes for other commands in the GUI;
+* after hours of trying to make checkboxes( stupid java editor), finally done them;
+* made initial checks on checkboxes;
+* started work for modifying via command;
+* finished the adc cmd panel;
+* created a CTM file for ctm command;
+* created new RCM file moved rcm command there;
+* created also new file for RES;
+* enabled support for ERES ECTM and ERCM;
+* modified MSG cmd to new file;
+* moved SUP to new file;
+* added modders for PAS as well;
+* fixed linked list banning bug ( thanks Spader for spotting );
+* added button for account editing;
+* modified first page;
+* created AccountEditer.java for a new jframe to edit account proppies;
+* added first fields into account editing window;
+* clicking X on main window now does nothing, need to click Exit to close;
+* added more fields to the edit account window;
+* created 2 more files, one for the command masking of each account;
+* modified regconfig to include them;
+* the second file generates a help file according to mask;
+* removed the necesity of "help" file;
+* the help in the console is generated with a full account mask;
+* moved all buttons in account edit in a nice tabbed pane;
+* continued work on accounts panel, buttons work but do nothing atm;
+* saved command maskes, now need to modify access via CommandParser;
+* command allocation from gui works now, and access is set via Command parser;
+* profiles are almost done, need to create a command that sets access via client too;
+* fixed showing key for all regs no matter if they had or not;
+* all regs still enter opchat, need to fix that;
+* key setting on gui works now, still need to make it instantly not on reconnect;
+* improved partially the registration info shown on reg and info commands;
+* key allocating and removing works instantly now;
+* fixed bug when thread crashed on !info if user had null description ( tnx Toast for spotting);
+* fixed bug on Key allocating when wrong hub count was made;
+* fixed issue on ClientAssassin that checked dead clients @ 5secs instead of 2 mins;
+* checks for override spam and share are functional, need to change what they do
+* creating premise for getting rid of ops_override_spam and share;
+* fixed hub counts on key and registered on reg and ureg;
+* almost finished boxes in account edit;
+* fixed bug when adding key and button did not work ( asking CID on not userok);
+* removed variable ops_override_spam, every reg has its own;
+* done with override hub full command, some checkboxes still do nothing;
+* improved reg information on !reg and !info;
+* removed variable ops_override_full from testframe and cfg;
+* all accounts have their own override;
+* added a grant command to GUI and reg configuration;
+* added a grant command file to handle grants command;
+* created grants for most commands, need to make for attributes too;
+* need to fix show up to be in just one message ( on grant );
+* fixed bug that also showed unknown cmd on password;
+* fixed same bug on removing key ( like the one adding );
+* added grant for account options as well ;
+* moved changelog to separate file;
+* fixed bug when key was not sent to new users;
+* modified grant command to send everything in one string;
+* secured flyable via grant command;
+* added a message from bot when profile changed ;
+* added grant command to console as well;
+* added all feature in grant, grant nick/CID +all gives all privileges;
+* updated help on grant command, added a list of attributes in there;
+* fixed security bug on grant all that could bring unwanted privileges;
+* account.LastLogin works now, on both reg info and GUI;
+* kickable and renameable works now for all registered users;
+* removed variable kick_ops and rename_ops;
+* removed variable keep_alive_interval since its not needed anymore;
+* made TimeSpent online;
+* fixed bugs on cmd line cfg-ing some variables;
+* fixed not showing messages about password on login;
+* added new static file with time conversions, time will be taken in the following form :
+the compatible format is : #xxxw#xxd#xxh#xxm#xxs#xx. where xxx stands for any numbers;
+and w= weeks, d days, h hours m minutes, s seconds, . milliseconds.
+# is a parsing delimitator. If a number is 0, it can be skipped.
+Example : #1w#3h#55m#2s = 1 week , 0 days, 3 hours, 55 minutes 2 seconds and 0 millis.
+* updated TimeOnline in the new specifier;
+* fixed that users cannot have a CID nick;
+* made nickprotected ok, and by default any reg user has its nick protected ( reg advantage);
+* also made about command as available by default for new regs.
+* account flyable is now available !
+Account flyable means that : if account has a password set, the last nick used will be possible to be used to
+log in to account, if password is ok. Then, the CID of the new client is being memorized for the account.
+To be flyable, the nick must NOT be protected, so when you check flyable, its being auto deactivated.
+* added a help panel on GUI commands which describes all commands;
+* fixed one bad show up when granting mass command;
+* added class comment on each class;
+* generated a javadoc for DSHub.
+* created basic command spam for CTM and INF;
+* moved login commands to STA instead of MSG ( to avoid state early transition)
+* fixed adc adv config panel for INF ( forgot about it :D)
+* created remembering system for old INF's... to be sent every 2 mins interval;
+* modified ctm spamming a bit;
+* TAG: ETA;
+
+*** Zeta version 08.08.07 ***
+  Zeta Version ChangeLog:
+* fixed bancid and banip bugs, sorry about them
+* modified config files path, taken from classpath;
+* met MAGY he helped me with a GUI for dshub, just testing some GUI now;
+* tested GUI on windows and linux with no X server, in last case, message GUI not viewable shows up;
+* still need to test on X server;
+* added a gui command that brings up GUI;
+* gui still has minimal functionality, lot of work still to do;
+* fixed bug with running via dbl click with class path;
+* fixed bug not showing correct port after change;
+* a lot of new changes in GUI, added some tabs, config settings, and account listing;
+* fixed minor bugs with config variables;
+* hope the new GUI is nice, waiting for feedback
+* modified GUi added log tab with log;
+* created popmsg fcuntion that pops a message console & log;
+* moved settings in 4 tabs according to type;
+* fixed minor problems in other files;
+* still TODO : sta, keepalive;
+* completeley redesigned settings tab;
+* now the string variables like nick chars, may contain space, newline and slash;
+* fixed the variables check from gui, modifying into cmd parser too;
+* changed with default hub name in form title;
+* corrected rename, topic bugs from rc4, sorry about them;
+* changed the keep alive completely, added some other checker, will remove var keep_alive too probably;
+* started code optimizing: 1) optimized thread priorities, some useless params on threads;
+* corrected message reading from client deleted crappy code that possibly dropped laggy and multiple messaging;
+* added another variable save_logs and to main settings, that checks if logs are saved in format starttime&date.log;
+* refixed minor bugs that some previous changes made, im SORRY;
+* added some commands to log registry;
+* fixed client assassin again, sorry for it;
+* fixed creating ugly log file with wrong path & name with startup message;
+* modified share to MiB, added extra message to disconnect specifying min share;
+* TODO : messages for all disconnects( better ones);
+* DSHub has now powerful searching features..
+First, we need to make a distinction between the.
+automagic and the user searches.
+First type is made by client at a regular interval
+and DSHub keeps a liniar spam setting.
+Second type are user searches ( manual searches )
+that the user takes.
+For this type (because of the human factor)
+DSHub keeps a logarithmic spam setting.
+This way, the 2nd search is at search_log_base
+interval, but third, is at search_log_base^2
+and so on, until the power gets to max_steps.
+After this point, the user needs to wait
+search_spam_reset seconds to get his burst back.
+The searches are being kept in queue ( not ignored !)
+and are processed once the timeout is completed
+so user doesnt need to search again
+but just wait for his search to be completed.
+The messages appears as a fictive result
+in his search box, which will be filled
+once the search string is being sent to others.
+* Lots of new stuff, started working on the spam settings on searches;
+* above is the main info for the variables i added;
+* automagic_search is the automagic interval;
+* search_log_base the log base for search spam algorithm;
+* search_steps the max steps allowed in log scale;
+* search_spam_reset the time needed to reset burst ( also needed if search_steps is touched);
+* msg_search_spam the message that appears as a fake result in searches until the SCH is being sent;
+* added a hub_security bot that receives cmds in private ( but are shown as IMSGs still );
+* also added 2 vars: bot_name and bot_desc to set the NI and DE of the bot;
+* added extra fields to clienthandler so it can properly remember chat settings;
+* fixed some banning bugs...
+* added posibility to delete accounts from GUI via delete key...
+* fixed bugs when renaming and not check the bot cid & nick
+* added extended possibilites to mass comand, renamed from massall to mass
+* hub security now sends all messages except login;
+* finally found bug that killed me over last month, when passive user couldnt connect irregulary (found out why);
+* completely changed string parsing, now everything is going thru 2 functions;
+Zeta Ultra Version
+
+
+*** Epsilon version 14.06.07 ***
+
+Epsilon Version ChangeLog:
+           * fixed bug with kick/ban message not showing 
+properly;
+           * fixed again usercount hope its for good;
+           * fixed restarting from console;
+           * fixed rename issue selecting bad/used nick;
+           * fixed issue when putting max_chat_msg 0 nobody 
+could change it from cmd line;
+           * ops_override_spam now override max_chat_msg too;
+           * corrected bug not showing when ureg not online user;
+           * DSHub is now OPEN-SOURCE under GPL !!! Please look 
+into SRC and give me feedback !
+           * corrected massall command not working for more 
+words;
+           * modyfied the random data from IGPA now its real 
+random data;
+           * fixed bug when restarting, not showing new motd 
+and help file ( thanks Catalin);
+           * fixed bug when restarting reading regs and bans, 
+doubling them (thanks Catalin);
+           * fixed bug when restarting after a failure in 
+starting server ( thanks Catalin);
+           * fixed bug when port was a out of range one and 
+hub would crash;
+           * corrected message when disconnect on too many 
+ops not showing (thanks ffrag);
+           * tryed to fix the ghost thingy on unnormal TCP 
+closing sending a keepalive (thanks Ghost for helping);
+           * added a variable keep_alive_interval for seconds
+ interval between keep alive messages;
+           * fixed bug when not checking nick lenght on 
+rename ( thanks b_w_johan );
+           * fixed unbanning some string which is invalid CID;
+           * fixed issue with opchat nick cant rename to 
+its nick now;
+           * now users cant use an IP for a nick;
+           * removed whocid and whoip commands, moved that 
+to info       example !info nick gives info about a nick, 
+!info cid shows user with cid,  !info ip shows info about users with given ip;
+           * big change: default password "defpass" removed, 
+now, by default, regs have no pass, just CID check
+                    however is good to have one for even 
+better security;
+           * tryed to fix ugly bug when double client 
+connecting ( example: connecting at same time, double 
+fav hub auto connect);
+               syncronized method handleINF so that it
+ cant be called @ same time;
+           * improved history, now retains IMSG 
+broadcasts as well;
+           * created a command cmdhistory that pastes 
+given commands since startup;
+           * added drop command , a kick with no reason
+ and 0 ban time;
+           *Kick Command:
+Kicking in DSHub is very simple now.
+Classic kick:
+     kicks just a user out in flames, with a kick_time 
+temporary ban, default 5 minutes.
+Extended kick has way more advantages and can be used 
+very efficiently with a large hub.
+Extended kick features:
+   Kicking users that match a certain regular expression:
+      Example: !kick \[RO\].* -- this command kicks all 
+users that have their nick starting with [RO]
+      Example: !kick .. --this command kicks all users 
+with 2 letter nicks
+      This type of kick accepts just any regular expression.
+   Kicking users that have their fields checked:
+      Example: !kick share<1024 --this command just 
+kicks all users with share less then 1 gigabyte.
+      Example: !kick sl=1 -- this command kicks all users 
+with exactly one open slot.
+      Example: !kick su!tcp4 -- this command kicks all 
+passive users.
+Extended kick has the operators >, < , =, !
+   And a list of possible fields : share, sl (slots), ni (
+nick length),su(supports, accepts only = or !, example: 
+!kick su=tcp4),hn(normal hubs count),hr(registered hub 
+count),ho(op hub count),aw(away, 1 means normal away, 2 
+means extended away),rg (1- registered, 0 otherwise, 
+registered means not op),op ( 1 -op, 0 - otherwise , 
+op means it has key).
+           * created a kick and ban function for easy 
+call from commands;
+           * done almost all that kick stuff, for share 
+slots and su, still need to do for rest;
+           * added a debug message, please ignore, or 
+if you figure it out, report to me;
+           * modified share kick, to be in megabytes;
+           * completed kick with all mentioned above 
+in the log;
+           * fixed bug on new kick, forgot to check 
+if kick_ops is enabled;
+           * added same features to drop command as well;
+           * added extra fields to reg class so OLD 
+regs DONT WORK anymore sorry so please REREG;
+           * modified reg command, now if user already 
+added prints user info;
+           * added a getRegInfo method, also added 
+extra fields on info and reg;
+           * added hideme command that toggles the 
+hideme, also hideme is remembered in reg file;
+           * fixed bug when restarting and changing 
+default port;
+           * fixed bug when opchat could have same
+ nick as other users;
+           * fixed exploit when cmdhistory could 
+see the !password;
+           * fixed bug with renaming into a CID or 
+IP and not repsecting sizes;
+
+
+*** Delta version 17.05.07 ***
+* fixed local host ip check error, thanks b_w_johan;
+* added basic ban linked classes;
+* moved the ban reg into a file named banlist;
+* added a variable named kick_time for ban on a kick
+* added a small ban with kick;
+* added ban message when reconnecting and banned;
+* added ureg check if user is online, and remove reg status;
+* corrected bug with multiple hubs have same opchat cid,generated one at runtime;
+* corrected invalid SID for op chat;
+* modified src header for all files;
+* fixed bug when listreg from console incorect show up;
+* fixed bug not showing the correct ban reason at reconnect;
+* added a variable for extra ban message, named msg_banned;
+* modified when writing into files the bans. skipping the expired ones;
+* added extra info field specifying user type;
+* added a command to change own nick, mynick;
+* added a rename command to rename users, need to add a variable for ops;
+* added a variable rename_ops to se if they can be renamed or not;
+* added unban command that takes a 'whatever' string and it searches in orded cid/ip/nick;
+* added bancid command may still be buggy , looks first for a cid and permbans it
+then looks for a user with given nick and bans his cid, otherwise nothing;
+* tried to create similar banip command and when banning an IP bans everyone on hub with that ip;
+* added a basic listban command that lists all bans with basic things like op who banned, time remaining;
+* ok after a lot of work added bannick command too... now must test all permbans;
+* i guess the connecting users var is wrong again ( thanks b_w_johan) tryed to correct it;
+* added variable reg_only ,sets if hub is reg only or not;
+* corrected bug when banning a offline OP's CID when kick_ops=0;
+* corrected when DMSG to op chat not working;
+* added a variable nick_chars for allowed nick chars, _space_ and _\_ not available;
+* huh added a max_users var representing max_users;
+* added another var to check if ops can enter if full though;
+* and another var with a message to be shown to users who cant enter when full;
+* possible bug when PM-ing too much on op chat, tryed to fix;
+* added '+' starting commands beside '!' ones;
+* added basic anti spam for chat, and a var chat_interval in millis, TODO more in next version;
+* added variable ops_override_spam to check if ops can override spam settings;
+* added basic UCMD ADC extentsion support, added a test message, but no client UCMD compat to test;
+* added restart command so that hub may be restarted from command;
+* added another line at startup indicating hub start time;
+* fixed bug when not properly loading ops_override_spam from file;
+
+
+*** Gamma version  11.05.07 ***
+ * added regs and ops, still need to save accounts somewhere...;
+* created a reg class for client handler that stores reg data and privileges;
+* found very ugly bug that faulty checked nick and CID on Beta version
+this makes Beta Version UNUSABLE. Sorry :(. Corected here.
+* fixed bug that when active changed to passive, was still seen as active;
+* added account writed in files ;) cool !;
+* added command parser, added commands quit and help;
+still need to copy rest of commands from cmd line parser;
+* fixed bug when cycling at reading regs from file to list;
+* moved all commands to command parser from client;
+* fixed bug when adding new users check if user is ok;
+* fixed bug when searching through tth get the message "search too short":
+* updated add PID to look for an existing user with that PID;
+* need to change PID registration to CID one;
+* corrected bug with max_chat_msg not shown properly;
+* added a chained list for latest chat messages, available through history;
+* add basic kick but has drop functionality for now;
+* moved the PID registration onto CID one;
+* also added a variable for configuring history lines;
+* added another variable which sets if ops can be kicked or not;
+* corrected bug when sending other things after STA;
+* added message topic changed.. when using !topic;
+* added a opchat room;
+* added variables for opchat NI and DE;
+* moved regs and config completely separately for avoiding rewriting both when one is corrupted;
+* added whoip and whocid commands to show users with given ip/cid;
+* corrected SID stuff, now its a true base32 4byte string;
+* added massall command to send a massmessage to all, chosen this name for future commands;
+Gamma version is First real usable version. 
+
+
+
+*** Beta Version 29.04.07 ***
+Beta Version ChangeLog:
+* added MOTD special text variable in file;
+* added Private Message user2user simple capability;
+* added simple Search ! cool !
+* added extended search, for passive users;
+* added download list and files active-active/passive and viceversa;
+warning: client bugs: cant download all the time if you are passive;
+* added default hub name : hub of user.name
+* added hub_name variable changeable through cfg
+* added a lot of extra cfg variables, check out;
+* moved help file into file named help;
+* moved motd into file named motd;
+* more checks TODO:
+* fixed bug writing variables in config file;
+* fixed command exception deleting thread;
+* fixed shitty thingy when bad users send wrong ip;
+* moved broadcasting function in separate thread, hope to improve functionality;
+* no effect previous moving, so i added a message queue for each user, hope now works...
+* corrected bug of not showing STA msges coz of thread delay;
+* modified INF statement, created only one depending of state and context
+thus shortening code;
+* corrected bug when localhost connection was not let in example adc://localhost:411
+* improved SUP cmd parsing with future feature possibility;
+* fixed bug when changing active->passive;
+* fixed bug when INF fields where deleted and still showed up in getINF as empty;
+* modified almost all commands context independent;
+* added Tiger and base32 support, now hub checks tiger(pid)==cid;
+* added base support for reg, to implement in next version;
+
+*** Alpha Version is the first released with minimal functionality, somewhere around april 2007 ***
+ 

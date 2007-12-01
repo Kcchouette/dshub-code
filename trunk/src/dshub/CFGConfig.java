@@ -730,6 +730,8 @@ return;
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
                             +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
+                            +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
+                            +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
                             +          "   max_ni                  "  +Vars.max_ni+"        -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+"         -- Minimum nick size, integer.\n"
                             +          "   max_de                  "  +Vars.max_de+"        -- Maximum description size, integer.\n"

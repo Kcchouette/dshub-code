@@ -752,6 +752,50 @@ continue;
                        }
                         
                 }
+                else if(aux.toLowerCase ().equals ("proxy_host"))
+                {
+                     
+                    if(Vars.Proxy_Port==0)
+                    {
+                        System.out.printf("Set the proxy_port first.\n");
+                        continue;
+                    }
+                       String new_name=ST.nextToken ();
+                      try
+                      {
+                       Proxy x=new Proxy(Proxy.Type.HTTP,new InetSocketAddress(new_name,Vars.Proxy_Port));
+                      }
+                      catch(Exception e)
+                      {
+                          System.out.println("Invalid proxy. Possible reasons: incorrect input, domain resolution failure, invalid proxy.");
+                      }
+                        System.out.printf("Proxy_Host changed from \""+
+                                Vars.Proxy_Host+"\" to \""+new_name+"\".\n");
+                        
+                        Vars.Proxy_Host=new_name;
+                        Server.rewriteconfig();
+                       
+                        
+                }
+                else if(aux.toLowerCase().equals ("proxy_port"))
+                {
+                    aux=ST.nextToken ();
+                    try
+                    {
+                        long aucsy=Vars.Proxy_Port;
+                        int x=Integer.parseInt(aux);
+                        if(x<1 || x> 65355)
+                            throw new NumberFormatException();
+                        Vars.Proxy_Port=x;
+                        System.out.printf("Proxy_port changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        Server.rewriteconfig();
+                    }
+                    
+                    catch(NumberFormatException nfe)
+                   {
+                    System.out.println("Invalid port number");
+                   } 
+                }
                 else if(aux.toLowerCase().equals ("max_ni"))
                 {
                     aux=ST.nextToken ();
@@ -1349,6 +1393,8 @@ continue;
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
                             +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
+                            +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
+                            +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
                             +          "   max_ni                  "  +Vars.max_ni+" -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+" -- Minimum nick size, integer.\n"
                             +          "   max_de                  "  +Vars.max_de+" -- Maximum description size, integer.\n"

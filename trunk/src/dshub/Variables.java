@@ -65,10 +65,13 @@ public class Variables implements Serializable
       
       String Hub_Host;
       
+      String Proxy_Host;
+      int Proxy_Port;
+      
      int max_ni;
      int min_ni;
      int max_de;
-     long max_share ; //10 tebibytes
+     long max_share ; 
      long min_share;
      int max_sl;
      int min_sl;
@@ -189,6 +192,9 @@ public class Variables implements Serializable
       
       Hub_Host=Vars.Hub_Host;
       
+        Proxy_Host=Vars.Proxy_Host;
+       Proxy_Port=Vars.Proxy_Port;
+      
 
       reg_only=Vars.reg_only;
       nick_chars=Vars.nick_chars;
@@ -308,6 +314,10 @@ public class Variables implements Serializable
     static String OpChatCid;
     
     static String Hub_Host="127.0.0.1";
+    
+    static String Proxy_Host="";
+    static int Proxy_Port;
+    
     static
     {
         Tiger myTiger = new Tiger();

@@ -341,7 +341,7 @@ public class HubServer extends Thread
         
       Vars.min_ni=vars.min_ni;
       Vars.max_de=vars.max_de;
-      Vars.max_share=vars.max_share; //10 tebibytes
+      Vars.max_share=vars.max_share; 
       Vars.min_share=vars.min_share;
       Vars.max_sl=vars.max_sl;
       Vars.min_sl=vars.min_sl;
@@ -368,6 +368,8 @@ public class HubServer extends Thread
      Vars.SecurityCid=vars.SecurityCid;
      
      Vars.Hub_Host=vars.Hub_Host;
+     Vars.Proxy_Host=vars.Proxy_Host;
+     Vars.Proxy_Port=vars.Proxy_Port;
       
       Vars.chat_interval=vars.chat_interval;
 
