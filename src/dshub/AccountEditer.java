@@ -25,6 +25,7 @@ package dshub;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -1168,7 +1169,10 @@ if(curAcc.myMask.adc)
        if(checkflyable.isSelected ())
        {
           if(!curAcc.setFlyable (true))
-              Main.GUI.SetStatus ("Error: To be flyable, account needs a password.");
+          {
+              Main.GUI.SetStatus ("Error: To be flyable, account needs a password.",JOptionPane.ERROR_MESSAGE);
+              return;
+          }
        }
         else
           curAcc.setFlyable (false);

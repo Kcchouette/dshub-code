@@ -228,3 +228,7 @@ To be flyable, the nick must NOT be protected, so when you check flyable, its be
            * hub_host should work now;
            * updated stats command to show uptime in proprietary format;
            * updated messages to December;
+           * worked on GUI looks on some pages;
+           * grouped some of the buttons in panels;
+           * created boxes for proxy;
+           * created information messages for all status texts for better visibility;
