@@ -31,6 +31,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.*;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import org.apache.mina.common.ByteBuffer;
 import org.apache.mina.common.DefaultIoFilterChainBuilder;
 import org.apache.mina.common.IoAcceptor;
@@ -184,7 +185,7 @@ public class HubServer extends Thread
             Main.PopMsg("Network problem. Unable to listen on port "+port+"."+jbe);
             if(Main.GUIok)
            {
-               Main.GUI.SetStatus ("Network problem. Unable to listen on port "+port+"."+jbe);
+               Main.GUI.SetStatus ("Network problem. Unable to listen on port "+port+"."+jbe,JOptionPane.ERROR_MESSAGE);
                
            }
             return;

@@ -26,6 +26,7 @@ import java.io.*;
 import java.text.DateFormat;
 import java.util.*;
 import java.net.*;
+import javax.swing.JOptionPane;
 import org.apache.mina.common.IoSession;
 
 
@@ -189,6 +190,8 @@ public class Main extends Thread
                         {
                             
                             System.out.println (reg_config.getnod (aux).getRegInfo ());
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                         ClientNod temp=ClientNod.FirstClient.NextClient;
@@ -246,7 +249,7 @@ public class Main extends Thread
                         {
                             PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.");
+                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
                         }
                         else
                         {
@@ -254,7 +257,7 @@ public class Main extends Thread
                         {
                             System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                              if(Main.GUIok)
-                                Main.GUI.SetStatus ("Already regged.");
+                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                             reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
@@ -299,7 +302,7 @@ public class Main extends Thread
                         
                         
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.");
+                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
                         }
                         else
                         {
@@ -307,7 +310,7 @@ public class Main extends Thread
                         {
                            System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Already regged.");
+                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                             reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
