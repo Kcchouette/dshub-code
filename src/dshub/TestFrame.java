@@ -29,6 +29,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
+import java.net.Proxy;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -253,9 +254,9 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         proxycheck = new javax.swing.JCheckBox();
-        jTextField6 = new javax.swing.JTextField();
+        proxyhostfield = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        proxyportfield = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
         hubhostfield = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
@@ -589,7 +590,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel66.setText("This program uses the MINA library http://mina.apache.org licensed");
 
-        jLabel9.setText("Apache Public License.");
+        jLabel9.setText("under the Apache Public License.");
 
         org.jdesktop.layout.GroupLayout jPanel24Layout = new org.jdesktop.layout.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -741,12 +742,12 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField6.setPreferredSize(new java.awt.Dimension(180, 20));
+        proxyhostfield.setPreferredSize(new java.awt.Dimension(180, 20));
 
         jLabel67.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel67.setText("Proxy host");
 
-        jTextField7.setPreferredSize(new java.awt.Dimension(180, 20));
+        proxyportfield.setPreferredSize(new java.awt.Dimension(180, 20));
 
         jLabel68.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel68.setText("Proxy port");
@@ -761,8 +762,8 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(proxycheck)
                     .add(jPanel19Layout.createSequentialGroup()
                         .add(jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(proxyhostfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(proxyportfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .add(14, 14, 14)
                         .add(jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel68)
@@ -775,11 +776,11 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(proxycheck)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(proxyhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel67))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel19Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(proxyportfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel68))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2777,7 +2778,18 @@ public class TestFrame extends javax.swing.JFrame {
 
     private void proxycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_proxycheckActionPerformed
     {//GEN-HEADEREND:event_proxycheckActionPerformed
-// TODO add your handling code here:
+if(proxycheck.isSelected())
+{
+    proxyhostfield.setEditable(true);
+    proxyportfield.setEditable(true);
+}
+else
+{
+    
+    proxyhostfield.setEditable(false);
+    proxyportfield.setEditable(false);
+
+}
     }//GEN-LAST:event_proxycheckActionPerformed
 
     private void notifycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_notifycheckActionPerformed
@@ -3990,7 +4002,10 @@ public class TestFrame extends javax.swing.JFrame {
         
         
         /** hub host */
-          String new_name=hubhostfield.getText();
+        String new_name=hubhostfield.getText();
+         if(!(new_name.equals(Vars.Hub_Host))) 
+         {
+          
                       
                         
                        
@@ -4060,16 +4075,93 @@ return;
                           JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or DNS server failure.",
                     "Error",JOptionPane.ERROR_MESSAGE);
                        }
-                        
+                       
+                       
+         }
         
+        /** proxy settings */
+        SetProxy();
         
         Main.Server.rewriteconfig();
-        
+        refreshAll();
         
         
         SetStatus("Main settings saved.");
         
     }//GEN-LAST:event_jButton7ActionPerformed
+    
+    private void SetProxy()
+    {
+        if(!proxycheck.isSelected())
+        {
+              if(!("".equals(Vars.Proxy_Port) ))   
+         Main.PopMsg("Proxy_Host changed from \""+Vars.Proxy_Host+"\" to \""+(Vars.Proxy_Host="")+"\".");
+    if(0!=Vars.Proxy_Port)    
+         Main.PopMsg("Proxy_Port changed from \""+Vars.Proxy_Port+"\" to \""+(Vars.Proxy_Port=0)+"\".");
+    proxyhostfield.setEditable(false);
+    proxyportfield.setEditable(false);
+    proxyhostfield.setText("");
+    proxyportfield.setText("");
+    
+    refreshAll();
+    return;
+        }
+        if(proxyhostfield.getText().equals("")&& proxycheck.isSelected())
+        {
+            refreshAll();
+       return;
+        }
+        try{
+        if((!(Vars.Proxy_Host.equals(proxyhostfield.getText())) || Vars.Proxy_Port!=Integer.parseInt(proxyportfield.getText()))
+        ||(!Vars.Proxy_Host.equals("") && !proxycheck.isSelected()))
+        {
+
+    proxyhostfield.setEditable(true);
+    proxyportfield.setEditable(true);
+   
+    
+     int x=Integer.parseInt(proxyportfield.getText());
+    
+    if((x<1 || x> 65355))
+    {
+       this.SetStatus("Invalid port number.",JOptionPane.ERROR_MESSAGE);
+       refreshAll();
+       return;
+        
+    }
+    else
+     if(x!=Vars.Proxy_Port)    
+         Main.PopMsg("Proxy_Port changed from \""+Vars.Proxy_Port+"\" to \""+(Vars.Proxy_Port=x)+"\".");
+  
+    
+    if(Vars.Proxy_Port==0)
+                    {
+                        this.SetStatus("Setup proxy port first.",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                       String neww=proxyhostfield.getText();
+                      try
+                      {
+                       new Proxy(Proxy.Type.HTTP,new InetSocketAddress(neww,Vars.Proxy_Port));
+                      }
+                      catch(Exception e)
+                      {
+                          this.SetStatus("Invalid proxy. Possible reasons: incorrect input, domain resolution failure, invalid proxy.",JOptionPane.ERROR_MESSAGE);
+                          return;
+                      }
+    String y=proxyhostfield.getText();
+    if(!(y.equals(Vars.Proxy_Port) ))   
+         Main.PopMsg("Proxy_Host changed from \""+Vars.Proxy_Host+"\" to \""+(Vars.Proxy_Host=y)+"\".");
+    
+
+        }
+        }catch(NumberFormatException nfe)
+        {
+            this.SetStatus("Invalid port number.",JOptionPane.ERROR_MESSAGE);
+       refreshAll();
+       return;
+        }
+    }
     
     private void portfieldFocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_portfieldFocusLost
     {//GEN-HEADEREND:event_portfieldFocusLost
@@ -4335,6 +4427,26 @@ return;
         botnamefield.setText(Vars.bot_name);
         
         botdescfield.setText(Vars.bot_desc);
+        
+        
+        if(!Vars.Proxy_Host.equals(""))
+        {
+            proxycheck.setSelected(true);
+            proxyhostfield.setText(Vars.Proxy_Host);
+            proxyportfield.setText(Integer.toString(Vars.Proxy_Port));
+            proxyportfield.setEditable(true);
+            proxyhostfield.setEditable(true);
+        }
+        else
+        {
+            proxycheck.setSelected(false);
+            proxyhostfield.setText(null);
+            proxyportfield.setText(null);
+            proxyportfield.setEditable(false);
+            proxyhostfield.setEditable(false);
+        }
+        
+        
         
         if(Vars.BMSG==1)
             BMSGcheck.setSelected(true);
@@ -4890,8 +5002,6 @@ refreshAll();
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField kicktimefield;
     private javax.swing.JTextField maxchatmsgfield;
     private javax.swing.JTextField maxdefield;
@@ -4920,6 +5030,8 @@ refreshAll();
     private javax.swing.JTextField portfield;
     private javax.swing.JCheckBox privatecheck;
     private javax.swing.JCheckBox proxycheck;
+    private javax.swing.JTextField proxyhostfield;
+    private javax.swing.JTextField proxyportfield;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox savelogscheck;
     private javax.swing.JTextField searchlogbasefield;
