@@ -36,11 +36,12 @@ public class RCM
 {
     
     /** Creates a new instance of RCM */
+    
     public RCM(ClientHandler cur_client,String State, String Issued_Command) throws STAException
     {
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
             new STAError(cur_client,140,"RCM Invalid State.");
-      
+      if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':

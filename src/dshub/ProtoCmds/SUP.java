@@ -39,7 +39,7 @@ public class SUP
     /** Creates a new instance of SUP */
     public SUP (ClientHandler cur_client, String State, String Issued_Command) throws STAException, CommandException
     {
-        
+        if(!cur_client.reg.overridespam)
         switch(Issued_Command.charAt(0))
      {
          case 'B':

@@ -1,5 +1,5 @@
 *** Theta RC 2 ***
-
+           * override_spam now overrides adc adv config panel too;
            * done some refactoring and repackaging;
            * proxy boxes should work now, as well the console proxy set;
            * changelog.txt now includes all changelog since the creation of dshub.

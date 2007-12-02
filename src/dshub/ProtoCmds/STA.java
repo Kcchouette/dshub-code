@@ -40,6 +40,7 @@ public class STA
     {
         if(recvbuf.charAt (0)=='B')
         {
+             if(!cur_client.reg.overridespam)
             if(Vars.BSTA==0)
             {
                 cur_client.sendFromBot ("STA invalid context B");
@@ -48,6 +49,7 @@ public class STA
         }
         else if(recvbuf.charAt (0)=='D')
         {
+             if(!cur_client.reg.overridespam)
             if(Vars.DSTA==0)
             {
                 cur_client.sendFromBot ("STA invalid context D");
@@ -81,6 +83,7 @@ public class STA
         }
         else if(recvbuf.charAt (0)=='E')
         {
+             if(!cur_client.reg.overridespam)
             if(Vars.ESTA==0)
             {
                 cur_client.sendFromBot ("STA invalid context E");
@@ -113,6 +116,7 @@ public class STA
         }
         else if(recvbuf.charAt (0)=='F')
         {
+             if(!cur_client.reg.overridespam)
             if(Vars.FSTA==0)
             {
                 cur_client.sendFromBot ("STA invalid context F");
@@ -121,6 +125,7 @@ public class STA
         }
         else if(recvbuf.charAt (0)=='H')
         {
+             if(!cur_client.reg.overridespam)
             // ok, client has an error. what can i do about it? :))
             if(Vars.HSTA==0)
             {

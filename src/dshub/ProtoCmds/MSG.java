@@ -40,7 +40,7 @@ public class MSG
     {
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
         new STAError(cur_client,240,"MSG Invalid State.");
-      
+      if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':
