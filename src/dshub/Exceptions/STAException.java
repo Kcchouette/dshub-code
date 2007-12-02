@@ -1,7 +1,9 @@
 /*
- * RegConfig.java
+ * STAException.java
  *
- * Created on 28 aprilie 2007, 12:49
+ * Created on 02 decembrie 2007, 12:22
+ *
+ * Created on 17 martie 2007, 11:14
  *
  * DSHub ADC HubSoft
  * Copyright (C) 2007  Pietricica
@@ -21,45 +23,23 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
-import java.io.Serializable;
-import java.util.Date;
- 
-        
-    
+package dshub.Exceptions;
 
 /**
- * Provides a chained list of registered users, and each account's information
  *
  * @author Pietricica
  */
-public class RegConfig implements Serializable
+public class STAException extends Exception
 {
-    
-    int reg_count;
-    
-    Nod[] nods;
-    
-    public RegConfig ()
+    public int x;
+    public STAException()
     {
-        nods= new Nod[100];
-        reg_count=AccountsConfig.reg_count;
-       
-        if(AccountsConfig.First==null)
-            return ;
-        Nod temp=AccountsConfig.First;
-        int i=1;
-        while(temp!=null)
-        {
-            //nods[reg_count]=new Nod();
-            nods[i]=temp;
-            i++;
-            temp=temp.Next;
-        }
-        
+        super();
+    };
+    public STAException(String bla,int x)
+    {
+        super(bla);
+        this.x=x;
         
     }
-    
-    
-}
-
+};

@@ -56,112 +56,112 @@ public class ClientHandler
     
    
     
-    ClientNod myNod;
+    public ClientNod myNod;
     
-    int logged_in=0;
-    int userok=0;
-    int ACTIVE=0;
-    int quit=0;
+    public int logged_in=0;
+    public int userok=0;
+    public int ACTIVE=0;
+    public int quit=0;
     
-    long LoggedAt=0l;
+    public long LoggedAt=0l;
     
-    nod reg;
-    ban myban;
-    String RandomData;
+    public Nod reg;
+    public Ban myban;
+    public String RandomData;
     
-    long LastChatMsg;
-    long LastKeepAlive;
+    public long LastChatMsg;
+   public  long LastKeepAlive;
     
-    long LastCTM;
-    long LastINF;
+    public long LastCTM;
+    public long LastINF;
     
-    String State="PROTOCOL";
+   public  String State="PROTOCOL";
     
-    String RealIP;
+    public String RealIP;
     
-   ClientQueue Queue;
+   public ClientQueue Queue;
     
 /** The CID of the client. Mandatory for C-C connections.*/
-String ID;
+public String ID;
 /**The PID of the client. Hubs must check that the Tiger(PID) == CID and then discard the field before broadcasting it to other clients. Must not be sent in C-C connections.*/
-String PD;
+public String PD;
 /**IPv4 address without port. A zero address (0.0.0.0) means that the server should replace it with the real IP of the client. Hubs must check that a specified address corresponds to what the client is connecting from to avoid DoS attacks, and only allow trusted clients to specify a different address. Clients should use the zero address when connecting, but may opt not to do so at the user's discretion. Any client that supports incoming TCPv4 connections must also add the feature TCP4 to their SU field.*/
-String I4;
+public String I4;
 /**IPv6 address without port. A zero address (::) means that the server should replace it with the IP of the client. Any client that supports incoming TCPv6 connections must also add the feature TCP6 to their SU field.*/
-String I6;
+public String I6;
 /**Client UDP port. Any client that supports incoming UDPv4 packets must also add the feature UDP4 to their SU field.*/
-String U4;
+public String U4;
 /**Same as U4, but for IPv6. Any client that supports incoming UDPv6 packets must also add the feature UDP6 to their SU field.*/
-String U6;
+public String U6;
 /**Share size in bytes, integer.*/
-String SS;
+public String SS;
 /**Number of shared files, integer*/
-String SF;
+public String SF;
 /**Client identification, version (client-specific, a short identifier then a floating-point version number is recommended). Hubs should not discriminate agains clients based on their VE tag but instead rely on SUP when it comes to which clients should be allowed (for example, we only want regex clients).*/	
-String VE;
+public String VE;
 /**Maximum upload speed, bits/sec, integer*/
-String US;
+public String US;
 /**Maximum download speed, bits/sec, integer*/
-String DS;
+public String DS;
 /**Upload slots open, integer*/
-String SL;
+public String SL;
 /**Automatic slot allocator speed limit, bytes/sec, integer. This is the recommended method of slot allocation, the client keeps opening slots as long as its total upload speed doesn�t exceed this value. SL then serves as a minimum number of slots open.*/
-String AS;
+public String AS;
 /**Maximum number of slots open in automatic slot manager mode, integer.*/
-String AM;
+public String AM;
 /**E-mail address, string.*/
-String EM;
+public String EM;
 /**Nickname, string. The hub must ensure that this is unique in the hub up to case-sensitivity. Valid are all characters in the Unicode character set with code point above 32, although hubs may limit this further as they like with an appropriate error message.
  *When sent for hub, this is the nick that should be displayed before messages from the hub, and may also be used as short name for the hub.*/
-String NI;
+public String NI;
 /**Description, string. Valid are all characters in the Unicode character set with code point equal to or greater than 32.
 *When sent by hub, this string should be displayed in the window title of the hub window (if one exists)*/	
-String DE;
+public String DE;
 /**Hubs where user is a normal user and in NORMAL state, integer. While connecting, clients should not count the hub they're connecting to. Hubs should increase one of the three the hub counts by one before passing the client to NORMAL state.*/
-String HN;
+public String HN;
 /**Hubs where user is registered (had to supply password) and in NORMAL state, integer.*/
-String HR;
+public String HR;
 /**Hubs where user is op and in NORMAL state, integer.*/
-String HO;
+public String HO;
 /**Token, as received in RCM/CTM, when establishing a C-C connection.*/
-String TO;
+public String TO;
 /**1=op*/
-String OP;
+public String OP;
 /**1=registered*/
-String RG;
+public String RG;
 /**1=Away
 *2=Extended away, not interested in hub chat (hubs may skip sending broadcast type MSG commands to clients with this flag)*/
-String AW;
+public String AW;
 /**1=Bot (in particular, this means that the client does not support file transfers, and thus should never be queried for direct connections)*/
-String BO;
+public String BO;
 /**1=Hidden, should not be shown on the user list.*/
-String HI;
+public String HI;
 /**1=Hub, this INF is about the hub itself*/
-String HU;
+public String HU;
 /**Comma-separated list of feature FOURCC's. This notifies other clients of extended capabilities of the connecting client. Use with discretion.*/
-String SU;
+public String SU;
 	
-int search_step=0;
-long Lastsearch=0L;
-long Lastautomagic=0L;
+public int search_step=0;
+public long Lastsearch=0L;
+public long Lastautomagic=0L;
 
 
-String InQueueSearch=null;
+public String InQueueSearch=null;
 
-static int user_count=0;
-int kicked=0;
+public static int user_count=0;
+public int kicked=0;
     
-    String SessionID;
+    public String SessionID;
     byte [] sid;
     /** indicates if client supports UCMD messages*/
-    int ucmd;
+    public int ucmd;
     /**indicates if client supports BASE messages*/
-    int base; 
+    public int base; 
     /** Client Connect time in millis as Syste.gettimemillis() ; ;)*/
-    long ConnectTimeMillis;
-    String cur_inf;
+   public  long ConnectTimeMillis;
+   public  String cur_inf;
     
-    IoSession mySession;
+    public IoSession mySession;
     
     /** Creates a new instance of ClientHandler */
     

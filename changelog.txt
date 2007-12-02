@@ -1,5 +1,6 @@
 *** Theta RC 2 ***
 
+           * done some refactoring and repackaging;
            * proxy boxes should work now, as well the console proxy set;
            * changelog.txt now includes all changelog since the creation of dshub.
            * since now, the changes are made in the top of the file not at the end.

@@ -29,9 +29,9 @@ import java.util.BitSet;
  * @author naccio
  */
 public class BannedWord {
-    String cuvant;
-    long proprietati;
-    String replacement;
+     String cuvant;
+    private long proprietati;
+    private String replacement;
     /**
      *cuvant        -- banned word
      *proprietati   -- flags for propreties
@@ -44,16 +44,16 @@ public class BannedWord {
      *replacement   -- the replacement for the banned word (ifcase)
      */
     
-    static final long dropped=1;
-    static final long kicked=2;
-    static final long noAction=4;
-    static final long hidden=8;
-    static final long replaced=16;
-    static final long modified=32;
-    static final long privatechat=64;
-    static final long notify=128;
-    static final long allclient=7;
-    static final long allword=56;
+    public static final long dropped=1;
+    public static final long kicked=2;
+    public static final long noAction=4;
+    public static final long hidden=8;
+    public static final long replaced=16;
+    public static final long modified=32;
+    public static final long privatechat=64;
+    public static final long notify=128;
+    public static final long allclient=7;
+    public static final long allword=56;
     /** Creates a new instance of BannedWord */
     
     

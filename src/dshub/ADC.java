@@ -22,6 +22,7 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import dshub.TigerImpl.Base32;
 import java.lang.String;
 
 /**
@@ -35,13 +36,13 @@ abstract public class ADC
     
     
     /**First string to send to connecting client ;)*/
-    static final String Init="ISUP ADBASE ADTIGR ADUCM0"; //adding basic ucmds, adding tiger hash support
+    public static final String Init="ISUP ADBASE ADTIGR ADUCM0"; //adding basic ucmds, adding tiger hash support
     
     /**  ISID = session id string for connecting client*/
-    static final String ISID="ISID";
+    public  static final String ISID="ISID";
     
     /** The default motd.*/
-   static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
+    public static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
 "At the moment of this release ( December 2007 ), the following ADC clients were available:\n"+

@@ -1,7 +1,7 @@
 /*
- * ExtDrop.java
+ * ExtMass.java
  *
- * Created on 07 septembrie 2007, 11:23
+ * Created on 07 septembrie 2007, 11:14
  *
  * DSHub ADC HubSoft
  * Copyright (C) 2007  Pietricica
@@ -21,955 +21,899 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.ExtendedCmds;
 
+import dshub.*;
 import java.util.StringTokenizer;
 import java.util.regex.PatternSyntaxException;
 
 /**
- *
- * The client drop command, also with extended call.
+ * The client mass command, also with extended call.
  *
  * @author Pietricica
  */
-public class ExtDrop 
+public class ExtMass 
 {
     
-    /** Creates a new instance of ExtDrop */
-    public ExtDrop(ClientHandler cur_client,String recvbuf) 
+    /** Creates a new instance of ExtMass */
+    public ExtMass(ClientHandler cur_client, String recvbuf) 
     {
-        if(recvbuf.equalsIgnoreCase ("drop"))
-                    {
-                        
-                                String Text=
-                                "\nDrop Command:\nDropping in DSHub is also very simple now.\nClassic drop:\n"+
-                                "     drop just a user down from the sky, with no temporary ban or message.\n"+
-                                "Extended drop has way more advantages and can be used very efficiently with a large hub.\n"+
-                                "Extended drop features:\n"+
-                                "   Kicking users that match a certain regular expression:\n"+
-                                "      Example: !drop \\[RO\\].* -- this command drops all users that have their nick starting with [RO]\n" +
-                                "      Example: !drop .. --this command drops all users with 2 letter nicks\n"+
-                                "      This type of drop accepts just any regular expression.\n"+
-                                "   Kicking users that have their fields checked:\n"+
-                                "      Example: !drop share<1024 --this command just drops all users with share less then 1 gigabyte.\n"+
-                                "      Example: !drop sl=1 -- this command drops all users with exactly one open slot.\n"+
-                                        "      Example: !drops su!tcp4 -- this command drops all passive users.\n"
-                               +"Extended drop has the operators >, < , =, !\n"+
-                                "   And a list of possible fields : share, sl (slots), ni (nick length),su(supports, accepts only = or !, example: !drop su=tcp4),hn(normal hubs count),hr(registered hub count),ho(op hub count),aw(away, 1 means normal away, 2 means extended away),rg (1- registered, 0 otherwise, registered means not op),op ( 1 -op, 0 - otherwise , op means it has key).";
-                               cur_client.sendFromBot(Text);
-                        return;
-                    }
-                StringTokenizer ST=new StringTokenizer(recvbuf);
+            StringTokenizer ST=new StringTokenizer(recvbuf," ");
                 ST.nextToken ();
-                String aux=ST.nextToken (); //the nick to drop;
-                
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                
-                while(temp!=null)
-                        {
-                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                            //tempyprev=tempyprev.NextClient;
-                        }
-               if(temp==null)
+                String aux="";
+                if(!(ST.hasMoreTokens ()))
+                {
+                    String Text=
+                                "\nMass Command:\nBroadcasting in DSHub is very simple now.\nClassic mass:\n"+
+                                "     Mass message to all users, example: \"mass all text\".\n"+
+                                "Extended mass has way more advantages and can be used very efficiently with a large hub.\n"+
+                                "Extended mass features:\n"+
+                                "   Sending to users that match a certain regular expression:\n"+
+                                "      Example: !mass \\[RO\\].* text -- this command sends mass to all users that have their nick starting with [RO]\n" +
+                                "      Example: !mass .. text --this command sends mass to all users with 2 letter nicks\n"+
+                                "      This type of mass command accepts just any regular expression.\n"+
+                                "   Sending to users that have their fields checked:\n"+
+                                "      Example: !mass share<1024 text --this command just sends text to all users with share less then 1 gigabyte.\n"+
+                                "      Example: !mass sl=1 text-- this command just sends text to all users with exactly one open slot.\n"+
+                                "      Example: !mass su!tcp4 text -- this command just sends text to all passive users.\n"
+                               +"Extended mass has the operators >, < , =, !\n"+
+                                "   And a list of possible fields : all ( to everybody ) share, sl (slots), ni (nick length),su(supports, accepts only = or !, example: !mass su=tcp4 text),hn(normal hubs count),hr(registered hub count),ho(op hub count),aw(away, 1 means normal away, 2 means extended away),rg (1- registered, 0 otherwise, registered means not op),op ( 1 -op, 0 - otherwise , op means it has key).";
+                    cur_client.sendFromBot(Text);
+                    return;
+                }
+               String extmass=ST.nextToken ();
+                while (ST.hasMoreTokens ())
+                 aux=aux+ST.nextToken ()+" "; //the message to broadcast;
+                System.out.println(recvbuf);
+               if(extmass.equalsIgnoreCase ("all")) 
                {
-                            cur_client.sendFromBot("No such user online. Parsing to Extended Drop...");
-                            /***************extended kick**********************/
-                        try
-                        {
-                            //aux=aux.replaceAll ("\\\\\\\\","\\\\");
-                           // System.out.println (aux);
-                            "".matches(aux);
+               ClientNod temp=ClientNod.FirstClient.NextClient;
+               while(temp!=null)
+               {
+                   temp.cur_client.sendFromBotPM (aux);
+                   temp=temp.NextClient;
+               }
+               cur_client.sendFromBot("Broadcast sent.");    
+               return;
+               }
+                ClientNod temp;
+                try
+               {
+                            
+                            "".matches(extmass);
                              temp=ClientNod.FirstClient.NextClient;
-                             //tempyprev=ClientHandler.FirstClient;
-                            while(temp!=null)
-                            {
+
+                           
                                  temp=ClientNod.FirstClient.NextClient;
-                            // tempyprev=ClientHandler.FirstClient;
+                             
                             while(temp!=null)
                             {
-                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (aux.toLowerCase ())))
-                                break;
+                            if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (extmass.toLowerCase ())))
+                               temp.cur_client.sendFromBotPM(aux);
                             temp=temp.NextClient;
-                           // tempyprev=tempyprev.NextClient;
+
                              }
                              if(temp==null)
                              {
                                  cur_client.sendFromBot("Done with matching users...");
                                   throw new PatternSyntaxException("whatever...","bla",1);
                              }
-                           
-                            
-                          temp.dropMe (cur_client);
-                    
-                    
-                         
-                           
-                           
-                                }
-                            
-                            }
+                       
+                }
                          catch(PatternSyntaxException pse)
                              {
-                                 //cur_client.sendFromBot("Not a valid Regular Expression...");
+                                 //Not a valid Regular Expression...
                              /***********ok now must pass to field [share|sl|..][>|<|=|!=][number]*/
                              
-                             int mark=aux.indexOf ('>');
+                             int mark=extmass.indexOf ('>');
                              if(mark!=-1)
                              {
-                                 if(aux.substring (0,mark).equalsIgnoreCase("share"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("share"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
-                                             tempz.dropMe (cur_client);
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024>Number )
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hn"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hn"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
-                                     //drop all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)>Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Normal Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Normal Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hr"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hr"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
-                                     //drop all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)>Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ho"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ho"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)>Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Op Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Op Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("share"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("share"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ni"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ni"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with nick length > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with nick length > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
                              }
-                              mark=aux.indexOf ('<');
+                              mark=extmass.indexOf ('<');
                              if(mark!=-1)
                              {
-                                 if(aux.substring (0,mark).equalsIgnoreCase("share"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("share"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
-                                             tempz.dropMe (cur_client);
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.cur_client.userok==1)
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with share < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with share < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                      return;
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hn"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hn"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)<Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Normal Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Normal Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ho"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ho"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)<Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Op Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Op Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                  if(aux.substring (0,mark).equalsIgnoreCase("hr"))
+                                  if(extmass.substring (0,mark).equalsIgnoreCase("hr"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)<Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ni"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ni"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with nick length < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with nick length < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("sl"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("sl"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)<Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with slots < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with slots < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
                              }
-                              mark=aux.indexOf ('=');
+                              mark=extmass.indexOf ('=');
                              if(mark!=-1)
                              {
-                                 if(aux.substring (0,mark).equalsIgnoreCase("share"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("share"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.userok==1)
-                                             tempz.dropMe (cur_client);
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.cur_client.userok==1)
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with share = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with share = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                    return;  
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ho"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ho"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Op Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Op Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                  if(aux.substring (0,mark).equalsIgnoreCase("rg"))
+                                  if(extmass.substring (0,mark).equalsIgnoreCase("rg"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all registered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                  if(aux.substring (0,mark).equalsIgnoreCase("aw"))
+                                  if(extmass.substring (0,mark).equalsIgnoreCase("aw"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all away users.");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all away users.");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("op"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("op"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.OP)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all Op users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all Op users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hr"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hr"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Reg Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Reg Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hn"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hn"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Normal Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Normal Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("su"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("su"))
                                  {
                                      String Number="";
                                      
-                                      Number=aux.substring (mark+1,aux.length ());
+                                      Number=extmass.substring (mark+1,extmass.length ());
                                     
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
-                                             tempz.dropMe (cur_client);
+                                         if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users supporting "+Number+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                      return;
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ni"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ni"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with nick length = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with nick length = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                if(aux.substring (0,mark).equalsIgnoreCase("sl"))
+                                if(extmass.substring (0,mark).equalsIgnoreCase("sl"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with slots = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with slots = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
                              }
-                              mark=aux.indexOf ('!');
+                              mark=extmass.indexOf ('!');
                              if(mark!=-1)
                              {
                                     
-                                 if(aux.substring (0,mark).equalsIgnoreCase("share"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("share"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.userok==1)
-                                             tempz.dropMe (cur_client);
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.cur_client.userok==1)
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with share not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with share not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                      return;
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("rg"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("rg"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("aw"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("aw"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.AW)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all not away users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all not away users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("op"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("op"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ho"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ho"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Op Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Op Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hr"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hr"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Reg Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Reg Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("hn"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("hn"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with Normal Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with Normal Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                  if(aux.substring (0,mark).equalsIgnoreCase("su"))
+                                  if(extmass.substring (0,mark).equalsIgnoreCase("su"))
                                  {
                                      String Number="";
                                      
-                                      Number=aux.substring (mark+1,aux.length ());
+                                      Number=extmass.substring (mark+1,extmass.length ());
                                     
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
-                                             tempz.dropMe (cur_client);
+                                         if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users not supporting "+Number+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users not supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                      return;
                                  }
-                                 if(aux.substring (0,mark).equalsIgnoreCase("ni"))
+                                 if(extmass.substring (0,mark).equalsIgnoreCase("ni"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                   
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with nick length not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with nick length not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
-                                if(aux.substring (0,mark).equalsIgnoreCase("sl"))
+                                if(extmass.substring (0,mark).equalsIgnoreCase("sl"))
                                  {
                                      long Number=0;
                                      try
                                      {
-                                      Number=Long.parseLong (aux.substring (mark+1,aux.length ()));
+                                      Number=Long.parseLong (extmass.substring (mark+1,extmass.length ()));
                                      }
                                      catch(NumberFormatException nfe)
                                      {
-                                         cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                                         cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                                          return;
                                      }
-                                    // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
-                                     //kick all shared > number
+                                    
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)!=Number )
-                                             tempz.dropMe (cur_client);
+                                             tempz.cur_client.sendFromBotPM(aux);
                                          tempz=tempz.NextClient;
                                      }
-                                     cur_client.sendFromBot("Dropped all users with slots not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all users with slots not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
                                  }
                                   
                              }
-                             cur_client.sendFromBot("Invalid Extended Drop ...");cur_client.sendFromBot("Done.");
+                             cur_client.sendFromBot("Invalid Extended Mass ...");cur_client.sendFromBot("Done.");
                              
                              }
-                            /*****************extended drop*******************/
-               }
-               else if(!temp.cur_client.reg.kickable)
-                         cur_client.sendFromBot("This user can't be dropped.");
-                else
-                  {
-                    //actual dropping.
-                    
-                    temp.dropMe (cur_client);
-                    
-                    
-                    
-                }
     }
     
 }

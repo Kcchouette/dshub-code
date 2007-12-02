@@ -21,7 +21,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.TigerImpl;
 
 /**
  *  Tiger Algorithm hash implementation.
@@ -132,7 +132,7 @@ public final class Tiger extends MessageDigest implements Cloneable , Serializab
     /**
      * Initialize the digest context.
      */
-    protected void init() {
+    public void init() {
         hA = 0x0123456789abcdefL;
         hB = 0xfedcba9876543210L;
         hC = 0xf096a5b4c3b2e187L;

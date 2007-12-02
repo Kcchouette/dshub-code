@@ -22,6 +22,8 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import dshub.TigerImpl.Base32;
+import dshub.gui.TestFrame;
 import java.io.*;
 import java.text.DateFormat;
 import java.util.*;
@@ -47,16 +49,16 @@ public class Main extends Thread
     /** Creates a new instance of Main */
    
     
-    static HubServer Server;
-    static Properties Proppies;
-    static String auxhelp;
+    public static HubServer Server;
+    public static Properties Proppies;
+    public static String auxhelp;
     public static BanWordsList listaBanate;
       
-       static String MOTD="";
-       static long curtime;
-    static TestFrame GUI;
-    static String myPath;
-    static boolean GUIok=true;
+      public  static String MOTD="";
+      public  static long curtime;
+    public static TestFrame GUI;
+    public static String myPath;
+    public static boolean GUIok=true;
     public static void PopMsg(String bla)   
     {
         System.out.println (bla);
@@ -168,7 +170,7 @@ public class Main extends Thread
                Main.Server.rewritebans ();
              Main.Server.restart=true;
               
-             reg_config.First=null;
+             AccountsConfig.First=null;
              BanList.First=null;
              ClientNod.FirstClient=null;
             
@@ -186,10 +188,10 @@ public class Main extends Thread
                     try
                     {
                         Base32.decode (aux);
-                        if(reg_config.isReg (aux)>0)
+                        if(AccountsConfig.isReg (aux)>0)
                         {
                             
-                            System.out.println (reg_config.getnod (aux).getRegInfo ());
+                            System.out.println (AccountsConfig.getnod (aux).getRegInfo ());
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
@@ -203,18 +205,18 @@ public class Main extends Thread
                         }
                         if(temp==null)
                         {
-                            reg_config.addReg (aux,null,"Server");
+                            AccountsConfig.addReg (aux,null,"Server");
                             PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
                              if(Main.GUIok)
                                 Main.GUI.SetStatus ("CID added with no password, he should set one.");
-                             nod x=reg_config.getnod(aux);
+                             Nod x=AccountsConfig.getnod(aux);
                              x.isreg=true;
                              
                         }   
                         else
                         {
-                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
-                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             PopMsg("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
@@ -253,15 +255,15 @@ public class Main extends Thread
                         }
                         else
                         {
-                         if(reg_config.isReg (temp.cur_client.ID)>0)
+                         if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
-                            System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
+                            System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
                              if(Main.GUIok)
                                 Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
-                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
-                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
@@ -306,15 +308,15 @@ public class Main extends Thread
                         }
                         else
                         {
-                            if(reg_config.isReg (temp.cur_client.ID)>0)
+                            if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
-                           System.out.println (reg_config.getnod (temp.cur_client.ID).getRegInfo ());
+                           System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
-                            reg_config.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
-                            temp.cur_client.reg=reg_config.getnod (temp.cur_client.ID);
+                            AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
+                            temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
@@ -452,7 +454,7 @@ public class Main extends Thread
             
         if(recvbuf.toLowerCase ().equals("help"))
         {
-                nod ServerNode=new nod();
+                Nod ServerNode=new Nod();
                 ServerNode.myMask=new CommandMask(1);
                 
                 System.out.printf(
@@ -544,7 +546,7 @@ public class Main extends Thread
         else if(recvbuf.toLowerCase ().equals("listreg"))
         {
             String blah00="Reg List :\n";
-            nod n=reg_config.First;
+            Nod n=AccountsConfig.First;
             while(n!=null)
             {
                 blah00=blah00+n.CID;
@@ -569,7 +571,7 @@ public class Main extends Thread
                 if(aux.length ()!=39)
                     throw new IllegalArgumentException();
                 Base32.decode (aux);
-                if(reg_config.unreg (aux))
+                if(AccountsConfig.unreg (aux))
                 {
                     ClientNod temp=ClientNod.FirstClient.NextClient;
                      while(temp!=null)
@@ -586,7 +588,7 @@ public class Main extends Thread
                             temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
                             temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
-                            temp.cur_client.reg=new nod();
+                            temp.cur_client.reg=new Nod();
                             System.out.println ("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
                      }
                      else
@@ -609,7 +611,7 @@ public class Main extends Thread
                             System.out.println ("No such client online.");
                         else
                         {
-                            reg_config.unreg(temp.cur_client.ID);
+                            AccountsConfig.unreg(temp.cur_client.ID);
                            System.out.println ("User "+temp.cur_client.NI+" deleted.");
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
@@ -617,7 +619,7 @@ public class Main extends Thread
                             temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
                             temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
-                            temp.cur_client.reg=new nod();
+                            temp.cur_client.reg=new Nod();
                         }
                 }
                 Main.Server.rewriteregs ();
@@ -1447,7 +1449,7 @@ continue;
                else
                System.out.println("There wasn't any topic anyway.");
                Vars.HubDE="";
-               Server.vars.HubDE="";
+              
 
                
                }
@@ -1460,7 +1462,7 @@ continue;
                    System.out.println("Topic changed from \""+Vars.HubDE+"\" "+"to \""+auxbuf+"\".");
                    auxbuf=auxbuf;
                    Vars.HubDE=auxbuf;
-                   Server.vars.HubDE=auxbuf;
+                  
                    new Broadcast ("IINF DE"+auxbuf);
                    new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\"");
                    
@@ -1478,7 +1480,7 @@ continue;
            }
             System.out.printf("New default port change from %s to %s. Restart for settings to take effect.\n",Vars.Default_Port,recvbuf.substring(5));
              Vars.Default_Port=x;
-             Server.vars.Default_Port=x;
+             
              Server.rewriteconfig();
                 }
                 catch(NumberFormatException nfe)

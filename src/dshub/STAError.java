@@ -1,4 +1,6 @@
 package dshub;
+
+import dshub.Exceptions.STAException;
 /*
  * STAError.java
  *
@@ -29,20 +31,7 @@ package dshub;
  * @author Pietricica
  */
 
-class STAException extends Exception
-{
-    int x;
-    STAException()
-    {
-        super();
-    };
-    STAException(String bla,int x)
-    {
-        super(bla);
-        this.x=x;
-        
-    }
-};
+
 
 public class STAError
 {

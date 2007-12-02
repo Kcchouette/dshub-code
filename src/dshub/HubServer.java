@@ -57,7 +57,7 @@ public class HubServer extends Thread
 {
     
     /** Server main socket */
-    ServerSocket MainSocket;
+    private ServerSocket MainSocket;
     InputStream IS;
     OutputStream OS;    
     int port;
@@ -66,18 +66,18 @@ public class HubServer extends Thread
     
     //ClientHandler firstclient;
     
-   static Variables vars;
-   static  RegConfig rcfg;
-   static bans bcfg;
+   private static Variables vars;
+   private static  RegConfig rcfg;
+   private static bans bcfg;
    
-   static boolean restart;
-   static IoServiceManager IOSM;
-   static ServiceManager SM;
+   public static boolean restart;
+   public static IoServiceManager IOSM;
+   public static ServiceManager SM;
    
-   IoAcceptor acceptor;
-   ExecutorService x;//,y;
-   InetSocketAddress address;
-   Calendar MyCalendar;
+   private IoAcceptor acceptor;
+   private ExecutorService x;//,y;
+   private InetSocketAddress address;
+   public Calendar MyCalendar;
     /** Creates a new instance of HubServer */
     public HubServer() 
     {
@@ -475,7 +475,7 @@ public class HubServer extends Thread
         rcfg=(RegConfig)inreg.readObject ();
 
         for(int i=1;i<rcfg.reg_count;i++)
-            reg_config.addReg (rcfg.nods[i]);
+            AccountsConfig.addReg (rcfg.nods[i]);
 
         
 
