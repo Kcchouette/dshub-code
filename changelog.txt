@@ -1,4 +1,5 @@
 *** Theta RC 2 ***
+           * some minor gui look changes
            * override_spam now overrides adc adv config panel too;
            * done some refactoring and repackaging;
            * proxy boxes should work now, as well the console proxy set;

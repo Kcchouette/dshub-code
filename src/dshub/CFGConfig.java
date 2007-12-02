@@ -26,6 +26,7 @@ package dshub;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
+import java.net.Proxy;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
@@ -152,6 +153,50 @@ return;
                            cur_client.sendFromBot("Hub_host cannot be resolved or DNS server failure.");
                        }
                         
+                }
+                else if(aux.toLowerCase ().equals ("proxy_host"))
+                {
+                     
+                    if(Vars.Proxy_Port==0)
+                    {
+                        cur_client.sendFromBot("Set the proxy_port first.");
+                        return;
+                    }
+                       String new_name=ST.nextToken ();
+                      try
+                      {
+                       Proxy x=new Proxy(Proxy.Type.HTTP,new InetSocketAddress(new_name,Vars.Proxy_Port));
+                      }
+                      catch(Exception e)
+                      {
+                          cur_client.sendFromBot("Invalid proxy. Possible reasons: incorrect input, domain resolution failure, invalid proxy.");
+                      }
+                        cur_client.sendFromBot("Proxy_Host changed from \""+
+                                Vars.Proxy_Host+"\" to \""+new_name+"\".");
+                        
+                        Vars.Proxy_Host=new_name;
+                        Main.Server.rewriteconfig();
+                       
+                        
+                }
+                else if(aux.toLowerCase().equals ("proxy_port"))
+                {
+                    aux=ST.nextToken ();
+                    try
+                    {
+                        long aucsy=Vars.Proxy_Port;
+                        int x=Integer.parseInt(aux);
+                        if(x<1 || x> 65355)
+                            throw new NumberFormatException();
+                        Vars.Proxy_Port=x;
+                        cur_client.sendFromBot("Proxy_port changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".");
+                        Main.Server.rewriteconfig();
+                    }
+                    
+                    catch(NumberFormatException nfe)
+                   {
+                    System.out.println("Invalid port number");
+                   } 
                 }
                 else if(aux.toLowerCase().equals ("max_ni"))
                 {
