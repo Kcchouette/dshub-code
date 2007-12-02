@@ -778,7 +778,8 @@ public class Command
                         new STAError(cur_client,140,"INF Invalid Context.");
                         return;
                     }
-                         switch(Issued_Command.charAt(0))
+      if(!cur_client.reg.overridespam)
+      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BINF!=1)
@@ -813,7 +814,8 @@ public class Command
         if(Issued_Command.charAt (1)=='P'&& Issued_Command.charAt (2)=='A' && Issued_Command.charAt (3)=='S')
         {
                     
-                    switch(Issued_Command.charAt(0))
+      if(!cur_client.reg.overridespam)
+      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BPAS!=1)

@@ -43,7 +43,7 @@ public class RES
            new STAError(cur_client,140,"Error: Must be TCP active to use RES.");
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
            new STAError(cur_client,140,"RES Invalid State.");
-      
+      if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':

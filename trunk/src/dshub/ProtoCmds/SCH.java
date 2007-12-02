@@ -44,6 +44,32 @@ public class SCH
         return ;
      }
                
+     if(!cur_client.reg.overridespam)
+     switch(Issued_Command.charAt(0))
+     {
+         case 'B':
+             if(Vars.BSCH!=1)
+             { new STAError(cur_client,140,"SCH Invalid Context B");
+                       return;}break;
+         case 'E':
+              if(Vars.ESCH!=1)
+              {  new STAError(cur_client,140,"SCH Invalid Context E");
+                       return;}break;
+         case 'D':
+          if(Vars.DSCH!=1)
+          {   new STAError(cur_client,140,"SCH Invalid Context D");
+                       return;
+         }break;
+         case 'F':
+          if(Vars.FSCH!=1)
+           {   new STAError(cur_client,140,"SCH Invalid Context F");
+                       return;}break;
+         case 'H':
+              if(Vars.HSCH!=1)
+              {   new STAError(cur_client,140,"SCH Invalid Context H");
+                       return;}
+                 
+     }
      
      /** This is my new idea, the logarythmic search spam abuse. 
       * This way, the hub is being kept safe, and users are not frustrated no more of bad and useless regular searches.
