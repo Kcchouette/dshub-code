@@ -50,11 +50,11 @@ public class GrantCmd
             return;
             }
         String who=curcmd.nextToken();
-        nod modnod=null;
+        Nod modnod=null;
         ClientNod temp=ClientNod.FirstClient.NextClient;
         if(ADC.isCID(who))
         {
-             modnod=reg_config.getnod(who);
+             modnod=AccountsConfig.getnod(who);
         }
         else
         {
@@ -64,7 +64,7 @@ public class GrantCmd
                 if(temp.cur_client.userok==1)
                     if(temp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=reg_config.getnod(temp.cur_client.ID);
+                        modnod=AccountsConfig.getnod(temp.cur_client.ID);
                         break;
                     }
                 temp=temp.NextClient;
@@ -726,11 +726,11 @@ public GrantCmd(String cmd)
             return;
             }
         String who=curcmd.nextToken();
-        nod modnod=null;
+        Nod modnod=null;
         ClientNod temp=ClientNod.FirstClient.NextClient;
         if(ADC.isCID(who))
         {
-             modnod=reg_config.getnod(who);
+             modnod=AccountsConfig.getnod(who);
         }
         else
         {
@@ -740,7 +740,7 @@ public GrantCmd(String cmd)
                 if(temp.cur_client.userok==1)
                     if(temp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=reg_config.getnod(temp.cur_client.ID);
+                        modnod=AccountsConfig.getnod(temp.cur_client.ID);
                         break;
                     }
                 temp=temp.NextClient;

@@ -24,12 +24,14 @@
 
 package dshub;
 import java.io.Serializable;
-
+/**
+ * A non serialisable list of bans
+ */
 public class  BanList
 {
     
     
-    static ban First;
+    public static Ban First;
     /** Creates a new instance of BanList */
     public BanList ()
     {
@@ -43,7 +45,7 @@ public class  BanList
     static public void addban(int bantype,String whatever,long time,String banop,String reason)
     {
         
-        ban test=getban(bantype,whatever);
+        Ban test=getban(bantype,whatever);
         if(test!=null)
         {
             test.banop=banop;
@@ -53,7 +55,7 @@ public class  BanList
         }
         else
         {
-        ban BAN=new ban( bantype, whatever, time, banop,reason);
+        Ban BAN=new Ban( bantype, whatever, time, banop,reason);
         if(First==null)
             First=BAN;
         else
@@ -63,7 +65,7 @@ public class  BanList
         }
         }
     }
-    static public void addban(ban BAN)
+    static public void addban(Ban BAN)
     {
         
         if(First==null)
@@ -80,8 +82,8 @@ public class  BanList
         
         if(First==null)
             return false;
-        ban tempy=First;
-        ban tempyprev=null;
+        Ban tempy=First;
+        Ban tempyprev=null;
         while(tempy!=null)
         {
             if(tempy.bantype==bantype)
@@ -118,9 +120,9 @@ public class  BanList
         }
         return false;
     }
-    static public ban getban(int bantype,String whatever)
+    static public Ban getban(int bantype,String whatever)
     {
-        ban tempy=First;
+        Ban tempy=First;
         while(tempy!=null)
         {
             if(tempy.bantype==bantype)
@@ -138,9 +140,10 @@ public class  BanList
     
 }
 /**
- *
- *A public class which holds a list of bans, and a ban class for a singular ban.
- *
+ * 
+ * A public class which holds a list of bans, and a Ban class for a singular Ban.
+ * 
+ * 
  * @author Pietricica
  */
 
@@ -148,16 +151,16 @@ class bans implements Serializable
 {
       
     
-    ban [] bans;
+    Ban[] bans;
     int i;
     public bans ()
     {
-        bans= new ban[1000];
+        bans= new Ban[1000];
         
        
         if(BanList.First==null)
             return ;
-        ban temp=BanList.First;
+        Ban temp=BanList.First;
         i=1;
         while(temp!=null)
         {

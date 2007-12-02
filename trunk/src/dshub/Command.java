@@ -23,6 +23,17 @@ package dshub;
  */
 
 
+import dshub.Exceptions.CommandException;
+import dshub.Exceptions.STAException;
+import dshub.ProtoCmds.CTM;
+import dshub.ProtoCmds.MSG;
+import dshub.ProtoCmds.RCM;
+import dshub.ProtoCmds.RES;
+import dshub.ProtoCmds.SCH;
+import dshub.ProtoCmds.STA;
+import dshub.ProtoCmds.SUP;
+import dshub.TigerImpl.Base32;
+import dshub.TigerImpl.Tiger;
 import java.util.*;
 import java.io.*;
 import java.security.MessageDigest;
@@ -36,18 +47,6 @@ import org.apache.mina.common.IoSession;
  *
  * @author Pietricica
  */
-
-class CommandException extends Exception
-{
-    CommandException()
-    {
-        super();
-    };
-    CommandException(String bla)
-    {
-        super(bla);
-    }
-};
 
 public class Command
 {
@@ -410,9 +409,9 @@ public class Command
                         new STAError(cur_client,243,"Missing field","HN");
                         return;
                     }
-                   cur_client.reg=reg_config.getnod (cur_client.ID);
+                   cur_client.reg=AccountsConfig.getnod (cur_client.ID);
                    if(cur_client.reg==null)
-                       cur_client.reg=new nod();
+                       cur_client.reg=new Nod();
                    //cur_client.reg.CH=cur_client;
                     if(!cur_client.reg.isreg)
                             cur_client.HN=String.valueOf(Integer.parseInt(cur_client.HN)+1);
@@ -480,7 +479,7 @@ public class Command
                    
                }
                 
-                if(reg_config.nickReserved(cur_client.NI,cur_client.ID))
+                if(AccountsConfig.nickReserved(cur_client.NI,cur_client.ID))
                 {
                     int x=(State.equals("PROTOCOL"))?240:140;
                     new STAError(cur_client,x,"Nick reserved. Please choose another.");
@@ -677,8 +676,8 @@ public class Command
                    }
                    else
                    {
-                       nod k;
-                       k=reg_config.isNickRegFl(cur_client.NI);
+                       Nod k;
+                       k=AccountsConfig.isNickRegFl(cur_client.NI);
                        if(k!=null)
                        {
                            cur_client.sendToClient("ISTA 000 Nick\\sRegistered\\s(flyable\\saccount).\\sPlease\\sprovide\\spassword.");
@@ -839,9 +838,9 @@ public class Command
                        return;}
                  
      }
-                    nod k;
+                    Nod k;
                     
-                    if((k=reg_config.isNickRegFl(cur_client.NI))!=null)
+                    if((k=AccountsConfig.isNickRegFl(cur_client.NI))!=null)
                         cur_client.reg=k;
                     if(!cur_client.reg.isreg )
                     {

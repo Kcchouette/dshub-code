@@ -20,8 +20,9 @@
  *
  */
 
-package dshub;
+package dshub.gui;
 
+import dshub.*;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -37,14 +38,14 @@ import javax.swing.JTextArea;
 public class AccountEditer extends javax.swing.JFrame
 {
     String CID;
-    nod curAcc;
+    Nod curAcc;
     ImageIcon myIco;
     /** Creates new form AccountEditer */
     public AccountEditer (String regCID)
     {
         initComponents ();
         CID=regCID;
-        curAcc=reg_config.getnod (CID);
+        curAcc=AccountsConfig.getnod (CID);
         /* java.awt.EventQueue.invokeLater (new Runnable ()
         {
             public void run ()
@@ -748,7 +749,7 @@ this.dispose ();
     {//GEN-HEADEREND:event_formWindowGainedFocus
 this.setTitle ("Account Edit: "+CID);
 jLabel1.setText ("Account on "+Vars.HubName);
-nod curAcc=reg_config.getnod (CID);
+Nod curAcc=AccountsConfig.getnod (CID);
 accCID.setText(CID);
 accNI.setText (curAcc.LastNI);
 accIP.setText (curAcc.LastIP);

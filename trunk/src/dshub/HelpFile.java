@@ -31,9 +31,9 @@ import java.io.Serializable;
  */
 public class HelpFile implements Serializable
 {
-    nod curAcc;
+    Nod curAcc;
     /** Creates a new instance of HelpFile */
-    public HelpFile (nod curAcc)
+    public HelpFile (Nod curAcc)
     {
         this.curAcc=curAcc;
     }

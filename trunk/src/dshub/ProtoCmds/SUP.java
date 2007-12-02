@@ -21,8 +21,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.ProtoCmds;
 
+import dshub.*;
+import dshub.Exceptions.CommandException;
+import dshub.Exceptions.STAException;
 import java.util.StringTokenizer;
 
 /**

@@ -21,9 +21,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.gui;
 
 
+import dshub.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.InetAddress;
@@ -3427,9 +3428,9 @@ else
             int row=AccountTable.getSelectedRow();
             String CID=(String)AccountTable.getModel().getValueAt(row,0);
             // Main.PopMsg(CID);
-            if(reg_config.unreg(CID)) {
+            if(AccountsConfig.unreg(CID)) {
                 DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
-                nod n=reg_config.First;
+                Nod n=AccountsConfig.First;
                 int regcount=0;
                 while(n!=null) {
                     regcount++;
@@ -3438,7 +3439,7 @@ else
                 
                 if(regcount!=AccountModel.getRowCount()) {
                     AccountModel.setRowCount(0) ;
-                    n=reg_config.First;
+                    n=AccountsConfig.First;
                     while(n!=null) {
                         String blah00="";
                         Date d=new Date(n.CreatedOn);
@@ -3467,7 +3468,7 @@ else
                         temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);
                     temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
                     new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
-                    temp.cur_client.reg=new nod();
+                    temp.cur_client.reg=new Nod();
                     Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
                 } else
                     Main.PopMsg("Reg "+CID+" deleted.");
@@ -3897,7 +3898,7 @@ else
         }
     }//GEN-LAST:event_regonlycheckActionPerformed
     
-    void insertLog(String bla) {
+    public void insertLog(String bla) {
         LogText.append(bla+"\n");
     }
     
@@ -3929,7 +3930,7 @@ else
             } else
                 //System.out.println("There wasn't any topic anyway.");
                 Vars.HubDE="";
-            Main.Server.vars.HubDE="";
+            
             
             
             } else {
@@ -3940,7 +3941,7 @@ else
             // System.out.println("Topic changed from \""+Vars.HubDE+"\" "+"to \""+auxbuf+"\".");
             auxbuf=auxbuf;
             Vars.HubDE=auxbuf;
-            Main.Server.vars.HubDE=auxbuf;
+            
             new Broadcast("IINF DE"+ADC.retADCStr(auxbuf));
             new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\".");
             Main.PopMsg("Topic was changed by Server to \""+Vars.HubDE+"\".");
@@ -4253,7 +4254,7 @@ return;
         
         
         DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
-        nod n=reg_config.First;
+        Nod n=AccountsConfig.First;
         int regcount=0;
         while(n!=null) {
             regcount++;
@@ -4262,7 +4263,7 @@ return;
         
         if(regcount!=AccountModel.getRowCount()) {
             AccountModel.setRowCount(0) ;
-            n=reg_config.First;
+            n=AccountsConfig.First;
             while(n!=null) {
                 String blah00="";
                 Date d=new Date(n.CreatedOn);
@@ -4677,7 +4678,7 @@ return;
     
     public void insertBans()
     {
-        ban n=BanList.First;
+        Ban n=BanList.First;
         int bancount=0;
         while(n!=null) {
             bancount++;
@@ -4732,7 +4733,7 @@ refreshAll();
 //clicked reg...
         Main.Reg(jTextField1.getText());
         ((DefaultTableModel) AccountTable.getModel()).setRowCount(0) ;
-        nod n=reg_config.First;
+        Nod n=AccountsConfig.First;
         while(n!=null) {
             String blah00="";
             Date d=new Date(n.CreatedOn);

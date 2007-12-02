@@ -33,11 +33,11 @@ package dshub;
 public class ClientNod 
 {
     
-    ClientHandler cur_client;
-    ClientNod NextClient;
-    ClientNod PrevClient;
+    public ClientHandler cur_client;
+    public ClientNod NextClient;
+    public ClientNod PrevClient;
     
-    static ClientNod FirstClient;
+    public static ClientNod FirstClient;
     
     /** Creates a new instance of ClientNod */
     public ClientNod()

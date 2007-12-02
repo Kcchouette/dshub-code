@@ -1,5 +1,5 @@
 /*
- * ban.java
+ * Ban.java
  *
  * Created on 11 mai 2007, 18:53
  *
@@ -30,31 +30,31 @@ import java.io.Serializable;
  *
  * @author Pietricica
  */
-public class ban implements Serializable
+public class Ban implements Serializable
 {
     /** 0 -- no ban
      * 1 -- nick ban
      * 2 -- ip ban
      * 3 -- cid ban
      */
-    int bantype;
-    String banreason;
-    String banop;
+    public int bantype;
+    public String banreason;
+    public String banop;
     /** millis till ban over
      * -1 == permban
      */
-    long time;
+    public long time;
     
-    String nick;
-    String ip;
-    String cid;
+   public String nick;
+    public String ip;
+   public  String cid;
     
-    long timeofban;
+    public long timeofban;
     
-    ban Next;
+   public  Ban Next;
     
     /** Creates a new instance of ban */
-    public ban (int bantype,String whatever,long time,String banop,String banreason)
+    public Ban (int bantype,String whatever,long time,String banop,String banreason)
     {
         this.bantype=bantype;
         nick=cid=ip=null;

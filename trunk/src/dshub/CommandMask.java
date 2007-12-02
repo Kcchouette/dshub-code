@@ -62,7 +62,7 @@ public class CommandMask implements Serializable
                         restart -- Restarts hub.
                         quit -- Shuts down hub.
 */
-    boolean adc,port,reg,ureg,listreg,mass,kick,drop,unban,banip,bancid,bannick,history,cmdhistory,info,hideme,password,mynick,rename,usercount,topic,
+    public boolean adc,port,reg,ureg,listreg,mass,kick,drop,unban,banip,bancid,bannick,history,cmdhistory,info,hideme,password,mynick,rename,usercount,topic,
             cfg,gui,stats,about,help,restart,quit,listban,grant,chatcontrol,backup;
     
     /** Creates a new instance of CommandMask */

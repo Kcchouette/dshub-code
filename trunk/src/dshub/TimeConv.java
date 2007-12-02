@@ -23,17 +23,8 @@
 
 package dshub;
 
-class NotCompatibleStringException extends Exception
-{
-    public NotCompatibleStringException(String ex)
-    {
-        super (ex);
-    }
-    public NotCompatibleStringException()
-    {
-        super ("Probably not compatible String parameter.");
-    }
-}
+import dshub.Exceptions.NotCompatibleStringException;
+
 
 /**
  * Basic Time intervals manangement. Converts from long millis to time format and viceversa.
@@ -58,7 +49,7 @@ public class TimeConv
      * # is a parsing delimitator. If a number is 0, it can be skipped.
      * Example : #1w#3h#55m#2s = 1 week , 0 days, 3 hours, 55 minutes 2 seconds and 0 millis.
      */
-    static String getStrTime(long x)
+   public static String getStrTime(long x)
     {
         String ret="";
         
@@ -88,7 +79,7 @@ public class TimeConv
     }
     
     /** this function converts from a string compatible format into a long millis*/
-    static long getLongTime( String str) throws NotCompatibleStringException
+    public static long getLongTime( String str) throws NotCompatibleStringException
     {
         long ret=0;
         

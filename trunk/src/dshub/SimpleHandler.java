@@ -24,6 +24,8 @@
 package dshub;
 
 
+import dshub.Exceptions.STAException;
+import dshub.TigerImpl.Base32;
 import java.util.StringTokenizer;
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
