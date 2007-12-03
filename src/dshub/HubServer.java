@@ -120,7 +120,7 @@ public class HubServer extends Thread
        reloadconfig();
        reloadbans();
        
-       port=vars.Default_Port;
+       port=Vars.Default_Port;
        
       
           try
