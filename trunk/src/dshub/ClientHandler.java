@@ -181,6 +181,7 @@ public int kicked=0;
       LastCTM=0L;
       LastINF=0L;
       cur_inf=null;
+      reg=new Nod();
       
         ConnectTimeMillis=System.currentTimeMillis();
     }
