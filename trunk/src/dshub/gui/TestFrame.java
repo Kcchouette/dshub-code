@@ -350,9 +350,6 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         BanTable = new javax.swing.JTable();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -461,6 +458,10 @@ public class TestFrame extends javax.swing.JFrame {
         ESUPcheck = new javax.swing.JCheckBox();
         FSUPcheck = new javax.swing.JCheckBox();
         HSUPcheck = new javax.swing.JCheckBox();
+        jPanel34 = new javax.swing.JPanel();
+        jPanel35 = new javax.swing.JPanel();
+        hubtrackerenable = new javax.swing.JCheckBox();
+        ModuleStatusLabel = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -1562,46 +1563,22 @@ public class TestFrame extends javax.swing.JFrame {
         });
         jScrollPane10.setViewportView(BanTable);
 
-        jButton30.setText("Save");
-
-        jButton31.setText("Delete");
-
-        jButton32.setText("Add");
-
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
-                    .add(jPanel5Layout.createSequentialGroup()
-                        .add(jButton32)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton31)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton30)))
+                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanel5Layout.linkSize(new java.awt.Component[] {jButton30, jButton31, jButton32}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
-
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton30)
-                    .add(jButton31)
-                    .add(jButton32))
-                .addContainerGap())
+                .add(40, 40, 40))
         );
-
-        jPanel5Layout.linkSize(new java.awt.Component[] {jButton30, jButton31, jButton32}, org.jdesktop.layout.GroupLayout.VERTICAL);
-
         jTabbedPane1.addTab("Bans", null, jPanel5, "Ban Handler...");
 
         jPanel6.setToolTipText("Some Hub Statistics...");
@@ -2668,6 +2645,51 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel9.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 50, 130));
 
         jTabbedPane1.addTab("Advanced", jPanel9);
+
+        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("Hubtracker Integration Module"));
+        hubtrackerenable.setText("Enable Module");
+        hubtrackerenable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        hubtrackerenable.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        ModuleStatusLabel.setText("StatusLabel");
+
+        org.jdesktop.layout.GroupLayout jPanel35Layout = new org.jdesktop.layout.GroupLayout(jPanel35);
+        jPanel35.setLayout(jPanel35Layout);
+        jPanel35Layout.setHorizontalGroup(
+            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel35Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(hubtrackerenable)
+                    .add(ModuleStatusLabel))
+                .addContainerGap(408, Short.MAX_VALUE))
+        );
+        jPanel35Layout.setVerticalGroup(
+            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel35Layout.createSequentialGroup()
+                .add(ModuleStatusLabel)
+                .add(9, 9, 9)
+                .add(hubtrackerenable)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanel34Layout = new org.jdesktop.layout.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(288, Short.MAX_VALUE))
+        );
+        jTabbedPane1.addTab("Additional Modules", jPanel34);
 
         jPanel12.setToolTipText("Hub Log");
         LogText.setColumns(20);
@@ -4832,6 +4854,7 @@ refreshAll();
     private javax.swing.JCheckBox HSTAcheck;
     private javax.swing.JCheckBox HSUPcheck;
     private javax.swing.JTextArea LogText;
+    private javax.swing.JLabel ModuleStatusLabel;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
     private javax.swing.JTextField botdescfield;
@@ -4844,6 +4867,7 @@ refreshAll();
     private javax.swing.JTextField fieldtimeout;
     private javax.swing.JTextField historylinesfield;
     private javax.swing.JTextField hubhostfield;
+    private javax.swing.JCheckBox hubtrackerenable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -4867,9 +4891,6 @@ refreshAll();
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -4965,6 +4986,8 @@ refreshAll();
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
