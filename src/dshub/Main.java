@@ -206,11 +206,12 @@ public class Main extends Thread
                         if(temp==null)
                         {
                             AccountsConfig.addReg (aux,null,"Server");
+                            Nod x=AccountsConfig.getnod(aux);
+                             x.isreg=true;
                             PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
                              if(Main.GUIok)
                                 Main.GUI.SetStatus ("CID added with no password, he should set one.");
-                             Nod x=AccountsConfig.getnod(aux);
-                             x.isreg=true;
+                             
                              
                         }   
                         else
@@ -218,8 +219,7 @@ public class Main extends Thread
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             PopMsg("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            if(Main.GUIok)
-                                Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
+                            
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
@@ -233,6 +233,8 @@ public class Main extends Thread
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
                         
                         }
                         
@@ -264,9 +266,7 @@ public class Main extends Thread
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            if(Main.GUIok)
-                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                            
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
@@ -280,6 +280,9 @@ public class Main extends Thread
                            temp.cur_client.reg.isreg=true;
                            temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
+                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                         }
                             
                     }
@@ -317,9 +320,7 @@ public class Main extends Thread
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
-                           PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            if(Main.GUIok)
-                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                           
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
@@ -333,6 +334,9 @@ public class Main extends Thread
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
+                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
                         }
                 }
                 

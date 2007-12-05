@@ -205,7 +205,7 @@ public class CommandParser
     {
           Main.GUI=new TestFrame();
           Main.GUIok=true;
-          Main.GUI.SetStatus("GUI restored...");
+         
            
     }
     catch (Exception e)
@@ -221,6 +221,7 @@ public class CommandParser
                 cur_client.sendFromBot("GUI launched...");
                 //GUIok=true;
                 Main.PopMsg ("GUI was launched by "+cur_client.NI);
+                Main.GUI.SetStatus("GUI restored...");
              }
              else cur_client.sendFromBot("GUI not viewable.");
         }

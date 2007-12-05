@@ -1,4 +1,6 @@
 *** Theta RC 2 ***
+           * started work on module separation;
+           * fixed some issues when popped messages in GUI would freeze hub activity;
            * fixed bug from last svn when couldn't connect;
            * some minor gui look changes
            * override_spam now overrides adc adv config panel too;
