@@ -48,6 +48,7 @@ public class SimpleHandler extends IoHandlerAdapter
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
 		//System.out.println(t.getMessage());
+         
                 if((t.getMessage().contains("IOException")))
                 {
 		  session.close();
@@ -60,6 +61,7 @@ public class SimpleHandler extends IoHandlerAdapter
                  }
                 else 
                 {
+                    t.printStackTrace();
 		  session.close();
                 return;
                 };
