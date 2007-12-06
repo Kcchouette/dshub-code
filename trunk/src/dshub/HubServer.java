@@ -167,18 +167,20 @@ public class HubServer extends Thread
         {
 
             acceptor.bind( address, new SimpleHandler(), cfg);
-            if(Main.GUIok)
-           {
-               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
-               
-           }
+            
             Main.PopMsg("Server created. Listening on port "+port+".");
             Date d=new Date(Main.curtime);
         Main.PopMsg("Start Time:"+d.toString ());
         System.out.print("\n>");
-        
+         Modulator.findModules();//refresh found modules
          myAssasin=new ClientAssasin();//temporary removed
        //  ClientExecutor myExecutor=new ClientExecutor();
+         
+         if(Main.GUIok)
+           {
+               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
+               
+           }
         } 
         catch( java.net.BindException jbe)
         {

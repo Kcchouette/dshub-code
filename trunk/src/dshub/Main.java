@@ -356,6 +356,8 @@ public class Main extends Thread
         Main.listaBanate=new BanWordsList();
         Main.listaBanate.loadFile(Main.myPath+"banwlist.txt");
         
+        //System.out.println(Modulator.findModule("dshub.Main.class"));    
+        
                       /*     Tiger myTiger = new Tiger();
 						
 		              myTiger.engineReset();

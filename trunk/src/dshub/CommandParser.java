@@ -29,6 +29,7 @@ import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
+import dshub.hubtracker.HubtrackerCmd;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.net.*;
