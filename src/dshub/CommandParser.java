@@ -27,10 +27,12 @@ import dshub.ExtendedCmds.ExtDrop;
 import dshub.ExtendedCmds.ExtInfo;
 import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
+import dshub.Modules.DSHubModule;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import dshub.hubtracker.HubtrackerCmd;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.net.*;
 import java.util.regex.PatternSyntaxException;
@@ -557,10 +559,7 @@ public class CommandParser
                     }
                 new ExtInfo(cur_client,recvbuf);
         }
-        else if(recvbuf.toLowerCase().startsWith("hubtracker"))
-        {
-                    new HubtrackerCmd();
-        }
+        
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
                      if(!cur_client.reg.myMask.mass)
@@ -1247,6 +1246,9 @@ public class CommandParser
         {
                 cur_client.sendFromBot("Unknown Command. Type !help for info.");
         }
+          Iterator x=Modulator.myModules.iterator();     
+        while(x.hasNext())
+            ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
            
             }
         

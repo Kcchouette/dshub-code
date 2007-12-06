@@ -1,4 +1,6 @@
 *** Theta RC 2 ***
+           * created a linked list of plugins;
+           * onCommand should work now;
            * separated hubtracker as a module and added as a library in /lib
            * created interface file that modules should implement;
            * started work on module separation;

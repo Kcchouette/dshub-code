@@ -26,6 +26,9 @@ package dshub;
 
 import dshub.hubtracker.HubtrackerModule;
 import java.lang.NoClassDefFoundError;
+import dshub.Modules.DSHubModule;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -43,18 +46,33 @@ public class Modulator
         
     }
     
+    static LinkedList<DSHubModule> myModules;
+    static
+    {
+        myModules=new LinkedList();
+    }
+    
     public static void findModules()
     {
         try
         {
-        new HubtrackerModule();
-        hubtrackerModule=true;
+        DSHubModule hubtracker=new HubtrackerModule();
+       
+        
+           hubtrackerModule=hubtracker.startup();
+           if(hubtrackerModule)
+                 myModules.add(hubtracker);
+       
         }
         catch(NoClassDefFoundError e)
         {
             //System.out.println("hubtracker not loaded");
             hubtrackerModule=false;
             
+        }
+        catch(Exception e)
+        {
+            hubtrackerModule=false;
         }
     }
     

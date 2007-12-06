@@ -33,30 +33,34 @@ import dshub.*;
 public class HubtrackerModule implements DSHubModule
 {
     
-    /** Creates a new instance of HubtrackerModule */
-    public HubtrackerModule()
-    {
-        ;//nothing to do yet, the module is OK (!)
-    }
+   
     
     public void onCommand(ClientHandler cur_client,String Issued_Command)
     {
-        
+        //System.out.println("\noka");
+        if(Issued_Command.toLowerCase().startsWith("hubtracker") || 
+                Issued_Command.toLowerCase().startsWith("hubtracker"))
+            new HubtrackerCmd(cur_client,Issued_Command);
     }
     
     public void onConnect(ClientHandler cur_client)
     {
-        
+        ; //hubtracker integration module has nothing to do here
     }
     
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {
-        
+        ; //hubtracker integration module has nothing to do here
     }
     
     public void onQuit(ClientHandler cur_client)
     {
-        
+        ; //hubtracker integration module has nothing to do here
     }
+     public boolean startup()
+     {
+         ;//nothing to do yet, the module is OK (!)
+         return true;
+     }
     
 }
