@@ -25,16 +25,38 @@ package dshub.Modules;
 import dshub.*;
 
 /**
+ * Interface designed for plugins to implement
+ * The implementing classes shouldnt have a complicated constructor since a new
+ * instance is anyway created for testing purposes.
+ * Instead, the startup method should initialise the plugin and return the result
  *
  * @author Pietricica
  */
 public interface DSHubModule
 {
+    /** Called by hub main threads when registered users give a command (starting with + or ! )
+     *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
+     *and with no protocol thingies
+     */
     public void onCommand(ClientHandler cur_client,String Issued_Command);
-    
+    /** Called by hub main threads when a new client connects and its logged in ok
+     *@arguments cur_client, the ClientHandler for the client who connected
+     */
     public void onConnect(ClientHandler cur_client);
-    
+    /** Called by hub main threads when a client sends any raw command;
+     *@arguments cur_client, the ClientHandler for the client who sent the raw, given in string
+     *with all the protocol thingies. This method is always called after the DSHub internal 
+     *methods are called to work at the raw command.
+     */
     public void onRawCommand(ClientHandler cur_client,String Raw_Command);
-    
+    /** Called by hub main threads when a client quits the hub;
+     *@arguments cur_client, the ClientHandler for the client who quitted;
+     */
     public void onQuit(ClientHandler cur_client);
+    /** Called by hub main threads when registering plugin at startup or restarts
+     * MUST return true if everything is ok ( classes ok, initialisation ok, nothing missing ( additional dependecies maybe ))
+     * and false if startup failed.
+     * If false returned, hub will ignore plugin.
+     */
+    public boolean startup();
 }

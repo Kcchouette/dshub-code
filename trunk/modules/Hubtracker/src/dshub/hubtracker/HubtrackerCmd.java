@@ -33,7 +33,7 @@ public class HubtrackerCmd
 {
     
     /** Creates a new instance of HubtrackerCmd */
-    public HubtrackerCmd()
+    public HubtrackerCmd(ClientHandler cur_client,String Issued_Command)
     {
         new HubtrackerConnection("Pietry","pietry@death-squad.ro");
     }
