@@ -28,6 +28,7 @@ import dshub.ExtendedCmds.ExtInfo;
 import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
 import dshub.Modules.DSHubModule;
+import dshub.Modules.Modulator;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import java.util.Date;

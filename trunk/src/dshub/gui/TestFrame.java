@@ -733,7 +733,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Proxy Settings"));
         proxycheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        proxycheck.setText("Use Proxy for http integration modules");
+        proxycheck.setText("Use Proxy for http access required by some modules");
         proxycheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         proxycheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
         proxycheck.addActionListener(new java.awt.event.ActionListener()

@@ -21,15 +21,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.Modules;
 
 
 
+import dshub.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.NoClassDefFoundError;
-import dshub.Modules.DSHubModule;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -40,10 +40,10 @@ import java.util.List;
  *
  * @author Pietricica
  */
-public class Modulator
+public final class Modulator
 {
     
-    public static boolean hubtrackerModule;
+    
     
     /** Creates a new instance of Modulator */
     public Modulator()
@@ -52,7 +52,7 @@ public class Modulator
         
     }
     
-    static LinkedList<DSHubModule> myModules;
+    public static LinkedList<DSHubModule> myModules;
     static
     {
         myModules=new LinkedList();
@@ -102,21 +102,21 @@ public class Modulator
            
             
         }
+        
         catch(NoClassDefFoundError e)
         {
-            //System.out.println("hubtracker not loaded");
-            hubtrackerModule=false;
+            //module class not found
             
             
         }
         catch(ClassNotFoundException cnfe)
         {
-            hubtrackerModule=false;
+           //module class not found
            
         }
         catch(Exception e)
         {
-            hubtrackerModule=false;
+          //other possible exceptions
             
         }
         }
