@@ -31,11 +31,12 @@ import dshub.*;
  */
 public class HubtrackerCmd
 {
-    
+    ClientHandler cur_client;
     /** Creates a new instance of HubtrackerCmd */
     public HubtrackerCmd(ClientHandler cur_client,String Issued_Command)
     {
-        new HubtrackerConnection("Pietry","pietry@death-squad.ro");
+        this.cur_client=cur_client;
+        new HubtrackerConnection(this,"Pietry","pietry@death-squad.ro");
     }
     
 }

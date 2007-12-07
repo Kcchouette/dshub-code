@@ -23,6 +23,7 @@
 
 package dshub.plugin;
 
+import dshub.Vars;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,25 +40,35 @@ import java.net.Proxy;
 public class HubtrackerConnection extends Thread
 {
     String user,e_mail;
+    HubtrackerCmd curCmd;
     /** Creates a new instance of HubtrackerConnection */
-    public HubtrackerConnection(String user, String e_mail)
+    public HubtrackerConnection(HubtrackerCmd curCmd,String user, String e_mail)
     {
         this.user=user;
         this.e_mail=e_mail;
+        this.curCmd=curCmd;
+         //curCmd.cur_client.sendFromBot("ok now");
         start();
     }
     public void run ()
     {
         BufferedReader inp = null;
-        try {
-          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&email="+e_mail+"&address=testy.bla.ro:1411";
+        try 
+        {
+          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&email="+e_mail+"&address="+Vars.Hub_Host+":"+Vars.Default_Port;
+        
           URL url = new URL(urlString);
+          URLConnection conn;
+          if(!Vars.Proxy_Host.equals(""))
+              
+           conn = url.openConnection(new Proxy(Proxy.Type.HTTP,new InetSocketAddress(Vars.Proxy_Host,Vars.Proxy_Port)));
+          else
+              conn=url.openConnection();
           
-          URLConnection conn = url.openConnection(new Proxy(Proxy.Type.HTTP,new InetSocketAddress("89.33.224.1",3128)));
           conn.setDoInput(true); // or 
           conn.setDoOutput(true);
          
-          
+         // System.out.println("ok now");
           /* really open connection */
           conn.connect(); // establish connection
           
@@ -65,7 +76,8 @@ public class HubtrackerConnection extends Thread
                   new InputStreamReader(conn.getInputStream()));
           String result ;
           while((result= inp.readLine())!=null)
-          System.out.println(result);
+              this.curCmd.cur_client.sendFromBot(result);
+         // System.out.println(result);
           inp.close(); 
           inp = null;
         }
