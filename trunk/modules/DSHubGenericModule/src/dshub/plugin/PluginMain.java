@@ -1,7 +1,7 @@
 /*
- * DSHubModule.java
+ * PluginMain.java
  *
- * Created on 06 decembrie 2007, 20:50
+ * Created on 07 decembrie 2007, 18:32
  *
  * DSHub ADC HubSoft
  * Copyright (C) 2007  Pietricica
@@ -21,46 +21,60 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub.Modules;
+package dshub.plugin;
+import dshub.Modules.DSHubModule;
 import dshub.*;
 
 /**
- * Interface designed for plugins to implement
- * The implementing classes shouldnt have a complicated constructor since a new
- * instance is anyway created for testing purposes.
- * Instead, the startup method should initialise the plugin and return the result
- *
- *Any plugin must have a class named PluginMain, which implements this interface
- *and included in the package dshub.plugin
- *Otherwise, the plugin will not be installed correctly.
+ * This is a generic DSHub module plugin, implementing the 
+ *Module interface, does nothing, just aids future developers in adding modules
+ *to DSHub using an already built-up schema.
  *
  * @author Pietricica
  */
-public interface DSHubModule
+public class PluginMain implements DSHubModule
 {
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
      */
-    public void onCommand(ClientHandler cur_client,String Issued_Command);
+    public void onCommand(ClientHandler cur_client,String Issued_Command)
+    {
+             
+    }
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
      */
-    public void onConnect(ClientHandler cur_client);
+    public void onConnect(ClientHandler cur_client){
+        
+    }
     /** Called by hub main threads when a client sends any raw command;
      *@arguments cur_client, the ClientHandler for the client who sent the raw, given in string
      *with all the protocol thingies. This method is always called after the DSHub internal 
      *methods are called to work at the raw command.
      */
-    public void onRawCommand(ClientHandler cur_client,String Raw_Command);
+    public void onRawCommand(ClientHandler cur_client,String Raw_Command)
+    {
+        
+    }
     /** Called by hub main threads when a client quits the hub;
      *@arguments cur_client, the ClientHandler for the client who quitted;
      */
-    public void onQuit(ClientHandler cur_client);
+    public void onQuit(ClientHandler cur_client)
+    {
+        
+    }
     /** Called by hub main threads when registering plugin at startup or restarts
      * MUST return true if everything is ok ( classes ok, initialisation ok, nothing missing ( additional dependecies maybe ))
      * and false if startup failed.
      * If false returned, hub will ignore plugin.
      */
-    public boolean startup();
+    public boolean startup()
+    {
+        ;//generic plugin does nothing except returning that its loaded ok.
+        System.out.println("generic ok");
+        return true;
+    }
+    
+    
 }

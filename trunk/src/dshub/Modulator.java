@@ -24,9 +24,15 @@
 package dshub;
 
 
-import dshub.hubtracker.HubtrackerModule;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.NoClassDefFoundError;
 import dshub.Modules.DSHubModule;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,26 +59,66 @@ public class Modulator
     }
     
     public static void findModules()
-    {
+    { 
+        File curPath=new File(Main.myPath+"/modules");
+    
+            File [] Modules=curPath.listFiles();
+        
+ 
+        
+            if(Modules!=null)
+            for(File myJar: Modules)
+            {
         try
         {
-        DSHubModule hubtracker=new HubtrackerModule();
+           
+            // Set up a URLClassLoader with the new Jar file in it.
+           
+         URLClassLoader loader = null;
+         try {
+             ClassLoader parentLoader = Modulator.class.getClassLoader();
+             loader = new URLClassLoader(
+                 new URL[] { 
+                 myJar.toURI().toURL() 
+             }, parentLoader);
+         } catch (MalformedURLException murle) {
+             murle.printStackTrace();
+         }
+ 
+         // Grab the resource out of the jar.
+         
+        
+            Class x= loader.loadClass("dshub.plugin.PluginMain");
+         DSHubModule y=(DSHubModule) x.newInstance();
+         boolean moduleOK=y.startup();
+ 
+         if(moduleOK)
+         {
+             myModules.add(y);
+         }
+        
        
         
-           hubtrackerModule=hubtracker.startup();
-           if(hubtrackerModule)
-                 myModules.add(hubtracker);
-       
+           
+            
         }
         catch(NoClassDefFoundError e)
         {
             //System.out.println("hubtracker not loaded");
             hubtrackerModule=false;
             
+            
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+            hubtrackerModule=false;
+           
         }
         catch(Exception e)
         {
             hubtrackerModule=false;
+            
+        }
         }
     }
     
