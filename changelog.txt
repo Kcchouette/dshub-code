@@ -1,4 +1,6 @@
 *** Theta RC 2 ***
+           * created a DSHubGenericPlugin that devs could use it for making their own;
+           * created basic plugin framework , the plugins should be in /plugins from now on;
            * created a linked list of plugins;
            * onCommand should work now;
            * separated hubtracker as a module and added as a library in /lib

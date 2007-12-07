@@ -1,5 +1,5 @@
 /*
- * HubtrackerModule.java
+ * PluginMain.java
  *
  * Created on 06 decembrie 2007, 20:30
  *
@@ -21,7 +21,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub.hubtracker;
+package dshub.plugin;
 
 import dshub.Modules.*;
 import dshub.*;
@@ -30,14 +30,14 @@ import dshub.*;
  *
  * @author Pietricica
  */
-public class HubtrackerModule implements DSHubModule
+public class PluginMain implements DSHubModule
 {
     
    
     
     public void onCommand(ClientHandler cur_client,String Issued_Command)
     {
-        //System.out.println("\noka");
+        System.out.println("hubtracker");
         if(Issued_Command.toLowerCase().startsWith("hubtracker") || 
                 Issued_Command.toLowerCase().startsWith("hubtracker"))
             new HubtrackerCmd(cur_client,Issued_Command);
@@ -60,6 +60,7 @@ public class HubtrackerModule implements DSHubModule
      public boolean startup()
      {
          ;//nothing to do yet, the module is OK (!)
+         System.out.println("hubtracker ok");
          return true;
      }
     
