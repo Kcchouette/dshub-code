@@ -114,6 +114,10 @@ public final class Modulator
            //module class not found
            
         }
+        catch(AbstractMethodError abe)
+        {
+            ;//plugin is crappy
+        }
         catch(Exception e)
         {
           //other possible exceptions
