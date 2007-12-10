@@ -24,6 +24,7 @@
 package dshub.plugin;
 
 import dshub.*;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -36,7 +37,46 @@ public class HubtrackerCmd
     public HubtrackerCmd(ClientHandler cur_client,String Issued_Command)
     {
         this.cur_client=cur_client;
-        new HubtrackerConnection(this,"Pietry","pietry@death-squad.ro");
+        
+        StringTokenizer ST=new StringTokenizer(Issued_Command);
+        ST.nextToken();
+        if(!ST.hasMoreTokens())
+        {
+            cur_client.sendFromBot("[hubtracker:] Command usage:\nhubtracker <user> <password> <e-mail>\n"+
+                    "Where <user> is the desired/active username on hubtracker.com,\n" +
+                    "<password> is the desired/active login password on hubtracker.com \n"+
+                    "<e-mail> is the desired/active e-mail for the hubtracker.com account.\n" +
+                    "Desired means that you dont have an account and you want to make one\n" +
+                    "and active means that you already have an account and you want to use it.\n" +
+                    "The hub autoregisters with the current hub_host and default_port.");
+            return;
+        }
+        String user =ST.nextToken();
+        if(!ST.hasMoreTokens())
+        {
+            cur_client.sendFromBot("[hubtracker:] Command usage:\nhubtracker <user> <password> <e-mail>\n"+
+                    "Where <user> is the desired/active username on hubtracker.com,\n" +
+                    "<password> is the desired/active login password on hubtracker.com \n"+
+                    "<e-mail> is the desired/active e-mail for the hubtracker.com account.\n" +
+                    "Desired means that you dont have an account and you want to make one\n" +
+                    "and active means that you already have an account and you want to use it.\n" +
+                    "The hub autoregisters with the current hub_host and default_port.");
+            return;
+        }
+        String pass=ST.nextToken();
+        if(!ST.hasMoreTokens())
+        {
+            cur_client.sendFromBot("[hubtracker:] Command usage:\nhubtracker <user> <password> <e-mail>\n"+
+                    "Where <user> is the desired/active username on hubtracker.com,\n" +
+                    "<password> is the desired/active login password on hubtracker.com \n"+
+                    "<e-mail> is the desired/active e-mail for the hubtracker.com account.\n" +
+                    "Desired means that you dont have an account and you want to make one\n" +
+                    "and active means that you already have an account and you want to use it.\n" +
+                    "The hub autoregisters with the current hub_host and default_port.");
+            return;
+        }
+        String email=ST.nextToken();
+        new HubtrackerConnection(this,user,pass,email);
     }
     
 }

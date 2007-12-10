@@ -25,6 +25,8 @@ package dshub.gui;
 
 
 import dshub.*;
+import dshub.Modules.DSHubModule;
+import dshub.Modules.Modulator;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.InetAddress;
@@ -41,6 +43,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -458,10 +461,7 @@ public class TestFrame extends javax.swing.JFrame {
         ESUPcheck = new javax.swing.JCheckBox();
         FSUPcheck = new javax.swing.JCheckBox();
         HSUPcheck = new javax.swing.JCheckBox();
-        jPanel34 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        hubtrackerenable = new javax.swing.JCheckBox();
-        ModuleStatusLabel = new javax.swing.JLabel();
+        PluginPanel = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -2646,50 +2646,9 @@ public class TestFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Advanced", jPanel9);
 
-        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("Hubtracker Integration Module"));
-        hubtrackerenable.setText("Enable Module");
-        hubtrackerenable.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        hubtrackerenable.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        PluginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ModuleStatusLabel.setText("StatusLabel");
-
-        org.jdesktop.layout.GroupLayout jPanel35Layout = new org.jdesktop.layout.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(hubtrackerenable)
-                    .add(ModuleStatusLabel))
-                .addContainerGap(408, Short.MAX_VALUE))
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel35Layout.createSequentialGroup()
-                .add(ModuleStatusLabel)
-                .add(9, 9, 9)
-                .add(hubtrackerenable)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-
-        org.jdesktop.layout.GroupLayout jPanel34Layout = new org.jdesktop.layout.GroupLayout(jPanel34);
-        jPanel34.setLayout(jPanel34Layout);
-        jPanel34Layout.setHorizontalGroup(
-            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
-        );
-        jPanel34Layout.setVerticalGroup(
-            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel34Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
-        );
-        jTabbedPane1.addTab("Additional Modules", jPanel34);
+        jTabbedPane1.addTab("Additional Modules", PluginPanel);
 
         jPanel12.setToolTipText("Hub Log");
         LogText.setColumns(20);
@@ -4271,8 +4230,44 @@ return;
     public void refreshAll()
     {
         refreshInit();
+        int y=20;
+        for(DSHubModule myPlug : Modulator.myModules)
+        {
+            try
+            {
+                myPlug.getName();
+            }
+            catch(AbstractMethodError abe)
+            {
+                continue;
+            }
+            JPanel myPanel=new JPanel();
+            //myPanel.setSize(PluginPanel.getWidth()-20,50);
+            myPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(myPlug.getName()));
+       org.jdesktop.layout.GroupLayout myPanelLayout = new org.jdesktop.layout.GroupLayout(myPanel);
+        myPanel.setLayout(myPanelLayout);
+       JCheckBox enableCheck=new JCheckBox("test");
+        enableCheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        enableCheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        myPanelLayout.setHorizontalGroup(
+            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(myPanelLayout.createSequentialGroup()
+                .add(18, 18, 18)
+                .add(enableCheck)
+                .addContainerGap(634, Short.MAX_VALUE))
+        );
+        myPanelLayout.setVerticalGroup(
+            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(myPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(enableCheck)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        PluginPanel.add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 720, 80));
+        y+=90;
         
-        
+       // myPanel.add(enableCheck);
+        }
         
         DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
         Nod n=AccountsConfig.First;
@@ -4854,7 +4849,7 @@ refreshAll();
     private javax.swing.JCheckBox HSTAcheck;
     private javax.swing.JCheckBox HSUPcheck;
     private javax.swing.JTextArea LogText;
-    private javax.swing.JLabel ModuleStatusLabel;
+    private javax.swing.JPanel PluginPanel;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
     private javax.swing.JTextField botdescfield;
@@ -4867,7 +4862,6 @@ refreshAll();
     private javax.swing.JTextField fieldtimeout;
     private javax.swing.JTextField historylinesfield;
     private javax.swing.JTextField hubhostfield;
-    private javax.swing.JCheckBox hubtrackerenable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -4986,8 +4980,6 @@ refreshAll();
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

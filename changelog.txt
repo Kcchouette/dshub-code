@@ -1,4 +1,6 @@
 *** Theta RC 2 ***
+           * created preliminary modulator interface;
+           * added more functions to module interface;
            * commands on modules should display correct messages now;
            * changed a bit the module interface;
            * worked on hubtracker integration module;

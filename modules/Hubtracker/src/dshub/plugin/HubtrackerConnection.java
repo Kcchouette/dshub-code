@@ -39,14 +39,15 @@ import java.net.Proxy;
  */
 public class HubtrackerConnection extends Thread
 {
-    String user,e_mail;
+    String user,pass,e_mail;
     HubtrackerCmd curCmd;
     /** Creates a new instance of HubtrackerConnection */
-    public HubtrackerConnection(HubtrackerCmd curCmd,String user, String e_mail)
+    public HubtrackerConnection(HubtrackerCmd curCmd,String user, String pass,String e_mail)
     {
         this.user=user;
         this.e_mail=e_mail;
         this.curCmd=curCmd;
+        this.pass=pass;
          //curCmd.cur_client.sendFromBot("ok now");
         start();
     }
@@ -55,7 +56,7 @@ public class HubtrackerConnection extends Thread
         BufferedReader inp = null;
         try 
         {
-          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&email="+e_mail+"&address="+Vars.Hub_Host+":"+Vars.Default_Port;
+          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&password="+pass+"&email="+e_mail+"&address="+Vars.Hub_Host+":"+Vars.Default_Port;
         
           URL url = new URL(urlString);
           URLConnection conn;
