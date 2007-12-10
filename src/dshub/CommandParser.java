@@ -66,6 +66,7 @@ public class CommandParser
     }
     public void run()
     {
+        boolean commandOK=false;
         String recvbuf=ADC.retNormStr(cmd.substring (1));
         String STR=cmd;
         String NI=cur_client.NI;
@@ -111,6 +112,7 @@ public class CommandParser
         
         if(recvbuf.toLowerCase ().equals("quit"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.quit)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -126,13 +128,24 @@ public class CommandParser
                 
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                
-                
+                 Iterator x=Modulator.myModules.iterator();     
+               while(x.hasNext())
+               {
+                     
+               
+                     ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
+                     ((DSHubModule)(x.next())).close();
+               }
+                 
                 Main.Exit();
+                return;
+               
         }
            
         
        else if(recvbuf.toLowerCase ().equals ("restart"))
             {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.restart)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -149,15 +162,25 @@ public class CommandParser
              
                  ClientNod.FirstClient=null;
                 Main.PopMsg ("Hub restarted by "+cur_client.NI);
+                
              
+                 Iterator x=Modulator.myModules.iterator();     
+               while(x.hasNext())
+               {
+                     ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
+                      ((DSHubModule)(x.next())).close();
+               }
+                 
              Main.Server.shutdown();
              System.gc (); //calling garbage collectors
             Main.Server=new HubServer();
          Main.curtime=System.currentTimeMillis();
          Main.Proppies=System.getProperties();
+         return;
           }
         if(recvbuf.toLowerCase ().startsWith("password"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.password)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -174,29 +197,36 @@ public class CommandParser
                 
                 Main.Server.rewriteregs();
                 cur_client.sendFromBot("Your password is now "+aux+".");
+                
+               
                
         } 
        else if(recvbuf.toLowerCase ().startsWith("grant"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.grant)
                     {
                         cur_client.sendFromBot("Access denied.");
                         return;
                     }
                  new GrantCmd(cur_client,recvbuf);
+                
                
         } 
          else if(recvbuf.toLowerCase().startsWith("backup"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.backup)
                     {
                         cur_client.sendFromBot("Access denied.");
                         return;
                     }
                  new BackupCmd(cur_client,recvbuf);
+                 
         }
         else if(recvbuf.toLowerCase ().equals("gui"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.gui)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -227,6 +257,7 @@ public class CommandParser
                 Main.GUI.SetStatus("GUI restored...");
              }
              else cur_client.sendFromBot("GUI not viewable.");
+                    commandOK=true;
         }
         else if(recvbuf.toLowerCase ().startsWith("hideme"))
         {
@@ -247,10 +278,12 @@ public class CommandParser
                cur_client.sendFromBot("You are now revealed, appearing again in userlist.");
                cur_client.reg.HideMe=false;
                     }
+                   
                
         } 
         else if(recvbuf.toLowerCase ().equals("listreg"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.listreg)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -269,9 +302,11 @@ public class CommandParser
             }
             blah00=blah00.substring (0,blah00.length ()-1);
             cur_client.sendFromBot(blah00);
+            
         }
         else if(recvbuf.toLowerCase ().equals("listban"))
         {
+                     commandOK=true;
                     if(!cur_client.reg.myMask.listban)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -303,9 +338,11 @@ public class CommandParser
             }
             blah00=blah00.substring (0,blah00.length ()-1);
             cur_client.sendFromBot(blah00);
+            
         }
         else if(recvbuf.toLowerCase ().startsWith("ureg"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.ureg)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -386,9 +423,11 @@ public class CommandParser
                 }
                 Main.Server.rewriteregs ();
                 
+                
         }
         else if(recvbuf.toLowerCase ().startsWith("reg"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.reg)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -531,11 +570,13 @@ public class CommandParser
                 }
                 
                 Main.Server.rewriteregs();
-                //sendFromBot("Your password is now "+aux+".");
+               
+               
                
         } 
         else if(recvbuf.toLowerCase ().equals("help"))
         {
+                     commandOK=true;
            
                  if(!cur_client.reg.myMask.help)
                     {
@@ -545,32 +586,38 @@ public class CommandParser
             
                 
                         
-                         //Main.HelpText.substring(0,Main.HelpText.length ()-1).replaceAll ("\\x0a","\\\n");
+                     
                         ;
                 cur_client.sendFromBot (cur_client.reg.myHelp.getHelp());
+                
                
         }
         else if(recvbuf.toLowerCase ().startsWith ("info "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.info)
                     {
                         cur_client.sendFromBot ("Access denied.");
                         return;
                     }
                 new ExtInfo(cur_client,recvbuf);
+                
         }
         
         else if(recvbuf.toLowerCase ().startsWith ("mass"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.mass)
                     {
                         cur_client.sendFromBot ("Access denied.");
                         return;
                     }
             new ExtMass(cur_client,recvbuf);
+            
         }
         else if(recvbuf.toLowerCase ().startsWith ("mynick "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.mynick)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -641,9 +688,11 @@ public class CommandParser
                         
                new Broadcast("IMSG "+cur_client.NI+" is now known as "+aux);
                cur_client.NI=aux;
+              
         }
         else if(recvbuf.toLowerCase ().startsWith ("rename "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.rename)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -730,18 +779,22 @@ public class CommandParser
                      temp.cur_client.NI=newnick;
                     
                 }
+                
         }
         else if(recvbuf.toLowerCase ().startsWith ("kick"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.kick)
                     {
                         cur_client.sendFromBot ("Access denied.");
                         return;
                     }
                    new ExtKick(cur_client,recvbuf);
+                  
         }
         else if(recvbuf.toLowerCase ().startsWith ("chatcontrol"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.chatcontrol)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -751,6 +804,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("drop"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.drop)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -760,6 +814,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("unban"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.unban)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -819,6 +874,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("bancid "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.bancid)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -913,6 +969,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith ("bannick "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.bannick)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -966,6 +1023,7 @@ public class CommandParser
         
         else if(recvbuf.toLowerCase ().startsWith ("banip "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.banip)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1067,6 +1125,7 @@ public class CommandParser
        
        else if (recvbuf.toLowerCase ().startsWith("cfg"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.cfg)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1076,6 +1135,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("topic"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.topic)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1115,6 +1175,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().startsWith("port "))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.port)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1140,6 +1201,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.usercount)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1158,6 +1220,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("about"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.about)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1167,6 +1230,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("history"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.history)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1184,6 +1248,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("cmdhistory"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.cmdhistory)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1201,6 +1266,7 @@ public class CommandParser
         }
         else if(recvbuf.toLowerCase ().equals("stats"))
         {
+                     commandOK=true;
                      if(!cur_client.reg.myMask.stats)
                     {
                         cur_client.sendFromBot ("Access denied.");
@@ -1241,14 +1307,28 @@ public class CommandParser
                cur_client.sendFromBot(""+blah);
         }
         else if(recvbuf.equals(""))
-            ;
-        else
-        {
-                cur_client.sendFromBot("Unknown Command. Type !help for info.");
-        }
+             commandOK=true;
+        
+        
+               
+        
           Iterator x=Modulator.myModules.iterator();     
         while(x.hasNext())
-            ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
+        {
+              boolean result=false;
+              try
+              {
+               result=((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
+              }
+              catch(AbstractMethodError abe)
+              {
+                  ;//plugin is crappy
+              }
+              if(result)
+                  commandOK=true;
+        }
+          if(!commandOK)
+           cur_client.sendFromBot("Unknown Command. Type !help for info.");
            
             }
         

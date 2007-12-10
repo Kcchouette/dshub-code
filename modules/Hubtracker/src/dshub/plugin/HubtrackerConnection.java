@@ -76,7 +76,7 @@ public class HubtrackerConnection extends Thread
                   new InputStreamReader(conn.getInputStream()));
           String result ;
           while((result= inp.readLine())!=null)
-              this.curCmd.cur_client.sendFromBot(result);
+              this.curCmd.cur_client.sendFromBot("[hubtracker:] "+result);
          // System.out.println(result);
           inp.close(); 
           inp = null;

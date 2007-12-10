@@ -37,10 +37,11 @@ public class PluginMain implements DSHubModule
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
+     *Must return true if it handled the command or false if it did nothing
      */
-    public void onCommand(ClientHandler cur_client,String Issued_Command)
+    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
     {
-             
+           return false;// this plugin doesnt have any commands.  
     }
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
@@ -60,7 +61,7 @@ public class PluginMain implements DSHubModule
     /** Called by hub main threads when a client quits the hub;
      *@arguments cur_client, the ClientHandler for the client who quitted;
      */
-    public void onQuit(ClientHandler cur_client)
+    public void onClientQuit(ClientHandler cur_client)
     {
         
     }
@@ -74,6 +75,13 @@ public class PluginMain implements DSHubModule
         ;//generic plugin does nothing except returning that its loaded ok.
         System.out.println("generic ok");
         return true;
+    }
+    /** Called by hub main threads when closing plugin at quitting main application or restarts
+     * Should clear everything up.
+     */
+    public void close()
+    {
+        
     }
     
     

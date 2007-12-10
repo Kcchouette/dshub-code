@@ -35,12 +35,16 @@ public class PluginMain implements DSHubModule
     
    
     
-    public void onCommand(ClientHandler cur_client,String Issued_Command)
+    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
     {
        // System.out.println("hubtracker");
         if(Issued_Command.toLowerCase().startsWith("hubtracker") || 
                 Issued_Command.toLowerCase().startsWith("hubtracker"))
+        {
             new HubtrackerCmd(cur_client,Issued_Command);
+            return true;
+        }
+        return false;
     }
     
     public void onConnect(ClientHandler cur_client)
@@ -53,7 +57,7 @@ public class PluginMain implements DSHubModule
         ; //hubtracker integration module has nothing to do here
     }
     
-    public void onQuit(ClientHandler cur_client)
+    public void onClientQuit(ClientHandler cur_client)
     {
         ; //hubtracker integration module has nothing to do here
     }
@@ -62,6 +66,11 @@ public class PluginMain implements DSHubModule
          ;//nothing to do yet, the module is OK (!)
        //  System.out.println("hubtracker ok");
          return true;
+     }
+     
+     public void close()
+     {
+         
      }
     
 }
