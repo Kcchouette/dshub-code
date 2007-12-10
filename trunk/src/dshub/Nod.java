@@ -58,6 +58,8 @@ public class Nod implements Serializable,Cloneable
         public CommandMask myMask;
        public  HelpFile myHelp;
        public  boolean nickprotected;
+       
+       public String pluginsAllowed;
         
        public  Nod()
         {
@@ -82,6 +84,7 @@ public class Nod implements Serializable,Cloneable
             myMask=new CommandMask();
             myHelp=new HelpFile(this);
             nickprotected=true;
+            pluginsAllowed="";
         }
       protected  Nod  clone()
         {

@@ -88,7 +88,7 @@ public final class Modulator
          // Grab the resource out of the jar.
          
         
-            Class x= loader.loadClass("dshub.plugin.PluginMain");
+         Class x= loader.loadClass("dshub.plugin.PluginMain");
          DSHubModule y=(DSHubModule) x.newInstance();
          boolean moduleOK=y.startup();
  

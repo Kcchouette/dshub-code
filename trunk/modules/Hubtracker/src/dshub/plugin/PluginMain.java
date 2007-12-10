@@ -25,6 +25,7 @@ package dshub.plugin;
 
 import dshub.Modules.*;
 import dshub.*;
+import javax.swing.JFrame;
 
 /**
  *
@@ -64,7 +65,7 @@ public class PluginMain implements DSHubModule
      public boolean startup()
      {
          ;//nothing to do yet, the module is OK (!)
-       //  System.out.println("hubtracker ok");
+        
          return true;
      }
      
@@ -72,5 +73,15 @@ public class PluginMain implements DSHubModule
      {
          
      }
+     
+    public void onGUIClick(JFrame parent)
+    {
+        
+    }
+    
+    public String getName()
+    {
+        return "Hubtracker Integration";
+    }
     
 }

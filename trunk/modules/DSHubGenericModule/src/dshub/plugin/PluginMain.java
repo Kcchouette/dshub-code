@@ -24,6 +24,7 @@
 package dshub.plugin;
 import dshub.Modules.DSHubModule;
 import dshub.*;
+import javax.swing.JFrame;
 
 /**
  * This is a generic DSHub module plugin, implementing the 
@@ -82,6 +83,20 @@ public class PluginMain implements DSHubModule
     public void close()
     {
         
+    }
+    
+    /** Called by main GUI thread when users wants to click the plugin allocated button 
+      *@argument parent = the main GUI Frame that calls this function
+     *
+     */
+    public void onGUIClick(JFrame parent)
+    {
+        ;//does nothing
+    }
+    
+    public String getName()
+    {
+        return "DSHub Generic Module";
     }
     
     

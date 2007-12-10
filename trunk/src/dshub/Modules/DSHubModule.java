@@ -23,6 +23,7 @@
 
 package dshub.Modules;
 import dshub.*;
+import javax.swing.JFrame;
 
 /**
  * Interface designed for plugins to implement
@@ -38,6 +39,8 @@ import dshub.*;
  */
 public interface DSHubModule
 {
+    
+    
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
@@ -68,4 +71,14 @@ public interface DSHubModule
      * Should clear everything up.
      */
     public void close();
+     /** Called by main GUI thread when users wants to click the plugin allocated button 
+      *@argument parent = the main GUI Frame that calls this function
+     *
+     */
+    public void onGUIClick(JFrame parent);
+    /** Must return the module name, String
+     */
+    public String getName();
+    
+   
 }
