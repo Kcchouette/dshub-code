@@ -25,6 +25,8 @@ package dshub;
 
 
 import dshub.Exceptions.STAException;
+import dshub.Modules.Modulator;
+import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import java.util.StringTokenizer;
 import org.apache.mina.common.IdleStatus;
@@ -107,6 +109,12 @@ public class SimpleHandler extends IoHandlerAdapter
             {
                 new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
             }
+            /** calling plugins...*/
+                 
+                 for(Module myMod : Modulator.myModules)
+                 {
+                     myMod.onClientQuit(cur_client);
+                 }
             cur_client.myNod.killMe();
             
         }

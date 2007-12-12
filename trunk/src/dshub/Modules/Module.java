@@ -56,9 +56,7 @@ public class Module
     {
         isok=true;
         this.curModule=curModule;
-        isok=curModule.startup();
-        if(!isok)
-            return;
+        
         try
         {
         moduleName=curModule.getName();
@@ -67,6 +65,9 @@ public class Module
         {
             isok=false;
         }
+        if(!isok)
+            return;
+       
         loadEnable();
         
     }
@@ -91,6 +92,7 @@ public class Module
     public void setButton(JButton b1)
     {
         this.guiButton=b1;
+        this.guiButton.setEnabled(this.isEnabled());
         guiButton.addActionListener(new ActionListener()
         {
            public void actionPerformed(ActionEvent e) 
@@ -124,6 +126,7 @@ public class Module
     
     public void onGUIClick(JFrame parent)
     {
+        if(isOK() && isEnabled())
         try
         {
         this.curModule.onGUIClick(parent);
@@ -136,6 +139,7 @@ public class Module
     }
     public void onCommand(ClientHandler cur_client,String Issued_Command)
     {
+        if(isOK() && isEnabled())
         try
         {
         this.curModule.onCommand(cur_client,Issued_Command);
@@ -147,6 +151,7 @@ public class Module
     }
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {
+        if(isOK() && isEnabled())
         try
         {
         this.curModule.onRawCommand(cur_client,Raw_Command);
@@ -158,6 +163,7 @@ public class Module
     }
     public void onClientQuit(ClientHandler cur_client)
     {
+        if(isOK() && isEnabled())
         try
         {
         this.curModule.onClientQuit(cur_client);
@@ -169,6 +175,7 @@ public class Module
     }
     public void onConnect(ClientHandler cur_client)
     {
+        if(isOK() && isEnabled())
          try
         {
         this.curModule.onConnect(cur_client);
@@ -202,13 +209,25 @@ public class Module
     public void setEnabled(boolean enabled)
     {
         this.enabled = enabled;
-        
+        if(!(this.isEnabled()))
+            this.close();
+        else
+        try
+        {
+        isok=curModule.startup();
+        }
+        catch(AbstractMethodError abe)
+        {
+            isok=false;
+        }
         int index=Vars.activePlugins.indexOf(this.getName());
         
         
        Vars.activePlugins=Vars.activePlugins.substring(0,index-1)+(this.isEnabled()?"+":"-")+Vars.activePlugins.substring(index);
         if(this.enableCheck!=null)
         this.enableCheck.setSelected(this.enabled);
+       if(this.guiButton!=null)
+           this.guiButton.setEnabled(this.isEnabled());
     }
     
     public void loadEnable()

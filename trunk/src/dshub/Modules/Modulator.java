@@ -122,7 +122,7 @@ public final class Modulator
         catch(Exception e)
         {
           //other possible exceptions
-            System.out.println(e);    
+          //  System.out.println(e);    
         }
         }
     }

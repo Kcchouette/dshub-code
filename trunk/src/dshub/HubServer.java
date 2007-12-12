@@ -124,7 +124,7 @@ public class HubServer extends Thread
        
        port=Vars.Default_Port;
        
-      
+      Modulator.findModules();
           try
           {
         this.sleep (500);

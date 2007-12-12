@@ -146,7 +146,7 @@ public class Main extends Thread
             
             
         }
-            // Modulator.findModules();//refresh found modules
+           
     }
        public static void Exit()
        {
@@ -362,7 +362,7 @@ public class Main extends Thread
         
         
         
-        Modulator.findModules();
+        
             //init banned words list
         Main.listaBanate=new BanWordsList();
         Main.listaBanate.loadFile(Main.myPath+"banwlist.txt");
