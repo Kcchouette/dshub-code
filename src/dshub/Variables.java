@@ -98,6 +98,8 @@ public class Variables implements Serializable
      int search_steps;
      int search_spam_reset;
      
+     
+     String activePlugins;
 
     // ****** ADC advanced config ************* 
      
@@ -213,6 +215,7 @@ public class Variables implements Serializable
       bot_name=Vars.bot_name;
       bot_desc=Vars.bot_desc;
       
+      activePlugins=Vars.activePlugins;
       
       BMSG=Vars.BMSG;
       DMSG=Vars.DMSG;

@@ -137,6 +137,8 @@ public final class Vars
     public static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
     public static String Msg_Search_Spam="Search ticket Reserved.\nPlease be patient while search\nis being processed.\nDo NOT close this window or start other search\nor you will lose this search !".replaceAll (" ","\\ ");
     
+    public static String activePlugins="";
+    
     // ****** ADC advanced config ************* 
     
     public static int BMSG=1;

@@ -59,6 +59,7 @@ public class HubServer extends Thread
     
     /** Server main socket */
     private ServerSocket MainSocket;
+   
     InputStream IS;
     OutputStream OS;    
     int port;
@@ -173,7 +174,7 @@ public class HubServer extends Thread
             Date d=new Date(Main.curtime);
         Main.PopMsg("Start Time:"+d.toString ());
         System.out.print("\n>");
-         Modulator.findModules();//refresh found modules
+         
          myAssasin=new ClientAssasin();//temporary removed
        //  ClientExecutor myExecutor=new ClientExecutor();
          
@@ -204,19 +205,7 @@ public class HubServer extends Thread
         
         
         
-      /* try 
-       {
-           while(!restart)
-               AddClient(MainSocket.accept());
-       }
-      catch(IOException e)
-       {
-           //System.out.println("Client I/O Error.");
-       }
-        try
-        {MainSocket.close ();}
-        catch( Exception e)
-        {}*/
+      
     }
     public void shutdown()
     {
@@ -383,6 +372,8 @@ public class HubServer extends Thread
       Vars.search_spam_reset=vars.search_spam_reset;
       Vars.bot_name=vars.bot_name;
       Vars.bot_desc=vars.bot_desc;
+      
+      Vars.activePlugins=vars.activePlugins;
       
       Vars.BMSG=vars.BMSG;
       Vars.EMSG=vars.EMSG;

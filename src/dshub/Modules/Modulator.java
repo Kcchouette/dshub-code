@@ -52,7 +52,7 @@ public final class Modulator
         
     }
     
-    public static LinkedList<DSHubModule> myModules;
+    public static LinkedList<Module> myModules;
     static
     {
         myModules=new LinkedList();
@@ -60,6 +60,8 @@ public final class Modulator
     
     public static void findModules()
     { 
+        
+        myModules.clear();
         File curPath=new File(Main.myPath+"/modules");
     
             File [] Modules=curPath.listFiles();
@@ -90,12 +92,11 @@ public final class Modulator
         
          Class x= loader.loadClass("dshub.plugin.PluginMain");
          DSHubModule y=(DSHubModule) x.newInstance();
-         boolean moduleOK=y.startup();
+        
  
-         if(moduleOK)
-         {
-             myModules.add(y);
-         }
+        
+             myModules.add(new Module(y));
+         
         
        
         
@@ -121,7 +122,7 @@ public final class Modulator
         catch(Exception e)
         {
           //other possible exceptions
-            
+            System.out.println(e);    
         }
         }
     }

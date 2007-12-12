@@ -22,6 +22,7 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import dshub.Modules.Modulator;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import java.io.*;
@@ -145,6 +146,7 @@ public class Main extends Thread
             
             
         }
+            // Modulator.findModules();//refresh found modules
     }
        public static void Exit()
        {
@@ -352,6 +354,15 @@ public class Main extends Thread
         System.out.println ("Initializing DSHub Theta ...");
         curtime=System.currentTimeMillis();
         init();
+        
+        
+       
+        
+        
+        
+        
+        
+        Modulator.findModules();
             //init banned words list
         Main.listaBanate=new BanWordsList();
         Main.listaBanate.loadFile(Main.myPath+"banwlist.txt");
@@ -397,6 +408,7 @@ public class Main extends Thread
     {
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
           GUI=new TestFrame();
+          GUIok=true;
            
     }
     catch (Exception e)
@@ -406,8 +418,8 @@ public class Main extends Thread
     }
         
     
-        Server=new HubServer();
         
+         Server=new HubServer();
 
          
          PopMsg("This program is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.");
