@@ -41,6 +41,7 @@ public class HubtrackerConnection extends Thread
 {
     String user,pass,e_mail;
     HubtrackerCmd curCmd;
+    private boolean done=false;
     /** Creates a new instance of HubtrackerConnection */
     public HubtrackerConnection(HubtrackerCmd curCmd,String user, String pass,String e_mail)
     {
@@ -53,6 +54,7 @@ public class HubtrackerConnection extends Thread
     }
     public void run ()
     {
+        
         BufferedReader inp = null;
         try 
         {
@@ -75,22 +77,41 @@ public class HubtrackerConnection extends Thread
           
           inp = new BufferedReader(
                   new InputStreamReader(conn.getInputStream()));
-          String result ;
-          while((result= inp.readLine())!=null)
-              this.curCmd.cur_client.sendFromBot("[hubtracker:] "+result);
+          String xx ;
+          while((xx= inp.readLine())!=null)
+              PluginMain.result+="\n"+xx;
+          
+          if(curCmd!=null)
+              
+              this.curCmd.cur_client.sendFromBot("[hubtracker:] "+xx);
+          else
+              PluginMain.curFrame.showMsg();
+          
          // System.out.println(result);
           inp.close(); 
           inp = null;
         }
         catch (MalformedURLException ue) 
         {
-            System.out.println(ue);
+            PluginMain.result=ue.toString();
         }
         catch (Exception e)
         {
-        System.out.println(e);
+        PluginMain.result=e.toString();
         }
+        done=true;
         
+    }
+    public boolean isDone()
+    {
+        try
+        {
+            this.sleep(100);
+        } catch (InterruptedException ex)
+        {
+            
+        }
+        return done;
     }
     
 }

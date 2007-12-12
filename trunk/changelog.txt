@@ -1,4 +1,5 @@
 *** Theta RC 2 ***
+           * hubtracker integration module gui works now, almost completey functional;
            * the gui click button now shades if disabled;
            * added the basic functionality for plugin cmmands in hub engine;
            * gui module click works now;
