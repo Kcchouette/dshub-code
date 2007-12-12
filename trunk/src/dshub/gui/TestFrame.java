@@ -44,6 +44,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -94,23 +95,20 @@ public class TestFrame extends javax.swing.JFrame {
         this.setIconImage(myIco.getImage());
           refreshInit();
           
-         Modulator.findModules();
+         //Modulator.findModules();
     }
     
+    boolean firstClick=true;
     public void refreshGUIPlugs()
     {
         jScrollPane1.removeAll();
          int y=20;
         for(Module myPlug : Modulator.myModules)
         {
-            try
-            {
+            
                 myPlug.getName();
-            }
-            catch(AbstractMethodError abe)
-            {
-                continue;
-            }
+            if(firstClick)
+                myPlug.loadEnable();
             JPanel myPanel=new JPanel();
             
             //myPanel.setSize(PluginPanel.getWidth()-20,50);
@@ -118,6 +116,7 @@ public class TestFrame extends javax.swing.JFrame {
        org.jdesktop.layout.GroupLayout myPanelLayout = new org.jdesktop.layout.GroupLayout(myPanel);
         myPanel.setLayout(myPanelLayout);
        JCheckBox enableCheck=new JCheckBox("Enable");
+       JButton guiClick=new JButton("Open Plugin GUI");
         enableCheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         enableCheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
         myPanelLayout.setHorizontalGroup(
@@ -125,21 +124,28 @@ public class TestFrame extends javax.swing.JFrame {
             .add(myPanelLayout.createSequentialGroup()
                 .add(18, 18, 18)
                 .add(enableCheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 199, Short.MAX_VALUE)
+                .add(guiClick)
+                .add(68, 68, 68)
                 .addContainerGap(534, Short.MAX_VALUE))
         );
         myPanelLayout.setVerticalGroup(
             myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(myPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(enableCheck)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .add(14, 14, 14)
+                .add(myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(enableCheck)
+                    .add(guiClick))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         PluginPanel.add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 520, 80));
         myPlug.setCheckBox(enableCheck);
+        myPlug.setButton(guiClick);
         y+=90;
         
        // myPanel.add(enableCheck);
         }
+        firstClick=false;
     }
     
     public void refreshListaBanate(){
@@ -2846,7 +2852,7 @@ public class TestFrame extends javax.swing.JFrame {
         {
             if(x==PPanel)
             {
-                System.out.println("ok");
+                
          
         refreshGUIPlugs();
             }
