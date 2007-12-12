@@ -93,6 +93,7 @@ public class PluginMain implements DSHubModule
     public void onGUIClick(JFrame parent)
     {
         ;//does nothing
+        System.out.println("clicked !");
     }
     
     public String getName()

@@ -1,4 +1,5 @@
 *** Theta RC 2 ***
+           * gui click works now;
            * created new module class for memorising module options;
            * started work on enabling/disabling modules;
            * created preliminary modulator interface;
