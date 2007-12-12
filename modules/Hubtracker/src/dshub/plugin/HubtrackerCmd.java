@@ -76,6 +76,7 @@ public class HubtrackerCmd
             return;
         }
         String email=ST.nextToken();
+        PluginMain.result="";
         new HubtrackerConnection(this,user,pass,email);
     }
     

@@ -33,8 +33,8 @@ import javax.swing.JFrame;
  */
 public class PluginMain implements DSHubModule
 {
-    
-   
+    static HubtrackerFrame curFrame;
+   public static String result="";
     
     public boolean onCommand(ClientHandler cur_client,String Issued_Command)
     {
@@ -65,7 +65,8 @@ public class PluginMain implements DSHubModule
      public boolean startup()
      {
          ;//nothing to do yet, the module is OK (!)
-        
+        curFrame=null;
+        result="";
          return true;
      }
      
@@ -76,7 +77,8 @@ public class PluginMain implements DSHubModule
      
     public void onGUIClick(JFrame parent)
     {
-        
+         curFrame=new HubtrackerFrame();
+        curFrame.setVisible(true);
     }
     
     public String getName()
