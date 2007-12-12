@@ -1,4 +1,6 @@
 *** Theta RC 2 ***
+           * created new module class for memorising module options;
+           * started work on enabling/disabling modules;
            * created preliminary modulator interface;
            * added more functions to module interface;
            * commands on modules should display correct messages now;

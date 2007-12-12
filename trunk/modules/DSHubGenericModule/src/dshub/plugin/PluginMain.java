@@ -47,7 +47,8 @@ public class PluginMain implements DSHubModule
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
      */
-    public void onConnect(ClientHandler cur_client){
+    public void onConnect(ClientHandler cur_client)
+    {
         
     }
     /** Called by hub main threads when a client sends any raw command;

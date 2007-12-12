@@ -27,6 +27,7 @@ package dshub.gui;
 import dshub.*;
 import dshub.Modules.DSHubModule;
 import dshub.Modules.Modulator;
+import dshub.Modules.Module;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.InetAddress;
@@ -49,6 +50,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListModel;
@@ -91,6 +93,53 @@ public class TestFrame extends javax.swing.JFrame {
         //this.setIconImage(new ImageIcon("/dshub/ds.ico").getImage());
         this.setIconImage(myIco.getImage());
           refreshInit();
+          
+         Modulator.findModules();
+    }
+    
+    public void refreshGUIPlugs()
+    {
+        jScrollPane1.removeAll();
+         int y=20;
+        for(Module myPlug : Modulator.myModules)
+        {
+            try
+            {
+                myPlug.getName();
+            }
+            catch(AbstractMethodError abe)
+            {
+                continue;
+            }
+            JPanel myPanel=new JPanel();
+            
+            //myPanel.setSize(PluginPanel.getWidth()-20,50);
+            myPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(myPlug.getName()));
+       org.jdesktop.layout.GroupLayout myPanelLayout = new org.jdesktop.layout.GroupLayout(myPanel);
+        myPanel.setLayout(myPanelLayout);
+       JCheckBox enableCheck=new JCheckBox("Enable");
+        enableCheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        enableCheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        myPanelLayout.setHorizontalGroup(
+            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(myPanelLayout.createSequentialGroup()
+                .add(18, 18, 18)
+                .add(enableCheck)
+                .addContainerGap(534, Short.MAX_VALUE))
+        );
+        myPanelLayout.setVerticalGroup(
+            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(myPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(enableCheck)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        PluginPanel.add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 520, 80));
+        myPlug.setCheckBox(enableCheck);
+        y+=90;
+        
+       // myPanel.add(enableCheck);
+        }
     }
     
     public void refreshListaBanate(){
@@ -461,6 +510,8 @@ public class TestFrame extends javax.swing.JFrame {
         ESUPcheck = new javax.swing.JCheckBox();
         FSUPcheck = new javax.swing.JCheckBox();
         HSUPcheck = new javax.swing.JCheckBox();
+        PPanel = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
         PluginPanel = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -508,6 +559,14 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jTabbedPane1MousePressed(evt);
+            }
+        });
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setToolTipText("About DSHub...");
@@ -2646,9 +2705,31 @@ public class TestFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Advanced", jPanel9);
 
+        PPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PPanel.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                PPanelMouseClicked(evt);
+            }
+        });
+        PPanel.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+                PPanelFocusGained(evt);
+            }
+        });
+
+        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         PluginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("Additional Modules", PluginPanel);
+        jScrollPane11.setViewportView(PluginPanel);
+
+        PPanel.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 720, 380));
+
+        jTabbedPane1.addTab("Additional Modules", PPanel);
 
         jPanel12.setToolTipText("Hub Log");
         LogText.setColumns(20);
@@ -2756,6 +2837,33 @@ public class TestFrame extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jTabbedPane1MousePressed
+    {//GEN-HEADEREND:event_jTabbedPane1MousePressed
+// TODO add your handling code here:
+        JPanel x=(JPanel)jTabbedPane1.getSelectedComponent();
+        if(x!=null)
+        {
+            if(x==PPanel)
+            {
+                System.out.println("ok");
+         
+        refreshGUIPlugs();
+            }
+        }
+    }//GEN-LAST:event_jTabbedPane1MousePressed
+
+    private void PPanelFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_PPanelFocusGained
+    {//GEN-HEADEREND:event_PPanelFocusGained
+// TODO add your handling code here:
+       
+    }//GEN-LAST:event_PPanelFocusGained
+
+    private void PPanelMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_PPanelMouseClicked
+    {//GEN-HEADEREND:event_PPanelMouseClicked
+// TODO add your handling code here:
+         
+    }//GEN-LAST:event_PPanelMouseClicked
 
     private void proxycheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_proxycheckActionPerformed
     {//GEN-HEADEREND:event_proxycheckActionPerformed
@@ -4230,44 +4338,7 @@ return;
     public void refreshAll()
     {
         refreshInit();
-        int y=20;
-        for(DSHubModule myPlug : Modulator.myModules)
-        {
-            try
-            {
-                myPlug.getName();
-            }
-            catch(AbstractMethodError abe)
-            {
-                continue;
-            }
-            JPanel myPanel=new JPanel();
-            //myPanel.setSize(PluginPanel.getWidth()-20,50);
-            myPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(myPlug.getName()));
-       org.jdesktop.layout.GroupLayout myPanelLayout = new org.jdesktop.layout.GroupLayout(myPanel);
-        myPanel.setLayout(myPanelLayout);
-       JCheckBox enableCheck=new JCheckBox("test");
-        enableCheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        enableCheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        myPanelLayout.setHorizontalGroup(
-            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(myPanelLayout.createSequentialGroup()
-                .add(18, 18, 18)
-                .add(enableCheck)
-                .addContainerGap(634, Short.MAX_VALUE))
-        );
-        myPanelLayout.setVerticalGroup(
-            myPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(myPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(enableCheck)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-        PluginPanel.add(myPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 720, 80));
-        y+=90;
         
-       // myPanel.add(enableCheck);
-        }
         
         DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
         Nod n=AccountsConfig.First;
@@ -4849,6 +4920,7 @@ refreshAll();
     private javax.swing.JCheckBox HSTAcheck;
     private javax.swing.JCheckBox HSUPcheck;
     private javax.swing.JTextArea LogText;
+    private javax.swing.JPanel PPanel;
     private javax.swing.JPanel PluginPanel;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
@@ -5000,6 +5072,7 @@ refreshAll();
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
