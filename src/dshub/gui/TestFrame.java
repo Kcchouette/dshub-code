@@ -98,7 +98,7 @@ public class TestFrame extends javax.swing.JFrame {
          //Modulator.findModules();
     }
     
-    boolean firstClick=true;
+   
     public void refreshGUIPlugs()
     {
         jScrollPane1.removeAll();
@@ -107,8 +107,8 @@ public class TestFrame extends javax.swing.JFrame {
         {
             
                 myPlug.getName();
-            if(firstClick)
-                myPlug.loadEnable();
+           // if(firstClick)
+            //    myPlug.loadEnable();
             JPanel myPanel=new JPanel();
             
             //myPanel.setSize(PluginPanel.getWidth()-20,50);
@@ -145,7 +145,7 @@ public class TestFrame extends javax.swing.JFrame {
         
        // myPanel.add(enableCheck);
         }
-        firstClick=false;
+        
     }
     
     public void refreshListaBanate(){

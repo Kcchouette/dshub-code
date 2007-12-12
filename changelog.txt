@@ -1,5 +1,7 @@
 *** Theta RC 2 ***
-           * gui click works now;
+           * the gui click button now shades if disabled;
+           * added the basic functionality for plugin cmmands in hub engine;
+           * gui module click works now;
            * created new module class for memorising module options;
            * started work on enabling/disabling modules;
            * created preliminary modulator interface;

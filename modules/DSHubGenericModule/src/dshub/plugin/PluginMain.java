@@ -98,7 +98,7 @@ public class PluginMain implements DSHubModule
     
     public String getName()
     {
-        return "DSHub Generic Module";
+        return "DSHub Generic";
     }
     
     

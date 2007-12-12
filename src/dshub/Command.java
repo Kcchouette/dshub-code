@@ -25,6 +25,8 @@ package dshub;
 
 import dshub.Exceptions.CommandException;
 import dshub.Exceptions.STAException;
+import dshub.Modules.Modulator;
+import dshub.Modules.Module;
 import dshub.ProtoCmds.CTM;
 import dshub.ProtoCmds.MSG;
 import dshub.ProtoCmds.RCM;
@@ -101,6 +103,14 @@ public class Command
                  
                  cur_client.LoggedAt=System.currentTimeMillis();
                  cur_client.State="NORMAL";
+                 
+                 
+                 /** calling plugins...*/
+                 
+                 for(Module myMod : Modulator.myModules)
+                 {
+                     myMod.onConnect(cur_client);
+                 }
                  //cur_client.sendFromBot( ADC.MOTD);
                  
                     
@@ -741,6 +751,13 @@ public class Command
                  }
                  cur_client.State="NORMAL";
                  cur_client.sendFromBot( ADC.MOTD);
+                 
+                 /** calling plugins...*/
+                 
+                 for(Module myMod : Modulator.myModules)
+                 {
+                     myMod.onConnect(cur_client);
+                 }
                  return;
                }
                
@@ -958,7 +975,12 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
         
             
         
-    
+    /** calling plugins...*/
+                 
+                 for(Module myMod : Modulator.myModules)
+                 {
+                     myMod.onRawCommand(cur_client,Issued_Command);
+                 }
     }
     
     /** Creates a new instance of Command with following params
