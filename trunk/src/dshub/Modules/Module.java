@@ -137,17 +137,19 @@ public class Module
         }
         
     }
-    public void onCommand(ClientHandler cur_client,String Issued_Command)
+    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
     {
         if(isOK() && isEnabled())
         try
         {
-        this.curModule.onCommand(cur_client,Issued_Command);
+        return this.curModule.onCommand(cur_client,Issued_Command);
         }
         catch(AbstractMethodError abe)
         {
             isok=false;
+           
         }
+         return false;
     }
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {

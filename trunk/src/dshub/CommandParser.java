@@ -29,6 +29,7 @@ import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
 import dshub.Modules.DSHubModule;
 import dshub.Modules.Modulator;
+import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import java.util.Date;
@@ -1312,21 +1313,14 @@ public class CommandParser
         
                
         
-          Iterator x=Modulator.myModules.iterator();     
-        while(x.hasNext())
-        {
-              boolean result=false;
-              try
-              {
-               result=((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
-              }
-              catch(AbstractMethodError abe)
-              {
-                  ;//plugin is crappy
-              }
+          for(Module myMod : Modulator.myModules)
+          {
+              boolean result =  myMod.onCommand(cur_client,recvbuf);
+              
               if(result)
                   commandOK=true;
-        }
+          }
+          
           if(!commandOK)
            cur_client.sendFromBot("Unknown Command. Type !help for info.");
            
