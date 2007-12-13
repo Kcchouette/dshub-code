@@ -83,7 +83,7 @@ public class HubtrackerConnection extends Thread
           
           if(curCmd!=null)
               
-              this.curCmd.cur_client.sendFromBot("[hubtracker:] "+xx);
+              this.curCmd.cur_client.sendFromBot("[hubtracker:] "+PluginMain.result);
           else
               PluginMain.curFrame.showMsg();
           

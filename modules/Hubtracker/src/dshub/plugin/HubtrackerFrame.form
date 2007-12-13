@@ -46,7 +46,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
               <Component id="connect" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="252" max="32767" attributes="0"/>
+              <EmptySpace pref="267" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,8 +131,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="connect">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Connecting..."/>
-        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="                 "/>
       </Properties>
     </Component>
   </SubComponents>

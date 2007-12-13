@@ -115,6 +115,7 @@ public class SimpleHandler extends IoHandlerAdapter
                  {
                      myMod.onClientQuit(cur_client);
                  }
+             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
             cur_client.myNod.killMe();
             
         }

@@ -144,8 +144,7 @@ public class AccountEditer extends javax.swing.JFrame
         chatcontrol = new javax.swing.JCheckBox();
         backupcheck = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        modulecheck = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -649,42 +648,25 @@ public class AccountEditer extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Commands", jPanel3);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Hubtracker Module"));
-        jCheckBox1.setText("Allow user to use the hubtracker integration module");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jCheckBox1)
-                .addContainerGap(161, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .add(jCheckBox1)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        modulecheck.setText("Allow user to use additional modules");
+        modulecheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        modulecheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .add(23, 23, 23)
-                .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .add(37, 37, 37)
+                .add(modulecheck)
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .add(73, 73, 73)
+                .add(modulecheck)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Modules Access", jPanel4);
 
@@ -744,6 +726,7 @@ public class AccountEditer extends javax.swing.JFrame
        bla.getContentPane ().add (jp);
        JTextArea jl=new JTextArea("about -- The program credits.\n"+
 "adc -- ADC advanced configuration panel, setting contexts for each command.\n"+
+"backup -- A way to save configuration to files for backup or other usage.\n"+
 "bancid -- Bans a given cid or the cid of the given online user.\n"+
 "banip -- Bans a given ip or the ip of the given online user.\n"+
 "bannick -- Bans a given nick, drops if nick online.\n"+
@@ -853,6 +836,11 @@ if(curAcc.opchataccess)
     opchatcheck.setSelected (true);
 else
     opchatcheck.setSelected (false);
+
+if(curAcc.additionalModules)
+    modulecheck.setSelected (true);
+else
+    modulecheck.setSelected (false);
 
 
 
@@ -1145,6 +1133,11 @@ if(curAcc.myMask.adc)
                 
         
         
+        if(modulecheck.isSelected())
+            curAcc.additionalModules=true;
+        else
+            curAcc.additionalModules=false;
+        
         if(checkkey.isSelected())
         {
             if(!curAcc.key)
@@ -1317,7 +1310,6 @@ this.dispose ();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1339,13 +1331,13 @@ this.dispose ();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JCheckBox kick;
     private javax.swing.JTextField lastlogin;
     private javax.swing.JCheckBox listban;
     private javax.swing.JCheckBox listreg;
     private javax.swing.JCheckBox mass;
+    private javax.swing.JCheckBox modulecheck;
     private javax.swing.JCheckBox mynick;
     private javax.swing.JCheckBox opchatcheck;
     private javax.swing.JCheckBox overrideshare;

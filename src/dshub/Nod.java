@@ -59,7 +59,7 @@ public class Nod implements Serializable,Cloneable
        public  HelpFile myHelp;
        public  boolean nickprotected;
        
-       public String pluginsAllowed;
+       public boolean additionalModules;
         
        public  Nod()
         {
@@ -84,7 +84,7 @@ public class Nod implements Serializable,Cloneable
             myMask=new CommandMask();
             myHelp=new HelpFile(this);
             nickprotected=true;
-            pluginsAllowed="";
+            additionalModules=false;
         }
       protected  Nod  clone()
         {
@@ -249,6 +249,11 @@ public class Nod implements Serializable,Cloneable
         else
             Help+="-usercount";
         ;
+        
+        if(curAcc.additionalModules)
+            Help+="+modules";
+        else
+            Help+="-modules";
         if(curAcc.accountflyable)
             Help+="+flyable";
         else

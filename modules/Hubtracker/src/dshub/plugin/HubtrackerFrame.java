@@ -37,7 +37,7 @@ public class HubtrackerFrame extends javax.swing.JFrame
     public HubtrackerFrame()
     {
         initComponents();
-        connect.setEnabled(false);
+        connect.setText("     ");
     }
     
     /** This method is called from within the constructor to
@@ -103,8 +103,7 @@ public class HubtrackerFrame extends javax.swing.JFrame
 
         jLabel3.setText("Desired/Active E-mail:");
 
-        connect.setText("Connecting...");
-        connect.setEnabled(false);
+        connect.setText("                 ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,7 +130,7 @@ public class HubtrackerFrame extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(connect)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +183,7 @@ public class HubtrackerFrame extends javax.swing.JFrame
     {//GEN-HEADEREND:event_regButtonActionPerformed
 // TODO add your handling code here:
         PluginMain.result="";
-        connect.setEnabled(true);
+        connect.setText("Connecting...");
         new HubtrackerConnection(null,userField.getText(),passField.getText(),emailField.getText());
         
             
@@ -200,7 +199,7 @@ public class HubtrackerFrame extends javax.swing.JFrame
   {
       JOptionPane.showMessageDialog(this,PluginMain.result,
                     "Hubtracker says:",JOptionPane.INFORMATION_MESSAGE);
-      connect.setEnabled(false);
+      connect.setText("          ");
   }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
