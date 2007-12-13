@@ -78,7 +78,7 @@ public class HelpFile implements Serializable
         if(curAcc.myMask.adc)
             Help+="adc -- ADC advanced configuration panel, setting contexts for each command.\n";
         if(curAcc.myMask.backup)
-            Help+="adc -- A way to save configuration to files for backup or other usage.\n";
+            Help+="backup -- A way to save configuration to files for backup or other usage.\n";
         if(curAcc.myMask.bancid)
             Help+="bancid -- Bans a given cid or the cid of the given online user.\n";
         if(curAcc.myMask.banip)

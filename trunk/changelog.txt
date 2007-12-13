@@ -1,4 +1,7 @@
 *** Theta RC 2 ***
+           * fixed bug with time spent online, should be ok now;
+           * added help text for hubtracker module;
+           * modified connecting... status on hubtracker module;
            * fixed error from last svns when commands dropped;
            * hubtracker integration module gui works now, almost completey functional;
            * the gui click button now shades if disabled;
