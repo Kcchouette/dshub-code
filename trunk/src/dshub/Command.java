@@ -38,9 +38,6 @@ import dshub.TigerImpl.Base32;
 import dshub.TigerImpl.Tiger;
 import java.util.*;
 import java.io.*;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import org.apache.mina.common.IoSession;
 /**
  * Provides a parsing for each ADC command received from client, and makes the states transitions
