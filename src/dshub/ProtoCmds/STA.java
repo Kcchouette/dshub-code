@@ -57,11 +57,21 @@ public class STA
             }
             StringTokenizer TK=new StringTokenizer(recvbuf);
             TK.nextToken ();
+            if(!TK.hasMoreTokens())
+            {
+                new STAError(cur_client,140,"Must supply SID");
+                return;
+            }
             String cursid=TK.nextToken ();
             if(!cursid.equals (cur_client.SessionID))
             {
-                 new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                 new STAError(cur_client,140,"Protocol Error.Wrong SID supplied.");
                  return ;
+            }
+            if(!TK.hasMoreTokens())
+            {
+                new STAError(cur_client,140,"Must supply target SID");
+                return;
             }
             String dsid=TK.nextToken ();
             ClientNod target=ClientNod.FirstClient.NextClient
@@ -91,11 +101,21 @@ public class STA
             }
             StringTokenizer TK=new StringTokenizer(recvbuf);
             TK.nextToken ();
+            if(!TK.hasMoreTokens())
+            {
+                new STAError(cur_client,140,"Must supply SID");
+                return;
+            }
             String cursid=TK.nextToken ();
             if(!cursid.equals (cur_client.SessionID))
             {
                  new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
                  return ;
+            }
+            if(!TK.hasMoreTokens())
+            {
+                new STAError(cur_client,140,"Must supply SID");
+                return;
             }
             String esid=TK.nextToken ();
             ClientNod target=ClientNod.FirstClient.NextClient
