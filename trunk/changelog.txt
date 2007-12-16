@@ -1,4 +1,7 @@
 *** Theta RC 2 ***
+           * plugmin cmd should work now( full);
+           * should have fixed #1851771
+           * fixed issue when popups appeared with gui hidden;
            * added plugmin command ( basic );
            * fixed error with maximum buffer size;
            * changed module interface a bit to provide hidden commands;

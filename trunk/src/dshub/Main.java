@@ -60,6 +60,7 @@ public class Main extends Thread
     public static TestFrame GUI;
     public static String myPath;
     public static boolean GUIok=true;
+    public static boolean GUIshowing=false;
     public static void PopMsg(String bla)   
     {
         System.out.println (bla);
@@ -409,6 +410,7 @@ public class Main extends Thread
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
           GUI=new TestFrame();
           GUIok=true;
+          GUIshowing=true;
            
     }
     catch (Exception e)
@@ -491,6 +493,7 @@ public class Main extends Thread
     {
           Main.GUI=new TestFrame();
           Main.GUIok=true;
+          Main.GUIshowing=true;
           Main.GUI.SetStatus("GUI restored...");
            
     }
@@ -753,11 +756,11 @@ continue;
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
                        
-                        if(!ok)
+                        if(!ok && !HostTester.hostOK(new_name))
                         {
                             System.out.printf("The hub_host you provided does not point to one of your eth interfaces. "+
-                                    "Reasons: DNS not correctly set; or you dont have a external real IP (if you are creating"+"" +
-                                    " LAN hub, use your LAN local IP as a hub_host).\n");
+                                    "Reasons: DNS not correctly set; you dont have a external real IP (if you are creating"+"" +
+                                    " LAN hub, use your LAN local IP as a hub_host); not even package routing to your system work.\n");
                        return;
                         }
                         System.out.printf("Hub_host changed from \""+
