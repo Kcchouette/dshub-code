@@ -1,4 +1,7 @@
 *** Theta RC 2 ***
+           * changed module interface a bit to provide hidden commands;
+           * fixed bug #1850300
+           * added plugmin to granting and as a checkbox on accounteditor;
            * upgraded MINA to 1.1.5;
            * added module scanner button;
            * granting module grants module access;

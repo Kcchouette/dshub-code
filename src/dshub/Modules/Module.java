@@ -137,7 +137,7 @@ public class Module
         }
         
     }
-    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
+    public int onCommand(ClientHandler cur_client,String Issued_Command)
     {
         if(isOK() && isEnabled())
         try
@@ -149,7 +149,7 @@ public class Module
             isok=false;
            
         }
-         return false;
+         return 0;
     }
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {
