@@ -72,7 +72,8 @@ public class HelpFile implements Serializable
                         Main.Proppies.getProperty("os.name")
                        +" "+ Main.Proppies.getProperty("os.version")
                        +" "+Main.Proppies.getProperty("os.arch")+"\n";
-        String Help=blah+"-------------------------------------------------------------\nAvailable Commands :\n";
+        String Help=blah+"General issue about commands: Most commands have a help when used with no parametres."+
+                "\n-------------------------------------------------------------\nAvailable Commands :\n";
         if(curAcc.myMask.about)
             Help+="about -- The program credits.\n";
         if(curAcc.myMask.adc)
@@ -117,6 +118,8 @@ public class HelpFile implements Serializable
             Help+="mynick -- Changes your nick to new specified one.\n";
         if(curAcc.myMask.password)
             Help+="password newpass -- Changes your current password, where newpass is the new password.\n";
+        if(curAcc.myMask.plugmin)
+            Help+="plugmin -- Plugin Administration. Allows enabling/disabling and scanning plugins.\n";
         if(curAcc.myMask.port)
             Help+="port x -- Change default port to which hub is listening to x.\n";
         if(curAcc.myMask.quit)

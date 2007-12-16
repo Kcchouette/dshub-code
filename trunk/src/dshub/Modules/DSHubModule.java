@@ -39,14 +39,31 @@ import javax.swing.JFrame;
  */
 public interface DSHubModule
 {
-    
+    /** Possible return value for onCommand() method
+     * If this value is returned then the method did nothing
+     */
+    public static final int DO_NOTHING=1;
+    /** Possible return value for onCommand() method
+     * If this value is returned then the method treated the
+     * command as a normal one.
+     */
+    public static final int ACK_COMMAND=1;
+    /** Possible return value for onCommand() method
+     * If this value is returned then the method treated the
+     * command as a hidden one and it shouldnt be shown to cmdhistory
+     * or other users.
+     */
+    public static final int HIDE_COMMAND=1;
     
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
-     *Must return true if it handled the command or false if it did nothing
+     *Must return ACK_COMMAND if it handled the command normally and command should be shown on
+     * cmdhistory, or DO_NOTHING if it did nothing
+     * Should return HIDE_COMMAND if the command contained some password or something and cmdhistory should not show it.
+     * Other return values are reserved for future use.
      */
-    public boolean onCommand(ClientHandler cur_client,String Issued_Command);
+    public int onCommand(ClientHandler cur_client,String Issued_Command);
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
      */

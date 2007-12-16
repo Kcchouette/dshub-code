@@ -36,21 +36,21 @@ public class PluginMain implements DSHubModule
     static HubtrackerFrame curFrame;
    public static String result="";
     
-    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
+    public int onCommand(ClientHandler cur_client,String Issued_Command)
     {
        // System.out.println("hubtracker");
         if(Issued_Command.toLowerCase().startsWith("hubtracker") )
         {
             new HubtrackerCmd(cur_client,Issued_Command);
-            return true;
+            return DSHubModule.HIDE_COMMAND;
         }
         else if(Issued_Command.toLowerCase().startsWith("help"))
         {
             cur_client.sendFromBot("[hubtracker: ] Hubtracker Integration Module Help:\nAvailable commands: "+
                     "\nhubtracker -- registers hub on hubtracker.com, use with no parameters for details.");
-            return true;
+            return DSHubModule.ACK_COMMAND;
         }
-        return false;
+        return DSHubModule.DO_NOTHING;
     }
     
     public void onConnect(ClientHandler cur_client)

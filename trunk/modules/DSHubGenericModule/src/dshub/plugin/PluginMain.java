@@ -38,11 +38,14 @@ public class PluginMain implements DSHubModule
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
-     *Must return true if it handled the command or false if it did nothing
+     *Must return ACK_COMMAND if it handled the command normally and command should be shown on
+     * cmdhistory, or DO_NOTHING if it did nothing
+     * Should return HIDE_COMMAND if the command contained some password or something and cmdhistory should not show it.
+     * Other return values are reserved for future use.
      */
-    public boolean onCommand(ClientHandler cur_client,String Issued_Command)
+    public int onCommand(ClientHandler cur_client,String Issued_Command)
     {
-           return false;// this plugin doesnt have any commands.  
+           return DSHubModule.DO_NOTHING;// this plugin doesnt have any commands.  
     }
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
