@@ -246,6 +246,7 @@ public class CommandParser
     {
           Main.GUI=new TestFrame();
           Main.GUIok=true;
+          Main.GUIshowing=true;
          
            
     }

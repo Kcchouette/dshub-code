@@ -42,6 +42,10 @@ public class Module
 {
     private boolean isok;
     
+    private int ID;
+    
+    public static int mID=0;
+    
     private boolean enabled;
     
     private String moduleName;
@@ -67,7 +71,7 @@ public class Module
         }
         if(!isok)
             return;
-       
+       this.setID(mID++);
         loadEnable();
         
     }
@@ -201,7 +205,14 @@ public class Module
         isok=false;
     }
 
-   
+    public void setID(int i)
+    {
+        this.ID=i;
+    }
+    public int getID()
+    {
+        return this.ID;
+    }
 
     public boolean isEnabled()
     {

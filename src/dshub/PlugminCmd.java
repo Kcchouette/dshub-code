@@ -58,9 +58,103 @@ public class PlugminCmd
             int ID=0;
             for(Module myPlug : Modulator.myModules)
             {
-                send+="\n"+myPlug.getName()+" ID "+ID;
+                send+="\n"+myPlug.getName()+" ID "+myPlug.getID()+"   "+(myPlug.isEnabled()?"Enabled.":"Disabled.");
             }
             cur_client.sendFromBot(send);
+            return;
+        }
+        else if(what.equalsIgnoreCase("enable"))
+        {
+            if(!ST.hasMoreTokens())
+            {
+                cur_client.sendFromBot("Must specify ID/name of plugin to enable");
+                return;
+            }
+            String who=ST.nextToken();
+            int ID=-1;
+            Module myPlug;
+            try
+            {
+                ID=Integer.parseInt(who);
+                for(Module myx : Modulator.myModules)
+                {
+                    if(myx.getID()==ID)
+                    {
+                        myPlug=myx;
+                        myPlug.setEnabled(true);
+                        cur_client.sendFromBot("Enabled plugin "+myPlug.getName()+ " with ID "+myPlug.getID()+".");
+                        return;
+                    }
+                        
+                }
+            }
+            catch(NumberFormatException nfe)
+            {
+                for(Module myx : Modulator.myModules)
+                {
+                    if(who.equals(myx.getName()))
+                    {
+                        myPlug=myx;
+                        myPlug.setEnabled(true);
+                        cur_client.sendFromBot("Enabled plugin "+myPlug.getName()+ " with ID "+myPlug.getID()+".");
+                        return;
+                    }
+                        
+                }
+            }
+            
+            
+            
+            
+        }
+        else if(what.equalsIgnoreCase("disable"))
+        {
+            if(!ST.hasMoreTokens())
+            {
+                cur_client.sendFromBot("Must specify ID/name of plugin to disable");
+                return;
+            }
+            String who=ST.nextToken();
+            int ID=-1;
+            Module myPlug;
+            try
+            {
+                ID=Integer.parseInt(who);
+                for(Module myx : Modulator.myModules)
+                {
+                    if(myx.getID()==ID)
+                    {
+                        myPlug=myx;
+                        myPlug.setEnabled(false);
+                        cur_client.sendFromBot("Disabled plugin "+myPlug.getName()+ " with ID "+myPlug.getID()+".");
+                        return;
+                    }
+                        
+                }
+            }
+            catch(NumberFormatException nfe)
+            {
+                for(Module myx : Modulator.myModules)
+                {
+                    if(who.equals(myx.getName()))
+                    {
+                        myPlug=myx;
+                        myPlug.setEnabled(false);
+                        cur_client.sendFromBot("Disabled plugin "+myPlug.getName()+ " with ID "+myPlug.getID()+".");
+                        return;
+                    }
+                        
+                }
+            }
+            
+            
+            
+            
+        }
+        else if (what.equalsIgnoreCase("scan"))
+        {
+            Modulator.findModules();
+            cur_client.sendFromBot("Plugin scan successful. Use plugmin list to see current plugins.");
             return;
         }
     }

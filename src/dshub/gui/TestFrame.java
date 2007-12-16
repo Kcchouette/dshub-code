@@ -4171,11 +4171,11 @@ return;
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
                        
-                        if(!ok)
+                        if(!ok && !HostTester.hostOK(new_name))
                         {
                             JOptionPane.showMessageDialog(null,new_name+" does not point to one of your eth interfaces. "+
-                                    "\nReasons: DNS not correctly set; or you dont have a external real IP \n(if you are creating"+"" +
-                                    " LAN hub, use your LAN local IP as a hub_host).",
+                                    "\nReasons: DNS not correctly set;  you dont have a external real IP \n(if you are creating"+"" +
+                                    " LAN hub, use your LAN local IP as a hub_host);\nnot even package routing to your system work.",
                     "Error",JOptionPane.ERROR_MESSAGE);
                             
                        return;
@@ -4874,7 +4874,7 @@ refreshAll();
         this.setVisible(false);
         this.dispose();
         System.gc();
-        //Main.GUIok=false;
+        Main.GUIshowing=false;
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
@@ -4904,7 +4904,7 @@ refreshAll();
     public void SetStatus(String newstring,int msgType)
     {
         StatusLabel.setText(newstring);
-        
+        if(Main.GUIshowing)
         JOptionPane.showMessageDialog(this,newstring,
                     Vars.HubName,msgType);
     }
@@ -4912,7 +4912,7 @@ refreshAll();
     public void SetStatus(String newstring) 
     {
         StatusLabel.setText(newstring);
-        
+        if(Main.GUIshowing)
         JOptionPane.showMessageDialog(this,newstring,
                     Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
     }
