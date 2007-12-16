@@ -70,7 +70,7 @@ public class HostTester
         }
         catch ( Exception e)
         {
-            Main.GUI.SetStatus(e.toString());
+            e.printStackTrace();
         }
         
         return true;
