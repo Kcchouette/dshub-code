@@ -1,4 +1,5 @@
 *** Theta RC 2 ***
+           * added plugmin command ( basic );
            * fixed error with maximum buffer size;
            * changed module interface a bit to provide hidden commands;
            * fixed bug #1850300
