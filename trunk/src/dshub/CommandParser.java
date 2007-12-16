@@ -800,6 +800,17 @@ public class CommandParser
                    new ExtKick(cur_client,recvbuf);
                   
         }
+        else if(recvbuf.toLowerCase ().startsWith ("plugmin"))
+        {
+                     commandOK=1;
+                     if(!cur_client.reg.myMask.plugmin)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }
+                   new PlugminCmd(cur_client,recvbuf);
+                  
+        }
         else if(recvbuf.toLowerCase ().startsWith ("chatcontrol"))
         {
                      commandOK=1;
