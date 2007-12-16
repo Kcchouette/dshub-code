@@ -250,10 +250,7 @@ public class Nod implements Serializable,Cloneable
             Help+="-usercount";
         ;
         
-        if(curAcc.additionalModules)
-            Help+="+modules";
-        else
-            Help+="-modules";
+        
         if(curAcc.accountflyable)
             Help+="+flyable";
         else
@@ -266,6 +263,10 @@ public class Nod implements Serializable,Cloneable
             Help+="+kickable";
         else
             Help+="-kickable";
+        if(curAcc.additionalModules)
+            Help+="+modules";
+        else
+            Help+="-modules";
         if(curAcc.nickprotected)
             Help+="+nickprotected";
         else
