@@ -142,11 +142,14 @@ public class HubServer extends Thread
         SocketAcceptorConfig cfg = new SocketAcceptorConfig();
       // cfg.setThreadModel(ThreadModel.MANUAL);
         
-         cfg.getSessionConfig().setReceiveBufferSize(102400);
-         cfg.getSessionConfig().setSendBufferSize(102400);
+         //cfg.getSessionConfig().setReceiveBufferSize(102400);
+        // cfg.getSessionConfig().setSendBufferSize(102400);
          
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
-        cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+        TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ));
+        myx.setDecoderMaxLineLength(10240);
+        myx.setEncoderMaxLineLength(10240);
+        cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
         MyCalendar=Calendar.getInstance();
       // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
