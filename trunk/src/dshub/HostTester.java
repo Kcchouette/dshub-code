@@ -29,8 +29,6 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -69,6 +67,10 @@ public class HostTester
         {
            // Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }
+        catch ( Exception e)
+        {
+            Main.GUI.SetStatus(e.toString());
         }
         
         return true;
