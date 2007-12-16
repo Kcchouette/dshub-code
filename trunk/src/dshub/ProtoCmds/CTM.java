@@ -70,7 +70,7 @@ public class CTM
                  
      }
      
-         if(System.currentTimeMillis()-cur_client.LastCTM<1000*30)
+       /*  if(System.currentTimeMillis()-cur_client.LastCTM<1000*30)
          {
          if(!(cur_client.reg.overridespam))
          {
@@ -79,7 +79,7 @@ public class CTM
          }
          }
          else
-             cur_client.LastCTM=System.currentTimeMillis();
+             cur_client.LastCTM=System.currentTimeMillis();*/
      
      if(Issued_Command.charAt(0)=='D' || Issued_Command.charAt (0)=='E')
      {
