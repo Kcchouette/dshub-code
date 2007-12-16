@@ -1,4 +1,8 @@
 *** Theta RC 2 ***
+           * upgraded MINA to 1.1.5;
+           * added module scanner button;
+           * granting module grants module access;
+           * user access on modules should work;
            * fixed bug with time spent online, should be ok now;
            * added help text for hubtracker module;
            * modified connecting... status on hubtracker module;

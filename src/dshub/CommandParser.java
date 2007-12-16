@@ -1315,7 +1315,9 @@ public class CommandParser
         
           for(Module myMod : Modulator.myModules)
           {
-              boolean result =  myMod.onCommand(cur_client,recvbuf);
+              boolean result=false;
+              if(cur_client.reg.additionalModules) //only if hes allowed to use modules
+               result =  myMod.onCommand(cur_client,recvbuf);
               
               if(result)
                   commandOK=true;
