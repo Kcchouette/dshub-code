@@ -1,4 +1,5 @@
 *** Theta RC 2 ***
+           * fixed #1851771
            * plugmin cmd should work now( full);
            * should have fixed #1851771
            * fixed issue when popups appeared with gui hidden;

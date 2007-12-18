@@ -44,13 +44,13 @@ public class HostTester
             Socket testS = new Socket(Host, Vars.Default_Port);
             BufferedReader in = new BufferedReader(new InputStreamReader(testS.getInputStream()));
             PrintStream out=new PrintStream(testS.getOutputStream());
-            out.println("ISUP ADBASE");
+            out.println("HSUP ADBASE");
             String SUP=in.readLine();
             if(!SUP.equals(ADC.Init))
                 return false;
             in.readLine();
             String INF=in.readLine();
-            if(!INF.equals("IINF HU1 HI1 VE"+Vars.HubVersion+" NI"+Vars.HubName))
+            if(!INF.equals("IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)))
                 return false;
             
             in.close();
