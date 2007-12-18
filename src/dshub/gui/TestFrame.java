@@ -4118,7 +4118,31 @@ else
         
         
         /** hub host */
-        String new_name=hubhostfield.getText();
+      setHost();
+        
+        /** proxy settings */
+        SetProxy();
+        
+        Main.Server.rewriteconfig();
+        refreshAll();
+        
+        
+        SetStatus("Main settings saved.");
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+    private void setHost()
+    {
+          String new_name=hubhostfield.getText();
+        if(new_name==null)
+        {
+              JOptionPane.showMessageDialog(null,"Hub_host cannot be null",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if("".equals(new_name))
+        {
+              JOptionPane.showMessageDialog(null,"Hub_host cannot be empty.",
+                    "Error",JOptionPane.ERROR_MESSAGE);
+        }
          if(!(new_name.equals(Vars.Hub_Host))) 
          {
           
@@ -4170,8 +4194,14 @@ return;
                         
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
-                        
-                        if(!ok && !HostTester.hostOK(new_name))
+                        //ok=false;
+                         if(!ok)
+                       {
+                          int result=JOptionPane.showConfirmDialog(this, "Press ok to scan hub_host ( may take a while) \nso please be patient",
+                                  Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                          if(result==JOptionPane.NO_OPTION)
+                              return;
+                        if(!HostTester.hostOK(new_name))
                         {
                             JOptionPane.showMessageDialog(null,new_name+" does not point to one of your eth interfaces. "+
                                     "\nReasons: DNS not correctly set;  you dont have a external real IP \n(if you are creating"+"" +
@@ -4180,11 +4210,13 @@ return;
                             
                        return;
                         }
+                         }
                         Main.PopMsg("Hub_host changed from \""+
                                 Vars.Hub_Host+"\" to \""+new_name+"\".");
                         
                         Vars.Hub_Host=new_name;
                         Main.Server.rewriteconfig();
+                         
                        }
                        catch (UnknownHostException uhe)
                        {
@@ -4194,18 +4226,7 @@ return;
                        
                        
          }
-        
-        /** proxy settings */
-        SetProxy();
-        
-        Main.Server.rewriteconfig();
-        refreshAll();
-        
-        
-        SetStatus("Main settings saved.");
-        
-    }//GEN-LAST:event_jButton7ActionPerformed
-    
+    }
     private void SetProxy()
     {
         if(!proxycheck.isSelected())

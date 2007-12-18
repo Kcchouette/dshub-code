@@ -27,7 +27,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 /**
@@ -36,12 +39,15 @@ import java.net.UnknownHostException;
  */
 public class HostTester 
 {
-
+    
+    
     public static boolean hostOK(String Host)
     {
         try
         {
-            Socket testS = new Socket(Host, Vars.Default_Port);
+            Socket testS = new Socket();
+            testS.connect(new InetSocketAddress(Host, Vars.Default_Port),2*1000);
+           
             BufferedReader in = new BufferedReader(new InputStreamReader(testS.getInputStream()));
             PrintStream out=new PrintStream(testS.getOutputStream());
             out.println("HSUP ADBASE");
@@ -51,7 +57,7 @@ public class HostTester
             in.readLine();
             String INF=in.readLine();
             if(!INF.equals("IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)))
-                return false;
+               return false;
             
             in.close();
             out.close();
@@ -68,14 +74,14 @@ public class HostTester
         {
            // Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
-            return false;
+          return false;
         }
+        
         catch ( Exception e)
         {
             e.printStackTrace();
-            return false;
+           return false;
         }
-        
         return true;
     }
 }
