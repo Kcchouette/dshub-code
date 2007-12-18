@@ -54,6 +54,7 @@ public class SimpleHandler extends IoHandlerAdapter
          
                 if((t.getMessage().contains("IOException")))
                 {
+                   // t.printStackTrace();
 		  session.close();
                 return;
                 }
@@ -64,7 +65,7 @@ public class SimpleHandler extends IoHandlerAdapter
                  }
                 else 
                 {
-                    //t.printStackTrace();
+                   // t.printStackTrace();
 		  session.close();
                 return;
                 };
