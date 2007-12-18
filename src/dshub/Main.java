@@ -755,15 +755,16 @@ continue;
                         
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
+                        //ok=false;
                        if(!ok)
                        {
                            System.out.println("Scanning hub_host please wait...");
-                        if(!HostTester.hostOK(new_name))
+                        if(!(HostTester.hostOK(new_name)))
                         {
                             System.out.printf("The hub_host you provided does not point to one of your eth interfaces. "+
                                     "Reasons: DNS not correctly set; you dont have a external real IP (if you are creating"+"" +
                                     " LAN hub, use your LAN local IP as a hub_host); not even package routing to your system work.\n");
-                       return;
+                       continue;
                         }
                        }
                         System.out.printf("Hub_host changed from \""+
