@@ -29,8 +29,6 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 
 /**
@@ -53,11 +51,11 @@ public class HostTester
             out.println("HSUP ADBASE");
             String SUP=in.readLine();
             if(!SUP.equals(ADC.Init))
-                return false;
+                throw new Exception("Init not the same"+SUP+" "+ADC.Init);
             in.readLine();
             String INF=in.readLine();
             if(!INF.equals("IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)))
-               return false;
+               throw new Exception("INF not the same\n"+INF+"\n"+"IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
             
             in.close();
             out.close();

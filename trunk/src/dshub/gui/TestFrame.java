@@ -4194,14 +4194,14 @@ return;
                         
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
-                        //ok=false;
+                        ok=false;
                          if(!ok)
                        {
                           int result=JOptionPane.showConfirmDialog(this, "Press ok to scan hub_host ( may take a while) \nso please be patient",
                                   Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
                           if(result==JOptionPane.NO_OPTION)
                               return;
-                        if(!HostTester.hostOK(new_name))
+                        if(!(HostTester.hostOK(new_name)))
                         {
                             JOptionPane.showMessageDialog(null,new_name+" does not point to one of your eth interfaces. "+
                                     "\nReasons: DNS not correctly set;  you dont have a external real IP \n(if you are creating"+"" +
