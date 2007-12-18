@@ -24,6 +24,7 @@
 package dshub;
 
 
+import dshub.Exceptions.CommandException;
 import dshub.Exceptions.STAException;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
@@ -86,6 +87,16 @@ public class SimpleHandler extends IoHandlerAdapter
                         return;
                     ClientHandler cur_client=(ClientHandler)(session.getAttachment());
                      if(cur_client.userok==1)
+                    {
+                         new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
+                     }
+                    cur_client.myNod.killMe();
+                    session.close();
+                }
+                catch(CommandException cfex)
+                {
+                    ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+                    if(cur_client.userok==1)
                     {
                          new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
                      }
