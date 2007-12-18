@@ -4170,7 +4170,7 @@ return;
                         
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
-                       
+                        
                         if(!ok && !HostTester.hostOK(new_name))
                         {
                             JOptionPane.showMessageDialog(null,new_name+" does not point to one of your eth interfaces. "+
@@ -4210,7 +4210,7 @@ return;
     {
         if(!proxycheck.isSelected())
         {
-              if(!("".equals(Vars.Proxy_Port) ))   
+              if(!("".equals(Vars.Proxy_Host) ))   
          Main.PopMsg("Proxy_Host changed from \""+Vars.Proxy_Host+"\" to \""+(Vars.Proxy_Host="")+"\".");
     if(0!=Vars.Proxy_Port)    
          Main.PopMsg("Proxy_Port changed from \""+Vars.Proxy_Port+"\" to \""+(Vars.Proxy_Port=0)+"\".");
