@@ -1,4 +1,4 @@
-*** Theta RC 2 ***
+*** Theta RC 2 18.12.2007***
            * fixed #1851771
            * plugmin cmd should work now( full);
            * should have fixed #1851771

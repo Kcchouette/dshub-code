@@ -147,8 +147,8 @@ public class HubServer extends Thread
          
         cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
         TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ));
-        myx.setDecoderMaxLineLength(10240);
-        myx.setEncoderMaxLineLength(10240);
+        myx.setDecoderMaxLineLength(2024000);
+        myx.setEncoderMaxLineLength(2024000);
         cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
         MyCalendar=Calendar.getInstance();
       // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
