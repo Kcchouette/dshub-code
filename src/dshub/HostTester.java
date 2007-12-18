@@ -54,7 +54,9 @@ public class HostTester
                 throw new Exception("Init not the same"+SUP+" "+ADC.Init);
             in.readLine();
             String INF=in.readLine();
-            if(!INF.equals("IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+" DE"+ADC.retADCStr(Vars.HubDE)))
+            String test="IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+
+                    ((Vars.HubDE.equals(""))?(" DE"+ADC.retADCStr(Vars.HubDE)):"");
+            if(!INF.equals(test))
                throw new Exception("INF not the same\n"+INF+"\n"+"IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
                        +" DE"+ADC.retADCStr(Vars.HubDE));
             
