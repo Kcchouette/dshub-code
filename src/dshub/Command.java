@@ -123,6 +123,11 @@ public class Command
     
     synchronized void  handleINF() throws CommandException, STAException
     {
+        if(Issued_Command.length()<10)
+        {
+            new STAError(cur_client,140,"Incorrect protocol command");
+            return;
+        }
         Issued_Command=Issued_Command.substring(4);
                     StringTokenizer tok=new StringTokenizer(Issued_Command);
                     
@@ -777,10 +782,13 @@ public class Command
     {
         
         
-        
+        if(Issued_Command.length()<4)
+        {
+            new STAError(cur_client,140,"Incorrect command");
+        }
                 /*******************************INF COMMAND *****************************************/
        
-                if(Issued_Command.charAt(1)=='I' && Issued_Command.charAt (2)=='N' && Issued_Command.charAt (3)=='F')
+                if(Issued_Command.substring(1).startsWith("INF"))
                 {
                      if(State.equals ("IDENTIFY") || State.equals ("VERIFY"))
                      {

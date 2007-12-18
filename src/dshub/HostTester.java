@@ -62,15 +62,18 @@ public class HostTester
         } catch (UnknownHostException ex)
         {
             //Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return false;
         } catch (IOException ex)
         {
            // Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return false;
         }
         catch ( Exception e)
         {
             e.printStackTrace();
+            return false;
         }
         
         return true;
