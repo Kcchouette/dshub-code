@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * redirect framework , added basic CID redirect
            * fixed bug with help text dissapearing;
 
 

@@ -27,6 +27,7 @@ import dshub.ExtendedCmds.ExtDrop;
 import dshub.ExtendedCmds.ExtInfo;
 import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
+import dshub.ExtendedCmds.ExtRedirect;
 import dshub.Modules.DSHubModule;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
@@ -622,6 +623,17 @@ public class CommandParser
                         return;
                     }
             new ExtMass(cur_client,recvbuf);
+            
+        }
+        else if(recvbuf.toLowerCase ().startsWith ("redirect"))
+        {
+                     commandOK=1;
+                    /* if(!cur_client.reg.myMask.mass)
+                    {
+                        cur_client.sendFromBot ("Access denied.");
+                        return;
+                    }*/
+            new ExtRedirect(cur_client,recvbuf);
             
         }
         else if(recvbuf.toLowerCase ().startsWith ("mynick "))
