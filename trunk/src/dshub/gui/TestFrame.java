@@ -95,7 +95,7 @@ public class TestFrame extends javax.swing.JFrame {
    
     public void refreshGUIPlugs()
     {
-        jScrollPane1.removeAll();
+        jScrollPane11.removeAll();
          int y=20;
         for(Module myPlug : Modulator.myModules)
         {
@@ -519,7 +519,7 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        Panelxxx = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
@@ -2781,7 +2781,7 @@ public class TestFrame extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Panelxxx.setViewportView(jTextArea1);
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -2789,13 +2789,13 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .add(Panelxxx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(Panelxxx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -4988,6 +4988,7 @@ refreshAll();
     private javax.swing.JCheckBox HSUPcheck;
     private javax.swing.JTextArea LogText;
     private javax.swing.JPanel PPanel;
+    private javax.swing.JScrollPane Panelxxx;
     private javax.swing.JPanel PluginPanel;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JTextField automagicsearchfield;
@@ -5138,7 +5139,6 @@ refreshAll();
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
