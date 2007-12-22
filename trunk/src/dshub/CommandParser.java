@@ -628,11 +628,11 @@ public class CommandParser
         else if(recvbuf.toLowerCase ().startsWith ("redirect"))
         {
                      commandOK=1;
-                    /* if(!cur_client.reg.myMask.mass)
+                     if(!cur_client.reg.myMask.redirect)
                     {
                         cur_client.sendFromBot ("Access denied.");
                         return;
-                    }*/
+                    }
             new ExtRedirect(cur_client,recvbuf);
             
         }

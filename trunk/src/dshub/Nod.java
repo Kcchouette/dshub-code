@@ -216,6 +216,10 @@ public class Nod implements Serializable,Cloneable
             Help+="+quit";
         else
             Help+="-quit";
+        if(curAcc.myMask.redirect)
+            Help+="+redirect";
+        else
+            Help+="-redirect";
         if(curAcc.myMask.reg)
             Help+="+reg";
         else

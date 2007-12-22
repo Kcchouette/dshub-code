@@ -95,7 +95,7 @@ public class TestFrame extends javax.swing.JFrame {
    
     public void refreshGUIPlugs()
     {
-        jScrollPane11.removeAll();
+        //jScrollPane11.removeAll();
          int y=20;
         for(Module myPlug : Modulator.myModules)
         {

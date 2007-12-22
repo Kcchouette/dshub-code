@@ -125,7 +125,7 @@ public class GrantCmd
         
             what=what.substring(0,z);
             aux=aux.substring(z+1);
-            
+            what=what.toLowerCase();
         if(what.equalsIgnoreCase("adc"))
         {
                if(cur_client.reg.myMask.adc==false)
@@ -412,6 +412,17 @@ public class GrantCmd
                 }
                modnod.myMask.quit=attribute;
               toSend+=" quit modified to "+attribute+"\n";
+              UpdatedInfo+=" "+what+" modified to "+attribute+"\n";
+             }
+            else  if(what.equals("redirect"))
+             {
+                if(cur_client.reg.myMask.redirect==false)
+                {
+                    toSend+=" redirect - can't grant a feature you don't possess.\n";
+                    continue;
+                }
+               modnod.myMask.redirect=attribute;
+              toSend+=" redirect modified to "+attribute+"\n";
               UpdatedInfo+=" "+what+" modified to "+attribute+"\n";
              }
             else  if(what.equals("reg"))
@@ -976,6 +987,12 @@ public GrantCmd(String cmd)
                 
                modnod.myMask.quit=attribute;
               toSend+=" quit modified to "+attribute+"\n";
+             }
+            else  if(what.equals("redirect"))
+             {
+                
+               modnod.myMask.redirect=attribute;
+              toSend+=" redirect modified to "+attribute+"\n";
              }
             else  if(what.equals("reg"))
              {
