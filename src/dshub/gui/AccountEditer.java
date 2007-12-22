@@ -144,6 +144,7 @@ public class AccountEditer extends javax.swing.JFrame
         jButton3 = new javax.swing.JButton();
         chatcontrol = new javax.swing.JCheckBox();
         backupcheck = new javax.swing.JCheckBox();
+        redirect = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         plugmincheck = new javax.swing.JCheckBox();
@@ -494,12 +495,12 @@ public class AccountEditer extends javax.swing.JFrame
         reg.setText("reg command");
         reg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         reg.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+        jPanel3.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         ureg.setText("ureg command");
         ureg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ureg.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(ureg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
+        jPanel3.add(ureg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
 
         listreg.setText("listreg command");
         listreg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -524,7 +525,7 @@ public class AccountEditer extends javax.swing.JFrame
         unban.setText("unban command");
         unban.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         unban.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(unban, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+        jPanel3.add(unban, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         bancid.setText("bancid command");
         bancid.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -589,7 +590,7 @@ public class AccountEditer extends javax.swing.JFrame
         stats.setText("stats command");
         stats.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         stats.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+        jPanel3.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         cfg.setText("cfg ( hub configuration panel)");
         cfg.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -599,22 +600,22 @@ public class AccountEditer extends javax.swing.JFrame
         topic.setText("topic command");
         topic.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         topic.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(topic, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
+        jPanel3.add(topic, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
         usercount.setText("usercount command");
         usercount.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         usercount.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(usercount, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
+        jPanel3.add(usercount, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
         rename.setText("rename command");
         rename.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         rename.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(rename, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        jPanel3.add(rename, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         restart.setText("restart hub command");
         restart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         restart.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel3.add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+        jPanel3.add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
         quit.setText("quit hub command");
         quit.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -650,6 +651,11 @@ public class AccountEditer extends javax.swing.JFrame
         backupcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         backupcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel3.add(backupcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        redirect.setText("redirect command");
+        redirect.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        redirect.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel3.add(redirect, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jTabbedPane1.addTab("Commands", jPanel3);
 
@@ -1040,6 +1046,10 @@ if(curAcc.myMask.adc)
            plugmincheck.setSelected (true);
         else
             plugmincheck.setSelected (false);
+       if(curAcc.myMask.redirect)
+           redirect.setSelected (true);
+        else
+            redirect.setSelected (false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formFocusGained (java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
@@ -1189,6 +1199,10 @@ if(curAcc.myMask.adc)
             curAcc.myMask.plugmin=true;
         else
             curAcc.myMask.plugmin=false;
+        if(redirect.isSelected())
+            curAcc.myMask.redirect=true;
+        else
+            curAcc.myMask.redirect=false;
                 
         
         
@@ -1408,6 +1422,7 @@ this.dispose ();
     private javax.swing.JCheckBox plugmincheck;
     private javax.swing.JCheckBox port;
     private javax.swing.JCheckBox quit;
+    private javax.swing.JCheckBox redirect;
     private javax.swing.JCheckBox reg;
     private javax.swing.JCheckBox rename;
     private javax.swing.JCheckBox restart;

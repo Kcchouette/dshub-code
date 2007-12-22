@@ -1,4 +1,6 @@
 *** Theta RC 3 ***
+           * redirect is now an attribute grantable ( accounts reset );
+           * fixed modules dissapearing from GUI from last svn
            * redirect framework , added basic CID redirect
            * fixed bug with help text dissapearing;
 

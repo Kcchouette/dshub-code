@@ -72,7 +72,7 @@ public class HelpFile implements Serializable
                         Main.Proppies.getProperty("os.name")
                        +" "+ Main.Proppies.getProperty("os.version")
                        +" "+Main.Proppies.getProperty("os.arch")+"\n";
-        String Help=blah+"General issue about commands: Most commands have a help when used with no parametres."+
+        String Help=blah+"General issue about commands: Most commands have a help when used with no parameteres."+
                 "\n-------------------------------------------------------------\nAvailable Commands :\n";
         if(curAcc.myMask.about)
             Help+="about -- The program credits.\n";
@@ -93,7 +93,7 @@ public class HelpFile implements Serializable
         if(curAcc.myMask.cmdhistory)
             Help+="cmdhistory -- Lists the last history_lines from given commands by logged users.\n";
         if(curAcc.myMask.drop)
-            Help+="drop -- A kick with no reason or ban time, just drop/Extended drop; use with no arguments to show info.\n";
+            Help+="drop -- A kick with no reason or ban time, just drop/Extended drop.\n";
         if(curAcc.myMask.grant)
             Help+="grant -- Offers the posibility of editing an account's profile; use with no arguments for info.\n";
         if(curAcc.myMask.gui)    
@@ -107,13 +107,13 @@ public class HelpFile implements Serializable
         if(curAcc.myMask.info)
             Help+="info -- Lists some useful information about a user,ip or cid.\n";
         if(curAcc.myMask.kick)
-            Help+="kick -- Kicks out the user given by nick, add extra words for reason/Extended kick; use with no arguments for info.\n";
+            Help+="kick -- Kicks out the user given by nick, add extra words for reason/Extended kick.\n";
         if(curAcc.myMask.listban)
             Help+="listban -- Lists the current banned CIDs/IPs/nicks.\n";
         if(curAcc.myMask.listreg)
             Help+="listreg -- Lists the current registered CIDs.\n";
         if(curAcc.myMask.mass)
-            Help+="mass -- Broadcast message, takes extended parameters; use with no arguments for info.\n";
+            Help+="mass -- Broadcast message, takes extended parameters.\n";
         if(curAcc.myMask.mynick)
             Help+="mynick -- Changes your nick to new specified one.\n";
         if(curAcc.myMask.password)
@@ -124,6 +124,8 @@ public class HelpFile implements Serializable
             Help+="port x -- Change default port to which hub is listening to x.\n";
         if(curAcc.myMask.quit)
             Help+="quit -- Shuts down hub.\n";
+        if(curAcc.myMask.redirect)
+            Help+="redirect -- Redirect user(s), takes extended parameteres.\n";
         if(curAcc.myMask.reg)
             Help+="reg CID/online user nick -- Reg the new CID with no password (by default) or the CID of the online user specified by nick.\n                                  If already registered, display registration info.\n";
         if(curAcc.myMask.rename)
