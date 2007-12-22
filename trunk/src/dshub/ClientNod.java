@@ -180,6 +180,28 @@ public class ClientNod
              whokicked.sendFromBot("Dropped user "+cur_client.NI+" with CID "+cur_client.ID+" down from the sky.");
                   //  Main.Server.rewritebans ();
      }
+       public void redirectMe(ClientHandler whokicked,String URL)
+     {
+         if(!cur_client.reg.kickable)
+         {
+             whokicked.sendFromBot(""+cur_client.NI+" is unredirectable.");
+             return;
+         }
+        
+         
+         
+         new Broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID+" RD"+URL);
+           
+             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
+               
+             cur_client. kicked=1;
+           this.cur_client.mySession.close();
+             
+                    
+              
+             whokicked.sendFromBot("Redirected user "+cur_client.NI+" with CID "+cur_client.ID+" to "+URL+".");
+                  //  Main.Server.rewritebans ();
+     }
        
        public void killMe()
        {
