@@ -1,3 +1,7 @@
+*** Theta RC 3 ***
+           * fixed bug with help text dissapearing;
+
+
 *** Theta RC 2 18.12.2007***
            * fixed #1851771
            * plugmin cmd should work now( full);
