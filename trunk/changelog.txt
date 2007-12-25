@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * extended redirect should work now;
            * redirecting nicks and regex should work now;
            * redirect is now an attribute grantable ( accounts reset );
            * fixed modules dissapearing from GUI from last svn

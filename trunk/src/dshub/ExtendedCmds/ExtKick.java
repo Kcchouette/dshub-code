@@ -145,7 +145,7 @@ public class ExtKick
                                      ClientNod tempz=ClientNod.FirstClient.NextClient;
                                      while(tempz!=null)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.SS)>Number )
+                                         if(Long.parseLong (tempz.cur_client.SS)/1024/1024>Number )
                                              tempz.kickMeOut (cur_client,kickmsg,3);
                                          tempz=tempz.NextClient;
                                      }
