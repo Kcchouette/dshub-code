@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * redirecting on STA error should work now;
            * hope that hub_host works better now;
            * added a text field and commands for it ;
            * redirect_url variable added;
