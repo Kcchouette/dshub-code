@@ -53,7 +53,12 @@ public class STAError
        
         cur_client.sendToClient(Error_string);
         if(ec>200)
-        throw new STAException(Error_string,ec);
+        {
+            if(!Vars.redirect_url.equals(""))
+             cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
+             throw new STAException(Error_string,ec);
+        }
+       
     }
     public STAError(ClientHandler CH,int ec,String error_d, String FL) throws STAException
     {
@@ -67,7 +72,12 @@ public class STAError
          
         cur_client.sendToClient(Error_string);
         if(ec>200)
-        throw new STAException(Error_string,ec);
+        {
+            if(!Vars.redirect_url.equals(""))
+            cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
+            throw new STAException(Error_string,ec);
+        }
+        
     }
     
 }
