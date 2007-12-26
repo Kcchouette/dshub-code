@@ -68,6 +68,8 @@ public class Variables implements Serializable
       String Proxy_Host;
       int Proxy_Port;
       
+      String redirect_url;
+      
      int max_ni;
      int min_ni;
      int max_de;
@@ -196,6 +198,8 @@ public class Variables implements Serializable
       
         Proxy_Host=Vars.Proxy_Host;
        Proxy_Port=Vars.Proxy_Port;
+       
+       redirect_url=Vars.redirect_url;
       
 
       reg_only=Vars.reg_only;

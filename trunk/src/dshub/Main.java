@@ -22,15 +22,12 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import dshub.Modules.Modulator;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import java.io.*;
-import java.text.DateFormat;
 import java.util.*;
 import java.net.*;
 import javax.swing.JOptionPane;
-import org.apache.mina.common.IoSession;
 
 
 
@@ -824,6 +821,20 @@ continue;
                     System.out.println("Invalid port number");
                    } 
                 }
+                else if(aux.toLowerCase ().equals ("redirect_url"))
+                {
+                     
+                    
+                       String new_name=ST.nextToken ();
+                      
+                        System.out.printf("Redirect_url changed from \""+
+                                Vars.redirect_url+"\" to \""+new_name+"\".\n");
+                        
+                        Vars.redirect_url=new_name;
+                        Server.rewriteconfig();
+                       
+                        
+                }
                 else if(aux.toLowerCase().equals ("max_ni"))
                 {
                     aux=ST.nextToken ();
@@ -1423,6 +1434,7 @@ continue;
                             +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
                             +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
                             +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
+                            +          "   redirect_url              "  + Vars.redirect_url+ "         -- The main redirect URL to send faulty users ( or default redirects ).\n"
                             +          "   max_ni                  "  +Vars.max_ni+" -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+" -- Minimum nick size, integer.\n"
                             +          "   max_de                  "  +Vars.max_de+" -- Maximum description size, integer.\n"

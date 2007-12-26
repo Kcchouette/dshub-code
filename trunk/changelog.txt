@@ -1,4 +1,7 @@
 *** Theta RC 3 ***
+           * hope that hub_host works better now;
+           * added a text field and commands for it ;
+           * redirect_url variable added;
            * extended redirect should work now;
            * redirecting nicks and regex should work now;
            * redirect is now an attribute grantable ( accounts reset );

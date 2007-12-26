@@ -78,6 +78,7 @@ public final class Vars
     
     public static String Proxy_Host="";
     public static int Proxy_Port;
+    public static String redirect_url="";
     
     static
     {

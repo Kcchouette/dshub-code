@@ -359,6 +359,7 @@ public class HubServer extends Thread
      Vars.Hub_Host=vars.Hub_Host;
      Vars.Proxy_Host=vars.Proxy_Host;
      Vars.Proxy_Port=vars.Proxy_Port;
+     Vars.redirect_url=vars.redirect_url;
       
       Vars.chat_interval=vars.chat_interval;
 
