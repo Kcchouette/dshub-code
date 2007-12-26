@@ -62,7 +62,7 @@ public class ExtRedirect
         StringTokenizer ST=new StringTokenizer(recvbuf);
         ST.nextToken();
         String what=ST.nextToken();
-        String URL="adc://89.33.231.41:1111";//TODO change with variable
+        String URL=Vars.redirect_url;
         if(ST.hasMoreTokens())
             URL=ST.nextToken();
         

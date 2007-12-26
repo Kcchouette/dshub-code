@@ -54,11 +54,16 @@ public class HostTester
                 throw new Exception("Init not the same"+SUP+" "+ADC.Init);
             in.readLine();
             String INF=in.readLine();
-            String test="IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+
-                    ((Vars.HubDE.equals(""))?(" DE"+ADC.retADCStr(Vars.HubDE)):"");
+            String test="";
+            if(Vars.HubDE.equals(""))
+                 test="IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName);
+            else
+                test= "IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+
+                    " DE"+ADC.retADCStr(Vars.HubDE);
             if(!INF.equals(test))
-               throw new Exception("INF not the same\n"+INF+"\n"+"IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
-                       +" DE"+ADC.retADCStr(Vars.HubDE));
+               throw new Exception("INF not the same\n"+INF+"\n"+"IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)
+                       +" NI"+ADC.retADCStr(Vars.HubName)+
+                    ((Vars.HubDE.equals(""))?(" DE"+ADC.retADCStr(Vars.HubDE)):""));
             
             in.close();
             out.close();
@@ -69,18 +74,18 @@ public class HostTester
         } catch (UnknownHostException ex)
         {
             //Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
-           // ex.printStackTrace();
+            ex.printStackTrace();
             return false;
         } catch (IOException ex)
         {
            // Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
-          //  ex.printStackTrace();
+            ex.printStackTrace();
           return false;
         }
         
         catch ( Exception e)
         {
-          //  e.printStackTrace();
+            e.printStackTrace();
            return false;
         }
         return true;

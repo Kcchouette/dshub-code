@@ -391,6 +391,8 @@ public class TestFrame extends javax.swing.JFrame {
         msgfullfield = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
+        redirecturl = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -1397,6 +1399,11 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
+        redirecturl.setMinimumSize(new java.awt.Dimension(130, 20));
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel53.setText("The main redirect URL to send faulty users ( or default redirects )");
+
         org.jdesktop.layout.GroupLayout miscpanelLayout = new org.jdesktop.layout.GroupLayout(miscpanel);
         miscpanel.setLayout(miscpanelLayout);
         miscpanelLayout.setHorizontalGroup(
@@ -1406,25 +1413,24 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(miscpanelLayout.createSequentialGroup()
                         .add(28, 28, 28)
                         .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(miscpanelLayout.createSequentialGroup()
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, savelogscheck))
-                                .add(20, 20, 20)
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel33)
-                                    .add(jLabel34)))
-                            .add(miscpanelLayout.createSequentialGroup()
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, kicktimefield)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, historylinesfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                                .add(24, 24, 24)
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel40)
-                                    .add(jLabel39)))
                             .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                            .add(jScrollPane6)))
+                            .add(jScrollPane6)
+                            .add(miscpanelLayout.createSequentialGroup()
+                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, kicktimefield)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, historylinesfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                                    .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(savelogscheck)
+                                    .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(22, 22, 22)
+                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel34)
+                                    .add(jLabel33)
+                                    .add(jLabel53)
+                                    .add(jLabel40)
+                                    .add(jLabel39)))))
                     .add(miscpanelLayout.createSequentialGroup()
                         .add(96, 96, 96)
                         .add(jLabel41))
@@ -1449,7 +1455,11 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jLabel34))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(savelogscheck)
-                .add(35, 35, 35)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel53))
+                .add(9, 9, 9)
                 .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel39))
@@ -3727,6 +3737,17 @@ else
             Main.PopMsg("Msg_Full changed from \""+aucsy+"\" to \""+Thing+"\".");
             
         }
+        
+        Thing=redirecturl.getText();
+        
+        aucsy=Vars.redirect_url;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.redirect_url=Thing;
+            Main.PopMsg("Redirect_url changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        
         SetStatus("Miscellaneous settings saved.");
     }//GEN-LAST:event_jButton11ActionPerformed
     
@@ -4194,7 +4215,7 @@ return;
                         
                               if(myHost.getAddress().getHostAddress().equals(myIT.next()))
                                      ok=true;
-                        ok=false;
+                       //ok=false;
                          if(!ok)
                        {
                           int result=JOptionPane.showConfirmDialog(this, "Press ok to scan hub_host ( may take a while) \nso please be patient",
@@ -4563,6 +4584,8 @@ return;
         botnamefield.setText(Vars.bot_name);
         
         botdescfield.setText(Vars.bot_desc);
+        
+       redirecturl.setText(Vars.redirect_url);
         
         
         if(!Vars.Proxy_Host.equals(""))
@@ -5080,6 +5103,7 @@ refreshAll();
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel63;
@@ -5188,6 +5212,7 @@ refreshAll();
     private javax.swing.JCheckBox proxycheck;
     private javax.swing.JTextField proxyhostfield;
     private javax.swing.JTextField proxyportfield;
+    private javax.swing.JTextField redirecturl;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox savelogscheck;
     private javax.swing.JTextField searchlogbasefield;
