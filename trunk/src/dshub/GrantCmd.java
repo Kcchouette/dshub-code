@@ -723,8 +723,8 @@ public class GrantCmd
              {
                 
                
-               aux="+about+adc++backup+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+plugmin+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               +"-renameable+key-kickable+modules+nickprotected+opchataccess+overrideshare+overridespam+overridefull";
+               aux="+about+adc+backup+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+plugmin+port+quit+redirect+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               +"+key-kickable+modules+nickprotected+opchataccess+overrideshare+overridespam+overridefull-renameable";
               //toSend+=" All granted.\n";
              }
             else
@@ -739,6 +739,8 @@ public class GrantCmd
           || temp.cur_client.ID.equals(who))
               temp.cur_client.sendFromBotPM(UpdatedInfo);
       
+      
+      Main.Server.rewriteregs();
     }
     
 
@@ -754,7 +756,7 @@ public GrantCmd(String cmd)
                     "Usage grant user/CID [[+-]attribute1]*"+
                     "\n      +attribute adds the atribute to the registered user, - removes it."+
             "\n      [+-]all adds all possible attributes."+
-            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password plugmin port quit reg rename restart stats topic unban ureg usercount flyable key kickable modules nickprotected opchataccess overridefull overrideshare overridespam renameable";
+            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password plugmin port quit redirect reg rename restart stats topic unban ureg usercount flyable key kickable modules nickprotected opchataccess overridefull overrideshare overridespam renameable";
             System.out.println(Help);
             return;
             }
@@ -1177,8 +1179,8 @@ public GrantCmd(String cmd)
                 
               // modnod.renameable=modnod.kickable=modnod.accountflyable=false;
               // modnod.overridefull=modnod.key=modnod.nickprotected=modnod.overrideshare=modnod.overridespam=true;
-               aux="+about+adc+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+plugmin+port+quit+reg+rename+restart+stats+topic+unban+ureg+usercount"
-               +"-renameable+key-kickable++modules+nickprotected+opchataccess+overrideshare+overridespam+overridefull";
+               aux="+about+adc+backup+bancid+banip+bannick+cfg+chatcontrol+cmdhistory+drop+grant+gui+help+hideme+history+info+kick+listban+listreg+mass+mynick+password+plugmin+port+quit+redirect+reg+rename+restart+stats+topic+unban+ureg+usercount"
+               +"+key-kickable+modules+nickprotected+opchataccess+overrideshare+overridespam+overridefull-renameable";
              }
             else
                 toSend+=" unknown feature \n";
@@ -1189,8 +1191,8 @@ public GrantCmd(String cmd)
       System.out.println(toSend+"Done.") ;
       if(temp!=null)
           if(temp.cur_client.NI.equalsIgnoreCase(who) || temp.cur_client.ID.equals(who))
-              temp.cur_client.sendFromBotPM(toSend.replaceAll(" unknown feature \\\\n",""));
-      
+              temp.cur_client.sendFromBotPM(toSend.replaceAll( what +" is unknown feature \\\\n",""));
+       Main.Server.rewriteregs();
     }
     
 }
