@@ -52,6 +52,7 @@ public class BannedWord {
     public static final long modified=32;
     public static final long privatechat=64;
     public static final long notify=128;
+    public static final long searches=256;
     public static final long allclient=7;
     public static final long allword=56;
     /** Creates a new instance of BannedWord */
@@ -95,13 +96,20 @@ public class BannedWord {
         if(x)
             proprietati=proprietati | privatechat;
         else
-            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+notify;
+            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+notify+searches;
     }
     public void setNotify(boolean x)
     {
          if(x)
             proprietati=proprietati | notify;
         else
-            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+privatechat;
+            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+privatechat+searches;
+    }
+    public void setSearches(boolean x)
+    {
+         if(x)
+            proprietati=proprietati | searches;
+        else
+            proprietati = proprietati & dropped+kicked+noAction+hidden+replaced+modified+privatechat+notify;
     }
 }

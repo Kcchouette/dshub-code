@@ -159,6 +159,7 @@ public class TestFrame extends javax.swing.JFrame {
         jRadioButton6.setSelected(false);
         privatecheck.setSelected(false);
         notifycheck.setSelected(false);
+        searchcheck.setSelected(false);
         jTextField3.setEditable(false);
         jTextField3.setText("");
         if ( (prop & BannedWord.dropped) != 0 ){
@@ -187,6 +188,9 @@ public class TestFrame extends javax.swing.JFrame {
         }
         if ( (prop & BannedWord.notify) != 0 ){
             notifycheck.setSelected(true);
+        }
+         if ( (prop & BannedWord.searches) != 0 ){
+            searchcheck.setSelected(true);
         }
     }
     
@@ -422,6 +426,7 @@ public class TestFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         privatecheck = new javax.swing.JCheckBox();
         notifycheck = new javax.swing.JCheckBox();
+        searchcheck = new javax.swing.JCheckBox();
         jPanel16 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
@@ -1907,7 +1912,7 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         notifycheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        notifycheck.setText("Notify operator chat on triggered event");
+        notifycheck.setText("Notify operator chat");
         notifycheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         notifycheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
         notifycheck.addActionListener(new java.awt.event.ActionListener()
@@ -1918,22 +1923,33 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
+        searchcheck.setFont(new java.awt.Font("Tahoma", 0, 10));
+        searchcheck.setText("Control also Searches");
+        searchcheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                searchcheckActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap()
                         .add(jPanel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(jPanel11Layout.createSequentialGroup()
-                        .add(55, 55, 55)
                         .add(privatecheck)
-                        .add(72, 72, 72)
-                        .add(notifycheck, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
+                        .add(45, 45, 45)
+                        .add(searchcheck)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 45, Short.MAX_VALUE)
+                        .add(notifycheck, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 119, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -1945,7 +1961,8 @@ public class TestFrame extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(privatecheck)
-                    .add(notifycheck))
+                    .add(notifycheck)
+                    .add(searchcheck))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2925,6 +2942,8 @@ else
             long prop= getClientPr() + getWordPr();
             if(privatecheck.isSelected())
                 prop+=BannedWord.privatechat;
+            if(searchcheck.isSelected())
+                prop+=BannedWord.searches;
             prop+=BannedWord.notify;
             listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
         }
@@ -2933,6 +2952,8 @@ else
             long prop= getClientPr() + getWordPr();
             if(privatecheck.isSelected())
                 prop+=BannedWord.privatechat;
+            if(searchcheck.isSelected())
+                prop+=BannedWord.searches;
             
             listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
         }
@@ -2945,6 +2966,8 @@ else
             long prop= getClientPr() + getWordPr() +BannedWord.privatechat;
             if(notifycheck.isSelected())
                 prop+=BannedWord.notify;
+            if(searchcheck.isSelected())
+                prop+=BannedWord.searches;
             
             listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
         }
@@ -2954,6 +2977,8 @@ else
             long prop= getClientPr() + getWordPr();
             if(notifycheck.isSelected())
                 prop+=BannedWord.notify;
+            if(searchcheck.isSelected())
+                prop+=BannedWord.searches;
             listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
         }
     }//GEN-LAST:event_privatecheckActionPerformed
@@ -4944,6 +4969,30 @@ refreshAll();
                     Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void searchcheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_searchcheckActionPerformed
+    {//GEN-HEADEREND:event_searchcheckActionPerformed
+     if(searchcheck.isSelected())
+        {
+            long prop= getClientPr() + getWordPr();
+            if(privatecheck.isSelected())
+                prop+=BannedWord.privatechat;
+            if(notifycheck.isSelected())
+                prop+=BannedWord.notify;
+            prop+=BannedWord.searches;
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+        else
+        {
+            long prop= getClientPr() + getWordPr();
+            if(privatecheck.isSelected())
+                prop+=BannedWord.privatechat;
+            if(notifycheck.isSelected())
+                prop+=BannedWord.notify;
+            
+            listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
+        }
+    }//GEN-LAST:event_searchcheckActionPerformed
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5215,6 +5264,7 @@ refreshAll();
     private javax.swing.JTextField redirecturl;
     private javax.swing.JCheckBox regonlycheck;
     private javax.swing.JCheckBox savelogscheck;
+    private javax.swing.JCheckBox searchcheck;
     private javax.swing.JTextField searchlogbasefield;
     private javax.swing.JTextField searchspamresetfield;
     private javax.swing.JTextField searchstepsfield;

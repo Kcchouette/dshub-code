@@ -49,7 +49,7 @@ public class ChatControlCmd
             "The flags are : \n"        +
                     " Drop user 1\n"+" Kick user 2\n"+" Don't do anything to client 4\n"+" Hide the matching word from chat 8\n"+
     " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+" Control private chat as well 64\n"+
-                    " Report to operator's chat 128\n"+
+                    " Report to operator's chat 128\n"+" Also check searches 256\n"+
                     "As you can see, you must not select all flags, but one of each category.\n"+
                     "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+"Note: flag 64 and 128 are independent of others.\n"+
                     "Note: The modification parameter is only available for flag including 32.\n"+
@@ -85,6 +85,8 @@ public class ChatControlCmd
             "The flags are : \n"        +
                     " Drop user 1\n"+" Kick user 2\n"+" Don't do anything to client 4\n"+" Hide the matching word from chat 8\n"+
     " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+
+                   " Control private chat as well 64\n"+
+                    " Report to operator's chat 128\n"+" Also check searches 256\n"+
                     "As you can see, you must not select all flags, but one of each category.\n"+
                     "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+
                     "Note: The modification parameter is only available for flag including 32.\n";
@@ -100,6 +102,8 @@ public class ChatControlCmd
             "The flags are : \n"        +
                     " Drop user 1\n"+" Kick user 2\n"+" Don't do anything to client 4\n"+" Hide the matching word from chat 8\n"+
     " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+
+                   " Control private chat as well 64\n"+
+                    " Report to operator's chat 128\n"+" Also check searches 256\n"+
                     "As you can see, you must not select all flags, but one of each category.\n"+
                     "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+
                     "Note: The modification parameter is only available for flag including 32.\n";
@@ -201,19 +205,34 @@ public class ChatControlCmd
                 case 20:
                 case 9+64:
                 case 9+128:
-                case 9+128+64:
+                case 9+256:
+                case 9+128+64+256:
+                case 9+128+256:
+                case 9+256+64:
                 case 10+64:
                 case 10+128:
-                case 10+128+64:
+                case 10+256:
+                case 10+128+64+256:
+                case 10+128+256:
+                case 10+256+64:
                 case 17+64:
                 case 17+128:
-                case 17+128+64:
+                case 17+256:
+                case 17+128+64+256:
+                case 17+128+256:
+                case 17+256+64:
                 case 18+64:
                 case 18+128:
-                case 18+128+64:
+                case 18+256:
+                case 18+128+64+256:
+                case 18+128+256:
+                case 18+256+64:
                 case 20+64:
                 case 20+128:
-                case 20+128+64:
+                case 20+256:
+                case 20+128+64+256:
+                case 20+128+256:
+                case 20+256+64:
                 
                     Main.listaBanate.add(regex,(long)flag,"x");
                      cur_client.sendFromBot("Successfully added.");
@@ -227,9 +246,21 @@ public class ChatControlCmd
                 case 34+128:
                 case 33+128:
                 case 36+128:
+                case 34+256:
+                case 33+256:
+                case 36+256:
+                case 34+64+256:
+                case 33+64+256:
+                case 36+64+256:
+                case 34+128+256:
+                case 33+128+256:
+                case 36+128+256:
                 case 34+128+64:
                 case 33+128+64:
                 case 36+128+64:
+                case 34+128+64+256:
+                case 33+128+64+256:
+                case 36+128+64+256:
                 {
                     if(!ST.hasMoreTokens())
                     {
@@ -322,26 +353,41 @@ public class ChatControlCmd
     static final long modified=32;
     static final long allclient=7;
     static final long allword=56;*/
-                 case 9:
+                case 9:
                 case 17:
                 case 10:
                 case 18:
                 case 20:
                 case 9+64:
                 case 9+128:
-                case 9+128+64:
+                case 9+256:
+                case 9+128+64+256:
+                case 9+128+256:
+                case 9+256+64:
                 case 10+64:
                 case 10+128:
-                case 10+128+64:
+                case 10+256:
+                case 10+128+64+256:
+                case 10+128+256:
+                case 10+256+64:
                 case 17+64:
                 case 17+128:
-                case 17+128+64:
+                case 17+256:
+                case 17+128+64+256:
+                case 17+128+256:
+                case 17+256+64:
                 case 18+64:
                 case 18+128:
-                case 18+128+64:
+                case 18+256:
+                case 18+128+64+256:
+                case 18+128+256:
+                case 18+256+64:
                 case 20+64:
                 case 20+128:
-                case 20+128+64:
+                case 20+256:
+                case 20+128+64+256:
+                case 20+128+256:
+                case 20+256+64:
                 if(id!=-1)
                     Main.listaBanate.modifyPrAt(id,(long)flag,"x");
                 else
@@ -352,7 +398,7 @@ public class ChatControlCmd
                      }
                      cur_client.sendFromBot("Successfully modified.");
                     break;
-                case 34:
+                 case 34:
                 case 33:
                 case 36:
                 case 34+64:
@@ -361,9 +407,21 @@ public class ChatControlCmd
                 case 34+128:
                 case 33+128:
                 case 36+128:
+                case 34+256:
+                case 33+256:
+                case 36+256:
+                case 34+64+256:
+                case 33+64+256:
+                case 36+64+256:
+                case 34+128+256:
+                case 33+128+256:
+                case 36+128+256:
                 case 34+128+64:
                 case 33+128+64:
                 case 36+128+64:
+                case 34+128+64+256:
+                case 33+128+64+256:
+                case 36+128+64+256:
                 {
                     if(!ST.hasMoreTokens())
                     {
