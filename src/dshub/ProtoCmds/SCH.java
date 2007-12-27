@@ -113,6 +113,26 @@ public class SCH
                             len+=aux.length ()-2;
                             automagic=false; //its not automagic search
                             Key+=aux.substring (2);
+                            if(!cur_client.reg.overridespam)
+                            if(!aux.startsWith("NO"))
+                            {
+                                long x=Main.listaBanate.isOK(aux.substring(2));
+                                if(x!=-1)
+                                {
+                                    long prop=Main.listaBanate.getPr(aux.substring(2) );
+                                if( (prop & BannedWord.searches) >0)
+                                {
+                                    if((prop & BannedWord.kicked )> 0 )
+                                      cur_client.myNod.kickMeByBot("You searched forbidden words",3);
+                                    else if (( prop & BannedWord.dropped )>0)
+                                      new STAError(cur_client,200,"You searched forbidden words");
+                                    else
+                                        new STAError(cur_client,100,"You searched forbidden words");
+                                    return ;
+                                }
+                                
+                                }
+                            }
                         }
                         else if(aux.startsWith ("TO"))
                         {

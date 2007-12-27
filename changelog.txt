@@ -1,4 +1,7 @@
 *** Theta RC 3 ***
+           * new flag 256 for chatcontrol search check;
+           * new checkbox in GUI for search chatcontrol;
+           * added chatcontrol search possibility;
            * fixed bug with granting all;
            * redirecting on STA error should work now;
            * hope that hub_host works better now;
