@@ -178,6 +178,7 @@ public class HubServer extends Thread
          if(Main.GUIok)
            {
                Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
+               //Main.PopMsg(Main.myPath);
                
            }
         } 

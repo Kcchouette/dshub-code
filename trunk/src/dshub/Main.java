@@ -126,7 +126,9 @@ public class Main extends Thread
            }
            if(!myPath.endsWith (separator))
                myPath=myPath+separator;
-          // System.out.println (myPath);
+           //Main.PopMsg(myPath);
+           if(myPath.equals("\\"))
+               myPath="";
         }
         if(System.getProperty("os.name").equals("Linux"))
         {
@@ -136,10 +138,10 @@ public class Main extends Thread
             while(!(aux.toLowerCase().contains("dshub.jar".toLowerCase())) && st1.hasMoreTokens())
                 aux=st1.nextToken();
            // if(!st1.hasMoreTokens())
-            {
+            
               //  Main.PopMsg("FAIL. Java Classpath Error.");
              //   return;
-            }
+            
             myPath=aux;
             
             

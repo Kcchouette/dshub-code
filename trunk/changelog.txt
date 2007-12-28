@@ -1,4 +1,7 @@
 *** Theta RC 3 ***
+           * created nsis installer for dshub windows;
+           * created JSmooth project file for windows exe creating ( http://sf.net/projects/jsmooth )
+           * fixed small issue with files path;
            * new flag 256 for chatcontrol search check;
            * new checkbox in GUI for search chatcontrol;
            * added chatcontrol search possibility;
