@@ -1,4 +1,6 @@
 *** Theta RC 3 ***
+           * moved logs to log dir
+           * modules reworking;
            * created nsis installer for dshub windows;
            * created JSmooth project file for windows exe creating ( http://sf.net/projects/jsmooth )
            * fixed small issue with files path;

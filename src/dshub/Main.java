@@ -66,7 +66,13 @@ public class Main extends Thread
         Date d=new Date(Main.curtime);
         if(Vars.savelogs==1)
         {
-            File logFile=new File(Main.myPath+d.toString ().replaceAll (" ","_").replaceAll (":","_")+".log");
+            File logTest=new File((Main.myPath.equals("")?"":(Main.myPath+"/"))+"log");
+            boolean result=true;
+            if(!logTest.exists())
+                result=logTest.mkdir();
+            if(result)
+            {
+            File logFile=new File((Main.myPath.equals("")?"":(Main.myPath+"/"))+"log/"+d.toString ().replaceAll (" ","_").replaceAll (":","_")+".log");
             FileOutputStream logOutput=null;
             try
             {
@@ -83,6 +89,7 @@ public class Main extends Thread
             }
             catch(Exception e)
             {}
+            }
         }
     }
     

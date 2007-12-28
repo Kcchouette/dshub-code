@@ -62,7 +62,7 @@ public final class Modulator
     { 
         
         myModules.clear();
-        File curPath=new File(Main.myPath+"/modules");
+        File curPath=new File((Main.myPath.equals("")?"":(Main.myPath+"/"))+"modules");
     
             File [] Modules=curPath.listFiles();
         
