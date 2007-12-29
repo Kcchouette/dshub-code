@@ -203,7 +203,7 @@ public class ClientNod
                   //  Main.Server.rewritebans ();
      }
        
-       public void killMe()
+       public synchronized void  killMe()
        {
            synchronized(FirstClient)
            {

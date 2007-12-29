@@ -210,7 +210,7 @@ public class HubServer extends Thread
         acceptor.unbind(address);
         x.shutdown();
     }
-    public static ClientNod AddClient()
+    public static synchronized ClientNod AddClient()
     {
      //ClientHandler ret;
         if(restart)

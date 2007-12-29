@@ -96,6 +96,7 @@ public class CTM
                 ClientNod temp=ClientNod.FirstClient.NextClient;
                 while(temp!=null)
                 {
+                    if(temp.cur_client.userok==1)
                     if(temp.cur_client.SessionID.equals(aux))
                         break;
                     temp=temp.NextClient;
