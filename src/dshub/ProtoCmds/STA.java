@@ -78,6 +78,7 @@ public class STA
                     ;
             while(target!=null)
             {
+                if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (dsid))
                     break;
             }
@@ -122,6 +123,7 @@ public class STA
                     ;
             while(target!=null)
             {
+                if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (esid))
                     break;
             }

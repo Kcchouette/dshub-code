@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * fixed possible exception;
            * moved logs to log dir
            * modules reworking;
            * created nsis installer for dshub windows;
