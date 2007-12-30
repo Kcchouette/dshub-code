@@ -1,4 +1,8 @@
 *** Theta RC 3 ***
+           * added manual src;
+           * updated the installer and readme;
+           * updated main page;
+           * updated some gui looks on misc settings;
            * fixed possible exception;
            * moved logs to log dir
            * modules reworking;

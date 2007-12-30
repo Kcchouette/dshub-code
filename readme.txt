@@ -1,4 +1,5 @@
-DSHUB readme.txt
+DSHUB readme.txt 
+*** IMPORTANT NOTE : THIS IS A BASIC README FOR FULL MANUAL PLEASE DOWNLOAD IT FROM http://www.death-squad.ro/dshub ***
 
 1. Installation
 Installation is OS dependent. If you want to install DSHub I presume that you have the necessary OS knowledge to handle possible situations. If you don't , consider twice using this software. I also assume that you are familiar with DC++ clients and hubs, and have minimal knowledge of Internet. Again, if you don't, consider again using this software and don't just send mail to admins asking why program doesn't work, or this kind of problems. DSHub is a software for people that know what they want and what they do.
@@ -54,17 +55,16 @@ and to detach from it again type Ctrl+a, d
 [ DSHub is being closed by quit command in its console, you can see in first line that it prints].
 1.2 Windows Installation
 
-For a Windows OS installation, i will provide an example. Consider a directory for installation, that suits you best.
-
 First you need the JRE [ Java Runtime Environment ] version 1.6 the least. Sun provides the JRE downloadable from their site http://java.sun.com  Java installation is not covered in this manual.
 
-After you have java installed, you can start using the software. Copy DSHub files into your new directory. Make sure that java.exe [ aka the Java interpreter] is in your path variable so it can be run from any directory in your pc.
+For a windows installation, a simple installer is provided, which will make most things simpler. After youre done , run dshub.exe and get started.
+
+If you are using the installer , skip to running part.
+If you have the zip archive, copy DSHub files ( unzipped )  into your new directory. Make sure that java.exe [ aka the Java interpreter] is in your path variable so it can be run from any directory in your pc.
 
 As DSHub has GUI now, you can run it by double clicking the JAR file. The gui appears, and it can be restored via !gui from client ( if hidden via HideMe button).
 
-If aren't running desktop environment, you can ren DSHub via console, like before.
-
- 
+If aren't running desktop environment, you can run DSHub via console, like before.
 
 To run the program in console mode just cd to that directory and run command
 
@@ -84,6 +84,11 @@ Start Time: 19.04.2007 14:04.045
 At this moment the prompt ">" indicates that hub is running and waiting commands.
 
 [ DSHub is being closed by quit command in its console, you can see in first line that it prints].
+
+If you use 
+javaw -jar DSHub.jar 
+you won't get any console, but the GUI will pop out only ( note that you need a graphical interface for this ).
+
 2. Hub Commands
 DSHub accepts commands from starting console. Whether your OS is Linux , Mac , Windows or any other, commands are same.
 2.1. Help
@@ -94,4 +99,5 @@ quit just exits hub.
 Cfg modifies hub variables. Cfg list to see all, cfg <varname> <newval> to change a variable.
 2.4. Stats
 Stats command gives info about PC hub runs on, and current hub statistics.
-Other commands are software built-in and will be added later in this readme, please consult the Manual.
+
+Other commands are software built-in and will be added later in this readme, please consult the Manual, you can get it from http://www.death-squad.ro/dshub

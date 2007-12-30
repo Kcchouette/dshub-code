@@ -8,6 +8,7 @@
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\dshub.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
+!define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 
 SetCompressor lzma
 
@@ -28,8 +29,18 @@ SetCompressor lzma
 !insertmacro MUI_PAGE_WELCOME
 ; License page
 !insertmacro MUI_PAGE_LICENSE "license.txt"
+; Components page
+!insertmacro MUI_PAGE_COMPONENTS
 ; Directory page
 !insertmacro MUI_PAGE_DIRECTORY
+; Start menu page
+var ICONS_GROUP
+!define MUI_STARTMENUPAGE_NODISABLE
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "DSHub"
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT "${PRODUCT_UNINST_ROOT_KEY}"
+!define MUI_STARTMENUPAGE_REGISTRY_KEY "${PRODUCT_UNINST_KEY}"
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "${PRODUCT_STARTMENU_REGVAL}"
+!insertmacro MUI_PAGE_STARTMENU Application $ICONS_GROUP
 ; Instfiles page
 !insertmacro MUI_PAGE_INSTFILES
 ; Finish page
@@ -41,7 +52,9 @@ SetCompressor lzma
 !insertmacro MUI_UNPAGE_INSTFILES
 
 ; Language files
+!insertmacro MUI_LANGUAGE "Albanian"
 !insertmacro MUI_LANGUAGE "Belarusian"
+!insertmacro MUI_LANGUAGE "Bosnian"
 !insertmacro MUI_LANGUAGE "Bulgarian"
 !insertmacro MUI_LANGUAGE "Catalan"
 !insertmacro MUI_LANGUAGE "Croatian"
@@ -57,6 +70,8 @@ SetCompressor lzma
 !insertmacro MUI_LANGUAGE "Irish"
 !insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Japanese"
+!insertmacro MUI_LANGUAGE "Latvian"
+!insertmacro MUI_LANGUAGE "Macedonian"
 !insertmacro MUI_LANGUAGE "Norwegian"
 !insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Portuguese"
@@ -76,7 +91,7 @@ SetCompressor lzma
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "DSHub-Install-xxx.exe"
+OutFile "DSHub-Setup-xxx.exe"
 InstallDir "$PROGRAMFILES\DSHub"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
@@ -86,22 +101,18 @@ Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
 
-Section "MainSection" SEC01
+Section "DSHub" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File "dshub.exe"
-  CreateDirectory "$SMPROGRAMS\DSHub"
-  CreateShortCut "$SMPROGRAMS\DSHub\DSHub.lnk" "$INSTDIR\dshub.exe"
-  CreateShortCut "$DESKTOP\DSHub.lnk" "$INSTDIR\dshub.exe"
-  File "DSHub.jar"
-  File "license.txt"
   File "changelog.txt"
+  File "dshub.exe"
+  File "DSHub.jar"
   File "LICENSE.jzlib.txt"
   File "LICENSE.slf4j.txt"
+  File "license.txt"
   File "logo.jpg"
   File "mina-license.txt"
   File "readme.txt"
-  CreateShortCut "$SMPROGRAMS\DSHub\Readme.lnk" "$INSTDIR\readme.txt"
   SetOutPath "$INSTDIR\lib"
   File "lib\AbsoluteLayout.jar"
   File "lib\log4j-1.2.14.jar"
@@ -111,13 +122,33 @@ Section "MainSection" SEC01
   File "lib\slf4j-api-1.4.3.jar"
   File "lib\slf4j-log4j12-1.4.3.jar"
   File "lib\swing-layout-1.0.3.jar"
+
+; Shortcuts
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+  CreateDirectory "$SMPROGRAMS\$ICONS_GROUP"
+  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\DSHub.lnk" "$INSTDIR\dshub.exe"
+  CreateShortCut "$DESKTOP\DSHub.lnk" "$INSTDIR\dshub.exe"
+  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\DSHub Readme.lnk" "$INSTDIR\readme.txt"
+  !insertmacro MUI_STARTMENU_WRITE_END
+SectionEnd
+
+Section "Additional Modules ( plugins )" SEC02
+  SetOutPath "$INSTDIR\modules"
+  File "modules\Hubtracker.jar"
+  File "modules\DSHubGenericPlugin.jar"
+
+; Shortcuts
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+  !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
 Section -AdditionalIcons
   SetOutPath $INSTDIR
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-  CreateShortCut "$SMPROGRAMS\DSHub\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
-  CreateShortCut "$SMPROGRAMS\DSHub\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
 Section -Post
@@ -130,6 +161,12 @@ Section -Post
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
 SectionEnd
+
+; Section descriptions
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC01} "DSHub core and libraries"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC02} "Additional useful modules ( plugins )"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
 Function un.onUninstSuccess
@@ -144,8 +181,11 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
+  !insertmacro MUI_STARTMENU_GETFOLDER "Application" $ICONS_GROUP
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
+  Delete "$INSTDIR\modules\DSHubGenericPlugin.jar"
+  Delete "$INSTDIR\modules\Hubtracker.jar"
   Delete "$INSTDIR\lib\swing-layout-1.0.3.jar"
   Delete "$INSTDIR\lib\slf4j-log4j12-1.4.3.jar"
   Delete "$INSTDIR\lib\slf4j-api-1.4.3.jar"
@@ -157,20 +197,21 @@ Section Uninstall
   Delete "$INSTDIR\readme.txt"
   Delete "$INSTDIR\mina-license.txt"
   Delete "$INSTDIR\logo.jpg"
+  Delete "$INSTDIR\license.txt"
   Delete "$INSTDIR\LICENSE.slf4j.txt"
   Delete "$INSTDIR\LICENSE.jzlib.txt"
-  Delete "$INSTDIR\changelog.txt"
-  Delete "$INSTDIR\license.txt"
   Delete "$INSTDIR\DSHub.jar"
   Delete "$INSTDIR\dshub.exe"
+  Delete "$INSTDIR\changelog.txt"
 
-  Delete "$SMPROGRAMS\DSHub\Uninstall.lnk"
-  Delete "$SMPROGRAMS\DSHub\Website.lnk"
-  Delete "$SMPROGRAMS\DSHub\Readme.lnk"
+  Delete "$SMPROGRAMS\$ICONS_GROUP\Uninstall.lnk"
+  Delete "$SMPROGRAMS\$ICONS_GROUP\Website.lnk"
+  Delete "$SMPROGRAMS\$ICONS_GROUP\DSHub Readme.lnk"
   Delete "$DESKTOP\DSHub.lnk"
-  Delete "$SMPROGRAMS\DSHub\DSHub.lnk"
+  Delete "$SMPROGRAMS\$ICONS_GROUP\DSHub.lnk"
 
-  RMDir "$SMPROGRAMS\DSHub"
+  RMDir "$SMPROGRAMS\$ICONS_GROUP"
+  RMDir "$INSTDIR\modules"
   RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR"
 

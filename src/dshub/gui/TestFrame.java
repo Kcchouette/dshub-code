@@ -286,7 +286,6 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
@@ -379,24 +378,34 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         miscpanel = new javax.swing.JPanel();
-        opchatnamefield = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        opchatdescfield = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
-        savelogscheck = new javax.swing.JCheckBox();
-        historylinesfield = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
-        kicktimefield = new javax.swing.JTextField();
-        jLabel40 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        msgbannedfield = new javax.swing.JTextArea();
-        jLabel41 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        msgfullfield = new javax.swing.JTextArea();
-        jLabel42 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
+        jPanel35 = new javax.swing.JPanel();
+        opchatnamefield = new javax.swing.JTextField();
+        opchatdescfield = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jPanel36 = new javax.swing.JPanel();
         redirecturl = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
+        jPanel38 = new javax.swing.JPanel();
+        kicktimefield = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jPanel39 = new javax.swing.JPanel();
+        historylinesfield = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jPanel40 = new javax.swing.JPanel();
+        savelogscheck = new javax.swing.JCheckBox();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jPanel37 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        msgfullfield = new javax.swing.JTextArea();
+        jLabel41 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        msgbannedfield = new javax.swing.JTextArea();
+        jButton31 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -522,6 +531,7 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         PluginPanel = new javax.swing.JPanel();
         jButton30 = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -588,13 +598,11 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
 
-        jLabel14.setText("Version: DSHub Theta RC2");
+        jLabel14.setText("Version: DSHub Theta RC3");
 
         jLabel7.setText("Copyright 2007  by Pietry");
 
-        jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast");
-
-        jLabel65.setText("Co-Developer: Naccio");
+        jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio");
 
         jLabel6.setText("Also thanks go to everybody who helped me and were ");
 
@@ -609,17 +617,6 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel23Layout.createSequentialGroup()
                 .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel23Layout.createSequentialGroup()
-                        .add(73, 73, 73)
-                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel7)
-                            .add(jLabel14)
-                            .add(jPanel23Layout.createSequentialGroup()
-                                .add(10, 10, 10)
-                                .add(jLabel65))))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(26, 26, 26)
-                        .add(jLabel8))
-                    .add(jPanel23Layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jLabel69))
                     .add(jPanel23Layout.createSequentialGroup()
@@ -627,18 +624,24 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jLabel70))
                     .add(jPanel23Layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jLabel6)))
+                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel8)
+                            .add(jLabel6)))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .add(73, 73, 73)
+                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel14)
+                            .add(jLabel7))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel23Layout.createSequentialGroup()
+                .add(12, 12, 12)
                 .add(jLabel14)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel7)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel65)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(14, 14, 14)
                 .add(jLabel8)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel6)
@@ -1346,18 +1349,156 @@ public class TestFrame extends javax.swing.JFrame {
         jTabbedPane2.addTab("Spam Settings", xxx);
 
         miscpanel.setToolTipText("Misc Settings");
+        miscpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton11.setText("Save Settings");
+        jButton11.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        miscpanel.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+
+        jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder("Bots settings"));
 
         opchatnamefield.setText("OpChat");
         opchatnamefield.setMinimumSize(new java.awt.Dimension(130, 20));
+        opchatnamefield.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        opchatdescfield.setText("BoT");
+        opchatdescfield.setPreferredSize(new java.awt.Dimension(140, 20));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel33.setText("The Operator Chat Bot Nick.");
 
-        opchatdescfield.setText("BoT");
-        opchatdescfield.setPreferredSize(new java.awt.Dimension(130, 20));
-
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel34.setText("The Operator Chat Bot Description.");
+
+        org.jdesktop.layout.GroupLayout jPanel35Layout = new org.jdesktop.layout.GroupLayout(jPanel35);
+        jPanel35.setLayout(jPanel35Layout);
+        jPanel35Layout.setHorizontalGroup(
+            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel35Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel35Layout.createSequentialGroup()
+                        .add(opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jLabel33))
+                    .add(jPanel35Layout.createSequentialGroup()
+                        .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jLabel34)))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        jPanel35Layout.setVerticalGroup(
+            jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel35Layout.createSequentialGroup()
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel33))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel34))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        miscpanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 80));
+
+        jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder("Redirects"));
+
+        redirecturl.setMinimumSize(new java.awt.Dimension(130, 20));
+        redirecturl.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel53.setText("The main redirect URL to send faulty users ( or default redirects )");
+
+        org.jdesktop.layout.GroupLayout jPanel36Layout = new org.jdesktop.layout.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel36Layout.createSequentialGroup()
+                .add(10, 10, 10)
+                .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jLabel53)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel36Layout.createSequentialGroup()
+                .add(jPanel36Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel53))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        miscpanel.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 480, 50));
+
+        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder("Kick settings"));
+
+        kicktimefield.setText("300");
+        kicktimefield.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel40.setText("The time to ban a user with a kick, in seconds.");
+
+        org.jdesktop.layout.GroupLayout jPanel38Layout = new org.jdesktop.layout.GroupLayout(jPanel38);
+        jPanel38.setLayout(jPanel38Layout);
+        jPanel38Layout.setHorizontalGroup(
+            jPanel38Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel38Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(kicktimefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jLabel40)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jPanel38Layout.setVerticalGroup(
+            jPanel38Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel38Layout.createSequentialGroup()
+                .add(jPanel38Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(kicktimefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel40))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        miscpanel.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 480, 60));
+
+        jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder("History settings"));
+
+        historylinesfield.setText("50");
+        historylinesfield.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel39.setText("Number of lines to keep in chat and command history.");
+
+        org.jdesktop.layout.GroupLayout jPanel39Layout = new org.jdesktop.layout.GroupLayout(jPanel39);
+        jPanel39.setLayout(jPanel39Layout);
+        jPanel39Layout.setHorizontalGroup(
+            jPanel39Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel39Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jLabel39)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel39Layout.setVerticalGroup(
+            jPanel39Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel39Layout.createSequentialGroup()
+                .add(jPanel39Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel39))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        miscpanel.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 60));
+
+        jPanel40.setBorder(javax.swing.BorderFactory.createTitledBorder("Logging settings"));
 
         savelogscheck.setFont(new java.awt.Font("Tahoma", 0, 10));
         savelogscheck.setText("Save logs to file.");
@@ -1371,121 +1512,98 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
-        historylinesfield.setText("50");
+        jLabel56.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel56.setText("Logs have their file name the date when hub was started.");
 
-        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel39.setText("Number of lines to keep in chat history.");
+        jLabel57.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel57.setText("They are saved to /logs directory.");
 
-        kicktimefield.setText("300");
+        org.jdesktop.layout.GroupLayout jPanel40Layout = new org.jdesktop.layout.GroupLayout(jPanel40);
+        jPanel40.setLayout(jPanel40Layout);
+        jPanel40Layout.setHorizontalGroup(
+            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(savelogscheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel57)
+                    .add(jLabel56))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        jPanel40Layout.setVerticalGroup(
+            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel40Layout.createSequentialGroup()
+                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(savelogscheck)
+                    .add(jLabel56))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel57)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel40.setText("The time to ban a user with a kick, in seconds.");
+        miscpanel.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 480, 60));
 
-        msgbannedfield.setColumns(20);
-        msgbannedfield.setRows(5);
-        jScrollPane5.setViewportView(msgbannedfield);
+        jTabbedPane2.addTab("Misc Settings1", miscpanel);
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel41.setText("The aditional message to show to banned users when connecting.");
+        jPanel37.setToolTipText("Miscellaneous Settings");
+        jPanel37.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel34.setBorder(javax.swing.BorderFactory.createTitledBorder("Messages"));
+
+        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel42.setText("The additional message to be shown to connecting users when hub full.");
 
         msgfullfield.setColumns(20);
         msgfullfield.setRows(5);
         jScrollPane6.setViewportView(msgfullfield);
 
-        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel42.setText("The additional message to be shown to connecting users when hub full.");
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel41.setText("The aditional message to show to banned users when connecting.");
 
-        jButton11.setText("Save Settings");
-        jButton11.addActionListener(new java.awt.event.ActionListener()
+        msgbannedfield.setColumns(20);
+        msgbannedfield.setRows(5);
+        jScrollPane5.setViewportView(msgbannedfield);
+
+        org.jdesktop.layout.GroupLayout jPanel34Layout = new org.jdesktop.layout.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel34Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                    .add(jLabel42)
+                    .add(jLabel41)
+                    .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel34Layout.createSequentialGroup()
+                .add(jLabel42)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jLabel41)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel37.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 600, 250));
+
+        jButton31.setText("Save Settings");
+        jButton31.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton11ActionPerformed(evt);
+                jButton31ActionPerformed(evt);
             }
         });
+        jPanel37.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
-        redirecturl.setMinimumSize(new java.awt.Dimension(130, 20));
-
-        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel53.setText("The main redirect URL to send faulty users ( or default redirects )");
-
-        org.jdesktop.layout.GroupLayout miscpanelLayout = new org.jdesktop.layout.GroupLayout(miscpanel);
-        miscpanel.setLayout(miscpanelLayout);
-        miscpanelLayout.setHorizontalGroup(
-            miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(miscpanelLayout.createSequentialGroup()
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(miscpanelLayout.createSequentialGroup()
-                        .add(28, 28, 28)
-                        .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                            .add(jScrollPane6)
-                            .add(miscpanelLayout.createSequentialGroup()
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, kicktimefield)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, historylinesfield, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                                    .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(savelogscheck)
-                                    .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(22, 22, 22)
-                                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel34)
-                                    .add(jLabel33)
-                                    .add(jLabel53)
-                                    .add(jLabel40)
-                                    .add(jLabel39)))))
-                    .add(miscpanelLayout.createSequentialGroup()
-                        .add(96, 96, 96)
-                        .add(jLabel41))
-                    .add(miscpanelLayout.createSequentialGroup()
-                        .add(91, 91, 91)
-                        .add(jLabel42))
-                    .add(miscpanelLayout.createSequentialGroup()
-                        .add(246, 246, 246)
-                        .add(jButton11)))
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-        miscpanelLayout.setVerticalGroup(
-            miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(miscpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(opchatnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel33))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel34))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(savelogscheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(redirecturl, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel53))
-                .add(9, 9, 9)
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel39))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(miscpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(kicktimefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel40))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 54, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel41)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel42)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton11)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Misc Settings", miscpanel);
+        jTabbedPane2.addTab("Misc Settings2", jPanel37);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -2776,7 +2894,10 @@ public class TestFrame extends javax.swing.JFrame {
                 jButton30ActionPerformed(evt);
             }
         });
-        PPanel.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 160, -1));
+        PPanel.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 160, -1));
+
+        jLabel55.setText("Modules are the way DSHub can be extended. Place them in the /modules subdirectory.");
+        PPanel.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jTabbedPane1.addTab("Additional Modules", PPanel);
 
@@ -3744,24 +3865,7 @@ else
         } catch(NumberFormatException nfe) {
             kicktimefield.setText(Integer.toString(Vars.kick_time));
         }
-        Thing=msgbannedfield.getText();
         
-        aucsy=Vars.Msg_Banned;
-        if(!(aucsy.equals(Thing))) {
-            
-            Vars.Msg_Banned=Thing;
-            Main.PopMsg("Msg_Banned changed from \""+aucsy+"\" to \""+Thing+"\".");
-            
-        }
-        Thing=msgfullfield.getText();
-        
-        aucsy=Vars.Msg_Full;
-        if(!(aucsy.equals(Thing))) {
-            
-            Vars.Msg_Full=Thing;
-            Main.PopMsg("Msg_Full changed from \""+aucsy+"\" to \""+Thing+"\".");
-            
-        }
         
         Thing=redirecturl.getText();
         
@@ -4993,6 +5097,32 @@ refreshAll();
             listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop);
         }
     }//GEN-LAST:event_searchcheckActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton31ActionPerformed
+    {//GEN-HEADEREND:event_jButton31ActionPerformed
+     String Thing,aucsy;
+        
+        Thing=msgbannedfield.getText();
+        
+        aucsy=Vars.Msg_Banned;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Msg_Banned=Thing;
+            Main.PopMsg("Msg_Banned changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        Thing=msgfullfield.getText();
+        
+        aucsy=Vars.Msg_Full;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.Msg_Full=Thing;
+            Main.PopMsg("Msg_Full changed from \""+aucsy+"\" to \""+Thing+"\".");
+            
+        }
+        
+        SetStatus("Miscellaneous settings saved.");
+    }//GEN-LAST:event_jButton31ActionPerformed
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5098,6 +5228,7 @@ refreshAll();
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -5154,10 +5285,12 @@ refreshAll();
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
@@ -5194,7 +5327,14 @@ refreshAll();
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
