@@ -33,11 +33,9 @@ import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.net.*;
-import java.util.regex.PatternSyntaxException;
 
 
 /**
@@ -56,7 +54,7 @@ public class CommandParser
     static int size=0;
     
     
-    
+    boolean done=false;
     
     /** Creates a new instance of CommandParser */
     public CommandParser (ClientHandler CH, String cmd)
@@ -66,9 +64,34 @@ public class CommandParser
         //this.setPriority (NORM_PRIORITY);
         run();
         
+        while(!done)
+            {
+            try
+            {
+Thread.sleep(200);
+            } catch (Exception exception)
+            {
+            }
+        }
+
+            
+        
         String STR=cmd;
         String NI=cur_client.NI;
+        String recvbuf=ADC.retNormStr(cmd.substring (1));
         
+         for(Module myMod : Modulator.myModules)
+          {
+              int result=0;
+              if(cur_client.reg.additionalModules) //only if hes allowed to use modules
+               result =  myMod.onCommand(cur_client,recvbuf);
+              
+              if(result!=0)
+                  commandOK=result;
+          }
+          
+          if(commandOK==0)
+           cur_client.sendFromBot("Unknown Command. Type !help for info.");
         if(commandOK!=2)
          if(FirstCommand==null)
         {
@@ -125,7 +148,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.quit)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                      done=true;  return;
                     }
                 
                 cur_client.sendFromBot("Closing down hub...");
@@ -147,7 +170,7 @@ public class CommandParser
                }
                  
                 Main.Exit();
-                return;
+                done=true;return;
                
         }
            
@@ -158,7 +181,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.restart)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
             cur_client.sendFromBot("Restarting.... Wait 5 seconds...");
                  Main.Server.rewriteregs();
@@ -185,7 +208,7 @@ public class CommandParser
             Main.Server=new HubServer();
          Main.curtime=System.currentTimeMillis();
          Main.Proppies=System.getProperties();
-         return;
+        done=true; return;
           }
         if(recvbuf.toLowerCase ().startsWith("password"))
         {
@@ -193,7 +216,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.password)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
@@ -216,7 +239,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.grant)
                     {
                         cur_client.sendFromBot("Access denied.");
-                        return;
+                       done=true; return;
                     }
                  new GrantCmd(cur_client,recvbuf);
                 
@@ -228,7 +251,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.backup)
                     {
                         cur_client.sendFromBot("Access denied.");
-                        return;
+                       done=true; return;
                     }
                  new BackupCmd(cur_client,recvbuf);
                  
@@ -239,7 +262,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.gui)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
                     if(!Main.GUI.isDisplayable())
                     {
@@ -267,14 +290,15 @@ public class CommandParser
                 Main.GUI.SetStatus("GUI restored...");
              }
              else cur_client.sendFromBot("GUI not viewable.");
-                    commandOK=1;
+                    
         }
         else if(recvbuf.toLowerCase ().startsWith("hideme"))
         {
+            commandOK=1;
                     if(!cur_client.reg.myMask.hideme)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
                     if(!cur_client.reg.HideMe)
                     {
@@ -297,7 +321,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.listreg)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
             String blah00="List :\n";
             Nod n=AccountsConfig.First;
@@ -320,7 +344,7 @@ public class CommandParser
                     if(!cur_client.reg.myMask.listban)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                        done=true;return;
                     }
             String blah00="Ban List :\n";
             Ban n=BanList.First;
@@ -356,12 +380,12 @@ public class CommandParser
                      if(!cur_client.reg.myMask.ureg)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                        done=true;return;
                     }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
-                    return;
+                {done=true;return;}
                 String aux=ST.nextToken ();
                 try
                 {
@@ -441,12 +465,12 @@ public class CommandParser
                      if(!cur_client.reg.myMask.reg)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                        done=true;return;
                     }
                 StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
-                    return;
+                {done=true;  return;}
                 String aux=ST.nextToken ();
                 if(aux.length ()==39) //possible CID, lets try
                 {
@@ -457,7 +481,7 @@ public class CommandParser
                         {
                             
                             cur_client.sendFromBot(""+AccountsConfig.getnod (aux).getRegInfo ());
-                            return;
+                           done=true; return;
                         }
                         ClientNod temp=ClientNod.FirstClient.NextClient;
                         while(temp!=null)
@@ -512,7 +536,7 @@ public class CommandParser
                          if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                             cur_client.sendFromBot(""+AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
-                            return;
+                           done=true; return;
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
@@ -557,7 +581,7 @@ public class CommandParser
                             if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                             cur_client.sendFromBot(""+AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
-                            return;
+                           done=true; return;
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
@@ -591,7 +615,7 @@ public class CommandParser
                  if(!cur_client.reg.myMask.help)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
             
                 
@@ -608,7 +632,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.info)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
                 new ExtInfo(cur_client,recvbuf);
                 
@@ -620,7 +644,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.mass)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                        done=true;return;
                     }
             new ExtMass(cur_client,recvbuf);
             
@@ -631,7 +655,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.redirect)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
             new ExtRedirect(cur_client,recvbuf);
             
@@ -642,7 +666,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.mynick)
                     {
                         cur_client.sendFromBot ("Access denied.");
-                        return;
+                       done=true; return;
                     }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
@@ -656,27 +680,27 @@ public class CommandParser
                 {
                     { 
                        cur_client.sendFromBot("Nick too small, please choose another.");
-                       return;
+                      done=true; return;
                     }
                 }
                 if(aux.length ()>Vars.max_ni)
                 {
                     {
                        cur_client.sendFromBot("Nick too large, please choose another.");
-                       return;
+                       {done=true;return;}
                     }
                 }
                 if(!Vars.ValidateNick (aux))
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        System.out.println (aux);
-                       return;
+                       { done=true;return;}
                    }
                 if(AccountsConfig.nickReserved(aux,cur_client.ID))
                 {
                     
                    cur_client.sendFromBot("Nick reserved. Please choose another.");
-                    return;
+                   {done=true; return;}
                 }
                 
                     ClientNod tempy=ClientNod.FirstClient.NextClient;
@@ -691,17 +715,17 @@ public class CommandParser
                     if(tempy!=null)
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
-                       return;
+                       {done=true;return;}
                     }
                     if(aux.equalsIgnoreCase(Vars.Opchat_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
-                       return;
+                       {done=true;return;}
                     }
                     if(aux.equalsIgnoreCase(Vars.bot_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
-                       return;
+                       {done=true;return;}
                     }
              
                     
@@ -717,6 +741,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.rename)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                     //cur_client.sendFromBot(""+ADC.retADCStr("Sorry but renaming features are temporary disabled until DC++ has UCMD's ( because !rename mister bla new nick has 4 entities and its quite hard to guess what is first nick and what is 2nd nick."));
@@ -746,6 +771,7 @@ public class CommandParser
                 {
                     { 
                        cur_client.sendFromBot("Nick too small, please choose another.");
+                       done=true;
                        return;
                     }
                 }
@@ -753,18 +779,21 @@ public class CommandParser
                 {
                     {
                        cur_client.sendFromBot("Nick too large, please choose another.");
+                       done=true;
                        return;
                     }
                 }
                     if(!Vars.ValidateNick (newnick) )
                    {
                        cur_client.sendFromBot("Nick not valid, please choose another.");
+                       done=true;
                        return;
                    }
                  if(AccountsConfig.nickReserved(newnick,temp.cur_client.ID))
                 {
                     
                    cur_client.sendFromBot("Nick reserved. Please choose another.");
+                   done=true;
                     return;
                 }
                     ClientNod tempy=ClientNod.FirstClient.NextClient;
@@ -779,16 +808,19 @@ public class CommandParser
                     if(tempy!=null)
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
+                       done=true;
                        return;
                     }
                     if(newnick.equals(Vars.Opchat_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
+                       done=true;
                        return;
                     }
                     if(newnick.equals(Vars.bot_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
+                       done=true;
                        return;
                     }
                     new Broadcast("BINF "+temp.cur_client.SessionID+" NI"+newnick);
@@ -808,6 +840,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.kick)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                    new ExtKick(cur_client,recvbuf);
@@ -819,6 +852,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.plugmin)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                    new PlugminCmd(cur_client,recvbuf);
@@ -830,6 +864,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.chatcontrol)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                    new ChatControlCmd(cur_client,recvbuf);
@@ -840,6 +875,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.drop)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                     new ExtDrop(cur_client,recvbuf);
@@ -850,6 +886,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.unban)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
@@ -857,6 +894,7 @@ public class CommandParser
                 if(!ST.hasMoreTokens ())
                 {
                     cur_client.sendFromBot ("Nothing specified for unbanning.");
+                    done=true;
                     return;
                 }
                 String aux=ST.nextToken (); //the thing to unban;
@@ -910,12 +948,15 @@ public class CommandParser
                      if(!cur_client.reg.myMask.bancid)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
+                {done=true;
                     return;
+                }
                 String aux=ST.nextToken (); //the thing to Ban;
                 aux=ADC.retADCStr (aux);
                 //al right,now must check if that is a nick, cid or ip
@@ -1010,7 +1051,7 @@ public class CommandParser
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
-                    return;
+                { done=true;return;}
                 String aux=ST.nextToken (); //the thing to Ban;
                 aux=ADC.retADCStr(aux);
                 //al right,now must check if that is a nick online of offline
@@ -1064,7 +1105,8 @@ public class CommandParser
                 StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
                 ST.nextToken ();
                 if(!ST.hasMoreTokens ())
-                    return;
+                {done=true;
+                    return;}
                 String aux=ST.nextToken (); //the thing to Ban;
                 aux=ADC.retADCStr(aux);
                 //al right,now must check if that is a  ip or nick
@@ -1090,7 +1132,7 @@ public class CommandParser
                          if(!temp.cur_client.reg.kickable)
                          {cur_client.sendFromBot("Searching...");
                           cur_client.sendFromBot("Found IP "+aux+" belonging to "+temp.cur_client.NI+", but its unkickable. Not banned.");
-                          cur_client.sendFromBot("Done.");
+                          cur_client.sendFromBot("Done.");done=true;
                          return;}
                                 }
                             temp=temp.NextClient;
@@ -1161,6 +1203,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.cfg)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 new CFGConfig(cur_client,recvbuf);
@@ -1171,6 +1214,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.topic)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                if(recvbuf.toLowerCase ().equals("topic"))
@@ -1211,6 +1255,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.port)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 try
@@ -1219,6 +1264,7 @@ public class CommandParser
             if(x<1 || x>65000)
            {
                cur_client.sendFromBot("What kinda port is that ?");
+               done=true;
             return;
            }
             cur_client.sendFromBot("New default port change from "+Vars.Default_Port+" to "+recvbuf.substring(5)+". Restart for settings to take effect.");
@@ -1237,6 +1283,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.usercount)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 int i=0,j=0;
@@ -1256,6 +1303,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.about)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 cur_client.sendFromBot("\n"+Vars.About.replaceAll(" ","\\ ").replaceAll ("\\x0a","\\\n"));
@@ -1266,6 +1314,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.history)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
             String blah00="History:\n";
@@ -1284,6 +1333,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.cmdhistory)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
             String blah00="Command History:\n";
@@ -1302,6 +1352,7 @@ public class CommandParser
                      if(!cur_client.reg.myMask.stats)
                     {
                         cur_client.sendFromBot ("Access denied.");
+                        done=true;
                         return;
                     }
                 Runtime myRun=Runtime.getRuntime();
@@ -1344,19 +1395,8 @@ public class CommandParser
         
                
         
-          for(Module myMod : Modulator.myModules)
-          {
-              int result=0;
-              if(cur_client.reg.additionalModules) //only if hes allowed to use modules
-               result =  myMod.onCommand(cur_client,recvbuf);
-              
-              if(result!=0)
-                  commandOK=result;
-          }
-          
-          if(commandOK==0)
-           cur_client.sendFromBot("Unknown Command. Type !help for info.");
-          
+         
+          done=true;
           
           
             }
