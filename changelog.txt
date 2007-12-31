@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * solved hideme error msg;
            * added manual src;
            * updated the installer and readme;
            * updated main page;
