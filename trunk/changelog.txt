@@ -1,4 +1,4 @@
-*** Theta RC 3 ***
+*** Theta RC 3 02.01.2008 ***
            * topic is saved on the spot into config;
            * fixed chatcontrol cmd flags;
            * fixed hubtracker command showing;
