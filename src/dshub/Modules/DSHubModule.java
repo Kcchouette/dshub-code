@@ -42,7 +42,7 @@ public interface DSHubModule
     /** Possible return value for onCommand() method
      * If this value is returned then the method did nothing
      */
-    public static final int DO_NOTHING=1;
+    public static final int DO_NOTHING=0;
     /** Possible return value for onCommand() method
      * If this value is returned then the method treated the
      * command as a normal one.
@@ -53,7 +53,7 @@ public interface DSHubModule
      * command as a hidden one and it shouldnt be shown to cmdhistory
      * or other users.
      */
-    public static final int HIDE_COMMAND=1;
+    public static final int HIDE_COMMAND=2;
     
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string

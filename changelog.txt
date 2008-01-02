@@ -1,4 +1,6 @@
 *** Theta RC 3 ***
+           * fixed chatcontrol cmd flags;
+           * fixed hubtracker command showing;
            * solved hideme error msg;
            * added manual src;
            * updated the installer and readme;
