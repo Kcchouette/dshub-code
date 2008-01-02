@@ -1259,6 +1259,7 @@ Thread.sleep(200);
                    new Broadcast("IMSG Topic was changed by "+cur_client.NI+" to \""+Vars.HubDE+"\"");
                    
                }
+                Main.Server.rewriteconfig();
                
         }
         else if(recvbuf.toLowerCase ().startsWith("port "))
