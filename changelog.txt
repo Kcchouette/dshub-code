@@ -1,4 +1,5 @@
 *** Theta RC 3 ***
+           * topic is saved on the spot into config;
            * fixed chatcontrol cmd flags;
            * fixed hubtracker command showing;
            * solved hideme error msg;
