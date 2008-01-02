@@ -51,7 +51,7 @@ public class ChatControlCmd
     " Replace matching word with stars ( **** ) 16\n"+" Modify matching word with given modification 32\n"+" Control private chat as well 64\n"+
                     " Report to operator's chat 128\n"+" Also check searches 256\n"+
                     "As you can see, you must not select all flags, but one of each category.\n"+
-                    "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+"Note: flag 64 and 128 are independent of others.\n"+
+                    "Example: Drop user and replace word with stars : Use flag 1+16=17\n"+"Note: flag 64, 128 and 256 are independent of others.\n"+
                     "Note: The modification parameter is only available for flag including 32.\n"+
              "\nUsage: chatcontrol mod ID/\"regular expression\" flags [modification]."+
                     "\n          -- mods the regular expression already listed given by string or it's unique ID. Parameters are same like on adding.\n"+
@@ -209,30 +209,35 @@ public class ChatControlCmd
                 case 9+128+64+256:
                 case 9+128+256:
                 case 9+256+64:
+                case 9+128+64:
                 case 10+64:
                 case 10+128:
                 case 10+256:
                 case 10+128+64+256:
                 case 10+128+256:
                 case 10+256+64:
+                case 10+128+64:
                 case 17+64:
                 case 17+128:
                 case 17+256:
                 case 17+128+64+256:
                 case 17+128+256:
                 case 17+256+64:
+                case 17+128+64:
                 case 18+64:
                 case 18+128:
                 case 18+256:
                 case 18+128+64+256:
                 case 18+128+256:
                 case 18+256+64:
+                case 19+128+64:
                 case 20+64:
                 case 20+128:
                 case 20+256:
                 case 20+128+64+256:
                 case 20+128+256:
                 case 20+256+64:
+                case 20+128+64:
                 
                     Main.listaBanate.add(regex,(long)flag,"x");
                      cur_client.sendFromBot("Successfully added.");
@@ -364,30 +369,35 @@ public class ChatControlCmd
                 case 9+128+64+256:
                 case 9+128+256:
                 case 9+256+64:
+                case 9+128+64:
                 case 10+64:
                 case 10+128:
                 case 10+256:
                 case 10+128+64+256:
                 case 10+128+256:
                 case 10+256+64:
+                case 10+128+64:
                 case 17+64:
                 case 17+128:
                 case 17+256:
                 case 17+128+64+256:
                 case 17+128+256:
                 case 17+256+64:
+                case 17+128+64:
                 case 18+64:
                 case 18+128:
                 case 18+256:
                 case 18+128+64+256:
                 case 18+128+256:
                 case 18+256+64:
+                case 18+128+64:
                 case 20+64:
                 case 20+128:
                 case 20+256:
                 case 20+128+64+256:
                 case 20+128+256:
                 case 20+256+64:
+                case 20+128+64:
                 if(id!=-1)
                     Main.listaBanate.modifyPrAt(id,(long)flag,"x");
                 else

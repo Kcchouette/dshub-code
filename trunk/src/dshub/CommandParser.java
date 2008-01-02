@@ -64,6 +64,13 @@ public class CommandParser
         //this.setPriority (NORM_PRIORITY);
         run();
         
+        
+    }
+    int commandOK=0;
+    
+    public void run()
+    {
+        runx();
         while(!done)
             {
             try
@@ -86,8 +93,13 @@ Thread.sleep(200);
               if(cur_client.reg.additionalModules) //only if hes allowed to use modules
                result =  myMod.onCommand(cur_client,recvbuf);
               
+              if(commandOK!=2)
+              {
               if(result!=0)
                   commandOK=result;
+              if(result==2)
+                  commandOK=result;
+              }
           }
           
           if(commandOK==0)
@@ -131,8 +143,8 @@ Thread.sleep(200);
         } 
         
     }
-    int commandOK=0;
-    public void run()
+    
+    public void runx()
     {
         
         String recvbuf=ADC.retNormStr(cmd.substring (1));
