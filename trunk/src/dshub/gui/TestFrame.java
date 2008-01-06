@@ -4566,8 +4566,8 @@ return;
         
         /**setting stuff*/
         jTextArea1.setText("DSHub is ADC software so you need an ADC compatibile client.\n"+
-                "At the moment of this release ( December 2007 ), the following ADC clients were available:\n"+
-                "dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+                "At the moment of this release ( January 2008 ), the following ADC clients were available:\n"+
+                "dc++ 0.691, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
                 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
                 "Some ADC reminders:\n"+
                 "-- You need to connect to address adc://\n"+
