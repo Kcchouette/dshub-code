@@ -81,13 +81,12 @@ public class Command
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
            */
-         ClientNod iterator=ClientNod.FirstClient.NextClient;
-         while(iterator!=null)
+         for( ClientNod iterator : SimpleHandler.Users)
          {
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
-             cur_client.sendToClient(iterator.cur_client.getINF());
+              cur_client.sendToClient(iterator.cur_client.getINF());
              
-             iterator=iterator.NextClient;
+             
          }
          
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
@@ -477,9 +476,9 @@ public class Command
                         }
                     }
                     //else System.out.println("no nick ban");
-                ClientNod temp=ClientNod.FirstClient.NextClient;
+                
                 int i=0;
-               while(temp!=null)
+              for( ClientNod temp : SimpleHandler.Users)
                {
                    if(!temp.cur_client.equals (cur_client))
                    {
@@ -496,7 +495,7 @@ public class Command
                    }
                    i++;
                    }
-                   temp=temp.NextClient;
+                  
                    
                }
                 
@@ -748,13 +747,12 @@ public class Command
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);*/
          
-         ClientNod iterator=ClientNod.FirstClient.NextClient;
-         while(iterator!=null )
+         for(ClientNod iterator : SimpleHandler.Users)
          {
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
              cur_client.sendToClient(iterator.cur_client.getINF());
              
-             iterator=iterator.NextClient;
+            
          }
          
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)

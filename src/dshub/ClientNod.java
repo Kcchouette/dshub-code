@@ -34,18 +34,18 @@ public class ClientNod
 {
     
     public ClientHandler cur_client;
-    public ClientNod NextClient;
-    public ClientNod PrevClient;
+  //  public ClientNod NextClient;
+  //  public ClientNod PrevClient;
     
-    public static ClientNod FirstClient;
+  //  public static ClientNod FirstClient;
     
     /** Creates a new instance of ClientNod */
     public ClientNod()
     {
-        NextClient=null;
+      //  NextClient=null;
         cur_client=new ClientHandler();
-        if(FirstClient==null)
-            FirstClient=this;
+      //  if(FirstClient==null)
+      //      FirstClient=this;
         cur_client.myNod=this;
         
     }
@@ -205,13 +205,14 @@ public class ClientNod
        
        public synchronized void  killMe()
        {
-           synchronized(FirstClient)
+           SimpleHandler.Users.remove(this);
+           /*synchronized(FirstClient)
            {
            this.PrevClient.NextClient=this.NextClient;
            if(this.NextClient!=null)
               this.NextClient.PrevClient=this.PrevClient;
           // System.out.println("killed");
-           }
+           }*/
        }
     
 }

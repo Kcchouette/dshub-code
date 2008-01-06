@@ -46,7 +46,7 @@ public final class Vars
         int index=Main.listaBanate.isOK(nick);
         if(index!=-1)
             return false;
-       
+              
         return true;
     }
      

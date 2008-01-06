@@ -47,8 +47,8 @@ public class ClientAssasin extends Thread
         
         while(!Main.Server.restart)
         {
-            ClientNod temp=ClientNod.FirstClient;
-            if(temp==null)
+            
+            if(SimpleHandler.Users.isEmpty())
             {
                 try
                 {
@@ -60,24 +60,25 @@ public class ClientAssasin extends Thread
                 continue;
             }
                     
-            while(temp.NextClient!=null )
+            for(ClientNod temp : SimpleHandler.Users)
             {
-                if(temp==null)
-                    break;
+               
                 long curtime=System.currentTimeMillis();
-                ClientNod x=temp.NextClient;
-                if (((temp.NextClient.cur_client.userok==1)
-						&& (temp.NextClient.cur_client.cur_inf!=null))
-						&& (curtime-temp.NextClient.cur_client.LastINF>(1000*120L))) {
-					new Broadcast(temp.NextClient.cur_client.cur_inf);
-					temp.NextClient.cur_client.LastINF=curtime;
-					temp.NextClient.cur_client.cur_inf=null;
-				}
+                ClientNod x=temp;
+                if (((temp.cur_client.userok==1)
+						&& (temp.cur_client.cur_inf!=null))
+						&& (curtime-temp.cur_client.LastINF>(1000*120L)))
+                {
+					new Broadcast(temp.cur_client.cur_inf);
+					temp.cur_client.LastINF=curtime;
+					temp.cur_client.cur_inf=null;
+		}
                 
                 
                 if (((x.cur_client.kicked!=1)
 						&& (x.cur_client.InQueueSearch!=null))
-						&& (x.cur_client.userok==1)) {
+						&& (x.cur_client.userok==1)) 
+                {
 						  
 						    double xy=1;
 						        for(int i=0;i<x.cur_client.search_step;i++)
@@ -98,10 +99,9 @@ public class ClientAssasin extends Thread
 						       x.cur_client.Lastsearch=curtime;
 						    }
 						    
-						}
-                 temp=temp.NextClient;
-                 if(temp==null)
-                     break;
+		}
+                 
+                 
             }
             //temp.PS.printf
        // new Broadcast("");
@@ -115,8 +115,7 @@ public class ClientAssasin extends Thread
         catch(Exception e)
         {
         }
-            if(temp==null)
-                    break;
+            
         }
     }
     
