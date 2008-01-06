@@ -79,7 +79,7 @@ public class ClientHandler
    public ClientQueue Queue;
     
 /** The CID of the client. Mandatory for C-C connections.*/
-public String ID;
+public String ID="";
 /**The PID of the client. Hubs must check that the Tiger(PID) == CID and then discard the field before broadcasting it to other clients. Must not be sent in C-C connections.*/
 public String PD;
 /**IPv4 address without port. A zero address (0.0.0.0) means that the server should replace it with the real IP of the client. Hubs must check that a specified address corresponds to what the client is connecting from to avoid DoS attacks, and only allow trusted clients to specify a different address. Clients should use the zero address when connecting, but may opt not to do so at the user's discretion. Any client that supports incoming TCPv4 connections must also add the feature TCP4 to their SU field.*/
@@ -110,7 +110,7 @@ public String AM;
 public String EM;
 /**Nickname, string. The hub must ensure that this is unique in the hub up to case-sensitivity. Valid are all characters in the Unicode character set with code point above 32, although hubs may limit this further as they like with an appropriate error message.
  *When sent for hub, this is the nick that should be displayed before messages from the hub, and may also be used as short name for the hub.*/
-public String NI;
+public String NI="";
 /**Description, string. Valid are all characters in the Unicode character set with code point equal to or greater than 32.
 *When sent by hub, this string should be displayed in the window title of the hub window (if one exists)*/	
 public String DE;
@@ -182,189 +182,7 @@ public int kicked=0;
       
         ConnectTimeMillis=System.currentTimeMillis();
     }
-    public void run ()
-    {
-        
-       
-        /*try
-        {
-        IS=ClientSock.getInputStream();
-        OS=ClientSock.getOutputStream();
-        
-        }
-        catch(IOException e)
-        {
-            System.out.println("FAIL.");
-            return;
-        }
-       // System.out.println("Client connected.");
-        try
-        {
-        RS=new BufferedReader(new InputStreamReader(IS,"UTF8"));
-        PS=new PrintStream(OS,true,"UTF8");
-        
-        }
-        catch (UnsupportedEncodingException e) 
-        {
-            System.out.println("System does not support UTF-8. FAIL.");
-            return;
-        }
-        
-       
-        String recvbuf;
-        
-        try
-        {
-      
-        ClientSock.setSoTimeout (1000*Vars.Timeout_Login);
-        ClientSock.setKeepAlive (true);
-         LastKeepAlive=System.currentTimeMillis ();
-        recvbuf=RS.readLine();
-        
-        Command c1=new Command(this,recvbuf,"PROTOCOL");  //HSUP ADBASE
-       
-        
-        
-        sendToClient(ADC.Init);
-         
-       
-        sendToClient(ADC.ISID+" "+SessionID);
-         
-        if(Vars.HubDE.equals (""))
-            sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
-        else
-            sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
-        sendToClient("ISTA 000 "+
-            "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
-        while(Queue.First!=null)
-                {
-                this.PS.printf ("%s\n",Queue.First.MSG);
-                
-                Queue.First=Queue.First.Next;
-                }
-       
-        recvbuf=RS.readLine();
-        logged_in=1;
-        Command c2=new Command(this,recvbuf,"PROTOCOL");  //BINF
-       
-       if(!reg.isreg) 
-       {
-        
-        sendFromBot( ADC.MOTD);
-       }
-       
-      
-      ClientSock.setSoTimeout (0);
    
-      
-      
-        while(ClientSock.isConnected () && !ClientSock.isClosed ())
-     
-       {
-         this.sleep(20);
-           
-               
-                while(Queue.First!=null)
-                {
-                this.PS.printf ("%s\n",Queue.First.MSG);
-                
-                Queue.First=Queue.First.Next;
-                }
-                
-        
-       // if(ClientSock.isClosed())
-          //  System.out.printf("da");
-          try
-          {
-              ClientSock.setSoTimeout (50);
-            recvbuf=RS.readLine();
-          //ClientSock.
-           // RS.
-          ClientSock.setSoTimeout (0);
-          if(recvbuf==null)
-              new Command (this,null,"NORMAL");
-            //String auxbuf;
-            char aux1='\\';char aux2='n';
-            while(RS.ready() && aux1=='\\' && aux2=='n')
-            {
-                RS.mark(2);
-                 aux1=(char)RS.read();
-                 aux2=(char)RS.read();
-                RS.reset();
-                if(aux1=='\\' && aux2=='n')
-                    recvbuf=recvbuf+RS.readLine();
-                    
-            }
-                
-         this.LastKeepAlive=System.currentTimeMillis ();
-        // System.out.println ("OK, the value is : "+LastKeepAlive/1000);
-         StringTokenizer TK;
-         
-             TK=new StringTokenizer(recvbuf,"\n");
-             while(TK.hasMoreTokens ())
-                 new Command(this,TK.nextToken (),"NORMAL");
-         
-         
-         
-       }
-          catch(SocketTimeoutException ste) 	 
-	           { 	 
-	             //System.out.println ("timeout"); 	 
-	           } 	 
-	  	 
-	        }
-          while(Queue.First!=null)
-                {
-                this.PS.printf ("%s\n",Queue.First.MSG);
-                
-                Queue.First=Queue.First.Next;
-                }
-       }
-        
-        
-       catch (ClientFailedException ce)
-        {
-          
-        }
-        catch(Exception sta)
-        {
-            
-            if(kicked==1)
-                return;
-           
-          
-          if(this.userok==1) //if he ever logged in... else is no point in sending QUI
-          {
-                 new Broadcast("IQUI "+SessionID,this.myNod);
-                 this.reg.TimeOnline+=System.currentTimeMillis()-this.LoggedAt;
-                    // System.out.printf ("[disconnected:] %s\n",this.NI);  
-          }
-           myNod.killMe();
-            //tempy.NextClient=tempy.NextClient.NextClient;
-            while(Queue.First!=null)
-                {
-                this.PS.printf ("%s\n",Queue.First.MSG);
-                
-                Queue.First=Queue.First.Next;
-                }
-            try
-            {
-                this.sleep (100);
-                ClientSock.close();
-                
-            }
-            catch (Exception e)
-            {
-            }
-            
-            }
-            
-        
-        */
-        
-        //System.out.println ("ok, some guy left "+this.NI);
-       //user_count--; 
-    }
     
    
     /** sends the bla String in RAW to client.

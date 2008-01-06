@@ -53,7 +53,7 @@ public class Command
     String Issued_Command;
     String State;
 
-    synchronized void completeLogIn()
+     void completeLogIn()
     {
         // must check if its op or not and move accordingly
         if(!cur_client.reg.key) //increase HR count and put RG field to 1
@@ -72,7 +72,7 @@ public class Command
           //ok now must send to cur_client the inf of all others
                
         
-         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
+       /*  IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
          String inf="\n";
              for(int i=0;i<x.length;i++)
         {
@@ -80,12 +80,21 @@ public class Command
              if(tempy.cur_client.userok==1 && !tempy.cur_client.equals (cur_client)) //if the user has some inf ... [ meaning he is ok]
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
-           
-                 inf+="\nBINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
-                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
+           */
+         ClientNod iterator=ClientNod.FirstClient.NextClient;
+         while(iterator!=null)
+         {
+             if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
+             cur_client.sendToClient(iterator.cur_client.getINF());
+             
+             iterator=iterator.NextClient;
+         }
+         
+                 cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));
                 cur_client.putOpchat(true) ;
-                 inf+=cur_client.getINF ();  //sending inf about itself too
-         cur_client.sendToClient(inf);
+                 cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
+         //cur_client.sendToClient(inf);
                 
                  
                
@@ -121,7 +130,7 @@ public class Command
         return Main.listaBanate.isOK(str)==-1;
     }
     
-    synchronized void  handleINF() throws CommandException, STAException
+     void  handleINF() throws CommandException, STAException
     {
         if(Issued_Command.length()<10)
         {
@@ -472,7 +481,7 @@ public class Command
                 int i=0;
                while(temp!=null)
                {
-                   if(temp.cur_client.userok!=0 && !temp.cur_client.equals (cur_client))
+                   if(!temp.cur_client.equals (cur_client))
                    {
                    if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
                    {
@@ -725,7 +734,7 @@ public class Command
                  //ok now must send to cur_client the inf of all others
                
         
-         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
+        /* IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
          String inf="\n";
              for(int j=0;j<x.length;j++)
         {
@@ -737,13 +746,27 @@ public class Command
                  +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc)+"\n";
                  
                  inf+=cur_client.getINF ();  //sending inf about itself too
-         cur_client.sendToClient(inf);
+         cur_client.sendToClient(inf);*/
          
+         ClientNod iterator=ClientNod.FirstClient.NextClient;
+         while(iterator!=null )
+         {
+             if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
+             cur_client.sendToClient(iterator.cur_client.getINF());
+             
+             iterator=iterator.NextClient;
+         }
+         
+                 cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
+                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));
+                cur_client.putOpchat(true) ;
+                 cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
          
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
                                  
                  cur_client.userok=1; //user is OK, logged in and cool.
+                 Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  //ok now that we passed to normal state and user is ok, check if it has UCMD, and if so, send a test command
                  if(cur_client.ucmd==1)

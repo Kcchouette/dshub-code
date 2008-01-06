@@ -54,7 +54,7 @@ public class SimpleHandler extends IoHandlerAdapter
          
                 if((t.getMessage().contains("IOException")))
                 {
-                   // t.printStackTrace();
+                   Main.PopMsg(t.getMessage());
 		  session.close();
                 return;
                 }
@@ -66,6 +66,7 @@ public class SimpleHandler extends IoHandlerAdapter
                 else 
                 {
                    // t.printStackTrace();
+                    Main.PopMsg(t.getMessage());
 		  session.close();
                 return;
                 };
@@ -128,7 +129,8 @@ public class SimpleHandler extends IoHandlerAdapter
                      myMod.onClientQuit(cur_client);
                  }
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-            cur_client.myNod.killMe();
+             Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
+             cur_client.myNod.killMe();
             
         }
 
@@ -136,8 +138,8 @@ public class SimpleHandler extends IoHandlerAdapter
         {
 		//System.out.println("Client Connected...");
 
-		if( session.getTransportType() == TransportType.SOCKET )
-			((SocketSessionConfig) session.getConfig() ).setReceiveBufferSize( 2048 );
+		//if( session.getTransportType() == TransportType.SOCKET )
+		//	((SocketSessionConfig) session.getConfig() ).setReceiveBufferSize( 2048 );
 //((SocketSessionConfig) session.getConfig() ).
              //   session.
                 synchronized(ClientNod.FirstClient)

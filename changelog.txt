@@ -1,3 +1,8 @@
+*** ***
+           * connection and synchronised shit;
+           * some debugging logs added;
+
+
 *** Theta RC 3 02.01.2008 ***
            * topic is saved on the spot into config;
            * fixed chatcontrol cmd flags;
