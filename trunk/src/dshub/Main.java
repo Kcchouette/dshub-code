@@ -181,9 +181,9 @@ public class Main extends Thread
               
              AccountsConfig.First=null;
              BanList.First=null;
-             ClientNod.FirstClient=null;
+             SimpleHandler.Users.clear();
             
-                ClientNod.FirstClient=null;
+               
              Server.shutdown();
              System.gc (); //calling garbage collectors
             Main.Server=new HubServer();
@@ -205,26 +205,11 @@ public class Main extends Thread
                                 Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
                             return;
                         }
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                        while(temp!=null)
+                        
+                         for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        {
-                            AccountsConfig.addReg (aux,null,"Server");
-                            Nod x=AccountsConfig.getnod(aux);
-                             x.isreg=true;
-                            PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
-                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("CID added with no password, he should set one.");
-                             
-                             
-                        }   
-                        else
-                        {
+                               {
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             PopMsg("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
@@ -245,27 +230,31 @@ public class Main extends Thread
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
                         
+                            
+                            Main.Server.rewriteregs();
+                            return;
                         }
+                        }
+                        
+                            AccountsConfig.addReg (aux,null,"Server");
+                            Nod x=AccountsConfig.getnod(aux);
+                             x.isreg=true;
+                            PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
+                             if(Main.GUIok)
+                                Main.GUI.SetStatus ("CID added with no password, he should set one.");
+                             
+                             
+                       
+                        
                         
                     }
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                        while(temp!=null)
+                        for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        {
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
-                            if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
-                        }
-                        else
-                        {
+                               {
                          if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                             System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
@@ -292,7 +281,16 @@ public class Main extends Thread
                             PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                            Main.Server.rewriteregs();
+                            return;
                         }
+                        }
+                        
+                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
+                       
+                        
                             
                     }
                     catch (Exception e)
@@ -303,24 +301,11 @@ public class Main extends Thread
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                       while(temp!=null)
+                         for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        {
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
-                        
-                        
-                            if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
-                        }
-                        else
-                        {
-                            if(AccountsConfig.isReg (temp.cur_client.ID)>0)
+                            {
+                                  if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                            System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
                             if(Main.GUIok)
@@ -346,7 +331,19 @@ public class Main extends Thread
                             PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
                             if(Main.GUIok)
                                 Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                            Main.Server.rewriteregs();
+                            return;
                         }
+                        }
+                        
+                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
+                        
+                        
+                            if(Main.GUIok)
+                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
+                        
+                        
+                         
                 }
                 
                 Main.Server.rewriteregs();
@@ -600,16 +597,11 @@ public class Main extends Thread
                 Base32.decode (aux);
                 if(AccountsConfig.unreg (aux))
                 {
-                    ClientNod temp=ClientNod.FirstClient.NextClient;
-                     while(temp!=null)
+                    for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                     if(temp!=null)
-                    {
-                    temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                             {
+                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.OP="";
                             temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
@@ -617,8 +609,12 @@ public class Main extends Thread
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
                             temp.cur_client.reg=new Nod();
                             System.out.println ("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
-                     }
-                     else
+                            
+                            Main.Server.rewriteregs ();
+                            return;
+                            }
+                        }
+                     
                          System.out.println ("Reg deleted.");
                 }
                 else
@@ -627,17 +623,10 @@ public class Main extends Thread
                 catch (IllegalArgumentException iae)
                 {
                     System.out.println ("Not a valid CID, checking for possible users...");
-                      ClientNod temp=ClientNod.FirstClient.NextClient;
-                       while(temp!=null)
+                     for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                            System.out.println ("No such client online.");
-                        else
-                        {
+                             {
                             AccountsConfig.unreg(temp.cur_client.ID);
                            System.out.println ("User "+temp.cur_client.NI+" deleted.");
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
@@ -647,7 +636,14 @@ public class Main extends Thread
                             temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
                             temp.cur_client.reg=new Nod();
+                            }
+                            Main.Server.rewriteregs ();
+                            return;
                         }
+                       
+                            System.out.println ("No such client online.");
+
+                        
                 }
                 Main.Server.rewriteregs ();
                 
@@ -1103,21 +1099,23 @@ continue;
                        System.out.println("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null)
-                        {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
+                    
+                         for( ClientNod tempy : SimpleHandler.Users)
+                           if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
+                          {
                        System.out.println("Nick taken, please choose another.");
                        return;
-                    }
-                        
+                         }
+                
+                    if(new_name.equalsIgnoreCase(Vars.bot_name))
+                      {
+                       System.out.println("Nick taken, please choose another.");
+                       return;
+                      }
+                           
+                       
+                   
+                    
                         System.out.println ("Opchat_name changed from \""+
                                 Vars.Opchat_name+"\" to \""+new_name+"\".");
                         
@@ -1136,20 +1134,18 @@ continue;
                        System.out.println("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null)
-                        {
-                            if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
+                    for( ClientNod tempy : SimpleHandler.Users)
+                           if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
+                          {
                        System.out.println("Nick taken, please choose another.");
                        return;
-                    }
+                         }
+                
+                    if(new_name.equalsIgnoreCase(Vars.Opchat_name))
+                      {
+                       System.out.println("Nick taken, please choose another.");
+                       return;
+                      }
                         
                         System.out.println ("Bot_name changed from \""+
                                 Vars.bot_name+"\" to \""+new_name+"\".");
@@ -1538,13 +1534,13 @@ continue;
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
                 int i=0,j=0;
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
+                
                 {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
-                    temp=temp.NextClient;
+                    
                 }
                 System.out.printf("Current user count: %d. In progress users: %d.\n",i,j);
         }
@@ -1562,13 +1558,13 @@ continue;
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
+                
                 {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
-                    temp=temp.NextClient;
+                    
                 }
                 
                 long up=System.currentTimeMillis()-curtime; //uptime in millis

@@ -170,12 +170,14 @@ public class MSG
                        if(what % 2 ==1)
                        {
                            ;//notify opchat :
-                           ClientNod temp=ClientNod.FirstClient.NextClient;
-                           while(temp!=null)
+                           for(ClientNod temp : SimpleHandler.Users)
                            {
                                if(temp.cur_client.reg.isreg )
-                                   temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{"+cur_client.NI+"}\\sused\\sforbidden\\sword\\s:\\s"+message+" PMABCD");
-                               temp=temp.NextClient;
+                                   temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{" +
+                                           cur_client.NI+"}\\swith\\sIP\\s{" +
+                                           cur_client.RealIP+"}\\sand" +
+                                           "\\sCID\\s{"+cur_client.ID+"}\\sused\\sforbidden\\sword\\s:\\s"+message+" PMABCD");
+                               
                            }
                           // System.out.println("notying");
                        }
@@ -316,20 +318,22 @@ public class MSG
                        else
                        if(!pmsid.equals ("ABCD"))
                        {
-                       ClientNod temp=ClientNod.FirstClient.NextClient;
-                       while(temp!=null)
+                       for(ClientNod temp : SimpleHandler.Users)
                        {
                        if(temp.cur_client.SessionID.equals(pmsid))
-                           break;
-                       temp=temp.NextClient;
-                      }
-                      if(temp==null)//talking to inexisting client
-                      {
-                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                       {
+                            temp.cur_client.sendToClient(Issued_Command);
+                            cur_client.sendToClient(Issued_Command);
                             return;
                        }
+                      }
+                      //talking to inexisting client
+                      
+                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                            return;
+                      
                        
-                      temp.cur_client.sendToClient(Issued_Command);
+                     
                       
                       
                       }
@@ -339,13 +343,12 @@ public class MSG
                            //must send to all ops...
                            
                            //cant broadcast coz must send each;s SID
-                           ClientNod temp=ClientNod.FirstClient.NextClient;
-                           while(temp!=null)
+                           for( ClientNod temp: SimpleHandler.Users)
                            {
                                if(temp.cur_client.userok==1)
                                    if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
                                temp.cur_client.sendToClient("EMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
-                               temp=temp.NextClient;
+                               
                            }
                            
                            
@@ -380,31 +383,31 @@ public class MSG
                        else  
                        if(!pmsid.equals ("ABCD"))
                        {
-                       ClientNod temp=ClientNod.FirstClient.NextClient;
-                       while(temp!=null)
+                       for( ClientNod temp : SimpleHandler.Users)
                        {
                        if(temp.cur_client.SessionID.equals(pmsid))
-                           break;
-                       temp=temp.NextClient;
-                        }
-                      if(temp==null)//talking to inexisting client
-                      {
-                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                       {
+                            temp.cur_client.sendToClient(Issued_Command);
                             return;
                        }
-                      temp.cur_client.sendToClient(Issued_Command);
+                        }
+                      //talking to inexisting client
+                      
+                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                            return;
+                       
+                     
                        }
                        else
                        {
                            //talking to bot
                            //must send to all ops...
                            
-                           ClientNod temp=ClientNod.FirstClient.NextClient;
-                           while(temp!=null)
+                           for(ClientNod temp : SimpleHandler.Users)
                            {
                                if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
                                temp.cur_client.sendToClient("DMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
-                               temp=temp.NextClient;
+                               
                            }
                            
                            

@@ -474,21 +474,20 @@ return;
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
+                    
                 
-                while(tempy!=null)
+                for(ClientNod tempy : SimpleHandler.Users)
                         {
                             if ((tempy.cur_client.userok==1)
-									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
-								break;
-                            tempy=tempy.NextClient;
+                                    &&((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
+                            {
+                                cur_client.sendFromBot("Nick taken, please choose another.");
+                                return;
+                            }
+                            
                            
                         }
-                    if(tempy!=null)
-                    {
-                       cur_client.sendFromBot("Nick taken, please choose another.");
-                       return;
-                    }
+                   
                         cur_client.sendFromBot("Opchat_name changed from \""+
                                 Vars.Opchat_name+"\" to \""+new_name+"\".");
                         
@@ -508,21 +507,20 @@ return;
                        cur_client.sendFromBot("Nick not valid, please choose another.");
                        return;
                    }
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null)
+                                    
+                for(ClientNod tempy : SimpleHandler.Users)
                         {
                             if ((tempy.cur_client.userok==1)
 									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
-								break;
-                            tempy=tempy.NextClient;
+                            {
+                                 cur_client.sendFromBot("Nick taken, please choose another.");
+                       return;
+                       
+                            }
+                           
                            
                         }
-                    if(tempy!=null)
-                    {
-                       cur_client.sendFromBot("Nick taken, please choose another.");
-                       return;
-                    }
+                   
                         cur_client.sendFromBot("Bot_name changed from \""+
                                 Vars.bot_name+"\" to \""+new_name+"\".");
                         

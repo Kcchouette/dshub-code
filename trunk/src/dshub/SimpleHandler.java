@@ -29,6 +29,7 @@ import dshub.Exceptions.STAException;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
@@ -42,11 +43,12 @@ import org.apache.mina.transport.socket.nio.SocketSessionConfig;
  */
 public class SimpleHandler extends IoHandlerAdapter
 {
-    
+    public static LinkedList<ClientNod> Users;
     /** Creates a new instance of SimpleHandler */
     public SimpleHandler()
     {
-        ClientNod.FirstClient=new ClientNod(1);
+        //ClientNod.FirstClient=new ClientNod(1);
+        Users= new LinkedList();
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
@@ -142,8 +144,7 @@ public class SimpleHandler extends IoHandlerAdapter
 		//	((SocketSessionConfig) session.getConfig() ).setReceiveBufferSize( 2048 );
 //((SocketSessionConfig) session.getConfig() ).
              //   session.
-                synchronized(ClientNod.FirstClient)
-                {
+                
                 ClientHandler cur_client=(ClientHandler)HubServer.AddClient().cur_client;
                 
                 session.setAttachment(cur_client);
@@ -156,7 +157,7 @@ public class SimpleHandler extends IoHandlerAdapter
                SID cursid=new SID(cur_client);
         cur_client.SessionID=Base32.encode (cursid.cursid).substring (0,4);
         cur_client.sid=cursid.cursid;
-                }
+                
         
 	}
     

@@ -217,11 +217,12 @@ public class HubServer extends Thread
             return null;
        
         ClientNod newclient=new ClientNod();
-       newclient.NextClient=ClientNod.FirstClient.NextClient;
+        SimpleHandler.Users.add(newclient);
+       /*newclient.NextClient=ClientNod.FirstClient.NextClient;
        ClientNod.FirstClient.NextClient=newclient;
        newclient.PrevClient=ClientNod.FirstClient;
        if(newclient.NextClient!=null)
-       newclient.NextClient.PrevClient=newclient;
+       newclient.NextClient.PrevClient=newclient;*/
        return newclient;
 
         

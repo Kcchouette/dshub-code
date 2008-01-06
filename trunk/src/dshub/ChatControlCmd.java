@@ -199,8 +199,9 @@ public class ChatControlCmd
     static final long allclient=7;
     static final long allword=56;*/
                 case 9:
-                case 17:
                 case 10:
+                case 17:
+                case 12:
                 case 18:
                 case 20:
                 case 9+64:
@@ -217,6 +218,13 @@ public class ChatControlCmd
                 case 10+128+256:
                 case 10+256+64:
                 case 10+128+64:
+                case 12+64:
+                case 12+128:
+                case 12+256:
+                case 12+128+64+256:
+                case 12+128+256:
+                case 12+256+64:
+                case 12+128+64:
                 case 17+64:
                 case 17+128:
                 case 17+256:
@@ -361,6 +369,7 @@ public class ChatControlCmd
                 case 9:
                 case 17:
                 case 10:
+                case 12:
                 case 18:
                 case 20:
                 case 9+64:
@@ -377,6 +386,13 @@ public class ChatControlCmd
                 case 10+128+256:
                 case 10+256+64:
                 case 10+128+64:
+                case 12+64:
+                case 12+128:
+                case 12+256:
+                case 12+128+64+256:
+                case 12+128+256:
+                case 12+256+64:
+                case 12+128+64:
                 case 17+64:
                 case 17+128:
                 case 17+256:

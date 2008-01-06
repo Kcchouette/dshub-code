@@ -1,4 +1,8 @@
 *** ***
+           * to toast pleasure, chatcontrol op notifier now includes ip and cid;
+           * fixed some chatcontrol flags;
+           * rewritten adding, quitting users, also iterating;
+           * moved all users to linked list from java;
            * connection and synchronised shit;
            * some debugging logs added;
 
