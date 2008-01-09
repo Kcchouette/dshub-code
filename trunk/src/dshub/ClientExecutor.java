@@ -40,7 +40,7 @@ public class ClientExecutor extends Thread
         while(!Main.Server.restart)
         {
             long start=System.currentTimeMillis();
-            if(ClientNod.FirstClient==null)
+            if(SimpleHandler.Users.isEmpty())
             {
                 try
                 {
@@ -51,15 +51,15 @@ public class ClientExecutor extends Thread
                 }
                 continue;
             }
-        ClientNod temp=ClientNod.FirstClient.NextClient;
+        
          
-        while(temp!=null)
+        for(ClientNod temp: SimpleHandler.Users)
         {
             synchronized(temp.cur_client.Queue)
             {
                 if(temp.cur_client.Queue.First==null)
                 { 
-                    temp=temp.NextClient;
+                    
                     try
                 {
                     this.sleep(50);
@@ -79,7 +79,7 @@ public class ClientExecutor extends Thread
             }
                 
             temp.cur_client.mySession.write(str.substring(0,str.length()-1));
-            temp=temp.NextClient;
+            
             try
                 {
                     this.sleep(50);

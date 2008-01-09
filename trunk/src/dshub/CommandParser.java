@@ -71,7 +71,7 @@ public class CommandParser
     public void run()
     {
         runx();
-        while(!done)
+       /* while(!done)
             {
             try
             {
@@ -79,7 +79,7 @@ Thread.sleep(200);
             } catch (Exception exception)
             {
             }
-        }
+        }*/
 
             
         
@@ -204,7 +204,7 @@ Thread.sleep(200);
              BanList.First=null;
              
              
-                 ClientNod.FirstClient=null;
+                 SimpleHandler.Users.clear();
                 Main.PopMsg ("Hub restarted by "+cur_client.NI);
                 
              
@@ -406,15 +406,10 @@ Thread.sleep(200);
                 Base32.decode (aux);
                 if(AccountsConfig.unreg (aux))
                 {
-                    ClientNod temp=ClientNod.FirstClient.NextClient;
-                     while(temp!=null)
+                    for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                    if(temp!=null)
-                    {
+                                {
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
                             temp.cur_client.putOpchat(false);
                             if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
@@ -426,8 +421,12 @@ Thread.sleep(200);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             temp.cur_client.reg=new Nod();
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
-                    }
-                    else
+                            Main.Server.rewriteregs ();
+                            return;
+                             }
+                            
+                        }
+                    
                         cur_client.sendFromBot("Reg deleted.");
                     Main.PopMsg (cur_client.NI+" deleted the reg "+aux);
                         
@@ -438,16 +437,10 @@ Thread.sleep(200);
                 catch (IllegalArgumentException iae)
                 {
                     cur_client.sendFromBot("Not a valid CID, checking for possible users...");
-                      ClientNod temp=ClientNod.FirstClient.NextClient;
-                        while(temp!=null)
+                      for(ClientNod temp: SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                            cur_client.sendFromBot("No such client online.");
-                        else if(!temp.cur_client.reg.isreg)
+                                if(!temp.cur_client.reg.isreg)
                           cur_client.sendFromBot("Client exists but not registered.");
                         else
                         {
@@ -465,9 +458,17 @@ Thread.sleep(200);
                             new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                             
                             temp.cur_client.reg=new Nod();
+                            Main.Server.rewriteregs ();
+                            return;
                         }
+                        }
+                        
+                            cur_client.sendFromBot("No such client online.");
+                        
                 }
                 Main.Server.rewriteregs ();
+                            
+                
                 
                 
         }
@@ -495,21 +496,10 @@ Thread.sleep(200);
                             cur_client.sendFromBot(""+AccountsConfig.getnod (aux).getRegInfo ());
                            done=true; return;
                         }
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                        while(temp!=null)
+                        for(ClientNod temp: SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        {
-                            AccountsConfig.addReg (aux,null,cur_client.NI);
-                            cur_client.sendFromBot("CID added. No password set, login does not require pass, however, its recomandable to set one...");
-                            
-                        }   
-                        else
-                        {
+                               {
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
@@ -526,25 +516,26 @@ Thread.sleep(200);
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
-                        
+                                Main.Server.rewriteregs ();
+                            return;
+                               }
                         }
+                        
+                            AccountsConfig.addReg (aux,null,cur_client.NI);
+                            cur_client.sendFromBot("CID added. No password set, login does not require pass, however, its recomandable to set one...");
+                            
+                        
+                        
                         Main.PopMsg (cur_client.NI+" regged the CID "+aux);
                         
                     }
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                        while(temp!=null)
+                       for(ClientNod temp: SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        { cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("No such client online.");}
-                        else
-                        {
+                               {
                          if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                             cur_client.sendFromBot(""+AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
@@ -568,7 +559,15 @@ Thread.sleep(200);
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
+                            Main.Server.rewriteregs();
+                            return;
                         }
+                        }
+                       
+                         cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
+                         cur_client.sendFromBot("No such client online.");
+                        
+                        
                             
                     }
                     catch (Exception e)
@@ -579,17 +578,10 @@ Thread.sleep(200);
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        ClientNod temp=ClientNod.FirstClient.NextClient;
-                       while(temp!=null)
+                        for( ClientNod temp:SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                        }
-                        if(temp==null)
-                        {  cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("No such client online.");}
-                        else
-                        {
+                            {
                             if(AccountsConfig.isReg (temp.cur_client.ID)>0)
                         {
                             cur_client.sendFromBot(""+AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
@@ -612,7 +604,13 @@ Thread.sleep(200);
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             Main.PopMsg (cur_client.NI+" regged the CID "+temp.cur_client.ID);
+                            Main.Server.rewriteregs();
+                            return;
+                            }
                         }
+                         cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");cur_client.sendFromBot("No such client online.");
+                        
+                        
                 }
                 
                 Main.Server.rewriteregs();
@@ -715,20 +713,17 @@ Thread.sleep(200);
                    {done=true; return;}
                 }
                 
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null)
+                    for( ClientNod tempy : SimpleHandler.Users)
                         {
                             if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
+                              {
                        cur_client.sendFromBot("Nick taken, please choose another.");
                        {done=true;return;}
-                    }
+                               }
+                           
+                        }
+                    
+                    
                     if(aux.equalsIgnoreCase(Vars.Opchat_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
@@ -761,18 +756,10 @@ Thread.sleep(200);
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to rename;
                // aux=ADC.retADCStr(aux);
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                           
-                        }
-               if(temp==null)
-                         cur_client.sendFromBot("No such user online.");
-               else if(!temp.cur_client.reg.renameable)
+                             if(!temp.cur_client.reg.renameable)
                          cur_client.sendFromBot("This registered user cannot be renamed.");
               
                 else
@@ -808,21 +795,18 @@ Thread.sleep(200);
                    done=true;
                     return;
                 }
-                    ClientNod tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null)
+                    for( ClientNod tempy: SimpleHandler.Users)
                         {
                             if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(newnick.toLowerCase ())))
-                                break;
-                            tempy=tempy.NextClient;
-                           
-                        }
-                    if(tempy!=null)
-                    {
+                                {
                        cur_client.sendFromBot("Nick taken, please choose another.");
                        done=true;
                        return;
-                    }
+                               }
+                           
+                        }
+                    
+                    
                     if(newnick.equals(Vars.Opchat_name))
                     {
                        cur_client.sendFromBot("Nick taken, please choose another.");
@@ -844,6 +828,11 @@ Thread.sleep(200);
                      temp.cur_client.NI=newnick;
                     
                 }
+                           
+                        }
+               
+                         cur_client.sendFromBot("No such user online.");
+              
                 
         }
         else if(recvbuf.toLowerCase ().startsWith ("kick"))
@@ -986,29 +975,22 @@ Thread.sleep(200);
                {
                     //ok if we got here it really is a CID so:
                     
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                while(temp!=null)
+                for( ClientNod temp: SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                           // tempyprev=tempyprev.NextClient;
-                        }
-                if(temp!=null)
-                       if(!temp.cur_client.reg.kickable )
-                       { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
+                               if(!temp.cur_client.reg.kickable )
+                                    { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
                        
-                       else
-                       {
+                                else
+                                {
                         
-                      cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning..");
-                     temp.kickMeOut (cur_client,reason,3,-1L);
-                       }
-                        
-                    
-                 else
-                 {
+                                    cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning..");
+                                    temp.kickMeOut (cur_client,reason,3,-1L);
+                                    Main.Server.rewritebans ();
+                                    return;
+                                }
+                        }
+                
                      if(!(AccountsConfig.getnod (aux).kickable))
                      { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
                      else
@@ -1017,38 +999,34 @@ Thread.sleep(200);
                      
                         BanList.addban (3,aux,-1,cur_client.NI,reason);
                      }
-                 }
+                 
                 }
                else 
                 {
                     //ok its not a cid, lets check if its some IP address...
                     cur_client.sendFromBot("Not a CID, Searching for a nick...");
-                    ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                while(temp!=null)
+                    for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                            //tempyprev=tempyprev.NextClient;
-                        }
-                if(temp!=null)
-                       if(!(temp.cur_client.reg.kickable ))
+                               if(!(temp.cur_client.reg.kickable ))
                          cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with CID "+temp.cur_client.ID+", but its unkickable.");
                        else
                        {
                         //BanList.addban (3,temp.ID,-1,cur_client.NI,reason);
                       cur_client.sendFromBot("Found user "+aux+", banning..");
                     temp.kickMeOut (cur_client,reason,3,-1L);
+                    cur_client.sendFromBot("Done.");
+                    Main.Server.rewritebans ();
+                    return;
                        }
-                else
-                {
+                        }
+                
                     cur_client.sendFromBot("No user found with nick "+aux+". Not banned.");
                     
-                }
+               
             }//end catch
                 cur_client.sendFromBot("Done.");
-                    Main.Server.rewritebans ();
+                    
                     
                 
         }
@@ -1076,32 +1054,26 @@ Thread.sleep(200);
                 
                         reason=reason.substring (0,reason.length ()-1);
                     reason=ADC.retADCStr(reason);
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                           // tempyprev=tempyprev.NextClient;
-                        }
-                if(temp!=null)
-                       if(!temp.cur_client.reg.kickable)
+                               if(!temp.cur_client.reg.kickable)
                        { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+" but it belongs to an unkickable reg.");}
                        else
                        {
                         //BanList.addban (1,aux,-1,cur_client.NI,reason);
                       cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+", banning..");
+                      
                      temp.kickMeOut (cur_client,reason,1,-1L);
-                    //Main.Server.rewritebans ();
-                       }
-                        
+                     cur_client.sendFromBot("Done.");
+                     Main.Server.rewritebans ();return;
                     
-                 else
-                 {
+                       }
+                        }
+                
                         cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+", banning....");
                         BanList.addban (1,aux,-1,cur_client.NI,reason);
-                 }
+                 
                 Main.Server.rewritebans ();
                 cur_client.sendFromBot("Done.");
         }
@@ -1134,9 +1106,7 @@ Thread.sleep(200);
                  {
                     //ok if we got here it really is a IP so:
                     
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-               // ClientHandler tempyprev=ClientHandler.FirstClient;
-                  while(temp!=null)
+               for ( ClientNod temp : SimpleHandler.Users)
                   {
                             if(temp.cur_client.userok==1) 
                                 if( temp.cur_client.RealIP.equals(aux))
@@ -1147,11 +1117,11 @@ Thread.sleep(200);
                           cur_client.sendFromBot("Done.");done=true;
                          return;}
                                 }
-                            temp=temp.NextClient;
+                            
                   }
-                temp=ClientNod.FirstClient.NextClient;
+                
                 int kickedsome=0;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) 
                                 if( temp.cur_client.RealIP.equals(aux))
@@ -1160,8 +1130,7 @@ Thread.sleep(200);
                         temp.kickMeOut (cur_client,reason,2,-1L);}
                                 
                                 
-                            temp=temp.NextClient;
-                            //tempyprev=tempyprev.NextClient;
+                            
                         }
                
                if(kickedsome==0)
@@ -1175,17 +1144,10 @@ Thread.sleep(200);
                 {
                     //ok its not a ip, lets check if its some nick...
                     cur_client.sendFromBot("Not a IP, Searching for a nick...");
-                    ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                while(temp!=null)
+                    for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ()))
-                                break;
-                            temp=temp.NextClient;
-                            //tempyprev=tempyprev.NextClient;
-                        }
-                if(temp!=null)
-                {  
+                             {  
                         if(!temp.cur_client.reg.kickable)
                          cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with IP "+temp.cur_client.RealIP+", but its unkickable.Not banned.");
                        else
@@ -1195,13 +1157,16 @@ Thread.sleep(200);
                      
                    
                         temp.kickMeOut (cur_client,reason,2,-1L);
+                         cur_client.sendFromBot("Done.");
+                    Main.Server.rewritebans ();
+                    return;
                        }
-                 }
-                else
-                {
+                            }
+                        }
+                
                     cur_client.sendFromBot("No user found with nick "+aux+". Not banned.");
                     
-                }
+                
             }//end catch
                 cur_client.sendFromBot("Done.");
                     Main.Server.rewritebans ();
@@ -1300,13 +1265,12 @@ Thread.sleep(200);
                         return;
                     }
                 int i=0,j=0;
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                 {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
-                    temp=temp.NextClient;
+                    
                 }
                 cur_client.sendFromBot("Current user count: "+Integer.toString (i)+". In progress users: "+Integer.toString (j)+".");
         }
@@ -1372,13 +1336,12 @@ Thread.sleep(200);
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                 {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
-                    temp=temp.NextClient;
+                    
                 }
                 
                
