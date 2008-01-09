@@ -51,26 +51,28 @@ public class GrantCmd
             }
         String who=curcmd.nextToken();
         Nod modnod=null;
-        ClientNod temp=ClientNod.FirstClient.NextClient;
+        ClientNod temp=null;
         if(ADC.isCID(who))
         {
              modnod=AccountsConfig.getnod(who);
         }
         else
         {
+            boolean ok=false;
             
-            while(temp!=null)
+            for( ClientNod tempp : SimpleHandler.Users)
             {
-                if(temp.cur_client.userok==1)
-                    if(temp.cur_client.NI.equalsIgnoreCase(who))
+                if(tempp.cur_client.userok==1)
+                    if(tempp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=AccountsConfig.getnod(temp.cur_client.ID);
-                        break;
+                        modnod=AccountsConfig.getnod(tempp.cur_client.ID);
+                        ok=true;
+                        temp=tempp;
                     }
-                temp=temp.NextClient;
+                
                         
             }
-            if(temp==null)
+            if(!ok)
             {
                 cur_client.sendFromBot("Invalid argument supplied. Use with no arguments to see usage tip.");
                 return;
@@ -541,22 +543,21 @@ public class GrantCmd
                         if(!modnod.key)
                         { 
             
-                        ClientNod tempx=ClientNod.FirstClient.NextClient;
-                         while(tempx!=null)
+                        for ( ClientNod tempx: SimpleHandler.Users)
                         {
                           if(tempx.cur_client.userok==1)
-                                if(tempx.cur_client.ID.equals (modnod.CID))
-                                  break;
-                        tempx=tempx.NextClient;
-                        }
-                        if(tempx!=null)//if registered guy is online
-                        {
+                                if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
+                                  {
                                  new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
                                  tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
                                     tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
                                     tempx.cur_client.RG="";
                                     tempx.cur_client.OP="1";
-                         }
+                        }
+                        
+                        }
+                       
+                        
                         }
                     modnod.key=true;
                 }
@@ -565,22 +566,20 @@ public class GrantCmd
                  if(modnod.key)
                 { 
             
-                ClientNod tempx=ClientNod.FirstClient.NextClient;
-                 while(tempx!=null)
+               for( ClientNod tempx : SimpleHandler.Users)
                 {
                         if(tempx.cur_client.userok==1)
-                             if(tempx.cur_client.ID.equals (modnod.CID))
-                             break;
-                        tempx=tempx.NextClient;
-                 }
-                 if(tempx!=null)//if registered guy is online
-                    {
+                             if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
+                             {
                          new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
                          tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
                          tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
                          tempx.cur_client.RG="1";
                          temp.cur_client.OP="";
-                    }
+                          }
+                 }
+                
+                    
                  }
                 modnod.key=false;
                 }
@@ -634,18 +633,16 @@ public class GrantCmd
                  {
                         modnod.opchataccess=true; 
             
-                        ClientNod tempx=ClientNod.FirstClient.NextClient;
-                         while(tempx!=null)
+                        for( ClientNod tempx : SimpleHandler.Users)
                         {
                           if(tempx.cur_client.userok==1)
-                                if(tempx.cur_client.ID.equals (modnod.CID))
-                                  break;
-                        tempx=tempx.NextClient;
-                        }
-                        if(tempx!=null)//if registered guy is online
-                        {
+                                if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                                  {
                                  tempx.cur_client.putOpchat(true);
-                         }
+                                 }
+                        }
+                        
+                        
                         
                    
                 }
@@ -653,18 +650,17 @@ public class GrantCmd
                 {
                  
             
-                ClientNod tempx=ClientNod.FirstClient.NextClient;
-                 while(tempx!=null)
+                for( ClientNod tempx : SimpleHandler.Users)
                 {
                         if(tempx.cur_client.userok==1)
-                             if(tempx.cur_client.ID.equals (modnod.CID))
-                             break;
+                             if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                             {
+                       tempx.cur_client.putOpchat(false);
+                             }
                         tempx=tempx.NextClient;
                  }
-                 if(tempx!=null)//if registered guy is online
-                    {
-                       tempx.cur_client.putOpchat(false);
-                    }
+                
+                    
                 modnod.opchataccess=attribute;
                  }
                
@@ -762,26 +758,28 @@ public GrantCmd(String cmd)
             }
         String who=curcmd.nextToken();
         Nod modnod=null;
-        ClientNod temp=ClientNod.FirstClient.NextClient;
+        ClientNod temp=null;
         if(ADC.isCID(who))
         {
              modnod=AccountsConfig.getnod(who);
         }
         else
         {
-            
-            while(temp!=null)
+            boolean ok=false;
+            for( ClientNod tempp : SimpleHandler.Users)
             {
-                if(temp.cur_client.userok==1)
-                    if(temp.cur_client.NI.equalsIgnoreCase(who))
+                if(tempp.cur_client.userok==1)
+                    if(tempp.cur_client.NI.equalsIgnoreCase(who))
                     {
-                        modnod=AccountsConfig.getnod(temp.cur_client.ID);
+                        modnod=AccountsConfig.getnod(tempp.cur_client.ID);
+                        temp=tempp;
+                        ok=true;
                         break;
                     }
-                temp=temp.NextClient;
+               
                         
             }
-            if(temp==null)
+            if(!ok)
             {
                 System.out.println("Invalid argument supplied. Use with no arguments to see usage tip.");
                 return;
