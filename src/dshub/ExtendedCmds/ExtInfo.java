@@ -44,17 +44,17 @@ public class ExtInfo
                 while(ST.hasMoreTokens ())
                     aux+=ST.nextToken ();
                 aux=ADC.retADCStr(aux);
-                ClientNod temp=ClientNod.FirstClient.NextClient;
+                ClientNod tempx=null;
               
                 if(ADC.isIP(aux))//we have an IP address
                 {
                     //ClientNod temp=ClientNod.FirstClient.NextClient;
               String Nicklist="";
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.RealIP.equals(aux.toLowerCase ())))
                                 Nicklist=Nicklist+temp.cur_client.NI+"\n";
-                            temp=temp.NextClient;
+                            
                             
                         }
                if(!Nicklist.equals (""))
@@ -73,19 +73,18 @@ public class ExtInfo
                         {
                             Base32.decode (aux);
                             //ok if we are here, its a CID
-                             temp=ClientNod.FirstClient.NextClient;
-             
-                while(temp!=null)
+                             for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
-                                break;
-                            temp=temp.NextClient;
+                            {
+                                cur_client.sendFromBot("CID "+aux+" is used by:\n"+temp.cur_client.NI);
+                                return;
+                            }
+                            
                             
                         }
-               if(temp!=null)
-                  cur_client.sendFromBot("CID "+aux+" is used by:\n"+temp.cur_client.NI);
-               else 
-                  cur_client.sendFromBot("Nobody is using "+aux);
+               
+                       cur_client.sendFromBot("Nobody is using "+aux);
                             return;
                         }
                         catch (IllegalArgumentException e)
@@ -96,18 +95,10 @@ public class ExtInfo
                     
                     
                     
-                temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                            
-                        }
-               if(temp==null)
-                cur_client.sendFromBot("No such user online.");
-               else
-               {
+                              {
                     
                     String blah11="User Info\nNick "+ADC.retNormStr(temp.cur_client.NI)+"\nCID "+temp.cur_client.ID+"\nShare Size "+temp.cur_client.SS+ " Bytes\n"+
                             "Description "+(temp.cur_client.DE!=null?ADC.retNormStr(temp.cur_client.DE):"")+"\nTag ";
@@ -141,7 +132,15 @@ public class ExtInfo
                      else
                          blah11=blah11+"\nNormal user.";
                       cur_client.sendFromBot(""+blah11);
+                      return;
                }
+                            
+                            
+                        }
+               
+                cur_client.sendFromBot("No such user online.");
+               
+               
                 }
     }
     

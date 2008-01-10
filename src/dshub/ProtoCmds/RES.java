@@ -81,20 +81,20 @@ public class RES
                 }
                 aux=tok.nextToken();
                 //now must look for the aux SID...
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                 {
                     if(temp.cur_client.SessionID.equals(aux))
-                        break;
-                    temp=temp.NextClient;
-                }
-                if(temp==null)//talking to inexisting client
-                    return; //not kick, maybe the other client just left after he sent the msg;
-                aux=tok.nextToken(); // this is the effective result
+                    {
+                        aux=tok.nextToken(); // this is the effective result
                
                 temp.cur_client.sendToClient(Issued_Command);
                 if(Issued_Command.charAt(0)=='E')
                     cur_client.sendToClient(Issued_Command);
+                    }
+                }
+                //talking to inexisting client
+                    return; //not kick, maybe the other client just left after he sent the msg;
+                
      }
     }
     

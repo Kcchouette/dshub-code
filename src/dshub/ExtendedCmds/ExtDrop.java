@@ -64,18 +64,22 @@ public class ExtDrop
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to drop;
                 
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                //ClientHandler tempyprev=ClientHandler.FirstClient;
-                
-                while(temp!=null)
+                for( ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                            //tempyprev=tempyprev.NextClient;
+                               if(!temp.cur_client.reg.kickable)
+                         cur_client.sendFromBot("This user can't be dropped.");
+                           else
+                         {
+                            //actual dropping.
+                    
+                            temp.dropMe (cur_client);
+                             return;
+                    
+                    
+                            }
                         }
-               if(temp==null)
-               {
+               
                             cur_client.sendFromBot("No such user online. Parsing to Extended Drop...");
                             /***************extended kick**********************/
                         try
@@ -83,33 +87,28 @@ public class ExtDrop
                             //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
-                             temp=ClientNod.FirstClient.NextClient;
-                             //tempyprev=ClientHandler.FirstClient;
-                            while(temp!=null)
+                             for( ClientNod temp : SimpleHandler.Users)
                             {
-                                 temp=ClientNod.FirstClient.NextClient;
-                            // tempyprev=ClientHandler.FirstClient;
-                            while(temp!=null)
-                            {
+                                
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (aux.toLowerCase ())))
-                                break;
-                            temp=temp.NextClient;
-                           // tempyprev=tempyprev.NextClient;
+                            {
+                                temp.dropMe (cur_client);
+                            }
+                           
                              }
-                             if(temp==null)
-                             {
+                             
                                  cur_client.sendFromBot("Done with matching users...");
                                   throw new PatternSyntaxException("whatever...","bla",1);
-                             }
+                            
                            
                             
-                          temp.dropMe (cur_client);
+                          
                     
                     
                          
                            
                            
-                                }
+                                
                             
                             }
                          catch(PatternSyntaxException pse)
@@ -959,18 +958,7 @@ public class ExtDrop
                              
                              }
                             /*****************extended drop*******************/
-               }
-               else if(!temp.cur_client.reg.kickable)
-                         cur_client.sendFromBot("This user can't be dropped.");
-                else
-                  {
-                    //actual dropping.
-                    
-                    temp.dropMe (cur_client);
-                    
-                    
-                    
-                }
+               
     }
     
 }
