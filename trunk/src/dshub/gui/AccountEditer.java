@@ -1216,22 +1216,21 @@ if(curAcc.myMask.adc)
             if(!curAcc.key)
             { 
             
-            ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null)
+            for( ClientNod temp : SimpleHandler.Users)
             {
                 if(temp.cur_client.userok==1)
-                if(temp.cur_client.ID.equals (curAcc.CID))
-                    break;
-                temp=temp.NextClient;
-            }
-            if(temp!=null)//if registered guy is online
-            {
+                if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
+                 {
                 new Broadcast("BINF "+temp.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)-1));
                 temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)+1);
                 temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)-1);
                 temp.cur_client.RG="";
                 temp.cur_client.OP="1";
+                 }
+                
             }
+           
+            
             }
             curAcc.key=true;
         }
@@ -1240,22 +1239,21 @@ if(curAcc.myMask.adc)
              if(curAcc.key)
             { 
             
-            ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null)
+             for( ClientNod temp : SimpleHandler.Users)
             {
                 if(temp.cur_client.userok==1)
-                   if(temp.cur_client.ID.equals (curAcc.CID))
-                    break;
-                temp=temp.NextClient;
-            }
-            if(temp!=null)//if registered guy is online
-            {
+                   if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
+                   {
                 new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)+1));
                 temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)-1);
                 temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)+1);
                 temp.cur_client.OP="";
                 temp.cur_client.RG="1";
             }
+               
+            }
+            //if registered guy is online
+            
             }
             curAcc.key=false;
         }
@@ -1299,18 +1297,17 @@ if(curAcc.myMask.adc)
           if(curAcc.opchataccess==false)
           {
             curAcc.opchataccess=true;
-          ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null)
+          for(ClientNod temp: SimpleHandler.Users)
             {
                 if(temp.cur_client.userok==1)
-                if(temp.cur_client.ID.equals (curAcc.CID))
-                    break;
-                temp=temp.NextClient;
-            }
-            if(temp!=null)//if registered guy is online
-            {
+                if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
+                   {
               temp.cur_client.putOpchat(true);
             }
+                
+            }
+           
+            
           
           
           }
@@ -1321,18 +1318,17 @@ if(curAcc.myMask.adc)
             if(curAcc.opchataccess==true)
           {
                 
-          ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null)
+          for( ClientNod temp :SimpleHandler.Users)
             {
                 if(temp.cur_client.userok==1)
-                if(temp.cur_client.ID.equals (curAcc.CID))
-                    break;
-                temp=temp.NextClient;
-            }
-            if(temp!=null)//if registered guy is online
-            {
+                if(temp.cur_client.ID.equals (curAcc.CID))//if registered guy is online
+                   {
               temp.cur_client.putOpchat(false);
+                   }
+               
             }
+            
+            
           curAcc.opchataccess=false;
           
           }

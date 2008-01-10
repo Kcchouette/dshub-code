@@ -3723,13 +3723,10 @@ else
                         n=n.Next;
                     }
                 }
-                ClientNod temp=ClientNod.FirstClient.NextClient;
-                while(temp!=null) {
+               for(ClientNod temp :SimpleHandler.Users)
+               {
                     if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(CID)))
-                        break;
-                    temp=temp.NextClient;
-                }
-                if(temp!=null) {
+                       {
                     temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                     temp.cur_client.putOpchat(false);
                     if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
@@ -3741,8 +3738,15 @@ else
                     new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
                     temp.cur_client.reg=new Nod();
                     Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
-                } else
+                    Main.Server.rewriteregs();
+                    SetStatus("Reg Deleted");
+                    return;
+                }
+                }
+               
                     Main.PopMsg("Reg "+CID+" deleted.");
+                    Main.Server.rewriteregs();
+                    
             }
             
             SetStatus("Reg Deleted");
@@ -3811,20 +3815,14 @@ else
                 if(!Vars.ValidateNick(Thing)) {
                     throw new Exception();
                 }
-                ClientNod tempy=null;
-                if(ClientNod.FirstClient!=null)
-                    tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null) {
+                for( ClientNod tempy: SimpleHandler.Users)
+                {
                     if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
-                        break;
-                    tempy=tempy.NextClient;
+                        throw new Exception();
+                    
                     
                 }
-                if(tempy!=null) {
-                    // System.out.println("Nick taken, please choose another.");
-                    throw new Exception();
-                }
+               
                 Vars.Opchat_name=Thing;
                 Main.PopMsg("Opchat_name changed from \""+aucsy+"\" to \""+Thing+"\".");
                 new Broadcast("BINF ABCD NI"+Vars.Opchat_name,10);
@@ -4232,20 +4230,14 @@ else
                 if(!Vars.ValidateNick(Thing)) {
                     throw new Exception();
                 }
-                ClientNod tempy=null;
-                if(ClientNod.FirstClient!=null)
-                    tempy=ClientNod.FirstClient.NextClient;
-                
-                while(tempy!=null) {
+               for( ClientNod tempy : SimpleHandler.Users)
+               {
                     if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
-                        break;
-                    tempy=tempy.NextClient;
+                        throw new Exception();
+                    
                     
                 }
-                if(tempy!=null) {
-                    // System.out.println("Nick taken, please choose another.");
-                    throw new Exception();
-                }
+                
                 Vars.bot_name=Thing;
                 Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
                 new Broadcast("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
@@ -4475,15 +4467,14 @@ return;
         
         
         int i=0,j=0;
-        if(ClientNod.FirstClient!=null) {
-            ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null) {
+       for(ClientNod temp :SimpleHandler.Users)
+       {
                 if(temp.cur_client.userok==1)
                     i++;
                 else j++;
-                temp=temp.NextClient;
-            }
-        }
+                
+         }
+        
         
         long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
         
@@ -4584,14 +4575,13 @@ return;
         
         
         int i=0,j=0;
-        if(ClientNod.FirstClient!=null) {
-            ClientNod temp=ClientNod.FirstClient.NextClient;
-            while(temp!=null) {
+        for(ClientNod temp : SimpleHandler.Users)
+        {
                 if(temp.cur_client.userok==1)
                     i++;
                 else j++;
-                temp=temp.NextClient;
-            }
+                
+            
         }
         
         long up=System.currentTimeMillis()-Main.curtime; //uptime in millis
