@@ -133,12 +133,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -159,12 +158,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Normal Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -185,12 +183,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -211,12 +208,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Op Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -237,12 +233,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -263,12 +258,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with nick length > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -293,12 +287,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all users with share < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -319,12 +312,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)<Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Normal Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -345,12 +337,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)<Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Op Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -371,12 +362,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)<Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -397,12 +387,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with nick length < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -423,12 +412,12 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)<Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with slots < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -453,12 +442,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all users with share = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -479,12 +467,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Op Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -505,12 +492,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -531,12 +517,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all away users.");cur_client.sendFromBot("Done.");
                                      
@@ -557,12 +542,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                    for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.OP)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all Op users .");cur_client.sendFromBot("Done.");
                                      
@@ -583,12 +567,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Reg Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -609,12 +592,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Normal Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -629,12 +611,11 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all users supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -655,12 +636,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with nick length = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -681,12 +661,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                    for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with slots = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -712,12 +691,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with share not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -738,12 +716,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -764,12 +741,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.AW)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all not away users .");cur_client.sendFromBot("Done.");
                                      
@@ -790,12 +766,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -816,12 +791,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                    for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Op Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -842,12 +816,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Reg Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -868,12 +841,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with Normal Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -888,12 +860,11 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users not supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -914,12 +885,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Dropped all users with nick length not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -940,12 +910,11 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)!=Number )
                                              tempz.dropMe (cur_client);
-                                         tempz=tempz.NextClient;
+                                        
                                      }
                                      cur_client.sendFromBot("Dropped all users with slots not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
