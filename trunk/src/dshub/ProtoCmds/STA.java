@@ -74,21 +74,21 @@ public class STA
                 return;
             }
             String dsid=TK.nextToken ();
-            ClientNod target=ClientNod.FirstClient.NextClient
-                    ;
-            while(target!=null)
+            for( ClientNod target : SimpleHandler.Users)
             {
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (dsid))
-                    break;
+                    
+                {
+                    target.cur_client.sendToClient (recvbuf);
+                    return;
+                }
             }
-            if(target==null)
-            {
+            
                 new STAError(cur_client,140,"Invalid Target Sid.");
                 return ;
-            }
-                 
-            target.cur_client.sendToClient (recvbuf);
+               
+            
             
             
         }
@@ -119,22 +119,21 @@ public class STA
                 return;
             }
             String esid=TK.nextToken ();
-            ClientNod target=ClientNod.FirstClient.NextClient
-                    ;
-            while(target!=null)
+            for( ClientNod target : SimpleHandler.Users)
             {
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (esid))
-                    break;
+                {
+                     target.cur_client.sendToClient (recvbuf);
+            cur_client.sendToClient (recvbuf);
+                }
             }
-            if(target==null)
-            {
+           
                 new STAError(cur_client,140,"Invalid Target Sid.");
                 return ;
-            }
+            
                  
-            target.cur_client.sendToClient (recvbuf);
-            cur_client.sendToClient (recvbuf);
+           
         }
         else if(recvbuf.charAt (0)=='F')
         {

@@ -657,7 +657,7 @@ public class GrantCmd
                              {
                        tempx.cur_client.putOpchat(false);
                              }
-                        tempx=tempx.NextClient;
+                        
                  }
                 
                     
@@ -1070,22 +1070,20 @@ public GrantCmd(String cmd)
                         if(!modnod.key)
                         { 
             
-                        ClientNod tempx=ClientNod.FirstClient.NextClient;
-                         while(tempx!=null)
+                        for(ClientNod tempx:SimpleHandler.Users)
                         {
                           if(tempx.cur_client.userok==1)
-                                if(tempx.cur_client.ID.equals (modnod.CID))
-                                  break;
-                        tempx=tempx.NextClient;
-                        }
-                        if(tempx!=null)//if registered guy is online
-                        {
+                                if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                                 {
                                  new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
                                  tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
                                     tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
                                     tempx.cur_client.RG="";
                                     tempx.cur_client.OP="1";
-                         }
+                                 }
+                        }
+                        
+                        
                         }
                     modnod.key=true;
                 }
@@ -1094,22 +1092,20 @@ public GrantCmd(String cmd)
                  if(modnod.key)
                 { 
             
-                ClientNod tempx=ClientNod.FirstClient.NextClient;
-                 while(tempx!=null)
+                for( ClientNod tempx :SimpleHandler.Users)
                 {
                         if(tempx.cur_client.userok==1)
-                             if(tempx.cur_client.ID.equals (modnod.CID))
-                             break;
-                        tempx=tempx.NextClient;
-                 }
-                 if(tempx!=null)//if registered guy is online
-                    {
+                             if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                             {
                          new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
                          tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
                          tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
                          tempx.cur_client.RG="1";
                          temp.cur_client.OP="";
-                    }
+                             }
+                 }
+                 
+                    
                  }
                 modnod.key=false;
                 }

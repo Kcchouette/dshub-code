@@ -50,9 +50,7 @@ public class SID
             x.nextBytes(cursid);
             ok=1;
             
-            ClientNod temp=ClientNod.FirstClient.NextClient;
-        
-            while(temp!=null)
+            for( ClientNod temp : SimpleHandler.Users)
             {
                 
             
@@ -63,7 +61,7 @@ public class SID
               if(Base32.encode (cursid).substring (0,4).equals ("DCBA"))
                   ok=0;
               
-              temp=temp.NextClient;
+              
             }
         }
                 
