@@ -44,11 +44,15 @@ import org.apache.mina.transport.socket.nio.SocketSessionConfig;
 public class SimpleHandler extends IoHandlerAdapter
 {
     public static LinkedList<ClientNod> Users;
+    static 
+    {
+        Users= new LinkedList();
+    }
     /** Creates a new instance of SimpleHandler */
     public SimpleHandler()
     {
         //ClientNod.FirstClient=new ClientNod(1);
-        Users= new LinkedList();
+        
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {

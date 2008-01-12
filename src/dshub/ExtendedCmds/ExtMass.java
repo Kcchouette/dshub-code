@@ -67,37 +67,32 @@ public class ExtMass
                 System.out.println(recvbuf);
                if(extmass.equalsIgnoreCase ("all")) 
                {
-               ClientNod temp=ClientNod.FirstClient.NextClient;
-               while(temp!=null)
+                for(ClientNod temp : SimpleHandler.Users)
                {
                    temp.cur_client.sendFromBotPM (aux);
-                   temp=temp.NextClient;
+                  
                }
                cur_client.sendFromBot("Broadcast sent.");    
                return;
                }
-                ClientNod temp;
+                
                 try
                {
                             
                             "".matches(extmass);
-                             temp=ClientNod.FirstClient.NextClient;
-
-                           
-                                 temp=ClientNod.FirstClient.NextClient;
                              
-                            while(temp!=null)
+                             
+                            for(ClientNod temp :SimpleHandler.Users)
                             {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (extmass.toLowerCase ())))
                                temp.cur_client.sendFromBotPM(aux);
-                            temp=temp.NextClient;
+                            
 
                              }
-                             if(temp==null)
-                             {
+                            
                                  cur_client.sendFromBot("Done with matching users...");
                                   throw new PatternSyntaxException("whatever...","bla",1);
-                             }
+                             
                        
                 }
                          catch(PatternSyntaxException pse)
@@ -121,12 +116,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users)
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -146,12 +141,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Normal Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -171,12 +166,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -196,12 +191,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Op Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -221,12 +216,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -246,12 +241,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with nick length > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -275,12 +270,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.cur_client.userok==1)
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with share < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -300,12 +295,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)<Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Normal Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -325,12 +320,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)<Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Op Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -350,12 +345,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)<Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -375,12 +370,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with nick length < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -400,12 +395,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)<Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with slots < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -429,12 +424,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.cur_client.userok==1)
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with share = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -454,12 +449,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Op Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -479,12 +474,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -504,12 +499,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all away users.");cur_client.sendFromBot("Done.");
                                      
@@ -529,12 +524,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.OP)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all Op users .");cur_client.sendFromBot("Done.");
                                      
@@ -554,12 +549,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Reg Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -579,12 +574,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Normal Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -598,12 +593,12 @@ public class ExtMass
                                       Number=extmass.substring (mark+1,extmass.length ());
                                     
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -623,12 +618,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with nick length = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -648,12 +643,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with slots = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -678,12 +673,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.cur_client.userok==1)
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with share not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -703,12 +698,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -728,12 +723,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.AW)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all not away users .");cur_client.sendFromBot("Done.");
                                      
@@ -753,12 +748,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -778,12 +773,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Op Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -803,12 +798,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Reg Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -828,12 +823,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with Normal Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -847,12 +842,12 @@ public class ExtMass
                                       Number=extmass.substring (mark+1,extmass.length ());
                                     
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users not supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -872,12 +867,12 @@ public class ExtMass
                                          return;
                                      }
                                    
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with nick length not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -897,12 +892,12 @@ public class ExtMass
                                          return;
                                      }
                                     
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)!=Number )
                                              tempz.cur_client.sendFromBotPM(aux);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Sent to all users with slots not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
