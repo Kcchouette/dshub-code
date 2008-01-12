@@ -68,12 +68,18 @@ public class ExtDrop
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                if(!temp.cur_client.reg.kickable)
-                         cur_client.sendFromBot("This user can't be dropped.");
+                               {
+                                   cur_client.sendFromBot("This user can't be dropped.");
+                                   cur_client.sendFromBot("Done.");
+                                     return;
+                               }
                            else
                          {
                             //actual dropping.
                     
                             temp.dropMe (cur_client);
+                            cur_client.sendFromBot("Done.");
+                    
                              return;
                     
                     

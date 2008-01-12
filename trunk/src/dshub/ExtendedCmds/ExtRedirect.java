@@ -68,58 +68,58 @@ public class ExtRedirect
         
         if(ADC.isCID(what))
         {
-            ClientNod aux= ClientNod.FirstClient.NextClient;
-            while(aux!=null)
+            
+            for( ClientNod aux : SimpleHandler.Users)
             {
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.ID.equalsIgnoreCase(what))
-                    break;
-                aux=aux.NextClient;
+                {
+                    aux.redirectMe(cur_client, URL);
+                    cur_client.sendFromBot("Done.");
+                    return;
+                }
+                    
+               
             }
-            if(aux==null)
-            {
+            
                 cur_client.sendFromBot("No user found with given CID.");
                 cur_client.sendFromBot("Done.");
-            }
-            else
-            {
-                aux.redirectMe(cur_client, URL);
-            }
+            
             return;
         }
         else //is a nick
         {
-            ClientNod aux= ClientNod.FirstClient.NextClient;
-            while(aux!=null)
+            for(ClientNod aux : SimpleHandler.Users)
             {
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.NI.equalsIgnoreCase(what))
-                    break;
-                aux=aux.NextClient;
+                {
+                    aux.redirectMe(cur_client, URL);
+                    cur_client.sendFromBot("Done.");
+                    return;
+                }
+               
             }
-            if(aux!=null)
-            {
-                aux.redirectMe(cur_client, URL);
-                return;
-            }
+            
+                
+               
+            
             
         }
         try
         {
            "".matches(what);
-           ClientNod aux= ClientNod.FirstClient.NextClient;
-            while(aux!=null)
+           for( ClientNod aux : SimpleHandler.Users)
             {
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.NI.matches(what))
                 {
-                    ClientNod test=aux.NextClient;
+                   
                     aux.redirectMe(cur_client, URL);
-                    aux=test;
-                    continue;
+                    
                 }
                     
-                aux=aux.NextClient;
+                
             }
             cur_client.sendFromBot("Done with matching users...");
         } catch (PatternSyntaxException pse)
@@ -148,12 +148,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024>Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with share > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -174,8 +174,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -184,7 +184,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Normal Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -205,8 +205,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          try
                                              {
@@ -215,7 +215,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -236,8 +236,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -246,7 +246,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Op Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -267,8 +267,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -277,7 +277,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with slots "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -298,12 +298,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with nick length > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -328,12 +328,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with share < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -354,8 +354,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -364,7 +364,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Normal Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -385,8 +385,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -395,7 +395,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Op Hub Count < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -416,8 +416,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -426,7 +426,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Reg Hub Count > "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -447,12 +447,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with nick length < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -473,8 +473,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -483,7 +483,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with slots < "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -508,12 +508,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with share = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -534,8 +534,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -544,7 +544,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Op Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -565,12 +565,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.RG)==Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -591,12 +591,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all away users.");cur_client.sendFromBot("Done.");
                                      
@@ -617,8 +617,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           {
                                              try
@@ -631,7 +631,7 @@ public class ExtRedirect
                                              }
                                          }
 
-                                          tempz=tempz.NextClient;
+                                          
                                         
                                          
                                      }
@@ -654,8 +654,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           {
                                              try
@@ -668,7 +668,7 @@ public class ExtRedirect
                                          }
 
                                         
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Reg Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -689,8 +689,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -699,7 +699,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Normal Hub Count = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -714,12 +714,12 @@ public class ExtRedirect
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -740,12 +740,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with nick length = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -766,12 +766,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with slots = "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -797,12 +797,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with share not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -823,8 +823,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -833,7 +833,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -854,8 +854,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -864,7 +864,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all not away users .");cur_client.sendFromBot("Done.");
                                      
@@ -885,8 +885,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -895,7 +895,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all not registered users .");cur_client.sendFromBot("Done.");
                                      
@@ -916,8 +916,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -926,7 +926,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Op Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -947,8 +947,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -957,7 +957,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Reg Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -978,8 +978,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -988,7 +988,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with Normal Hub Count not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -1003,12 +1003,12 @@ public class ExtRedirect
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users not supporting "+Number+" .");cur_client.sendFromBot("Done.");
                                      
@@ -1029,12 +1029,12 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.redirectMe(cur_client,URL);
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with nick length not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      
@@ -1055,8 +1055,8 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     ClientNod tempz=ClientNod.FirstClient.NextClient;
-                                     while(tempz!=null)
+                                     for( ClientNod tempz : SimpleHandler.Users )
+                                     
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
@@ -1065,7 +1065,7 @@ public class ExtRedirect
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
-                                         tempz=tempz.NextClient;
+                                         
                                      }
                                      cur_client.sendFromBot("Redirected all users with slots not "+Long.toString (Number)+" .");cur_client.sendFromBot("Done.");
                                      

@@ -974,7 +974,7 @@ Thread.sleep(200);
                if(ADC.isCID(aux))
                {
                     //ok if we got here it really is a CID so:
-                    
+                   // boolean banned=false;
                 for( ClientNod temp: SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.toLowerCase ().equals(aux.toLowerCase ())))
@@ -992,7 +992,7 @@ Thread.sleep(200);
                         }
                 
                      if(!(AccountsConfig.getnod (aux).kickable))
-                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
+                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+AccountsConfig.getnod (aux).LastNI+", but is not kickable.");}
                      else
                      {
                          cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning....");
