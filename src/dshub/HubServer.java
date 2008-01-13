@@ -70,6 +70,8 @@ public class HubServer extends Thread
    public static IoServiceManager IOSM;
    public static ServiceManager SM;
    
+   private SocketAcceptorConfig cfg;
+   
    private IoAcceptor acceptor;
    private ExecutorService x;//,y;
    private InetSocketAddress address;
@@ -116,7 +118,7 @@ public class HubServer extends Thread
        reloadconfig();
        reloadbans();
        
-       port=Vars.Default_Port;
+      // port=Vars.Default_Port;
        
       Modulator.findModules();
           try
@@ -139,7 +141,7 @@ public class HubServer extends Thread
         
         
         
-        SocketAcceptorConfig cfg = new SocketAcceptorConfig();
+         cfg = new SocketAcceptorConfig();
       // cfg.setThreadModel(ThreadModel.MANUAL);
         
          //cfg.getSessionConfig().setReceiveBufferSize(102400);
@@ -161,42 +163,40 @@ public class HubServer extends Thread
         IOSM=new IoServiceManager(acceptor);
         SM=new ServiceManager(acceptor);
         IOSM.startCollectingStats(10000);
-        address=new InetSocketAddress(port);
-        try
-        {
+       // address=new InetSocketAddress(port);
+       
 
-            acceptor.bind( address, new SimpleHandler(), cfg);
+        String pop="";
+            for( Port port : Vars.activePorts)
+            {
+               if( this.addPort(port)==true);
+               pop+=port.portValue+" ";
+            }
+            if(pop.equals(""))
+                Main.PopMsg("Couldn't start server on any set ports.");
+            else
+                
+               Main.PopMsg("Server created. Listening on ports: "+pop+".");
             
-            Main.PopMsg("Server created. Listening on port "+port+".");
-            Date d=new Date(Main.curtime);
+         
+         if(Main.GUIok)
+           {
+              if(pop.equals(""))
+                Main.GUI.SetStatus("Couldn't start server on any set ports.");
+            else
+                
+               Main.GUI.SetStatus("Server created. Listening on ports: "+pop+".");
+               
+           }
+         
+       
+        
+        Date d=new Date(Main.curtime);
         Main.PopMsg("Start Time:"+d.toString ());
         System.out.print("\n>");
          
          myAssasin=new ClientAssasin();//temporary removed
        //  ClientExecutor myExecutor=new ClientExecutor();
-         
-         if(Main.GUIok)
-           {
-               Main.GUI.SetStatus ("Server created. Listening on port "+port+".\n");
-               //Main.PopMsg(Main.myPath);
-               
-           }
-        } 
-        catch( java.net.BindException jbe)
-        {
-            Main.PopMsg("Network problem. Unable to listen on port "+port+"."+jbe);
-            if(Main.GUIok)
-           {
-               Main.GUI.SetStatus ("Network problem. Unable to listen on port "+port+"."+jbe,JOptionPane.ERROR_MESSAGE);
-               
-           }
-            return;
-        }
-        catch (IOException ex)
-        {
-            ex.printStackTrace();
-            
-        }
         
            
         
@@ -205,9 +205,66 @@ public class HubServer extends Thread
         
       
     }
+    public boolean addPort(Port port)
+    {
+       // Vars.activePorts.add(port);
+        try
+        {
+        acceptor.bind(new InetSocketAddress(port.portValue), new SimpleHandler(),cfg);
+        port.setStatus(true);
+            
+        } 
+        catch( java.net.BindException jbe)
+        {
+            Main.PopMsg("Network problem. Unable to listen on port "+port.portValue+"."+jbe);
+            port.setStatus(false);
+            port.MSG=jbe.toString();
+            if(Main.GUIok)
+           {
+               Main.GUI.SetStatus ("Network problem. Unable to listen on port "+port.portValue+"."+jbe,JOptionPane.ERROR_MESSAGE);
+               
+           }
+            return false;
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+            port.setStatus(false);
+            port.MSG=ex.toString();
+            return false;
+        }
+        return true;
+    }
+    
+    public void delPort(Port port)
+    {
+      //  Vars.activePorts.remove(port);
+        try
+        {
+            acceptor.unbind(new InetSocketAddress(port.portValue));
+
+        }
+        catch(IllegalArgumentException exception)
+        {
+            if(exception.getMessage().contains("Address not bound"))
+                ;
+        }
+        
+    }
+    
     public void shutdown()
     {
-        acceptor.unbind(address);
+        try
+        {
+            acceptor.unbind(address);
+
+        } catch (IllegalArgumentException exception)
+        {
+            if(exception.getMessage().contains("Address not bound"))
+                ;
+        }
+
+        
         x.shutdown();
     }
     public static synchronized ClientNod AddClient()
@@ -374,6 +431,7 @@ public class HubServer extends Thread
       Vars.bot_desc=vars.bot_desc;
       
       Vars.activePlugins=vars.activePlugins;
+      Vars.activePorts=vars.activePorts;
       
       Vars.BMSG=vars.BMSG;
       Vars.EMSG=vars.EMSG;

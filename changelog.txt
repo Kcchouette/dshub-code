@@ -1,4 +1,8 @@
-*** *** 
+*** ***  
+           * can dinamically add/rem ports via command or console;
+           * ports have status , OK or DEAD;
+           * port command has changed, list add or remove ports;
+           * some BIG stuff : finally multiport server... testing only;
            * created constants for broadcast types;
            * title show 2008
            * fixed chatcontrol modification showing only first word;

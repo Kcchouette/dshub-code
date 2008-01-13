@@ -23,6 +23,7 @@ package dshub;
  */
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  * Basic hub variables to be kept in config file.
@@ -158,6 +159,7 @@ public class Variables implements Serializable
      int ESUP;
      int FSUP;
      int HSUP;
+     public LinkedList<Port> activePorts;
      
       public Variables()
       {
@@ -220,6 +222,8 @@ public class Variables implements Serializable
       bot_desc=Vars.bot_desc;
       
       activePlugins=Vars.activePlugins;
+      
+      activePorts=Vars.activePorts;
       
       BMSG=Vars.BMSG;
       DMSG=Vars.DMSG;
