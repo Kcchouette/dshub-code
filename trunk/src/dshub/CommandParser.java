@@ -1227,7 +1227,7 @@ Thread.sleep(200);
                 Main.Server.rewriteconfig();
                
         }
-        else if(recvbuf.toLowerCase ().startsWith("port "))
+        else if(recvbuf.toLowerCase ().startsWith("port"))
         {
                      commandOK=1;
                      if(!cur_client.reg.myMask.port)
@@ -1236,7 +1236,8 @@ Thread.sleep(200);
                         done=true;
                         return;
                     }
-                try
+                     new PortCmd(cur_client, recvbuf);
+                /*try
                 {
             int x=Integer.parseInt(recvbuf.substring(5));
             if(x<1 || x>65000)
@@ -1253,7 +1254,7 @@ Thread.sleep(200);
                 catch(NumberFormatException nfe)
                 {
                     cur_client.sendFromBot("Invalid port number");
-                }
+                }*/
         }
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {

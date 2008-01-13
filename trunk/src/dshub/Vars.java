@@ -25,6 +25,7 @@ package dshub;
 
 import dshub.TigerImpl.Base32;
 import dshub.TigerImpl.Tiger;
+import java.util.LinkedList;
 
 /**
  *
@@ -79,6 +80,13 @@ public final class Vars
     public static String Proxy_Host="";
     public static int Proxy_Port;
     public static String redirect_url="";
+    
+    public static LinkedList<Port> activePorts;
+    static
+    {
+        activePorts=new LinkedList<Port>();
+        activePorts.add(new Port(411));
+    }
     
     static
     {

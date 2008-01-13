@@ -1513,7 +1513,7 @@ continue;
         }
         else if(recvbuf.toLowerCase ().startsWith("port "))
         {
-                try
+                /*try
                 {
             int x=Integer.parseInt(recvbuf.substring(5));
            if(x<1 || x>65000)
@@ -1529,7 +1529,9 @@ continue;
                 catch(NumberFormatException nfe)
                 {
                     System.out.println("Invalid port number");
-                }
+                }*/
+            new PortCmd(null,recvbuf);
+            
         }
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
