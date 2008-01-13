@@ -34,8 +34,6 @@ import java.util.StringTokenizer;
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
 import org.apache.mina.common.IoSession;
-import org.apache.mina.common.TransportType;
-import org.apache.mina.transport.socket.nio.SocketSessionConfig;
 
 /**
  *

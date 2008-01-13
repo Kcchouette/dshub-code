@@ -158,7 +158,7 @@ public class MSG
                         if(what % 2 ==1)
                         {
                            //System.out.println("flag contine 32");
-                           Issued_Command=Issued_Command.replace(message,Main.listaBanate.getReplAt(index));
+                           Issued_Command=Issued_Command.replace(message,ADC.retADCStr(Main.listaBanate.getReplAt(index)));
                            
                         } 
                        what/=2;
@@ -195,7 +195,7 @@ public class MSG
                        if(aux.startsWith ("PM"))
                            thissid=aux.substring (2);
                        if(aux.startsWith ("ME"))
-                           if(aux.substring (2)=="1")
+                           if(aux.substring (2).equals("1"))
                              me=1;
                            else
                            {

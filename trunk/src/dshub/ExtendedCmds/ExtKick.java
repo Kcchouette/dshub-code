@@ -59,11 +59,11 @@ public class ExtKick
                                cur_client.sendFromBot(Text );
                         return;
                     }
-                StringTokenizer ST=new StringTokenizer(ADC.retNormStr(recvbuf));
+                StringTokenizer ST=new StringTokenizer(recvbuf);
                 ST.nextToken ();
                 String aux=ST.nextToken ();
                 
-                aux=ADC.retADCStr(aux);
+                //aux=ADC.retADCStr(aux);
                 
                 
                 String kickmsg="";

@@ -38,7 +38,6 @@ import dshub.TigerImpl.Base32;
 import dshub.TigerImpl.Tiger;
 import java.util.*;
 import java.io.*;
-import org.apache.mina.common.IoSession;
 /**
  * Provides a parsing for each ADC command received from client, and makes the states transitions
  * Updates all information and ensures stability.

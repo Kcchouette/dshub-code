@@ -52,7 +52,7 @@ public class STAError
          Error_string="ISTA "+Integer.toString(error_code)+" "+error_desc;
        
         cur_client.sendToClient(Error_string);
-        if(ec>200)
+        if(ec>=200)
         {
             if(!Vars.redirect_url.equals(""))
              cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
@@ -71,7 +71,7 @@ public class STAError
         String Error_string="ISTA "+Integer.toString(error_code)+" "+error_desc+" FL" + FL;
          
         cur_client.sendToClient(Error_string);
-        if(ec>200)
+        if(ec>=200)
         {
             if(!Vars.redirect_url.equals(""))
             cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
