@@ -94,7 +94,7 @@ public class ClientAssasin extends Thread
 						        if(x.cur_client.InQueueSearch.startsWith("B"))
 						            new Broadcast(x.cur_client.InQueueSearch);
 						        else
-						            new Broadcast(x.cur_client.InQueueSearch,1);
+						            new Broadcast(x.cur_client.InQueueSearch,Broadcast.STATE_ACTIVE);
 						        x.cur_client.InQueueSearch=null;
 						       x.cur_client.Lastsearch=curtime;
 						    }

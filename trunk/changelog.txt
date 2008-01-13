@@ -1,4 +1,6 @@
 *** *** 
+           * created constants for broadcast types;
+           * title show 2008
            * fixed chatcontrol modification showing only first word;
            * fixed chatcontrol search problem;
            * fixed chatcontrol unable to add \s in regexp;

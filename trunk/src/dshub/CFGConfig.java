@@ -493,7 +493,7 @@ return;
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD NI"+ADC.retADCStr(Vars.Opchat_name),10);
+                        new Broadcast ("BINF ABCD NI"+ADC.retADCStr(Vars.Opchat_name),Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_name"))
@@ -541,7 +541,7 @@ return;
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
+                        new Broadcast ("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_desc"))

@@ -1121,7 +1121,7 @@ continue;
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD NI"+Vars.Opchat_name,10);
+                        new Broadcast ("BINF ABCD NI"+Vars.Opchat_name,Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_name"))
@@ -1152,7 +1152,7 @@ continue;
                         
                         Vars.bot_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA NI"+Vars.bot_name,10);
+                        new Broadcast ("BINF DCBA NI"+Vars.bot_name);
                         
                 }
                 else if(aux.toLowerCase ().equals ("opchat_desc"))
@@ -1167,7 +1167,7 @@ continue;
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD DE"+Vars.Opchat_desc,10);
+                        new Broadcast ("BINF ABCD DE"+Vars.Opchat_desc,Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_desc"))
@@ -1182,7 +1182,7 @@ continue;
                         
                         Vars.bot_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA DE"+Vars.bot_desc,10);
+                        new Broadcast ("BINF DCBA DE"+Vars.bot_desc);
                         
                 }
                 else if(aux.toLowerCase().equals ("kick_time"))

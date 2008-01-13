@@ -3843,7 +3843,7 @@ else
                
                 Vars.Opchat_name=Thing;
                 Main.PopMsg("Opchat_name changed from \""+aucsy+"\" to \""+Thing+"\".");
-                new Broadcast("BINF ABCD NI"+Vars.Opchat_name,10);
+                new Broadcast("BINF ABCD NI"+Vars.Opchat_name,Broadcast.STATE_ALL_KEY);
                 
             }
         } catch (Exception e) {
@@ -3856,7 +3856,7 @@ else
             
             Vars.Opchat_desc=Thing;
             Main.PopMsg("Opchat_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-            new Broadcast("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),10);
+            new Broadcast("BINF ABCD DE"+ADC.retADCStr(Vars.Opchat_desc),Broadcast.STATE_ALL_KEY);
             
         }
         Thing=historylinesfield.getText();
@@ -4529,7 +4529,7 @@ return;
         /**setting window name*/
         //System.out.println("gay");
         
-        this.setTitle(Vars.HubName+" running on "+Vars.HubVersion+" A New Generation 2007");
+        this.setTitle(Vars.HubName+" running on "+Vars.HubVersion+" A New Generation 2007-2008");
         //jLabel51.setIcon (new Icon("ds.bmp"));
         //addImage(jPanel1, "ds.bmp");
         /**showing accounts*/
