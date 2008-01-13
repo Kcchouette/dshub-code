@@ -67,7 +67,9 @@ abstract public class ADC
             ;
     public static String retNormStr(String blah)
     {
-        return blah.replaceAll ("\\\\s"," ").replaceAll ("\\\\n","\n").replaceAll ("\\\\\\\\","\\\\");
+        
+        return blah.replaceAll ("\\\\s"," ").replaceAll ("\\\\n","\n").replaceAll ("\\\\\\\\","\\\\")
+                .replaceAll ("\\\\ ","\\\\s").replaceAll ("\\\\\\n","\\\\n");
     }
     public static String retADCStr(String blah)
     {

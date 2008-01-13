@@ -3239,7 +3239,10 @@ else
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,
                 jTextField3.getText());
         prop+=getClientPr();
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+
+                (notifycheck.isSelected()?BannedWord.notify:0)+
+                (privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jTextField3KeyReleased
             
     private void jRadioButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton6MouseClicked
@@ -3248,42 +3251,57 @@ else
         listaBanate.modifyMultiWordPrAt(jList1.getSelectedIndices(),prop,
                 jTextField3.getText());
         prop+=getClientPr();
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop
+                +(notifycheck.isSelected()?BannedWord.notify:0)+
+                (privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton6MouseClicked
     
     private void jRadioButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton5MouseClicked
 // TODO add your handling code here:
         long prop=getWordPr()+getClientPr();
         jTextField3.setText("");
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop
+                +(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton5MouseClicked
     
     private void jRadioButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton4MouseClicked
 // TODO add your handling code here:
         long prop=getWordPr()+getClientPr();
         jTextField3.setText("");
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+
+                (notifycheck.isSelected()?BannedWord.notify:0)+
+                (privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton4MouseClicked
     
     private void jRadioButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton3MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr()+getWordPr();
         // System.out.println(prop);
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),
+                prop+(notifycheck.isSelected()?BannedWord.notify:0)+
+                (privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton3MouseClicked
     
     private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr();
         //System.out.println(prop);
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop
+                +(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton2MouseClicked
     
     private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
 // TODO add your handling code here:
         long prop=getClientPr()+getWordPr();
         // System.out.println(prop);
-        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+(notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0));
+        listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(),prop+
+                (notifycheck.isSelected()?BannedWord.notify:0)+(privatecheck.isSelected()?BannedWord.privatechat:0)
+                +(searchcheck.isSelected()?BannedWord.searches:0));
     }//GEN-LAST:event_jRadioButton1MouseClicked
     
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked

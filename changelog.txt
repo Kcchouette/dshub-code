@@ -1,4 +1,9 @@
-*** ***
+*** *** 
+           * fixed chatcontrol modification showing only first word;
+           * fixed chatcontrol search problem;
+           * fixed chatcontrol unable to add \s in regexp;
+           * fixed #1863452
+           * fixed #1864463;
            * to toast pleasure, chatcontrol op notifier now includes ip and cid;
            * fixed some chatcontrol flags;
            * rewritten adding, quitting users, also iterating;
