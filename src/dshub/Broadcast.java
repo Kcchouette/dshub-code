@@ -45,11 +45,14 @@ import org.apache.mina.common.IoSession;
  */
 public class Broadcast
 {
+    
+    public static final int STATE_ALL=0;
+    public static final int STATE_ACTIVE=1;
+   
+    public static final int STATE_ALL_KEY=10;
+    
     int state=0;
-    /*state =0 normal, to all
-     *state=1 only to active
-     *state=2 to all except newest client
-     **/
+    
     String STR;
     ClientNod cur_client=null;
     
@@ -60,7 +63,7 @@ public class Broadcast
 
    
     static int size=0;
-    /** Creates a new instance of Broadcast */
+    /** Creates a new instance of Broadcast , sends to all except the ClientNod received as param.*/
     public Broadcast (String STR, ClientNod bla)
     {
         this.STR=STR;
@@ -68,12 +71,16 @@ public class Broadcast
         cur_client=bla;
         run();
     }
-     public Broadcast (String STR, int active)
+    /**state =STATE_ALL normal, to all
+     *state=STATE_ACTIVE only to active
+     * state= STATE_ALL_KEY to all ops;
+     **/
+     public Broadcast (String STR, int state)
     {
         this.STR=STR;
         
-        state=active; // 1 - active only
-        //10 - ops only
+        this.state=state; // STATE_ACTIVE - active only
+        //STATE_ALL_KEY - ops only
         run();
     }
     public Broadcast (String STR)
@@ -155,12 +162,12 @@ public class Broadcast
             
         if((CH.cur_client.userok==1 && CH!=cur_client) || (CH!=cur_client && CH.cur_client.userok==1 && state==1 && CH.cur_client.ACTIVE==1))
         {
-             if(state==10 && !CH.cur_client.reg.key)
+             if(state==this.STATE_ALL_KEY && !CH.cur_client.reg.key)
              {
                  
                  continue;
              }
-             if(CH.cur_client.ACTIVE!=1 && state==1)
+             if(CH.cur_client.ACTIVE!=1 && state==this.STATE_ACTIVE)
              {
                  
                  continue;

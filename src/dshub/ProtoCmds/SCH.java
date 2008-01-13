@@ -218,7 +218,7 @@ public class SCH
                     if(Issued_Command.charAt (0)=='B')
                         new Broadcast(Issued_Command);
                     else if(Issued_Command.charAt (0)=='F')
-                        new Broadcast(Issued_Command,1);
+                        new Broadcast(Issued_Command,Broadcast.STATE_ACTIVE);
                     else
                     {
                         new STAError(cur_client,140,"SCH Invalid Context.");
