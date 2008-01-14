@@ -307,7 +307,6 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         regonlycheck = new javax.swing.JCheckBox();
         jPanel21 = new javax.swing.JPanel();
-        portfield = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         proxycheck = new javax.swing.JCheckBox();
@@ -317,11 +316,8 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel68 = new javax.swing.JLabel();
         hubhostfield = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        botnamefield = new javax.swing.JTextField();
-        jLabel48 = new javax.swing.JLabel();
-        botdescfield = new javax.swing.JTextField();
-        jLabel49 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        portlist = new javax.swing.JList();
         jPanel8 = new javax.swing.JPanel();
         fieldtimeout = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -381,6 +377,10 @@ public class TestFrame extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jPanel35 = new javax.swing.JPanel();
         opchatnamefield = new javax.swing.JTextField();
+        botnamefield = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        botdescfield = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
         opchatdescfield = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -393,10 +393,6 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel39 = new javax.swing.JPanel();
         historylinesfield = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jPanel40 = new javax.swing.JPanel();
-        savelogscheck = new javax.swing.JCheckBox();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
@@ -406,6 +402,10 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         msgbannedfield = new javax.swing.JTextArea();
         jButton31 = new javax.swing.JButton();
+        jPanel40 = new javax.swing.JPanel();
+        savelogscheck = new javax.swing.JCheckBox();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -783,32 +783,8 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Connection Settings"));
 
-        portfield.setText("411");
-        portfield.setPreferredSize(new java.awt.Dimension(180, 20));
-        portfield.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                portfieldActionPerformed(evt);
-            }
-        });
-        portfield.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
-                portfieldFocusLost(evt);
-            }
-        });
-        portfield.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
-                portfieldKeyTyped(evt);
-            }
-        });
-
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel17.setText("Default port hub should run on. Requires restart to apply.");
+        jLabel17.setText("Current ports for server listening.");
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Proxy Settings"));
 
@@ -872,6 +848,9 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel50.setText("Hub host ( address ) ( enter your DNS here )");
 
+        portlist.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(portlist);
+
         org.jdesktop.layout.GroupLayout jPanel21Layout = new org.jdesktop.layout.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -879,76 +858,35 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel21Layout.createSequentialGroup()
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel21Layout.createSequentialGroup()
-                        .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(portfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(17, 17, 17)
-                        .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel50)
-                            .add(jLabel17)))
-                    .add(jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jPanel19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(28, 28, 28)
+                        .add(jLabel17))
+                    .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jPanel21Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .add(jPanel19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel21Layout.createSequentialGroup()
+                            .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(17, 17, 17)
+                            .add(jLabel50))))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel21Layout.createSequentialGroup()
-                .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(portfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel17))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel17)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 89, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 19, Short.MAX_VALUE)
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel50))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel7.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 470, 180));
-
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder("Bots Settings"));
-
-        botnamefield.setText("DSHub");
-        botnamefield.setPreferredSize(new java.awt.Dimension(180, 20));
-
-        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel48.setText("Hub security bot name.");
-
-        botdescfield.setText("www.death-squad.ro/dshub");
-        botdescfield.setPreferredSize(new java.awt.Dimension(180, 20));
-
-        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel49.setText("Hub security bot description.");
-
-        org.jdesktop.layout.GroupLayout jPanel22Layout = new org.jdesktop.layout.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel22Layout.createSequentialGroup()
-                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(14, 14, 14)
-                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel48)
-                    .add(jLabel49))
-                .addContainerGap(134, Short.MAX_VALUE))
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel22Layout.createSequentialGroup()
-                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel48))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel49))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        jPanel7.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 470, 90));
+        jPanel7.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 470, 260));
 
         jTabbedPane2.addTab("Main Settings", jPanel7);
 
@@ -1367,6 +1305,18 @@ public class TestFrame extends javax.swing.JFrame {
         opchatnamefield.setMinimumSize(new java.awt.Dimension(130, 20));
         opchatnamefield.setPreferredSize(new java.awt.Dimension(140, 20));
 
+        botnamefield.setText("DSHub");
+        botnamefield.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel48.setText("Hub security bot name.");
+
+        botdescfield.setText("www.death-squad.ro/dshub");
+        botdescfield.setPreferredSize(new java.awt.Dimension(140, 20));
+
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel49.setText("Hub security bot description.");
+
         opchatdescfield.setText("BoT");
         opchatdescfield.setPreferredSize(new java.awt.Dimension(140, 20));
 
@@ -1390,7 +1340,15 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel35Layout.createSequentialGroup()
                         .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
-                        .add(jLabel34)))
+                        .add(jLabel34))
+                    .add(jPanel35Layout.createSequentialGroup()
+                        .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel49)
+                            .add(jLabel48))))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
@@ -1403,10 +1361,18 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(opchatdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel34))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(botnamefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel48))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel49))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        miscpanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 80));
+        miscpanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 150));
 
         jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder("Redirects"));
 
@@ -1436,7 +1402,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        miscpanel.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 480, 50));
+        miscpanel.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 480, 50));
 
         jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder("Kick settings"));
 
@@ -1466,7 +1432,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        miscpanel.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 480, 60));
+        miscpanel.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 480, 60));
 
         jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder("History settings"));
 
@@ -1496,53 +1462,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        miscpanel.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 480, 60));
-
-        jPanel40.setBorder(javax.swing.BorderFactory.createTitledBorder("Logging settings"));
-
-        savelogscheck.setFont(new java.awt.Font("Tahoma", 0, 10));
-        savelogscheck.setText("Save logs to file.");
-        savelogscheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        savelogscheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        savelogscheck.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                savelogscheckActionPerformed(evt);
-            }
-        });
-
-        jLabel56.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel56.setText("Logs have their file name the date when hub was started.");
-
-        jLabel57.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel57.setText("They are saved to /logs directory.");
-
-        org.jdesktop.layout.GroupLayout jPanel40Layout = new org.jdesktop.layout.GroupLayout(jPanel40);
-        jPanel40.setLayout(jPanel40Layout);
-        jPanel40Layout.setHorizontalGroup(
-            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel40Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(savelogscheck)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel57)
-                    .add(jLabel56))
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-        jPanel40Layout.setVerticalGroup(
-            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel40Layout.createSequentialGroup()
-                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(savelogscheck)
-                    .add(jLabel56))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel57)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        miscpanel.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 480, 60));
+        miscpanel.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, 60));
 
         jTabbedPane2.addTab("Misc Settings1", miscpanel);
 
@@ -1601,7 +1521,53 @@ public class TestFrame extends javax.swing.JFrame {
                 jButton31ActionPerformed(evt);
             }
         });
-        jPanel37.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
+        jPanel37.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
+
+        jPanel40.setBorder(javax.swing.BorderFactory.createTitledBorder("Logging settings"));
+
+        savelogscheck.setFont(new java.awt.Font("Tahoma", 0, 10));
+        savelogscheck.setText("Save logs to file.");
+        savelogscheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        savelogscheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        savelogscheck.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                savelogscheckActionPerformed(evt);
+            }
+        });
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel56.setText("Logs have their file name the date when hub was started.");
+
+        jLabel57.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel57.setText("They are saved to /logs directory.");
+
+        org.jdesktop.layout.GroupLayout jPanel40Layout = new org.jdesktop.layout.GroupLayout(jPanel40);
+        jPanel40.setLayout(jPanel40Layout);
+        jPanel40Layout.setHorizontalGroup(
+            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel40Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(savelogscheck)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel57)
+                    .add(jLabel56))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        jPanel40Layout.setVerticalGroup(
+            jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel40Layout.createSequentialGroup()
+                .add(jPanel40Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(savelogscheck)
+                    .add(jLabel56))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel57)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel37.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 480, 60));
 
         jTabbedPane2.addTab("Misc Settings2", jPanel37);
 
@@ -3893,6 +3859,42 @@ else
             
         }
         
+         /**bot_name*/
+         Thing=botnamefield.getText();
+        try {
+             aucsy=Vars.bot_name;
+            if(!(aucsy.equals(Thing))) {
+                if(!Vars.ValidateNick(Thing)) {
+                    throw new Exception();
+                }
+               for( ClientNod tempy : SimpleHandler.Users)
+               {
+                    if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
+                        throw new Exception();
+                    
+                    
+                }
+                
+                Vars.bot_name=Thing;
+                Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
+                new Broadcast("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
+                
+            }
+        } catch (Exception e) {
+            botnamefield.setText(Vars.bot_name);
+        }
+        /**bot desc*/
+        Thing=botdescfield.getText();
+        
+         aucsy=Vars.bot_desc;
+        if(!(aucsy.equals(Thing))) {
+            
+            Vars.bot_desc=Thing;
+            Main.PopMsg("Bot_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
+            new Broadcast("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
+            
+        }
+        
         SetStatus("Miscellaneous settings saved.");
     }//GEN-LAST:event_jButton11ActionPerformed
     
@@ -4186,7 +4188,7 @@ else
     private void jButton7ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton7ActionPerformed
     {//GEN-HEADEREND:event_jButton7ActionPerformed
 // TODO add your handling code here:
-        String thenewport= portfield.getText();
+       /* String thenewport= portfield.getText();
         //System.out.println (newport);
         try {
             int x=Integer.parseInt(thenewport);
@@ -4198,7 +4200,7 @@ else
                 Main.PopMsg("New Default Port change from "+y+" to "+x+".");
                 }
         } catch (Exception e) {
-        }
+        }*/
         String newtopic= topicfield.getText();
         if(!(newtopic.equals(Vars.HubDE)))
             if(newtopic.equals("")) {
@@ -4240,41 +4242,7 @@ else
         }
         
         
-        /**bot_name*/
-        String Thing=botnamefield.getText();
-        try {
-            String aucsy=Vars.bot_name;
-            if(!(aucsy.equals(Thing))) {
-                if(!Vars.ValidateNick(Thing)) {
-                    throw new Exception();
-                }
-               for( ClientNod tempy : SimpleHandler.Users)
-               {
-                    if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
-                        throw new Exception();
-                    
-                    
-                }
-                
-                Vars.bot_name=Thing;
-                Main.PopMsg("bot_name changed from \""+aucsy+"\" to \""+Thing+"\".");
-                new Broadcast("BINF DCBA NI"+ADC.retADCStr(Vars.bot_name));
-                
-            }
-        } catch (Exception e) {
-            botnamefield.setText(Vars.bot_name);
-        }
-        /**bot desc*/
-        Thing=botdescfield.getText();
-        
-        String aucsy=Vars.bot_desc;
-        if(!(aucsy.equals(Thing))) {
-            
-            Vars.bot_desc=Thing;
-            Main.PopMsg("Bot_desc changed from \""+aucsy+"\" to \""+Thing+"\".");
-            new Broadcast("BINF DCBA DE"+ADC.retADCStr(Vars.bot_desc));
-            
-        }
+       
         
         
         /** hub host */
@@ -4459,25 +4427,7 @@ return;
        return;
         }
     }
-    
-    private void portfieldFocusLost (java.awt.event.FocusEvent evt)//GEN-FIRST:event_portfieldFocusLost
-    {//GEN-HEADEREND:event_portfieldFocusLost
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_portfieldFocusLost
-    
-    private void portfieldKeyTyped (java.awt.event.KeyEvent evt)//GEN-FIRST:event_portfieldKeyTyped
-    {//GEN-HEADEREND:event_portfieldKeyTyped
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_portfieldKeyTyped
-    
-    private void portfieldActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_portfieldActionPerformed
-    {//GEN-HEADEREND:event_portfieldActionPerformed
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_portfieldActionPerformed
-    
+                
     private void jButton6ActionPerformed (java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
 // TODO add your handling code here:
@@ -4642,7 +4592,18 @@ return;
    nick_chars              ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:         -- Chars that could be used for a nick, String.
    chat_interval           500         -- Interval between chat lines, millis, Integer.
  */
-        portfield.setText(Integer.toString(Vars.Default_Port));
+       // portfield.setText(Integer.toString(Vars.Default_Port));
+        //Port [] curports=(Port [])Vars.activePorts.toArray();
+        //int [] ports=new int [curports.length];
+        //int I =0;
+        
+           // ports[I++]=x.portValue;
+        
+        DefaultListModel y=new DefaultListModel();
+        
+        for( Port x : Vars.activePorts)
+        y.addElement( x.portValue);
+        portlist.setModel(y);
         
         hubhostfield.setText(Vars.Hub_Host);
         
@@ -5322,7 +5283,6 @@ refreshAll();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
@@ -5360,6 +5320,7 @@ refreshAll();
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
@@ -5404,7 +5365,7 @@ refreshAll();
     private javax.swing.JCheckBox notifycheck;
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
-    private javax.swing.JTextField portfield;
+    private javax.swing.JList portlist;
     private javax.swing.JCheckBox privatecheck;
     private javax.swing.JCheckBox proxycheck;
     private javax.swing.JTextField proxyhostfield;
