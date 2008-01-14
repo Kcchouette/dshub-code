@@ -1,4 +1,5 @@
 *** ***  
+           * some port gui work;
            * can dinamically add/rem ports via command or console;
            * ports have status , OK or DEAD;
            * port command has changed, list add or remove ports;
