@@ -122,13 +122,20 @@ public class PortCmd
                 if(newport.portValue==newp)
                 {
                  Vars.activePorts.remove(newport);
+                 
                  Main.Server.delPort(newport);
                 if(cur_client!=null)
                     cur_client.sendFromBot("Removed port "+newport.portValue);
                 else
                     System.out.print("Removed port "+newport.portValue);
+                 return;
             
                }
+            
+               if(cur_client!=null)
+                    cur_client.sendFromBot("Port "+newp+" doesn't exist.");
+                else
+                    System.out.print("Port "+newp+" doesn't exist");
             }
             catch(NumberFormatException nfe)
             {

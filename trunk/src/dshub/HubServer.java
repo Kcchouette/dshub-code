@@ -169,7 +169,7 @@ public class HubServer extends Thread
         String pop="";
             for( Port port : Vars.activePorts)
             {
-               if( this.addPort(port)==true);
+               if( this.addPort(port)==true)
                pop+=port.portValue+" ";
             }
             if(pop.equals(""))
@@ -254,15 +254,8 @@ public class HubServer extends Thread
     
     public void shutdown()
     {
-        try
-        {
-            acceptor.unbind(address);
-
-        } catch (IllegalArgumentException exception)
-        {
-            if(exception.getMessage().contains("Address not bound"))
-                ;
-        }
+        for( Port x : Vars.activePorts)
+            delPort(x);
 
         
         x.shutdown();

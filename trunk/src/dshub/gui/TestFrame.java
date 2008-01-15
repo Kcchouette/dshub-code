@@ -316,8 +316,10 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel68 = new javax.swing.JLabel();
         hubhostfield = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        portlist = new javax.swing.JList();
+        addnewport = new javax.swing.JButton();
+        remport = new javax.swing.JButton();
+        pane5 = new javax.swing.JScrollPane();
+        portlist = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         fieldtimeout = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -848,8 +850,66 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Tahoma", 0, 10));
         jLabel50.setText("Hub host ( address ) ( enter your DNS here )");
 
-        portlist.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(portlist);
+        addnewport.setText("Add new");
+        addnewport.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                addnewportActionPerformed(evt);
+            }
+        });
+
+        remport.setText("Remove");
+        remport.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                remportActionPerformed(evt);
+            }
+        });
+
+        portlist.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "Value", "Status", "Message"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        portlist.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                portlistKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                portlistKeyTyped(evt);
+            }
+        });
+        pane5.setViewportView(portlist);
 
         org.jdesktop.layout.GroupLayout jPanel21Layout = new org.jdesktop.layout.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -858,10 +918,15 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel21Layout.createSequentialGroup()
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel21Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(28, 28, 28)
-                        .add(jLabel17))
+                        .add(pane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 283, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel17)
+                            .add(jPanel21Layout.createSequentialGroup()
+                                .add(27, 27, 27)
+                                .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, remport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, addnewport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))))
                     .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(jPanel21Layout.createSequentialGroup()
                             .addContainerGap()
@@ -870,15 +935,20 @@ public class TestFrame extends javax.swing.JFrame {
                             .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(17, 17, 17)
                             .add(jLabel50))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel21Layout.createSequentialGroup()
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel17)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 89, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 19, Short.MAX_VALUE)
+                    .add(jPanel21Layout.createSequentialGroup()
+                        .add(jLabel17)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(addnewport)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(remport))
+                    .add(pane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel50))
@@ -4491,6 +4561,11 @@ return;
         AccountTable.getColumnModel().getColumn(2).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(3).setPreferredWidth(AccountTable.getWidth()/5);
         AccountTable.getColumnModel().getColumn(4).setPreferredWidth(AccountTable.getWidth()/5);
+        
+        portlist.setAutoResizeMode(portlist.AUTO_RESIZE_OFF);
+        portlist.getColumnModel().getColumn(0).setPreferredWidth(50);
+        portlist.getColumnModel().getColumn(1).setPreferredWidth(100);
+        portlist.getColumnModel().getColumn(2).setPreferredWidth(131);
     }
     public void refreshAll()
     {
@@ -4599,11 +4674,17 @@ return;
         
            // ports[I++]=x.portValue;
         
-        DefaultListModel y=new DefaultListModel();
+        /*DefaultListModel y=new DefaultListModel();
         
         for( Port x : Vars.activePorts)
         y.addElement( x.portValue);
-        portlist.setModel(y);
+        portlist.setModel(y);*/
+        
+        DefaultTableModel PortsModel=(DefaultTableModel) portlist.getModel();
+       PortsModel.setRowCount(0);
+        for( Port x : Vars.activePorts)
+        PortsModel.addRow(new Object[]{x.portValue,x.getStatus()?"LISTENING":"DEAD",x.getStatus()?"":x.MSG});
+        
         
         hubhostfield.setText(Vars.Hub_Host);
         
@@ -5092,6 +5173,83 @@ refreshAll();
         
         SetStatus("Miscellaneous settings saved.");
     }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void portlistKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_portlistKeyTyped
+    {//GEN-HEADEREND:event_portlistKeyTyped
+       
+    }//GEN-LAST:event_portlistKeyTyped
+
+    private void remportActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_remportActionPerformed
+    {//GEN-HEADEREND:event_remportActionPerformed
+        
+            //need to ureg that reg
+            //  int row=AccountTable.getEditingRow ();
+        try
+        {
+            int row=portlist.getSelectedRow();
+            int curport=(Integer)portlist.getModel().getValueAt(row,0);
+            Port elim=null;
+           for( Port newport:Vars.activePorts)
+                if(newport.portValue==curport)
+                {
+                 elim=newport;
+                 
+                 
+                    
+                
+            
+               }
+           if(elim==null)
+               return;
+           Vars.activePorts.remove(elim);
+                 
+                 Main.Server.delPort(elim);
+                
+                    SetStatus("Removed port "+elim.portValue);
+            
+            refreshAll();
+        }
+        catch ( ArrayIndexOutOfBoundsException aioobe)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_remportActionPerformed
+
+    private void portlistKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_portlistKeyPressed
+    {//GEN-HEADEREND:event_portlistKeyPressed
+         if(evt.getKeyCode()==evt.VK_DELETE)
+            // SetStatus("gay");
+        {
+          
+            remportActionPerformed(null);
+            
+        }
+    }//GEN-LAST:event_portlistKeyPressed
+
+    private void addnewportActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addnewportActionPerformed
+    {//GEN-HEADEREND:event_addnewportActionPerformed
+       //int row=portlist.getSelectedRow();
+            //int curport=(Integer)portlist.getModel().getValueAt(row,0);
+            String newp=JOptionPane.showInputDialog("Enter Port Value");
+            try
+            {
+            int curport=Integer.parseInt(newp);
+            Port newport=new Port(curport);
+            Vars.activePorts.add(newport);
+            Main.Server.addPort(newport);
+            //if(Main.Server.addPort(newport)==true)
+                
+                //    SetStatus("Adding successful. Server now listening also on "+newport.portValue);
+           // else   
+            //        SetStatus("Adding failed. Reason: "+newport.MSG);
+             refreshAll();   
+            }
+            catch ( NumberFormatException nfe)
+            {
+                SetStatus("Invalid port number", JOptionPane.ERROR_MESSAGE);
+            }
+    }//GEN-LAST:event_addnewportActionPerformed
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5162,6 +5320,7 @@ refreshAll();
     private javax.swing.JScrollPane Panelxxx;
     private javax.swing.JPanel PluginPanel;
     private javax.swing.JLabel StatusLabel;
+    private javax.swing.JButton addnewport;
     private javax.swing.JTextField automagicsearchfield;
     private javax.swing.JTextField botdescfield;
     private javax.swing.JTextField botnamefield;
@@ -5320,7 +5479,6 @@ refreshAll();
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
@@ -5365,13 +5523,15 @@ refreshAll();
     private javax.swing.JCheckBox notifycheck;
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
-    private javax.swing.JList portlist;
+    private javax.swing.JScrollPane pane5;
+    private javax.swing.JTable portlist;
     private javax.swing.JCheckBox privatecheck;
     private javax.swing.JCheckBox proxycheck;
     private javax.swing.JTextField proxyhostfield;
     private javax.swing.JTextField proxyportfield;
     private javax.swing.JTextField redirecturl;
     private javax.swing.JCheckBox regonlycheck;
+    private javax.swing.JButton remport;
     private javax.swing.JCheckBox savelogscheck;
     private javax.swing.JCheckBox searchcheck;
     private javax.swing.JTextField searchlogbasefield;
