@@ -1,4 +1,7 @@
 *** ***  
+           * multiport server should be functional now;
+           * created add and remove buttons for ports;
+           * created a table for ports including the 3 columns;
            * some port gui work;
            * can dinamically add/rem ports via command or console;
            * ports have status , OK or DEAD;
