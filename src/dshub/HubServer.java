@@ -68,7 +68,7 @@ public class HubServer extends Thread
    
    public static boolean restart;
    public static IoServiceManager IOSM;
-   public static ServiceManager SM;
+  // public static ServiceManager SM;
    
    private SocketAcceptorConfig cfg;
    
@@ -161,7 +161,7 @@ public class HubServer extends Thread
         //cfg.getSessionConfig().
         //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
         IOSM=new IoServiceManager(acceptor);
-        SM=new ServiceManager(acceptor);
+        //SM=new ServiceManager(acceptor);
         IOSM.startCollectingStats(10000);
        // address=new InetSocketAddress(port);
        

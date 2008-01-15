@@ -94,11 +94,10 @@ public class Broadcast
        
          String NI="";
          
-         IoSession [] x= Main.Server.SM.getSessions().toArray(new IoSession[0]);
-             for(int i=0;i<x.length;i++)
+         for( ClientNod CH: SimpleHandler.Users)
         {
           //  x[i]= ((IoSession) (x[i]));
-        ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
+        //ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
          if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))
         {
              NI=Vars.bot_name;

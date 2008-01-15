@@ -49,7 +49,7 @@ public class PortCmd
             send+="Current ports among with their status :\n";
             for( Port port : Vars.activePorts )
             {
-                send+=port.portValue+" "+(port.getStatus()?"LISTENING" : "DEAD  Reason: "+port.MSG+"\n");
+                send+=port.portValue+" "+(port.getStatus()?"LISTENING\n" : "DEAD  Reason: "+port.MSG+"\n");
             }
             
             if(cur_client!=null)
