@@ -44,7 +44,17 @@ public class HostTester
         try
         {
             Socket testS = new Socket();
-            testS.connect(new InetSocketAddress(Host, Vars.Default_Port),2*1000);
+            int x= Host.indexOf(':')  ;
+                      if(x==-1 || x>(Host.length()-1))
+                       {
+                        
+                       return false;
+                       }   
+                       int port=Integer.parseInt(Host.substring(x+1));
+                       
+                       
+            testS.connect(new InetSocketAddress(Host.substring(0,x), port),2*1000);
+            //System.out.println(Host.substring(0,x)+" "+port);
            
             BufferedReader in = new BufferedReader(new InputStreamReader(testS.getInputStream()));
             PrintStream out=new PrintStream(testS.getOutputStream());
@@ -74,20 +84,25 @@ public class HostTester
         } catch (UnknownHostException ex)
         {
             //Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
+            //ex.printStackTrace();
             return false;
         } catch (IOException ex)
         {
            // Logger.getLogger(HostTester.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
+            //ex.printStackTrace();
           return false;
+        }
+        catch ( NumberFormatException nfe)
+        {
+            return false;
         }
         
         catch ( Exception e)
         {
-            e.printStackTrace();
+           // e.printStackTrace();
            return false;
         }
+        
         return true;
     }
 }

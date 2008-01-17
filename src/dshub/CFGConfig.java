@@ -91,9 +91,15 @@ public class CFGConfig
                      
                        String new_name=ST.nextToken ();
                       
-                        
+                      int x= new_name.indexOf(':')  ;
+                      if(x==-1 || x>new_name.length()-1)
+                       {
+                        cur_client.sendFromBot("Must specify address in the form address:port.");
+                       return;
+                       }   
+                       int port=Integer.parseInt(new_name.substring(x+1));
                        
-                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
+                       InetSocketAddress myHost=new InetSocketAddress(new_name,port);
                        Vector localAddies=new Vector();
                        try{
 Enumeration<NetworkInterface> eNI =

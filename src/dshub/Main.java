@@ -714,9 +714,15 @@ public class Main extends Thread
                      
                        String new_name=ST.nextToken ();
                       
-                        
+                        int x= new_name.indexOf(':')  ;
+                      if(x==-1 || x>new_name.length()-1)
+                       {
+                        System.out.println("Hub_host must be in format address:port.");
+                       continue;
+                       }   
+                       int port=Integer.parseInt(new_name.substring(x+1));
                        
-                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
+                       InetSocketAddress myHost=new InetSocketAddress(new_name,port);
                        Vector localAddies=new Vector();
                        try{
 Enumeration<NetworkInterface> eNI =

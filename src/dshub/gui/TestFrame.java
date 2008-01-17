@@ -4345,56 +4345,17 @@ else
          {
           
                       
-                        
-                       
-                       InetSocketAddress myHost=new InetSocketAddress(new_name,Vars.Default_Port);
-                       Vector localAddies=new Vector();
-                       try{
-Enumeration<NetworkInterface> eNI =
-NetworkInterface.getNetworkInterfaces();
-
-NetworkInterface cNI;
-Enumeration<InetAddress> eIA;
-InetAddress cIA;
-
-for(;eNI.hasMoreElements();){
-cNI = eNI.nextElement();
-eIA = cNI.getInetAddresses();
-
-for(;eIA.hasMoreElements();){
-cIA = eIA.nextElement();
-localAddies.add(cIA.getHostAddress());
-//System.out.println("IP Local = " + cIA.getHostAddress());
-}
-}
-}
-catch(SocketException eS)
-{
-    JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or machine hostname badly set.",
-                    "Error",JOptionPane.ERROR_MESSAGE);
-
-return;
-} 
-                       if(myHost.isUnresolved())
+                        int x= new_name.indexOf(':')  ;
+                      if(x==-1 || x>new_name.length()-1)
                        {
-                           JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or DNS server failure.",
-                    "Error",JOptionPane.ERROR_MESSAGE);
-              
+                        JOptionPane.showMessageDialog(null,"Hub_host must be in format address:port.","Error",JOptionPane.ERROR_MESSAGE);
                        return;
-                       }
-                       try
-                       {
+                       }   
                        
-                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
-                        boolean ok=false;
-                        Iterator myIT=localAddies.iterator();
-                        while(myIT.hasNext())
-                        
-                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
-                                     ok=true;
-                       //ok=false;
-                         if(!ok)
-                       {
+                       
+                       
+                    
+                       
                           int result=JOptionPane.showConfirmDialog(this, "Press ok to scan hub_host ( may take a while) \nso please be patient",
                                   Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
                           if(result==JOptionPane.NO_OPTION)
@@ -4408,19 +4369,14 @@ return;
                             
                        return;
                         }
-                         }
+                         
                         Main.PopMsg("Hub_host changed from \""+
                                 Vars.Hub_Host+"\" to \""+new_name+"\".");
                         
                         Vars.Hub_Host=new_name;
                         Main.Server.rewriteconfig();
                          
-                       }
-                       catch (UnknownHostException uhe)
-                       {
-                          JOptionPane.showMessageDialog(null,new_name+" cannot be resolved or DNS server failure.",
-                    "Error",JOptionPane.ERROR_MESSAGE);
-                       }
+                       
                        
                        
          }
@@ -5206,7 +5162,11 @@ refreshAll();
                  Main.Server.delPort(elim);
                 
                     SetStatus("Removed port "+elim.portValue);
-            
+            if( curport==Integer.parseInt(Vars.Hub_Host.substring(Vars.Hub_Host.indexOf(':')+1)))
+                if(!Vars.activePorts.isEmpty())
+                    for(Port cur:Vars.activePorts)
+                        if(cur.getStatus())
+                                Vars.Hub_Host=Vars.Hub_Host.replace(":"+curport,":"+String.valueOf(cur.portValue));
             refreshAll();
         }
         catch ( ArrayIndexOutOfBoundsException aioobe)
@@ -5232,17 +5192,29 @@ refreshAll();
        //int row=portlist.getSelectedRow();
             //int curport=(Integer)portlist.getModel().getValueAt(row,0);
             String newp=JOptionPane.showInputDialog("Enter Port Value");
+            if(newp==null)
+                return;
             try
             {
             int curport=Integer.parseInt(newp);
             Port newport=new Port(curport);
-            Vars.activePorts.add(newport);
-            Main.Server.addPort(newport);
+            
+            if(Main.Server.addPort(newport)==true)
             //if(Main.Server.addPort(newport)==true)
                 
                 //    SetStatus("Adding successful. Server now listening also on "+newport.portValue);
            // else   
             //        SetStatus("Adding failed. Reason: "+newport.MSG);
+            if( Vars.activePorts.isEmpty() || !Vars.getHostPort().getStatus())
+            {
+                int x= Vars.Hub_Host.indexOf(':')  ;
+                      if(x==-1 || x>Vars.Hub_Host.length()-1)
+                       {
+                        return;
+                       }   
+                       Vars.Hub_Host=Vars.Hub_Host.substring(0,x)+":"+curport;
+            }
+            Vars.activePorts.add(newport);
              refreshAll();   
             }
             catch ( NumberFormatException nfe)

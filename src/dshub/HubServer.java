@@ -226,6 +226,18 @@ public class HubServer extends Thread
            }
             return false;
         }
+        catch(java.lang.IllegalArgumentException ee)
+        {
+            Main.PopMsg("Invalid port "+port.portValue+"."+ee);
+            port.setStatus(false);
+            port.MSG=ee.toString();
+            if(Main.GUIok)
+           {
+               Main.GUI.SetStatus ("invalid port "+port.portValue+"."+ee,JOptionPane.ERROR_MESSAGE);
+               
+           }
+            return false;
+        }
         catch (IOException ex)
         {
             ex.printStackTrace();
@@ -372,7 +384,7 @@ public class HubServer extends Thread
         
         vars=(Variables)in.readObject();
         Vars.Timeout_Login=vars.Timeout_Login;
-        Vars.Default_Port=vars.Default_Port;
+       // Vars.Default_Port=vars.Default_Port;
       
         Vars.HubVersion=vars.HubVersion;
         Vars.HubDE=vars.HubDE;
