@@ -35,7 +35,7 @@ public class Variables implements Serializable
 {
       int Timeout_Login;
       /** Default port on which to start hubbie */
-      int Default_Port;
+      //int Default_Port;
     
 
     
@@ -164,7 +164,7 @@ public class Variables implements Serializable
       public Variables()
       {
           Timeout_Login=Vars.Timeout_Login;
-          Default_Port=Vars.Default_Port;
+         // Default_Port=Vars.Default_Port;
 
           HubDE=Vars.HubDE;
           HubName=Vars.HubName;

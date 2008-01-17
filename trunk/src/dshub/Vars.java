@@ -52,7 +52,7 @@ public final class Vars
     }
      
     public static int  Timeout_Login=20;
-    public static int  Default_Port=411;
+    //public static int  Default_Port=411;
    
     public static String HubVersion="DSHub Theta";
     public static String HubDE="";
@@ -75,7 +75,7 @@ public final class Vars
     public static String SecurityCid;
     public static String OpChatCid;
     
-    public static String Hub_Host="127.0.0.1";
+    public static String Hub_Host="127.0.0.1:411";
     
     public static String Proxy_Host="";
     public static int Proxy_Port;
@@ -111,6 +111,15 @@ public final class Vars
           
     }
     
+    public static Port getHostPort()
+    {
+        for(Port x: activePorts)
+        {
+            if(x.portValue==Integer.parseInt(Vars.Hub_Host.substring(Vars.Hub_Host.indexOf(':')+1)))
+                return x;
+        }
+        return new Port(Integer.parseInt(Vars.Hub_Host.substring(Vars.Hub_Host.indexOf(':')+1)));
+    }
     public static int max_ni=64;
     public static int min_ni=1;
     public static int max_de=128;

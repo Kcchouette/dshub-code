@@ -1,4 +1,7 @@
 *** ***  
+           * hub_host should be smartly updated when updating ports;
+           * hub_host must now include a port;
+           * fixed issue with hub_host and multi ports;
            * added initial support for the PING ADC extension;
            * multiport server should be functional now;
            * created add and remove buttons for ports;

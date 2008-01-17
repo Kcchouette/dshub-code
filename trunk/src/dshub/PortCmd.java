@@ -77,6 +77,15 @@ public class PortCmd
             {
             int newp= Integer.parseInt(ST.nextToken());
             Port newport=new Port(newp);
+           if( Vars.activePorts.isEmpty() || !Vars.getHostPort().getStatus())
+            {
+                int x= Vars.Hub_Host.indexOf(':')  ;
+                      if(x==-1 || x>Vars.Hub_Host.length()-1)
+                       {
+                        return;
+                       }   
+                       Vars.Hub_Host=Vars.Hub_Host.substring(0,x)+":"+newp;
+            }
             Vars.activePorts.add(newport);
             if(Main.Server.addPort(newport)==true)
                 if(cur_client!=null)
@@ -87,7 +96,7 @@ public class PortCmd
                 if(cur_client!=null)
                     cur_client.sendFromBot("Adding failed. Reason: "+newport.MSG);
                 else
-                    System.out.print("Adding failed. Reason: "+newport.MSG);
+                    System.out.print("Adding failed. Reason: "+newport.MSG);         
             }
             catch(NumberFormatException nfe)
             {
@@ -128,7 +137,12 @@ public class PortCmd
                     cur_client.sendFromBot("Removed port "+newport.portValue);
                 else
                     System.out.print("Removed port "+newport.portValue);
-                 return;
+              if( newp==Integer.parseInt(Vars.Hub_Host.substring(Vars.Hub_Host.indexOf(':')+1)))
+                if(!Vars.activePorts.isEmpty())
+                    for(Port cur:Vars.activePorts)
+                        if(cur.getStatus())
+                                Vars.Hub_Host=Vars.Hub_Host.replace(":"+newp,":"+String.valueOf(cur.portValue));
+              return;
             
                }
             
