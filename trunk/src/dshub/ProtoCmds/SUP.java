@@ -87,6 +87,8 @@ public class SUP
                             aux=aux.substring (2);
                             if(aux.startsWith ("BAS") && aux.length()==4)
                                 cur_client.base=1;
+                            if(aux.startsWith ("PIN") && aux.length()==4)
+                                cur_client.ping=true;
                             if(aux.startsWith ("UCM") && aux.length()==4)
                                 cur_client.ucmd=1;
                         }
@@ -95,6 +97,10 @@ public class SUP
                             aux=aux.substring (2);
                             if(aux.startsWith ("UCM") && aux.length()==4)
                                 cur_client.ucmd=0;
+                            if(aux.startsWith ("BAS") && aux.length()==4)
+                                cur_client.base=0;
+                            if(aux.startsWith ("PIN") && aux.length()==4)
+                                cur_client.ping=false;
                         }
                     }
                     if(cur_client.base==0)
@@ -111,13 +117,41 @@ public class SUP
          
        
         cur_client.sendToClient(ADC.ISID+" "+cur_client.SessionID);
-         
+         if(!cur_client.ping)
         if(Vars.HubDE.equals (""))
             cur_client.sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
         else
            cur_client. sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
+       
+         else
+             //its a PINGer
+         if(Vars.HubDE.equals (""))
+            cur_client.sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
+                     +" HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
+                     SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
+                     " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
+                     " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
+                     " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
+                     " MC"+Vars.max_users
+                    
+                    
+                    );
+        else
+           cur_client. sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
+       cur_client. sendToClient("ISTA 000 "+
+            "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s")
+             +" HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
+                     SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
+                     " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
+                     " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
+                     " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
+                     " MC"+Vars.max_users
+            
+            );
+       
        cur_client. sendToClient("ISTA 000 "+
             "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+             
                     }
     }
     

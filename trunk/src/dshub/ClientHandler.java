@@ -150,6 +150,10 @@ public int kicked=0;
     
     public String SessionID;
     byte [] sid;
+    /** indicates if client is a pinger a.k.a. PING extension */
+    public boolean ping;
+    
+    
     /** indicates if client supports UCMD messages*/
     public int ucmd;
     /**indicates if client supports BASE messages*/

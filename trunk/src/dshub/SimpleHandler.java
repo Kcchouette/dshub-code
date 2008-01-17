@@ -162,5 +162,48 @@ public class SimpleHandler extends IoHandlerAdapter
                 
         
 	}
+        
+        public static int getUserCount()
+        {
+            int ret=0;
+            for( ClientNod x:SimpleHandler.Users)
+            {
+                if(x.cur_client.userok==1)
+                    ret++;
+            }
+            return ret;
+        }
+         public static long getTotalShare()
+        {
+            long ret=0;
+            for( ClientNod x:SimpleHandler.Users)
+            {
+                try
+                {
+                if(x.cur_client.userok==1)
+                    if(x.cur_client.SS!=null)
+                         ret+=Long.parseLong(x.cur_client.SS);
+                }
+                catch( NumberFormatException nfe)
+                {}
+            }
+            return ret;
+        }
+          public static long getTotalFileCount()
+        {
+            long ret=0;
+            for( ClientNod x:SimpleHandler.Users)
+            {
+                try
+                {
+                if(x.cur_client.userok==1)
+                    if(x.cur_client.SF!=null)
+                         ret+=Long.parseLong(x.cur_client.SF);
+                }
+                catch( NumberFormatException nfe)
+                {}
+            }
+            return ret;
+        }
     
 }
