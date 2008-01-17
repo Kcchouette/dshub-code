@@ -23,7 +23,6 @@ package dshub;
  */
 
 import dshub.TigerImpl.Base32;
-import java.lang.String;
 
 /**
  *This class is the main storage place for ADC command that hub has to send.
@@ -36,7 +35,7 @@ abstract public class ADC
     
     
     /**First string to send to connecting client ;)*/
-    public static final String Init="ISUP ADBASE ADTIGR ADUCM0"; //adding basic ucmds, adding tiger hash support
+    public static final String Init="ISUP ADBASE ADTIGR ADUCM0 ADPIN0"; //adding basic ucmds, adding tiger hash support
     
     /**  ISID = session id string for connecting client*/
     public  static final String ISID="ISID";

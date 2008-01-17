@@ -1,4 +1,5 @@
 *** ***  
+           * added initial support for the PING ADC extension;
            * multiport server should be functional now;
            * created add and remove buttons for ports;
            * created a table for ports including the 3 columns;
