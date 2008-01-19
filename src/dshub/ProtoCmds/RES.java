@@ -40,15 +40,15 @@ public class RES
     public RES(ClientHandler cur_client,String State, String Issued_Command) throws STAException
     {
         if(cur_client.ACTIVE==0)
-           new STAError(cur_client,140,"Error: Must be TCP active to use RES.");
+           new STAError(cur_client,100,"Error: Must be TCP active to use RES.");
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-           new STAError(cur_client,140,"RES Invalid State.");
+           new STAError(cur_client,100+Constants.STA_INVALID_STATE,"RES Invalid State.","FC",Issued_Command.substring(0,4));
       if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BRES!=1)
-             { new STAError(cur_client,140,"RES Invalid Context B");
+             { new STAError(cur_client,100,"RES Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.ERES!=1)
@@ -56,16 +56,16 @@ public class RES
                        return;}break;
          case 'D':
           if(Vars.DRES!=1)
-          {   new STAError(cur_client,140,"RES Invalid Context D");
+          {   new STAError(cur_client,100,"RES Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FRES!=1)
-           {   new STAError(cur_client,140,"RES Invalid Context F");
+           {   new STAError(cur_client,100,"RES Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HRES!=1)
-              {   new STAError(cur_client,140,"RES Invalid Context H");
+              {   new STAError(cur_client,100,"RES Invalid Context H");
                        return;}
                  
      }
@@ -76,7 +76,7 @@ public class RES
                 aux=tok.nextToken();
                 if(!aux.equals(cur_client.SessionID))
                 {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                      new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                       return ;
                 }
                 aux=tok.nextToken();

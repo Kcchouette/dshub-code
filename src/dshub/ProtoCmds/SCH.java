@@ -40,7 +40,7 @@ public class SCH
     {
      if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
      {
-        new STAError(cur_client,240,"SCH Invalid State.");
+        new STAError(cur_client,200+Constants.STA_INVALID_STATE,"SCH Invalid State.","FC",Issued_Command.substring(0,4));
         return ;
      }
                
@@ -49,24 +49,24 @@ public class SCH
      {
          case 'B':
              if(Vars.BSCH!=1)
-             { new STAError(cur_client,140,"SCH Invalid Context B");
+             { new STAError(cur_client,100,"SCH Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.ESCH!=1)
-              {  new STAError(cur_client,140,"SCH Invalid Context E");
+              {  new STAError(cur_client,100,"SCH Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DSCH!=1)
-          {   new STAError(cur_client,140,"SCH Invalid Context D");
+          {   new STAError(cur_client,100,"SCH Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FSCH!=1)
-           {   new STAError(cur_client,140,"SCH Invalid Context F");
+           {   new STAError(cur_client,100,"SCH Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HSCH!=1)
-              {   new STAError(cur_client,140,"SCH Invalid Context H");
+              {   new STAError(cur_client,100,"SCH Invalid Context H");
                        return;}
                  
      }
@@ -87,7 +87,7 @@ public class SCH
                     int len=0;
                     if(!tok.nextToken().equals(cur_client.SessionID))
                     {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                      new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                       return ;
                     }
                     
@@ -98,14 +98,14 @@ public class SCH
                         
                             if(Issued_Command.charAt (0)!='F')
                             {
-                                new STAError(cur_client,140,"SCH Must Be Feature Broadcast to send to Featured clients.");
+                                new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"SCH Must Be Feature Broadcast to send to Featured clients.");
                                  return;
                             }
                             else if(aux.equals ("+TCP4"))
                               activeonly=1;
                             else
                             {
-                                new STAError(cur_client,140,"SCH Feature Not Supported.");
+                                new STAError(cur_client,100,"SCH Feature Not Supported.");
                                 return;
                             } 
                         else if(aux.startsWith ("AN") || aux.startsWith ("EX") || aux.startsWith ("NO"))
@@ -141,12 +141,12 @@ public class SCH
                     }
                     if(len>Vars.max_sch_chars)
                     {
-                        new STAError(cur_client,140,"Search exceeds maximum length.");
+                        new STAError(cur_client,100,"Search exceeds maximum length.");
                         return;
                     }
                     if(len<Vars.min_sch_chars && len!=0)
                     {
-                        new STAError(cur_client,140,"Search too short.");
+                        new STAError(cur_client,100,"Search too short.");
                         return;
                     }
                     long curtime=System.currentTimeMillis();
@@ -221,7 +221,7 @@ public class SCH
                         new Broadcast(Issued_Command,Broadcast.STATE_ACTIVE);
                     else
                     {
-                        new STAError(cur_client,140,"SCH Invalid Context.");
+                        new STAError(cur_client,100,"SCH Invalid Context.");
                         return;
                     }
     }

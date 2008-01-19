@@ -60,7 +60,7 @@ public class STAError
         }
        
     }
-    public STAError(ClientHandler CH,int ec,String error_d, String FL) throws STAException
+    public STAError(ClientHandler CH,int ec,String error_d, String Prefix, String Flag) throws STAException
     {
         cur_client=CH;
         error_code=ec;
@@ -68,7 +68,7 @@ public class STAError
         error_desc=ADC.retADCStr (error_d);
         
        
-        String Error_string="ISTA "+Integer.toString(error_code)+" "+error_desc+" FL" + FL;
+        String Error_string="ISTA "+Integer.toString(error_code)+" "+error_desc+" "+Prefix + Flag;
          
         cur_client.sendToClient(Error_string);
         if(ec>=200)

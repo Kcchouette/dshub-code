@@ -132,7 +132,7 @@ public String CT="0";
 *2=Extended away, not interested in hub chat (hubs may skip sending broadcast type MSG commands to clients with this flag)*/
 public String AW;
 /**1=Bot (in particular, this means that the client does not support file transfers, and thus should never be queried for direct connections)*/
-public String BO;
+//public String BO;
 /**1=Hidden, should not be shown on the user list.*/
 public String HI;
 /**1=Hub, this INF is about the hub itself*/
@@ -290,7 +290,7 @@ public int kicked=0;
          if(x==true)
          {
              if(this.reg.isreg && this.reg.opchataccess==true)
-                 this.sendToClient("BINF ABCD ID"+Vars.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)+" BO1 OP1 DE"+ADC.retADCStr(Vars.Opchat_desc));
+                 this.sendToClient("BINF ABCD ID"+Vars.OpChatCid+" NI"+ADC.retADCStr(Vars.Opchat_name)+" CT5 DE"+ADC.retADCStr(Vars.Opchat_desc));
          }
          else
          {

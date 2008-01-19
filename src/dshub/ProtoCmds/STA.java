@@ -59,18 +59,18 @@ public class STA
             TK.nextToken ();
             if(!TK.hasMoreTokens())
             {
-                new STAError(cur_client,140,"Must supply SID");
+                new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Must supply SID");
                 return;
             }
             String cursid=TK.nextToken ();
             if(!cursid.equals (cur_client.SessionID))
             {
-                 new STAError(cur_client,140,"Protocol Error.Wrong SID supplied.");
+                 new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                  return ;
             }
             if(!TK.hasMoreTokens())
             {
-                new STAError(cur_client,140,"Must supply target SID");
+                new STAError(cur_client,140+Constants.STA_GENERIC_PROTOCOL_ERROR,"Must supply target SID");
                 return;
             }
             String dsid=TK.nextToken ();
@@ -85,7 +85,7 @@ public class STA
                 }
             }
             
-                new STAError(cur_client,140,"Invalid Target Sid.");
+                new STAError(cur_client,100,"Invalid Target Sid.");
                 return ;
                
             
@@ -104,18 +104,18 @@ public class STA
             TK.nextToken ();
             if(!TK.hasMoreTokens())
             {
-                new STAError(cur_client,140,"Must supply SID");
+                new STAError(cur_client,100,"Must supply SID");
                 return;
             }
             String cursid=TK.nextToken ();
             if(!cursid.equals (cur_client.SessionID))
             {
-                 new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                 new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                  return ;
             }
             if(!TK.hasMoreTokens())
             {
-                new STAError(cur_client,140,"Must supply SID");
+                new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Must supply SID");
                 return;
             }
             String esid=TK.nextToken ();
@@ -129,7 +129,7 @@ public class STA
                 }
             }
            
-                new STAError(cur_client,140,"Invalid Target Sid.");
+                new STAError(cur_client,100,"Invalid Target Sid.");
                 return ;
             
                  

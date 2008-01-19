@@ -1,5 +1,7 @@
 *** Theta RC 4 ***  
  
+           * STA messages changed to 1.0
+           * bots are now CT5 instead of BO1
            * ADC 1.0 partial support, this means : client type 
               IS GONNA BE WEIRD FOR OLD CLIENTS ( NO MORE KEYS )
                AND MAYBE MORE.

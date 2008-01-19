@@ -44,24 +44,24 @@ public class SUP
      {
          case 'B':
              if(Vars.BSUP!=1)
-             { new STAError(cur_client,140,"SUP Invalid Context B");
+             { new STAError(cur_client,100,"SUP Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.ESUP!=1)
-              {  new STAError(cur_client,140,"SUP Invalid Context E");
+              {  new STAError(cur_client,100,"SUP Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DSUP!=1)
-          {   new STAError(cur_client,140,"SUP Invalid Context D");
+          {   new STAError(cur_client,100,"SUP Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FSUP!=1)
-           {   new STAError(cur_client,140,"SUP Invalid Context F");
+           {   new STAError(cur_client,100,"SUP Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HSUP!=1)
-              {   new STAError(cur_client,140,"SUP Invalid Context H");
+              {   new STAError(cur_client,100,"SUP Invalid Context H");
                        return;}
                  
      }
@@ -74,7 +74,7 @@ public class SUP
                     } 
                     if(State.equals ("VERIFY")||State.equals ("IDENTIFY"))
                         {
-                            new STAError(cur_client,240,"SUP Invalid State.");
+                            new STAError(cur_client,200+Constants.STA_INVALID_STATE,"SUP Invalid State.");
                             return;
                         }
                     Issued_Command=Issued_Command.substring(4);
@@ -112,12 +112,12 @@ public class SUP
                            throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");  
                       else if (State.equals ("NORMAL"))
                       {
-                          new STAError(cur_client,240,"You removed BASE features therefore you can't stay on hub anymore.");
+                          new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"You removed BASE features therefore you can't stay on hub anymore.");
                           return;
                       }
                     
                     if(!cur_client.tigr)
-                       new STAError(cur_client,100,"Cannot find any compatible hash function to use. Defaulting to TIGER.");
+                       new STAError(cur_client,100+Constants.STA_NO_HASH_OVERLAP,"Cannot find any compatible hash function to use. Defaulting to TIGER.");
                           
                     
                     if(State.equals("PROTOCOL"))

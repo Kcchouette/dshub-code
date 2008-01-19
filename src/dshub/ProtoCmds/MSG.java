@@ -39,30 +39,30 @@ public class MSG
     public MSG (ClientHandler cur_client, String State, String Issued_Command) throws STAException
     {
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-        new STAError(cur_client,240,"MSG Invalid State.");
+        new STAError(cur_client,200+Constants.STA_INVALID_STATE,"MSG Invalid State.","FC",Issued_Command.substring(0,4));
       if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BMSG!=1)
-             { new STAError(cur_client,140,"MSG Invalid Context B");
+             { new STAError(cur_client,100,"MSG Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.EMSG!=1)
-              {  new STAError(cur_client,140,"MSG Invalid Context E");
+              {  new STAError(cur_client,100,"MSG Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DMSG!=1)
-          {   new STAError(cur_client,140,"MSG Invalid Context D");
+          {   new STAError(cur_client,100,"MSG Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FMSG!=1)
-           {   new STAError(cur_client,140,"MSG Invalid Context F");
+           {   new STAError(cur_client,100,"MSG Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HMSG!=1)
-              {   new STAError(cur_client,140,"MSG Invalid Context H");
+              {   new STAError(cur_client,100,"MSG Invalid Context H");
                        return;}
                  
      }
@@ -78,7 +78,7 @@ public class MSG
                
                     if(!tok.nextToken().equals(cur_client.SessionID))
                     {
-                      new STAError(cur_client,240,"Protocol Error. Wrong SID supplied.");
+                      new STAError(cur_client,200,"Protocol Error. Wrong SID supplied.");
                       return ;
                     }
                     String pmsid=null;
@@ -91,7 +91,7 @@ public class MSG
                        if(
                         !(cur_client.reg.overridespam))
                        {
-                       new STAError(cur_client,140,"Message exceeds maximum lenght.");
+                       new STAError(cur_client,100,"Message exceeds maximum lenght.");
                        return;
                        }
                    }
@@ -182,7 +182,7 @@ public class MSG
                           // System.out.println("notying");
                        }
                        if(kick)
-                           new STAError(cur_client,201,"You typed forbidden word.");
+                           new STAError(cur_client,100,"You typed forbidden word.");
                        if(ret)
                            return;
                    }
@@ -199,7 +199,7 @@ public class MSG
                              me=1;
                            else
                            {
-                               new STAError(cur_client,140,"MSG Invalid Flag.");
+                               new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"MSG Invalid Flag.");
                                return;
                            }
                        
@@ -213,7 +213,7 @@ public class MSG
                            if(!cur_client.reg.overridespam)
                                
                                {
-                       new STAError(cur_client,000,"Chatting Too Fast. Minimum chat interval "+String.valueOf (Vars.chat_interval)+" .You made "+String.valueOf (now-cur_client.LastChatMsg)+".");
+                       new STAError(cur_client,100,"Chatting Too Fast. Minimum chat interval "+String.valueOf (Vars.chat_interval)+" .You made "+String.valueOf (now-cur_client.LastChatMsg)+".");
                            return;
                                }
                            
@@ -229,7 +229,7 @@ public class MSG
                    {
                        if(pmsid!=null)
                        {
-                           new STAError(cur_client,140,"MSG Can't PM to Mainchat.");
+                           new STAError(cur_client,100,"MSG Can't Broadcast PM.");
                            return;
                        }
                        // ok now lets check that the chat is a command....
@@ -278,12 +278,12 @@ public class MSG
                    {
                        if(pmsid==null)
                        {
-                           new STAError(cur_client,140,"MSG Can't PM to Nobody.");
+                           new STAError(cur_client,100,"MSG Can't PM to Nobody.");
                            return;
                        }
                        if(!thissid.equals (cur_client.SessionID))
                        {
-                           new STAError(cur_client,140,"MSG PM not returning to self.");
+                           new STAError(cur_client,100,"MSG PM not returning to self.");
                            return;
                        }
                        if(pmsid.equals ("DCBA"))
@@ -329,7 +329,7 @@ public class MSG
                       }
                       //talking to inexisting client
                       
-                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                            new STAError(cur_client,100,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
                             return;
                       
                        
@@ -361,12 +361,12 @@ public class MSG
                    {
                        if(pmsid==null)
                        {
-                           new STAError(cur_client,140,"MSG Can't PM to Nobody.");
+                           new STAError(cur_client,100,"MSG Can't PM to Nobody.");
                            return;
                        }
                        if(!thissid.equals (cur_client.SessionID))
                        {
-                           new STAError(cur_client,140,"MSG PM not returning to self.");
+                           new STAError(cur_client,100,"MSG PM not returning to self.");
                            return;
                        }
                        if(pmsid.equals ("DCBA"))
@@ -393,7 +393,7 @@ public class MSG
                         }
                       //talking to inexisting client
                       
-                            new STAError(cur_client,140,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
+                            new STAError(cur_client,100,"MSG User not found."); //not kick, maybe the other client just left after he sent the msg;
                             return;
                        
                      
@@ -416,7 +416,7 @@ public class MSG
                    
                    else
                    {
-                       new STAError(cur_client,140,"MSG Invalid Context");
+                       new STAError(cur_client,100,"MSG Invalid Context");
                        return;
                    }
     }
