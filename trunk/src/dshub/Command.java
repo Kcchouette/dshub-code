@@ -58,12 +58,12 @@ public class Command
         if(!cur_client.reg.key) //increase HR count and put RG field to 1
         {
              cur_client.HR=String.valueOf(Integer.parseInt(cur_client.HR)+1);
-             cur_client.RG="1";
+             cur_client.CT="2";
         }
         else //increase HO count and put OP field to 1
         {
              cur_client.HO=String.valueOf(Integer.parseInt(cur_client.HO)+1);
-             cur_client.OP="1";
+             cur_client.CT="4";
         }
         
         cur_client.reg.LastLogin=System.currentTimeMillis();
@@ -909,17 +909,18 @@ public class Command
 						
 		              myTiger.engineReset();
 		                myTiger.init();	
-                                byte [] bytecid=Base32.decode (cur_client.ID);
+                                // removed old adc support;
+                              //  byte [] bytecid=Base32.decode (cur_client.ID);
                                 byte [] pas=cur_client.reg.Password.getBytes ();
                                 byte []random=Base32.decode (cur_client.RandomData);
                                 
-                                byte [] result =new byte[bytecid.length+pas.length+random.length];
-				for(int i=0;i<bytecid.length;i++)
-                                    result[i]=bytecid[i];
-                                for(int i=bytecid.length;i<pas.length+bytecid.length;i++)
-                                    result[i]=pas[i-bytecid.length];
-                                for(int i=pas.length+bytecid.length;i<random.length+pas.length+bytecid.length;i++)
-                                    result[i]=random[i-pas.length-bytecid.length];
+                                byte [] result =new byte[pas.length+random.length];
+				//for(int i=0;i<bytecid.length;i++)
+                                 //   result[i]=bytecid[i];
+                                for(int i=0;i<pas.length;i++)
+                                    result[i]=pas[i];
+                                for(int i=pas.length;i<random.length+pas.length;i++)
+                                    result[i]=random[i-pas.length];
                                 
 		         myTiger.engineUpdate(result,0,result.length);
 				

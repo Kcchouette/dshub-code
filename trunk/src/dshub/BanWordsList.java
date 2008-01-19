@@ -38,10 +38,10 @@ import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 
 public class BanWordsList {
-    Vector bannedWords;
+    Vector<BannedWord> bannedWords;
     /** Creates a new instance of BanWordsList */
     public BanWordsList() {
-        bannedWords=new Vector();
+        bannedWords=new Vector<BannedWord>();
     }
     
     public int size(){

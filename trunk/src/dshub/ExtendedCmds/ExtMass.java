@@ -477,11 +477,21 @@ public class ExtMass
                                      for( ClientNod tempz : SimpleHandler.Users )
                                      
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.cur_client.sendFromBotPM(aux);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.cur_client.sendFromBotPM(aux);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Sent to all registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all registered/non registered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -527,11 +537,21 @@ public class ExtMass
                                      for( ClientNod tempz : SimpleHandler.Users )
                                      
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.OP)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.cur_client.sendFromBotPM(aux);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.cur_client.sendFromBotPM(aux);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Sent to all Op users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all Op/non op users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -701,11 +721,21 @@ public class ExtMass
                                      for( ClientNod tempz : SimpleHandler.Users )
                                      
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.cur_client.sendFromBotPM(aux);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.cur_client.sendFromBotPM(aux);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all not registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -751,11 +781,21 @@ public class ExtMass
                                      for( ClientNod tempz : SimpleHandler.Users )
                                      
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.cur_client.sendFromBotPM(aux);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.cur_client.sendFromBotPM(aux);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Sent to all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Sent to all not ops/non ops users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 

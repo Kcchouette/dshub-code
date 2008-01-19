@@ -568,11 +568,21 @@ public class ExtRedirect
                                      for( ClientNod tempz : SimpleHandler.Users )
                                      
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.redirectMe(cur_client,URL);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Redirected all registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Redirected all registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -623,8 +633,18 @@ public class ExtRedirect
                                           {
                                              try
                                              {
-                                            if(Long.parseLong (tempz.cur_client.OP)==Number )
-                                                tempz.redirectMe(cur_client,URL);
+                                            if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
                                              } catch (NumberFormatException nfe)
                                              {
                                                  
@@ -635,7 +655,7 @@ public class ExtRedirect
                                         
                                          
                                      }
-                                     cur_client.sendFromBot("Redirected all Op users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Redirected all Op/non op users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -828,14 +848,24 @@ public class ExtRedirect
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
-                                                if(Long.parseLong (tempz.cur_client.RG)!=Number )
-                                                  tempz.redirectMe(cur_client,URL);
+                                           if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
                                          
                                      }
-                                     cur_client.sendFromBot("Redirected all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Redirected all not registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -890,14 +920,24 @@ public class ExtRedirect
                                      {if(tempz.cur_client.userok==1)
                                           try
                                              {
-                                                if(Long.parseLong (tempz.cur_client.OP)!=Number )
-                                                  tempz.redirectMe(cur_client,URL);
+                                               if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.redirectMe(cur_client,URL);
+                                          }
                                              } catch (NumberFormatException numberFormatException)
                                              {
                                              }
                                          
                                      }
-                                     cur_client.sendFromBot("Redirected all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Redirected all not ops/non ops users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 

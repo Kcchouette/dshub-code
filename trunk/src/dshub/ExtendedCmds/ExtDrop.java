@@ -500,11 +500,23 @@ public class ExtDrop
                                      //kick all shared > number
                                      for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
+                                          if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.dropMe (cur_client);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.dropMe (cur_client);
+                                          }
+                                      
                                          
                                      }
-                                     cur_client.sendFromBot("Dropped all registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Dropped all registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -550,11 +562,22 @@ public class ExtDrop
                                      //kick all shared > number
                                     for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.OP)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.dropMe (cur_client);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.dropMe (cur_client);
+                                          }
                                         
                                      }
-                                     cur_client.sendFromBot("Dropped all Op users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Dropped all Op/non op users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -724,11 +747,22 @@ public class ExtDrop
                                      //kick all shared > number
                                      for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.dropMe (cur_client);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.dropMe (cur_client);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Dropped all not registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -774,11 +808,22 @@ public class ExtDrop
                                      //kick all shared > number
                                      for( ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.dropMe (cur_client);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.dropMe (cur_client);
+                                          }
                                         
                                      }
-                                     cur_client.sendFromBot("Dropped all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Dropped all not ops/non ops users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 

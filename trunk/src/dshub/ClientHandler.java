@@ -122,10 +122,12 @@ public String HR;
 public String HO;
 /**Token, as received in RCM/CTM, when establishing a C-C connection.*/
 public String TO;
-/**1=op*/
-public String OP;
-/**1=registered*/
-public String RG;
+/**Client (user) type, 1=bot, 2=registered user, 4=operator,
+ * 
+ * 8=super user, 16=hub owner, 32=hub (used when the hub sends an INF about itself).
+ * Multiple types are specified by adding the numbers together.
+ * */
+public String CT="0";
 /**1=Away
 *2=Extended away, not interested in hub chat (hubs may skip sending broadcast type MSG commands to clients with this flag)*/
 public String AW;
@@ -137,6 +139,8 @@ public String HI;
 public String HU;
 /**Comma-separated list of feature FOURCC's. This notifies other clients of extended capabilities of the connecting client. Use with discretion.*/
 public String SU;
+/**URL of referer (hub in case of redirect, web page)*/
+public String RF;
 	
 public int search_step=0;
 public long Lastsearch=0L;
@@ -158,6 +162,9 @@ public int kicked=0;
     public int ucmd;
     /**indicates if client supports BASE messages*/
     public int base; 
+    
+    /** if client supports TIGER hashes or not */
+    public boolean tigr;
     /** Client Connect time in millis as Syste.gettimemillis() ; ;)*/
    public  long ConnectTimeMillis;
    public  String cur_inf;
@@ -234,10 +241,8 @@ public int kicked=0;
                    auxstr=auxstr+" HR"+HR;
                if(HU!=null)if(!HU.equals (""))
                    auxstr=auxstr+" HU"+HU;
-               if(OP!=null)if(!OP.equals (""))//should change.. only for OPS ;)
-                   auxstr=auxstr+" OP"+OP;
-               if(RG!=null)if(!RG.equals (""))//should change.. only for regs
-                   auxstr=auxstr+" RG"+RG;
+               if(CT!=null)if(!CT.equals ("")) if( !CT.equals("0"))//should change.. more working here
+                   auxstr=auxstr+" CT"+CT;
                if(SF!=null)if(!SF.equals (""))
                    auxstr=auxstr+" SF"+SF;
                if(SS!=null)if(!SS.equals (""))

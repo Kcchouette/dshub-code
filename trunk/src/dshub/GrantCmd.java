@@ -548,11 +548,9 @@ public class GrantCmd
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                                   {
-                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
-                                 tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
-                                    tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
-                                    tempx.cur_client.RG="";
-                                    tempx.cur_client.OP="1";
+                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
+                                 
+                                    tempx.cur_client.CT="4";
                         }
                         
                         }
@@ -571,11 +569,10 @@ public class GrantCmd
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                              {
-                         new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
-                         tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
-                         tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
-                         tempx.cur_client.RG="1";
-                         temp.cur_client.OP="";
+                         new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                         
+                         tempx.cur_client.CT="2";
+                         
                           }
                  }
                 
@@ -1075,11 +1072,9 @@ public GrantCmd(String cmd)
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                                  {
-                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)-1));
-                                 tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)+1);
-                                    tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)-1);
-                                    tempx.cur_client.RG="";
-                                    tempx.cur_client.OP="1";
+                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
+                                 
+                                    tempx.cur_client.CT="4";
                                  }
                         }
                         
@@ -1097,11 +1092,10 @@ public GrantCmd(String cmd)
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                              {
-                         new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (tempx.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (tempx.cur_client.HR)+1));
-                         tempx.cur_client.HO=Integer.toString (Integer.parseInt (tempx.cur_client.HO)-1);
-                         tempx.cur_client.HR=Integer.toString (Integer.parseInt (tempx.cur_client.HR)+1);
-                         tempx.cur_client.RG="1";
-                         temp.cur_client.OP="";
+                         new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                         
+                         tempx.cur_client.CT="2";
+                         
                              }
                  }
                  

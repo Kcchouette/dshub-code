@@ -55,7 +55,7 @@ public final class Modulator
     public static LinkedList<Module> myModules;
     static
     {
-        myModules=new LinkedList();
+        myModules=new LinkedList<Module>();
     }
     
     public static void findModules()

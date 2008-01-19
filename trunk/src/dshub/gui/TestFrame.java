@@ -29,17 +29,10 @@ import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.NetworkInterface;
 import java.net.Proxy;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -600,9 +593,9 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
 
-        jLabel14.setText("Version: DSHub Theta RC3");
+        jLabel14.setText("Version: DSHub Theta RC4");
 
-        jLabel7.setText("Copyright 2007  by Pietry");
+        jLabel7.setText("Copyright 2007-2008  by Pietry");
 
         jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio");
 
@@ -631,9 +624,10 @@ public class TestFrame extends javax.swing.JFrame {
                             .add(jLabel6)))
                     .add(jPanel23Layout.createSequentialGroup()
                         .add(73, 73, 73)
-                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel14)
-                            .add(jLabel7))))
+                        .add(jLabel14))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .add(60, 60, 60)
+                        .add(jLabel7)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
@@ -3783,13 +3777,9 @@ else
                        {
                     temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                     temp.cur_client.putOpchat(false);
-                    if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
-                    if(temp.cur_client.reg.key)
-                        temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
-                    else
-                        temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);
-                    temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
-                    new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                    temp.cur_client.CT="0";
+                    
+                    new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                     temp.cur_client.reg=new Nod();
                     Main.PopMsg("User "+temp.cur_client.NI+" with CID "+CID+" found, deleted.");
                     Main.Server.rewriteregs();

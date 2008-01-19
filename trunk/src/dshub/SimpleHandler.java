@@ -44,7 +44,7 @@ public class SimpleHandler extends IoHandlerAdapter
     public static LinkedList<ClientNod> Users;
     static 
     {
-        Users= new LinkedList();
+        Users= new LinkedList<ClientNod>();
     }
     /** Creates a new instance of SimpleHandler */
     public SimpleHandler()

@@ -1221,11 +1221,10 @@ if(curAcc.myMask.adc)
                 if(temp.cur_client.userok==1)
                 if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                  {
-                new Broadcast("BINF "+temp.cur_client.SessionID+" OP1 RG HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)+1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)-1));
-                temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)+1);
-                temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)-1);
-                temp.cur_client.RG="";
-                temp.cur_client.OP="1";
+                new Broadcast("BINF "+temp.cur_client.SessionID+" CT4");
+                
+                
+                temp.cur_client.CT="4";
                  }
                 
             }
@@ -1244,11 +1243,10 @@ if(curAcc.myMask.adc)
                 if(temp.cur_client.userok==1)
                    if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                    {
-                new Broadcast("BINF "+temp.cur_client.SessionID+" OP RG1 HO"+String.valueOf (Integer.parseInt (temp.cur_client.HO)-1)+" HR"+String.valueOf (Integer.parseInt (temp.cur_client.HR)+1));
-                temp.cur_client.HO=Integer.toString (Integer.parseInt (temp.cur_client.HO)-1);
-                temp.cur_client.HR=Integer.toString (Integer.parseInt (temp.cur_client.HR)+1);
-                temp.cur_client.OP="";
-                temp.cur_client.RG="1";
+                new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                
+                temp.cur_client.CT="2";
+                
             }
                
             }
