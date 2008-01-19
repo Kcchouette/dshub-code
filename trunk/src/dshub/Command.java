@@ -89,7 +89,7 @@ public class Command
          }
          
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
-                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));
+                 +" CT5 DE"+ADC.retADCStr(Vars.bot_desc));
                 cur_client.putOpchat(true) ;
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
          //cur_client.sendToClient(inf);
@@ -132,7 +132,7 @@ public class Command
     {
         if(Issued_Command.length()<10)
         {
-            new STAError(cur_client,140,"Incorrect protocol command");
+            new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Incorrect protocol command");
             return;
         }
         Issued_Command=Issued_Command.substring(4);
@@ -143,7 +143,7 @@ public class Command
                     String thesid=tok.nextToken();
                     if(!thesid.equals(cur_client.SessionID))
                     {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                      new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                       return ;
                     }
                     
@@ -183,7 +183,7 @@ public class Command
                            
                             if(!State.equals ("PROTOCOL"))
                             {
-                                new STAError(cur_client,140,"Can't change CID while connected.");
+                                new STAError(cur_client,100,"Can't change CID while connected.");
                                 return;
                             }
                              cur_client.ID=aux.substring(2);
@@ -197,7 +197,7 @@ public class Command
                             
                    if(!Vars.ValidateNick (aux.substring (2)))
                    {
-                       new STAError(cur_client,222,"Nick not valid, please choose another");
+                       new STAError(cur_client,200+Constants.STA_NICK_INVALID,"Nick not valid, please choose another");
                        return;
                    }
                    cur_client.NI=aux.substring(2);
@@ -214,7 +214,7 @@ public class Command
                            
                             if(!State.equals ("PROTOCOL"))
                             {
-                                new STAError(cur_client,140,"Can't change PID while connected.");
+                                new STAError(cur_client,100,"Can't change PID while connected.");
                                 return;
                             }
                            
@@ -235,7 +235,7 @@ public class Command
               else if(!aux.substring (2).equals (cur_client.RealIP) && !aux.substring (2).equals ("") 
               && !cur_client.RealIP.equals ("127.0.0.1"))
               {
-                   new STAError(cur_client,243,"Wrong IP address supplied.","I4");
+                   new STAError(cur_client,200+Constants.STA_INVALID_IP,"Wrong IP address supplied.","I4",cur_client.RealIP);
                    return;
               }
                             cur_inf=cur_inf+" I4"+cur_client.I4;
@@ -329,51 +329,30 @@ public class Command
                             cur_client.TO=aux.substring(2);
                             cur_inf=cur_inf+" TO"+cur_client.TO;
                         }
-                        else if(aux.startsWith("OP"))
-                        {
-                            //cur_client.OP=aux.substring(2);
-                            //cur_inf=cur_inf+" OP"+cur_client.OP;
-                            /** not allowed to set op like this*/
-                            new STAError(cur_client,210,"Not allowed to have OP field.","ID");
-                            return;
-                            
-                        }
-                        else if(aux.startsWith("RG"))
-                        {
-                           // cur_client.RG=aux.substring(2);
-                           // cur_inf=cur_inf+" RG"+cur_client.RG;
-                            new STAError(cur_client,210,"Not allowed to have RG field.","ID");
-                            return;
-                        }
+                        
                         else if(aux.startsWith("AW"))
                         {
                             cur_client.AW=aux.substring(2);
                             cur_inf=cur_inf+" AW"+cur_client.AW;
                         }
-                        else if(aux.startsWith("BO"))
+                        else if(aux.startsWith("CT"))
                         {
-                            if(cur_client.reg.key)
+                            if(cur_client.reg.overridespam)
                             {
-                            cur_client.BO=aux.substring(2);
-                            cur_inf=cur_inf+" BO"+cur_client.BO;
+                            cur_client.CT=aux.substring(2);
+                            cur_inf=cur_inf+" CT"+cur_client.CT;
                             }else
                             {
-                             new STAError(cur_client,210,"Not allowed to have RG field.","ID");
+                             new STAError(cur_client,200+Constants.STA_GENERIC_LOGIN_ERROR,"Not allowed to have CT field.");
                             return;
                             }
                         }
                         else if(aux.startsWith("HI"))
                         {
-                            if(cur_client.reg.key)
-                            {
-                            cur_client.BO=aux.substring(2);
-                            cur_inf=cur_inf+" BO"+cur_client.BO;
-                            }
-                            else
-                            {
+                            
                             cur_client.HI=aux.substring(2);
                             cur_inf=cur_inf+" HI"+cur_client.HI;
-                            }
+                            
                         }
 
                         else if(aux.startsWith("SU"))
@@ -383,7 +362,7 @@ public class Command
                         }
                         else 
                         {
-                            new STAError(cur_client,240,"Protocol Error.");
+                            new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.");
                             return ;
                         }
                         
@@ -393,39 +372,39 @@ public class Command
                     {
                     if(cur_client.ID==null)
                     {
-                        new STAError(cur_client,243,"Missing field","ID");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","ID");
                         return;
                     }else if(cur_client.ID.equals (""))
                     {
-                        new STAError(cur_client,243,"Missing field","ID");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","ID");
                         return;
                     }
                     if(cur_client.PD==null)
                     {
-                        new STAError(cur_client,243,"Missing field","PD");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","PD");
                         return;
                     }else if(cur_client.PD.equals (""))
                     {
-                        new STAError(cur_client,243,"Missing field","PD");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","PD");
                         return;
                     }
                    
                     if(cur_client.NI==null) 
                     {
-                        new STAError(cur_client,243,"Missing field","NI");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","NI");
                         return;
                     }else if(cur_client.NI.equals (""))
                     {
-                        new STAError(cur_client,243,"Missing field","NI");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","NI");
                         return;
                     }
                     if(cur_client.HN==null)
                     {
-                        new STAError(cur_client,243,"Missing field","HN");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","HN");
                         return;
                     }else if(cur_client.HN.equals (""))
                     {
-                        new STAError(cur_client,243,"Missing field","HN");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Missing field","FM","HN");
                         return;
                     }
                    cur_client.reg=AccountsConfig.getnod (cur_client.ID);
@@ -457,7 +436,7 @@ public class Command
                             String msg="Hello there. You are permanently banned.\nOp who banned you: "+cur_client.myban.banop+
                                 "\nReason: "+cur_client.myban.banreason+"\n"+Vars.Msg_Banned;
                             //System.out.println(msg);
-                        new STAError(cur_client,231,msg );
+                        new STAError(cur_client,200+Constants.STA_PERMANENTLY_BANNED,msg );
                         
                         return;
                         }
@@ -469,7 +448,7 @@ public class Command
                                 "\nReason: "+cur_client.myban.banreason+"\nThere are still "+
                                     Long.toString (TL/1000)+" seconds remaining.\n"+Vars.Msg_Banned+" TL"+Long.toString (TL/1000);
                             //System.out.println(msg);
-                        new STAError(cur_client,232,msg );
+                        new STAError(cur_client,200+Constants.STA_TEMP_BANNED,msg );
                         
                         return;
                         }
@@ -483,13 +462,13 @@ public class Command
                    {
                    if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
                    {
-                       new STAError(cur_client,222,"Nick taken, please choose another");
+                       new STAError(cur_client,200+Constants.STA_NICK_TAKEN,"Nick taken, please choose another");
                        return;
                    }
                    
                    if(temp.cur_client.ID.equals(cur_client.ID))
                    {
-                       new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
+                       new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
                    }
                    i++;
@@ -500,8 +479,8 @@ public class Command
                 
                 if(AccountsConfig.nickReserved(cur_client.NI,cur_client.ID))
                 {
-                    int x=(State.equals("PROTOCOL"))?240:140;
-                    new STAError(cur_client,x,"Nick reserved. Please choose another.");
+                    int x=(State.equals("PROTOCOL"))?200:100;
+                    new STAError(cur_client,x+Constants.STA_NICK_TAKEN,"Nick reserved. Please choose another.");
                     return;
                 }
                     // now must check if hub is full...
@@ -517,7 +496,7 @@ public class Command
                 
                    if(Vars.max_users<=i && !cur_client.reg.overridefull)
                    {
-                    new STAError(cur_client,211,"Hello there. Hub is full, there are "+String.valueOf (i)+" users online.\n"+Vars.Msg_Full );
+                    new STAError(cur_client,200+Constants.STA_HUB_FULL,"Hello there. Hub is full, there are "+String.valueOf (i)+" users online.\n"+Vars.Msg_Full );
                     return;
                    }
                   
@@ -527,88 +506,88 @@ public class Command
                  if(!cur_client.reg.overridespam)
                 if(cur_client.EM!=null)
                 if(!ValidateField(cur_client.EM))
-                { new STAError(cur_client,State.equals("PROTOCOL")?246:146,"E-mail contains forbidden words.");return;}
+                { new STAError(cur_client,State.equals("PROTOCOL")?200:100,"E-mail contains forbidden words.");return;}
                  if(!cur_client.reg.overridespam)
                 if(cur_client.DE!=null)
                 if(!ValidateField(cur_client.DE))
-                { new STAError(cur_client,State.equals("PROTOCOL")?246:146,"Description contains forbidden words");return;}
+                { new STAError(cur_client,State.equals("PROTOCOL")?200:100,"Description contains forbidden words");return;}
                 
                  if(!cur_client.reg.overridespam)
                     if(cur_client.SS==null && Vars.min_share!=0)
-                        new STAError(cur_client,246,"Share too small, "+Vars.min_share+" MiB required.","SS");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Share too small, "+Vars.min_share+" MiB required.","FB","SS");
                  if(!cur_client.reg.overridespam)
                     if(cur_client.SL==null && Vars.min_sl!=0)
-                        new STAError(cur_client,246,"Too few slots, open up more.","SL");
+                        new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Too few slots, open up more.","FB","SL");
                 //TODO : add without tag allow ?
                     try
                     {
                 //checking all:
                          if(!cur_client.reg.overridespam)
                     if(cur_client.NI.length ()>Vars.max_ni)
-                    {new STAError(cur_client,221,"Nick too large");return;}
+                    {new STAError(cur_client,200+Constants.STA_NICK_INVALID,"Nick too large","FB","NI");return;}
                           if(!cur_client.reg.overridespam)
                     if(cur_client.NI.length ()<Vars.min_ni)
-                    {new STAError(cur_client,221,"Nick too small");return;}
+                    {new STAError(cur_client,200+Constants.STA_NICK_INVALID,"Nick too small","FB","NI");return;}
                           if(!cur_client.reg.overridespam)
                     if(cur_client.DE!=null)
                     if(cur_client.DE.length ()>Vars.max_de)
-                    {new STAError(cur_client,246,"Description too large","DE");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Description too large","FB","DE");return;}
                           if(!cur_client.reg.overridespam)
                     if(cur_client.EM!=null)
                     if(cur_client.EM.length ()>Vars.max_em)
-                    {new STAError(cur_client,246,"E-mail too large","EM");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"E-mail too large","FB","EM");return;}
                       if(!cur_client.reg.overrideshare) 
                     if(cur_client.SS!=null)
                     if(Long.parseLong(cur_client.SS)>1024*Vars.max_share*1024)
-                    {new STAError(cur_client,246,"Share too large","SS");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Share too large","FB","SS");return;}
                     if(!cur_client.reg.overrideshare)
                     if(cur_client.SS!=null)
                     if(Long.parseLong(cur_client.SS)<1024*Vars.min_share*1024)
-                    {new STAError(cur_client,246,"Share too small "+Vars.min_share+" MiB required.","SS");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Share too small "+Vars.min_share+" MiB required.","FB","SS");return;}
                     if(!cur_client.reg.overrideshare)
                     if(cur_client.SL!=null)
                     if(Integer.parseInt (cur_client.SL)<Vars.min_sl)
-                    {new STAError(cur_client,246,"Too few slots, open up more.","SL");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Too few slots, open up more.","FB","SL");return;}
                     if(!cur_client.reg.overrideshare)
                     if(cur_client.SL!=null)
                     if(Integer.parseInt (cur_client.SL)>Vars.max_sl)
-                    {new STAError(cur_client,246,"Too many slots, close some.","SL");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Too many slots, close some.","FB","SL");return;}
                      if(!cur_client.reg.overridespam)
                     if(Integer.parseInt (cur_client.HN)>Vars.max_hubs_user)
-                    {new STAError(cur_client,246,"Too many hubs open, close some.","HN");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"Too many hubs open, close some.","FB","HN");return;}
                           if(!cur_client.reg.overridespam)
                     if(cur_client.HO!=null)
                     if(Integer.parseInt (cur_client.HO)>Vars.max_hubs_op)
-                    {new STAError(cur_client,246,"You are operator on too many hubs. Sorry.","HO");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"You are operator on too many hubs. Sorry.","FB","HO");return;}
                           if(!cur_client.reg.overridespam)
                     if(cur_client.HR!=null)
                     if(Integer.parseInt (cur_client.HR)>Vars.max_hubs_reg)
-                    {new STAError(cur_client,246,"You are regged on too many hubs. Sorry.","HR");return;}
+                    {new STAError(cur_client,200+Constants.STA_REQUIRED_INF_FIELD_BAD_MISSING,"You are regged on too many hubs. Sorry.","FB","HR");return;}
                     }
                     catch ( NumberFormatException nfe)
                     {
-                       new STAError(cur_client,240,"Your client sent weird info, Protocol Error.");
+                       new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Your client sent weird info, Protocol Error.");
                        return;
                     }
                 
                if(cur_client.ID.equals (Vars.OpChatCid))
                {
-                    new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
+                    new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
                }
                 if(cur_client.ID.equals (Vars.SecurityCid))
                {
-                    new STAError(cur_client,221,"CID taken. Please go to Settings and pick new PID.");
+                    new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
                }
                if(cur_client.NI.equalsIgnoreCase (Vars.Opchat_name))
                {
-                      new STAError(cur_client,222,"Nick taken, please choose another");
+                      new STAError(cur_client,200+Constants.STA_NICK_TAKEN,"Nick taken, please choose another");
                        return;
                }
                 if(cur_client.NI.equalsIgnoreCase (Vars.bot_name))
                {
-                      new STAError(cur_client,222,"Nick taken, please choose another");
+                      new STAError(cur_client,200+Constants.STA_NICK_TAKEN,"Nick taken, please choose another");
                        return;
                }
                
@@ -628,7 +607,7 @@ public class Command
 		            byte[] finalTiger = myTiger.engineDigest();
 		          if(!Base32.encode (finalTiger).equals (cur_client.ID))
                           {
-                             new STAError(cur_client,240,"Invalid CID check.");
+                             new STAError(cur_client,200+Constants.STA_GENERIC_LOGIN_ERROR,"Invalid CID check.");
                              return;
                           }
                           if(cur_client.PD.length ()!=39)
@@ -641,7 +620,7 @@ public class Command
              
               catch(IllegalArgumentException iae)
               {
-                  new STAError(cur_client,227,"Invalid PID supplied.");
+                  new STAError(cur_client,200+Constants.STA_INVALID_PID,"Invalid PID supplied.");
                   return;
               }
                 catch (Exception e)
@@ -718,7 +697,7 @@ public class Command
                        }
                        else if(Vars.reg_only==1)
                    {
-                       new STAError(cur_client,226,"Registered only hub.");
+                       new STAError(cur_client,200+Constants.STA_REG_ONLY,"Registered only hub.");
                        return;
                    }
                    }
@@ -755,7 +734,7 @@ public class Command
          }
          
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
-                 +" BO1 OP1 DE"+ADC.retADCStr(Vars.bot_desc));
+                 +" CT5 DE"+ADC.retADCStr(Vars.bot_desc));
                 cur_client.putOpchat(true) ;
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
          
@@ -804,7 +783,7 @@ public class Command
         
         if(Issued_Command.length()<4)
         {
-            new STAError(cur_client,140,"Incorrect command");
+            new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Incorrect command");
         }
                 /*******************************INF COMMAND *****************************************/
        
@@ -812,12 +791,12 @@ public class Command
                 {
                      if(State.equals ("IDENTIFY") || State.equals ("VERIFY"))
                      {
-                         new STAError(cur_client,240,"INF Invalid State.");
+                         new STAError(cur_client,200+Constants.STA_INVALID_STATE,"INF Invalid State.","FC",Issued_Command.substring(0,4));
                          return;
                      }
                     if(Issued_Command.charAt (0)!='B')
                     {
-                        new STAError(cur_client,140,"INF Invalid Context.");
+                        new STAError(cur_client,100,"INF Invalid Context.");
                         return;
                     }
       if(!cur_client.reg.overridespam)
@@ -825,24 +804,24 @@ public class Command
      {
          case 'B':
              if(Vars.BINF!=1)
-             { new STAError(cur_client,140,"INF Invalid Context B");
+             { new STAError(cur_client,100,"INF Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.EINF!=1)
-              {  new STAError(cur_client,140,"INF Invalid Context E");
+              {  new STAError(cur_client,100,"INF Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DINF!=1)
-          {   new STAError(cur_client,140,"INF Invalid Context D");
+          {   new STAError(cur_client,100,"INF Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FINF!=1)
-           {   new STAError(cur_client,140,"INF Invalid Context F");
+           {   new STAError(cur_client,100,"INF Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HINF!=1)
-              {   new STAError(cur_client,140,"INF Invalid Context H");
+              {   new STAError(cur_client,100,"INF Invalid Context H");
                        return;}
                  
      }
@@ -861,24 +840,24 @@ public class Command
      {
          case 'B':
              if(Vars.BPAS!=1)
-             { new STAError(cur_client,140,"PAS Invalid Context B");
+             { new STAError(cur_client,100,"PAS Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.EPAS!=1)
-              {  new STAError(cur_client,140,"PAS Invalid Context E");
+              {  new STAError(cur_client,100,"PAS Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DPAS!=1)
-          {   new STAError(cur_client,140,"PAS Invalid Context D");
+          {   new STAError(cur_client,100,"PAS Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FPAS!=1)
-           {   new STAError(cur_client,140,"PAS Invalid Context F");
+           {   new STAError(cur_client,100,"PAS Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HPAS!=1)
-              {   new STAError(cur_client,140,"PAS Invalid Context H");
+              {   new STAError(cur_client,100,"PAS Invalid Context H");
                        return;}
                  
      }
@@ -888,7 +867,7 @@ public class Command
                         cur_client.reg=k;
                     if(!cur_client.reg.isreg )
                     {
-                        new STAError(cur_client,140,"Not registered.");
+                        new STAError(cur_client,100,"Not registered.");
                         return;
                     }
                    if(Issued_Command.charAt (0)!='H')
@@ -897,7 +876,7 @@ public class Command
                          throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");
                         else 
                         {
-                            new STAError(cur_client,140,"PAS Invalid Context.");
+                            new STAError(cur_client,100,"PAS Invalid Context.");
                             return;
                         }
                     }     
@@ -955,7 +934,7 @@ public class Command
               }
               else
               {
-                new STAError(cur_client,223,"Invalid Password."); 
+                new STAError(cur_client,200+Constants.STA_INVALID_PASSWORD,"Invalid Password."); 
                 return;
               }
 

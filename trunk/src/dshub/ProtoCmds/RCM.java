@@ -40,30 +40,30 @@ public class RCM
     public RCM(ClientHandler cur_client,String State, String Issued_Command) throws STAException
     {
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-            new STAError(cur_client,140,"RCM Invalid State.");
+            new STAError(cur_client,100+Constants.STA_INVALID_STATE,"RCM Invalid State.","FC",Issued_Command.substring(0,4));
       if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BRCM!=1)
-             { new STAError(cur_client,140,"RCM Invalid Context B");
+             { new STAError(cur_client,100,"RCM Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.ERCM!=1)
-              {  new STAError(cur_client,140,"RCM Invalid Context E");
+              {  new STAError(cur_client,100,"RCM Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DRCM!=1)
-          {   new STAError(cur_client,140,"RCM Invalid Context D");
+          {   new STAError(cur_client,100,"RCM Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FRCM!=1)
-           {   new STAError(cur_client,140,"RCM Invalid Context F");
+           {   new STAError(cur_client,100,"RCM Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HRCM!=1)
-              {   new STAError(cur_client,140,"RCM Invalid Context H");
+              {   new STAError(cur_client,100,"RCM Invalid Context H");
                        return;}
                  
      }
@@ -74,7 +74,7 @@ public class RCM
                 aux=tok.nextToken();
                 if(!aux.equals(cur_client.SessionID))
                 {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                      new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.Wrong SID supplied.");
                       return ;
                 }
                 aux=tok.nextToken();

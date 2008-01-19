@@ -39,33 +39,33 @@ public class CTM
     public CTM (ClientHandler cur_client, String State,String Issued_Command)throws STAException
     {
         if(cur_client.ACTIVE==0)
-           new STAError(cur_client,140,"Error: Must be TCP active to use CTM.");
+           new STAError(cur_client,100,"Error: Must be TCP active to use CTM.");
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-           new STAError(cur_client,140,"CTM Invalid State.");
+           new STAError(cur_client,100+Constants.STA_INVALID_STATE,"CTM Invalid State.","FC",Issued_Command.substring(0,4));
       
         if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
          case 'B':
              if(Vars.BCTM!=1)
-             { new STAError(cur_client,140,"CTM Invalid Context B");
+             { new STAError(cur_client,100,"CTM Invalid Context B");
                        return;}break;
          case 'E':
               if(Vars.ECTM!=1)
-              {  new STAError(cur_client,140,"CTM Invalid Context E");
+              {  new STAError(cur_client,100,"CTM Invalid Context E");
                        return;}break;
          case 'D':
           if(Vars.DCTM!=1)
-          {   new STAError(cur_client,140,"CTM Invalid Context D");
+          {   new STAError(cur_client,100,"CTM Invalid Context D");
                        return;
          }break;
          case 'F':
           if(Vars.FCTM!=1)
-           {   new STAError(cur_client,140,"CTM Invalid Context F");
+           {   new STAError(cur_client,100,"CTM Invalid Context F");
                        return;}break;
          case 'H':
               if(Vars.HCTM!=1)
-              {   new STAError(cur_client,140,"CTM Invalid Context H");
+              {   new STAError(cur_client,100,"CTM Invalid Context H");
                        return;}
                  
      }
@@ -88,7 +88,7 @@ public class CTM
                 aux=tok.nextToken();
                 if(!aux.equals(cur_client.SessionID))
                 {
-                      new STAError(cur_client,240,"Protocol Error.Wrong SID supplied.");
+                      new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error. Wrong SID supplied.");
                       return ;
                 }
                 aux=tok.nextToken();
