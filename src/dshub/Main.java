@@ -216,13 +216,10 @@ public class Main extends Thread
                             
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
+                            
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             temp.cur_client.reg.isreg=true;
@@ -267,13 +264,9 @@ public class Main extends Thread
                             
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                            temp.cur_client.reg.isreg=true;
                            temp.cur_client.LoggedAt=System.currentTimeMillis();
@@ -317,13 +310,9 @@ public class Main extends Thread
                            
                             temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.isreg=true;
@@ -603,10 +592,9 @@ public class Main extends Thread
                              {
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
-                            temp.cur_client.OP="";
-                            temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
-                            temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="0";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             System.out.println ("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
                             
@@ -631,10 +619,9 @@ public class Main extends Thread
                            System.out.println ("User "+temp.cur_client.NI+" deleted.");
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
-                            temp.cur_client.OP="";
-                            temp.cur_client.HO=Integer.toString (Integer.parseInt(temp.cur_client.HO)-1);
-                            temp.cur_client.HN=Integer.toString (Integer.parseInt(temp.cur_client.HN)+1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+""+" HO"+temp.cur_client.HO+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="0";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             }
                             Main.Server.rewriteregs ();
@@ -720,52 +707,7 @@ public class Main extends Thread
                         System.out.println("Hub_host must be in format address:port.");
                        continue;
                        }   
-                       int port=Integer.parseInt(new_name.substring(x+1));
                        
-                       InetSocketAddress myHost=new InetSocketAddress(new_name,port);
-                       Vector localAddies=new Vector();
-                       try{
-Enumeration<NetworkInterface> eNI =
-NetworkInterface.getNetworkInterfaces();
-
-NetworkInterface cNI;
-Enumeration<InetAddress> eIA;
-InetAddress cIA;
-
-for(;eNI.hasMoreElements();){
-cNI = eNI.nextElement();
-eIA = cNI.getInetAddresses();
-
-for(;eIA.hasMoreElements();){
-cIA = eIA.nextElement();
-localAddies.add(cIA.getHostAddress());
-//System.out.println("IP Local = " + cIA.getHostAddress());
-}
-}
-}
-catch(SocketException eS)
-{
-System.out.println("Hub_host cannot be resolved or machine hostname badly set.\n");
-continue;
-} 
-                       if(myHost.isUnresolved())
-                       {
-                        System.out.printf("Hub_host cannot be resolved or DNS server failure.\n");
-                       continue;
-                       }
-                       try
-                       {
-                       
-                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
-                        boolean ok=false;
-                        Iterator myIT=localAddies.iterator();
-                        while(myIT.hasNext())
-                        
-                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
-                                     ok=true;
-                        //ok=false;
-                       if(!ok)
-                       {
                            System.out.println("Scanning hub_host please wait...");
                         if(!(HostTester.hostOK(new_name)))
                         {
@@ -774,18 +716,14 @@ continue;
                                     " LAN hub, use your LAN local IP as a hub_host); not even package routing to your system work.\n");
                        continue;
                         }
-                       }
+                       
                         System.out.printf("Hub_host changed from \""+
                                 Vars.Hub_Host+"\" to \""+new_name+"\".\n");
                         
                         Vars.Hub_Host=new_name;
                         Server.rewriteconfig();
                        
-                       }
-                       catch (UnknownHostException uhe)
-                       {
-                           System.out.println("Hub_host cannot be resolved or DNS server failure.\n");
-                       }
+                       
                         
                 }
                 else if(aux.toLowerCase ().equals ("proxy_host"))

@@ -58,7 +58,7 @@ public class HostTester
            
             BufferedReader in = new BufferedReader(new InputStreamReader(testS.getInputStream()));
             PrintStream out=new PrintStream(testS.getOutputStream());
-            out.println("HSUP ADBASE");
+            out.println("HSUP ADBASE ADTIGR");
             String SUP=in.readLine();
             if(!SUP.equals(ADC.Init))
                 throw new Exception("Init not the same"+SUP+" "+ADC.Init);
@@ -66,12 +66,12 @@ public class HostTester
             String INF=in.readLine();
             String test="";
             if(Vars.HubDE.equals(""))
-                 test="IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName);
+                 test="IINF CT32 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName);
             else
-                test= "IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+
+                test= "IINF CT32 VE"+ADC.retADCStr(Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+
                     " DE"+ADC.retADCStr(Vars.HubDE);
             if(!INF.equals(test))
-               throw new Exception("INF not the same\n"+INF+"\n"+"IINF HU1 HI1 VE"+ADC.retADCStr(Vars.HubVersion)
+               throw new Exception("INF not the same\n"+INF+"\n"+"IINF CT32 VE"+ADC.retADCStr(Vars.HubVersion)
                        +" NI"+ADC.retADCStr(Vars.HubName)+
                     ((Vars.HubDE.equals(""))?(" DE"+ADC.retADCStr(Vars.HubDE)):""));
             

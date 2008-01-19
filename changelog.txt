@@ -1,4 +1,11 @@
-*** ***  
+*** Theta RC 4 ***  
+ 
+           * ADC 1.0 partial support, this means : client type 
+              IS GONNA BE WEIRD FOR OLD CLIENTS ( NO MORE KEYS )
+               AND MAYBE MORE.
+            Note : old clients may still connect even if they dont have TIGR advertised.
+           * ADC 1.0 partial support, this means : old type passwords
+              WONT WORK ANYMORE
            * hub_host should be smartly updated when updating ports;
            * hub_host must now include a port;
            * fixed issue with hub_host and multi ports;

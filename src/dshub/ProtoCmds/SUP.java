@@ -91,6 +91,8 @@ public class SUP
                                 cur_client.ping=true;
                             if(aux.startsWith ("UCM") && aux.length()==4)
                                 cur_client.ucmd=1;
+                            if(aux.startsWith ("TIG") && aux.length()==4)
+                                cur_client.tigr=true;
                         }
                         else if(aux.startsWith ("RM"))
                         {
@@ -101,6 +103,8 @@ public class SUP
                                 cur_client.base=0;
                             if(aux.startsWith ("PIN") && aux.length()==4)
                                 cur_client.ping=false;
+                            if(aux.startsWith ("TIG") && aux.length()==4)
+                                cur_client.tigr=false;
                         }
                     }
                     if(cur_client.base==0)
@@ -111,6 +115,11 @@ public class SUP
                           new STAError(cur_client,240,"You removed BASE features therefore you can't stay on hub anymore.");
                           return;
                       }
+                    
+                    if(!cur_client.tigr)
+                       new STAError(cur_client,100,"Cannot find any compatible hash function to use. Defaulting to TIGER.");
+                          
+                    
                     if(State.equals("PROTOCOL"))
                     {
                    cur_client. sendToClient(ADC.Init);
@@ -119,14 +128,14 @@ public class SUP
         cur_client.sendToClient(ADC.ISID+" "+cur_client.SessionID);
          if(!cur_client.ping)
         if(Vars.HubDE.equals (""))
-            cur_client.sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
+            cur_client.sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
         else
-           cur_client. sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
+           cur_client. sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
        
          else
              //its a PINGer
          if(Vars.HubDE.equals (""))
-            cur_client.sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
+            cur_client.sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
                      +" HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
                      SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
                      " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
@@ -137,20 +146,21 @@ public class SUP
                     
                     );
         else
-           cur_client. sendToClient("IINF HU1 HI1 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
-       cur_client. sendToClient("ISTA 000 "+
-            "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s")
-             +" HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
+           cur_client. sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE)+
+                   " HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
                      SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
                      " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
                      " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
                      " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
                      " MC"+Vars.max_users
-            
-            );
-       
+                     );
+        
+        
        cur_client. sendToClient("ISTA 000 "+
             "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+       
+       //cur_client. sendToClient("ISTA 000 "+
+        //    "Running\\sTheta\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
              
                     }
     }

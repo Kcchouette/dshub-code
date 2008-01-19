@@ -410,15 +410,11 @@ Thread.sleep(200);
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 {
-                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
+                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="0";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
                             Main.Server.rewriteregs ();
@@ -447,15 +443,11 @@ Thread.sleep(200);
                             AccountsConfig.unreg(temp.cur_client.ID);
                             Main.PopMsg (cur_client.NI+" deleted the reg "+temp.cur_client.ID);
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" deleted.");
-                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.".replaceAll(" ","\\ "));
+                            temp.cur_client.sendFromBot("Your account has been deleted. From now on you are a simple user.");
                             temp.cur_client.putOpchat(false);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="";}else{temp.cur_client.RG="";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)-1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)-1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)+1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP":"RG")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="0";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             
                             temp.cur_client.reg=new Nod();
                             Main.Server.rewriteregs ();
@@ -503,15 +495,11 @@ Thread.sleep(200);
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot("You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="2";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                             
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
@@ -545,15 +533,11 @@ Thread.sleep(200);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot("You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="2";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                             
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
@@ -591,15 +575,11 @@ Thread.sleep(200);
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
                             cur_client.sendFromBot("User "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot("You have been registered by "+cur_client.NI+" . No password set, login does not require pass, however, its recomandable you to set one...");
                             temp.cur_client.putOpchat(true);
-                            if(temp.cur_client.reg.key){temp.cur_client.OP="1";}else{temp.cur_client.RG="1";};
-                            if(temp.cur_client.reg.key)
-                            temp.cur_client.HO=String.valueOf(Integer.parseInt(temp.cur_client.HO)+1);
-                            else
-                              temp.cur_client.HR=String.valueOf(Integer.parseInt(temp.cur_client.HR)+1);  
-                            temp.cur_client.HN=String.valueOf(Integer.parseInt(temp.cur_client.HN)-1);
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"OP1":"RG1")+(temp.cur_client.reg.key?" HO":" HR")+(temp.cur_client.reg.key?temp.cur_client.HO:temp.cur_client.HR)+" HN"+temp.cur_client.HN);
+                            temp.cur_client.CT="2";
+                            
+                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                             
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;

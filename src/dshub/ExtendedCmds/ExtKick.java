@@ -508,11 +508,22 @@ public class ExtKick
                                      //kick all shared > number
                                       for(ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Kicked all registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Kicked all registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -558,11 +569,22 @@ public class ExtKick
                                      //kick all shared > number
                                       for(ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.OP)==Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Kicked all Op users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Kicked all Op/non op users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -732,11 +754,22 @@ public class ExtKick
                                      //kick all shared > number
                                       for(ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==2 )
+                                          
                                              tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
+                                          else if(Number==0)
+                                              
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=2 )
+                                          
+                                             tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Kicked all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Kicked all not registered/unregistered users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 
@@ -782,11 +815,21 @@ public class ExtKick
                                      //kick all shared > number
                                       for(ClientNod tempz : SimpleHandler.Users)
                                      {if(tempz.cur_client.userok==1)
-                                         if(Long.parseLong (tempz.cur_client.RG)!=Number )
+                                         if(Number==1)
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)==4 )
+                                          
                                              tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
+                                          else if(Number==0)   
+                                          {
+                                              if(Long.parseLong (tempz.cur_client.CT)!=4 )
+                                          
+                                             tempz.kickMeOut (cur_client,kickmsg,3);
+                                          }
                                          
                                      }
-                                     cur_client.sendFromBot("Kicked all not registered users .");cur_client.sendFromBot("Done.");
+                                     cur_client.sendFromBot("Kicked all not ops/non ops users .");cur_client.sendFromBot("Done.");
                                      
                                      
                                     return; 

@@ -97,50 +97,7 @@ public class CFGConfig
                         cur_client.sendFromBot("Must specify address in the form address:port.");
                        return;
                        }   
-                       int port=Integer.parseInt(new_name.substring(x+1));
                        
-                       InetSocketAddress myHost=new InetSocketAddress(new_name,port);
-                       Vector localAddies=new Vector();
-                       try{
-Enumeration<NetworkInterface> eNI =
-NetworkInterface.getNetworkInterfaces();
-
-NetworkInterface cNI;
-Enumeration<InetAddress> eIA;
-InetAddress cIA;
-
-for(;eNI.hasMoreElements();){
-cNI = eNI.nextElement();
-eIA = cNI.getInetAddresses();
-
-for(;eIA.hasMoreElements();){
-cIA = eIA.nextElement();
-localAddies.add(cIA.getHostAddress());
-//System.out.println("IP Local = " + cIA.getHostAddress());
-}
-}
-}
-catch(SocketException eS)
-{
-cur_client.sendFromBot("Hub_host cannot be resolved or machine hostname badly set.");
-return;
-} 
-                       if(myHost.isUnresolved())
-                       {
-                        cur_client.sendFromBot("Hub_host cannot be resolved or DNS server failure.");
-                       return;
-                       }
-                       try
-                       {
-                       
-                        InetAddress addresses[] = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
-                        boolean ok=false;
-                        Iterator myIT=localAddies.iterator();
-                        while(myIT.hasNext())
-                        
-                              if(myHost.getAddress().getHostAddress().equals(myIT.next()))
-                                     ok=true;
-                       if(!ok)
                            
                         if(!HostTester.hostOK(new_name))
                         {
@@ -154,11 +111,8 @@ return;
                         
                         Vars.Hub_Host=new_name;
                         Main.Server.rewriteconfig();
-                       }
-                       catch (UnknownHostException uhe)
-                       {
-                           cur_client.sendFromBot("Hub_host cannot be resolved or DNS server failure.");
-                       }
+                       
+                       
                         
                 }
                 else if(aux.toLowerCase ().equals ("proxy_host"))
