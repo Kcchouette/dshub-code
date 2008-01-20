@@ -99,7 +99,7 @@ public class TestFrame extends javax.swing.JFrame {
             JPanel myPanel=new JPanel();
             
             //myPanel.setSize(PluginPanel.getWidth()-20,50);
-            myPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(myPlug.getName()));
+            myPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(myPlug.getName()+" Module"));
        org.jdesktop.layout.GroupLayout myPanelLayout = new org.jdesktop.layout.GroupLayout(myPanel);
         myPanel.setLayout(myPanelLayout);
        JCheckBox enableCheck=new JCheckBox("Enable");

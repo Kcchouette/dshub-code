@@ -1,5 +1,6 @@
 *** Theta RC 4 ***  
  
+           * started work on ping hub-hublist plugin;
            * STA messages changed to 1.0
            * bots are now CT5 instead of BO1
            * ADC 1.0 partial support, this means : client type 
