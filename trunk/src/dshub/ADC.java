@@ -35,7 +35,7 @@ abstract public class ADC
     
     
     /**First string to send to connecting client ;)*/
-    public static final String Init="ISUP ADBASE ADTIGR ADUCM0 ADPIN0"; //adding basic ucmds, adding tiger hash support
+    public static final String Init="ISUP ADBASE ADTIGR ADUCM0 ADPIN0"; //adding basic ucmds, adding tiger hash support, adding basic PING
     
     /**  ISID = session id string for connecting client*/
     public  static final String ISID="ISID";
@@ -95,6 +95,16 @@ abstract public class ADC
         }
         return true;
        
+    }
+    
+    public static String getPingString()
+    {
+        return " HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
+                     SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
+                     " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
+                     " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
+                     " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
+                     " MC"+Vars.max_users;
     }
     
     

@@ -136,23 +136,13 @@ public class SUP
              //its a PINGer
          if(Vars.HubDE.equals (""))
             cur_client.sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)
-                     +" HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
-                     SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
-                     " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
-                     " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
-                     " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
-                     " MC"+Vars.max_users
+                     +ADC.getPingString()
                     
                     
                     );
         else
            cur_client. sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE)+
-                   " HH"+Vars.Hub_Host+" UC"+SimpleHandler.getUserCount()+" SS"+
-                     SimpleHandler.getTotalShare()+" SF"+SimpleHandler.getTotalFileCount()+
-                     " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
-                     " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
-                     " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
-                     " MC"+Vars.max_users
+                   ADC.getPingString()
                      );
         
         
