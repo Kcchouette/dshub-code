@@ -162,7 +162,15 @@ public class CFGConfig
                 else if(aux.toLowerCase ().equals ("redirect_url"))
                 {
                      
-                    
+                    if(!ST.hasMoreTokens())
+                    {
+                        cur_client.sendFromBot("Redirect_url deleted");
+                        
+                        Vars.redirect_url="";
+                        Main.Server.rewriteconfig();
+                        return;
+                    }
+                        
                        String new_name=ST.nextToken ();
                       
                         cur_client.sendFromBot("Redirect_url changed from \""+
