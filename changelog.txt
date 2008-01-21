@@ -1,5 +1,6 @@
 *** Theta RC 4 ***  
  
+           * more work on ping plugin;
            * fixed bug when renaming message "no such user online" was printed anyway;
            * deleting redirect_url with cfg redirect_url works now;
            * started work on ping hub-hublist plugin;
