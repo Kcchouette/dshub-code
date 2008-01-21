@@ -773,7 +773,15 @@ public class Main extends Thread
                 else if(aux.toLowerCase ().equals ("redirect_url"))
                 {
                      
-                    
+                    if(!ST.hasMoreTokens())
+                    {
+                        
+                        System.out.printf("Redirect_url deleted");
+                        
+                        Vars.redirect_url="";
+                        Server.rewriteconfig();
+                        continue;
+                    }
                        String new_name=ST.nextToken ();
                       
                         System.out.printf("Redirect_url changed from \""+

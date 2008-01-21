@@ -1,5 +1,7 @@
 *** Theta RC 4 ***  
  
+           * fixed bug when renaming message "no such user online" was printed anyway;
+           * deleting redirect_url with cfg redirect_url works now;
            * started work on ping hub-hublist plugin;
            * STA messages changed to 1.0
            * bots are now CT5 instead of BO1

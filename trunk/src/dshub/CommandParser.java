@@ -806,6 +806,7 @@ Thread.sleep(200);
                     cur_client.sendFromBot("Renamed user "+temp.cur_client.NI+" to "+newnick);
                      new Broadcast("IMSG "+temp.cur_client.NI+" is now known as "+newnick);
                      temp.cur_client.NI=newnick;
+                     return;
                     
                 }
                            
