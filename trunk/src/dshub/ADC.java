@@ -104,7 +104,7 @@ abstract public class ADC
                      " MS"+1024*1024*Vars.min_share+" XS"+1024*1024*Vars.max_share+
                      " ML"+Vars.min_sl+ " XL"+Vars.max_sl+" XU"+Vars.max_hubs_user+
                      " XR"+Vars.max_hubs_reg+" XO"+Vars.max_hubs_op+
-                     " MC"+Vars.max_users;
+                     " MC"+Vars.max_users+" UC"+Main.curtime;
     }
     
     

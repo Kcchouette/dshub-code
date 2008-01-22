@@ -1,5 +1,6 @@
 *** Theta RC 4 ***  
  
+           * ping registering should work now via GUI;
            * added UC to ping ext;
            * adding removing and editing hublists via GUI should work now;
            * ping plugin now saves hublists in a file hublists.txt;

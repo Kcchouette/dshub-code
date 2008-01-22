@@ -42,6 +42,7 @@ import javax.swing.JFrame;
 public class PluginMain implements DSHubModule
 {
     static HublistList curlist;
+    static PingFrame pframe;
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
@@ -107,7 +108,8 @@ public class PluginMain implements DSHubModule
     {
         ;//does nothing
        // System.out.println("clicked !");
-        new PingFrame().setVisible(true);
+        pframe=new PingFrame();
+        pframe.setVisible(true);
     }
     
     public String getName()

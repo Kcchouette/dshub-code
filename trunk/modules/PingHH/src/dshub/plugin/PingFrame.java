@@ -40,9 +40,10 @@ public class PingFrame extends javax.swing.JFrame
         initComponents();
         
         hubliststable.setAutoResizeMode(hubliststable.AUTO_RESIZE_OFF);
-        hubliststable.getColumnModel().getColumn(0).setPreferredWidth(hubliststable.getWidth()/3);
-        hubliststable.getColumnModel().getColumn(1).setPreferredWidth(hubliststable.getWidth()/3);
-        hubliststable.getColumnModel().getColumn(2).setPreferredWidth(hubliststable.getWidth()/3);
+        hubliststable.getColumnModel().getColumn(0).setPreferredWidth(hubliststable.getWidth()/4);
+        hubliststable.getColumnModel().getColumn(1).setPreferredWidth(hubliststable.getWidth()/4);
+        hubliststable.getColumnModel().getColumn(2).setPreferredWidth(hubliststable.getWidth()/4);
+        hubliststable.getColumnModel().getColumn(3).setPreferredWidth(hubliststable.getWidth()/4);
         refresh();
     }
     
@@ -89,21 +90,21 @@ public class PingFrame extends javax.swing.JFrame
         hubliststable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {"www.hubtracker.com:3639", "HubTracker", "www.hubtracker.com"}
+                {"www.hubtracker.com:3639", "HubTracker", "www.hubtracker.com", "UNKNOWN"}
             },
             new String []
             {
-                "Address", "Name", "Website"
+                "Address", "Name", "Website", "Status"
             }
         )
         {
             Class[] types = new Class []
             {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean []
             {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex)
@@ -141,6 +142,13 @@ public class PingFrame extends javax.swing.JFrame
         getContentPane().add(buttondel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 130, -1));
 
         buttonstart.setText("Register hub");
+        buttonstart.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                buttonstartActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonstart, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 130, -1));
 
         jButton1.setText("Edit Selected");
@@ -189,7 +197,7 @@ public void refresh()
         
         for(Hublist hList : PluginMain.curlist.hList)
                 
-                HublistsModel.addRow(new Object[]{hList.URL,hList.Website,hList.status});
+                HublistsModel.addRow(new Object[]{hList.URL,hList.Name,hList.Website,hList.status});
 }
     
     private void buttondelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttondelActionPerformed
@@ -224,6 +232,15 @@ public void refresh()
                     Vars.HubName,JOptionPane.ERROR_MESSAGE);
          refresh();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonstartActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonstartActionPerformed
+    {//GEN-HEADEREND:event_buttonstartActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(this,"This will start autoregistering. It might take a while so please be patient.",
+                    Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        new RegisterThread();
+        
+    }//GEN-LAST:event_buttonstartActionPerformed
     
     
     
