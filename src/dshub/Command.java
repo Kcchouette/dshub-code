@@ -742,7 +742,7 @@ public class Command
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
                                  
                  cur_client.userok=1; //user is OK, logged in and cool.
-                 Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
+                 //Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  //ok now that we passed to normal state and user is ok, check if it has UCMD, and if so, send a test command
                  if(cur_client.ucmd==1)

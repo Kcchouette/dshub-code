@@ -1,5 +1,7 @@
 *** Theta RC 4 ***  
  
+           * added hublist command in plugin that handles hublist thingies;
+           * ping extension complete advertising PING now;
            * ping registering should work now via GUI;
            * added UC to ping ext;
            * adding removing and editing hublists via GUI should work now;

@@ -23,6 +23,7 @@
 
 package dshub.plugin;
 
+import dshub.ClientHandler;
 import dshub.Vars;
 import javax.swing.JOptionPane;
 
@@ -32,9 +33,14 @@ import javax.swing.JOptionPane;
  */
 public class RegisterThread extends Thread
 {
-    
+    ClientHandler cur_client=null;
     public RegisterThread()
     {
+        start();
+    }
+    public RegisterThread(ClientHandler cur_client)
+    {
+        this.cur_client=cur_client;
         start();
     }
     
@@ -44,10 +50,18 @@ public class RegisterThread extends Thread
         {
             h.status=h.register()?"OK":"FAILED";
         }
-        
+        if(cur_client==null)
+        {
         JOptionPane.showMessageDialog(null,"Hublist Registration finished.",
                     Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
-        PluginMain.pframe.refresh();
+        }
+        else
+        {
+            if(cur_client!=null)
+            cur_client.sendFromBot("Hublist Registration finished.");
+        }
+        if(PluginMain.pframe!=null)
+             PluginMain.pframe.refresh();
     }
 
 }
