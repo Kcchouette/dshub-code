@@ -23,6 +23,10 @@
 
 package dshub.plugin;
 
+import dshub.Vars;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author  Administrator
@@ -34,6 +38,12 @@ public class PingFrame extends javax.swing.JFrame
     public PingFrame()
     {
         initComponents();
+        
+        hubliststable.setAutoResizeMode(hubliststable.AUTO_RESIZE_OFF);
+        hubliststable.getColumnModel().getColumn(0).setPreferredWidth(hubliststable.getWidth()/3);
+        hubliststable.getColumnModel().getColumn(1).setPreferredWidth(hubliststable.getWidth()/3);
+        hubliststable.getColumnModel().getColumn(2).setPreferredWidth(hubliststable.getWidth()/3);
+        refresh();
     }
     
     /** This method is called from within the constructor to
@@ -57,6 +67,23 @@ public class PingFrame extends javax.swing.JFrame
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(600, 400));
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener()
+        {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt)
+            {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt)
+            {
+            }
+        });
+        addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+                formFocusGained(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hubliststable.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,12 +131,26 @@ public class PingFrame extends javax.swing.JFrame
         getContentPane().add(buttonadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 130, -1));
 
         buttondel.setText("Delete Selected");
+        buttondel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                buttondelActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttondel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 130, -1));
 
         buttonstart.setText("Register hub");
         getContentPane().add(buttonstart, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 130, -1));
 
         jButton1.setText("Edit Selected");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 130, -1));
 
         pack();
@@ -117,8 +158,72 @@ public class PingFrame extends javax.swing.JFrame
 
     private void buttonaddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonaddActionPerformed
     {//GEN-HEADEREND:event_buttonaddActionPerformed
-        // TODO add your handling code here:
+       String newURL=JOptionPane.showInputDialog(this, "Enter the hublist URL :");
+       if(newURL==null)
+           return;
+       PluginMain.curlist.add(newURL);
+       JOptionPane.showMessageDialog(this,"Hublist entry added succesfully.",
+                    Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
+                
+       refresh();
 }//GEN-LAST:event_buttonaddActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_formFocusGained
+    {//GEN-HEADEREND:event_formFocusGained
+        // TODO add your handling code here:
+       
+            
+        
+    }//GEN-LAST:event_formFocusGained
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowGainedFocus
+    {//GEN-HEADEREND:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        refresh();
+         
+    }//GEN-LAST:event_formWindowGainedFocus
+public void refresh()
+{
+    DefaultTableModel HublistsModel=(DefaultTableModel) hubliststable.getModel();
+        HublistsModel.setRowCount(0) ;
+        
+        for(Hublist hList : PluginMain.curlist.hList)
+                
+                HublistsModel.addRow(new Object[]{hList.URL,hList.Website,hList.status});
+}
+    
+    private void buttondelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttondelActionPerformed
+    {//GEN-HEADEREND:event_buttondelActionPerformed
+        int row=hubliststable.getSelectedRow();
+         String curURL=(String)hubliststable.getModel().getValueAt(row,0);
+         if(PluginMain.curlist.rem(curURL))
+             JOptionPane.showMessageDialog(this,"Hublist entry deleted succesfully.",
+                    Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
+         else
+             JOptionPane.showMessageDialog(this,"Unable to delete. Error.",
+                    Vars.HubName,JOptionPane.ERROR_MESSAGE);
+         
+         refresh();
+    }//GEN-LAST:event_buttondelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        
+        
+        int row=hubliststable.getSelectedRow();
+         String curURL=(String)hubliststable.getModel().getValueAt(row,0);
+         
+        String newURL=JOptionPane.showInputDialog(this, "ReEnter the hublist URL :",curURL);
+       if(newURL==null)
+           return;
+       if(PluginMain.curlist.mod(curURL,newURL))
+          JOptionPane.showMessageDialog(this,"Hublist entry modified succesfully.",
+                    Vars.HubName,JOptionPane.INFORMATION_MESSAGE);
+       else
+         JOptionPane.showMessageDialog(this,"Unable to modify. Error.",
+                    Vars.HubName,JOptionPane.ERROR_MESSAGE);
+         refresh();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     

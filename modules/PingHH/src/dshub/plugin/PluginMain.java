@@ -24,6 +24,12 @@
 package dshub.plugin;
 import dshub.Modules.DSHubModule;
 import dshub.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JFrame;
 
 /**
@@ -35,6 +41,7 @@ import javax.swing.JFrame;
  */
 public class PluginMain implements DSHubModule
 {
+    static HublistList curlist;
     /** Called by hub main threads when registered users give a command (starting with + or ! )
      *@arguments cur_client, the ClientHandler for the client who issued the Issued_Command, given in string
      *and with no protocol thingies
@@ -77,9 +84,12 @@ public class PluginMain implements DSHubModule
      */
     public boolean startup()
     {
-       
-        System.out.println("pinghh ok");
-        return true;
+        curlist=new HublistList();
+        
+        return reloadList();
+        
+        //System.out.println("pinghh ok");
+        
     }
     /** Called by hub main threads when closing plugin at quitting main application or restarts
      * Should clear everything up.
@@ -103,6 +113,62 @@ public class PluginMain implements DSHubModule
     public String getName()
     {
         return "Ping Hub-Hublist Communication";
+    }
+    
+    public boolean reloadList()
+    {
+        try
+        {
+        FileInputStream HublistListReader=new FileInputStream (Main.myPath+"hublists.txt");
+        
+        ObjectInputStream in=new ObjectInputStream(HublistListReader);
+        curlist=(HublistList) in.readObject();
+        }
+        catch ( FileNotFoundException fnfe)
+        {
+            //file not found so were gonna make it
+             Main.PopMsg("[PingHH]: Created default hublist List.");
+           return rewriteList();
+
+            
+            
+        }
+        catch (IOException e)
+        {
+            Main.PopMsg("[PingHH]: Error accesing hublists files. Attempting overwrite with default values.");
+            
+            return rewriteList();
+        }
+         catch(ClassNotFoundException e)
+        {
+            Main.PopMsg("[PingHH]: Internal Error Config Corrupted Files. FAIL.");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean rewriteList()
+    {
+        
+
+       
+         try 
+            {
+           
+            FileOutputStream HublistListOutput=new FileOutputStream(Main.myPath+"hublists.txt");
+            
+            ObjectOutputStream outreg = new ObjectOutputStream(HublistListOutput);  // Save objects
+            outreg.writeObject(curlist);      
+            outreg.flush();                 // Always flush the output.
+            outreg.close();                 // And close the stream.
+
+            }
+            catch (IOException e)
+            {
+                //Main.PopMsg(e.toString());
+                return false;
+            }
+        return true;
     }
     
     

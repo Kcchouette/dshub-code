@@ -1,5 +1,8 @@
 *** Theta RC 4 ***  
  
+           * added UC to ping ext;
+           * adding removing and editing hublists via GUI should work now;
+           * ping plugin now saves hublists in a file hublists.txt;
            * more work on ping plugin;
            * fixed bug when renaming message "no such user online" was printed anyway;
            * deleting redirect_url with cfg redirect_url works now;

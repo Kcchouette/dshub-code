@@ -29,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -38,7 +39,7 @@ import java.util.StringTokenizer;
  *
  * @author Pietricica
  */
-public class Hublist 
+public class Hublist implements Serializable
 {
    public String URL;
    public String Name;
