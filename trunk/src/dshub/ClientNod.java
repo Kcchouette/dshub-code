@@ -213,6 +213,7 @@ public class ClientNod
               this.NextClient.PrevClient=this.PrevClient;
           // System.out.println("killed");
            }*/
+           this.cur_client=null;
        }
     
 }

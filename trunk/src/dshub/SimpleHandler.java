@@ -133,7 +133,7 @@ public class SimpleHandler extends IoHandlerAdapter
                      myMod.onClientQuit(cur_client);
                  }
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-             Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
+           //  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
              cur_client.myNod.killMe();
             
         }

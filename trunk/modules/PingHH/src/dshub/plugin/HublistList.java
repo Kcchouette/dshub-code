@@ -49,6 +49,8 @@ public class HublistList implements Serializable
         Hublist newH=new Hublist();
         newH.URL=URL;
         hList.add(newH);
+        
+        PluginMain.rewriteList();
     }
     
     public boolean rem(String URL)
@@ -57,6 +59,7 @@ public class HublistList implements Serializable
           if(hublist.URL.equals(URL))
           {
               hList.remove(hublist);
+              PluginMain.rewriteList();
               return true;
           }
         return false;
@@ -68,6 +71,7 @@ public class HublistList implements Serializable
           if(hublist.URL.equals(oldURL))
           {
               hublist.URL=newURL;
+              PluginMain.rewriteList();
               return true;
           }
         return false;

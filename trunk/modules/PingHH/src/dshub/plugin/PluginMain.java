@@ -53,7 +53,19 @@ public class PluginMain implements DSHubModule
      */
     public int onCommand(ClientHandler cur_client,String Issued_Command)
     {
-           return DSHubModule.DO_NOTHING;// this plugin doesnt have any commands.  
+        if(Issued_Command.toLowerCase().startsWith("hublist") )
+        {
+            new HublistCmd(cur_client,Issued_Command);
+            return DSHubModule.ACK_COMMAND;
+        }
+        else if(Issued_Command.toLowerCase().startsWith("help"))
+        {
+            cur_client.sendFromBot("[PingHH: ] Ping Extension Hublist Autoregistering Module Help:\nAvailable commands: "+
+                    "\nhublist -- A simple way to register the hub on hublists, also to add/remove hublists.");
+            return DSHubModule.ACK_COMMAND;
+        }
+        return DSHubModule.DO_NOTHING;
+           
     }
     /** Called by hub main threads when a new client connects and its logged in ok
      *@arguments cur_client, the ClientHandler for the client who connected
@@ -117,7 +129,7 @@ public class PluginMain implements DSHubModule
         return "Ping Hub-Hublist Communication";
     }
     
-    public boolean reloadList()
+    public static boolean reloadList()
     {
         try
         {
@@ -149,7 +161,7 @@ public class PluginMain implements DSHubModule
         return true;
     }
     
-    public boolean rewriteList()
+    public static boolean rewriteList()
     {
         
 
