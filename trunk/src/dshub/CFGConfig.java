@@ -23,16 +23,9 @@
 
 package dshub;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.NetworkInterface;
 import java.net.Proxy;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 /**
  * The main hub configuration utility, is called when via command or tty a configuration wants changed.
@@ -755,7 +748,7 @@ public class CFGConfig
                     String blah="Cfg Variables list: \n"+
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
-                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here).\n"
+                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here) and your main port.\n"
                             +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
                             +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
                             +          "   redirect_url              "  + Vars.redirect_url+ "         -- The main redirect URL to send faulty users ( or default redirects ).\n"

@@ -121,7 +121,7 @@ public class HelpFile implements Serializable
         if(curAcc.myMask.plugmin)
             Help+="plugmin -- Plugin Administration. Allows enabling/disabling and scanning plugins.\n";
         if(curAcc.myMask.port)
-            Help+="port x -- Change default port to which hub is listening to x.\n";
+            Help+="port -- A simple interface to maintain current listening ports.\n";
         if(curAcc.myMask.quit)
             Help+="quit -- Shuts down hub.\n";
         if(curAcc.myMask.redirect)
