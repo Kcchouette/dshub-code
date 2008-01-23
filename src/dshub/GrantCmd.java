@@ -45,7 +45,7 @@ public class GrantCmd
                     "Usage grant user/CID [[+-]attribute1]*"+
                     "\n      +attribute adds the atribute to the registered user, - removes it."+
             "\n      [+-]all adds all possible attributes."+
-            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password plugmin port quit reg rename restart stats topic unban ureg usercount flyable key kickable modules nickprotected opchataccess overridefull overrideshare overridespam renameable";
+            "\n    List of attributes: about adc backup bancid banip bannick cfg chatcontrol cmdhistory drop grant gui help hideme history info kick listban listreg mass mynick password plugmin port quit redirect reg rename restart stats topic unban ureg usercount flyable key kickable modules nickprotected opchataccess overridefull overrideshare overridespam renameable";
             cur_client.sendFromBot(Help);
             return;
             }

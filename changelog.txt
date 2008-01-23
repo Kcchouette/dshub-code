@@ -1,4 +1,4 @@
-*** Theta RC 4 ***  
+*** Theta RC 4 23.01.2008 ***  
  
            * added hublist command in plugin that handles hublist thingies;
            * ping extension complete advertising PING now;
