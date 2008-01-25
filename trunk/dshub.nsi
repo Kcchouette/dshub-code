@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "DSHub"
-!define PRODUCT_VERSION "Theta RC3"
+!define PRODUCT_VERSION "Theta RC4"
 !define PRODUCT_PUBLISHER "Pietry ( Death-Squad )"
 !define PRODUCT_WEB_SITE "http://www.death-squad.ro/dshub"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\dshub.exe"
@@ -136,6 +136,7 @@ Section "Additional Modules ( plugins )" SEC02
   SetOutPath "$INSTDIR\modules"
   File "modules\Hubtracker.jar"
   File "modules\DSHubGenericPlugin.jar"
+  File "modules\PingHH.jar"
 
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -186,6 +187,7 @@ Section Uninstall
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\modules\DSHubGenericPlugin.jar"
   Delete "$INSTDIR\modules\Hubtracker.jar"
+  Delete "$INSTDIR\modules\PingHH.jar"
   Delete "$INSTDIR\lib\swing-layout-1.0.3.jar"
   Delete "$INSTDIR\lib\slf4j-log4j12-1.4.3.jar"
   Delete "$INSTDIR\lib\slf4j-api-1.4.3.jar"
