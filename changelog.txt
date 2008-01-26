@@ -1,3 +1,16 @@
+*** Iota RC1 ***
+           * the main language file is called Translation.properties, and it contains
+                  key = value
+           where only value needs to be translated. 
+           For each translation create a file named Translation_xx_XX. properties 
+where xx is language code and XX country code. 
+example : 
+Translation_ro_RO.properties for ro, Translation_en_US.properties for english but in united states.
+           These files are included in the jar file, I will add them personally when translators will provide them to me. 
+           * starting work on translations;
+
+
+
 *** Theta RC 4 23.01.2008 ***  
  
            * added hublist command in plugin that handles hublist thingies;
