@@ -92,7 +92,7 @@ public class Main extends Thread
             }
         }
     }
-    public static ResourceBundle Strings=null;
+    
     public static void init()
     {
         ClassLoader cl = ClassLoader.getSystemClassLoader (  )  ;
@@ -154,22 +154,7 @@ public class Main extends Thread
             
         }
              
-         Locale curLocale=Locale.getDefault()    ;
          
-         try
-         {
-              Strings = ResourceBundle.getBundle("Translation",
-                                           curLocale);
-         }
-         catch (java.util.MissingResourceException mre)
-         {
-             System.out.println("Fatal Error : Unable to locate Translation.properties file or any other translation. FAIL.");
-             System.exit(1);
-         }
-         
-        
-         System.out.println("Current found country : " + curLocale.getCountry());
-         System.out.println(Strings.getString("init"));
            
     }
        public static void Exit()
@@ -364,7 +349,7 @@ public class Main extends Thread
         
         curtime=System.currentTimeMillis();
         init();
-        System.out.println (Strings.getString("startup"));
+        System.out.println (Translation.getString("startup"));
         
        
         
