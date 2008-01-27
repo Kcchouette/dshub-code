@@ -80,6 +80,8 @@ public static String getString(String what)
     {
         return Strings.getString("init");
     }
+    
+    return Strings.getString(what);
     }
     catch (Exception e)
     {
