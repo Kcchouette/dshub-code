@@ -409,7 +409,7 @@ public class Main extends Thread
     }
     catch (Exception e)
     {
-        System.out.println ("GUI not viewable. "+e);
+        System.out.println (Translation.getString("gui_error")+e);
         GUIok=false;
     }
         
@@ -418,7 +418,10 @@ public class Main extends Thread
          Server=new HubServer();
 
          
-         PopMsg("This program is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.");
+         PopMsg(Translation.getString("gpl1")+"\r\n"+
+                 Translation.getString("gpl2")+"\r\n"+
+                 Translation.getString("gpl3")+"\r\n"+
+                 Translation.getString("gpl4"));
          
          Proppies=System.getProperties();
        //  GUI.setExtendedState(javax.swing.JFrame.ICONIFIED);
@@ -426,15 +429,15 @@ public class Main extends Thread
         if(GUI.isDisplayable ()&& !GUI.isShowing ())
              {
                 GUI.setVisible (true);
-                System.out.println ("GUI launched...");
+                System.out.println (Translation.getString("gui_launched"));
                 
              }
              else {
-             System.out.println ("GUI not viewable.");
+             System.out.println (Translation.getString("gui_not_viewable"));
              GUIok=false;
              }
-         PopMsg("Done.");
-             System.out.println("Parsing to Command Mode.Help for info,quit to quit.");
+         PopMsg(Translation.getString("done"));
+             System.out.println(Translation.getString("command_mode"));
              
        
         InputStreamReader b=new InputStreamReader(System.in);
@@ -488,12 +491,12 @@ public class Main extends Thread
           Main.GUI=new TestFrame();
           Main.GUIok=true;
           Main.GUIshowing=true;
-          Main.GUI.SetStatus("GUI restored...");
+          Main.GUI.SetStatus(Translation.getString("gui_restored"));
            
     }
     catch (Exception e)
     {
-        System.out.println("GUI not viewable.");
+        System.out.println(Translation.getString("gui_not_viewable"));
         Main.GUIok=false;
     }   
              }
@@ -501,10 +504,10 @@ public class Main extends Thread
              if(GUI.isDisplayable ()&& !GUI.isShowing ())
              {
                 GUI.setVisible (true);
-                System.out.println ("GUI launched...");
+                System.out.println (Translation.getString("gui_launched"));
                 //GUIok=true;
              }
-             else System.out.println ("GUI not viewable.");
+             else System.out.println (Translation.getString("gui_not_viewable"));
         }
        else if(recvbuf.toLowerCase ().equals ("restart"))
             {
