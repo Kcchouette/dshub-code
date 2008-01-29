@@ -528,12 +528,12 @@ public class Main extends Thread
                         throw new IllegalArgumentException();
                     if(BanList.delban(3,aux))
                     {
-                        System.out.println ("Searching...\nFound CID "+aux+", unbanned.");
+                        System.out.println (Translation.getString("searching")+"\n"+Translation.getString("cid_unbanned"));
                         
                         
                     }
                     else
-                        System.out.println ("Searching...\n Found CID "+aux+", not banned nothing to do.");
+                        System.out.println (Translation.getString("searching")+"\n"+Translation.getString("cid_not_banned"));
                 }
                 catch(IllegalArgumentException iae)
                 {
