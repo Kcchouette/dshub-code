@@ -54,7 +54,7 @@ static
          }
          
         
-         System.out.println("Current found country : " + (cc=curLocale.getCountry()));
+         System.out.println("Current found country : " + (lc=curLocale.getLanguage())+"_"+(cc=curLocale.getCountry()));
          lc=curLocale.getLanguage();
          System.out.println(getString("init"));
 }
