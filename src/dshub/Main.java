@@ -165,7 +165,7 @@ public class Main extends Thread
             //save Banned Words List
             listaBanate.printFile(Main.myPath+"banwlist.txt");
             
-            PopMsg("Closing down hub.");
+            PopMsg(Translation.getString("close_hub"));
         try {
             sleep(500);
         } catch (InterruptedException ex) {
@@ -175,7 +175,7 @@ public class Main extends Thread
        }
        public static void Restart()
        {
-         PopMsg("Restarting.... Wait 5 seconds...");
+         PopMsg(Translation.getString("restart_hub"));
          Main.Server.rewriteregs();
                Main. Server.rewriteconfig();
                Main.Server.rewritebans ();
@@ -204,7 +204,7 @@ public class Main extends Thread
                             
                             System.out.println (AccountsConfig.getnod (aux).getRegInfo ());
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
+                                Main.GUI.SetStatus (Translation.getString("already_regged"),JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                         
@@ -214,9 +214,9 @@ public class Main extends Thread
                                {
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
-                            PopMsg("User "+temp.cur_client.NI+" found with CID "+aux+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            PopMsg(Translation.getUserRegged(temp.cur_client.NI, aux));
                             
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
@@ -227,7 +227,7 @@ public class Main extends Thread
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("User "+temp.cur_client.NI+" found with given CID, added with no password, he should set one.");
+                                Main.GUI.SetStatus (Translation.getFoundCid(temp.cur_client.NI));
                         
                             
                             Main.Server.rewriteregs();
@@ -238,9 +238,9 @@ public class Main extends Thread
                             AccountsConfig.addReg (aux,null,"Server");
                             Nod x=AccountsConfig.getnod(aux);
                              x.isreg=true;
-                            PopMsg("CID added. No password set, login does not require pass, however, its recomandable to set one...");
+                            PopMsg(Translation.getString("regged_cid"));
                              if(Main.GUIok)
-                                Main.GUI.SetStatus ("CID added with no password, he should set one.");
+                                Main.GUI.SetStatus (Translation.getString("regged_cid_status"));
                              
                              
                        
@@ -258,13 +258,13 @@ public class Main extends Thread
                         {
                             System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
                              if(Main.GUIok)
-                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
+                                Main.GUI.SetStatus (Translation.getString("already_regged"),JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
@@ -273,17 +273,17 @@ public class Main extends Thread
                            temp.cur_client.reg.isreg=true;
                            temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                            PopMsg(Translation.getNotCid(aux)+"\n"+Translation.getUserRegged(temp.cur_client.NI, temp.cur_client.ID));
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                                Main.GUI.SetStatus (Translation.getString("found_user"));
                             Main.Server.rewriteregs();
                             return;
                         }
                         }
                         
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
+                            PopMsg(Translation.getNotCid(aux)+"\n"+Translation.getString("no_user"));
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
+                                Main.GUI.SetStatus (Translation.getString("no_cid_no_user"),JOptionPane.WARNING_MESSAGE);
                        
                         
                             
@@ -304,13 +304,13 @@ public class Main extends Thread
                         {
                            System.out.println (AccountsConfig.getnod (temp.cur_client.ID).getRegInfo ());
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Already regged.",JOptionPane.WARNING_MESSAGE);
+                                Main.GUI.SetStatus (Translation.getString("already_regged"),JOptionPane.WARNING_MESSAGE);
                             return;
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                            
-                            temp.cur_client.sendFromBot(""+"You have been registered by "+"Server"+" . No password set, login does not require pass, however, its recomandable you to set one...");
+                            temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
@@ -319,19 +319,19 @@ public class Main extends Thread
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.isreg=true;
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nUser "+temp.cur_client.NI+" found with CID "+temp.cur_client.ID+", added. No password set, login does not require pass, however, its recomandable to set one...");
+                           PopMsg(Translation.getNotCid(aux)+"\n"+Translation.getUserRegged(temp.cur_client.NI, temp.cur_client.ID));
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Found user online, added. No password set, he should set one.");
+                                Main.GUI.SetStatus (Translation.getString("found_user"));
                             Main.Server.rewriteregs();
                             return;
                         }
                         }
                         
-                            PopMsg("Not a CID, trying to add the "+aux+" nick.\nNo such client online.");
+                            PopMsg(Translation.getNotCid(aux)+"\n"+Translation.getString("no_user"));
                         
                         
                             if(Main.GUIok)
-                                Main.GUI.SetStatus ("Not a CID nor such user online.",JOptionPane.WARNING_MESSAGE);
+                               Main.GUI.SetStatus (Translation.getString("no_cid_no_user"),JOptionPane.WARNING_MESSAGE);
                         
                         
                          

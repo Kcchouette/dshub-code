@@ -90,4 +90,41 @@ public static String getString(String what)
     
     return null;
 }
+
+public static String getUserRegged(String nick, String cid)
+{
+    Object[] Args = {
+    nick, cid
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("user_regged"));
+        return formatter.format(Args);
+    
+}
+public static String getFoundCid(String nick)
+{
+    Object[] Args = {
+    nick
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("regged_found_cid"));
+        return formatter.format(Args);
+    
+}
+public static String getNotCid(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("not_cid"));
+        return formatter.format(Args);
+   
+}
 }
