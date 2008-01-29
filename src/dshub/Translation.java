@@ -127,4 +127,16 @@ public static String getNotCid(String aux)
         return formatter.format(Args);
    
 }
+public static String getCidUnbanned(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("cid_unbanned"));
+        return formatter.format(Args);
+}
+        
 }
