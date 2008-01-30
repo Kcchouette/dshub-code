@@ -538,40 +538,40 @@ public class Main extends Thread
                 catch(IllegalArgumentException iae)
                 {
                     //ok its not a cid, lets check if its some IP address...
-                    System.out.println ("Not a CID, Searching...");
+                    System.out.println (Translation.getString("not_cid_searching"));
                     if(ADC.isIP(aux))
                     {
-                        System.out.println ("Is IP ...checking if banned...");
+                        System.out.println (Translation.getString("is_ip_checking"));
                         if(BanList.delban (2,aux))
-                            System.out.println ("Found IP address "+aux+", unbanned.");
+                            System.out.println (Translation.getFoundIPUnbanned(aux));
                         else
-                            System.out.println ("Found IP address "+aux+", but is not banned, nothing to do.");
+                            System.out.println (Translation.getFoundIPNoBan(aux));
                     }
                     else 
                     {
-                        System.out.println ("Is not IP...Checking for nick...");
+                        System.out.println (Translation.getString("not_ip"));
                         if(BanList.delban (1,aux))
-                            System.out.println ("Found nick "+aux+", unbanned.");
+                            System.out.println (Translation.getFoundNickUnbanned(aux));
                         else
-                            System.out.println ("Nick "+aux+" is not banned, nothing to do.");
+                            System.out.println (Translation.getFoundNickNoBan(aux));
                     }
                 }
-                System.out.println ("Done.");
+                System.out.println (Translation.getString("done"));
                     Main.Server.rewritebans ();
                     
                 
         }
         else if(recvbuf.toLowerCase ().equals("listreg"))
         {
-            String blah00="Reg List :\n";
+            String blah00=Translation.getString("reg_list")+" \n";
             Nod n=AccountsConfig.First;
             while(n!=null)
             {
                 blah00=blah00+n.CID;
                 if(n.LastNI!=null)
-                    blah00=blah00+ " Last nick: "+n.LastNI+"\n";
+                    blah00=blah00+ Translation.getLastNick(n.LastNI)+"\n";
                 else
-                    blah00=blah00+ " Never seen online."+"\n";
+                    blah00=blah00+ Translation.getString("never_seen")+"\n";
                 n=n.Next;
             }
             blah00=blah00.substring (0,blah00.length ()-2);
@@ -595,34 +595,34 @@ public class Main extends Thread
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                              {
-                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                            temp.cur_client.sendFromBot(Translation.getString("account_deleted"));
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.CT="0";
                             
                             new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
-                            System.out.println ("User "+temp.cur_client.NI+" with CID "+aux+" found, deleted.");
+                            System.out.println (Translation.getUserDeleted(temp.cur_client.NI,aux));
                             
                             Main.Server.rewriteregs ();
                             return;
                             }
                         }
                      
-                         System.out.println ("Reg deleted.");
+                         System.out.println (Translation.getString("reg_deleted"));
                 }
                 else
-                    System.out.println ("Reg not found.");
+                    System.out.println ();
                 }
                 catch (IllegalArgumentException iae)
                 {
-                    System.out.println ("Not a valid CID, checking for possible users...");
+                    System.out.println (Translation.getString("not_cid"));
                      for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                              {
                             AccountsConfig.unreg(temp.cur_client.ID);
-                           System.out.println ("User "+temp.cur_client.NI+" deleted.");
-                            temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
+                           System.out.println (Translation.getUserDeleted(temp.cur_client.NI, temp.cur_client.ID));
+                            temp.cur_client.sendFromBot(Translation.getString("account_deleted"));
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.CT="0";
                             
@@ -633,7 +633,7 @@ public class Main extends Thread
                             return;
                         }
                        
-                            System.out.println ("No such client online.");
+                            System.out.println (Translation.getString("no_user"));
 
                         
                 }
