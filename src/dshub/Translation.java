@@ -103,6 +103,19 @@ public static String getUserRegged(String nick, String cid)
         return formatter.format(Args);
     
 }
+public static String getUserDeleted(String nick, String cid)
+{
+    Object[] Args = {
+    nick, cid
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("user_deleted"));
+        return formatter.format(Args);
+    
+}
+
 public static String getFoundCid(String nick)
 {
     Object[] Args = {
@@ -138,5 +151,67 @@ public static String getCidUnbanned(String aux)
         formatter.applyPattern(Strings.getString("cid_unbanned"));
         return formatter.format(Args);
 }
+
+public static String getFoundIPUnbanned(String aux)
+{
+     Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("found_ip_unbanned"));
+        return formatter.format(Args);
+}
+public static String getFoundIPNoBan(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("found_ip_noban"));
+        return formatter.format(Args);
+    
+}
+public static String getFoundNickUnbanned(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("found_nick_unbanned"));
+        return formatter.format(Args);
+}
+public static String getFoundNickNoBan(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("found_nick_noban"));
+        return formatter.format(Args);
+}
+
+public static String getLastNick(String aux)
+{
+    Object[] Args = {
+    aux
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("last_nick"));
+        return formatter.format(Args);
+}
+
+
+        
+        
         
 }
