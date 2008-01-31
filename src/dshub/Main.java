@@ -676,13 +676,13 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.Timeout_Login;
                         Vars.Timeout_Login=Integer.parseInt (aux);
-                        System.out.printf("Timeout_Login changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Timeout_Login", Integer.toString (aucsy),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase ().equals ("hub_name"))
@@ -692,8 +692,8 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.printf("Hub_name changed from \""+
-                                Vars.HubName+"\" to \""+new_name+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Hub_name",
+                                Vars.HubName,new_name)+"\n");
                         
                         Vars.HubName=new_name;
                         Server.rewriteconfig();
@@ -709,21 +709,19 @@ public class Main extends Thread
                         int x= new_name.indexOf(':')  ;
                       if(x==-1 || x>new_name.length()-1)
                        {
-                        System.out.println("Hub_host must be in format address:port.");
+                        System.out.println(Translation.getString("invalid_host"));
                        continue;
                        }   
                        
-                           System.out.println("Scanning hub_host please wait...");
+                           System.out.println(Translation.getString("scanning_host"));
                         if(!(HostTester.hostOK(new_name)))
                         {
-                            System.out.printf("The hub_host you provided does not point to one of your eth interfaces. "+
-                                    "Reasons: DNS not correctly set; you dont have a external real IP (if you are creating"+"" +
-                                    " LAN hub, use your LAN local IP as a hub_host); not even package routing to your system work.\n");
+                            System.out.printf(Translation.getString("bad_host")+"\n");
                        continue;
                         }
-                       
-                        System.out.printf("Hub_host changed from \""+
-                                Vars.Hub_Host+"\" to \""+new_name+"\".\n");
+                       System.out.printf(Translation.getCfgChanged("Hub_host",
+                                Vars.Hub_Host,new_name)+"\n");
+                        
                         
                         Vars.Hub_Host=new_name;
                         Server.rewriteconfig();

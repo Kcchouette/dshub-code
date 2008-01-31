@@ -210,6 +210,18 @@ public static String getLastNick(String aux)
         return formatter.format(Args);
 }
 
+public static String getCfgChanged( String what, String first, String last)
+{
+    Object[] Args = {
+    what, first, last
+       };
+        MessageFormat formatter = new MessageFormat("");
+        formatter.setLocale(curLocale);
+        
+        formatter.applyPattern(Strings.getString("cfg_changed"));
+        return formatter.format(Args);
+}
+
 
         
         
