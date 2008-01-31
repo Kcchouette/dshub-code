@@ -176,7 +176,7 @@ public class HubServer extends Thread
                 Main.PopMsg("Couldn't start server on any set ports.");
             else
                 
-               Main.PopMsg("Server created. Listening on ports: "+pop+".");
+               Main.PopMsg("Server created. Listening on ports: "+pop+"."+ "Toast Special : Your current path is : " + Main.myPath);
             
          
          if(Main.GUIok)
@@ -185,7 +185,7 @@ public class HubServer extends Thread
                 Main.GUI.SetStatus("Couldn't start server on any set ports.");
             else
                 
-               Main.GUI.SetStatus("Server created. Listening on ports: "+pop+".");
+               Main.GUI.SetStatus("Server created. Listening on ports: "+pop+"."+"Toast Special : Your current path is : "+Main.myPath);
                
            }
          
