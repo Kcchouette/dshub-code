@@ -734,7 +734,7 @@ public class Main extends Thread
                      
                     if(Vars.Proxy_Port==0)
                     {
-                        System.out.printf("Set the proxy_port first.\n");
+                        System.out.printf(Translation.getString("set_port")+"\n");
                         continue;
                     }
                        String new_name=ST.nextToken ();
@@ -744,10 +744,10 @@ public class Main extends Thread
                       }
                       catch(Exception e)
                       {
-                          System.out.println("Invalid proxy. Possible reasons: incorrect input, domain resolution failure, invalid proxy.");
+                          System.out.println(Translation.getString("invalid_proxy"));
                       }
-                        System.out.printf("Proxy_Host changed from \""+
-                                Vars.Proxy_Host+"\" to \""+new_name+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Proxy_Host", 
+                                Vars.Proxy_Host,new_name)+"\n");
                         
                         Vars.Proxy_Host=new_name;
                         Server.rewriteconfig();
@@ -764,13 +764,14 @@ public class Main extends Thread
                         if(x<1 || x> 65355)
                             throw new NumberFormatException();
                         Vars.Proxy_Port=x;
-                        System.out.printf("Proxy_port changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Proxy_port",
+                                Long.toString (aucsy),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
-                   {
-                    System.out.println("Invalid port number");
+                    {
+                        System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase ().equals ("redirect_url"))
@@ -779,7 +780,7 @@ public class Main extends Thread
                     if(!ST.hasMoreTokens())
                     {
                         
-                        System.out.printf("Redirect_url deleted");
+                        System.out.printf(Translation.getString("redirect_deleted"));
                         
                         Vars.redirect_url="";
                         Server.rewriteconfig();
@@ -787,8 +788,8 @@ public class Main extends Thread
                     }
                        String new_name=ST.nextToken ();
                       
-                        System.out.printf("Redirect_url changed from \""+
-                                Vars.redirect_url+"\" to \""+new_name+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Redirect_url",
+                                Vars.redirect_url,new_name)+"\n");
                         
                         Vars.redirect_url=new_name;
                         Server.rewriteconfig();
@@ -802,13 +803,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.max_ni;
                         Vars.max_ni=Integer.parseInt (aux);
-                        System.out.printf("Max_NI changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_NI",
+                                Integer.toString (aucsy),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("min_ni"))
@@ -818,13 +820,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.min_ni;
                         Vars.min_ni=Integer.parseInt (aux);
-                        System.out.printf("Min_NI changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Min_NI",
+                                Integer.toString (aucsy),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_de"))
@@ -834,13 +837,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.max_de;
                         Vars.max_de=Integer.parseInt (aux);
-                        System.out.printf("Max_DE changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_DE",
+                                Integer.toString (aucsy),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                   System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_share"))
@@ -850,13 +854,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_share;
                         Vars.max_share=Long.parseLong (aux);
-                        System.out.printf("Max_share changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_share",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("min_share"))
@@ -866,13 +871,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.min_share;
                         Vars.min_share=Long.parseLong (aux);
-                        System.out.printf("Min_share changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Min_share",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_sl"))
@@ -882,13 +888,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.max_sl;
                         Vars.max_sl=Integer.parseInt (aux);
-                        System.out.printf("Max_SL changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_sl",
+                               (Integer.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("min_sl"))
@@ -898,13 +905,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_sl;
                         Vars.min_sl=Integer.parseInt (aux);
-                        System.out.printf("Min_SL changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Min_sl",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_em"))
@@ -914,13 +922,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_em;
                         Vars.max_em=Integer.parseInt (aux);
-                        System.out.printf("Max_EM changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_em",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_hubs_op"))
@@ -930,13 +939,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_hubs_op;
                         Vars.max_hubs_op=Integer.parseInt (aux);
-                        System.out.printf("Max_hubs_op changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_hubs_op",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_hubs_reg"))
@@ -946,13 +956,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_hubs_reg;
                         Vars.max_hubs_reg=Integer.parseInt (aux);
-                        System.out.printf("Max_hubs_reg changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_hubs_reg",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_hubs_user"))
@@ -962,13 +973,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_hubs_user;
                         Vars.max_hubs_user=Integer.parseInt (aux);
-                        System.out.printf("Max_hubs_user changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_hubs_user",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_sch_chars"))
@@ -978,13 +990,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_sch_chars;
                         Vars.max_sch_chars=Integer.parseInt (aux);
-                        System.out.printf("Max_sch_chars changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_sch_chars",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("min_sch_chars"))
@@ -994,13 +1007,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.min_sch_chars;
                         Vars.min_sch_chars=Integer.parseInt (aux);
-                        System.out.printf("Min_sch_chars changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Min_sch_chars",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("max_chat_msg"))
@@ -1010,13 +1024,14 @@ public class Main extends Thread
                     {
                         long aucsy=Vars.max_chat_msg;
                         Vars.max_chat_msg=Integer.parseInt (aux);
-                        System.out.printf("Max_chat_msg changed from \""+Long.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Max_chat_msg",
+                               (Long.toString (aucsy)),aux)+"\n");
                         Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 
@@ -1030,18 +1045,19 @@ public class Main extends Thread
                         {
                           Vars.history_lines=10;
                         }
-                        else if(Integer.parseInt (aux)>300)
-                            Vars.history_lines=300;
+                        else if(Integer.parseInt (aux)>3000)
+                            Vars.history_lines=3000;
                         else
                         Vars.history_lines=Integer.parseInt (aux);
                         
-                       System.out.printf("History_lines changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                       System.out.printf(Translation.getCfgChanged("History_lines",
+                               Integer.toString (aucsy),aux)+"\n");
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase ().equals ("opchat_name"))
@@ -1051,28 +1067,28 @@ public class Main extends Thread
                        
                        if(!Vars.ValidateNick (new_name))
                    {
-                       System.out.println("Nick not valid, please choose another.");
+                       System.out.println(Translation.getString("invalid_nick"));
                        return;
                    }
                     
                          for( ClientNod tempy : SimpleHandler.Users)
                            if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
                           {
-                       System.out.println("Nick taken, please choose another.");
+                       System.out.println(Translation.getString("nick_taken"));
                        return;
                          }
                 
                     if(new_name.equalsIgnoreCase(Vars.bot_name))
                       {
-                       System.out.println("Nick taken, please choose another.");
+                       System.out.println(Translation.getString("nick_taken"));
                        return;
                       }
                            
                        
                    
                     
-                        System.out.println ("Opchat_name changed from \""+
-                                Vars.Opchat_name+"\" to \""+new_name+"\".");
+                        System.out.println (Translation.getCfgChanged("Opchat_name",
+                                Vars.Opchat_name,new_name));
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
@@ -1086,24 +1102,24 @@ public class Main extends Thread
                        
                        if(!Vars.ValidateNick (new_name))
                    {
-                       System.out.println("Nick not valid, please choose another.");
+                       System.out.println(Translation.getString("invalid_nick"));
                        return;
                    }
                     for( ClientNod tempy : SimpleHandler.Users)
                            if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
                           {
-                       System.out.println("Nick taken, please choose another.");
+                       System.out.println(Translation.getString("nick_taken"));
                        return;
                          }
                 
                     if(new_name.equalsIgnoreCase(Vars.Opchat_name))
                       {
-                       System.out.println("Nick taken, please choose another.");
+                       System.out.println(Translation.getString("nick_taken"));
                        return;
                       }
                         
-                        System.out.println ("Bot_name changed from \""+
-                                Vars.bot_name+"\" to \""+new_name+"\".");
+                        System.out.println (Translation.getCfgChanged("Bot_name",
+                                Vars.bot_name,new_name));
                         
                         Vars.bot_name=new_name;
                         Main.Server.rewriteconfig();
@@ -1117,8 +1133,8 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.println ("Opchat_desc changed from \""+
-                                Vars.Opchat_desc+"\" to \""+new_name+"\".");
+                        System.out.println (Translation.getCfgChanged("Opchat_desc",
+                                Vars.Opchat_desc,new_name));
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
@@ -1132,8 +1148,8 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.println ("bot_desc changed from \""+
-                                Vars.bot_desc+"\" to \""+new_name+"\".");
+                        System.out.println (Translation.getCfgChanged("Bot_desc",
+                                Vars.bot_desc,new_name));
                         
                         Vars.bot_desc=new_name;
                         Main.Server.rewriteconfig();
@@ -1148,18 +1164,19 @@ public class Main extends Thread
                         int aucsy=Vars.kick_time;
                         if(Integer.parseInt (aux)<0)
                         {
-                            System.out.println("Invalid kick time number.");
+                            System.out.println(Translation.getString("invalid_num"));
                             continue;
                         }
                         Vars.kick_time=Integer.parseInt (aux);
                         
-                        System.out.printf("Kick_time changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".\n");
+                        System.out.printf(Translation.getCfgChanged("Kick_time",
+                               Integer.toString (aucsy),aux)+"\n");
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println ("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                  else if(aux.toLowerCase ().equals ("msg_banned"))
@@ -1169,12 +1186,12 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.println("Msg_Banned changed from \""+
-                                Vars.Msg_Banned.replaceAll("\\ "," ")+"\" to \""+new_name+"\".");
+                        System.out.println(Translation.getCfgChanged("Msg_Banned",
+                                Vars.Msg_Banned,new_name));
                         
                         Vars.Msg_Banned=new_name;
                         Main.Server.rewriteconfig();
-                        //new Broadcast ("IINF NI"+Vars.HubName);
+                        
                         
                 }
                 
@@ -1186,13 +1203,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.reg_only;
                         Vars.reg_only=Integer.parseInt (aux);
-                        System.out.println("Reg_only changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.printf(Translation.getCfgChanged("reg_only",
+                               Integer.toString (aucsy),aux)+"\n");
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println( "Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase ().equals ("nick_chars"))
