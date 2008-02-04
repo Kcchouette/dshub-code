@@ -29,6 +29,9 @@ import java.util.*;
 import java.net.*;
 import javax.swing.JOptionPane;
 
+import org.python.core.*;
+import org.python.util.*;
+
 
 
 
@@ -354,7 +357,8 @@ public class Main extends Thread
        
         
         
-        
+        PythonInterpreter interp = new PythonInterpreter();
+        //interp.execfile("g:\\test.py");
         
         
         
