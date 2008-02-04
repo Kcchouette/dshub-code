@@ -527,6 +527,16 @@ public class TestFrame extends javax.swing.JFrame {
         PluginPanel = new javax.swing.JPanel();
         jButton30 = new javax.swing.JButton();
         jLabel55 = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel58 = new javax.swing.JLabel();
+        jButton32 = new javax.swing.JButton();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel41 = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -2931,6 +2941,99 @@ public class TestFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Additional Modules", PPanel);
 
+        jLabel58.setText("The DSHub scripts and the scripting languages currently supported. Scripts path: /scripts .");
+
+        jButton32.setText("Rescan Scripts");
+        jButton32.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton32ActionPerformed(evt);
+            }
+        });
+
+        jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel59.setText("Python scripting uses the Jython core. Thanks to Jython team for providing it.");
+        jPanel41.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String []
+            {
+                "Script name", "Active"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, true
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel41.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 570, 260));
+
+        jLabel60.setText("Relative path: /py");
+        jPanel41.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+
+        jLabel61.setText("Address: http://jython.sourceforge.net/");
+        jPanel41.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+
+        jTabbedPane3.addTab("Python", jPanel41);
+
+        org.jdesktop.layout.GroupLayout jPanel22Layout = new org.jdesktop.layout.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel22Layout.createSequentialGroup()
+                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel22Layout.createSequentialGroup()
+                        .add(19, 19, 19)
+                        .add(jLabel58)
+                        .add(18, 18, 18)
+                        .add(jButton32))
+                    .add(jPanel22Layout.createSequentialGroup()
+                        .add(28, 28, 28)
+                        .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel22Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel58)
+                    .add(jButton32))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Scripts", jPanel22);
+
         jPanel12.setToolTipText("Hub Log");
 
         LogText.setColumns(20);
@@ -3046,7 +3149,16 @@ public class TestFrame extends javax.swing.JFrame {
     private void jTabbedPane1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jTabbedPane1MousePressed
     {//GEN-HEADEREND:event_jTabbedPane1MousePressed
 // TODO add your handling code here:
-        JPanel x=(JPanel)jTabbedPane1.getSelectedComponent();
+        JPanel x=null;
+        try
+        {
+             x=(JPanel)jTabbedPane1.getSelectedComponent();
+        }
+        catch(ClassCastException cce)
+        {
+            
+        }
+        
         if(x!=null)
         {
             if(x==PPanel)
@@ -5212,6 +5324,11 @@ refreshAll();
                 SetStatus("Invalid port number", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_addnewportActionPerformed
+
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton32ActionPerformed
+    {//GEN-HEADEREND:event_jButton32ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton32ActionPerformed
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5319,6 +5436,7 @@ refreshAll();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -5378,7 +5496,11 @@ refreshAll();
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel66;
@@ -5404,6 +5526,7 @@ refreshAll();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
@@ -5424,6 +5547,7 @@ refreshAll();
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
+    private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -5441,6 +5565,7 @@ refreshAll();
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
@@ -5453,6 +5578,8 @@ refreshAll();
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
