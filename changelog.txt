@@ -1,4 +1,5 @@
 *** Iota RC1 ***
+           * fixed bug on restarting with plugins big trouble was happening;
            * added primary python environment using jython;
            * modified bad text on bad hub_host;
            * the main language file is called Translation.properties, and it contains
