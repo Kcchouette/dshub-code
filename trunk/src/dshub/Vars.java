@@ -60,12 +60,16 @@ public final class Vars
    
             
     public static String About=
-                   "               Death Squad Hub\n"+
-                   "                 The credits\n"
-              +    "          Project Coordinator: Pietry\n"
-              +    "         Development Team: Death Squad\n"
+                   "[Death Squad Hub]\n"+
+                   "[Version Iota RC1]\n"+
+                   "[February 2008]\n"+
+                   "[Licensed under GNU GPL]\n"+
+                   ":The credits\n"
+              +    "::Project Coordinator: Pietry\n"
+              +    ":::Special thanks goes to \n"
+               +    ":::MAGY, Spader, Toast, Naccio, Catalaur \n"
 
-              +    "Thanks to all Testers and Contributors and all Team Members.";
+              +    ":::: Also Thanks to all Testers and Contributors and all Team Members.";
     
     public static String Opchat_name="OpChat";
     public static String Opchat_desc="BoT";
