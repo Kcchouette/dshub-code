@@ -1,4 +1,7 @@
 *** Iota RC1 ***
+           * fixed the about cmd and a little on gui about;
+           * fixed bug when port help was not showing in console;
+           * fixed bug on ping extension with UC instead of UP;
            * fixed bug on restarting with plugins big trouble was happening;
            * added primary python environment using jython;
            * modified bad text on bad hub_host;

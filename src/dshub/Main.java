@@ -1480,25 +1480,9 @@ public class Main extends Thread
                    
                }
         }
-        else if(recvbuf.toLowerCase ().startsWith("port "))
+        else if(recvbuf.toLowerCase ().startsWith("port"))
         {
-                /*try
-                {
-            int x=Integer.parseInt(recvbuf.substring(5));
-           if(x<1 || x>65000)
-           {
-               System.out.printf("What kinda port is that?\n");
-            return;
-           }
-            System.out.printf("New default port change from %s to %s. Restart for settings to take effect.\n",Vars.Default_Port,recvbuf.substring(5));
-             Vars.Default_Port=x;
-             
-             Server.rewriteconfig();
-                }
-                catch(NumberFormatException nfe)
-                {
-                    System.out.println("Invalid port number");
-                }*/
+               
             new PortCmd(null,recvbuf);
             
         }

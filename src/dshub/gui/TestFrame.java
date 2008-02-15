@@ -282,6 +282,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -615,6 +616,8 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel70.setText("all testers and contributors with ideas.");
 
+        jLabel62.setText("and Catalaur");
+
         org.jdesktop.layout.GroupLayout jPanel23Layout = new org.jdesktop.layout.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
@@ -622,22 +625,25 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel23Layout.createSequentialGroup()
                 .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel23Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabel69))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(41, 41, 41)
-                        .add(jLabel70))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel8)
-                            .add(jLabel6)))
-                    .add(jPanel23Layout.createSequentialGroup()
                         .add(73, 73, 73)
                         .add(jLabel14))
                     .add(jPanel23Layout.createSequentialGroup()
                         .add(60, 60, 60)
-                        .add(jLabel7)))
+                        .add(jLabel7))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel69)
+                            .add(jPanel23Layout.createSequentialGroup()
+                                .add(31, 31, 31)
+                                .add(jLabel70))
+                            .add(jLabel6)))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .add(14, 14, 14)
+                        .add(jLabel8))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .add(110, 110, 110)
+                        .add(jLabel62)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
@@ -649,16 +655,18 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel7)
                 .add(14, 14, 14)
                 .add(jLabel8)
+                .add(4, 4, 4)
+                .add(jLabel62)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel69)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel70)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 180));
+        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 200));
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("License"));
 
@@ -703,10 +711,10 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel66)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel9)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 180));
+        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 200));
 
         jTabbedPane1.addTab("About", null, jPanel1, "About DSHub...");
 
@@ -5501,6 +5509,7 @@ refreshAll();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel66;
