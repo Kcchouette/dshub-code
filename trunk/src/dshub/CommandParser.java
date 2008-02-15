@@ -172,13 +172,12 @@ Thread.sleep(200);
                 
                 Main.PopMsg ("Hub is being shut down by "+cur_client.NI);
                
-                 Iterator x=Modulator.myModules.iterator();     
-               while(x.hasNext())
+                 for(Module x : Modulator.myModules)
                {
                      
                
-                     ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
-                     ((DSHubModule)(x.next())).close();
+                     x.onCommand(cur_client,recvbuf);
+                     x.close();
                }
                  
                 Main.Exit();
@@ -208,12 +207,12 @@ Thread.sleep(200);
                 Main.PopMsg ("Hub restarted by "+cur_client.NI);
                 
              
-                 Iterator x=Modulator.myModules.iterator();     
-               while(x.hasNext())
-               {
-                     ((DSHubModule)(x.next())).onCommand(cur_client,recvbuf);
-                      ((DSHubModule)(x.next())).close();
-               }
+                 
+                   for(Module x: Modulator.myModules)
+                   {
+                     x.onCommand(cur_client,recvbuf);
+                      x.close();
+                   }
                  
              Main.Server.shutdown();
              System.gc (); //calling garbage collectors
