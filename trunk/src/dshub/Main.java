@@ -1207,7 +1207,7 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.reg_only;
                         Vars.reg_only=Integer.parseInt (aux);
-                        System.out.printf(Translation.getCfgChanged("reg_only",
+                        System.out.printf(Translation.getCfgChanged("Reg_only",
                                Integer.toString (aucsy),aux)+"\n");
                         Main.Server.rewriteconfig();
                     }
@@ -1223,24 +1223,15 @@ public class Main extends Thread
                        String new_name=ST.nextToken ();
                        //while(ST.hasMoreTokens ())
                        //    new_name=new_name+" "+ST.nextToken ();
-                       if(new_name.indexOf ("\\")!=-1  )
-                       {
-                           System.out.println("Nick_chars may not contain \"\\\"");
-                           continue;
-                       }
-                       if(new_name.indexOf ("\"")!=-1  )
-                       {
-                           System.out.println("Nick_chars may not contain \"");
-                           continue;
-                       }
+                       
                        if(new_name.length ()<2  )
                        {
-                           System.out.println("Nick_chars too short don't you think ?");
+                           System.out.println(Translation.getString("nick_chars_short"));
                            continue;
                        }
                         
-                        System.out.println("Nick_chars changed from \""+
-                                Vars.nick_chars+"\" to \""+new_name+"\".");
+                        System.out.println(Translation.getCfgChanged("Nick_chars",
+                                Vars.nick_chars,new_name));
                         
                         Vars.nick_chars=new_name;
                         Main.Server.rewriteconfig();
@@ -1255,8 +1246,8 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.println("Msg_Full changed from \""+
-                                Vars.Msg_Full+"\" to \""+new_name+"\".");
+                        System.out.println(Translation.getCfgChanged("Msg_Full",
+                                Vars.Msg_Full,new_name));
                         
                         Vars.Msg_Full=new_name;
                         Main.Server.rewriteconfig();
@@ -1270,13 +1261,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.max_users;
                         Vars.max_users=Integer.parseInt (aux);
-                        System.out.println("Max_Users changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println(Translation.getCfgChanged("Max_Users",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("chat_interval"))
