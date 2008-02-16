@@ -412,10 +412,11 @@ public class CFGConfig
                         else if(Integer.parseInt (aux)>300)
                             Vars.history_lines=300;
                         else
-                        Vars.history_lines=Integer.parseInt (aux);
+                        
                         */
                         
                         cur_client.sendFromBot("History lines changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        Vars.history_lines=Integer.parseInt (aux);
                         Main.Server.rewriteconfig();
                     }
                     
