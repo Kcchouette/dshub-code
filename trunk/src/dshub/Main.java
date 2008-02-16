@@ -1280,19 +1280,20 @@ public class Main extends Thread
                        int blahhh= Integer.parseInt (aux);
                        if(blahhh<20)
                        {
-                            System.out.println("A bit small don't you think ?");
+                            System.out.println(Translation.getString("chat_interval"));
                             continue;
                        }
                         Vars.chat_interval=blahhh;
                                 
                         
-                        System.out.println("Chat_Interval changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println(Translation.getCfgChanged("Chat_Interval",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println("Invalid number");
+                    System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 
@@ -1303,13 +1304,14 @@ public class Main extends Thread
                     {
                         int aucsy=Vars.savelogs;
                         Vars.savelogs=Integer.parseInt (aux);
-                        System.out.println("Save_logs changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println(Translation.getCfgChanged("Save_logs",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                   System.out.println("Invalid number");
+                   System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
                 
@@ -1322,13 +1324,14 @@ public class Main extends Thread
                         int x=Integer.parseInt (aux);
                         
                         Vars.automagic_search=x;
-                        System.out.println ("Automagic_search changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println (Translation.getCfgChanged("Automagic_search",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println ("Invalid number");
+                    System.out.println (Translation.getString("invalid_num"));
                    } 
                 }
                  else if(aux.toLowerCase().equals ("search_log_base"))
@@ -1340,13 +1343,14 @@ public class Main extends Thread
                         int x=Integer.parseInt (aux);
                        
                         Vars.search_log_base=x;
-                        System.out.println ("Search_log_base changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println (Translation.getCfgChanged("Search_log_base",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println ("Invalid number");
+                    System.out.println (Translation.getString("invalid_num"));
                    } 
                 }
                  else if(aux.toLowerCase().equals ("search_steps"))
@@ -1358,13 +1362,14 @@ public class Main extends Thread
                         int x=Integer.parseInt (aux);
                        
                         Vars.search_steps=x;
-                        System.out.println ("Search_steps changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println (Translation.getCfgChanged("Search_steps",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println ("Invalid number");
+                    System.out.println (Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase().equals ("search_spam_reset"))
@@ -1376,13 +1381,14 @@ public class Main extends Thread
                         int x=Integer.parseInt (aux);
                        
                         Vars.search_spam_reset=x;
-                        System.out.println ("Search_spam_reset changed from \""+Integer.toString (aucsy)+"\" to \""+aux+"\".");
+                        System.out.println (Translation.getCfgChanged("Search_spam_reset",
+                                Integer.toString (aucsy),aux));
                         Main.Server.rewriteconfig();
                     }
                     
                     catch(NumberFormatException nfe)
                    {
-                    System.out.println ("Invalid number");
+                    System.out.println (Translation.getString("invalid_num"));
                    } 
                 }
                 else if(aux.toLowerCase ().equals ("msg_search_spam"))
@@ -1392,8 +1398,9 @@ public class Main extends Thread
                        while(ST.hasMoreTokens ())
                            new_name=new_name+" "+ST.nextToken ();
                         
-                        System.out.println("Msg_search_spam changed from \""+
-                                Vars.Msg_Search_Spam+"\" to \""+new_name+"\".");
+                        System.out.println(Translation.getCfgChanged("Msg_search_spam",
+                               
+                                Vars.Msg_Search_Spam,new_name));
                         
                         Vars.Msg_Search_Spam=new_name;
                         Main.Server.rewriteconfig();
@@ -1402,9 +1409,9 @@ public class Main extends Thread
                 }
                 else if(aux.toLowerCase ().equals ("list"))
                 {
-                    System.out.println("Cfg Variables list: \n"+
-                                       "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- Number of seconds for hub to wait for connecting users until kick them out.\n"
-                            +          "   hub_name                "  + Vars.HubName+ "         -- Hub name to display in main window.\n"
+                    System.out.println(Translation.getString("cfg_list")+": \n"+
+                                       "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- "+Translation.getString("timeout_login")+"\n"
+                            +          "   hub_name                "  + Vars.HubName+ "         -- "+Translation.getString("hub_name")+"\n"
                             +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here) and your main port.\n"
                             +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
                             +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
