@@ -114,8 +114,8 @@ public class Nod implements Serializable,Cloneable
            retString+="\nLast LogIn: "+new Date(this.LastLogin).toString()+"\nTime Online: "+TimeConv.getStrTime(this.TimeOnline)+"\nOverride share restrictions? "+(this.overrideshare ? "yes" : "no")
            +"\nOverride spam settings? "+(this.overridespam? "yes":"no")+"\nCan be renamed? "+(this.renameable?"yes":"no")+
                    "\nPassword set? "+(this.Password.length ()>0?"yes":"no")+"\nIs hidden? "+(this.HideMe?"yes":"no")+
-                   "\nShare hidden? "+(this.HideShare?"yes":"no")+"\nFlyable? "+(this.HideShare?"yes":"no")+"\n"+
-                   "Last nick protected? "+(this.HideShare?"yes":"no")+"\n"+
+                   "\nShare hidden? "+(this.HideShare?"yes":"no")+"\nFlyable? "+(this.accountflyable?"yes":"no")+"\n"+
+                   "Last nick protected? "+(this.nickprotected?"yes":"no")+"\n"+
                    "---------------------Profile----------------------\n";
            String Help=retString;
            Nod curAcc=this;
@@ -208,6 +208,10 @@ public class Nod implements Serializable,Cloneable
             Help+="+password";
         else
             Help+="-password";
+        if(curAcc.myMask.plugmin)
+            Help+="+plugmin";
+        else
+            Help+="-plugmin";
         if(curAcc.myMask.port)
             Help+="+port";
         else
