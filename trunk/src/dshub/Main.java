@@ -1412,9 +1412,9 @@ public class Main extends Thread
                     System.out.println(Translation.getString("cfg_list")+": \n"+
                                        "   timeout_login           "  + Integer.toString (Vars.Timeout_Login) +"         -- "+Translation.getString("timeout_login")+"\n"
                             +          "   hub_name                "  + Vars.HubName+ "         -- "+Translation.getString("hub_name")+"\n"
-                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- Hub host (address) (enter your DNS here) and your main port.\n"
-                            +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- Proxy host ( for http integration modules ).\n"
-                            +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- Proxy port ( for http integration modules ).\n"
+                            +          "   hub_host                "  + Vars.Hub_Host+ "         -- "+Translation.getString("hub_host")+"\n"
+                            +          "   proxy_host                "  + Vars.Proxy_Host+ "         -- "+Translation.getString("proxy_port")+"\n"
+                            +          "   proxy_port                "  + Vars.Proxy_Port+ "         -- "+Translation.getString("proxy_port")+"\n"
                             +          "   redirect_url              "  + Vars.redirect_url+ "         -- The main redirect URL to send faulty users ( or default redirects ).\n"
                             +          "   max_ni                  "  +Vars.max_ni+" -- Maximum nick size, integer.\n"
                             +          "   min_ni                  "  +Vars.min_ni+" -- Minimum nick size, integer.\n"
