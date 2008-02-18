@@ -1,0 +1,1 @@
+print "Hi there. I'm the python script"
