@@ -24,13 +24,13 @@ package dshub;
 
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
+import dshub.python.*;
 import java.io.*;
 import java.util.*;
 import java.net.*;
 import javax.swing.JOptionPane;
 
-import org.python.core.*;
-import org.python.util.*;
+
 
 
 
@@ -61,6 +61,7 @@ public class Main extends Thread
     public static String myPath;
     public static boolean GUIok=true;
     public static boolean GUIshowing=false;
+    public static PythonManager pManager;
     public static void PopMsg(String bla)   
     {
         System.out.println (bla);
@@ -156,6 +157,7 @@ public class Main extends Thread
             
             
         }
+        pManager = new PythonManager();
              
          
            
@@ -357,8 +359,7 @@ public class Main extends Thread
        
         
         
-        PythonInterpreter interp = new PythonInterpreter();
-        //interp.execfile("g:\\test.py");
+        
         
         
         
