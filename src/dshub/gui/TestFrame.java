@@ -27,6 +27,7 @@ package dshub.gui;
 import dshub.*;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
+import dshub.python.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.InetSocketAddress;
@@ -256,6 +257,18 @@ public class TestFrame extends javax.swing.JFrame {
         return "";
     }
     
+    public void refreshPyScripts()
+    {
+        DefaultTableModel PyModel=(DefaultTableModel) PyTable.getModel();
+        PyModel.setRowCount(0);
+        for( PythonScript pyS : PythonManager.scripts)
+        {
+        if(pyS.isOk())
+                PyModel.addRow(new Object[]{pyS.getScriptName(),pyS.isActive()});
+        }
+           
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -290,6 +303,8 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -533,11 +548,9 @@ public class TestFrame extends javax.swing.JFrame {
         jButton32 = new javax.swing.JButton();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel41 = new javax.swing.JPanel();
-        jLabel59 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PyTable = new javax.swing.JTable();
         jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -604,7 +617,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
 
-        jLabel14.setText("Version: DSHub Theta RC4");
+        jLabel14.setText("Version: DSHub Iota RC1");
 
         jLabel7.setText("Copyright 2007-2008  by Pietry");
 
@@ -663,10 +676,10 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel69)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel70)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 200));
+        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 210));
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("License"));
 
@@ -682,6 +695,10 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel9.setText("under the Apache Public License.");
 
+        jLabel65.setText("This program uses the Jython library http://jython.sf.net licensed");
+
+        jLabel71.setText("under Python Software Foundation License 2");
+
         org.jdesktop.layout.GroupLayout jPanel24Layout = new org.jdesktop.layout.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
@@ -693,7 +710,9 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                     .add(jLabel4)
                     .add(jLabel66)
-                    .add(jLabel9))
+                    .add(jLabel9)
+                    .add(jLabel65)
+                    .add(jLabel71))
                 .addContainerGap())
         );
         jPanel24Layout.setVerticalGroup(
@@ -711,10 +730,14 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel66)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel9)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel65)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel71)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 200));
+        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 210));
 
         jTabbedPane1.addTab("About", null, jPanel1, "About DSHub...");
 
@@ -2964,10 +2987,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel59.setText("Python scripting uses the Jython core. Thanks to Jython team for providing it.");
-        jPanel41.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null},
@@ -3000,15 +3020,19 @@ public class TestFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        PyTable.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                PyTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(PyTable);
 
-        jPanel41.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 570, 260));
+        jPanel41.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 570, 290));
 
         jLabel60.setText("Relative path: /py");
-        jPanel41.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
-
-        jLabel61.setText("Address: http://jython.sourceforge.net/");
-        jPanel41.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        jPanel41.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jTabbedPane3.addTab("Python", jPanel41);
 
@@ -4632,6 +4656,12 @@ else
         portlist.getColumnModel().getColumn(0).setPreferredWidth(50);
         portlist.getColumnModel().getColumn(1).setPreferredWidth(100);
         portlist.getColumnModel().getColumn(2).setPreferredWidth(131);
+        
+        PyTable.setAutoResizeMode(portlist.AUTO_RESIZE_OFF);
+        
+        PyTable.getColumnModel().getColumn(0).setPreferredWidth(500);
+        PyTable.getColumnModel().getColumn(1).setPreferredWidth(60);
+        
     }
     public void refreshAll()
     {
@@ -4681,7 +4711,7 @@ else
                 "For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub");
         
         Runtime myRun=Runtime.getRuntime();
-        
+        refreshPyScripts();
         
         int i=0,j=0;
         for(ClientNod temp : SimpleHandler.Users)
@@ -5337,6 +5367,22 @@ refreshAll();
     {//GEN-HEADEREND:event_jButton32ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void PyTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_PyTableMouseClicked
+    {//GEN-HEADEREND:event_PyTableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel PyModel=(DefaultTableModel) PyTable.getModel();
+       int row =  PyTable.getSelectedRow();
+       if(PyTable.getSelectedColumn()!=1)
+           return ;
+       String name = (String) PyModel.getValueAt(row, 0);
+       for( PythonScript pyS : PythonManager.scripts)
+       {
+           if(pyS.getScriptName().equals(name))
+               pyS.setActive(pyS.isActive() ? false: true);
+       }
+       refreshPyScripts();
+    }//GEN-LAST:event_PyTableMouseClicked
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5406,6 +5452,7 @@ refreshAll();
     private javax.swing.JPanel PPanel;
     private javax.swing.JScrollPane Panelxxx;
     private javax.swing.JPanel PluginPanel;
+    private javax.swing.JTable PyTable;
     private javax.swing.JLabel StatusLabel;
     private javax.swing.JButton addnewport;
     private javax.swing.JTextField automagicsearchfield;
@@ -5505,19 +5552,19 @@ refreshAll();
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
@@ -5588,7 +5635,6 @@ refreshAll();
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
