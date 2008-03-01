@@ -1,4 +1,7 @@
 *** Iota RC1 ***
+           * work on synchronization and cid securisation;
+           * fixed bug when max users included the connecting users;
+           * italian v0.2 thanks Kryppy
            * fixed history_lines modification not working via command;
            * fixed plugmin missing from reginfo;
            * fixed flyable and nickprotected not shown right in reginfo;
