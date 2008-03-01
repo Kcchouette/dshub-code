@@ -203,9 +203,12 @@ public class ClientNod
                   //  Main.Server.rewritebans ();
      }
        
-       public synchronized void  killMe()
+       public  void  killMe()
        {
-           SimpleHandler.Users.remove(this);
+           synchronized ( SimpleHandler.Users)
+           {
+              SimpleHandler.Users.remove(this);
+           }
            /*synchronized(FirstClient)
            {
            this.PrevClient.NextClient=this.NextClient;

@@ -456,26 +456,32 @@ public class Command
                     //else System.out.println("no nick ban");
                 
                 int i=0;
+                synchronized( SimpleHandler.Users)
+                {
               for( ClientNod temp : SimpleHandler.Users)
                {
+                  
                    if(!temp.cur_client.equals (cur_client))
                    {
+                       if(temp.cur_client.userok==1)
                    if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
                    {
                        new STAError(cur_client,200+Constants.STA_NICK_TAKEN,"Nick taken, please choose another");
                        return;
                    }
                    
-                   if(temp.cur_client.ID.equals(cur_client.ID))
+                   if(temp.cur_client.ID.equals(cur_client.ID) && temp.cur_client.CIDsecure)
                    {
                        new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
                    }
+                   cur_client.CIDsecure=true;
                    i++;
                    }
                   
                    
                }
+                }
                 
                 if(AccountsConfig.nickReserved(cur_client.NI,cur_client.ID))
                 {

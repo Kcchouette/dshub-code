@@ -76,6 +76,8 @@ public class ClientHandler
     
     public String RealIP;
     
+    public boolean CIDsecure=false;
+    
    public ClientQueue Queue;
     
 /** The CID of the client. Mandatory for C-C connections.*/
