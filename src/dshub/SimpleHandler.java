@@ -63,7 +63,7 @@ public class SimpleHandler extends IoHandlerAdapter
 		  session.close();
                 return;
                 }
-                if(t instanceof java.nio.charset.MalformedInputException)
+                if(t instanceof java.nio.charset.MalformedInputException) 
                 {
                     ((ClientHandler ) (session.getAttachment())).sendFromBot("Unicode Exception. Your client sent non-Unicode chars. Ignored.");
                     return;
