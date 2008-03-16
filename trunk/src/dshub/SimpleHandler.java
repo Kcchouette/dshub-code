@@ -56,11 +56,17 @@ public class SimpleHandler extends IoHandlerAdapter
     {
 		//System.out.println(t.getMessage());
          
-                if((t.getMessage().contains("IOException")))
+               // if((t.getMessage().contains("IOException")))
+         if( t instanceof java.io.IOException)
                 {
                    Main.PopMsg(t.getMessage());
 		  session.close();
                 return;
+                }
+                if(t instanceof java.nio.charset.MalformedInputException)
+                {
+                    ((ClientHandler ) (session.getAttachment())).sendFromBot("Unicode Exception. Your client sent non-Unicode chars. Ignored.");
+                    return;
                 }
                  if((t.getMessage().contains("BufferDataException: Line is too long")))
                  {
