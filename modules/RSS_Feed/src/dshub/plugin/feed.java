@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
             
             if ( ! ( ST.hasMoreTokens() ) ) 
         {
-            cur_client.sendFromBot("RSS Feed Plugin\nUse !feed rss to recive feed"); 
+            cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss		- Shows RSS Feed\nchange <url>	- Changes RSS Feed"); 
             return; //1
         }
             String carrier = ST.nextToken();  
@@ -29,7 +29,30 @@ import java.util.StringTokenizer;
                         
             }   
            
-            else
+                        else if( carrier.equalsIgnoreCase("change")) // Begining of Whois Code
+            {
+            if ( ! ( ST.hasMoreTokens() ) )
+                   
+                    { 
+                    cur_client.sendFromBot( "Error: couldn't change URL adress" );
+                    return;
+                    }
+               
+            String input = ST.nextToken();
+            
+            ClientNod user = null;
+            for ( ClientNod x : SimpleHandler.Users )
+        {
+            if( x .cur_client.NI.equalsIgnoreCase(input ))
+            user=x;
+             
+        }
+            if ( user == null ) // we did not find any user matching the nick 
+            {
+                cur_client.sendFromBot("Error: couldn't change URL adress" );
+                return;
+            }
+
                 
                     {
                     cur_client.sendFromBot("Error: Unknown Switch use !feed for list of commands" );
@@ -38,3 +61,4 @@ import java.util.StringTokenizer;
             
             }
     }
+ }
