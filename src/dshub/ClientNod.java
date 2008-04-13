@@ -91,6 +91,8 @@ public class ClientNod
          cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
            if(!kickmsg.equals(""))
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
+           if(!Vars.redirect_url.equals(""))
+               brcast=brcast+" RD"+ADC.retADCStr (Vars.redirect_url);
          new Broadcast(brcast);
           
              cur_client.kicked=1;
@@ -138,6 +140,8 @@ public class ClientNod
          cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
            if(!kickmsg.equals(""))
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
+         if(!Vars.redirect_url.equals(""))
+               brcast=brcast+" RD"+ADC.retADCStr (Vars.redirect_url);
          new Broadcast(brcast);
           
              cur_client.kicked=1;
