@@ -1024,6 +1024,8 @@ else if(Issued_Command.substring(1).startsWith("RCM ")) //reverse connect to me
         Issued_Command=Issued_command;
         State=cur_client.State;
         HandleIssuedCommand();
+        // if(cur_client.NI.contains("Pietr"))
+         //    new STAError(cur_client,201,"exception test bla.");
     }
     
 }

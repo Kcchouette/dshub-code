@@ -55,14 +55,18 @@ public class SID
                 
             
               if(cursid.equals (temp.cur_client.sid) )
-                 ok=0;
-              if(Base32.encode (cursid).substring (0,4).equals ("ABCD"))
+              {
                   ok=0;
-              if(Base32.encode (cursid).substring (0,4).equals ("DCBA"))
-                  ok=0;
+                  continue;
+              }
+              
               
               
             }
+            if(Base32.encode (cursid).substring (0,4).equals ("ABCD"))
+                  ok=0;
+            if(Base32.encode (cursid).substring (0,4).equals ("DCBA"))
+                  ok=0;
         }
                 
     }
