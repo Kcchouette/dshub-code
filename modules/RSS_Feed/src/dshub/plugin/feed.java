@@ -1,6 +1,8 @@
 package dshub.plugin;
 /* RSS Feed Plugin 0.01
  * Thx Pietry for the cleanup code
+ * Thanks to Mutor for this idea
+ * http://board.ptokax.ath.cx/index.php?topic=7765.0
  */
 import dshub.*;
 import java.util.StringTokenizer;
@@ -29,7 +31,7 @@ import java.util.StringTokenizer;
                         
             }   
            
-                        else if( carrier.equalsIgnoreCase("change")) // Begining of Whois Code
+            else if( carrier.equalsIgnoreCase("change")) // Begining of Whois Code
             {
             if ( ! ( ST.hasMoreTokens() ) )
                    
