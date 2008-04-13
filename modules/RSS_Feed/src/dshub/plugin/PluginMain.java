@@ -24,6 +24,17 @@
 package dshub.plugin;
 import dshub.Modules.DSHubModule;
 import dshub.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -87,9 +98,36 @@ public void onConnect(ClientHandler cur_client)
      */
     public boolean startup()
     {
-        ;//generic plugin does nothing except returning that its loaded ok.
+
+        BufferedReader BR = null;
+        
+        try
+        {
+            
+            
+            File RSSFile = new File(Main.myPath+"rss"); //making a new File thingy that access the "rss" file
+            BR = new BufferedReader(new FileReader(RSSFile)); //making a reader so we can read from the file
+            feed.Address=BR.readLine();
+            BR.close();
+            
+
+            
+        } 
+        catch (FileNotFoundException ex) //if the file doesnt exist
+        {
+            //we create it
+            writeRSSAddress();
+        } 
+        catch(Exception e) //some other exception, like : we dont have the rights to 
+                //read the file, or some corrupted file/data
+        {
+            System.out.println("RSS Feed plugin error: can't read settings file. Bypassed.");
+            //there is nothing we can do, the plugin can;t save the address in the file.. such is life
+            //the user will have to change the address manually after every restart
+            //or make something to be able to access the file
+        }
         System.out.println("RSS Feed Plugin Loaded...");
-        return true;
+        return true; //plugin was initialized ok
     }
     /** Called by hub main threads when closing plugin at quitting main application or restarts
      * Should clear everything up.
@@ -112,6 +150,27 @@ public void onConnect(ClientHandler cur_client)
     public String getName()
     {
         return "RSS Feed Plugin";
+    }
+    
+    
+    public static void writeRSSAddress()
+    {
+        try
+        {
+            
+            
+           FileWriter fstream = new FileWriter(Main.myPath+"rss");
+           BufferedWriter out = new BufferedWriter(fstream);
+           out.write(feed.Address);
+    //Close the output stream
+    out.close();
+
+            
+        } 
+        catch (Exception e)
+        {
+            //could not write. :(
+        }
     }
     
     

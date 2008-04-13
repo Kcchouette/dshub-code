@@ -11,6 +11,8 @@ import java.util.StringTokenizer;
  public class feed
         {
     
+     static String Address="http://www.adcportal.com/?mode=rss";
+     
     public feed ( ClientHandler cur_client, String Issued_Command )
         {
             StringTokenizer ST=new StringTokenizer( Issued_Command );
@@ -18,49 +20,44 @@ import java.util.StringTokenizer;
             
             if ( ! ( ST.hasMoreTokens() ) ) 
         {
-            cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss		- Shows RSS Feed\nchange <url>	- Changes RSS Feed"); 
+            cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss" +
+                    "		- Shows RSS Feed\nchange <url>	- Changes RSS Feed" +
+                    "\n  Current feed address is : "+Address); 
             return; //1
         }
             String carrier = ST.nextToken();  
 
-            if( carrier.equalsIgnoreCase("rss")) // Begining of Traceroute Code
+            if( carrier.equalsIgnoreCase("rss")) // Begining of rss Code
             {
             
-            cur_client.sendFromBotPM("Fetching RRS Feed... (please be patient)");
+            cur_client.sendFromBotPM("Fetching RSS Feed from "+Address+" ... (please be patient)");
             RSSReader.getInstance().writeNews(cur_client);
                         
             }   
            
-            else if( carrier.equalsIgnoreCase("change")) // Begining of Whois Code
+            else if( carrier.equalsIgnoreCase("change")) // Begining of change Code
             {
             if ( ! ( ST.hasMoreTokens() ) )
                    
                     { 
-                    cur_client.sendFromBot( "Error: couldn't change URL adress" );
+                    cur_client.sendFromBot( "Error: please provide URL adress" );
                     return;
                     }
                
             String input = ST.nextToken();
             
-            ClientNod user = null;
-            for ( ClientNod x : SimpleHandler.Users )
-        {
-            if( x .cur_client.NI.equalsIgnoreCase(input ))
-            user=x;
-             
-        }
-            if ( user == null ) // we did not find any user matching the nick 
-            {
-                cur_client.sendFromBot("Error: couldn't change URL adress" );
-                return;
+            
+            
+               cur_client.sendFromBot( "[RSS Feed:]Feed checkout address changed from "+Address+" to " + input+".");
+                Address=input;
+                PluginMain.writeRSSAddress();
             }
-
-                
-                    {
+            else  //unknown switch           
+            {
                     cur_client.sendFromBot("Error: Unknown Switch use !feed for list of commands" );
                     return;
-                    }
-            
             }
+            
+            
     }
  }
