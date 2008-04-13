@@ -43,7 +43,7 @@ public class RSSReader {
 				
 				Element element = (Element)nodes.item(i);
 								
-				String ToastRegexp = "((<.{1,15}>|&(lt|gt|quot|nbsp);( )?)|(- )?<a href=\"|[0-9]{1,2} comments|<img src=\"http://www.*\" class=\"vertical\" alt=\".*\" (title=\".*\" )?/>|<ol style=\"list-style-type: arabic-numbers\">|<blockquote( class=\"uncited\")?>|\">)";
+				String ToastRegexp = "(<ol style=\".*\">|<a href=\".*\">|<img src=\".*\"( height=\".*\" width=\".*\"| border=\".*\"| class=\".*\" alt=\".*\" (title=\".*\"( )?)?)/>|(<.{1,15}>|&(lt|gt|quot|nbsp);( )?)|(- )?|<blockquote( class=\".*\")?>)";
                                 cur_client.sendFromBotPM("Title: " + getElementValue(element,"title").replaceAll(ToastRegexp,""));
                                 cur_client.sendFromBotPM(" ");
                                 cur_client.sendFromBotPM("Description: " + getElementValue(element,"description").replaceAll(ToastRegexp,""));				
