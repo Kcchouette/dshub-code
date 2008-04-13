@@ -33,7 +33,7 @@ public class RSSReader {
 		try {
  
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			URL u = new URL("http://www.adcportal.com/?mode=rss");
+			URL u = new URL(feed.Address);
 			
 			Document doc = builder.parse(u.openStream());
 			
