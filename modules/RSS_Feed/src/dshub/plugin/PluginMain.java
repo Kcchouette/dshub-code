@@ -143,8 +143,7 @@ public void onConnect(ClientHandler cur_client)
      */
     public void onGUIClick(JFrame parent)
     {
-        ;//does nothing
-        System.out.println("RSS Feed Plugin v 0.1");
+     new rssgui().setVisible(true);
     }
     
     public String getName()
