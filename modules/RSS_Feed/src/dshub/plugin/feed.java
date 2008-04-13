@@ -22,7 +22,7 @@ import java.util.StringTokenizer;
         {
             cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss" +
                     "		- Shows RSS Feed\nchange <url>	- Changes RSS Feed" +
-                    "\n  Current feed address is : "+Address); 
+                    "\n\nCurrent feed address is: "+Address); 
             return; //1
         }
             String carrier = ST.nextToken();  
