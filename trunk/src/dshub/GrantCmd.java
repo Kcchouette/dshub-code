@@ -63,7 +63,7 @@ public class GrantCmd
             for( ClientNod tempp : SimpleHandler.Users)
             {
                 if(tempp.cur_client.userok==1)
-                    if(tempp.cur_client.NI.equalsIgnoreCase(who))
+                    if(tempp.cur_client.NI.equalsIgnoreCase(who) && tempp.cur_client.reg.isreg)
                     {
                         modnod=AccountsConfig.getnod(tempp.cur_client.ID);
                         ok=true;
@@ -383,7 +383,7 @@ public class GrantCmd
               toSend+=" password modified to "+attribute+"\n";
               UpdatedInfo+=" "+what+" modified to "+attribute+"\n";
              }
-            else  if(what.equals("pugmin"))
+            else  if(what.equals("plugmin"))
              {
                 if(cur_client.reg.myMask.plugmin==false)
                 {
