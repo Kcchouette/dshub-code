@@ -1,4 +1,7 @@
 *** Iota RC1 ***
+           * fixed when granting to non existent user;
+           * fixed message when unknown switch was given to plugmin;
+           * fixed bug when unable to grant plugmin ;
            * work on synchronization and cid securisation;
            * fixed bug when max users included the connecting users;
            * italian v0.2 thanks Kryppy

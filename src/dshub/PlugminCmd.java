@@ -157,6 +157,11 @@ public class PlugminCmd
             cur_client.sendFromBot("Plugin scan successful. Use plugmin list to see current plugins.");
             return;
         }
+        else
+        {
+            cur_client.sendFromBot("Unkown switch. Use with no parameters for help.");
+            return;
+        }
     }
     
 }
