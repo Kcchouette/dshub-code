@@ -4695,20 +4695,9 @@ else
         // System.out.println (blah00);
         
         /**setting stuff*/
-        jTextArea1.setText("DSHub is ADC software so you need an ADC compatibile client.\n"+
-                "At the moment of this release ( January 2008 ), the following ADC clients were available:\n"+
-                "dc++ 0.691, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
-                "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
-                "Some ADC reminders:\n"+
-                "-- You need to connect to address adc://\n"+
-                "-- There is no default port, every time one must be specified ( like 411 on NMDC)\n"+
-                "-- Accounts are on CID not nick ( you can use what nick you want )\n"+
-                "-- Clients that are not ADC compat or dont use the address correctly will just hang up and you will see them at Connecting Users in stats command.\n"+
-                "Oh and another thing, NMDC hublists dont work with ADC, so i got 2 fine lists that support ADC for you:\n"+
-                "  www.hubtracker.com\n"+
-                "  www.adchublist.com\n"+
-                "Thanks for using DSHub and I hope you will have as much fun using it as I had creating it ;)\n\n"+
-                "For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub");
+        jTextArea1.setText(ADC.GreetingMsg);
+        jTextArea1.setSelectionStart(0);
+        jTextArea1.setSelectionEnd(0);
         
         Runtime myRun=Runtime.getRuntime();
         refreshPyScripts();
@@ -4738,7 +4727,7 @@ else
                 "  Connecting users: "+Integer.toString(j)+"\n"+
                 "  Uptime: "+TimeConv.getStrTime(up)+"\n"+
                 "  Start Time: "+b.toString()+
-                "\n  Bytes red per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteReadThroughput())+
+                "\n  Bytes read per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteReadThroughput())+
                 "\n  Bytes written per second: "+(Main.Server.IOSM==null?"0.0":Main.Server.IOSM.getTotalByteWrittenThroughput())
                 
                 );

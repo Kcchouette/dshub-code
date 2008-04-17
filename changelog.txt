@@ -1,4 +1,5 @@
 *** Iota RC1 ***
+           * updated MOTD and version;
            * fixed when granting to non existent user;
            * fixed message when unknown switch was given to plugmin;
            * fixed bug when unable to grant plugmin ;

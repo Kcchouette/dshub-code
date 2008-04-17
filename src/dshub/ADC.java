@@ -44,8 +44,8 @@ abstract public class ADC
     public static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
-"At the moment of this release ( January 2008 ), the following ADC clients were available:\n"+
-"dc++ 0.69*, icedc 1.01a, zion++ 2.04  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69*, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+"At the moment of this release ( April 2008 ), the following ADC clients were available:\n"+
+"dc++ 0.69, icedc 1.01a, zion++ 2.04, AirDC 2.01,  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69*, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
 "Some ADC reminders:\n"+
 "-- You need to connect to address adc://\n"+
@@ -56,12 +56,42 @@ abstract public class ADC
 "  www.hubtracker.com\n"+
 "  www.adchublist.com\n"+
 "Thanks for using DSHub and I hope you will have as much fun using it as I had creating it ;)\n"+
+            "Also, I have been receiveing some complains lately that DSHub doesn't work in I-don't-know-what good way on some machines\n" +
+            "Out of my experience, DSHub works at least acceptable, and probably those persons can't make it work good enough. I want to point our " +
+            "that I do this for pleasure and to make people happy. Being accused that I don't provide a high quality software or documentation " +
+            "is just something that makes me sad about continuing this project. Remember that I don't get anything for doing this, it's my free time" +
+            " my work and my energy without any real benefit... (If you feel like helping in any way, e-mail me)\n\n"+
 
 "For latest version, updates, any suggestions, information, or just anything visit www.death-squad.ro/dshub\n"+
-           "Or the SourceForge page located at http://www.sf.net/projects/dshub\n"+
-           "Have a nice hubbing !"
+           
+	"Homepage  		http://www.death-squad.ro/dshub\n" +
+        
+
+"Launchpad links\n\n"+
+
+	"Overview  		https://launchpad.net/dshub/\n"+
+       "Code  			https://code.launchpad.net/dshub/\n"+
+	"Bugs  			https://bugs.launchpad.net/dshub/\n"+
+	"Q&A  			https://answers.launchpad.net/dshub/\n\n"+
+
+"Sourceforge links\n\n"+
+
+	"Overview		http://sourceforge.net/projects/dshub/\n"+
+       "Features                http://sourceforge.net/tracker/?group_id=197166&atid=960378\n"+
+	"Plugins			http://sourceforge.net/tracker/?group_id=197166&atid=1020439\n"+
+	"Translations		http://sourceforge.net/tracker/?group_id=197166&atid=1035463\n"+
+	"SVN Checkout		https://dshub.svn.sf.net/svnroot/dshub/trunk\n"+
+	"Mailing List		http://sourceforge.net/mail/?group_id=197166\n\n"+
+
+"Other Links\n\n"+
+
+	"ADCPortal		http://www.adcportal.com\n\n"+
+	
+
+           "Have a nice hubbing !";
            
           
+           public static String GreetingMsg=MOTD;
             
             ;
     public static String retNormStr(String blah)
