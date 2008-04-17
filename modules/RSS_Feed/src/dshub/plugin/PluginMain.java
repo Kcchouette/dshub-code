@@ -33,6 +33,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintStream;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -75,15 +76,20 @@ public void onConnect(ClientHandler cur_client)
     {
         
     }
-    /** Called by hub main threads when a client sends any raw command;
+ /** Called by hub main threads when a client sends any raw command;
      *@arguments cur_client, the ClientHandler for the client who sent the raw, given in string
      *with all the protocol thingies. This method is always called after the DSHub internal 
      *methods are called to work at the raw command.
      */
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {
-        
+     StringTokenizer ST=new StringTokenizer(Raw_Command) ; //parsing the raw command;
+     ST.nextToken(); //this must be the BMSG
+     String cmd= ST.nextToken(); // this should be the actual command
+     if(cmd.startsWith("+feed"))
+     new  feed(cur_client,cmd.substring(1));
     }
+
     /** Called by hub main threads when a client quits the hub;
      *@arguments cur_client, the ClientHandler for the client who quitted;
      */
