@@ -2,6 +2,7 @@ package dshub.plugin;
 /* RSS Feed Plugin 0.01
  * Thx Pietry for the cleanup code and the help to make this plugin kickass
  * and taking the freaking time to teach me some java :D
+ * without your help this couldn't be done.
  * Thanks to Mutor for this idea
  * http://board.ptokax.ath.cx/index.php?topic=7765.0
  */

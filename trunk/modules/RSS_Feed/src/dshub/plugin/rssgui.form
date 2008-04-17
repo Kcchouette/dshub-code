@@ -35,10 +35,8 @@
                   <Component id="jLabel2" alignment="0" pref="294" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="jTextField1" alignment="0" min="-2" pref="273" max="-2" attributes="1"/>
-                      </Group>
+                      <Component id="jTextField1" alignment="1" min="-2" pref="273" max="-2" attributes="1"/>
+                      <Component id="jLabel4" alignment="0" min="-2" pref="273" max="-2" attributes="1"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -100,7 +98,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="2008 &#xa9; Toast - Plugin is licensed under GPL v.2"/>
+        <Property name="text" type="java.lang.String" value="2008 &#xa9; Toast - www.adcportal.com"/>
       </Properties>
     </Component>
   </SubComponents>
