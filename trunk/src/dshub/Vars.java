@@ -54,7 +54,7 @@ public final class Vars
     public static int  Timeout_Login=20;
     //public static int  Default_Port=411;
    
-    public static String HubVersion="DSHub Theta";
+    public static String HubVersion="DSHub Iota";
     public static String HubDE="";
     public static String HubName="hub of "+System.getProperty ("user.name");
    
