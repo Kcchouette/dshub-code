@@ -4,7 +4,7 @@
  * Created on 06 decembrie 2007, 19:27
  *
  * DSHub ADC HubSoft
- * Copyright (C) 2007  Pietricica
+ * Copyright (C) 2007,2008  Eugen Hristev
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -27,14 +27,11 @@ package dshub.Modules;
 
 import dshub.*;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.NoClassDefFoundError;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *

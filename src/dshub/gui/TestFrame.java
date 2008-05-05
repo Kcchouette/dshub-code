@@ -4,7 +4,7 @@
  * Created on 16 iunie 2007, 14:32
  *
  * DSHub ADC HubSoft
- * Copyright (C) 2007  Pietricica
+ * Copyright (C) 2007,2008  Eugen Hristev
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -619,7 +619,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel14.setText("Version: DSHub Iota RC1");
 
-        jLabel7.setText("Copyright 2007-2008  by Pietry");
+        jLabel7.setText("Copyright 2007-2008  by Eugen Hristev");
 
         jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio");
 

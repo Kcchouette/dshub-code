@@ -249,7 +249,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Copyright 2007-2008  by Pietry"/>
+                    <Property name="text" type="java.lang.String" value="Copyright 2007-2008  by Eugen Hristev"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">

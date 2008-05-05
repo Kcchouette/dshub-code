@@ -4,7 +4,7 @@
  * Created on 02 decembrie 2007, 11:54
  *
  * DSHub ADC HubSoft
- * Copyright (C) 2007  Pietricica
+ * Copyright (C) 2007,2008  Eugen Hristev
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -62,7 +62,7 @@ public final class Vars
     public static String About=
                    "[Death Squad Hub]\n"+
                    "[Version Iota RC1]\n"+
-                   "[February 2008]\n"+
+                   "[May 2008]\n"+
                    "[Licensed under GNU GPL]\n"+
                    ":The credits\n"
               +    "::Project Coordinator: Pietry\n"
