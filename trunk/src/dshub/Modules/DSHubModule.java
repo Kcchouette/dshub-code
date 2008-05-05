@@ -4,7 +4,7 @@
  * Created on 06 decembrie 2007, 20:50
  *
  * DSHub ADC HubSoft
- * Copyright (C) 2007  Pietricica
+ * Copyright (C) 2007,2008  Eugen Hristev
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

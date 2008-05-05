@@ -4,7 +4,7 @@
  * Created on 29 aprilie 2007, 11:55
  *
  * DSHub ADC HubSoft
- * Copyright (C) 2007  Pietricica
+ * Copyright (C) 2007,2008  Eugen Hristev
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,12 +28,10 @@ import dshub.ExtendedCmds.ExtInfo;
 import dshub.ExtendedCmds.ExtKick;
 import dshub.ExtendedCmds.ExtMass;
 import dshub.ExtendedCmds.ExtRedirect;
-import dshub.Modules.DSHubModule;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
-import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.net.*;
 
