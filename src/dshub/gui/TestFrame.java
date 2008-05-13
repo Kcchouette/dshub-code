@@ -2500,7 +2500,7 @@ public class TestFrame extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+        jPanel9.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jButton14.setText("[?]");
         jButton14.addActionListener(new java.awt.event.ActionListener()
@@ -2655,7 +2655,7 @@ public class TestFrame extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        jPanel9.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11)));
         jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -5354,7 +5354,8 @@ refreshAll();
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton32ActionPerformed
     {//GEN-HEADEREND:event_jButton32ActionPerformed
-        // TODO add your handling code here:
+        Main.pManager.rescanScripts();
+        refreshPyScripts();
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void PyTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_PyTableMouseClicked

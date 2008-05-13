@@ -1,4 +1,6 @@
 *** Iota RC1 ***
+           * rescan scripts button works now;
+           * fixed reversed buttons in advanced page;
            * updated MOTD and version;
            * fixed when granting to non existent user;
            * fixed message when unknown switch was given to plugmin;
