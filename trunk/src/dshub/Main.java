@@ -97,12 +97,13 @@ public class Main extends Thread
         }
     }
     
+    @SuppressWarnings("empty-statement")
     public static void init()
     {
         ClassLoader cl = ClassLoader.getSystemClassLoader (  )  ;
        String bla= System.getProperty ("java.class.path");
        String bla2=System.getProperty ("user.dir");
-       ;
+       
        String separator=System.getProperty ("file.separator");
        String pathsep=System.getProperty("path.separator");
          
