@@ -85,9 +85,13 @@ public void onConnect(ClientHandler cur_client)
     {
      StringTokenizer ST=new StringTokenizer(Raw_Command) ; //parsing the raw command;
      ST.nextToken(); //this must be the BMSG
+     ST.nextToken();//this should be the SID
      String cmd= ST.nextToken(); // this should be the actual command
      if(cmd.startsWith("+feed"))
-     new  feed(cur_client,cmd.substring(1));
+     new  feed(cur_client,ADC.retNormStr(cmd.substring(1)));
+     if(cmd.startsWith("+help"))
+         cur_client.sendFromBot("[rss feed: ] RSS Feed Module Help:\n"+
+                 "Available commands:\nfeed -- a rss feed tool, use with no parameters for details.");
     }
 
     /** Called by hub main threads when a client quits the hub;
