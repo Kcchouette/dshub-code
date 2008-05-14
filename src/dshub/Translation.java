@@ -36,16 +36,19 @@ static String cc;
 static String lc;
 
 public static ResourceBundle Strings=null;
-static Locale curLocale;
+public static Locale curLocale;
 
 static
 {
+        //Locale.setDefault(Locale.ENGLISH);
         curLocale=Locale.getDefault()    ;
-         
+       // curLocale.
+    //curLocale=new Locale("sv","SE");
          try
          {
               Strings = ResourceBundle.getBundle("Translation",
                                            curLocale);
+            //  System.out.println(Strings.getLocale().getLanguage());
          }
          catch (java.util.MissingResourceException mre)
          {

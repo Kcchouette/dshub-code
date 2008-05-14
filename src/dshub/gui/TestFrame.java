@@ -34,6 +34,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -55,6 +57,7 @@ import javax.swing.DefaultListModel;
 public class TestFrame extends javax.swing.JFrame {
     BanWordsList listaBanate;
     ImageIcon myIco;
+    boolean initialised=false;
     /** Creates new form TestFrame */
     public TestFrame() {
         
@@ -69,6 +72,15 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });*/
         
+        langcombo.removeAllItems();
+        langcombo.addItem("en_US");
+        langcombo.addItem("ro_RO");
+        langcombo.addItem("it_IT");
+        langcombo.addItem("sv_SE");
+        langcombo.addItem("de_DE");
+        langcombo.addItem("nl_NL");
+        langcombo.setSelectedItem(Translation.curLocale.getLanguage()+"_"+Translation.
+                curLocale.getCountry());
         
         //init list model for jList1 to DefaultListModel
         DefaultListModel modelLista=new DefaultListModel();
@@ -296,6 +308,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -417,6 +430,10 @@ public class TestFrame extends javax.swing.JFrame {
         savelogscheck = new javax.swing.JCheckBox();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
+        jPanel42 = new javax.swing.JPanel();
+        langcombo = new javax.swing.JComboBox();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -610,10 +627,10 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel5.setText("Welcome to DSHub an ADC hubsoft for Direct Connect.");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/ds.jpg"))); // NOI18N
-        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
+        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
 
@@ -630,6 +647,8 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel70.setText("all testers and contributors with ideas.");
 
         jLabel62.setText("and Catalaur");
+
+        jLabel61.setText("Many thanks to all the people who helped in translating.");
 
         org.jdesktop.layout.GroupLayout jPanel23Layout = new org.jdesktop.layout.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -656,8 +675,11 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jLabel8))
                     .add(jPanel23Layout.createSequentialGroup()
                         .add(110, 110, 110)
-                        .add(jLabel62)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .add(jLabel62))
+                    .add(jPanel23Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel61)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -676,10 +698,12 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel69)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel70)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel61)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 210));
+        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 240));
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("License"));
 
@@ -734,10 +758,10 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel65)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel71)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 210));
+        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 240));
 
         jTabbedPane1.addTab("About", null, jPanel1, "About DSHub...");
 
@@ -1104,7 +1128,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel8Layout.createSequentialGroup()
                         .add(264, 264, 264)
                         .add(jButton8)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1227,7 +1251,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel13Layout.createSequentialGroup()
                         .add(256, 256, 256)
                         .add(jButton9)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1350,7 +1374,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(xxxLayout.createSequentialGroup()
                         .add(255, 255, 255)
                         .add(jButton10)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         xxxLayout.setVerticalGroup(
             xxxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1675,6 +1699,69 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel37.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 480, 60));
 
         jTabbedPane2.addTab("Misc Settings2", jPanel37);
+
+        langcombo.setMaximumRowCount(15);
+        langcombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        langcombo.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                langcomboMouseClicked(evt);
+            }
+        });
+        langcombo.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
+                langcomboItemStateChanged(evt);
+            }
+        });
+        langcombo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                langcomboActionPerformed(evt);
+            }
+        });
+        langcombo.addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {
+            public void propertyChange(java.beans.PropertyChangeEvent evt)
+            {
+                langcomboPropertyChange(evt);
+            }
+        });
+
+        jLabel72.setText("Select the language you want for the DSHub interface:");
+
+        jLabel59.setText("The two small letters is the language code, and the two capitals represent the country code.");
+
+        org.jdesktop.layout.GroupLayout jPanel42Layout = new org.jdesktop.layout.GroupLayout(jPanel42);
+        jPanel42.setLayout(jPanel42Layout);
+        jPanel42Layout.setHorizontalGroup(
+            jPanel42Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel42Layout.createSequentialGroup()
+                .add(20, 20, 20)
+                .add(jPanel42Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel59)
+                    .add(jPanel42Layout.createSequentialGroup()
+                        .add(jLabel72)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(langcombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+        jPanel42Layout.setVerticalGroup(
+            jPanel42Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel42Layout.createSequentialGroup()
+                .add(31, 31, 31)
+                .add(jPanel42Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel72)
+                    .add(langcombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel59)
+                .addContainerGap(294, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Other settings", jPanel42);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -4662,10 +4749,13 @@ else
         PyTable.getColumnModel().getColumn(0).setPreferredWidth(500);
         PyTable.getColumnModel().getColumn(1).setPreferredWidth(60);
         
+        
+        
     }
     public void refreshAll()
     {
         refreshInit();
+        
         
         
         DefaultTableModel AccountModel=(DefaultTableModel) AccountTable.getModel();
@@ -5059,7 +5149,7 @@ else
         else
             FSUPcheck.setSelected(false);
         
-        
+        initialised=true;
         
         
     }
@@ -5373,6 +5463,79 @@ refreshAll();
        }
        refreshPyScripts();
     }//GEN-LAST:event_PyTableMouseClicked
+
+    private void langcomboActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_langcomboActionPerformed
+    {//GEN-HEADEREND:event_langcomboActionPerformed
+      if(!initialised)
+          return;
+        if(langcombo.getSelectedItem().equals("en_US"))
+        {
+            Translation.curLocale=new Locale("en","US");
+           
+            
+        }
+        if(langcombo.getSelectedItem().equals("ro_RO"))
+        {
+            Translation.curLocale=new Locale("ro","RO");
+          
+            
+        }
+       if(langcombo.getSelectedItem().equals("sv_SE"))
+        {
+            Translation.curLocale=new Locale("sv","SE");
+           
+             
+        }
+      if(langcombo.getSelectedItem().equals("it_IT"))
+        {
+            Translation.curLocale=new Locale("it","IT");
+            
+             
+        }
+      if(langcombo.getSelectedItem().equals("de_DE"))
+        {
+            Translation.curLocale=new Locale("de","DE");
+           
+        }
+      if(langcombo.getSelectedItem().equals("nl_NL"))
+        {
+            Translation.curLocale=new Locale("nl","NL");
+           
+            
+        }
+         Locale.setDefault(Translation.curLocale);
+            Main.PopMsg("Language changed to "+langcombo.getSelectedItem().toString());
+            SetStatus("Language changed to "+langcombo.getSelectedItem().toString());
+         try
+         {
+              Translation.Strings = ResourceBundle.getBundle("Translation",
+                                           Translation.curLocale);
+            
+         }
+         catch (java.util.MissingResourceException mre)
+         {
+             //System.out.println("Fatal Error : Unable to locate Translation.properties file or any other translation. FAIL.");
+            // System.exit(1);
+             mre.printStackTrace();
+         }
+     
+        refreshAll();
+    }//GEN-LAST:event_langcomboActionPerformed
+
+    private void langcomboPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_langcomboPropertyChange
+    {//GEN-HEADEREND:event_langcomboPropertyChange
+       
+    }//GEN-LAST:event_langcomboPropertyChange
+
+    private void langcomboItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_langcomboItemStateChanged
+    {//GEN-HEADEREND:event_langcomboItemStateChanged
+        
+    }//GEN-LAST:event_langcomboItemStateChanged
+
+    private void langcomboMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_langcomboMouseClicked
+    {//GEN-HEADEREND:event_langcomboMouseClicked
+      // System.out.println("test");
+    }//GEN-LAST:event_langcomboMouseClicked
     
     public void SetStatus(String newstring,int msgType)
     {
@@ -5542,8 +5705,10 @@ refreshAll();
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
@@ -5555,6 +5720,7 @@ refreshAll();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
@@ -5594,6 +5760,7 @@ refreshAll();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -5633,6 +5800,7 @@ refreshAll();
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField kicktimefield;
+    private javax.swing.JComboBox langcombo;
     private javax.swing.JTextField maxchatmsgfield;
     private javax.swing.JTextField maxdefield;
     private javax.swing.JTextField maxemfield;
