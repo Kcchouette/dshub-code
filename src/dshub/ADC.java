@@ -76,9 +76,9 @@ abstract public class ADC
 
 "Sourceforge links\n\n"+
 
-	"Overview		http://sourceforge.net/projects/dshub/\n"+
-       "Features                http://sourceforge.net/tracker/?group_id=197166&atid=960378\n"+
-	"Plugins			http://sourceforge.net/tracker/?group_id=197166&atid=1020439\n"+
+	"Overview               http://sourceforge.net/projects/dshub/\n"+
+        "Features               http://sourceforge.net/tracker/?group_id=197166&atid=960378\n"+
+	"Plugins		http://sourceforge.net/tracker/?group_id=197166&atid=1020439\n"+
 	"Translations		http://sourceforge.net/tracker/?group_id=197166&atid=1035463\n"+
 	"SVN Checkout		https://dshub.svn.sf.net/svnroot/dshub/trunk\n"+
 	"Mailing List		http://sourceforge.net/mail/?group_id=197166\n\n"+
