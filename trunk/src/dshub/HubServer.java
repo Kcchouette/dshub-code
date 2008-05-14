@@ -82,6 +82,8 @@ public class HubServer extends Thread
         
         //myPath="";
         //System.out.println (myPath);
+        org.apache.log4j.PropertyConfigurator.configure(getClass().getResource("/log4j.properties"));
+                //                Main.myPath+"log4j.properties");
         start();    
         setPriority(NORM_PRIORITY+1);
 
