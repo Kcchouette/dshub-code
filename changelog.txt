@@ -1,4 +1,6 @@
 *** Iota RC1 ***
+           * distro now includes rss reader plugin and lookup;
+           * modified config to store the language setting;
            * added a box for language selecting via gui;
            * updated MINA to 1.1.7;
            * fixed warning on log4j;

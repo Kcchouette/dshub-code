@@ -41,7 +41,10 @@ public static Locale curLocale;
 static
 {
         //Locale.setDefault(Locale.ENGLISH);
+    //if(Vars.lang.equals(("")))
         curLocale=Locale.getDefault()    ;
+   // else
+   //     curLocale=new Locale(Vars.lang.substring(0,2),Vars.lang.substring(3));
        // curLocale.
     //curLocale=new Locale("sv","SE");
          try

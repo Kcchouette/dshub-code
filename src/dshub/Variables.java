@@ -71,6 +71,8 @@ public class Variables implements Serializable
       
       String redirect_url;
       
+      String lang;
+      
      int max_ni;
      int min_ni;
      int max_de;
@@ -224,6 +226,8 @@ public class Variables implements Serializable
       activePlugins=Vars.activePlugins;
       
       activePorts=Vars.activePorts;
+      
+      lang=Vars.lang;
       
       BMSG=Vars.BMSG;
       DMSG=Vars.DMSG;

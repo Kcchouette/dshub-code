@@ -15,16 +15,21 @@ import java.util.StringTokenizer;
     
      static String Address="http://www.adcportal.com/?mode=rss";
      
-    public feed ( ClientHandler cur_client, String Issued_Command )
+    public feed ( ClientHandler cur_client, String Issued_Command, boolean user )
         {
             StringTokenizer ST=new StringTokenizer( Issued_Command );
             ST.nextToken();
             
             if ( ! ( ST.hasMoreTokens() ) ) 
         {
+                if(!user)
             cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss" +
                     "		- Shows RSS Feed\nchange <url>	- Changes RSS Feed" +
                     "\n\nCurrent feed address is: "+Address); 
+                else
+                    cur_client.sendFromBot("Available commands: !feed <switch>\n\nAvailable Switches:\nrss" +
+                             "\n\nCurrent feed address is: "+Address); 
+                    
             return; //1
         }
             String carrier = ST.nextToken();  
@@ -37,7 +42,7 @@ import java.util.StringTokenizer;
                         
             }   
            
-            else if( carrier.equalsIgnoreCase("change")) // Begining of change Code
+            else if( !user && carrier.equalsIgnoreCase("change")) // Begining of change Code
             {
             if ( ! ( ST.hasMoreTokens() ) )
                    
