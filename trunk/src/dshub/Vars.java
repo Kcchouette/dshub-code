@@ -69,7 +69,8 @@ public final class Vars
               +    ":::Special thanks goes to \n"
                +    ":::MAGY, Spader, Toast, Naccio, Catalaur \n"
 
-              +    ":::: Also Thanks to all Testers and Contributors and all Team Members.";
+              +    ":::: Also Thanks to all Testers and Contributors.\n"
+                  +":::: Many Thanks to who helped translating.";
     
     public static String Opchat_name="OpChat";
     public static String Opchat_desc="BoT";
@@ -84,6 +85,7 @@ public final class Vars
     public static String Proxy_Host="";
     public static int Proxy_Port;
     public static String redirect_url="";
+    public static String lang="";
     
     public static LinkedList<Port> activePorts;
     static

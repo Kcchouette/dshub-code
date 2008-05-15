@@ -5506,6 +5506,8 @@ refreshAll();
          Locale.setDefault(Translation.curLocale);
             Main.PopMsg("Language changed to "+langcombo.getSelectedItem().toString());
             SetStatus("Language changed to "+langcombo.getSelectedItem().toString());
+            Vars.lang=langcombo.getSelectedItem().toString();
+            Main.Server.rewriteconfig();
          try
          {
               Translation.Strings = ResourceBundle.getBundle("Translation",

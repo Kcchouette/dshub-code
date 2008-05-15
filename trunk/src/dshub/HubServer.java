@@ -31,6 +31,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.*;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import org.apache.mina.common.ByteBuffer;
 import org.apache.mina.common.IoAcceptor;
@@ -443,6 +445,26 @@ public class HubServer extends Thread
       
       Vars.activePlugins=vars.activePlugins;
       Vars.activePorts=vars.activePorts;
+      
+      Vars.lang=vars.lang;
+      
+      if(Vars.lang.length()>4)
+      {
+        Translation.curLocale=new Locale(Vars.lang.substring(0,2),Vars.lang.substring(3));
+        Locale.setDefault(Translation.curLocale);
+        try
+         {
+              Translation.Strings = ResourceBundle.getBundle("Translation",
+                                           Translation.curLocale);
+            
+         }
+         catch (java.util.MissingResourceException mre)
+         {
+             //System.out.println("Fatal Error : Unable to locate Translation.properties file or any other translation. FAIL.");
+            // System.exit(1);
+             mre.printStackTrace();
+         }
+      }
       
       Vars.BMSG=vars.BMSG;
       Vars.EMSG=vars.EMSG;

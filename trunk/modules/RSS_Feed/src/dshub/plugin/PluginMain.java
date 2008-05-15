@@ -30,12 +30,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintStream;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -59,7 +54,7 @@ public class PluginMain implements DSHubModule
     {
         if(Issued_Command.toLowerCase().startsWith("feed") )
         {
-            new feed(cur_client,Issued_Command);
+            new feed(cur_client,Issued_Command,false);
             return DSHubModule.ACK_COMMAND;
         }
         else if(Issued_Command.toLowerCase().startsWith("help"))
@@ -88,7 +83,7 @@ public void onConnect(ClientHandler cur_client)
      ST.nextToken();//this should be the SID
      String cmd= ST.nextToken(); // this should be the actual command
      if(cmd.startsWith("+feed"))
-     new  feed(cur_client,ADC.retNormStr(cmd.substring(1)));
+     new  feed(cur_client,ADC.retNormStr(cmd.substring(1)),true);
      if(cmd.startsWith("+help"))
          cur_client.sendFromBot("[rss feed: ] RSS Feed Module Help:\n"+
                  "Available commands:\nfeed -- a rss feed tool, use with no parameters for details.");
