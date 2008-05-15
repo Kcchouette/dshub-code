@@ -1,4 +1,4 @@
-*** Iota RC1 ***
+*** Iota RC1 15.05.2008***
            * distro now includes rss reader plugin and lookup;
            * modified config to store the language setting;
            * added a box for language selecting via gui;
