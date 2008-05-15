@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "DSHub"
-!define PRODUCT_VERSION "Theta RC4"
+!define PRODUCT_VERSION "Iota RC1"
 !define PRODUCT_PUBLISHER "Pietry ( Death-Squad )"
 !define PRODUCT_WEB_SITE "http://www.death-squad.ro/dshub"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\dshub.exe"
@@ -117,11 +117,14 @@ Section "DSHub" SEC01
   File "lib\AbsoluteLayout.jar"
   File "lib\log4j-1.2.14.jar"
   File "lib\log4j-over-slf4j-1.4.3.jar"
-  File "lib\mina-core-1.1.5.jar"
-  File "lib\mina-integration-jmx-1.1.5.jar"
+  File "lib\mina-core-1.1.7.jar"
+  File "lib\mina-integration-jmx-1.1.7.jar"
   File "lib\slf4j-api-1.4.3.jar"
   File "lib\slf4j-log4j12-1.4.3.jar"
   File "lib\swing-layout-1.0.3.jar"
+  File "lib\jython.jar"
+  
+  
 
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -132,11 +135,14 @@ Section "DSHub" SEC01
   !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
-Section "Additional Modules ( plugins )" SEC02
+Section "Additional Modules ( plugins ) and scripts" SEC02
   SetOutPath "$INSTDIR\modules"
   File "modules\Hubtracker.jar"
   File "modules\DSHubGenericPlugin.jar"
   File "modules\PingHH.jar"
+  SetOutPath "$INSTDIR\scripts"
+  SetOutPath "$INSTDIR\scripts\py"
+  File "scripts\py\testscript.py"
 
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -191,11 +197,13 @@ Section Uninstall
   Delete "$INSTDIR\lib\swing-layout-1.0.3.jar"
   Delete "$INSTDIR\lib\slf4j-log4j12-1.4.3.jar"
   Delete "$INSTDIR\lib\slf4j-api-1.4.3.jar"
-  Delete "$INSTDIR\lib\mina-integration-jmx-1.1.5.jar"
-  Delete "$INSTDIR\lib\mina-core-1.1.5.jar"
+  Delete "$INSTDIR\lib\mina-integration-jmx-1.1.7.jar"
+  Delete "$INSTDIR\lib\jython.jar"
+  Delete "$INSTDIR\lib\mina-core-1.1.7.jar"
   Delete "$INSTDIR\lib\log4j-over-slf4j-1.4.3.jar"
   Delete "$INSTDIR\lib\log4j-1.2.14.jar"
   Delete "$INSTDIR\lib\AbsoluteLayout.jar"
+  Delete "$INSTDIR\scripts\py\testscript.py"
   Delete "$INSTDIR\readme.txt"
   Delete "$INSTDIR\mina-license.txt"
   Delete "$INSTDIR\logo.jpg"
@@ -215,6 +223,8 @@ Section Uninstall
   RMDir "$SMPROGRAMS\$ICONS_GROUP"
   RMDir "$INSTDIR\modules"
   RMDir "$INSTDIR\lib"
+  RMDir "$INSTDIR\scripts\py"
+  RMDir "$INSTDIR\scripts"
   RMDir "$INSTDIR"
 
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
