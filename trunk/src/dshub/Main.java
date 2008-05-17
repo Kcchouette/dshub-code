@@ -622,7 +622,7 @@ public class Main extends Thread
                 }
                 catch (IllegalArgumentException iae)
                 {
-                    System.out.println (Translation.getString("not_cid"));
+                    System.out.println (Translation.getString("not_cid_check"));
                      for(ClientNod temp : SimpleHandler.Users)
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
