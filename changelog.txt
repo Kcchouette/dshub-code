@@ -1,3 +1,7 @@
+*** Iota RC2 ***
+	   * fixed #231304;
+
+
 *** Iota RC1 15.05.2008***
            * distro now includes rss reader plugin and lookup;
            * modified config to store the language setting;
