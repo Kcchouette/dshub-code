@@ -200,7 +200,7 @@ import java.net.UnknownHostException;
             try 
             {
                 Runtime r = Runtime.getRuntime();
-                Process p = r.exec(pingCmd);
+                Process p =  r.exec(pingCmd);
                 BufferedReader in = new BufferedReader(new
                 InputStreamReader(p.getInputStream()));
                 String inputLine;
@@ -218,6 +218,10 @@ import java.net.UnknownHostException;
                 catch (IOException e)
             {
                 System.out.println(e);
+            }
+            catch(Exception ee)
+            {
+                System.out.println(ee);
             }
             
             }
