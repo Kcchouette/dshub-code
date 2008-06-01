@@ -103,6 +103,7 @@ public class SimpleHandler extends IoHandlerAdapter
                          new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
                      }
                     cur_client.myNod.killMe();*/
+                    System.out.println("sta exception");
                     session.close();
                 }
                 catch(CommandException cfex)
@@ -126,8 +127,9 @@ public class SimpleHandler extends IoHandlerAdapter
         }
         public void sessionClosed(IoSession session) throws Exception
         {
-            
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+            System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
+            
             if(cur_client.userok==1 && cur_client.kicked!=1)
             {
                 new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
