@@ -731,6 +731,8 @@ public class Command
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);*/
          
+                   
+          cur_client.userok=1; //user is OK, logged in and cool.
          for(ClientNod iterator : SimpleHandler.Users)
          {
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
@@ -747,7 +749,7 @@ public class Command
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
                                  
-                 cur_client.userok=1; //user is OK, logged in and cool.
+                 
                  //Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
                //  cur_client.sendFromBot(""+Main.Server.myPath.replaceAll (" ","\\ "));
                  //ok now that we passed to normal state and user is ok, check if it has UCMD, and if so, send a test command
@@ -757,6 +759,7 @@ public class Command
                      cur_client.sendToClient ("ICMD Test CT1 TTTest");
                  }
                  cur_client.State="NORMAL";
+                
                  cur_client.sendFromBot( ADC.MOTD);
                  
                  /** calling plugins...*/
@@ -800,6 +803,8 @@ public class Command
                          new STAError(cur_client,200+Constants.STA_INVALID_STATE,"INF Invalid State.","FC",Issued_Command.substring(0,4));
                          return;
                      }
+                    
+                     
                     if(Issued_Command.charAt (0)!='B')
                     {
                         new STAError(cur_client,100,"INF Invalid Context.");

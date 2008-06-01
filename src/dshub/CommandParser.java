@@ -1336,7 +1336,7 @@ Thread.sleep(200);
                   "  Online users: "+Integer.toString (i)+"\n"+
                   "  Connecting users: "+Integer.toString(j)+"\n"+
                   "  Uptime: "+TimeConv.getStrTime(up)+
-                   "\n  Bytes red per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
+                   "\n  Bytes read per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
                    "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
                        
                     

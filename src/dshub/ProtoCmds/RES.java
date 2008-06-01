@@ -40,9 +40,15 @@ public class RES
     public RES(ClientHandler cur_client,String State, String Issued_Command) throws STAException
     {
         if(cur_client.ACTIVE==0)
-           new STAError(cur_client,100,"Error: Must be TCP active to use RES.");
+        {
+            new STAError(cur_client,100,"Error: Must be TCP active to use RES.");
+            return;
+        }
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
+        {
            new STAError(cur_client,100+Constants.STA_INVALID_STATE,"RES Invalid State.","FC",Issued_Command.substring(0,4));
+           return;
+        }
       if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {

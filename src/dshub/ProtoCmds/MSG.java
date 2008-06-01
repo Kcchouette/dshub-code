@@ -39,7 +39,10 @@ public class MSG
     public MSG (ClientHandler cur_client, String State, String Issued_Command) throws STAException
     {
         if(State.equals ("IDENTIFY") || State.equals ("VERIFY") || State.equals ("PROTOCOL"))
-        new STAError(cur_client,200+Constants.STA_INVALID_STATE,"MSG Invalid State.","FC",Issued_Command.substring(0,4));
+        {
+            new STAError(cur_client,200+Constants.STA_INVALID_STATE,"MSG Invalid State.","FC",Issued_Command.substring(0,4));
+            return;
+        }
       if(!cur_client.reg.overridespam)
      switch(Issued_Command.charAt(0))
      {
