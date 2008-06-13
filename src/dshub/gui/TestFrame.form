@@ -1898,7 +1898,7 @@
                                   <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2316,31 +2316,15 @@
                 <Component class="javax.swing.JTable" name="BanTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="1">
-                        <Column editable="true" title="Type" type="java.lang.Integer">
-                          <Data value="1"/>
-                        </Column>
-                        <Column editable="true" title="Reason" type="java.lang.String">
-                          <Data value="bla bla bla"/>
-                        </Column>
-                        <Column editable="true" title="Who banned" type="java.lang.String">
-                          <Data value="[RO][B]adjsaiodjsa"/>
-                        </Column>
-                        <Column editable="true" title="Time Issued" type="java.lang.String">
-                          <Data value="21.10 10:56"/>
-                        </Column>
-                        <Column editable="true" title="Nick" type="java.lang.String">
-                          <Data value="[RO][B][CABLE]dusau"/>
-                        </Column>
-                        <Column editable="true" title="IP" type="java.lang.String">
-                          <Data value="122.234.121.120"/>
-                        </Column>
-                        <Column editable="true" title="CID" type="java.lang.String">
-                          <Data value="JDISJADIJSAOIDJSAIOJDOSAJ"/>
-                        </Column>
-                        <Column editable="true" title="Remaining time" type="java.lang.Long">
-                          <Data value="3600000"/>
-                        </Column>
+                      <Table columnCount="8" rowCount="0">
+                        <Column editable="true" title="Type" type="java.lang.Integer"/>
+                        <Column editable="true" title="Reason" type="java.lang.String"/>
+                        <Column editable="true" title="Who banned" type="java.lang.String"/>
+                        <Column editable="true" title="Time Issued" type="java.lang.String"/>
+                        <Column editable="true" title="Nick" type="java.lang.String"/>
+                        <Column editable="true" title="IP" type="java.lang.String"/>
+                        <Column editable="true" title="CID" type="java.lang.String"/>
+                        <Column editable="true" title="Remaining time" type="java.lang.Long"/>
                       </Table>
                     </Property>
                   </Properties>

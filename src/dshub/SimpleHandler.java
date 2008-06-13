@@ -59,7 +59,8 @@ public class SimpleHandler extends IoHandlerAdapter
                // if((t.getMessage().contains("IOException")))
          if( t instanceof java.io.IOException)
                 {
-                   Main.PopMsg(t.getMessage());
+                  // Main.PopMsg(t.getMessage());
+             t.printStackTrace();
 		  session.close();
                 return;
                 }
@@ -75,8 +76,8 @@ public class SimpleHandler extends IoHandlerAdapter
                  }
                 else 
                 {
-                   // t.printStackTrace();
-                    Main.PopMsg(t.getMessage());
+                    t.printStackTrace();
+                   // Main.PopMsg(t.printStackTrace()getMessage());
 		  session.close();
                 return;
                 };
@@ -103,7 +104,7 @@ public class SimpleHandler extends IoHandlerAdapter
                          new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
                      }
                     cur_client.myNod.killMe();*/
-                    System.out.println("sta exception");
+                  //  System.out.println("sta exception");
                     session.close();
                 }
                 catch(CommandException cfex)
@@ -122,13 +123,21 @@ public class SimpleHandler extends IoHandlerAdapter
         {
             //ok, we're in idle
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+            try
+            {
             cur_client.sendToClient("");
+            }
+            catch(Exception e)
+            {
+                
+                
+            }
             
         }
         public void sessionClosed(IoSession session) throws Exception
         {
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-            System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
+          //  System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
             
             if(cur_client.userok==1 && cur_client.kicked!=1)
             {
