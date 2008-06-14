@@ -55,14 +55,14 @@ public class Command
      void completeLogIn()
     {
         // must check if its op or not and move accordingly
-        if(!cur_client.reg.key) //increase HR count and put RG field to 1
+        if(!cur_client.reg.key) //DO NOT increase HR count and put RG field to 1
         {
-             cur_client.HR=String.valueOf(Integer.parseInt(cur_client.HR)+1);
+           //  cur_client.HR=String.valueOf(Integer.parseInt(cur_client.HR)+1);
              cur_client.CT="2";
         }
-        else //increase HO count and put OP field to 1
+        else //DO NOT increase HO count and put OP field to 1
         {
-             cur_client.HO=String.valueOf(Integer.parseInt(cur_client.HO)+1);
+          //   cur_client.HO=String.valueOf(Integer.parseInt(cur_client.HO)+1);
              cur_client.CT="4";
         }
         
@@ -411,8 +411,8 @@ public class Command
                    if(cur_client.reg==null)
                        cur_client.reg=new Nod();
                    //cur_client.reg.CH=cur_client;
-                    if(!cur_client.reg.isreg)
-                            cur_client.HN=String.valueOf(Integer.parseInt(cur_client.HN)+1);
+                   // if(!cur_client.reg.isreg)
+                   //         cur_client.HN=String.valueOf(Integer.parseInt(cur_client.HN)+1);
                     }
                     
                     
