@@ -968,8 +968,13 @@ Thread.sleep(200);
                                     return;
                                 }
                         }
-                
-                     if(!(AccountsConfig.getnod (aux).kickable))
+                     if( (AccountsConfig.getnod(aux))==null)
+                     {
+                         cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+", banning....");
+                     
+                        BanList.addban (3,aux,-1,cur_client.NI,reason);
+                     }  
+                     else if(!(AccountsConfig.getnod (aux).kickable))
                      { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+AccountsConfig.getnod (aux).LastNI+", but is not kickable.");}
                      else
                      {
