@@ -276,18 +276,17 @@ public class HubServer extends Thread
         
         x.shutdown();
     }
-    public static 
-            ClientNod AddClient()
+    public static   ClientNod AddClient()
     {
      //ClientHandler ret;
         if(restart)
             return null;
        
         ClientNod newclient=new ClientNod();
-        synchronized ( SimpleHandler.Users)
+        /*synchronized ( SimpleHandler.Users)
         {
         SimpleHandler.Users.add(newclient);
-        }
+        }/*
        /*newclient.NextClient=ClientNod.FirstClient.NextClient;
        ClientNod.FirstClient.NextClient=newclient;
        newclient.PrevClient=ClientNod.FirstClient;

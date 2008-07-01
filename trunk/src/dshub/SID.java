@@ -23,6 +23,7 @@ package dshub;
  */
 
 import dshub.TigerImpl.Base32;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -50,8 +51,9 @@ public class SID
             x.nextBytes(cursid);
             ok=1;
             
-            for( ClientNod temp : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 
             
               if(cursid.equals (temp.cur_client.sid) )

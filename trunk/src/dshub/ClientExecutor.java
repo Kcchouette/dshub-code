@@ -23,6 +23,8 @@
 
 package dshub;
 
+import java.util.Map;
+
 /**
  * A thread that tries to send all messages in the queue;
  * @author Pietricica
@@ -53,8 +55,9 @@ public class ClientExecutor extends Thread
             }
         
          
-        for(ClientNod temp: SimpleHandler.Users)
-        {
+         for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
             synchronized(temp.cur_client.Queue)
             {
                 if(temp.cur_client.Queue.First==null)

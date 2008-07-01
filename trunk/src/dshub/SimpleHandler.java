@@ -29,7 +29,9 @@ import dshub.Exceptions.STAException;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
@@ -41,10 +43,9 @@ import org.apache.mina.common.IoSession;
  */
 public class SimpleHandler extends IoHandlerAdapter
 {
-    public static LinkedList<ClientNod> Users;
+    public static Map<String,ClientNod> Users;
     static 
-    {
-        Users= new LinkedList<ClientNod>();
+    {        Users= Collections.synchronizedMap(new LinkedHashMap<String,ClientNod>(3000, (float) 0.75));
     }
     /** Creates a new instance of SimpleHandler */
     public SimpleHandler()
@@ -183,8 +184,9 @@ public class SimpleHandler extends IoHandlerAdapter
         public static int getUserCount()
         {
             int ret=0;
-            for( ClientNod x:SimpleHandler.Users)
-            {
+            for( Object y :  SimpleHandler.Users.entrySet())
+            { 
+                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
                 if(x.cur_client.userok==1)
                     ret++;
             }
@@ -193,8 +195,9 @@ public class SimpleHandler extends IoHandlerAdapter
          public static long getTotalShare()
         {
             long ret=0;
-            for( ClientNod x:SimpleHandler.Users)
+            for( Object y :  SimpleHandler.Users.entrySet())   
             {
+                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
                 try
                 {
                 if(x.cur_client.userok==1)
@@ -209,8 +212,9 @@ public class SimpleHandler extends IoHandlerAdapter
           public static long getTotalFileCount()
         {
             long ret=0;
-            for( ClientNod x:SimpleHandler.Users)
+            for( Object y :  SimpleHandler.Users.entrySet())   
             {
+                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
                 try
                 {
                 if(x.cur_client.userok==1)
