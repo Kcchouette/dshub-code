@@ -5321,6 +5321,12 @@ refreshAll();
            
             
         }
+      if(langcombo.getSelectedItem().equals("ru_RU"))
+        {
+            Translation.curLocale=new Locale("ru","RU");
+           
+            
+        }
          Locale.setDefault(Translation.curLocale);
             Main.PopMsg("Language changed to "+langcombo.getSelectedItem().toString());
             SetStatus("Language changed to "+langcombo.getSelectedItem().toString());
