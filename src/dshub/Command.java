@@ -459,7 +459,8 @@ public class Command
                     //else System.out.println("no nick ban");
                 
                 int i=0;
-                
+                if(State.equals ("PROTOCOL"))
+                    
                for( Object y: SimpleHandler.Users.entrySet())
          {
                     ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
