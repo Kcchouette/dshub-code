@@ -25,6 +25,7 @@ package dshub.ExtendedCmds;
 
 import dshub.*;
 import dshub.TigerImpl.Base32;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -50,8 +51,9 @@ public class ExtInfo
                 {
                     //ClientNod temp=ClientNod.FirstClient.NextClient;
               String Nicklist="";
-                for( ClientNod temp : SimpleHandler.Users)
-                        {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.RealIP.equals(aux.toLowerCase ())))
                                 Nicklist=Nicklist+temp.cur_client.NI+"\n";
                             
@@ -73,8 +75,9 @@ public class ExtInfo
                         {
                             Base32.decode (aux);
                             //ok if we are here, its a CID
-                             for( ClientNod temp : SimpleHandler.Users)
-                        {
+                              for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                             {
                                 cur_client.sendFromBot("CID "+aux+" is used by:\n"+temp.cur_client.NI);
@@ -95,8 +98,9 @@ public class ExtInfo
                     
                     
                     
-                for( ClientNod temp : SimpleHandler.Users)
-                        {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                               {
                     

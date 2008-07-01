@@ -209,10 +209,10 @@ public class ClientNod
        
        public  void  killMe()
        {
-           synchronized ( SimpleHandler.Users)
-           {
-              SimpleHandler.Users.remove(this);
-           }
+           
+            if(cur_client.userok==1)
+              SimpleHandler.Users.remove(this.cur_client.ID);
+          
            /*synchronized(FirstClient)
            {
            this.PrevClient.NextClient=this.NextClient;

@@ -24,6 +24,7 @@ package dshub.gui;
 
 import dshub.*;
 import java.util.Date;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -1216,8 +1217,9 @@ if(curAcc.myMask.adc)
             if(!curAcc.key)
             { 
             
-            for( ClientNod temp : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                 if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                  {
@@ -1238,8 +1240,9 @@ if(curAcc.myMask.adc)
              if(curAcc.key)
             { 
             
-             for( ClientNod temp : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                    if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                    {
@@ -1295,8 +1298,9 @@ if(curAcc.myMask.adc)
           if(curAcc.opchataccess==false)
           {
             curAcc.opchataccess=true;
-          for(ClientNod temp: SimpleHandler.Users)
-            {
+          for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                 if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                    {
@@ -1316,8 +1320,9 @@ if(curAcc.myMask.adc)
             if(curAcc.opchataccess==true)
           {
                 
-          for( ClientNod temp :SimpleHandler.Users)
-            {
+          for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                 if(temp.cur_client.ID.equals (curAcc.CID))//if registered guy is online
                    {

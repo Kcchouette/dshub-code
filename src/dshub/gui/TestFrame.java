@@ -35,6 +35,7 @@ import java.net.Proxy;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -3813,8 +3814,9 @@ else
                         n=n.Next;
                     }
                 }
-               for(ClientNod temp :SimpleHandler.Users)
-               {
+               for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                     if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(CID)))
                        {
                     temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
@@ -3901,8 +3903,9 @@ else
                 if(!Vars.ValidateNick(Thing)) {
                     throw new Exception();
                 }
-                for( ClientNod tempy: SimpleHandler.Users)
-                {
+               for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempy=(ClientNod) ((Map.Entry)yy).getValue();
                     if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
                         throw new Exception();
                     
@@ -3969,8 +3972,9 @@ else
                 if(!Vars.ValidateNick(Thing)) {
                     throw new Exception();
                 }
-               for( ClientNod tempy : SimpleHandler.Users)
-               {
+               for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempy=(ClientNod) ((Map.Entry)yy).getValue();
                     if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase().equals(Thing.toLowerCase())))
                         throw new Exception();
                     
@@ -4493,8 +4497,9 @@ else
         
         
         int i=0,j=0;
-       for(ClientNod temp :SimpleHandler.Users)
-       {
+       for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                     i++;
                 else j++;
@@ -4604,8 +4609,9 @@ else
         refreshPyScripts();
         
         int i=0,j=0;
-        for(ClientNod temp : SimpleHandler.Users)
-        {
+        for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(temp.cur_client.userok==1)
                     i++;
                 else j++;

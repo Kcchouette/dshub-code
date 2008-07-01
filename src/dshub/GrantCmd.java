@@ -21,6 +21,7 @@
 
 package dshub;
 
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -60,8 +61,9 @@ public class GrantCmd
         {
             boolean ok=false;
             
-            for( ClientNod tempp : SimpleHandler.Users)
-            {
+            for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempp=(ClientNod) ((Map.Entry)y).getValue();
                 if(tempp.cur_client.userok==1)
                     if(tempp.cur_client.NI.equalsIgnoreCase(who) && tempp.cur_client.reg.isreg)
                     {
@@ -543,8 +545,9 @@ public class GrantCmd
                         if(!modnod.key)
                         { 
             
-                        for ( ClientNod tempx: SimpleHandler.Users)
-                        {
+                       for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                                   {
@@ -564,8 +567,9 @@ public class GrantCmd
                  if(modnod.key)
                 { 
             
-               for( ClientNod tempx : SimpleHandler.Users)
-                {
+               for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                              {
@@ -630,8 +634,9 @@ public class GrantCmd
                  {
                         modnod.opchataccess=true; 
             
-                        for( ClientNod tempx : SimpleHandler.Users)
-                        {
+                        for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                                   {
@@ -647,8 +652,9 @@ public class GrantCmd
                 {
                  
             
-                for( ClientNod tempx : SimpleHandler.Users)
-                {
+                for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                              {
@@ -763,8 +769,9 @@ public GrantCmd(String cmd)
         else
         {
             boolean ok=false;
-            for( ClientNod tempp : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempp=(ClientNod) ((Map.Entry)yy).getValue();
                 if(tempp.cur_client.userok==1)
                     if(tempp.cur_client.NI.equalsIgnoreCase(who))
                     {
@@ -1067,8 +1074,9 @@ public GrantCmd(String cmd)
                         if(!modnod.key)
                         { 
             
-                        for(ClientNod tempx:SimpleHandler.Users)
-                        {
+                        for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                                  {
@@ -1087,8 +1095,9 @@ public GrantCmd(String cmd)
                  if(modnod.key)
                 { 
             
-                for( ClientNod tempx :SimpleHandler.Users)
-                {
+                for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempx=(ClientNod) ((Map.Entry)yy).getValue();
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                              {

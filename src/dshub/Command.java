@@ -80,8 +80,9 @@ public class Command
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
            */
-         for( ClientNod iterator : SimpleHandler.Users)
+         for( Object y: SimpleHandler.Users.entrySet())
          {
+                    ClientNod iterator=(ClientNod) ((Map.Entry)y).getValue();
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
               cur_client.sendToClient(iterator.cur_client.getINF());
              
@@ -100,6 +101,8 @@ public class Command
                //ok now must send INF to all clients
                  new Broadcast(cur_client.getINF (),cur_client.myNod);
                  cur_client.userok=1; //user is OK, logged in and cool.
+                 /*---*/
+                 SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
                  cur_client.sendFromBot(ADC.MOTD);
                  //System.out.println("gay");
                  //cur_client.sendFromBot ("gay");
@@ -456,10 +459,10 @@ public class Command
                     //else System.out.println("no nick ban");
                 
                 int i=0;
-                synchronized( SimpleHandler.Users)
-                {
-              for( ClientNod temp : SimpleHandler.Users)
-               {
+                
+               for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                   
                    if(!temp.cur_client.equals (cur_client))
                    {
@@ -470,18 +473,19 @@ public class Command
                        return;
                    }
                    
-                   if(temp.cur_client.ID.equals(cur_client.ID) && temp.cur_client.CIDsecure)
+                   if(SimpleHandler.Users.containsKey(cur_client.ID) || temp.cur_client.ID.equals(cur_client.ID))//&& temp.cur_client.CIDsecure)
                    {
                        new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
                    }
+                       
                    cur_client.CIDsecure=true;
                    i++;
                    }
                   
                    
                }
-                }
+                
                 
                 if(AccountsConfig.nickReserved(cur_client.NI,cur_client.ID))
                 {
@@ -733,8 +737,10 @@ public class Command
          
                    
           cur_client.userok=1; //user is OK, logged in and cool.
-         for(ClientNod iterator : SimpleHandler.Users)
+         SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
+          for( Object y: SimpleHandler.Users.entrySet())
          {
+                    ClientNod iterator=(ClientNod) ((Map.Entry)y).getValue();
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
              cur_client.sendToClient(iterator.cur_client.getINF());
              

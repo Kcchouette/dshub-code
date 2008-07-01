@@ -25,6 +25,7 @@ package dshub;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -438,8 +439,9 @@ public class CFGConfig
                    }
                     
                 
-                for(ClientNod tempy : SimpleHandler.Users)
+                for( Object y: SimpleHandler.Users.entrySet())
                         {
+                    ClientNod tempy=(ClientNod) ((Map.Entry)y).getValue();
                             if ((tempy.cur_client.userok==1)
                                     &&((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
                             {
@@ -470,8 +472,9 @@ public class CFGConfig
                        return;
                    }
                                     
-                for(ClientNod tempy : SimpleHandler.Users)
+                 for( Object y: SimpleHandler.Users.entrySet())
                         {
+                    ClientNod tempy=(ClientNod) ((Map.Entry)y).getValue();
                             if ((tempy.cur_client.userok==1)
 									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
                             {

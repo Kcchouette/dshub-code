@@ -25,6 +25,7 @@ package dshub.ProtoCmds;
 
 import dshub.*;
 import dshub.Exceptions.STAException;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -99,8 +100,9 @@ public class CTM
                 }
                 aux=tok.nextToken();
                 //now must look for the aux SID...
-                for( ClientNod temp : SimpleHandler.Users)
-                {
+                for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                     if(temp.cur_client.userok==1)
                     if(temp.cur_client.SessionID.equals(aux))
                     {

@@ -23,6 +23,8 @@
 
 package dshub;
 
+import java.util.Map;
+
 /**
  * Permanent thread that keeps clients connected ( meaning killing the ones who
  * are disconnected). Also sends delayed searches and will be used for cronlike jobs.
@@ -60,8 +62,9 @@ public class ClientAssasin extends Thread
                 continue;
             }
                     
-            for(ClientNod temp : SimpleHandler.Users)
-            {
+             for( Object y: SimpleHandler.Users.entrySet())
+                        {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                
                 long curtime=System.currentTimeMillis();
                 ClientNod x=temp;

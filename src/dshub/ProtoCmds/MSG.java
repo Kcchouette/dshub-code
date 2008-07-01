@@ -25,6 +25,7 @@ package dshub.ProtoCmds;
 
 import dshub.*;
 import dshub.Exceptions.STAException;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -173,8 +174,9 @@ public class MSG
                        if(what % 2 ==1)
                        {
                            ;//notify opchat :
-                           for(ClientNod temp : SimpleHandler.Users)
-                           {
+                           for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                                if(temp.cur_client.reg.isreg )
                                    temp.cur_client.sendToClient("EMSG ABCD "+temp.cur_client.SessionID+" User\\s{" +
                                            cur_client.NI+"}\\swith\\sIP\\s{" +
@@ -321,8 +323,9 @@ public class MSG
                        else
                        if(!pmsid.equals ("ABCD"))
                        {
-                       for(ClientNod temp : SimpleHandler.Users)
-                       {
+                       for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                        if(temp.cur_client.SessionID.equals(pmsid))
                        {
                             temp.cur_client.sendToClient(Issued_Command);
@@ -346,8 +349,9 @@ public class MSG
                            //must send to all ops...
                            
                            //cant broadcast coz must send each;s SID
-                           for( ClientNod temp: SimpleHandler.Users)
-                           {
+                           for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                                if(temp.cur_client.userok==1)
                                    if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
                                temp.cur_client.sendToClient("EMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
@@ -386,8 +390,9 @@ public class MSG
                        else  
                        if(!pmsid.equals ("ABCD"))
                        {
-                       for( ClientNod temp : SimpleHandler.Users)
-                       {
+                       for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                        if(temp.cur_client.SessionID.equals(pmsid))
                        {
                             temp.cur_client.sendToClient(Issued_Command);
@@ -406,8 +411,9 @@ public class MSG
                            //talking to bot
                            //must send to all ops...
                            
-                           for(ClientNod temp : SimpleHandler.Users)
-                           {
+                           for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
                                if(temp.cur_client.reg.isreg && !temp.cur_client.equals (cur_client))
                                temp.cur_client.sendToClient("DMSG "+cur_client.SessionID+" "+temp.cur_client.SessionID+ " "+message + " PMABCD");
                                

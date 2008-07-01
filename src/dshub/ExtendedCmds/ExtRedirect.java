@@ -24,6 +24,7 @@
 package dshub.ExtendedCmds;
 
 import dshub.*;
+import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.regex.PatternSyntaxException;
 
@@ -69,8 +70,9 @@ public class ExtRedirect
         if(ADC.isCID(what))
         {
             
-            for( ClientNod aux : SimpleHandler.Users)
-            {
+            for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod aux=(ClientNod) ((Map.Entry)y).getValue();
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.ID.equalsIgnoreCase(what))
                 {
@@ -89,8 +91,9 @@ public class ExtRedirect
         }
         else //is a nick
         {
-            for(ClientNod aux : SimpleHandler.Users)
-            {
+            for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod aux=(ClientNod) ((Map.Entry)y).getValue();
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.NI.equalsIgnoreCase(what))
                 {
@@ -109,8 +112,9 @@ public class ExtRedirect
         try
         {
            "".matches(what);
-           for( ClientNod aux : SimpleHandler.Users)
-            {
+           for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod aux=(ClientNod) ((Map.Entry)y).getValue();
                 if(aux.cur_client.userok==1)
                 if(aux.cur_client.NI.matches(what))
                 {
@@ -148,9 +152,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024>Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -174,9 +178,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HN)>Number )
@@ -205,9 +209,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HR)>Number )
@@ -236,9 +240,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HO)>Number )
@@ -267,9 +271,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.SL)>Number )
@@ -298,9 +302,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -328,9 +332,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -354,9 +358,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HN)<Number )
@@ -385,9 +389,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HO)<Number )
@@ -416,9 +420,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HR)<Number )
@@ -447,9 +451,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -473,9 +477,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.SL)<Number )
@@ -508,9 +512,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -534,9 +538,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HO)==Number )
@@ -565,9 +569,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Number==1)
                                           {
                                               if(Long.parseLong (tempz.cur_client.CT)==2 )
@@ -601,9 +605,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -627,9 +631,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           {
                                              try
                                              {
@@ -674,9 +678,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           {
                                              try
                                              {
@@ -709,9 +713,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HN)==Number )
@@ -734,9 +738,9 @@ public class ExtRedirect
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -760,9 +764,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -786,9 +790,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -817,9 +821,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -843,9 +847,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                            if(Number==1)
@@ -884,9 +888,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.AW)!=Number )
@@ -915,9 +919,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                if(Number==1)
@@ -956,9 +960,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HO)!=Number )
@@ -987,9 +991,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HR)!=Number )
@@ -1018,9 +1022,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.HN)!=Number )
@@ -1043,9 +1047,9 @@ public class ExtRedirect
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.cur_client.userok==1)
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -1069,9 +1073,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.redirectMe(cur_client,URL);
                                          
@@ -1095,9 +1099,9 @@ public class ExtRedirect
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Redirect ...\");cur_client.sendFromBot("Done.");
                                      //Redirect all shared > number
-                                     for( ClientNod tempz : SimpleHandler.Users )
-                                     
-                                     {if(tempz.cur_client.userok==1)
+                                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
                                           try
                                              {
                                                 if(Long.parseLong (tempz.cur_client.SL)!=Number )

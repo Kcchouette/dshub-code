@@ -23,6 +23,8 @@
 
 package dshub;
 
+import java.util.Map;
+
 
  class line
     {
@@ -92,8 +94,9 @@ public class Broadcast
        
          String NI="";
          
-         for( ClientNod CH: SimpleHandler.Users)
+         for( Object y: SimpleHandler.Users.entrySet())
         {
+             ClientNod CH=(ClientNod) ((Map.Entry)y).getValue();
           //  x[i]= ((IoSession) (x[i]));
         //ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
          if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))

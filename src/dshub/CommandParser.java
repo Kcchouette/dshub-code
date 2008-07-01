@@ -34,6 +34,7 @@ import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import java.util.StringTokenizer;
 import java.net.*;
+import java.util.Map;
 
 
 /**
@@ -403,8 +404,9 @@ Thread.sleep(200);
                 Base32.decode (aux);
                 if(AccountsConfig.unreg (aux))
                 {
-                    for(ClientNod temp : SimpleHandler.Users)
-                        {
+                    for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                 {
                             temp.cur_client.sendFromBot(""+"Your account has been deleted. From now on you are a simple user.");
@@ -430,8 +432,9 @@ Thread.sleep(200);
                 catch (IllegalArgumentException iae)
                 {
                     cur_client.sendFromBot("Not a valid CID, checking for possible users...");
-                      for(ClientNod temp: SimpleHandler.Users)
-                        {
+                       for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                 if(!temp.cur_client.reg.isreg)
                           cur_client.sendFromBot("Client exists but not registered.");
@@ -485,8 +488,9 @@ Thread.sleep(200);
                             cur_client.sendFromBot(""+AccountsConfig.getnod (aux).getRegInfo ());
                            done=true; return;
                         }
-                        for(ClientNod temp: SimpleHandler.Users)
-                        {
+                         for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                {
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,cur_client.NI);
@@ -517,8 +521,9 @@ Thread.sleep(200);
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                       for(ClientNod temp: SimpleHandler.Users)
-                        {
+                        for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                {
                          if(AccountsConfig.isReg (temp.cur_client.ID)>0)
@@ -559,8 +564,9 @@ Thread.sleep(200);
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                        for( ClientNod temp:SimpleHandler.Users)
-                        {
+                         for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                             {
                             if(AccountsConfig.isReg (temp.cur_client.ID)>0)
@@ -690,8 +696,9 @@ Thread.sleep(200);
                    {done=true; return;}
                 }
                 
-                    for( ClientNod tempy : SimpleHandler.Users)
-                        {
+                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempy=(ClientNod) ((Map.Entry)y).getValue();
                             if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                               {
                        cur_client.sendFromBot("Nick taken, please choose another.");
@@ -733,8 +740,9 @@ Thread.sleep(200);
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to rename;
                // aux=ADC.retADCStr(aux);
-                for( ClientNod temp : SimpleHandler.Users)
-                        {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                              if(!temp.cur_client.reg.renameable)
                          cur_client.sendFromBot("This registered user cannot be renamed.");
@@ -772,8 +780,9 @@ Thread.sleep(200);
                    done=true;
                     return;
                 }
-                    for( ClientNod tempy: SimpleHandler.Users)
-                        {
+                     for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod tempy=(ClientNod) yy;
                             if(tempy.cur_client.userok==1) if( (tempy.cur_client.NI.toLowerCase ().equals(newnick.toLowerCase ())))
                                 {
                        cur_client.sendFromBot("Nick taken, please choose another.");
@@ -953,8 +962,9 @@ Thread.sleep(200);
                {
                     //ok if we got here it really is a CID so:
                    // boolean banned=false;
-                for( ClientNod temp: SimpleHandler.Users)
-                        {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.toLowerCase ().equals(aux.toLowerCase ())))
                                if(!temp.cur_client.reg.kickable )
                                     { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found CID "+aux+" belonging to"+temp.cur_client.NI+", but is not kickable.");}
@@ -988,8 +998,9 @@ Thread.sleep(200);
                 {
                     //ok its not a cid, lets check if its some IP address...
                     cur_client.sendFromBot("Not a CID, Searching for a nick...");
-                    for( ClientNod temp : SimpleHandler.Users)
-                        {
+                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                if(!(temp.cur_client.reg.kickable ))
                          cur_client.sendFromBot("Found user "+temp.cur_client.NI+" with CID "+temp.cur_client.ID+", but its unkickable.");
@@ -1037,8 +1048,9 @@ Thread.sleep(200);
                 
                         reason=reason.substring (0,reason.length ()-1);
                     reason=ADC.retADCStr(reason);
-                for( ClientNod temp : SimpleHandler.Users)
-                        {
+                for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                if(!temp.cur_client.reg.kickable)
                        { cur_client.sendFromBot("Searching...");cur_client.sendFromBot("Found Nick "+aux+" but it belongs to an unkickable reg.");}
@@ -1089,8 +1101,9 @@ Thread.sleep(200);
                  {
                     //ok if we got here it really is a IP so:
                     
-               for ( ClientNod temp : SimpleHandler.Users)
-                  {
+               for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) 
                                 if( temp.cur_client.RealIP.equals(aux))
                                 {
@@ -1104,8 +1117,9 @@ Thread.sleep(200);
                   }
                 
                 int kickedsome=0;
-                for( ClientNod temp : SimpleHandler.Users)
-                        {
+                for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) 
                                 if( temp.cur_client.RealIP.equals(aux))
                                 {
@@ -1127,8 +1141,9 @@ Thread.sleep(200);
                 {
                     //ok its not a ip, lets check if its some nick...
                     cur_client.sendFromBot("Not a IP, Searching for a nick...");
-                    for( ClientNod temp : SimpleHandler.Users)
-                        {
+                     for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                             if(temp.cur_client.userok==1) if( temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ()))
                              {  
                         if(!temp.cur_client.reg.kickable)
@@ -1249,8 +1264,9 @@ Thread.sleep(200);
                         return;
                     }
                 int i=0,j=0;
-                for( ClientNod temp : SimpleHandler.Users)
-                {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
@@ -1320,8 +1336,9 @@ Thread.sleep(200);
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                for( ClientNod temp : SimpleHandler.Users)
-                {
+                 for( Object y: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;

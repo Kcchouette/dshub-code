@@ -25,6 +25,7 @@ package dshub.ProtoCmds;
 
 import dshub.*;
 import dshub.Exceptions.STAException;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -74,8 +75,9 @@ public class STA
                 return;
             }
             String dsid=TK.nextToken ();
-            for( ClientNod target : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod target=(ClientNod) ((Map.Entry)yy).getValue();
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (dsid))
                     
@@ -119,8 +121,9 @@ public class STA
                 return;
             }
             String esid=TK.nextToken ();
-            for( ClientNod target : SimpleHandler.Users)
-            {
+            for( Object yy: SimpleHandler.Users.entrySet())
+         {
+                    ClientNod target=(ClientNod) ((Map.Entry)yy).getValue();
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (esid))
                 {
