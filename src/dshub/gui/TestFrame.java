@@ -80,6 +80,7 @@ public class TestFrame extends javax.swing.JFrame {
         langcombo.addItem("sv_SE");
         langcombo.addItem("de_DE");
         langcombo.addItem("nl_NL");
+        langcombo.addItem("ru_RU");
         langcombo.setSelectedItem(Translation.curLocale.getLanguage()+"_"+Translation.
                 curLocale.getCountry());
         
