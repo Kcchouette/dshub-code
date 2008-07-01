@@ -28,7 +28,11 @@ import dshub.python.*;
 import java.io.*;
 import java.util.*;
 import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 
@@ -353,7 +357,7 @@ public class Main extends Thread
     /**
      * @param args the command line arguments
      */
-    public static void main(String [] args) 
+    public static void main(String [] args)  
     {   
         //
         
@@ -362,7 +366,17 @@ public class Main extends Thread
         System.out.println (Translation.getString("startup"));
         
        
-        
+         try {
+            
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+           
+} catch (UnsupportedLookAndFeelException ex) {
+  System.out.println("Unable to load native look and feel");
+}
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         
         
         
