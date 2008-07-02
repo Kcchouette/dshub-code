@@ -60,6 +60,8 @@ public class ClientHandler
     public int ACTIVE=0;
     public int quit=0;
     
+    
+    
     public long LoggedAt=0l;
     
     public Nod reg;
