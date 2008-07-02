@@ -62,9 +62,8 @@ public class ClientAssasin extends Thread
                 continue;
             }
                     
-             for( Object y: SimpleHandler.Users.entrySet())
+            for( ClientNod temp :  SimpleHandler.getUsers())
                         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
                
                 long curtime=System.currentTimeMillis();
                 ClientNod x=temp;

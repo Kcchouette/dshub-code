@@ -207,20 +207,6 @@ public class ClientNod
                   //  Main.Server.rewritebans ();
      }
        
-       public  void  killMe()
-       {
-           
-            if(cur_client.userok==1)
-              SimpleHandler.Users.remove(this.cur_client.ID);
-          
-           /*synchronized(FirstClient)
-           {
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-              this.NextClient.PrevClient=this.PrevClient;
-          // System.out.println("killed");
-           }*/
-           this.cur_client=null;
-       }
+       
     
 }

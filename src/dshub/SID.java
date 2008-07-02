@@ -51,9 +51,9 @@ public class SID
             x.nextBytes(cursid);
             ok=1;
             
-            for( Object yy: SimpleHandler.Users.entrySet())
+           for( ClientNod temp :  SimpleHandler.getUsers())
          {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                   
                 
             
               if(cursid.equals (temp.cur_client.sid) )

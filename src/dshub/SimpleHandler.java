@@ -29,6 +29,8 @@ import dshub.Exceptions.STAException;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -52,6 +54,11 @@ public class SimpleHandler extends IoHandlerAdapter
     {
         //ClientNod.FirstClient=new ClientNod(1);
         
+    }
+    
+    public static synchronized Collection<ClientNod>  getUsers()
+    {
+        return (Collection<ClientNod>) Users.values();
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
@@ -134,6 +141,18 @@ public class SimpleHandler extends IoHandlerAdapter
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
           //  System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
             
+            if(cur_client.userok==1)
+              SimpleHandler.Users.remove(cur_client.ID);
+          
+           /*synchronized(FirstClient)
+           {
+           this.PrevClient.NextClient=this.NextClient;
+           if(this.NextClient!=null)
+              this.NextClient.PrevClient=this.PrevClient;
+          // System.out.println("killed");
+           }*/
+           
+       
             if(cur_client.userok==1 && cur_client.kicked!=1)
             {
                 new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
@@ -146,7 +165,7 @@ public class SimpleHandler extends IoHandlerAdapter
                  }
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
            //  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
-             cur_client.myNod.killMe();
+             cur_client=null;
             
         }
 
@@ -178,9 +197,9 @@ public class SimpleHandler extends IoHandlerAdapter
         public static int getUserCount()
         {
             int ret=0;
-            for( Object y :  SimpleHandler.Users.entrySet())
+            for( ClientNod x :  SimpleHandler.getUsers())
             { 
-                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
+                
                 if(x.cur_client.userok==1)
                     ret++;
             }
@@ -189,9 +208,9 @@ public class SimpleHandler extends IoHandlerAdapter
          public static long getTotalShare()
         {
             long ret=0;
-            for( Object y :  SimpleHandler.Users.entrySet())   
+           for( ClientNod x :  SimpleHandler.getUsers())
             {
-                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
+                
                 try
                 {
                 if(x.cur_client.userok==1)
@@ -206,9 +225,9 @@ public class SimpleHandler extends IoHandlerAdapter
           public static long getTotalFileCount()
         {
             long ret=0;
-            for( Object y :  SimpleHandler.Users.entrySet())   
+            for( ClientNod x :  SimpleHandler.getUsers())  
             {
-                ClientNod x=(ClientNod) ((Map.Entry)y).getValue();
+               
                 try
                 {
                 if(x.cur_client.userok==1)

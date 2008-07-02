@@ -55,9 +55,8 @@ public class ClientExecutor extends Thread
             }
         
          
-         for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
+         for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
             synchronized(temp.cur_client.Queue)
             {
                 if(temp.cur_client.Queue.First==null)
