@@ -58,7 +58,7 @@ public class SimpleHandler extends IoHandlerAdapter
     
     public static synchronized Collection<ClientNod>  getUsers()
     {
-        return (Collection<ClientNod>) Users.values();
+        return new ArrayList<ClientNod>( Users.values());
     }
      public void exceptionCaught(IoSession session, Throwable t) throws Exception 
     {
@@ -141,8 +141,7 @@ public class SimpleHandler extends IoHandlerAdapter
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
           //  System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
             
-            if(cur_client.userok==1)
-              SimpleHandler.Users.remove(cur_client.ID);
+            
           
            /*synchronized(FirstClient)
            {
@@ -165,6 +164,8 @@ public class SimpleHandler extends IoHandlerAdapter
                  }
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
            //  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
+             if(cur_client.userok==1)
+              SimpleHandler.Users.remove(cur_client.ID);
              cur_client=null;
             
         }
