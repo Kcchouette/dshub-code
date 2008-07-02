@@ -439,9 +439,8 @@ public class CFGConfig
                    }
                     
                 
-                for( Object y: SimpleHandler.Users.entrySet())
+                for( ClientNod tempy :  SimpleHandler.getUsers())
                         {
-                    ClientNod tempy=(ClientNod) ((Map.Entry)y).getValue();
                             if ((tempy.cur_client.userok==1)
                                     &&((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
                             {
@@ -472,9 +471,8 @@ public class CFGConfig
                        return;
                    }
                                     
-                 for( Object y: SimpleHandler.Users.entrySet())
+                 for( ClientNod tempy :  SimpleHandler.getUsers())
                         {
-                    ClientNod tempy=(ClientNod) ((Map.Entry)y).getValue();
                             if ((tempy.cur_client.userok==1)
 									&& ((tempy.cur_client.NI.toLowerCase ().equals(new_name.toLowerCase ()))))
                             {

@@ -88,9 +88,8 @@ public class RES
                 }
                 aux=tok.nextToken();
                 //now must look for the aux SID...
-                for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                     if(temp.cur_client.SessionID.equals(aux))
                     {
                         aux=tok.nextToken(); // this is the effective result

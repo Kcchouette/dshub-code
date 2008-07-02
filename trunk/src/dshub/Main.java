@@ -219,9 +219,8 @@ public class Main extends Thread
                             return;
                         }
                         
-                        for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                        for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                                {
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
@@ -262,9 +261,8 @@ public class Main extends Thread
                     catch (IllegalArgumentException iae)
                     {
                         //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                       for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                       for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                {
                          if(AccountsConfig.isReg (temp.cur_client.ID)>0)
@@ -309,9 +307,9 @@ public class Main extends Thread
                 else 
                 {
                     //cur_client.sendFromBot("Not a CID, trying to add the "+aux+" nick.");
-                         for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                        for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
+                    
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                             {
                                   if(AccountsConfig.isReg (temp.cur_client.ID)>0)
@@ -615,9 +613,8 @@ public class Main extends Thread
                 Base32.decode (aux);
                 if(AccountsConfig.unreg (aux))
                 {
-                   for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                  for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
                              {
                             temp.cur_client.sendFromBot(Translation.getString("account_deleted"));
@@ -641,9 +638,8 @@ public class Main extends Thread
                 catch (IllegalArgumentException iae)
                 {
                     System.out.println (Translation.getString("not_cid_check"));
-                     for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                     for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                              {
                             AccountsConfig.unreg(temp.cur_client.ID);
@@ -1097,9 +1093,8 @@ public class Main extends Thread
                        return;
                    }
                     
-                         for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempy=(ClientNod) ((Map.Entry)yy).getValue();
+                         for( ClientNod tempy :  SimpleHandler.getUsers())
+                        {
                            if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
                           {
                        System.out.println(Translation.getString("nick_taken"));
@@ -1134,9 +1129,8 @@ public class Main extends Thread
                        System.out.println(Translation.getString("invalid_nick"));
                        return;
                    }
-                    for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempy=(ClientNod) ((Map.Entry)yy).getValue();
+                    for( ClientNod tempy :  SimpleHandler.getUsers())
+                        {
                            if(tempy.cur_client.userok==1) if( tempy.cur_client.NI.equalsIgnoreCase(new_name))
                           {
                        System.out.println(Translation.getString("nick_taken"));
@@ -1524,9 +1518,8 @@ public class Main extends Thread
         else if(recvbuf.toLowerCase ().equals("usercount"))
         {
                 int i=0,j=0;
-               for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+               for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;
@@ -1548,9 +1541,8 @@ public class Main extends Thread
                
                        //Proppies.getProperty();
                 int i=0,j=0;
-                for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)yy).getValue();
+                for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                     if(temp.cur_client.userok==1)
                     i++;
                     else j++;

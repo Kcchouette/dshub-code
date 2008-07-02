@@ -75,9 +75,8 @@ public class STA
                 return;
             }
             String dsid=TK.nextToken ();
-            for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod target=(ClientNod) ((Map.Entry)yy).getValue();
+            for( ClientNod target :  SimpleHandler.getUsers())
+                        {
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (dsid))
                     
@@ -121,9 +120,8 @@ public class STA
                 return;
             }
             String esid=TK.nextToken ();
-            for( Object yy: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod target=(ClientNod) ((Map.Entry)yy).getValue();
+            for( ClientNod target :  SimpleHandler.getUsers())
+                        {
                 if(target.cur_client.userok==1)
                 if(target.cur_client.SessionID.equals (esid))
                 {

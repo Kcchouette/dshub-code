@@ -94,9 +94,8 @@ public class Broadcast
        
          String NI="";
          
-         for( Object y: SimpleHandler.Users.entrySet())
-        {
-             ClientNod CH=(ClientNod) ((Map.Entry)y).getValue();
+        for( ClientNod CH :  SimpleHandler.getUsers())
+                        {
           //  x[i]= ((IoSession) (x[i]));
         //ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
          if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))

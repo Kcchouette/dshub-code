@@ -65,9 +65,8 @@ public class ExtDrop
                 ST.nextToken ();
                 String aux=ST.nextToken (); //the nick to drop;
                 
-                 for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
+                 for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                                if(!temp.cur_client.reg.kickable)
                                {
@@ -95,9 +94,8 @@ public class ExtDrop
                             //aux=aux.replaceAll ("\\\\\\\\","\\\\");
                            // System.out.println (aux);
                             "".matches(aux);
-                             for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod temp=(ClientNod) ((Map.Entry)y).getValue();
+                            for( ClientNod temp :  SimpleHandler.getUsers())
+                        {
                                 
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().matches (aux.toLowerCase ())))
                             {
@@ -142,9 +140,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Kick ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();
+                                     for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {
                     if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
@@ -169,9 +166,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)>Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -195,9 +191,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended drop ...\");cur_client.sendFromBot("Done.");
                                      //drop all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)>Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -221,9 +216,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)>Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -247,9 +241,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)>Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -273,9 +266,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()>Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -303,9 +295,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024<Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                         
@@ -329,9 +320,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)<Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -355,9 +345,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)<Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -381,9 +370,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)<Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -407,9 +395,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()<Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -433,9 +420,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)<Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -463,9 +449,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024==Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                         
@@ -489,9 +474,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -515,9 +499,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                           if(Number==1)
                                           {
                                               if(Long.parseLong (tempz.cur_client.CT)==2 )
@@ -553,9 +536,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -579,9 +561,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Number==1)
                                           {
                                               if(Long.parseLong (tempz.cur_client.CT)==4 )
@@ -616,9 +597,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -642,9 +622,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -662,9 +641,8 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                         
@@ -688,9 +666,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -714,9 +691,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)==Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -745,9 +721,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SS)/1024/1024!=Number )//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          
@@ -771,9 +746,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Number==1)
                                           {
                                               if(Long.parseLong (tempz.cur_client.CT)==2 )
@@ -808,9 +782,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.AW)!=Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -834,9 +807,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Number==1)
                                           {
                                               if(Long.parseLong (tempz.cur_client.CT)==4 )
@@ -871,9 +843,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                     for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HO)!=Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -897,9 +868,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HR)!=Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -923,9 +893,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.HN)!=Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -943,9 +912,8 @@ public class ExtDrop
                                     
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(!tempz.cur_client.SU.toLowerCase ().contains (Number.toLowerCase () ))//&& tempz.userok==1)
                                              tempz.dropMe (cur_client);
                                          
@@ -969,9 +937,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                     for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                      for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(tempz.cur_client.NI.length ()!=Number )
                                              tempz.dropMe (cur_client);
                                          
@@ -995,9 +962,8 @@ public class ExtDrop
                                      }
                                     // cur_client.sendFromBot(""+Integer.toString (Number));//Invalid Extended Drop ...\");cur_client.sendFromBot("Done.");
                                      //kick all shared > number
-                                      for( Object y: SimpleHandler.Users.entrySet())
-         {
-                    ClientNod tempz=(ClientNod) ((Map.Entry)y).getValue();if(tempz.cur_client.userok==1)
+                                       for( ClientNod tempz :  SimpleHandler.getUsers())
+                        {if(tempz.cur_client.userok==1)
                                          if(Long.parseLong (tempz.cur_client.SL)!=Number )
                                              tempz.dropMe (cur_client);
                                         
