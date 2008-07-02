@@ -1,4 +1,7 @@
 *** Iota RC2 ***
+       
+       * changed to hashmaps for keeping users ( thanks cyb)
+       * added ru_RU translation ( thanks lv77)
 	   * fixed #231304;
 
 

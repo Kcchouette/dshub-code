@@ -162,11 +162,11 @@ public class Command
                         if(Issued_Command.contains(y.substring(0,2)))
                         {
                             cur_client.cur_inf=cur_client.cur_inf.substring(0,cur_client.cur_inf.indexOf(y))+cur_client.cur_inf.substring(cur_client.cur_inf.indexOf(y)+y.length());
-                            inftok=new StringTokenizer(cur_client.cur_inf);
+                           // inftok=new StringTokenizer(cur_client.cur_inf);
                         }
                         
                     }
-                    Issued_Command+=cur_client.cur_inf.substring(5);
+                    Issued_Command+=cur_client.cur_inf.substring(9);
                       tok=new StringTokenizer(Issued_Command);
                     tok.nextToken();
                     }
@@ -784,6 +784,7 @@ public class Command
                   {
                     new Broadcast(cur_inf);
                     cur_client.LastINF=System.currentTimeMillis();
+                    cur_client.cur_inf=null;
                   }
                   else
                       cur_client.cur_inf=cur_inf;

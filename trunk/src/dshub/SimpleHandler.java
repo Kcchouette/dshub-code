@@ -124,15 +124,9 @@ public class SimpleHandler extends IoHandlerAdapter
         {
             //ok, we're in idle
             ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-            try
-            {
+           
             cur_client.sendToClient("");
-            }
-            catch(Exception e)
-            {
-                
-                
-            }
+           
             
         }
         public void sessionClosed(IoSession session) throws Exception
