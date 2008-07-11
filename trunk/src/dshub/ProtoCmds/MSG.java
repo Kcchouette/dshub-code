@@ -275,7 +275,7 @@ public class MSG
                        else
                        
                        
-                       new Broadcast(Issued_Command);
+                    	   Broadcast.getInstance().broadcast(Issued_Command);
                        //System.out.println (Issued_Command);
                    }
                    else if(Issued_Command.charAt (0)=='E') //echo direct msg

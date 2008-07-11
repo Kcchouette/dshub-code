@@ -23,222 +23,201 @@
 
 package dshub;
 
-
-import dshub.Exceptions.CommandException;
-import dshub.Exceptions.STAException;
-import dshub.Modules.Modulator;
-import dshub.Modules.Module;
-import dshub.TigerImpl.Base32;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
 import org.apache.mina.common.IoSession;
+
+import dshub.Exceptions.CommandException;
+import dshub.Exceptions.STAException;
+import dshub.Modules.Modulator;
+import dshub.Modules.Module;
+import dshub.TigerImpl.Base32;
 
 /**
  *
  * @author Pietricica
  */
-public class SimpleHandler extends IoHandlerAdapter
-{
-    public static Map<String,ClientNod> Users;
-    static 
-    {        Users= Collections.synchronizedMap(new LinkedHashMap<String,ClientNod>(3000, (float) 0.75));
-    }
-    /** Creates a new instance of SimpleHandler */
-    public SimpleHandler()
-    {
-        //ClientNod.FirstClient=new ClientNod(1);
-        
-    }
-    
-    public static synchronized Collection<ClientNod>  getUsers()
-    {
-        return new ArrayList<ClientNod>( Users.values());
-    }
-     public void exceptionCaught(IoSession session, Throwable t) throws Exception 
-    {
-		//System.out.println(t.getMessage());
-         
-               // if((t.getMessage().contains("IOException")))
-         if( t instanceof java.io.IOException)
-                {
-                  // Main.PopMsg(t.getMessage());
-             t.printStackTrace();
-		  session.close();
-                return;
-                }
-                if(t .getMessage().contains("java.nio.charset.MalformedInputException")) 
-                {
-                    ((ClientHandler ) (session.getAttachment())).sendFromBot("Unicode Exception. Your client sent non-Unicode chars. Ignored.");
-                    return;
-                }
-                 if((t.getMessage().contains("BufferDataException: Line is too long")))
-                 {
-                    new STAError((ClientHandler)(session.getAttachment()),100,"Message exceeds buffer."+t.getMessage());
-                   // t.printStackTrace();
-                 }
-                else 
-                {
-                    t.printStackTrace();
-                   // Main.PopMsg(t.printStackTrace()getMessage());
-		  session.close();
-                return;
-                };
-    }
-
-	public void messageReceived(IoSession session, Object msg) throws Exception 
-        {
-		String str = msg.toString();
-		
-
-		
-		//System.out.println("Message received... "+str);
-                try
-                {
-                new Command((ClientHandler)(session.getAttachment()),str);
-                }
-                catch (STAException stex)
-                {
-                    if(stex.x<200)
-                        return;
-                   /* ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-                     if(cur_client.userok==1)
-                    {
-                         new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
-                     }
-                    cur_client.myNod.killMe();*/
-                  //  System.out.println("sta exception");
-                    session.close();
-                }
-                catch(CommandException cfex)
-                {
-                  /* ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-                    if(cur_client.userok==1)
-                    {
-                         new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
-                    }
-                    cur_client.myNod.killMe();*/
-                    session.close();
-                }
-                
+public class SimpleHandler extends IoHandlerAdapter {
+	public static Map<String, ClientNod> Users;
+	static {
+		Users = Collections
+				.synchronizedMap(new LinkedHashMap<String, ClientNod>(3000,
+						(float) 0.75));
 	}
-        public void sessionIdle(IoSession session, IdleStatus status) throws Exception
-        {
-            //ok, we're in idle
-            ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-           
-            cur_client.sendToClient("");
-           
-            
-        }
-        public void sessionClosed(IoSession session) throws Exception
-        {
-            ClientHandler cur_client=(ClientHandler)(session.getAttachment());
-          //  System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
-            
-            
-          
-           /*synchronized(FirstClient)
-           {
-           this.PrevClient.NextClient=this.NextClient;
-           if(this.NextClient!=null)
-              this.NextClient.PrevClient=this.PrevClient;
-          // System.out.println("killed");
-           }*/
-           
-       
-            if(cur_client.userok==1 && cur_client.kicked!=1)
-            {
-                new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
-            }
-            /** calling plugins...*/
-                 
-                 for(Module myMod : Modulator.myModules)
-                 {
-                     myMod.onClientQuit(cur_client);
-                 }
-             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-           //  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
-             if(cur_client.userok==1)
-              SimpleHandler.Users.remove(cur_client.ID);
-             cur_client=null;
-            
-        }
 
-	public void sessionCreated(IoSession session) throws Exception 
-        {
+	/** Creates a new instance of SimpleHandler */
+	public SimpleHandler() {
+		//ClientNod.FirstClient=new ClientNod(1);
+
+	}
+
+	public static synchronized Collection<ClientNod> getUsers() {
+		return new ArrayList<ClientNod>(Users.values());
+	}
+
+	public void exceptionCaught(IoSession session, Throwable t)
+			throws Exception {
+		//System.out.println(t.getMessage());
+
+		// if((t.getMessage().contains("IOException")))
+		if (t instanceof java.io.IOException) {
+			// Main.PopMsg(t.getMessage());
+			t.printStackTrace();
+			session.close();
+			return;
+		}
+		if (t.getMessage().contains("java.nio.charset.MalformedInputException")) {
+			((ClientHandler) (session.getAttachment()))
+					.sendFromBot("Unicode Exception. Your client sent non-Unicode chars. Ignored.");
+			return;
+		}
+		if ((t.getMessage().contains("BufferDataException: Line is too long"))) {
+			new STAError((ClientHandler) (session.getAttachment()), 100,
+					"Message exceeds buffer." + t.getMessage());
+			// t.printStackTrace();
+		} else {
+			t.printStackTrace();
+			// Main.PopMsg(t.printStackTrace()getMessage());
+			session.close();
+			return;
+		}
+		;
+	}
+
+	public void messageReceived(IoSession session, Object msg) throws Exception {
+		String str = msg.toString();
+
+		//System.out.println("Message received... "+str);
+		try {
+			new Command((ClientHandler) (session.getAttachment()), str);
+		} catch (STAException stex) {
+			if (stex.x < 200)
+				return;
+			/* ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+			  if(cur_client.userok==1)
+			 {
+			      new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
+			  }
+			 cur_client.myNod.killMe();*/
+			//  System.out.println("sta exception");
+			session.close();
+		} catch (CommandException cfex) {
+			/* ClientHandler cur_client=(ClientHandler)(session.getAttachment());
+			  if(cur_client.userok==1)
+			  {
+			       new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
+			  }
+			  cur_client.myNod.killMe();*/
+			session.close();
+		}
+
+	}
+
+	public void sessionIdle(IoSession session, IdleStatus status)
+			throws Exception {
+		//ok, we're in idle
+		ClientHandler cur_client = (ClientHandler) (session.getAttachment());
+
+		cur_client.sendToClient("");
+
+	}
+
+	public void sessionClosed(IoSession session) throws Exception {
+		ClientHandler cur_client = (ClientHandler) (session.getAttachment());
+		//  System.out.printf("quitting via session closed nick =%s\n",cur_client.NI);
+
+		/*synchronized(FirstClient)
+		{
+		this.PrevClient.NextClient=this.NextClient;
+		if(this.NextClient!=null)
+		   this.NextClient.PrevClient=this.PrevClient;
+		// System.out.println("killed");
+		}*/
+
+		if (cur_client.userok == 1 && cur_client.kicked != 1) {
+			Broadcast.getInstance().broadcast("IQUI " + cur_client.SessionID, cur_client.myNod);
+		}
+		/** calling plugins...*/
+
+		for (Module myMod : Modulator.myModules) {
+			myMod.onClientQuit(cur_client);
+		}
+		cur_client.reg.TimeOnline += System.currentTimeMillis()
+				- cur_client.LoggedAt;
+		//  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
+		if (cur_client.userok == 1)
+			SimpleHandler.Users.remove(cur_client.ID);
+		cur_client = null;
+
+	}
+
+	public void sessionCreated(IoSession session) throws Exception {
 		//System.out.println("Client Connected...");
 
 		//if( session.getTransportType() == TransportType.SOCKET )
 		//	((SocketSessionConfig) session.getConfig() ).setReceiveBufferSize( 2048 );
-//((SocketSessionConfig) session.getConfig() ).
-             //   session.
-                
-                ClientHandler cur_client=(ClientHandler)HubServer.AddClient().cur_client;
-                
-                session.setAttachment(cur_client);
-              session.setIdleTime( IdleStatus.READER_IDLE, 120 );
-              
-              cur_client.mySession=session;
-              StringTokenizer ST=new StringTokenizer(cur_client.mySession.getRemoteAddress().toString(),"/:");
-              cur_client.RealIP=ST.nextToken();
-              //System.out.println(cur_client.RealIP);
-               SID cursid=new SID(cur_client);
-        cur_client.SessionID=Base32.encode (cursid.cursid).substring (0,4);
-        cur_client.sid=cursid.cursid;
-                
-        
+		//((SocketSessionConfig) session.getConfig() ).
+		//   session.
+
+		ClientHandler cur_client = (ClientHandler) HubServer.AddClient().cur_client;
+
+		session.setAttachment(cur_client);
+		session.setIdleTime(IdleStatus.READER_IDLE, 120);
+
+		cur_client.mySession = session;
+		StringTokenizer ST = new StringTokenizer(cur_client.mySession
+				.getRemoteAddress().toString(), "/:");
+		cur_client.RealIP = ST.nextToken();
+		//System.out.println(cur_client.RealIP);
+		SID cursid = new SID(cur_client);
+		cur_client.SessionID = Base32.encode(cursid.cursid).substring(0, 4);
+		cur_client.sid = cursid.cursid;
+
 	}
-        
-        public static int getUserCount()
-        {
-            int ret=0;
-            for( ClientNod x :  SimpleHandler.getUsers())
-            { 
-                
-                if(x.cur_client.userok==1)
-                    ret++;
-            }
-            return ret;
-        }
-         public static long getTotalShare()
-        {
-            long ret=0;
-           for( ClientNod x :  SimpleHandler.getUsers())
-            {
-                
-                try
-                {
-                if(x.cur_client.userok==1)
-                    if(x.cur_client.SS!=null)
-                         ret+=Long.parseLong(x.cur_client.SS);
-                }
-                catch( NumberFormatException nfe)
-                {}
-            }
-            return ret;
-        }
-          public static long getTotalFileCount()
-        {
-            long ret=0;
-            for( ClientNod x :  SimpleHandler.getUsers())  
-            {
-               
-                try
-                {
-                if(x.cur_client.userok==1)
-                    if(x.cur_client.SF!=null)
-                         ret+=Long.parseLong(x.cur_client.SF);
-                }
-                catch( NumberFormatException nfe)
-                {}
-            }
-            return ret;
-        }
-    
+
+	public static int getUserCount() {
+		int ret = 0;
+		for (ClientNod x : SimpleHandler.getUsers()) {
+
+			if (x.cur_client.userok == 1)
+				ret++;
+		}
+		return ret;
+	}
+
+	public static long getTotalShare() {
+		long ret = 0;
+		for (ClientNod x : SimpleHandler.getUsers()) {
+
+			try {
+				if (x.cur_client.userok == 1)
+					if (x.cur_client.SS != null)
+						ret += Long.parseLong(x.cur_client.SS);
+			} catch (NumberFormatException nfe) {
+			}
+		}
+		return ret;
+	}
+
+	public static long getTotalFileCount() {
+		long ret = 0;
+		for (ClientNod x : SimpleHandler.getUsers()) {
+
+			try {
+				if (x.cur_client.userok == 1)
+					if (x.cur_client.SF != null)
+						ret += Long.parseLong(x.cur_client.SF);
+			} catch (NumberFormatException nfe) {
+			}
+		}
+		return ret;
+	}
+
 }

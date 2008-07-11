@@ -102,7 +102,7 @@ public class Command
                
                  
                //ok now must send INF to all clients
-                 new Broadcast(cur_client.getINF (),cur_client.myNod);
+                 Broadcast.getInstance().broadcast(cur_client.getINF (),cur_client.myNod);
                  
                  cur_client.sendFromBot(ADC.MOTD);
                  //System.out.println("gay");
@@ -753,7 +753,7 @@ public class Command
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
          
                //ok now must send INF to all clients
-                 new Broadcast(cur_client.getINF (),cur_client.myNod);
+                 Broadcast.getInstance().broadcast(cur_client.getINF (),cur_client.myNod);
                                  
                  
                  //Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
@@ -781,7 +781,7 @@ public class Command
                {
                   if(System.currentTimeMillis()-cur_client.LastINF>(1000*120L))
                   {
-                    new Broadcast(cur_inf);
+                	  Broadcast.getInstance().broadcast(cur_inf);
                     cur_client.LastINF=System.currentTimeMillis();
                     cur_client.cur_inf=null;
                   }

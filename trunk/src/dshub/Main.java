@@ -232,7 +232,7 @@ public class Main extends Thread
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
                             
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
+                            Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                             temp.cur_client.reg.LastIP=temp.cur_client.RealIP;
                             temp.cur_client.reg.isreg=true;
@@ -279,7 +279,7 @@ public class Main extends Thread
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
+                            Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                            temp.cur_client.reg.isreg=true;
                            temp.cur_client.LoggedAt=System.currentTimeMillis();
@@ -326,7 +326,7 @@ public class Main extends Thread
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
+                            Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" "+(temp.cur_client.reg.key?"CT4":"CT2"));
                             
                             temp.cur_client.LoggedAt=System.currentTimeMillis();
                             temp.cur_client.reg.isreg=true;
@@ -621,7 +621,7 @@ public class Main extends Thread
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.CT="0";
                             
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
+                            Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             System.out.println (Translation.getUserDeleted(temp.cur_client.NI,aux));
                             
@@ -648,7 +648,7 @@ public class Main extends Thread
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.CT="0";
                             
-                            new Broadcast("BINF "+temp.cur_client.SessionID+" CT");
+                            Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             }
                             Main.Server.rewriteregs ();
@@ -719,7 +719,7 @@ public class Main extends Thread
                         
                         Vars.HubName=new_name;
                         Server.rewriteconfig();
-                        new Broadcast ("IINF NI"+Vars.HubName);
+                        Broadcast.getInstance().broadcast("IINF NI"+Vars.HubName);
                         
                 }
                 
@@ -1116,7 +1116,7 @@ public class Main extends Thread
                         
                         Vars.Opchat_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD NI"+Vars.Opchat_name,Broadcast.STATE_ALL_KEY);
+                        Broadcast.getInstance().broadcast("BINF ABCD NI"+Vars.Opchat_name,Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_name"))
@@ -1149,7 +1149,7 @@ public class Main extends Thread
                         
                         Vars.bot_name=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA NI"+Vars.bot_name);
+                        Broadcast.getInstance().broadcast ("BINF DCBA NI"+Vars.bot_name);
                         
                 }
                 else if(aux.toLowerCase ().equals ("opchat_desc"))
@@ -1164,7 +1164,7 @@ public class Main extends Thread
                         
                         Vars.Opchat_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF ABCD DE"+Vars.Opchat_desc,Broadcast.STATE_ALL_KEY);
+                        Broadcast.getInstance().broadcast("BINF ABCD DE"+Vars.Opchat_desc,Broadcast.STATE_ALL_KEY);
                         
                 }
                 else if(aux.toLowerCase ().equals ("bot_desc"))
@@ -1179,7 +1179,7 @@ public class Main extends Thread
                         
                         Vars.bot_desc=new_name;
                         Main.Server.rewriteconfig();
-                        new Broadcast ("BINF DCBA DE"+Vars.bot_desc);
+                        Broadcast.getInstance().broadcast("BINF DCBA DE"+Vars.bot_desc);
                         
                 }
                 else if(aux.toLowerCase().equals ("kick_time"))
@@ -1481,11 +1481,11 @@ public class Main extends Thread
                if(recvbuf.toLowerCase ().equals("topic"))
                {
                    
-               new Broadcast("IINF DE");
+            	   Broadcast.getInstance().broadcast("IINF DE");
                if(!Vars.HubDE.equals(""))
                {
                System.out.println("Topic \""+Vars.HubDE+"\" deleted.");
-               new Broadcast("IMSG Topic was deleted by Server.");
+               Broadcast.getInstance().broadcast("IMSG Topic was deleted by Server.");
                }
                else
                System.out.println("There wasn't any topic anyway.");
@@ -1504,8 +1504,8 @@ public class Main extends Thread
                    auxbuf=auxbuf;
                    Vars.HubDE=auxbuf;
                   
-                   new Broadcast ("IINF DE"+auxbuf);
-                   new Broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\"");
+                   Broadcast.getInstance().broadcast("IINF DE"+auxbuf);
+                   Broadcast.getInstance().broadcast("IMSG Topic was changed by Server to \""+Vars.HubDE+"\"");
                    
                }
         }
