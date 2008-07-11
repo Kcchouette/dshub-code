@@ -54,7 +54,7 @@ public class ClientAssasin extends Thread
             {
                 try
                 {
-                    this.sleep(1000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException ex)
                 {
                     
@@ -71,7 +71,7 @@ public class ClientAssasin extends Thread
 						&& (temp.cur_client.cur_inf!=null))
 						&& (curtime-temp.cur_client.LastINF>(1000*120L)))
                 {
-					new Broadcast(temp.cur_client.cur_inf);
+                	Broadcast.getInstance().broadcast(temp.cur_client.cur_inf);
 					temp.cur_client.LastINF=curtime;
 					temp.cur_client.cur_inf=null;
 		}
@@ -94,9 +94,9 @@ public class ClientAssasin extends Thread
 						    {
 						    
 						        if(x.cur_client.InQueueSearch.startsWith("B"))
-						            new Broadcast(x.cur_client.InQueueSearch);
+						        	Broadcast.getInstance().broadcast(x.cur_client.InQueueSearch);
 						        else
-						            new Broadcast(x.cur_client.InQueueSearch,Broadcast.STATE_ACTIVE);
+						        	Broadcast.getInstance().broadcast(x.cur_client.InQueueSearch,Broadcast.STATE_ACTIVE);
 						        x.cur_client.InQueueSearch=null;
 						       x.cur_client.Lastsearch=curtime;
 						    }

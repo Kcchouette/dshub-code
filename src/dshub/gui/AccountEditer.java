@@ -23,6 +23,7 @@
 package dshub.gui;
 
 import dshub.*;
+
 import java.util.Date;
 import java.util.Map;
 import javax.swing.ImageIcon;
@@ -1222,7 +1223,7 @@ if(curAcc.myMask.adc)
                 if(temp.cur_client.userok==1)
                 if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                  {
-                new Broadcast("BINF "+temp.cur_client.SessionID+" CT4");
+                	Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT4");
                 
                 
                 temp.cur_client.CT="4";
@@ -1244,7 +1245,7 @@ if(curAcc.myMask.adc)
                 if(temp.cur_client.userok==1)
                    if(temp.cur_client.ID.equals (curAcc.CID)) //if registered guy is online
                    {
-                new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                	   Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                 
                 temp.cur_client.CT="2";
                 

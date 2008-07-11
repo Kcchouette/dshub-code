@@ -549,7 +549,7 @@ public class GrantCmd
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                                   {
-                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
+                                	Broadcast.getInstance().broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
                                  
                                     tempx.cur_client.CT="4";
                         }
@@ -570,7 +570,7 @@ public class GrantCmd
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID)) //if registered guy is online
                              {
-                         new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                            	 Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                          
                          tempx.cur_client.CT="2";
                          
@@ -1074,7 +1074,7 @@ public GrantCmd(String cmd)
                           if(tempx.cur_client.userok==1)
                                 if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                                  {
-                                 new Broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
+                                	Broadcast.getInstance().broadcast("BINF "+tempx.cur_client.SessionID+" CT4");
                                  
                                     tempx.cur_client.CT="4";
                                  }
@@ -1094,7 +1094,7 @@ public GrantCmd(String cmd)
                         if(tempx.cur_client.userok==1)
                              if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
                              {
-                         new Broadcast("BINF "+temp.cur_client.SessionID+" CT2");
+                            	 Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT2");
                          
                          tempx.cur_client.CT="2";
                          

@@ -24,175 +24,189 @@
 package dshub;
 
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
+class line {
+	public String curline;
 
- class line
-    {
-        public String curline;
-        
-        line Next;
-        public line(String str)
-        {
-            
-            Next=null;
-            curline=str;
-        }
-    }
- /**
+	line Next;
+
+	public line(String str) {
+
+		Next = null;
+		curline = str;
+	}
+}
+
+/**
  * Provides broadcasts and feature broadcasts constructors to all connected clients.
  *
  * @author Pietricica
  */
-public class Broadcast
-{
-    
-    public static final int STATE_ALL=0;
-    public static final int STATE_ACTIVE=1;
-   
-    public static final int STATE_ALL_KEY=10;
-    
-    int state=0;
-    
-    String STR;
-    ClientNod cur_client=null;
-    
-    
-    static line First=null;
-    static line Last=null;
-    
+public class Broadcast {
 
-   
-    static int size=0;
-    /** Creates a new instance of Broadcast , sends to all except the ClientNod received as param.*/
-    public Broadcast (String STR, ClientNod bla)
-    {
-        this.STR=STR;
-        
-        cur_client=bla;
-        run();
-    }
-    /**state =STATE_ALL normal, to all
-     *state=STATE_ACTIVE only to active
-     * state= STATE_ALL_KEY to all ops;
-     **/
-     public Broadcast (String STR, int state)
-    {
-        this.STR=STR;
-        
-        this.state=state; // STATE_ACTIVE - active only
-        //STATE_ALL_KEY - ops only
-        run();
-    }
-    public Broadcast (String STR)
-    {
-        
-        this.STR=STR;
-        run();
-    }
-     public void   sendToAll()
-    {
-       
-         String NI="";
-         
-        for( ClientNod CH :  SimpleHandler.getUsers())
-                        {
-          //  x[i]= ((IoSession) (x[i]));
-        //ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
-         if(STR.startsWith ("BMSG ") || STR.startsWith("IMSG "))
-        {
-             NI=Vars.bot_name;
-             if(CH.cur_client.userok==1)
-                 
-             if(STR.startsWith ("BMSG "))   
-             if(CH.cur_client.SessionID.equals (STR.substring (5,9)))
-             {
-                NI=CH.cur_client.NI;
-             }
-             
-       if((STR.startsWith ("BMSG ") && CH.cur_client.SessionID.equals (STR.substring (5,9))) || STR.startsWith ("IMSG "))
-        if(First==null)
-        {
-                 line bla;
-               if(STR.startsWith ("BMSG "))   
-             bla=new line("<"+
-                    NI+"> "+
-                    STR.substring (10)+"\n");
-               else
-                   bla=new line("<"+
-                    NI+"> "+
-                    STR.substring (5)+"\n");
-            Last=bla;
-            First=Last;
-            size++;
-        }
-        
-        else
-        {
-           line bla;
-                //BMSG AAAA message
-                 if(STR.startsWith ("BMSG "))   
-             bla=new line("<"+NI+"> "+STR.substring (10)+"\n");
-                 else
-                   bla=new line("<"+
-                    NI+"> "+
-                    STR.substring (5)+"\n");
-           
-           if(!(Last.curline.equals (bla.curline) && STR.startsWith ("IMSG ")))
-           {    
-            Last.Next=bla;
-            
-            size++;
-            
-            
-            Last=bla;
-            
-            while(size>=Vars.history_lines)
-            {
-                First=First.Next;  
-                size--;
-            }
-           }
-        }
-        
-        }
-         
-           
-             
-            
-        if((CH.cur_client.userok==1 && CH!=cur_client) || (CH!=cur_client && CH.cur_client.userok==1 && state==1 && CH.cur_client.ACTIVE==1))
-        {
-             if(state==this.STATE_ALL_KEY && !CH.cur_client.reg.key)
-             {
-                 
-                 continue;
-             }
-             if(CH.cur_client.ACTIVE!=1 && state==this.STATE_ACTIVE)
-             {
-                 
-                 continue;
-             }
-             if(!STR.startsWith ("E") && CH==cur_client)
-             {
-                
-                 continue;
-             }
-           if(STR.startsWith ("IMSG "))
-             CH.cur_client.sendFromBot (STR.substring (5)); 
-           else
-               CH.cur_client.sendToClient(STR);
-        }
-        
-        }
-        
-            //System.out.printf ("Broadcasting to %s: %s\n",CH.NI,STR);
-        
-    }
-    
-    public void run()
-    {
-       
-       sendToAll();
-       
-    }
-    
+	public static final int STATE_ALL = 0;
+	public static final int STATE_ACTIVE = 1;
+
+	public static final int STATE_ALL_KEY = 10;
+
+	static line First = null;
+	static line Last = null;
+
+	static int size = 0;
+
+	// un pool de threaduri ce este folosit pentru executia secventelor de operatii corespunzatoare
+	// conextiunilor cu fiecare client
+	final protected ExecutorService pool;
+	final private ThreadFactory tfactory;
+
+	static Broadcast _instance = null;
+
+	private Broadcast() {
+		tfactory = new DaemonThreadFactory();
+		pool = Executors.newCachedThreadPool(tfactory);
+	}
+
+	public synchronized static Broadcast getInstance() {
+		if (_instance == null)
+			_instance = new Broadcast();
+		return _instance;
+	}
+
+	/** Creates a new instance of Broadcast , sends to all except the ClientNod received as param.*/
+	public void broadcast(String STR, ClientNod cur_client) {
+		run(0, STR, cur_client);
+	}
+
+	/**state =STATE_ALL normal, to all
+	 *state=STATE_ACTIVE only to active
+	 * state= STATE_ALL_KEY to all ops;
+	 **/
+	public void broadcast(String STR, int state) {
+		//STATE_ALL_KEY - ops only
+		run(state, STR, null);
+	}
+
+	public void broadcast(String STR) {
+		run(0, STR, null);
+	}
+
+	public void execute(int state, String STR, ClientNod cur_client,
+			ClientNod CH) {
+		pool.execute(new ClientThread(state, STR, cur_client, CH));
+	}
+
+	private class ClientThread implements Runnable {
+
+		private final int state;
+		private final String STR;
+		private final ClientNod cur_client;
+		private final ClientNod CH;
+
+		public ClientThread(int state, String STR, ClientNod cur_client,
+				ClientNod CH) {
+			this.state = state;
+			this.STR = STR;
+			this.cur_client = cur_client;
+			this.CH = CH;
+		}
+
+		public void run() {
+			String NI = "";
+			//  x[i]= ((IoSession) (x[i]));
+			//ClientNod CH=((ClientHandler)(x[i].getAttachment())).myNod;
+			if (STR.startsWith("BMSG ") || STR.startsWith("IMSG ")) {
+				NI = Vars.bot_name;
+				if (CH.cur_client.userok == 1)
+
+					if (STR.startsWith("BMSG "))
+						if (CH.cur_client.SessionID.equals(STR.substring(5, 9))) {
+							NI = CH.cur_client.NI;
+						}
+
+				if ((STR.startsWith("BMSG ") && CH.cur_client.SessionID
+						.equals(STR.substring(5, 9)))
+						|| STR.startsWith("IMSG "))
+					if (First == null) {
+						line bla;
+						if (STR.startsWith("BMSG "))
+							bla = new line("<" + NI + "> " + STR.substring(10)
+									+ "\n");
+						else
+							bla = new line("<" + NI + "> " + STR.substring(5)
+									+ "\n");
+						Last = bla;
+						First = Last;
+						size++;
+					}
+
+					else {
+						line bla;
+						//BMSG AAAA message
+						if (STR.startsWith("BMSG "))
+							bla = new line("<" + NI + "> " + STR.substring(10)
+									+ "\n");
+						else
+							bla = new line("<" + NI + "> " + STR.substring(5)
+									+ "\n");
+
+						if (!(Last.curline.equals(bla.curline) && STR
+								.startsWith("IMSG "))) {
+							Last.Next = bla;
+
+							size++;
+
+							Last = bla;
+
+							while (size >= Vars.history_lines) {
+								First = First.Next;
+								size--;
+							}
+						}
+					}
+			}
+
+			if ((CH.cur_client.userok == 1 && CH != cur_client)
+					|| (CH != cur_client && CH.cur_client.userok == 1
+							&& state == 1 && CH.cur_client.ACTIVE == 1)) {
+				if (state == STATE_ALL_KEY && !CH.cur_client.reg.key) {
+					return;
+				}
+				if (CH.cur_client.ACTIVE != 1 && state == STATE_ACTIVE) {
+					return;
+				}
+				if (!STR.startsWith("E") && CH == cur_client) {
+					return;
+				}
+				if (STR.startsWith("IMSG "))
+					CH.cur_client.sendFromBot(STR.substring(5));
+				else
+					CH.cur_client.sendToClient(STR);
+			}
+		}
+	}
+
+	public void sendToAll(int state, String STR, ClientNod cur_client) {
+		for (ClientNod CH : SimpleHandler.getUsers()) {
+			execute(state, STR, cur_client, CH);
+		}
+	}
+
+	public void run(int state, String STR, ClientNod cur_client) {
+		sendToAll(state, STR, cur_client);
+	}
+
+	/**
+	 * Custom thread factory used in connection pool
+	 */
+	private final class DaemonThreadFactory implements ThreadFactory {
+		public Thread newThread(Runnable r) {
+			Thread thread = new Thread(r);
+			thread.setDaemon(true);
+			return thread;
+		}
+	}
+
 }

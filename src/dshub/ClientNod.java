@@ -93,7 +93,7 @@ public class ClientNod
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
            if(!Vars.redirect_url.equals(""))
                brcast=brcast+" RD"+ADC.retADCStr (Vars.redirect_url);
-         new Broadcast(brcast);
+           Broadcast.getInstance().broadcast(brcast);
           
              cur_client.kicked=1;
            this.cur_client.mySession.close();
@@ -142,7 +142,7 @@ public class ClientNod
                brcast=brcast+" MS"+ADC.retADCStr (kickmsg);
          if(!Vars.redirect_url.equals(""))
                brcast=brcast+" RD"+ADC.retADCStr (Vars.redirect_url);
-         new Broadcast(brcast);
+         Broadcast.getInstance().broadcast(brcast);
           
              cur_client.kicked=1;
            this.cur_client.mySession.close();
@@ -172,7 +172,7 @@ public class ClientNod
         
          
          
-         new Broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID);
+         Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID);
            
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                
@@ -194,7 +194,7 @@ public class ClientNod
         
          
          
-         new Broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID+" RD"+URL);
+         Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID+" RD"+URL);
            
              cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                
