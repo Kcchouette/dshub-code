@@ -1,5 +1,5 @@
 *** Iota RC2 ***
-       
+       * cleaned the build process, it should work via ant now;
        * changed to hashmaps for keeping users ( thanks cyb)
        * added ru_RU translation ( thanks lv77)
 	   * fixed #231304;
