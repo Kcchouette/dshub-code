@@ -57,7 +57,7 @@ public class HubtrackerConnection extends Thread
         BufferedReader inp = null;
         try 
         {
-          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&password="+pass+"&email="+e_mail+"&address="+Vars.Hub_Host+":"+Vars.Default_Port;
+          String urlString = "http://www.hubtracker.com/query.php?action=add&username="+user+"&password="+pass+"&email="+e_mail+"&address="+Vars.Hub_Host;
         
           URL url = new URL(urlString);
           URLConnection conn;

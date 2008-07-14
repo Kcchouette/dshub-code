@@ -3,4 +3,4 @@ If you experience problems, mailto:pietry@death-squad.ro or post on dshub forum 
 How to compile in 3 easy steps:
 1. install JDK 1.6 from http://java.sun.com and make sure the binaries are in your path ( bin directory )
 2. install apache ANT from http://ant.apache.org and make sure its in your path ( installing ant requires some more things, read their readme )
-3. open up a console, go to dshub source directory and type ant. that should do it. you will have binaries in  /dist.
+3. open up a console, go to dshub source directory and type ant. that should do it. you will have binaries the main directory. This also builds the modules to /modules
