@@ -48,7 +48,7 @@ import java.net.UnknownHostException;
             
             String input= ST.nextToken();
             ClientNod user = null;
-            for ( ClientNod x : SimpleHandler.Users )
+            for ( ClientNod x : SimpleHandler.getUsers() )
         {
             if( x .cur_client.NI.equalsIgnoreCase(input ))
             user=x;
@@ -82,7 +82,7 @@ import java.net.UnknownHostException;
             String input = ST.nextToken();
             
             ClientNod user = null;
-            for ( ClientNod x : SimpleHandler.Users )
+            for ( ClientNod x : SimpleHandler.getUsers() )
         {
             if( x .cur_client.NI.equalsIgnoreCase(input ))
             user=x;
@@ -125,7 +125,7 @@ import java.net.UnknownHostException;
             String input = ST.nextToken();
             
             ClientNod user = null;
-            for ( ClientNod x : SimpleHandler.Users )
+            for ( ClientNod x : SimpleHandler.getUsers() )
         {
             if( x .cur_client.NI.equalsIgnoreCase(input ))
             user=x;
@@ -175,7 +175,7 @@ import java.net.UnknownHostException;
                
             String input = ST.nextToken();
                         ClientNod user = null;
-            for ( ClientNod x : SimpleHandler.Users )
+            for ( ClientNod x : SimpleHandler.getUsers() )
         {
             if( x .cur_client.NI.equalsIgnoreCase(input ))
             user=x;
