@@ -6061,7 +6061,7 @@ public class TestFrame extends javax.swing.JFrame {
 				+ Integer.toString(i) + "\n" + "  Connecting users: "
 				+ Integer.toString(j) + "\n" + "  Uptime: "
 				+ TimeConv.getStrTime(up) + "\n" + "  Start Time: "
-				+ b.toString() + "\n  Bytes red per second: "
+				+ b.toString() + "\n  Bytes read per second: "
 				+ Main.Server.IOSM.getTotalByteReadThroughput()
 				+ "\n  Bytes written per second: "
 				+ Main.Server.IOSM.getTotalByteWrittenThroughput()

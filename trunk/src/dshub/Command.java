@@ -66,11 +66,11 @@ public class Command
              cur_client.CT="4";
         }
         
-        cur_client.userok=1; //user is OK, logged in and cool.
+        
                  /*---*/
         SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
         
-        cur_client.reg.LastLogin=System.currentTimeMillis();
+        
         
           //ok now must send to cur_client the inf of all others
                
@@ -103,7 +103,8 @@ public class Command
                  
                //ok now must send INF to all clients
                  Broadcast.getInstance().broadcast(cur_client.getINF (),cur_client.myNod);
-                 
+                 cur_client.userok=1; //user is OK, logged in and cool.
+                 cur_client.reg.LastLogin=System.currentTimeMillis();
                  cur_client.sendFromBot(ADC.MOTD);
                  //System.out.println("gay");
                  //cur_client.sendFromBot ("gay");
@@ -737,7 +738,7 @@ public class Command
          cur_client.sendToClient(inf);*/
          
                    
-          cur_client.userok=1; //user is OK, logged in and cool.
+          
          SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
          for( ClientNod iterator :  SimpleHandler.getUsers())
                         {
@@ -765,7 +766,7 @@ public class Command
                      cur_client.sendToClient ("ICMD Test CT1 TTTest");
                  }
                  cur_client.State="NORMAL";
-                
+                 cur_client.userok=1; //user is OK, logged in and cool.
                  cur_client.sendFromBot( ADC.MOTD);
                  
                  /** calling plugins...*/

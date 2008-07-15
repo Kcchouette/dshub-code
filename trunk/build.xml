@@ -58,6 +58,14 @@
 		description="clean up" >
 		<!-- Delete the ${build} and ${dist} directory trees -->
 		<delete dir="${build}"/>
-		<delete dir="${dist}"/>
+		
+		<delete file="DSHub.jar"/>
+		<delete >
+			<fileset dir="modules" casesensitive="no">
+				<include name="**/*.jar"/>
+				
+				
+		        </fileset>
+		</delete>
 	</target>
 </project>
