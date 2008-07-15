@@ -52,6 +52,19 @@ public class Command
     String Issued_Command;
     String State;
 
+     private void sendUsersInfs()
+{
+String Infs="";
+        for( ClientNod iterator :  SimpleHandler.getUsers())
+           {
+             if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
+             Infs+=iterator.cur_client.getINF()+"\n";
+             
+             
+         }
+ cur_client.sendToClient(Infs);
+}
+
      void completeLogIn()
     {
         // must check if its op or not and move accordingly
@@ -84,13 +97,7 @@ public class Command
                    inf=inf.substring(0,inf.length()-1)+tempy.cur_client.getINF ()+"\n\n"; 
         }
            */
-        for( ClientNod iterator :  SimpleHandler.getUsers())
-                        {
-             if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
-              cur_client.sendToClient(iterator.cur_client.getINF());
-             
-             
-         }
+           sendUsersInfs();
          
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" CT5 DE"+ADC.retADCStr(Vars.bot_desc));
@@ -741,14 +748,9 @@ public class Command
                    
           
          SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
-         for( ClientNod iterator :  SimpleHandler.getUsers())
-                        {
-             if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
-             cur_client.sendToClient(iterator.cur_client.getINF());
-             
-            
-         }
          
+        sendUsersInfs();
+
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" CT5 DE"+ADC.retADCStr(Vars.bot_desc));
                 cur_client.putOpchat(true) ;
