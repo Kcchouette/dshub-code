@@ -152,7 +152,7 @@ public class SimpleHandler extends IoHandlerAdapter {
 		cur_client.reg.TimeOnline += System.currentTimeMillis()
 				- cur_client.LoggedAt;
 		//  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
-		if (cur_client.userok == 1)
+            
 			SimpleHandler.Users.remove(cur_client.ID);
 		cur_client = null;
 
