@@ -140,6 +140,7 @@ public final class Vars
     public static int min_sch_chars=3;
     public static int max_sch_chars=256;
     public static int max_chat_msg=512;
+    public static int command_pm=0; //if set ,all the command results are sent to PM
 
     public static int history_lines=50;
     public static int kick_time=300;
@@ -158,7 +159,7 @@ public final class Vars
     
     public static String Msg_Banned="Have a nice day and don't forget to smile !";
     public static String Msg_Full="Have a nice day and don't forget to smile !";
-    public static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
+   public static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
     public static String Msg_Search_Spam="Search ticket Reserved.\nPlease be patient while search\nis being processed.\nDo NOT close this window or start other search\nor you will lose this search !".replaceAll (" ","\\ ");
     
     public static String activePlugins="";

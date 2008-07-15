@@ -121,6 +121,7 @@ public class Command
                      myMod.onConnect(cur_client);
                  }
                  //cur_client.sendFromBot( ADC.MOTD);
+                cur_client.can_receive_cmds=true;
                  
                     
                
