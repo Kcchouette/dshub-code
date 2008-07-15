@@ -498,7 +498,23 @@ public class CFGConfig {
 				catch (NumberFormatException nfe) {
 					cur_client.sendFromBot("Invalid number");
 				}
-			} else if (aux.toLowerCase().equals("nick_chars")) {
+			} 
+                        else if (aux.toLowerCase().equals("command_pm")) {
+				aux = ST.nextToken();
+				try {
+					int aucsy = Vars.command_pm;
+					Vars.command_pm = Integer.parseInt(aux);
+					cur_client.sendFromBot("Command_PM changed from \""
+							+ Integer.toString(aucsy) + "\" to \"" + aux
+							+ "\".");
+					Main.Server.rewriteconfig();
+				}
+
+				catch (NumberFormatException nfe) {
+					cur_client.sendFromBot("Invalid number");
+				}
+			}
+                           else if (aux.toLowerCase().equals("nick_chars")) {
 				//  String ucsy=Vars.HubName;
 				String new_name = ST.nextToken();
 				//while(ST.hasMoreTokens ())
@@ -731,7 +747,9 @@ public class CFGConfig {
 						+ "   reg_only                "
 						+ Vars.reg_only
 						+ "      -- 1 = registered only hub. 0 = otherwise.\n"
++          "   command_pm              "  +Vars.command_pm+"         -- If set to 1, the bot's responses are sent to PM.\n"
 						+ "   nick_chars              "
+ 
 						+ Vars.nick_chars
 						+ "         -- Chars that could be used for a nick, String.\n"
 						+ "   chat_interval           "

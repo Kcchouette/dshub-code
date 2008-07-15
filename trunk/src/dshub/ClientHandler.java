@@ -59,6 +59,8 @@ public class ClientHandler
     public int userok=0;
     public int ACTIVE=0;
     public int quit=0;
+
+    public boolean can_receive_cmds=false;
     
     
     
@@ -277,6 +279,9 @@ public int kicked=0;
              return;
                    if(this.userok==1)
                    {
+                   if(can_receive_cmds && Vars.command_pm==1)
+                         sendFromBotPM(text);
+                   else
                         this.sendToClient ("EMSG DCBA "+this.SessionID+" "+ADC.retADCStr (text));
                    }
      }

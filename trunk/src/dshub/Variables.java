@@ -88,6 +88,8 @@ public class Variables implements Serializable
      int max_sch_chars;
      int max_chat_msg;
 
+     int command_pm;
+
      int history_lines;
      int kick_time;
 
@@ -188,6 +190,7 @@ public class Variables implements Serializable
       min_sch_chars=Vars.min_sch_chars;
       max_sch_chars=Vars.max_sch_chars;
       max_chat_msg=Vars.max_chat_msg;
+      command_pm=Vars.command_pm;
 
       history_lines=Vars.history_lines;
       Opchat_name=Vars.Opchat_name;

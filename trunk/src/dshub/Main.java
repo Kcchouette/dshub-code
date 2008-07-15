@@ -1239,6 +1239,23 @@ public class Main extends Thread
                     System.out.println(Translation.getString("invalid_num"));
                    } 
                 }
+                else if(aux.toLowerCase().equals ("command_pm"))
+                {
+                    aux=ST.nextToken ();
+                    try
+                    {
+                        int aucsy=Vars.command_pm;
+                        Vars.command_pm=Integer.parseInt (aux);
+                        System.out.printf(Translation.getCfgChanged("Command_PM",
+                               Integer.toString (aucsy),aux)+"\n");
+                        Main.Server.rewriteconfig();
+                    }
+                    
+                    catch(NumberFormatException nfe)
+                   {
+                    System.out.println(Translation.getString("invalid_num"));
+                   } 
+                }
                 else if(aux.toLowerCase ().equals ("nick_chars"))
                 {
                      //  String ucsy=Vars.HubName;
@@ -1458,8 +1475,10 @@ public class Main extends Thread
                             +          "   opchat_desc             "  +Vars.Opchat_desc+" -- The Operator Chat Bot Description.\n"
                             +          "   kick_time               "  +Vars.kick_time+" -- The time to ban a user with a kick, in seconds.\n"
                             +          "   msg_banned              "  +Vars.Msg_Banned+" -- The aditional message to show to banned users when connecting.\n"
+
                             +          "   msg_full                "  +Vars.Msg_Full+" -- Message to be shown to connecting users when hub full.\n"
                             +          "   reg_only                "  +Vars.reg_only+" -- 1 = registered only hub. 0 = otherwise.\n"
+                            +          "   command_pm              "  +Vars.command_pm+"         -- If set to 1, the bot's responses are sent to PM.\n"
                             +          "   nick_chars              "  +Vars.nick_chars+" -- Chars that could be used for a nick, String."
                             +          "   chat_interval           "  +Vars.chat_interval+"         -- Interval between chat lines, millis, Integer.\n"
                             +          "   save_logs               "  +Vars.savelogs+"         -- 1 = logs are saved to file, 0 otherwise.\n"
