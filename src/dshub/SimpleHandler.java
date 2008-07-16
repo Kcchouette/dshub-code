@@ -25,10 +25,9 @@ package dshub;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.mina.common.IdleStatus;
 import org.apache.mina.common.IoHandlerAdapter;
@@ -45,11 +44,10 @@ import dshub.TigerImpl.Base32;
  * @author Pietricica
  */
 public class SimpleHandler extends IoHandlerAdapter {
-	public static Map<String, ClientNod> Users;
+	public static ConcurrentHashMap<String, ClientNod> Users;
 	static {
-		Users = Collections
-				.synchronizedMap(new LinkedHashMap<String, ClientNod>(3000,
-						(float) 0.75));
+		Users = new ConcurrentHashMap<String, ClientNod>(3000,
+						(float) 0.75);
 	}
 
 	/** Creates a new instance of SimpleHandler */
@@ -59,7 +57,7 @@ public class SimpleHandler extends IoHandlerAdapter {
 	}
 
 	public static synchronized Collection<ClientNod> getUsers() {
-		return new ArrayList<ClientNod>(Users.values());
+		return Users.values();
 	}
 
 	public void exceptionCaught(IoSession session, Throwable t)
