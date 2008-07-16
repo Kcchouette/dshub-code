@@ -226,7 +226,7 @@ public class Main extends Thread
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             PopMsg(Translation.getUserRegged(temp.cur_client.NI, aux));
-                            
+                           temp.cur_client.can_receive_cmds=true;
                             temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
@@ -276,6 +276,7 @@ public class Main extends Thread
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
                             
                             temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
+                            temp.cur_client.can_receive_cmds=true;
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
                             
@@ -321,7 +322,7 @@ public class Main extends Thread
                         }
                             AccountsConfig.addReg (temp.cur_client.ID,temp.cur_client.NI,"Server");
                             temp.cur_client.reg=AccountsConfig.getnod (temp.cur_client.ID);
-                           
+                            temp.cur_client.can_receive_cmds=true;
                             temp.cur_client.sendFromBot(Translation.getString("reg_msg"));
                             temp.cur_client.putOpchat(true);
                             if(temp.cur_client.reg.key){temp.cur_client.CT="4";}else{temp.cur_client.CT="2";};
@@ -613,6 +614,7 @@ public class Main extends Thread
                 Base32.decode (aux);
                 if(AccountsConfig.unreg (aux))
                 {
+                	int found=0;
                   for( ClientNod temp :  SimpleHandler.getUsers())
                         {
                             if(temp.cur_client.userok==1) if( (temp.cur_client.ID.equals(aux)))
@@ -624,12 +626,12 @@ public class Main extends Thread
                             Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             System.out.println (Translation.getUserDeleted(temp.cur_client.NI,aux));
-                            
+                            temp.cur_client.can_receive_cmds=false;
                             Main.Server.rewriteregs ();
-                            return;
+                           found=1;
                             }
                         }
-                     
+                     if(found==0)
                          System.out.println (Translation.getString("reg_deleted"));
                 }
                 else
@@ -638,8 +640,10 @@ public class Main extends Thread
                 catch (IllegalArgumentException iae)
                 {
                     System.out.println (Translation.getString("not_cid_check"));
+                    int found=0;
                      for( ClientNod temp :  SimpleHandler.getUsers())
                         {
+                    	
                             if(temp.cur_client.userok==1) if( (temp.cur_client.NI.toLowerCase ().equals(aux.toLowerCase ())))
                              {
                             AccountsConfig.unreg(temp.cur_client.ID);
@@ -647,14 +651,14 @@ public class Main extends Thread
                             temp.cur_client.sendFromBot(Translation.getString("account_deleted"));
                             temp.cur_client.putOpchat(false);
                             temp.cur_client.CT="0";
-                            
+                            temp.cur_client.can_receive_cmds=false;
                             Broadcast.getInstance().broadcast("BINF "+temp.cur_client.SessionID+" CT");
                             temp.cur_client.reg=new Nod();
                             }
                             Main.Server.rewriteregs ();
-                            return;
+                            found=1;
                         }
-                       
+                       if(found==0)
                             System.out.println (Translation.getString("no_user"));
 
                         

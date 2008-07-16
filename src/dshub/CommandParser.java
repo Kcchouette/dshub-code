@@ -360,7 +360,7 @@ public class CommandParser {
 												+ "Your account has been deleted. From now on you are a simple user.");
 								temp.cur_client.putOpchat(false);
 								temp.cur_client.CT = "0";
-
+								temp.cur_client.can_receive_cmds=false;
 								Broadcast.getInstance().broadcast(
 										"BINF " + temp.cur_client.SessionID
 												+ " CT");
@@ -399,6 +399,7 @@ public class CommandParser {
 										.sendFromBot("Your account has been deleted. From now on you are a simple user.");
 								temp.cur_client.putOpchat(false);
 								temp.cur_client.CT = "0";
+								temp.cur_client.can_receive_cmds=false;
 
 								Broadcast.getInstance().broadcast(
 										"BINF " + temp.cur_client.SessionID
@@ -462,7 +463,7 @@ public class CommandParser {
 
 								Broadcast.getInstance().broadcast("BINF "
 										+ temp.cur_client.SessionID + " CT2");
-
+								temp.cur_client.can_receive_cmds=true;
 								temp.cur_client.reg.isreg = true;
 								temp.cur_client.LoggedAt = System
 										.currentTimeMillis();
@@ -511,7 +512,7 @@ public class CommandParser {
 												+ " . No password set, login does not require pass, however, its recomandable you to set one...");
 								temp.cur_client.putOpchat(true);
 								temp.cur_client.CT = "2";
-
+								temp.cur_client.can_receive_cmds=true;
 								Broadcast.getInstance().broadcast("BINF "
 										+ temp.cur_client.SessionID + " CT2");
 
@@ -569,7 +570,7 @@ public class CommandParser {
 
 							Broadcast.getInstance().broadcast("BINF " + temp.cur_client.SessionID
 									+ " CT2");
-
+							temp.cur_client.can_receive_cmds=true;
 							temp.cur_client.LoggedAt = System
 									.currentTimeMillis();
 							temp.cur_client.reg.LastIP = temp.cur_client.RealIP;
