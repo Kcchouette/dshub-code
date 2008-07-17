@@ -626,7 +626,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
 
-        jLabel14.setText("Version: DSHub Iota RC1");
+        jLabel14.setText("Version: DSHub Iota RC2");
 
         jLabel7.setText("Copyright 2007-2008  by Eugen Hristev");
 
@@ -4623,10 +4623,10 @@ public class TestFrame extends javax.swing.JFrame {
 				+ Integer.toString(i) + "\n" + "  Connecting users: "
 				+ Integer.toString(j) + "\n" + "  Uptime: "
 				+ TimeConv.getStrTime(up) + "\n" + "  Start Time: "
-				+ b.toString() + "\n  Bytes red per second: "
-				+ Main.Server.IOSM.getTotalByteReadThroughput()
-				+ "\n  Bytes written per second: "
-				+ Main.Server.IOSM.getTotalByteWrittenThroughput()
+				//+ b.toString() + "\n  Bytes red per second: "
+				//+ Main.Server.IOSM.getTotalByteReadThroughput()
+				//+ "\n  Bytes written per second: "
+			//	+ Main.Server.IOSM.getTotalByteWrittenThroughput()
 
 		);
 	}//GEN-LAST:event_jButton6ActionPerformed
@@ -4762,12 +4762,12 @@ public class TestFrame extends javax.swing.JFrame {
 				+ "\n"
 				+ "  Start Time: "
 				+ b.toString()
-				+ "\n  Bytes read per second: "
-				+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
-						.getTotalByteReadThroughput())
-				+ "\n  Bytes written per second: "
-				+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
-						.getTotalByteWrittenThroughput())
+				//+ "\n  Bytes read per second: "
+			//	+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
+			//			.getTotalByteReadThroughput())
+			//	+ "\n  Bytes written per second: "
+			//	+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
+			//			.getTotalByteWrittenThroughput())
 
 		);
 

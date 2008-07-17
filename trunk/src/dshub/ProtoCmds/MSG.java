@@ -276,6 +276,7 @@ public class MSG
                        
                        
                     	   Broadcast.getInstance().broadcast(Issued_Command);
+                       //System.out.println("acum am trimis broadcast de la "+cur_client.ID);
                        //System.out.println (Issued_Command);
                    }
                    else if(Issued_Command.charAt (0)=='E') //echo direct msg

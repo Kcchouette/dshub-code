@@ -24,7 +24,7 @@ package dshub;
 
 import java.net.*;
 import java.io.*;
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 
 /**
@@ -61,7 +61,7 @@ public class ClientHandler
     public int quit=0;
 
     public boolean can_receive_cmds=false;
-    
+    public boolean inside=false;
     
     
     public long LoggedAt=0l;

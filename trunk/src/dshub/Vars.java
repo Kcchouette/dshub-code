@@ -61,8 +61,8 @@ public final class Vars
             
     public static String About=
                    "[Death Squad Hub]\n"+
-                   "[Version Iota RC1]\n"+
-                   "[May 2008]\n"+
+                   "[Version Iota RC2]\n"+
+                   "[June 2008]\n"+
                    "[Licensed under GNU GPL]\n"+
                    ":The credits\n"
               +    "::Project Coordinator: Pietry\n"

@@ -65,7 +65,7 @@ String Infs="";
  cur_client.sendToClient(Infs);
 }
 
-     void completeLogIn()
+     void completeLogIn() throws STAException
     {
         // must check if its op or not and move accordingly
         if(!cur_client.reg.key) //DO NOT increase HR count and put RG field to 1
@@ -80,8 +80,24 @@ String Infs="";
         }
         
         
-                 /*---*/
-        SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
+        boolean ok=true;  
+        synchronized(SimpleHandler.Users)
+        {
+      	 // System.out.println("marimea este "+SimpleHandler.Users.size());
+      	  if(SimpleHandler.Users.containsKey(cur_client.ID))
+      		  ok=false;
+      	  else
+      	  {
+      		 
+      		  SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
+      		  cur_client.inside=true;
+      		  //System.out.println("a intrat "+cur_client.ID+", marimea este "+SimpleHandler.Users.size());
+      	  }
+           
+        }
+        if(!ok)
+        { new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
+        return;}
         
         
         
@@ -745,10 +761,24 @@ String Infs="";
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);*/
          
-                   
-          
-         SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
-         
+                 boolean ok=true;  
+          synchronized(SimpleHandler.Users)
+          {
+        	 // System.out.println("marimea este "+SimpleHandler.Users.size());
+        	  if(SimpleHandler.Users.containsKey(cur_client.ID))
+        		  ok=false;
+        	  else
+        	  {
+        		 
+        		  SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
+        		  cur_client.inside=true;
+        		 // System.out.println("a intrat "+cur_client.ID+", marimea este "+SimpleHandler.Users.size());
+        	  }
+             
+          }
+          if(!ok)
+          { new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
+          return;}
         sendUsersInfs();
 
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
@@ -758,6 +788,7 @@ String Infs="";
          
                //ok now must send INF to all clients
                  Broadcast.getInstance().broadcast(cur_client.getINF (),cur_client.myNod);
+                // System.out.println("acum am trimis ca a intrat "+cur_client.ID);
                                  
                  
                  //Main.PopMsg(cur_client.NI+" with SID "+cur_client.SessionID+" just entered.");
