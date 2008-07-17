@@ -29,9 +29,11 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.mina.common.IdleStatus;
-import org.apache.mina.common.IoHandlerAdapter;
-import org.apache.mina.common.IoSession;
+
+import org.apache.mina.core.session.IoSession;
+import org.apache.mina.core.session.IdleStatus;
+
+
 
 import dshub.Exceptions.CommandException;
 import dshub.Exceptions.STAException;
@@ -43,7 +45,7 @@ import dshub.TigerImpl.Base32;
  *
  * @author Pietricica
  */
-public class SimpleHandler extends IoHandlerAdapter {
+public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter {
 	public static ConcurrentHashMap<String, ClientNod> Users;
 	static {
 		Users = new ConcurrentHashMap<String, ClientNod>(3000,
@@ -67,7 +69,7 @@ public class SimpleHandler extends IoHandlerAdapter {
 		// if((t.getMessage().contains("IOException")))
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
-			t.printStackTrace();
+			//t.printStackTrace();
 			session.close();
 			return;
 		}
@@ -150,8 +152,11 @@ public class SimpleHandler extends IoHandlerAdapter {
 		cur_client.reg.TimeOnline += System.currentTimeMillis()
 				- cur_client.LoggedAt;
 		//  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
-            
+        if(cur_client.inside)  
+        {
 			SimpleHandler.Users.remove(cur_client.ID);
+		//	System.out.println("a intrat "+cur_client.ID);
+        }
 		cur_client = null;
 
 	}
@@ -167,7 +172,7 @@ public class SimpleHandler extends IoHandlerAdapter {
 		ClientHandler cur_client = (ClientHandler) HubServer.AddClient().cur_client;
 
 		session.setAttachment(cur_client);
-		session.setIdleTime(IdleStatus.READER_IDLE, 120);
+		//session.setIdleTime(IdleStatus.READER_IDLE, 120);
 
 		cur_client.mySession = session;
 		StringTokenizer ST = new StringTokenizer(cur_client.mySession

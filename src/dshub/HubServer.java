@@ -34,15 +34,17 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
-import org.apache.mina.common.ByteBuffer;
-import org.apache.mina.common.IoAcceptor;
-import org.apache.mina.common.PooledByteBufferAllocator;
-import org.apache.mina.filter.LoggingFilter;
+
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
-import org.apache.mina.integration.jmx.IoServiceManager;
-import org.apache.mina.transport.socket.nio.SocketAcceptor;
-import org.apache.mina.transport.socket.nio.SocketAcceptorConfig;
+
+import org.apache.mina.core.service.IoAcceptor;
+import org.apache.mina.core.session.IdleStatus;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
+import org.apache.mina.filter.logging.LoggingFilter;
+import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+
 
 /**
  * Basic hub server listener and socket receiver, sends users to each's thread after connecting.
@@ -69,10 +71,10 @@ public class HubServer extends Thread
    private static bans bcfg;
    
    public static boolean restart;
-   public static IoServiceManager IOSM;
+   //public static IoServiceManager IOSM;
   // public static ServiceManager SM;
    
-   private SocketAcceptorConfig cfg;
+   //private SocketAcceptorConfig cfg;
    
    private IoAcceptor acceptor;
    private ExecutorService x;//,y;
@@ -133,40 +135,44 @@ public class HubServer extends Thread
           {}
       
        //   new ClientNod();
-        ByteBuffer.setUseDirectBuffers(false);
-        ByteBuffer.setAllocator(new PooledByteBufferAllocator());
+       // ByteBuffer.setUseDirectBuffers(false);
+     //   ByteBuffer.setAllocator(new PooledByteBufferAllocator());
         
         
         
         x=Executors.newCachedThreadPool();
       //  y=Executors.newCachedThreadPool();
-        acceptor = new SocketAcceptor(5, x);
+        acceptor = new NioSocketAcceptor();
         
         
         
         
-         cfg = new SocketAcceptorConfig();
+        // cfg = new SocketAcceptorConfig();
       // cfg.setThreadModel(ThreadModel.MANUAL);
         
          //cfg.getSessionConfig().setReceiveBufferSize(102400);
         // cfg.getSessionConfig().setSendBufferSize(102400);
          
-        cfg.getFilterChain().addLast( "logger", new LoggingFilter() );
+        acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
         TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ));
         myx.setDecoderMaxLineLength(2024000);
         myx.setEncoderMaxLineLength(2024000);
-        cfg.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
+        acceptor.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
         MyCalendar=Calendar.getInstance();
       // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
-        cfg.getSessionConfig().setKeepAlive(true);
+        //cfg.getSessionConfig().setKeepAlive(true);
         
-       
+        acceptor.getSessionConfig().setReadBufferSize( 2048 );
+        acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 120 );
+        acceptor.setHandler(  new SimpleHandler() );
+
+
         //cfg.getSessionConfig().
         //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
-        IOSM=new IoServiceManager(acceptor);
+       // IOSM=new IoServiceManager(acceptor);
         //SM=new ServiceManager(acceptor);
-        IOSM.startCollectingStats(10000);
+      //  IOSM.startCollectingStats(10000);
        // address=new InetSocketAddress(port);
        
 
@@ -214,7 +220,7 @@ public class HubServer extends Thread
        // Vars.activePorts.add(port);
         try
         {
-        acceptor.bind(new InetSocketAddress(port.portValue), new SimpleHandler(),cfg);
+        acceptor.bind(new InetSocketAddress(port.portValue));
         port.setStatus(true);
             
         } 

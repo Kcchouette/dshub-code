@@ -66,7 +66,7 @@ public class Broadcast {
 
 	private Broadcast() {
 		tfactory = new DaemonThreadFactory();
-		pool = Executors.newCachedThreadPool(tfactory);
+		pool = Executors.newSingleThreadScheduledExecutor(tfactory);
 	}
 
 	public synchronized static Broadcast getInstance() {
