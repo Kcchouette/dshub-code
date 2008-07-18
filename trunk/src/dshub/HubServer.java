@@ -268,20 +268,21 @@ public class HubServer extends Thread
             acceptor.unbind(new InetSocketAddress(port.portValue));
            // System.out.println("deleted port"+port.portValue);
         }
-        catch(IllegalArgumentException exception)
+        catch(Exception exception)
         {
             if(exception.getMessage().contains("Address not bound"))
                 ;
+            exception.printStackTrace();
         }
         
     }
     
     public void shutdown()
     {
-       // for( Port x : Vars.activePorts)
-       //     delPort(x);
+       for( Port x : Vars.activePorts)
+           delPort(x);
 
-        acceptor.unbind();
+      //  acceptor.unbind();
        // x.shutdown();
     }
     public static   ClientNod AddClient()
