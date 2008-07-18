@@ -1586,9 +1586,9 @@ public class Main extends Thread
                   "  Online users: %d\n"+
                   "  Connecting users: %d\n"+
                   "  Uptime: %s\n"
-                  //+
-              //         "\n  Bytes read per second: "+Main.Server.IOSM.getTotalByteReadThroughput()+
-             //   "\n  Bytes written per second: "+Main.Server.IOSM.getTotalByteWrittenThroughput()
+                  +
+                       "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
+               "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
                        
                     
                    ,Proppies.getProperty("os.name") ,  Proppies.getProperty("os.version"),
