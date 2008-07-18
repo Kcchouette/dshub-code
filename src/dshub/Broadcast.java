@@ -23,6 +23,7 @@
 
 package dshub;
 
+import java.util.Calendar;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -132,10 +133,10 @@ public class Broadcast {
 					if (First == null) {
 						line bla;
 						if (STR.startsWith("BMSG "))
-							bla = new line("<" + NI + "> " + STR.substring(10)
+							bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR.substring(10)
 									+ "\n");
 						else
-							bla = new line("<" + NI + "> " + STR.substring(5)
+							bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR.substring(5)
 									+ "\n");
 						Last = bla;
 						First = Last;
@@ -146,10 +147,10 @@ public class Broadcast {
 						line bla;
 						//BMSG AAAA message
 						if (STR.startsWith("BMSG "))
-							bla = new line("<" + NI + "> " + STR.substring(10)
+							bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR.substring(10)
 									+ "\n");
 						else
-							bla = new line("<" + NI + "> " + STR.substring(5)
+							bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR.substring(5)
 									+ "\n");
 
 						if (!(Last.curline.equals(bla.curline) && STR

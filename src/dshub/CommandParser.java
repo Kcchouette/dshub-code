@@ -32,6 +32,8 @@ import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
+
+import java.util.Calendar;
 import java.util.StringTokenizer;
 import java.net.*;
 import java.util.Map;
@@ -98,7 +100,7 @@ public class CommandParser {
 			if (FirstCommand == null) {
 				line bla;
 
-				bla = new line("<" + NI + "> " + STR + "\n");
+				bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR + "\n");
 
 				LastCommand = bla;
 				FirstCommand = LastCommand;
@@ -109,7 +111,7 @@ public class CommandParser {
 				line bla;
 				//BMSG AAAA message
 
-				bla = new line("<" + NI + "> " + STR + "\n");
+				bla = new line("["+Calendar.getInstance().getTime ().toString ()+"] <" + NI + "> " + STR + "\n");
 
 				LastCommand.Next = bla;
 
