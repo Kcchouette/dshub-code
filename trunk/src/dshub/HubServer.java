@@ -76,9 +76,9 @@ public class HubServer extends Thread
    
    //private SocketAcceptorConfig cfg;
    
-   private IoAcceptor acceptor;
-   private ExecutorService x;//,y;
-   private InetSocketAddress address;
+   public IoAcceptor acceptor;
+  // private ExecutorService x;//,y;
+  // private InetSocketAddress address;
    public Calendar MyCalendar;
     /** Creates a new instance of HubServer */
     public HubServer() 
@@ -140,7 +140,7 @@ public class HubServer extends Thread
         
         
         
-        x=Executors.newCachedThreadPool();
+       // x=Executors.newCachedThreadPool();
       //  y=Executors.newCachedThreadPool();
         acceptor = new NioSocketAcceptor();
         
@@ -167,7 +167,7 @@ public class HubServer extends Thread
         acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 120 );
         acceptor.setHandler(  new SimpleHandler() );
 
-
+        acceptor.setCloseOnDeactivation(true);
         //cfg.getSessionConfig().
         //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
        // IOSM=new IoServiceManager(acceptor);
@@ -250,21 +250,23 @@ public class HubServer extends Thread
         }
         catch (IOException ex)
         {
-            ex.printStackTrace();
+           // ex.printStackTrace();
             port.setStatus(false);
             port.MSG=ex.toString();
             return false;
         }
+        
         return true;
     }
     
     public void delPort(Port port)
     {
       //  Vars.activePorts.remove(port);
+    	//acceptor.unbind();
         try
         {
             acceptor.unbind(new InetSocketAddress(port.portValue));
-
+           // System.out.println("deleted port"+port.portValue);
         }
         catch(IllegalArgumentException exception)
         {
@@ -276,11 +278,11 @@ public class HubServer extends Thread
     
     public void shutdown()
     {
-        for( Port x : Vars.activePorts)
-            delPort(x);
+       // for( Port x : Vars.activePorts)
+       //     delPort(x);
 
-        
-        x.shutdown();
+        acceptor.unbind();
+       // x.shutdown();
     }
     public static   ClientNod AddClient()
     {

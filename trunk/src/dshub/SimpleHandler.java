@@ -161,7 +161,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 
 	}
 
-	public void sessionCreated(IoSession session) throws Exception {
+	public void sessionOpened(IoSession session) throws Exception {
 		//System.out.println("Client Connected...");
 
 		//if( session.getTransportType() == TransportType.SOCKET )

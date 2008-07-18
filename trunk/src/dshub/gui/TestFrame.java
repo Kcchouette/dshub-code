@@ -4623,8 +4623,9 @@ public class TestFrame extends javax.swing.JFrame {
 				+ Integer.toString(i) + "\n" + "  Connecting users: "
 				+ Integer.toString(j) + "\n" + "  Uptime: "
 				+ TimeConv.getStrTime(up) + "\n" + "  Start Time: "
-				//+ b.toString() + "\n  Bytes red per second: "
-				//+ Main.Server.IOSM.getTotalByteReadThroughput()
+				+ b.toString() + //"\n  Bytes red per second: "
+				 "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
+	               "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
 				//+ "\n  Bytes written per second: "
 			//	+ Main.Server.IOSM.getTotalByteWrittenThroughput()
 
@@ -4761,14 +4762,17 @@ public class TestFrame extends javax.swing.JFrame {
 				+ TimeConv.getStrTime(up)
 				+ "\n"
 				+ "  Start Time: "
-				+ b.toString()
+				+ b.toString() +
 				//+ "\n  Bytes read per second: "
 			//	+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
 			//			.getTotalByteReadThroughput())
 			//	+ "\n  Bytes written per second: "
 			//	+ (Main.Server.IOSM == null ? "0.0" : Main.Server.IOSM
 			//			.getTotalByteWrittenThroughput())
-
+                 "\n  Bytes read per second: "+(Main.Server.acceptor == null 
+                		 ? "0.0" : Main.Server.acceptor.getReadBytesThroughput())+
+               "\n  Bytes written per second: "+(Main.Server.acceptor == null ? 
+            		   "0.0": Main.Server.acceptor.getWrittenBytesThroughput())
 		);
 
 		/*
