@@ -15,7 +15,7 @@
 <iconLocation>logo.jpg</iconLocation>
 <initialMemoryHeap>4194304</initialMemoryHeap>
 <mainClassName>dshub.Main</mainClassName>
-<maximumMemoryHeap>268435456</maximumMemoryHeap>
+<maximumMemoryHeap>536870912</maximumMemoryHeap>
 <maximumVersion></maximumVersion>
 <minimumVersion>1.6.0</minimumVersion>
 <skeletonName>Windowed Wrapper</skeletonName>
