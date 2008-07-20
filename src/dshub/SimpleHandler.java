@@ -30,6 +30,7 @@ import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 
 
+import org.apache.mina.core.future.WriteFuture;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.core.session.IdleStatus;
 
@@ -124,8 +125,10 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 			throws Exception {
 		//ok, we're in idle
 		ClientHandler cur_client = (ClientHandler) (session.getAttachment());
-
-		cur_client.sendToClient("");
+     WriteFuture future=session.write("");
+     future.addListener(cur_client.myNod );
+    
+		//cur_client.sendToClient("");
 
 	}
 

@@ -164,9 +164,9 @@ public class HubServer extends Thread
         //cfg.getSessionConfig().setKeepAlive(true);
         
         acceptor.getSessionConfig().setReadBufferSize( 2048 );
-        acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 120 );
+        acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 50 );
         acceptor.setHandler(  new SimpleHandler() );
-
+//System.out.println(acceptor.getSessionConfig().getWriteTimeout());
         acceptor.setCloseOnDeactivation(true);
         //cfg.getSessionConfig().
         //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
