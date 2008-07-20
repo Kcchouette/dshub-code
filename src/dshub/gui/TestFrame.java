@@ -630,7 +630,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Copyright 2007-2008  by Eugen Hristev");
 
-        jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio");
+        jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio,");
 
         jLabel6.setText("Also thanks go to everybody who helped me and were ");
 
@@ -638,7 +638,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel70.setText("all testers and contributors with ideas.");
 
-        jLabel62.setText("and Catalaur");
+        jLabel62.setText("Catalaur and Ciprian Dobre");
 
         jLabel61.setText("Many thanks to all the people who helped in translating.");
 
