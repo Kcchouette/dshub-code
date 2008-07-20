@@ -23,6 +23,9 @@
 
 package dshub;
 
+import org.apache.mina.core.future.IoFutureListener;
+import org.apache.mina.core.future.WriteFuture;
+
 
 
 
@@ -30,7 +33,7 @@ package dshub;
  * A class that keeps a ClientHandler thread instance and connections to other nods
  * @author Pietricica
  */
-public class ClientNod 
+public class ClientNod implements IoFutureListener<WriteFuture>
 {
     
     public ClientHandler cur_client;
@@ -52,6 +55,12 @@ public class ClientNod
     public ClientNod(int x)
     {
         
+    }
+    
+    public void operationComplete(WriteFuture future)
+    {
+    	if(!future.isWritten())
+    	cur_client.mySession.close();
     }
     
   
