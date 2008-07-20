@@ -844,7 +844,7 @@ public GrantCmd(String cmd)
              else  if(what.equals("backup"))
              {
                 
-              modnod.myMask.about=attribute;
+              modnod.myMask.backup=attribute;
               toSend+=" backup modified to "+attribute+"\n";
              }
             else  if(what.equals("bancid"))

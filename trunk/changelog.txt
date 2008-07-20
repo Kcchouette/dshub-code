@@ -1,4 +1,5 @@
 *** Iota RC2 20.07.2008***
+       * fixed #250237
        * added a new configuration variable command_pm which can set if bot chat is sent to PM;
        * updated to system specific look and feel ( thanks quicksilver );
        * using java 1.6 ConcurrentHashMaps now;
