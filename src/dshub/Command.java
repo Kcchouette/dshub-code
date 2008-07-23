@@ -178,26 +178,29 @@ String Infs="";
                     
                    // cur_client.cur_inf="BINF ADDD EMtest NIbla";
                     //Issued_Command="ADDD NImu DEblah";
-                    if(cur_client.cur_inf!=null)
-                    {
-                    StringTokenizer inftok=new StringTokenizer(cur_client.cur_inf.substring(9));
+               //     synchronized(cur_client.cur_inf)
+              //      {
+                //    if(cur_client.cur_inf!=null)
+               //     {
+               //     StringTokenizer inftok=new StringTokenizer(cur_client.cur_inf.substring(9));
                     
-                    while(inftok.hasMoreTokens())
-                    {
-                        String y=inftok.nextToken();
-                        if(Issued_Command.contains(y.substring(0,2)))
-                        {
-                            cur_client.cur_inf=cur_client.cur_inf.substring(0,cur_client.cur_inf.indexOf(y))+cur_client.cur_inf.substring(cur_client.cur_inf.indexOf(y)+y.length());
-                           // inftok=new StringTokenizer(cur_client.cur_inf);
-                        }
+                //    while(inftok.hasMoreTokens())
+                //    {
+               //         String y=inftok.nextToken();
+               //         if(Issued_Command.contains(y.substring(0,2)))
+                //        {
+                //            cur_client.cur_inf=cur_client.cur_inf.substring(0,cur_client.cur_inf.indexOf(y))+cur_client.cur_inf.substring(cur_client.cur_inf.indexOf(y)+y.length());
+                //           // inftok=new StringTokenizer(cur_client.cur_inf);
+                  //      }
                         
-                    }
-                    Issued_Command+=cur_client.cur_inf.substring(9);
+                 //   }
+                 //   Issued_Command+=cur_client.cur_inf.substring(9);
+                 //   }
                       tok=new StringTokenizer(Issued_Command);
                     tok.nextToken();
-                    }
-                    if(Issued_Command.endsWith(" "))
-                        Issued_Command=Issued_Command.substring(0,Issued_Command.length()-1);
+                //    }
+                 //   if(Issued_Command.endsWith(" "))
+               //         Issued_Command=Issued_Command.substring(0,Issued_Command.length()-1);
                     
                    // System.out.println(Issued_Command);
                     while(tok.hasMoreElements())
@@ -761,8 +764,8 @@ String Infs="";
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);*/
          
-                 boolean ok=true;  
-          synchronized(SimpleHandler.Users)
+               boolean ok=true;  
+         synchronized(SimpleHandler.Users)
           {
         	 // System.out.println("marimea este "+SimpleHandler.Users.size());
         	  if(SimpleHandler.Users.containsKey(cur_client.ID))
@@ -812,18 +815,18 @@ String Infs="";
                  return;
                }
                
-               if(State.equals ("NORMAL"))
-               {
-                  if(System.currentTimeMillis()-cur_client.LastINF>(1000*120L))
-                  {
+             //  if(State.equals ("NORMAL"))
+             //  {
+            //      if(System.currentTimeMillis()-cur_client.LastINF>(1000*120L))
+            //      {
                 	  Broadcast.getInstance().broadcast(cur_inf);
-                    cur_client.LastINF=System.currentTimeMillis();
-                    cur_client.cur_inf=null;
-                  }
-                  else
-                      cur_client.cur_inf=cur_inf;
+            //        cur_client.LastINF=System.currentTimeMillis();
+            //        cur_client.cur_inf=null;
+            //      }
+            //      else
+            //         cur_client.cur_inf=cur_inf;
                       
-               }
+            //   }
                
     }
     
