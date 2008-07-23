@@ -65,8 +65,10 @@ public class ClientAssasin extends Thread
             for( ClientNod temp :  SimpleHandler.getUsers())
                         {
                
-                long curtime=System.currentTimeMillis();
+              long curtime=System.currentTimeMillis();
                 ClientNod x=temp;
+              /*  synchronized (temp.cur_client.cur_inf)
+                {
                 if (((temp.cur_client.userok==1)
 						&& (temp.cur_client.cur_inf!=null))
 						&& (curtime-temp.cur_client.LastINF>(1000*120L)))
@@ -75,7 +77,8 @@ public class ClientAssasin extends Thread
 					temp.cur_client.LastINF=curtime;
 					temp.cur_client.cur_inf=null;
 		}
-                
+                }
+                */
                 
                 if (((x.cur_client.kicked!=1)
 						&& (x.cur_client.InQueueSearch!=null))
