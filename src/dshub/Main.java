@@ -597,7 +597,7 @@ public class Main extends Thread
                     blah00=blah00+ Translation.getString("never_seen")+"\n";
                 n=n.Next;
             }
-            blah00=blah00.substring (0,blah00.length ()-2);
+            blah00=blah00.substring (0,blah00.length ()-1);
             System.out.println (blah00);
         }
         else if(recvbuf.toLowerCase ().startsWith("ureg "))
