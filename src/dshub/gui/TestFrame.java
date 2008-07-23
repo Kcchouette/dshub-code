@@ -1166,7 +1166,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel32.setText("Maximum number of online users, integer.");
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel35.setText("Chars that could be used for a nick, String. ");
+        jLabel35.setText("Regular Expression that a nick needs to match, String.");
 
         maxschcharsfield.setText("256");
         maxschcharsfield.setPreferredSize(new java.awt.Dimension(130, 19));

@@ -751,7 +751,7 @@ public class CFGConfig {
 						+ "   nick_chars              "
  
 						+ Vars.nick_chars
-						+ "         -- Chars that could be used for a nick, String.\n"
+						+ "         -- Regular Expression that nicks need to match, String.\n"
 						+ "   chat_interval           "
 						+ Vars.chat_interval
 						+ "         -- Interval between chat lines, millis, Integer.\n"

@@ -1483,7 +1483,7 @@ public class Main extends Thread
                             +          "   msg_full                "  +Vars.Msg_Full+" -- Message to be shown to connecting users when hub full.\n"
                             +          "   reg_only                "  +Vars.reg_only+" -- 1 = registered only hub. 0 = otherwise.\n"
                             +          "   command_pm              "  +Vars.command_pm+"         -- If set to 1, the bot's responses are sent to PM.\n"
-                            +          "   nick_chars              "  +Vars.nick_chars+" -- Chars that could be used for a nick, String."
+                            +          "   nick_chars              "  +Vars.nick_chars+" -- Regular Expression that a nick needs to match,  String."
                             +          "   chat_interval           "  +Vars.chat_interval+"         -- Interval between chat lines, millis, Integer.\n"
                             +          "   save_logs               "  +Vars.savelogs+"         -- 1 = logs are saved to file, 0 otherwise.\n"
                             +          "   automagic_search        "  +Vars.automagic_search+"         -- Interval between automagic searches for each user, seconds, Integer.\n"
