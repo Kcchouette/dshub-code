@@ -361,7 +361,7 @@ public class BanWordsList {
     public long getPr(String s){
         int n=searchEl(s);
         if (n==-1){
-            System.out.println("The word is not in the list");
+           // System.out.println("The word is not in the list");
             return 0;
         }
         return getPrAt(n);
