@@ -71,6 +71,8 @@ public class Variables implements Serializable
       
       String redirect_url;
       
+      boolean adcs_mode;
+      
       String lang;
       
      int max_ni;
@@ -192,6 +194,8 @@ public class Variables implements Serializable
       max_chat_msg=Vars.max_chat_msg;
       command_pm=Vars.command_pm;
 
+      adcs_mode=Vars.adcs_mode;
+      
       history_lines=Vars.history_lines;
       Opchat_name=Vars.Opchat_name;
       Opchat_desc=Vars.Opchat_desc;

@@ -35,9 +35,11 @@ public final class Vars
 {
     public static boolean ValidateNick(String nick)
     {
-        for(int i=0;i<nick.length ();i++)
-            if(nick_chars.indexOf (nick.charAt (i))==-1)
-                return false;
+     //   for(int i=0;i<nick.length ();i++)
+         //   if(nick_chars.indexOf (nick.charAt (i))==-1)
+         //       return false;
+    	if(!nick.matches(nick_chars))
+    		return false;
         
        if(ADC.isIP (nick)) 
            return false;
@@ -62,12 +64,12 @@ public final class Vars
     public static String About=
                    "[Death Squad Hub]\n"+
                    "[Version Iota RC2]\n"+
-                   "[June 2008]\n"+
+                   "[July 2008]\n"+
                    "[Licensed under GNU GPL]\n"+
                    ":The credits\n"
-              +    "::Project Coordinator: Pietry\n"
+              +    "::Written by: Eugen Hristev\n"
               +    ":::Special thanks goes to \n"
-               +    ":::MAGY, Spader, Toast, Naccio, Catalaur \n"
+               +    ":::MAGY, Spader, Toast, Naccio, Catalaur and Ciprian Dobre \n"
 
               +    ":::: Also Thanks to all Testers and Contributors.\n"
                   +":::: Many Thanks to who helped translating.";
@@ -148,7 +150,7 @@ public final class Vars
    public  static int reg_only=0;
     public static int max_users=1000;
 
-
+   public static boolean adcs_mode=false;
    public  static int chat_interval=500;//millis
 
    public  static int savelogs=1;
@@ -159,7 +161,8 @@ public final class Vars
     
     public static String Msg_Banned="Have a nice day and don't forget to smile !";
     public static String Msg_Full="Have a nice day and don't forget to smile !";
-   public static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
+  // public static String nick_chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890[]()-.,;'`~*&^%$#@!+=_|{}<>:";
+    public static String nick_chars="([\\w\\W]*)";
     public static String Msg_Search_Spam="Search ticket Reserved.\nPlease be patient while search\nis being processed.\nDo NOT close this window or start other search\nor you will lose this search !".replaceAll (" ","\\ ");
     
     public static String activePlugins="";
