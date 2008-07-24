@@ -394,8 +394,9 @@ String Infs="";
                         }
                         else 
                         {
-                            new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.");
-                            return ;
+                            //new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Protocol Error.");
+                             //  return ;
+                        	cur_inf=cur_inf+" "+aux;
                         }
                         
                         
