@@ -55,9 +55,10 @@ and to detach from it again type Ctrl+a, d
 [ DSHub is being closed by quit command in its console, you can see in first line that it prints].
 1.2 Windows Installation
 
-First you need the JRE [ Java Runtime Environment ] version 1.6 the least. Sun provides the JRE downloadable from their site http://java.sun.com  Java installation is not covered in this manual.
-
 For a windows installation, a simple installer is provided, which will make most things simpler. After youre done , run dshub.exe and get started.
+
+Otherwise, first you need the JRE [ Java Runtime Environment ] version 1.6 the least. Sun provides the JRE downloadable from their site http://java.sun.com  Java installation is not covered in this manual.
+
 
 If you are using the installer , skip to running part.
 If you have the zip archive, copy DSHub files ( unzipped )  into your new directory. Make sure that java.exe [ aka the Java interpreter] is in your path variable so it can be run from any directory in your pc.
