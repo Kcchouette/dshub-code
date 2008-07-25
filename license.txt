@@ -1,4 +1,4 @@
-(C) Copyright 2007-2008 by Pietry ( Death-Squad )
+(C) Copyright 2007-2008 by Eugen Hristev
 
 Here's the full license text :
 

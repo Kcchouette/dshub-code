@@ -1,4 +1,4 @@
-*** Iota RC2 24.07.2008***
+*** Iota RC2 25.07.2008***
        * fixed Bm's D4 field rejection;
        * moved nick_chars to regexp;
        * fixed ru language file;
