@@ -148,6 +148,8 @@ public class Main extends Thread
         }
         if(System.getProperty("os.name").equals("Linux"))
         {
+        	if(!bla.startsWith("/"))
+        	{
             StringTokenizer st1=new StringTokenizer(myPath,pathsep);
             String aux=st1.nextToken();
             //System.out.println(myPath);
@@ -159,7 +161,9 @@ public class Main extends Thread
              //   return;
             
             myPath=aux;
-            
+        	}
+        	else
+        		myPath=bla;
             
         }
          
