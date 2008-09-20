@@ -27,6 +27,7 @@ import dshub.*;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.python.*;
+import dshub.adcs.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.InetSocketAddress;
@@ -123,24 +124,24 @@ public class TestFrame extends javax.swing.JFrame {
 			enableCheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
 			myPanelLayout.setHorizontalGroup(myPanelLayout.createParallelGroup(
 					org.jdesktop.layout.GroupLayout.LEADING).add(
-					myPanelLayout.createSequentialGroup().add(18, 18, 18).add(
+					myPanelLayout.createSequentialGroup().add(8, 8, 8).add(
 							enableCheck).addPreferredGap(
-							org.jdesktop.layout.LayoutStyle.RELATED, 199,
-							Short.MAX_VALUE).add(guiClick).add(68, 68, 68)
+							org.jdesktop.layout.LayoutStyle.RELATED, 89,
+							Short.MAX_VALUE).add(guiClick).add(38, 38, 38)
 							.addContainerGap(534, Short.MAX_VALUE)));
 			myPanelLayout.setVerticalGroup(myPanelLayout.createParallelGroup(
 					org.jdesktop.layout.GroupLayout.LEADING).add(
-					myPanelLayout.createSequentialGroup().add(14, 14, 14).add(
+					myPanelLayout.createSequentialGroup().add(8, 8, 8).add(
 							myPanelLayout.createParallelGroup(
 									org.jdesktop.layout.GroupLayout.BASELINE)
 									.add(enableCheck).add(guiClick))
-							.addContainerGap(43, Short.MAX_VALUE)));
+							.addContainerGap(13, Short.MAX_VALUE)));
 			PluginPanel.add(myPanel,
 					new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y,
-							520, 80));
+							520, 60));
 			myPlug.setCheckBox(enableCheck);
 			myPlug.setButton(guiClick);
-			y += 90;
+			y += 60;
 
 			// myPanel.add(enableCheck);
 		}
@@ -155,6 +156,70 @@ public class TestFrame extends javax.swing.JFrame {
 			modelLista.addElement(listaBanate.elementAt(i));
 		}
 	}
+        
+        private void deleteSelectedReg()
+        {
+            int row = AccountTable.getSelectedRow();
+            if(row==-1)
+                return;
+			String CID = (String) AccountTable.getModel().getValueAt(row, 0);
+			// Main.PopMsg(CID);
+			if (AccountsConfig.unreg(CID)) {
+				DefaultTableModel AccountModel = (DefaultTableModel) AccountTable
+						.getModel();
+				Nod n = AccountsConfig.First;
+				int regcount = 0;
+				while (n != null) {
+					regcount++;
+					n = n.Next;
+				}
+
+				if (regcount != AccountModel.getRowCount()) {
+					AccountModel.setRowCount(0);
+					n = AccountsConfig.First;
+					while (n != null) {
+						String blah00 = "";
+						Date d = new Date(n.CreatedOn);
+						if (n.LastNI != null)
+							blah00 = n.LastNI;
+						else
+							blah00 = "Never seen online.";
+
+						AccountModel.addRow(new Object[] { n.CID, blah00,
+								n.LastIP, n.WhoRegged, d.toString() });
+						n = n.Next;
+					}
+				}
+				for (ClientNod temp : SimpleHandler.getUsers()) {
+					if (temp.cur_client.userok == 1)
+						if ((temp.cur_client.ID.equals(CID))) {
+							temp.cur_client
+									.sendFromBot(""
+											+ "Your account has been deleted. From now on you are a simple user.");
+							temp.cur_client.putOpchat(false);
+							temp.cur_client.CT = "0";
+
+							Broadcast.getInstance()
+									.broadcast(
+											"BINF " + temp.cur_client.SessionID
+													+ " CT");
+							temp.cur_client.can_receive_cmds=false;
+							temp.cur_client.reg = new Nod();
+							Main.PopMsg("User " + temp.cur_client.NI
+									+ " with CID " + CID + " found, deleted.");
+							Main.Server.rewriteregs();
+							SetStatus("Reg Deleted");
+							return;
+						}
+				}
+
+				Main.PopMsg("Reg " + CID + " deleted.");
+				Main.Server.rewriteregs();
+
+			}
+
+			SetStatus("Reg Deleted");
+        }
 
 	public void selectPr(long prop, String repl) {
 		jRadioButton1.setSelected(false);
@@ -279,6 +344,62 @@ public class TestFrame extends javax.swing.JFrame {
 		}
 
 	}
+        
+        public void refreshStats()
+        {
+            Runtime myRun = Runtime.getRuntime();
+
+		int i = 0, j = 0;
+		for (ClientNod temp : SimpleHandler.getUsers()) {
+			if (temp.cur_client.userok == 1)
+				i++;
+			else
+				j++;
+
+		}
+
+		long up = System.currentTimeMillis() - Main.curtime; //uptime in millis
+
+		Date b = new Date(Main.curtime);
+                
+                osname.setText(Main.Proppies.getProperty("os.name"));
+                osversion.setText(Main.Proppies.getProperty("os.version"));
+                osarch.setText(Main.Proppies.getProperty("os.arch"));
+                jrename.setText(Main.Proppies.getProperty("java.version"));
+                jreprovider.setText(Main.Proppies.getProperty("java.vendor"));
+                cpunumber.setText(Integer.toString(myRun.availableProcessors()));
+                usercount.setText(Integer.toString(i));
+                connectingcount.setText(Integer.toString(j));
+                uptime.setText(TimeConv.getStrTime(up));
+                startuptime.setText(b.toString());
+                
+		jTextArea2.setText("Death Squad Hub. Version " + Vars.HubVersion
+				+ ".\n" + "  Running on "
+				+ Main.Proppies.getProperty("os.name") + " Version "
+				+ Main.Proppies.getProperty("os.version") + " on Architecture "
+				+ Main.Proppies.getProperty("os.arch") + "\n"
+				+ "  Java Runtime Environment "
+				+ Main.Proppies.getProperty("java.version") + " from "
+				+ Main.Proppies.getProperty("java.vendor") + "\n"
+				+ "  Java Virtual Machine "
+				+ Main.Proppies.getProperty("java.vm.specification.version")
+				+ "\n" + "  Available CPU's to JVM "
+				+ Integer.toString(myRun.availableProcessors()) + "\n"
+				+ "  Available Memory to JVM: "
+				+ Long.toString(myRun.maxMemory()) + " Bytes, where free: "
+				+ Long.toString(myRun.freeMemory()) + " Bytes\n"
+				+ "Hub Statistics:\n" + "  Online users: "
+				+ Integer.toString(i) + "\n" + "  Connecting users: "
+				+ Integer.toString(j) + "\n" + "  Uptime: "
+				+ TimeConv.getStrTime(up) + "\n" + "  Start Time: "
+				+ b.toString()// + //"\n  Bytes red per second: "
+				// "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
+	          //     "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
+				//+ "\n  Bytes written per second: "
+			//	+ Main.Server.IOSM.getTotalByteWrittenThroughput()
+
+		);
+        }
 
 	/** This method is called from within the constructor to
 	 * initialize the form.
@@ -292,30 +413,29 @@ public class TestFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        jLabel62 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
+        jButton33 = new javax.swing.JButton();
+        jButton34 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel66 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -444,6 +564,7 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         AccountTable = new javax.swing.JTable();
         jButton22 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         BanTable = new javax.swing.JTable();
@@ -451,6 +572,26 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
+        jLabel89 = new javax.swing.JLabel();
+        osname = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        osversion = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        osarch = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
+        jrename = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jreprovider = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        cpunumber = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        usercount = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        connectingcount = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        uptime = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        startuptime = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -569,6 +710,30 @@ public class TestFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         PyTable = new javax.swing.JTable();
         jLabel60 = new javax.swing.JLabel();
+        jPanel45 = new javax.swing.JPanel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jPanel46 = new javax.swing.JPanel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jPanel47 = new javax.swing.JPanel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        genbutton = new javax.swing.JButton();
+        jLabel84 = new javax.swing.JLabel();
+        loadkeysbutton = new javax.swing.JButton();
+        jPanel48 = new javax.swing.JPanel();
+        jLabel83 = new javax.swing.JLabel();
+        usecertificatescheck = new javax.swing.JCheckBox();
+        jLabel79 = new javax.swing.JLabel();
+        jPanel49 = new javax.swing.JPanel();
+        jLabel88 = new javax.swing.JLabel();
+        enableadcs = new javax.swing.JButton();
+        disableadcs = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         LogText = new javax.swing.JTextArea();
@@ -578,6 +743,9 @@ public class TestFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         StatusLabel = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+
+        jLabel62.setText("jLabel62");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("DSHub ADC HubSoft created by Pietricica");
@@ -599,7 +767,7 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Hideme");
+        jButton2.setText("Hide interface");
         jButton2.setToolTipText("Hides the Window, but hub keeps running.");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -614,148 +782,75 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setToolTipText("About DSHub...");
+        jPanel1.setToolTipText("Easy startup");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
-        jLabel5.setText("Welcome to DSHub an ADC hubsoft for Direct Connect.");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+        jLabel5.setText("Welcome to DSHub !");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/ds.jpg"))); // NOI18N
-        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Death Squad Hub. The Credits"));
+        jButton33.setText("About DSHub...");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton33, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 130, -1));
 
-        jLabel14.setText("Version: DSHub Iota RC2");
+        jButton34.setText("License information");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 130, -1));
 
-        jLabel7.setText("Copyright 2007-2008  by Eugen Hristev");
+        jLabel1.setText("Your hub uses the new ADC protocol, you can read more about it in the Help Tab.");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel8.setText("Special Thanks goes to : MAGY, Spader, Toast, Naccio,");
+        jLabel2.setText("The hub interface is rather simple, but here you will get a simple map overview of it:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jLabel6.setText("Also thanks go to everybody who helped me and were ");
+        jLabel3.setText("The STATUS string in the lower part of the interface always points out what is the hub doing, or how ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        jLabel69.setText("there for me, also to everybody using my software and");
+        jLabel4.setText("the last command was interpreted, or it's result. More information about given commands are in the ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        jLabel70.setText("all testers and contributors with ideas.");
+        jLabel6.setText("Log tab, among with other events that are triggered on your hub.");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
-        jLabel62.setText("Catalaur and Ciprian Dobre");
+        jLabel7.setText("Hub main control buttons such as closing button ( Exit ) and restarting ( Restart) are always visible");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        jLabel61.setText("Many thanks to all the people who helped in translating.");
+        jLabel8.setText("on your screen. Also, the Hide interface button that hides the grapchical interface is present. Be careful on using it, because you");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel23Layout = new org.jdesktop.layout.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel23Layout.createSequentialGroup()
-                .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(73, 73, 73)
-                        .add(jLabel14))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(60, 60, 60)
-                        .add(jLabel7))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel69)
-                            .add(jPanel23Layout.createSequentialGroup()
-                                .add(31, 31, 31)
-                                .add(jLabel70))
-                            .add(jLabel6)))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(14, 14, 14)
-                        .add(jLabel8))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .add(110, 110, 110)
-                        .add(jLabel62))
-                    .add(jPanel23Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabel61)))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel23Layout.createSequentialGroup()
-                .add(12, 12, 12)
-                .add(jLabel14)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel7)
-                .add(14, 14, 14)
-                .add(jLabel8)
-                .add(4, 4, 4)
-                .add(jLabel62)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel6)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel69)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel70)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel61)
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        jLabel9.setText("can restore the interface only as a registered user with the rightful attributes ( or via console ).");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
-        jPanel1.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 240));
+        jLabel14.setText("You can start setting up your hub on the Settings tab, and start making registered accounts on your accounts tab.");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("License"));
+        jLabel61.setText("You can also see the bans in your hub on the Bans tab, the current hub statistics in the Stats tab, and you can start setting up forbidden ");
+        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        jLabel1.setText("This program is distributed in the hope that it will be useful, ");
+        jLabel65.setText("regular expressions for the chat search and more on the Chat Control tab. ");
+        jPanel1.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jLabel2.setText("but WITHOUT ANY WARRANTY; without even the implied warranty of ");
+        jLabel66.setText("The Additional Modules and Scripts tab allow you full control to what plugins your hub is running and what scripts are currently active.");
+        jPanel1.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
-        jLabel3.setText("MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See");
+        jLabel69.setText("For advanced ADC protocol gurus, you can setup every context for each command on the Advanced tab. ");
+        jPanel1.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
-        jLabel4.setText("the GNU General Public License for more details. ");
+        jLabel70.setText("ADC and DSHub were never so simple !  Sit back and enjoy your dshub over the world of Direct Connect !");
+        jPanel1.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
-        jLabel66.setText("This program uses the MINA library http://mina.apache.org licensed");
-
-        jLabel9.setText("under the Apache Public License.");
-
-        jLabel65.setText("This program uses the Jython library http://jython.sf.net licensed");
-
-        jLabel71.setText("under Python Software Foundation License 2");
-
-        org.jdesktop.layout.GroupLayout jPanel24Layout = new org.jdesktop.layout.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel24Layout.createSequentialGroup()
-                .add(jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel1)
-                    .add(jLabel2)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                    .add(jLabel4)
-                    .add(jLabel66)
-                    .add(jLabel9)
-                    .add(jLabel65)
-                    .add(jLabel71))
-                .addContainerGap())
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel66)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel9)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel65)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel71)
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 390, 240));
-
-        jTabbedPane1.addTab("About", null, jPanel1, "About DSHub...");
+        jTabbedPane1.addTab("Start", null, jPanel1, "");
 
         jPanel2.setToolTipText("Hub Settings");
 
@@ -1166,7 +1261,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel32.setText("Maximum number of online users, integer.");
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 10));
-        jLabel35.setText("Regular Expression that a nick needs to match, String.");
+        jLabel35.setText("Chars that could be used for a nick, String. ");
 
         maxschcharsfield.setText("256");
         maxschcharsfield.setPreferredSize(new java.awt.Dimension(130, 19));
@@ -1845,6 +1940,13 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton35.setText("Delete Account");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -1869,20 +1971,22 @@ public class TestFrame extends javax.swing.JFrame {
                             .add(jPanel3Layout.createSequentialGroup()
                                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 624, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton22)))))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jButton35, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(jButton22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
+                .add(jLabel10)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3Layout.createSequentialGroup()
-                        .add(jLabel10)
+                        .add(jButton22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 302, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel3Layout.createSequentialGroup()
-                        .add(116, 116, 116)
-                        .add(jButton22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jButton35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 302, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 12, Short.MAX_VALUE)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
@@ -1921,7 +2025,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -1953,10 +2057,13 @@ public class TestFrame extends javax.swing.JFrame {
                 jPanel6MouseClicked(evt);
             }
         });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
+
+        jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 80));
 
         jButton6.setText("Update Statistics");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -1964,27 +2071,67 @@ public class TestFrame extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
+        jPanel6.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE))
-            .add(jPanel6Layout.createSequentialGroup()
-                .add(297, 297, 297)
-                .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton6)
-                .addContainerGap(136, Short.MAX_VALUE))
-        );
+        jLabel89.setText("DSHub running on ");
+        jPanel6.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        osname.setText("jLabel90");
+        jPanel6.add(osname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 140, -1));
+
+        jLabel90.setText("Operating system version:");
+        jPanel6.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, -1));
+
+        osversion.setText("jLabel91");
+        jPanel6.add(osversion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 110, -1));
+
+        jLabel91.setText("System architecture:");
+        jPanel6.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        osarch.setText("osarch");
+        jPanel6.add(osarch, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 80, -1));
+
+        jLabel92.setText("Java Runtime Environment: ");
+        jPanel6.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jrename.setText("jLabel93");
+        jPanel6.add(jrename, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+
+        jLabel93.setText("Java Runtime Environment provider:");
+        jPanel6.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        jreprovider.setText("jLabel94");
+        jPanel6.add(jreprovider, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jLabel94.setText("Current processors available:");
+        jPanel6.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        cpunumber.setText("jLabel95");
+        jPanel6.add(cpunumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
+
+        jLabel95.setText("Current online user count:");
+        jPanel6.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+
+        usercount.setText("jLabel96");
+        jPanel6.add(usercount, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+
+        jLabel96.setText("Current connecting user count:");
+        jPanel6.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        connectingcount.setText("jLabel97");
+        jPanel6.add(connectingcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
+
+        jLabel97.setText("Hub uptime:");
+        jPanel6.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        uptime.setText("jLabel98");
+        jPanel6.add(uptime, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+
+        jLabel98.setText("Startup time:");
+        jPanel6.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        startuptime.setText("jLabel99");
+        jPanel6.add(startuptime, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, -1));
 
         jTabbedPane1.addTab("Stats", null, jPanel6, "Some Hub Statistics...");
 
@@ -2108,7 +2255,7 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .add(jRadioButton4)
                     .add(jRadioButton5)
                     .add(jRadioButton6))
@@ -2170,7 +2317,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(privatecheck)
                         .add(45, 45, 45)
                         .add(searchcheck)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 59, Short.MAX_VALUE)
                         .add(notifycheck, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 119, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -2241,7 +2388,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton28))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(jLabel63)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
                         .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 341, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton29)))
@@ -2346,7 +2493,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel17Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel17Layout.createSequentialGroup()
                         .add(jLabel64)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
                         .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 342, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(8, 8, 8)
                         .add(jButton23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 65, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -2362,10 +2509,10 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jPanel17Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel17Layout.createSequentialGroup()
                                 .add(jRadioButton9)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 206, Short.MAX_VALUE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 220, Short.MAX_VALUE))
                             .add(jPanel17Layout.createSequentialGroup()
                                 .add(jRadioButton12)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
                                 .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(10, 10, 10)))))
                 .addContainerGap())
@@ -2999,7 +3146,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton32))
                     .add(jPanel22Layout.createSequentialGroup()
                         .add(28, 28, 28)
-                        .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
+                        .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -3016,6 +3163,124 @@ public class TestFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Scripts", jPanel22);
 
+        jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel74.setText("ADC Secure (ADCS) is a standard ADC extensions that enables running the standard ADC protocol over the ");
+        jPanel45.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel75.setText("Secure Socket Layer / Transport Layer Security ( SSL/TLS ). All messages between the hub and the clients are sent encrypted but the ADC");
+        jPanel45.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabel76.setText("commands remain the same. Client to client are also encrypted if the clients support it.");
+        jPanel45.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        jLabel77.setText("To enable ADCS you need a pair of keys for the hubsoft, a private and a public key. You also need a certificate for your public key signed by the");
+        jPanel45.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel78.setText("hub itself. Clients you register will get a certificate for their public key signed by the hub, this can replace the password based login.");
+        jPanel45.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        jLabel81.setText("To prepare your hub for ADCS, meet the following steps:");
+        jPanel45.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jPanel46.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel46.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel80.setText("Step 1:");
+        jPanel46.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel82.setText("Make sure you have your hub name and settings properly set up ( The key pairs and certificate are created based on your hub name ).");
+        jPanel46.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jPanel45.add(jPanel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 710, 40));
+
+        jPanel47.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel47.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel87.setText("Step 2:");
+        jPanel47.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel85.setText("Pick");
+        jPanel47.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+
+        genbutton.setText("Generate new pair of keys and certificate for your hub");
+        genbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genbuttonActionPerformed(evt);
+            }
+        });
+        jPanel47.add(genbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        jLabel84.setText("or");
+        jPanel47.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+
+        loadkeysbutton.setText("Load keys and certificate previously generated from file");
+        jPanel47.add(loadkeysbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 330, -1));
+
+        jPanel45.add(jPanel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 710, 70));
+
+        jPanel48.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel48.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel83.setText("Optional Step 3:");
+        jPanel48.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        usecertificatescheck.setText("Use certificates for login instead of literal passwords ( improved security )");
+        usecertificatescheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usecertificatescheckActionPerformed(evt);
+            }
+        });
+        jPanel48.add(usecertificatescheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        jLabel79.setText("To generate a certificate for a specific registered user, go to it's configuration panel and click \"Generate certificate for this reg\"");
+        jPanel48.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
+        jPanel45.add(jPanel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 710, 60));
+
+        jPanel49.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel88.setText("Step 4:");
+
+        enableadcs.setText("Enable ADC Secure");
+        enableadcs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableadcsActionPerformed(evt);
+            }
+        });
+
+        disableadcs.setText("Disable ADC Secure");
+
+        org.jdesktop.layout.GroupLayout jPanel49Layout = new org.jdesktop.layout.GroupLayout(jPanel49);
+        jPanel49.setLayout(jPanel49Layout);
+        jPanel49Layout.setHorizontalGroup(
+            jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel49Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel88)
+                .add(157, 157, 157)
+                .add(enableadcs)
+                .add(18, 18, 18)
+                .add(disableadcs)
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        jPanel49Layout.setVerticalGroup(
+            jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel49Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel88)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel49Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .add(jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(disableadcs)
+                    .add(enableadcs)))
+        );
+
+        jPanel45.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 710, 40));
+
+        jTabbedPane1.addTab("ADC Secure", jPanel45);
+
         jPanel12.setToolTipText("Hub Log");
 
         LogText.setColumns(20);
@@ -3028,7 +3293,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -3052,7 +3317,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(Panelxxx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .add(Panelxxx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -3064,7 +3329,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Help", null, jPanel4, "Some Help...");
 
-        jButton3.setText("RESTART HUB");
+        jButton3.setText("Restart Hub");
         jButton3.setToolTipText("Restarts hub with current settings.");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3078,49 +3343,67 @@ public class TestFrame extends javax.swing.JFrame {
         StatusLabel.setFont(new java.awt.Font("Tahoma", 0, 10));
         StatusLabel.setText("Initialising ...");
 
+        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/off.jpg"))); // NOI18N
+        jLabel73.setText("ADC Secure mode not enabled ");
+        jLabel73.setToolTipText("Click for information");
+        jLabel73.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel73MouseClicked(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(37, 37, 37)
-                .add(jLabel13)
-                .add(25, 25, 25)
-                .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 441, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton3)
-                .add(23, 23, 23)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(37, 37, 37)
+                                .add(jLabel13)
+                                .add(25, 25, 25)
+                                .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 441, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(layout.createSequentialGroup()
+                                .add(58, 58, 58)
+                                .add(jLabel73)))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton3)
+                        .add(27, 27, 27)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 423, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(30, 30, 30)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel13)
-                            .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                                 .add(jButton1)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton2))
+                                .add(jButton2)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                .add(jButton3)
-                                .add(21, 21, 21)))
-                        .add(20, 20, 20))))
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(jLabel13)
+                                    .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel73)
+                                .add(5, 5, 5))))
+                    .add(layout.createSequentialGroup()
+                        .add(31, 31, 31)
+                        .add(jButton3)))
+                .add(20, 20, 20))
         );
 
         pack();
@@ -3497,144 +3780,89 @@ public class TestFrame extends javax.swing.JFrame {
 	}//GEN-LAST:event_jButton22ActionPerformed
 
 	private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("SUP Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"SUP is the ADC feature negotiating,\ncommand, hub-client.\n( B ) No defined purpose.\n"
-						+ "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"
-						+ "( H ) Send to hub."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"SUP is the ADC feature negotiating, command, hub-client.\n" +
+		           "( B ) No defined purpose.\n" +
+		           "( D ) No defined purpose.\n" +
+		           "( E ) No defined purpose.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) Send to hub.",
+		           "SUP",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton21ActionPerformed
 
 	private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("RES Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"RES is the search result command,\nis used to reply to searches.\n( B ) No defined purpose.\n"
-						+ "( D ) Reply to a single user.\n( E ) same as D.\n( F ) No defined purpose.\n"
-						+ "( H ) No defined purpose."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		
+		 JOptionPane.showMessageDialog(null,"RES is the search result command, is used to reply to searches.\n" +
+		           "( B ) No defined purpose.\n" +
+		           "( D ) Reply to a single user.\n" +
+		           "( E ) same as D.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) No defined purpose.",
+		           "RES",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton20ActionPerformed
 
 	private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("PAS Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"PAS is the command that supplies the\npassword to the hub.\n( B ) No defined purpose.\n"
-						+ "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"
-						+ "( H ) Send to hub."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"PAS is the command that supplies the password to the hub.\n" +
+		           "( B ) No defined purpose.\n" +
+		           "( D ) No defined purpose.\n" +
+		           "( E ) No defined purpose.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) Send to hub.",
+		           "PAS",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton19ActionPerformed
 
 	private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("INF Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"INF is the information specifier command,\nis used to tell other clients about\none's ADC client.\n( B ) Send info to all other clients.\n"
-						+ "( D ) No defined purpose.\n( E ) No defined purpose.\n( F ) No defined purpose.\n"
-						+ "( H ) No defined purpose."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"INF is the information specifier command, is used to tell other clients\nabout one's ADC client.\n" +
+		           "( B ) Send info to all other clients.\n" +
+		           "( D ) No defined purpose.\n" +
+		           "( E ) No defined purpose.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) No defined purpose.",
+		           "INF",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton18ActionPerformed
 
 	private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("SCH Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"SCH is the search command,\nis used to search for files.\n( B ) Send search request to all other clients.\n"
-						+ "( D ) Search on a single user.\n( E ) same as D.\n( F ) Search featured clients.\n"
-						+ "( H ) No defined purpose."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"SCH is the search command, is used to search for files.\n" +
+		           "( B ) Send search request to all other clients.\n" +
+		           "( D ) Search on a single user.\n" +
+		           "( E ) same as D.\n" +
+		           "( F ) Search featured clients.\n" +
+		           "( H ) No defined purpose.",
+		           "SCH",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton17ActionPerformed
 
 	private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("RCM Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"RCM is the reverse connect to me command,\nis used for requesting a direct\nconnection from another client,\nby a passive TCP user.\n( B ) No defined purpose.\n"
-						+ "( D ) Requesting from other client.\n( E ) same as D.\n( F ) No defined purpose.\n"
-						+ "( H ) No defined purpose."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"RCM is the reverse connect to me command, is used for requesting a direct\nconnection from another client, by a passive TCP user.\n" +
+		           "( B ) No defined purpose.\n" +
+		           "( D ) Requesting from other client.\n" +
+		           "( E ) same as D.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) No defined purpose.",
+		           "RCM",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton16ActionPerformed
 
 	private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("CTM Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"CTM is the connect to me command,\nis used for requesting a direct\nconnection from another client.\n( B ) No defined purpose.\n"
-						+ "( D ) Connecting to other client.\n( E ) same as D.\n( F ) No defined purpose.\n"
-						+ "( H ) No defined purpose."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"CTM is the connect to me command, is used for requesting a\ndirectconnection from another client.\n" +
+		           "( B ) No defined purpose.\n" +
+		           "( D ) Connecting to other client.\n" +
+		           "( E ) same as D.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) No defined purpose.",
+		           "CTM",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton15ActionPerformed
 
 	private void HSTAcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSTAcheckActionPerformed
@@ -3698,67 +3926,43 @@ public class TestFrame extends javax.swing.JFrame {
 	}//GEN-LAST:event_BSTAcheckActionPerformed
 
 	private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("STA Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"STA is the status command, can be used.\neither for confirming commands\nor signaling some error.\n( B ) no defined purpose for STA.\n"
-						+ "( D ) Can be sent to a specified client.\n( E ) same as D.\n( F ) no defined purpose.\n"
-						+ "( H ) To be sent to hub."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"STA is the status command, can be used either for confirming\ncommands or signaling some error.\n" +
+		           "( B ) no defined purpose for STA.\n" +
+		           "( D ) Can be sent to a specified client.\n" +
+		           "( E ) same as D.\n" +
+		           "( F ) No defined purpose.\n" +
+		           "( H ) To be sent to hub.",
+		           "STA",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton14ActionPerformed
 
 	private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("MSG Command");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"MSG is the chat command.\n( B ) is broadcast MSG ( main chat ).\n"
-						+ "( D ) is direct msg, used for private message.\n( E ) is used for private message too.\n( F ) can be used by ADC clients.\n"
-						+ "( H ) can be used in some messages from clients."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		
+		JOptionPane.showMessageDialog(null,"MSG is the chat command.\n" +
+		           "( B ) is broadcast MSG ( main chat ).\n" +
+		           "( D ) is direct msg, used for private message.\n" +
+		           "( E ) is used for private message too.\n" +
+		           "( F ) can be used by ADC clients.\n" +
+		           "( H ) can be used in some messages from clients.",
+		           "MSG",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton13ActionPerformed
 
 	private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-		JDialog bla = new JDialog(this, true);
-		JPanel jp = new JPanel();
-
-		bla.setSize(300, 400);
-		bla.setTitle("What are this contexts about ?");
-
-		bla.getContentPane().add(jp);
-		JTextArea jl = new JTextArea(
-				"ADC uses a context for each command.\nThat is necessary because every command can be\n"
-						+ "treated differently according to it's context.\nThe context for each command that you can change:\nBroadcast ( B ) is the context in which.\n"
-						+ "the command is being sent to all clients connected.\nDirect Message ( D ) is intended for a single user\nand coming from a single user\n"
-						+ "This is tipically used for requesting direct\nconnection, or perhaps private message.\nDirect Echo Message ( E ) is much alike D,\n"
-						+ "except that the message is sent to first\nuser too ( echoing it ).\nFeature Broadcast ( F ) is much alike ( B ),\n"
-						+ "except that the broadcast is not sent to all,\nbut to users that have some feature,\nlike passive searching (sending to active only).\n"
-						+ "To Hub only ( H ) is a message from a single client\nintended for hub only, like \nnegotiating protocol features."
-
-		);
-		// jl.setSize (100,30);
-		jp.add(jl);
-		// jp.add(new JLabel("test"));
-		bla.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null,"ADC uses a context for each command. That is necessary because every command can be\n" +
+		           "treated differently according to it's context. The context for each command that you can change:\n"+
+		           "Broadcast ( B ) is the context in which the command is being sent to all clients connected.\n" +
+		           "Direct Message ( D ) is intended for a single user and coming from a single user.\n" +
+		           "This is tipically used for requesting direct connection, or perhaps private message.\n" +
+		           "Direct Echo Message ( E ) is much alike D, except that the message is sent to first user too ( echoing it ).\n" +
+		           "Feature Broadcast ( F ) is much alike ( B ), except that the broadcast is not sent to all, but to users \n"+
+		           "that have some feature, like passive searching (sending to active only).\n"+
+		           "To Hub only ( H ) is a message from a single client intended for hub only, like negotiating protocol features.",
+		           "What are this contexts about ?",  
+		           JOptionPane.INFORMATION_MESSAGE);
 	}//GEN-LAST:event_jButton12ActionPerformed
 
 	private void HMSGcheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_HMSGcheckActionPerformed
@@ -3837,64 +4041,7 @@ public class TestFrame extends javax.swing.JFrame {
 		{
 			//need to ureg that reg
 			//  int row=AccountTable.getEditingRow ();
-			int row = AccountTable.getSelectedRow();
-			String CID = (String) AccountTable.getModel().getValueAt(row, 0);
-			// Main.PopMsg(CID);
-			if (AccountsConfig.unreg(CID)) {
-				DefaultTableModel AccountModel = (DefaultTableModel) AccountTable
-						.getModel();
-				Nod n = AccountsConfig.First;
-				int regcount = 0;
-				while (n != null) {
-					regcount++;
-					n = n.Next;
-				}
-
-				if (regcount != AccountModel.getRowCount()) {
-					AccountModel.setRowCount(0);
-					n = AccountsConfig.First;
-					while (n != null) {
-						String blah00 = "";
-						Date d = new Date(n.CreatedOn);
-						if (n.LastNI != null)
-							blah00 = n.LastNI;
-						else
-							blah00 = "Never seen online.";
-
-						AccountModel.addRow(new Object[] { n.CID, blah00,
-								n.LastIP, n.WhoRegged, d.toString() });
-						n = n.Next;
-					}
-				}
-				for (ClientNod temp : SimpleHandler.getUsers()) {
-					if (temp.cur_client.userok == 1)
-						if ((temp.cur_client.ID.equals(CID))) {
-							temp.cur_client
-									.sendFromBot(""
-											+ "Your account has been deleted. From now on you are a simple user.");
-							temp.cur_client.putOpchat(false);
-							temp.cur_client.CT = "0";
-
-							Broadcast.getInstance()
-									.broadcast(
-											"BINF " + temp.cur_client.SessionID
-													+ " CT");
-							temp.cur_client.can_receive_cmds=false;
-							temp.cur_client.reg = new Nod();
-							Main.PopMsg("User " + temp.cur_client.NI
-									+ " with CID " + CID + " found, deleted.");
-							Main.Server.rewriteregs();
-							SetStatus("Reg Deleted");
-							return;
-						}
-				}
-
-				Main.PopMsg("Reg " + CID + " deleted.");
-				Main.Server.rewriteregs();
-
-			}
-
-			SetStatus("Reg Deleted");
+			deleteSelectedReg();
 		}
 	}//GEN-LAST:event_AccountTableKeyPressed
 
@@ -4590,46 +4737,7 @@ public class TestFrame extends javax.swing.JFrame {
 	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
 	{//GEN-HEADEREND:event_jButton6ActionPerformed
 	// TODO add your handling code here:
-		Runtime myRun = Runtime.getRuntime();
-
-		int i = 0, j = 0;
-		for (ClientNod temp : SimpleHandler.getUsers()) {
-			if (temp.cur_client.userok == 1)
-				i++;
-			else
-				j++;
-
-		}
-
-		long up = System.currentTimeMillis() - Main.curtime; //uptime in millis
-
-		Date b = new Date(Main.curtime);
-		jTextArea2.setText("Death Squad Hub. Version " + Vars.HubVersion
-				+ ".\n" + "  Running on "
-				+ Main.Proppies.getProperty("os.name") + " Version "
-				+ Main.Proppies.getProperty("os.version") + " on Architecture "
-				+ Main.Proppies.getProperty("os.arch") + "\n"
-				+ "  Java Runtime Environment "
-				+ Main.Proppies.getProperty("java.version") + " from "
-				+ Main.Proppies.getProperty("java.vendor") + "\n"
-				+ "  Java Virtual Machine "
-				+ Main.Proppies.getProperty("java.vm.specification.version")
-				+ "\n" + "  Available CPU's to JVM "
-				+ Integer.toString(myRun.availableProcessors()) + "\n"
-				+ "  Available Memory to JVM: "
-				+ Long.toString(myRun.maxMemory()) + " Bytes, where free: "
-				+ Long.toString(myRun.freeMemory()) + " Bytes\n"
-				+ "Hub Statistics:\n" + "  Online users: "
-				+ Integer.toString(i) + "\n" + "  Connecting users: "
-				+ Integer.toString(j) + "\n" + "  Uptime: "
-				+ TimeConv.getStrTime(up) + "\n" + "  Start Time: "
-				+ b.toString()// + //"\n  Bytes red per second: "
-				// "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
-	          //     "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
-				//+ "\n  Bytes written per second: "
-			//	+ Main.Server.IOSM.getTotalByteWrittenThroughput()
-
-		);
+		refreshStats();
 	}//GEN-LAST:event_jButton6ActionPerformed
 
 	private void jPanel6MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel6MouseMoved
@@ -4704,6 +4812,17 @@ public class TestFrame extends javax.swing.JFrame {
 		}
 		//  blah00=blah00.substring (0,blah00.length ()-2);
 		// System.out.println (blah00);
+                
+                if(Vars.adcs_mode)
+                {
+                    enableadcs.setEnabled(false);
+                    disableadcs.setEnabled(true);
+                }
+                else
+                {
+                    enableadcs.setEnabled(true);
+                    disableadcs.setEnabled(false);
+                }
 
 		/**setting stuff*/
 		jTextArea1.setText(ADC.GreetingMsg);
@@ -4713,7 +4832,7 @@ public class TestFrame extends javax.swing.JFrame {
 		Runtime myRun = Runtime.getRuntime();
 		refreshPyScripts();
 
-		int i = 0, j = 0;
+		/*int i = 0, j = 0;
 		for (ClientNod temp : SimpleHandler.getUsers()) {
 			if (temp.cur_client.userok == 1)
 				i++;
@@ -4774,7 +4893,8 @@ public class TestFrame extends javax.swing.JFrame {
            //    "\n  Bytes written per second: "+(Main.Server.acceptor == null ? 
           //  		   "0.0": Main.Server.acceptor.getWrittenBytesThroughput())
 		);
-
+*/
+                refreshStats();
 		/*
 		 * max_em                  128        -- Maximum e-mail string size, integer.
 		 max_hubs_op             100       -- Maximum hubs where user is op, integer.
@@ -5382,6 +5502,8 @@ public class TestFrame extends javax.swing.JFrame {
 	{//GEN-HEADEREND:event_jButton32ActionPerformed
 		Main.pManager.rescanScripts();
 		refreshPyScripts();
+                SetStatus("Python scripts refreshed.");
+                
 	}//GEN-LAST:event_jButton32ActionPerformed
 
 	private void PyTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_PyTableMouseClicked
@@ -5480,6 +5602,80 @@ if(command_pmcheck.isSelected())
    }
 }//GEN-LAST:event_command_pmcheckActionPerformed
 
+private void jLabel73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel73MouseClicked
+// TODO add your handling code here:
+   
+                
+                 JOptionPane.showMessageDialog(null,"ADCS is a standard ADC extension that enables running the normal ADC\n" +
+           "protocol over the Secure Socket Layer / Transport Layer Security (SSL/TLS).\n" +
+           "All messages between the hub and the clients are send encrypted\n" +
+           "but the ADC commands remain the same.\n" +
+           "Client to client connections are also encrypted if the\n" +
+           "clients support it.\n" +
+           "You can setup your certificate/keys on the ADCS tab.", 
+           "ADC Secure (ADCS)",  
+           JOptionPane.INFORMATION_MESSAGE);
+}//GEN-LAST:event_jLabel73MouseClicked
+
+private void genbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genbuttonActionPerformed
+// TODO add your handling code here:
+   int x=JOptionPane.showConfirmDialog(null,"This will remove existing keys and certificates and will generate new random keys.\n" +
+           "Any users having certificates signed by the defunct keys will be rendered useless.\n" +
+           " Are you sure you want to regenerate ?\n" +
+           "( The operation might take a while )", Vars.HubName, JOptionPane.OK_CANCEL_OPTION, 
+           JOptionPane.WARNING_MESSAGE);
+    if(x==JOptionPane.OK_OPTION)
+    {
+       
+        Main.Server.sslmanager.getCertManager().recreateKeysCerts();
+       // JOptionPane.showConfirmDialog(null,"New pair of keys and certificate were created and saved into key.crt",
+        //        Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        this.SetStatus("New pair of keys and certificate were created and saved into key.crt");
+         
+    }
+}//GEN-LAST:event_genbuttonActionPerformed
+
+private void usecertificatescheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usecertificatescheckActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_usecertificatescheckActionPerformed
+
+private void enableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableadcsActionPerformed
+// TODO add your handling code here:
+}//GEN-LAST:event_enableadcsActionPerformed
+
+private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+// TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,"Product version: "+Vars.HubVersion+" RC2.\n" +
+           "Copyright (c) 2007-2008 by Eugen Hristev.\n" +
+           "Special Thanks go to : MAGY, Spader, Toast, Naccio, Catalaur, Ciprian Dobre.\n" +
+           "Also thanks go to everybody who helped me with code, ideas or just moral support,\n" +
+           "also to everybody using my software and all testers for a good debugging ;)\n" +
+           "Finally, many thanks to all the people who helped in translating, \n" +
+           "and not to forget, all the good people working on MINA, Jython or Bouncy Castle.\n", 
+           "Death Squad Hub. The credits",  
+           JOptionPane.INFORMATION_MESSAGE,myIco);
+}//GEN-LAST:event_jButton33ActionPerformed
+
+private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+// TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,"This program is distributed in the hope that it will be useful,\n" +
+           "but WITHOUT ANY WARRANTY; without even the implied warranty of \n" +
+           "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See\n" +
+           "the GNU General Public License for more details. \n" +
+           "This program uses the MINA library http://mina.apache.org licensed\n" +
+           "under the Apache Public License.\n" +
+           "This program uses the Jython library http://jython.sf.net licensed\n" +
+           "under Python Software Foundation License 2\n" +
+           "This program uses the Bouncy Castle library http://www.bouncycastle.org", 
+           "Death Squad Hub. License",  
+           JOptionPane.INFORMATION_MESSAGE,myIco);
+}//GEN-LAST:event_jButton34ActionPerformed
+
+private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+// TODO add your handling code her
+    deleteSelectedReg();
+}//GEN-LAST:event_jButton35ActionPerformed
+
 	public void SetStatus(String newstring, int msgType) {
 		StatusLabel.setText(newstring);
 		if (Main.GUIshowing)
@@ -5558,7 +5754,12 @@ if(command_pmcheck.isSelected())
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JTextField chatintervalfield;
     private javax.swing.JCheckBox command_pmcheck;
+    private javax.swing.JLabel connectingcount;
+    private javax.swing.JLabel cpunumber;
+    private javax.swing.JButton disableadcs;
+    private javax.swing.JButton enableadcs;
     private javax.swing.JTextField fieldtimeout;
+    private javax.swing.JButton genbutton;
     private javax.swing.JTextField historylinesfield;
     private javax.swing.JTextField hubhostfield;
     private javax.swing.JButton jButton1;
@@ -5587,6 +5788,9 @@ if(command_pmcheck.isSelected())
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -5661,10 +5865,34 @@ if(command_pmcheck.isSelected())
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -5681,8 +5909,6 @@ if(command_pmcheck.isSelected())
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
@@ -5705,6 +5931,11 @@ if(command_pmcheck.isSelected())
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel46;
+    private javax.swing.JPanel jPanel47;
+    private javax.swing.JPanel jPanel48;
+    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -5743,8 +5974,11 @@ if(command_pmcheck.isSelected())
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel jrename;
+    private javax.swing.JLabel jreprovider;
     private javax.swing.JTextField kicktimefield;
     private javax.swing.JComboBox langcombo;
+    private javax.swing.JButton loadkeysbutton;
     private javax.swing.JTextField maxchatmsgfield;
     private javax.swing.JTextField maxdefield;
     private javax.swing.JTextField maxemfield;
@@ -5769,6 +6003,9 @@ if(command_pmcheck.isSelected())
     private javax.swing.JCheckBox notifycheck;
     private javax.swing.JTextField opchatdescfield;
     private javax.swing.JTextField opchatnamefield;
+    private javax.swing.JLabel osarch;
+    private javax.swing.JLabel osname;
+    private javax.swing.JLabel osversion;
     private javax.swing.JScrollPane pane5;
     private javax.swing.JTable portlist;
     private javax.swing.JCheckBox privatecheck;
@@ -5783,7 +6020,11 @@ if(command_pmcheck.isSelected())
     private javax.swing.JTextField searchlogbasefield;
     private javax.swing.JTextField searchspamresetfield;
     private javax.swing.JTextField searchstepsfield;
+    private javax.swing.JLabel startuptime;
     private javax.swing.JTextField topicfield;
+    private javax.swing.JLabel uptime;
+    private javax.swing.JCheckBox usecertificatescheck;
+    private javax.swing.JLabel usercount;
     private javax.swing.JPanel xxx;
     // End of variables declaration//GEN-END:variables
 
