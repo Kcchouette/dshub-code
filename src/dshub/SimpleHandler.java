@@ -66,7 +66,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 	public void exceptionCaught(IoSession session, Throwable t)
 			throws Exception {
 		//System.out.println(t.getMessage());
-
+		t.printStackTrace();
 		// if((t.getMessage().contains("IOException")))
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
