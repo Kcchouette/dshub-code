@@ -1316,10 +1316,10 @@ public class CommandParser {
 					+ "Hub Statistics:\n" + "  Online users: "
 					+ Integer.toString(i) + "\n" + "  Connecting users: "
 					+ Integer.toString(j) + "\n" + "  Uptime: "
-					+ TimeConv.getStrTime(up) +//+ "\n  Bytes read per second: "
+					+ TimeConv.getStrTime(up) //+//+ "\n  Bytes read per second: "
 				//	+ Main.Server.IOSM.getTotalByteReadThroughput()
-					    "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
-               "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
+				//	    "\n  Bytes read per second: "+Main.Server.acceptor.getReadBytesThroughput()+
+           //    "\n  Bytes written per second: "+Main.Server.acceptor.getWrittenBytesThroughput()
                        
 					//+ "\n  Bytes written per second: "
 					//+ Main.Server.IOSM.getTotalByteWrittenThroughput()

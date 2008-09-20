@@ -22,7 +22,15 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+
+import org.bouncycastle.jce.examples.PKCS12Example;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import dshub.Modules.Modulator;
+import dshub.adcs.CertManager;
+import dshub.adcs.KeyManager;
+import dshub.adcs.SSLManager;
+
 import java.net.*;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -33,6 +41,8 @@ import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.Security;
+import java.security.cert.Certificate;
 import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -45,9 +55,11 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.crypto.SecretKey;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
+//import javax.security.cert.Certificate;
 import javax.swing.JOptionPane;
 
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
@@ -73,7 +85,9 @@ public class HubServer extends Thread
 {
     
     /** Server main socket */
-    private ServerSocket MainSocket;
+   // private ServerSocket MainSocket;
+	
+	public SSLManager sslmanager;
    
     InputStream IS;
     OutputStream OS;    
@@ -169,101 +183,23 @@ public class HubServer extends Thread
         
          //cfg.getSessionConfig().setReceiveBufferSize(102400);
         // cfg.getSessionConfig().setSendBufferSize(102400);
-     /*   try {
-			acceptor.getFilterChain()
-			.addLast("sslFilter", new SslFilter(new SslContextFactory().newInstance()));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-*//*
-        File keyStore=new File(Main.myPath+"key");
-        String passphrase="ole";
-        SslFilter result = null;
-        try
-        {
-       
-		if (keyStore != null && keyStore.exists()) {
-			KeyStore keystore = KeyStore.getInstance("JKS");
-			keystore.load(new FileInputStream(keyStore), passphrase.toCharArray());
-
-			KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509");
-			keyManagerFactory.init(keystore, passphrase.toCharArray());
-
-			TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("SunX509");
-			trustManagerFactory.init(keystore);
-
-			SSLContext sslContext = SSLContext.getInstance("TLS");			
-			sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null);
-			
-			result = new SslFilter(sslContext);
-		}
-		else
-		{
-			
-			String keyAlgorithm="RSA";
-			int numBits=512;
-try {
-
-// Get the public/private key pair
-KeyPairGenerator keyGen = KeyPairGenerator.getInstance(keyAlgorithm);
-keyGen.initialize(numBits);
-KeyPair keyPair = keyGen.genKeyPair();
-PrivateKey privateKey = keyPair.getPrivate();
-PublicKey  publicKey  = keyPair.getPublic();
-
-System.out.println(
-   "\n" +
-   "Generating key/value pair using " +
-   privateKey.getAlgorithm() +
-   " algorithm");
-
-// Get the bytes of the public and private keys
-byte[] privateKeyBytes = privateKey.getEncoded();
-byte[] publicKeyBytes  = publicKey.getEncoded();
-
-// Get the formats of the encoded bytes
-String formatPrivate = privateKey.getFormat(); // PKCS#8
-String formatPublic  = publicKey.getFormat(); // X.509
-
-System.out.println("  Private Key Format : " + formatPrivate);
-System.out.println("  Public Key Format  : " + formatPublic);
-
-// The bytes can be converted back to public and private key objects
-KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm);
-EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
-PrivateKey privateKey2 = keyFactory.generatePrivate(privateKeySpec);
-
-EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicKeyBytes);
-PublicKey publicKey2 = keyFactory.generatePublic(publicKeySpec);
-
-// The original and new keys are the same
-System.out.println(
-"  Are both private keys equal? " + privateKey.equals(privateKey2));
-
-System.out.println(
-"  Are both public keys equal? " + publicKey.equals(publicKey2));
-
-} catch (NoSuchAlgorithmException e) {
-
-System.out.println("Exception");
-System.out.println("No such algorithm: " + keyAlgorithm);
-
-}
-
-}
-
-		
-		
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();
-        }
-        if(result!=null) //Fj32B85K
+        sslmanager=new SSLManager(new CertManager());
+         SslFilter sslfilter=sslmanager.getSSLFilter();
+     if(Vars.adcs_mode)
+     {
+        
+       if(sslfilter!=null) 
         	acceptor.getFilterChain()
-			.addLast("sslFilter",result);
-        	*/
+			.addLast("sslFilter",sslfilter);
+       else
+       {
+    	   Main.GUI.SetStatus("Couldn't find suitable keys and certificate.\nPlease load them or regenerate.\n"+
+    			   "ADC Secure mode has been disabled.",JOptionPane.WARNING_MESSAGE);
+    	   Vars.adcs_mode=false;
+       }
+       
+     }
+        
         acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
         TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ));
         myx.setDecoderMaxLineLength(2024000);

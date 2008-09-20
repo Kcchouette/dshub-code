@@ -1,4 +1,4 @@
-If you experience problems, mailto:pietry@death-squad.ro or post on dshub forum at http://launchpad.net/dshub
+If you experience problems, post on dshub forum at http://launchpad.net/dshub
 
 How to compile in 3 easy steps:
 1. install JDK 1.6 from http://java.sun.com and make sure the binaries are in your path ( bin directory )
