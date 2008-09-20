@@ -1,3 +1,12 @@
+
+       * added delete account button so now delete key isn't the only way to delete a reg via GUI;       
+       * modified advanced tab info boxes with message dialogs instead of older ugly frames;
+       * the new adcs tab is an easy setup mode for adcs;    
+       * main interface changed, frontpage changed more towards a hubsoft map; 
+       * made the plugin gui list a little bit smaller;
+       * dshub uses now the crypto library bouncycastle, http://www.bouncycastle.org
+       * created initial ADCS support and adcs package;
+       * fixed bug when empty command would crash onRawCommand on RSS feed plugin;
        * updated MINA to 2.0.0M3
 
 
