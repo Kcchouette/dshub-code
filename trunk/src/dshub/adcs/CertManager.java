@@ -98,7 +98,7 @@ public class CertManager
 
         v1CertGen.setSerialNumber(BigInteger.valueOf(1546235));
         v1CertGen.setIssuerDN(new X509Principal(issuer));
-        v1CertGen.setNotBefore(new Date(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 30));
+        v1CertGen.setNotBefore(new Date(System.currentTimeMillis()));
         v1CertGen.setNotAfter(new Date(System.currentTimeMillis() + (1000L * 60 * 60 * 24 * 30)));
         v1CertGen.setSubjectDN(new X509Principal(subject));
         v1CertGen.setPublicKey(pubKey);
@@ -110,15 +110,15 @@ public class CertManager
 
         cert.verify(pubKey);
 
-        PKCS12BagAttributeCarrier   bagAttr = (PKCS12BagAttributeCarrier)cert;
+       // PKCS12BagAttributeCarrier   bagAttr = (PKCS12BagAttributeCarrier)cert;
 
         //
         // this is actually optional - but if you want to have control
         // over setting the friendly name this is the way to do it...
         //
-        bagAttr.setBagAttribute(
-            PKCSObjectIdentifiers.pkcs_9_at_friendlyName,
-            new DERBMPString("DSHub Primary Certificate"));
+      //  bagAttr.setBagAttribute(
+       //     PKCSObjectIdentifiers.pkcs_9_at_friendlyName,
+       //     new DERBMPString("DSHub Primary Certificate"));
 
         return cert;
     }
