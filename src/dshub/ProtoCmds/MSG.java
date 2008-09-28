@@ -105,10 +105,13 @@ public class MSG
                        int index=Main.listaBanate.isOK(message);
                     
                    
-                   //System.out.println(index);
+                   System.out.println(index);
                    if(index!=-1)//not ok
-                    if(!((Issued_Command.startsWith("E") || Issued_Command.startsWith("D") ) &&  (Main.listaBanate.getPrAt(index) & BannedWord.privatechat )!=0))
+                    if(!((Issued_Command.startsWith("E") || Issued_Command.startsWith("D") ) //if pm
+                    		&&  (Main.listaBanate.getPrAt(index) & BannedWord.privatechat )==0)) 
+                    	//and private chat control activated
                    {
+                    	System.out.println("ok");
                        long what=Main.listaBanate.getPrAt(index);
                        /* 
                          static final long dropped=1;
@@ -118,7 +121,10 @@ public class MSG
     static final long replaced=16;
     static final long modified=32;
     static final long allclient=7;
-    static final long allword=56;*/
+    static final long allword=56;
+    public static final long privatechat=64;
+    public static final long notify=128;  194=128+64+2
+    public static final long searches=256;*/
                      //  long what=56;
                        //System.out.println(what);
                        boolean ret=false;
@@ -186,7 +192,7 @@ public class MSG
                           // System.out.println("notying");
                        }
                        if(kick)
-                           new STAError(cur_client,100,"You typed forbidden word.");
+                           new STAError(cur_client,200,"You typed forbidden word.");
                        if(ret)
                            return;
                    }

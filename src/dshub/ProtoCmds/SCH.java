@@ -116,10 +116,10 @@ public class SCH
                             if(!cur_client.reg.overridespam)
                             if(!aux.startsWith("NO"))
                             {
-                                long x=Main.listaBanate.isOK(aux.substring(2));
+                                int x=Main.listaBanate.isOK(aux.substring(2));
                                 if(x!=-1)
                                 {
-                                    long prop=Main.listaBanate.getPr(aux.substring(2) );
+                                    long prop=Main.listaBanate.getPrAt(x );
                                 if( (prop & BannedWord.searches) >0)
                                 {
                                     if((prop & BannedWord.kicked )> 0 )

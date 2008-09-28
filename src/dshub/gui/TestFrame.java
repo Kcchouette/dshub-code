@@ -3681,7 +3681,7 @@ public class TestFrame extends javax.swing.JFrame {
 
 	private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
 	// TODO add your handling code here:
-		long prop = getClientPr();
+		long prop = getClientPr()+getWordPr();
 		//System.out.println(prop);
 		listaBanate.modifyMultiPrAt(jList1.getSelectedIndices(), prop
 				+ (notifycheck.isSelected() ? BannedWord.notify : 0)
