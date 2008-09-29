@@ -124,7 +124,7 @@ public class SUP
                     {
                    cur_client. sendToClient(ADC.Init);
          
-       
+      
         cur_client.sendToClient(ADC.ISID+" "+cur_client.SessionID);
          if(!cur_client.ping)
         if(Vars.HubDE.equals (""))

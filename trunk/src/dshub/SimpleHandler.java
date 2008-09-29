@@ -66,7 +66,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 	public void exceptionCaught(IoSession session, Throwable t)
 			throws Exception {
 		//System.out.println(t.getMessage());
-		t.printStackTrace();
+		//t.printStackTrace();
 		// if((t.getMessage().contains("IOException")))
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
@@ -125,8 +125,8 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 			throws Exception {
 		//ok, we're in idle
 		ClientHandler cur_client = (ClientHandler) (session.getAttachment());
-     WriteFuture future=session.write("");
-     future.addListener(cur_client.myNod );
+    // WriteFuture future=session.write("");
+   //  future.addListener(cur_client.myNod );
     
 		//cur_client.sendToClient("");
 

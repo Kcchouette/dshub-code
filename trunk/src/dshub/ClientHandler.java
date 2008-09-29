@@ -214,6 +214,7 @@ public int kicked=0;
          //this.Queue.addMsg (bla);
         //System.out.println("[sent]: "+bla);
          mySession.write(bla);
+         
        
     
     }

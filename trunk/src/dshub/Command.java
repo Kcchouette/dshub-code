@@ -62,6 +62,7 @@ String Infs="";
              
              
          }
+        if(!(Infs.equals("")))
  cur_client.sendToClient(Infs);
 }
 
@@ -159,6 +160,7 @@ String Infs="";
     
      void  handleINF() throws CommandException, STAException
     {
+    	 
         if(Issued_Command.length()<10)
         {
             new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Incorrect protocol command");
@@ -671,7 +673,7 @@ String Infs="";
               
                
               
-               
+                
                
                if(cur_client.SU!=null) if(!(cur_client.SU.equals("")))
                if(cur_client.SU.contains ("TCP4"))
@@ -784,9 +786,11 @@ String Infs="";
           { new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
           return;}
         sendUsersInfs();
-
+        
                  cur_client.sendToClient("BINF DCBA ID"+Vars.SecurityCid+" NI"+ADC.retADCStr(Vars.bot_name)
                  +" CT5 DE"+ADC.retADCStr(Vars.bot_desc));
+        //cur_client.sendToClient("BINF DCBA IDaa NIbla");
+           //      if(true)return;
                 cur_client.putOpchat(true) ;
                  cur_client.sendToClient(cur_client.getINF ());  //sending inf about itself too
          
@@ -844,6 +848,7 @@ String Infs="";
        
                 if(Issued_Command.substring(1).startsWith("INF"))
                 {
+                	
                      if(State.equals ("IDENTIFY") || State.equals ("VERIFY"))
                      {
                          new STAError(cur_client,200+Constants.STA_INVALID_STATE,"INF Invalid State.","FC",Issued_Command.substring(0,4));
