@@ -173,8 +173,10 @@ public class HubServer extends Thread
         
        // x=Executors.newCachedThreadPool();
       //  y=Executors.newCachedThreadPool();
+         
         acceptor = new NioSocketAcceptor();
-        
+        NioSocketAcceptor nsa=(NioSocketAcceptor)acceptor;
+        nsa.setReuseAddress(true);
         
         
         
