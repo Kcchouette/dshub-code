@@ -26,6 +26,8 @@ package dshub.python;
 import dshub.Main;
 import java.io.File;
 import java.util.LinkedList;
+import java.util.Properties;
+
 import org.python.core.*;
 import org.python.util.*;
 
@@ -46,6 +48,11 @@ public class PythonManager
     public PythonManager()
     {
          Interpretor = new PythonInterpreter();
+       /*  Properties props = new Properties();
+         props.setProperty("jython.path", Main.myPath);
+         PythonInterpreter.initialize(System.getProperties(), props,
+                                      new String[] {""});
+*/
         //interp.execfile("g:\\test.py");
          rescanScripts();
     }
