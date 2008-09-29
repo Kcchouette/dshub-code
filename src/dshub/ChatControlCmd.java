@@ -197,7 +197,10 @@ public class ChatControlCmd
     static final long replaced=16;
     static final long modified=32;
     static final long allclient=7;
-    static final long allword=56;*/
+    static final long allword=56;
+    public static final long privatechat=64;
+    public static final long notify=128;
+    public static final long searches=256;*/
                 case 9:
                 case 10:
                 case 17:

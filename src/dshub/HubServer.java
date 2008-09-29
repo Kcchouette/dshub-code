@@ -203,16 +203,17 @@ public class HubServer extends Thread
      }
         
         acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
-        TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ));
-        myx.setDecoderMaxLineLength(2024000);
-        myx.setEncoderMaxLineLength(2024000);
+        TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ),"\n","\n");
+        myx.setDecoderMaxLineLength(64*1024);
+        myx.setEncoderMaxLineLength(64*1024);
         acceptor.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
         MyCalendar=Calendar.getInstance();
       // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();
         //  filterChainBuilder.addLast("threadPool", new ExecutorFilter(y));
         //cfg.getSessionConfig().setKeepAlive(true);
         
-        acceptor.getSessionConfig().setReadBufferSize( 2048 );
+        acceptor.getSessionConfig().setReadBufferSize( 2048000 );
+        //acceptor.getSessionConfig().WriteBufferSize( 2048000 );
         acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 50 );
         acceptor.setHandler(  new SimpleHandler() );
 //System.out.println(acceptor.getSessionConfig().getWriteTimeout());

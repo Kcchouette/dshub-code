@@ -41,7 +41,7 @@ abstract public class ADC
     public  static final String ISID="ISID";
     
     /** The default motd.*/
-    public static String MOTD="\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
+    public static String MOTD=	"\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client.\n"+
 "At the moment of this release ( July 2008 ), the following ADC clients were available:\n"+
