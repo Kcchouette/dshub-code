@@ -85,13 +85,15 @@ public class SUP
                         if(aux.startsWith ("AD"))
                         {
                             aux=aux.substring (2);
-                            if(aux.startsWith ("BAS") && aux.length()==4)
-                                cur_client.base=1;
+                            if(aux.equals("BAS0") )
+                                cur_client.bas0=true;
+                            if(aux.equals ("BASE") )
+                               cur_client.base=1;
                             if(aux.startsWith ("PIN") && aux.length()==4)
                                 cur_client.ping=true;
                             if(aux.startsWith ("UCM") && aux.length()==4)
                                 cur_client.ucmd=1;
-                            if(aux.startsWith ("TIG") && aux.length()==4)
+                            if(aux.startsWith ("TIGR") && aux.length()==4)
                                 cur_client.tigr=true;
                         }
                         else if(aux.startsWith ("RM"))
@@ -99,14 +101,31 @@ public class SUP
                             aux=aux.substring (2);
                             if(aux.startsWith ("UCM") && aux.length()==4)
                                 cur_client.ucmd=0;
-                            if(aux.startsWith ("BAS") && aux.length()==4)
-                                cur_client.base=0;
+                            if(aux.equals("BAS0") )
+                                cur_client.bas0=false;
+                            if(aux.equals ("BASE") )
+                               cur_client.base=0;
                             if(aux.startsWith ("PIN") && aux.length()==4)
                                 cur_client.ping=false;
                             if(aux.startsWith ("TIG") && aux.length()==4)
                                 cur_client.tigr=false;
                         }
                     }
+                    if(cur_client.bas0)
+                    {
+                    	//System.out.println("bas0");
+                    	/* cur_client. sendToClient(ADC.Init);
+                         
+                         
+                         cur_client.sendToClient(ADC.ISID+" "+cur_client.SessionID);
+                    	if(Vars.HubDE.equals (""))
+                            cur_client.sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName));
+                        else
+                           cur_client. sendToClient("IINF CT32 VE"+ADC.retADCStr (Vars.HubVersion)+" NI"+ADC.retADCStr(Vars.HubName)+ " DE"+ADC.retADCStr(Vars.HubDE));
+                       */
+                    	new STAError(cur_client,100+Constants.STA_GENERIC_PROTOCOL_ERROR,"Your client uses a very old ADC version. Please update in order to connect to this hub. You can get a new version usually by visiting the developer's webpage from Help/About menu.");
+                    }
+                   
                     if(cur_client.base==0)
                       if(State.equals("PROTOCOL"))
                            throw new CommandException("FAIL state:PROTOCOL reason:NOT BASE CLIENT");  

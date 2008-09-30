@@ -168,6 +168,8 @@ public int kicked=0;
     public int ucmd;
     /**indicates if client supports BASE messages*/
     public int base; 
+    /**indicates if client supports old BAS0 messages*/
+    public boolean bas0; 
     
     /** if client supports TIGER hashes or not */
     public boolean tigr;
