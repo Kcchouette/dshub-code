@@ -58,6 +58,7 @@ import javax.swing.DefaultListModel;
 public class TestFrame extends javax.swing.JFrame {
 	BanWordsList listaBanate;
 	ImageIcon myIco;
+        ImageIcon offIco, onIco;
 	boolean initialised = false;
 
 	/** Creates new form TestFrame */
@@ -94,6 +95,8 @@ public class TestFrame extends javax.swing.JFrame {
 			modelLista.addElement(listaBanate.elementAt(i));
 		}
 		myIco = new ImageIcon(getClass().getResource("/dshub/ds.jpg"));
+                onIco = new ImageIcon(getClass().getResource("/dshub/on.jpg"));
+                offIco = new ImageIcon(getClass().getResource("/dshub/off.jpg"));
 		//this.setIconImage(new ImageIcon("/dshub/ds.ico").getImage());
 		this.setIconImage(myIco.getImage());
 		refreshInit();
@@ -743,7 +746,7 @@ public class TestFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         StatusLabel = new javax.swing.JLabel();
-        jLabel73 = new javax.swing.JLabel();
+        adcslabel = new javax.swing.JLabel();
 
         jLabel62.setText("jLabel62");
 
@@ -1074,7 +1077,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(remport))
                     .add(pane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel50))
@@ -1193,7 +1196,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel8Layout.createSequentialGroup()
                         .add(264, 264, 264)
                         .add(jButton8)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1246,7 +1249,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(maxhubsuserfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel31))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 16, Short.MAX_VALUE)
                 .add(jButton8)
                 .addContainerGap())
         );
@@ -1314,7 +1317,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel13Layout.createSequentialGroup()
                         .add(256, 256, 256)
                         .add(jButton9)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1335,7 +1338,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(minschcharsfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel37))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 110, Short.MAX_VALUE)
                 .add(jButton9)
                 .add(69, 69, 69))
         );
@@ -1467,7 +1470,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 59, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel47)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
                 .add(jButton10)
                 .addContainerGap())
         );
@@ -1555,7 +1558,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel49))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 150));
@@ -1615,7 +1618,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel38Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(kicktimefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel40))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 480, 60));
@@ -1645,7 +1648,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel39Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel39))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, 60));
@@ -1694,7 +1697,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel41)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel37.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 600, 250));
@@ -1824,7 +1827,7 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(command_pmcheck)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(442, Short.MAX_VALUE))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1851,7 +1854,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Other settings", jPanel42);
@@ -1863,13 +1866,13 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 735, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1973,7 +1976,7 @@ public class TestFrame extends javax.swing.JFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jButton35, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .add(jButton22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))))
+                                    .add(jButton22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -1987,7 +1990,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 302, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -2025,14 +2028,14 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                 .add(40, 40, 40))
         );
 
@@ -2255,7 +2258,7 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel15Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                     .add(jRadioButton4)
                     .add(jRadioButton5)
                     .add(jRadioButton6))
@@ -2317,7 +2320,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(privatecheck)
                         .add(45, 45, 45)
                         .add(searchcheck)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 61, Short.MAX_VALUE)
                         .add(notifycheck, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 119, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -2493,7 +2496,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel17Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel17Layout.createSequentialGroup()
                         .add(jLabel64)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
                         .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 342, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(8, 8, 8)
                         .add(jButton23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 65, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -2509,10 +2512,10 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jPanel17Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel17Layout.createSequentialGroup()
                                 .add(jRadioButton9)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 220, Short.MAX_VALUE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 222, Short.MAX_VALUE))
                             .add(jPanel17Layout.createSequentialGroup()
                                 .add(jRadioButton12)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
                                 .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(10, 10, 10)))))
                 .addContainerGap())
@@ -2588,7 +2591,7 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel18Layout.createSequentialGroup()
-                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton24)
@@ -3146,7 +3149,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton32))
                     .add(jPanel22Layout.createSequentialGroup()
                         .add(28, 28, 28)
-                        .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)))
+                        .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -3157,7 +3160,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jLabel58)
                     .add(jButton32))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3262,7 +3265,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(enableadcs)
                 .add(18, 18, 18)
                 .add(disableadcs)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         jPanel49Layout.setVerticalGroup(
             jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -3293,12 +3296,12 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Log", jPanel12);
@@ -3317,14 +3320,14 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(Panelxxx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                .add(Panelxxx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .add(Panelxxx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Help", null, jPanel4, "Some Help...");
@@ -3343,12 +3346,12 @@ public class TestFrame extends javax.swing.JFrame {
         StatusLabel.setFont(new java.awt.Font("Tahoma", 0, 10));
         StatusLabel.setText("Initialising ...");
 
-        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/off.jpg"))); // NOI18N
-        jLabel73.setText("ADC Secure mode not enabled ");
-        jLabel73.setToolTipText("Click for information");
-        jLabel73.addMouseListener(new java.awt.event.MouseAdapter() {
+        adcslabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/off.jpg"))); // NOI18N
+        adcslabel.setText("ADC Secure mode not enabled ");
+        adcslabel.setToolTipText("Click for information");
+        adcslabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel73MouseClicked(evt);
+                adcslabelMouseClicked(evt);
             }
         });
 
@@ -3367,7 +3370,7 @@ public class TestFrame extends javax.swing.JFrame {
                                 .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 441, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(layout.createSequentialGroup()
                                 .add(58, 58, 58)
-                                .add(jLabel73)))
+                                .add(adcslabel)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton3)
                         .add(27, 27, 27)
@@ -3376,7 +3379,7 @@ public class TestFrame extends javax.swing.JFrame {
                             .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)))
+                        .add(jTabbedPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -3398,7 +3401,7 @@ public class TestFrame extends javax.swing.JFrame {
                                     .add(jLabel13)
                                     .add(StatusLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel73)
+                                .add(adcslabel)
                                 .add(5, 5, 5))))
                     .add(layout.createSequentialGroup()
                         .add(31, 31, 31)
@@ -4817,12 +4820,21 @@ public class TestFrame extends javax.swing.JFrame {
                 {
                     enableadcs.setEnabled(false);
                     disableadcs.setEnabled(true);
+                    adcslabel.setIcon(onIco);
+                    adcslabel.setText("Running in ADC Secure mode");
+                    
                 }
                 else
                 {
+                	if(Main.Server.adcs_ok)
                     enableadcs.setEnabled(true);
+                	else
+                		enableadcs.setEnabled(false);
                     disableadcs.setEnabled(false);
+                    adcslabel.setIcon(offIco);
+                    adcslabel.setText("ADC Secure mode not enabled");
                 }
+                if(Main.Server.adcs_ok)
 
 		/**setting stuff*/
 		jTextArea1.setText(ADC.GreetingMsg);
@@ -5602,7 +5614,7 @@ if(command_pmcheck.isSelected())
    }
 }//GEN-LAST:event_command_pmcheckActionPerformed
 
-private void jLabel73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel73MouseClicked
+private void adcslabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adcslabelMouseClicked
 // TODO add your handling code here:
    
                 
@@ -5615,7 +5627,7 @@ private void jLabel73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
            "You can setup your certificate/keys on the ADCS tab.", 
            "ADC Secure (ADCS)",  
            JOptionPane.INFORMATION_MESSAGE);
-}//GEN-LAST:event_jLabel73MouseClicked
+}//GEN-LAST:event_adcslabelMouseClicked
 
 private void genbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genbuttonActionPerformed
 // TODO add your handling code here:
@@ -5627,10 +5639,20 @@ private void genbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(x==JOptionPane.OK_OPTION)
     {
        
-        Main.Server.sslmanager.getCertManager().recreateKeysCerts();
+        boolean keygenerated=Main.Server.sslmanager.getCertManager().recreateKeysCerts();
        // JOptionPane.showConfirmDialog(null,"New pair of keys and certificate were created and saved into key.crt",
         //        Vars.HubName,JOptionPane.OK_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        if(keygenerated)
+        {
         this.SetStatus("New pair of keys and certificate were created and saved into key.crt");
+        Main.Server.adcs_ok=true;
+        if(!Vars.adcs_mode)
+        enableadcs.setEnabled(true);
+        }
+        else
+        	JOptionPane.showMessageDialog(null,"Error creating keys and certificates. Check the log for details.", 
+        	           "Error",  
+        	           JOptionPane.INFORMATION_MESSAGE);
          
     }
 }//GEN-LAST:event_genbuttonActionPerformed
@@ -5641,6 +5663,19 @@ private void usecertificatescheckActionPerformed(java.awt.event.ActionEvent evt)
 
 private void enableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableadcsActionPerformed
 // TODO add your handling code here:
+    int x=JOptionPane.showConfirmDialog(null,"This will enable ADC Secure mode. This means that your hub address will change\n" +
+           "from adc://"+Vars.Hub_Host+" to adcs://"+Vars.Hub_Host+" so all users connecting on old address\n" +
+           "will not be able to login. Also, your hub will immediately restart to apply.\n" +
+           "Are you sure you want to proceed ? ( The operation is reversible at any time )", Vars.HubName, JOptionPane.OK_CANCEL_OPTION, 
+           JOptionPane.WARNING_MESSAGE);
+    if(x==JOptionPane.OK_OPTION)
+    {
+        if(!Main.Server.adcs_ok)
+            return;//cannot start adcs mode.. bug ?
+        Vars.adcs_mode=true;
+        Main.Restart();
+        Main.PopMsg("ADC Secure mode has been enabled");
+    }
 }//GEN-LAST:event_enableadcsActionPerformed
 
 private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
@@ -5744,6 +5779,7 @@ private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private javax.swing.JPanel PluginPanel;
     private javax.swing.JTable PyTable;
     private javax.swing.JLabel StatusLabel;
+    private javax.swing.JLabel adcslabel;
     private javax.swing.JButton addnewport;
     private javax.swing.JTextField automagicsearchfield;
     private javax.swing.JTextField botdescfield;
@@ -5866,7 +5902,6 @@ private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;

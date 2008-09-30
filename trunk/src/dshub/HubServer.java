@@ -23,56 +23,39 @@ package dshub;
  */
 
 
-import org.bouncycastle.jce.examples.PKCS12Example;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-
-import dshub.Modules.Modulator;
-import dshub.adcs.CertManager;
-import dshub.adcs.KeyManager;
-import dshub.adcs.SSLManager;
-
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.Security;
-import java.security.cert.Certificate;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.zip.*;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
-import javax.crypto.SecretKey;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManagerFactory;
-//import javax.security.cert.Certificate;
 import javax.swing.JOptionPane;
-
-import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.logging.LoggingFilter;
-import org.apache.mina.filter.ssl.SslContextFactory;
 import org.apache.mina.filter.ssl.SslFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+
+import dshub.Modules.Modulator;
+import dshub.adcs.CertManager;
+import dshub.adcs.SSLManager;
 
 
 /**
@@ -94,6 +77,8 @@ public class HubServer extends Thread
     int port;
    
    ClientAssasin myAssasin;
+   
+   public boolean adcs_ok=false;
     
     //ClientHandler firstclient;
     
@@ -187,10 +172,16 @@ public class HubServer extends Thread
         // cfg.getSessionConfig().setSendBufferSize(102400);
         sslmanager=new SSLManager(new CertManager());
          SslFilter sslfilter=sslmanager.getSSLFilter();
+         if(sslfilter!=null)
+        	 adcs_ok=true;
+         if(adcs_ok)
+        	 System.out.println("ADCS OK");
+         else
+        	 System.out.println("ADCS not OK");
      if(Vars.adcs_mode)
      {
         
-       if(sslfilter!=null) 
+       if(adcs_ok) 
         	acceptor.getFilterChain()
 			.addLast("sslFilter",sslfilter);
        else
@@ -204,8 +195,8 @@ public class HubServer extends Thread
         
         acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
         TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ),"\n","\n");
-        myx.setDecoderMaxLineLength(64*1024);
-        myx.setEncoderMaxLineLength(64*1024);
+        myx.setDecoderMaxLineLength(64*1024*1024);
+        myx.setEncoderMaxLineLength(64*1024*1024);
         acceptor.getFilterChain().addLast( "codec", new ProtocolCodecFilter(myx ));
         MyCalendar=Calendar.getInstance();
       // DefaultIoFilterChainBuilder filterChainBuilder = cfg.getFilterChain();

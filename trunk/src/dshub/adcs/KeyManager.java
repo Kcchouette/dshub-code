@@ -28,6 +28,7 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import dshub.*;
 
 /**
 *
@@ -43,7 +44,7 @@ public class KeyManager
 	{
 		String keyAlgorithm="RSA";
 		int numBits=2048;
-		System.out.println(
+		Main.PopMsg(
 				   "\n" +
 				   "Generating new key/value pair using " +
 				   keyAlgorithm +
