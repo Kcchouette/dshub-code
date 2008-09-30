@@ -292,7 +292,7 @@ public class CertManager
         return cert;
     }
     
-    public void storeCerts()
+    public boolean storeCerts()
     {
     	
            KeyStore store=genKeyStore();
@@ -304,23 +304,17 @@ public class CertManager
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 
             try {
 				store.store(fOut, passwd);
-			} catch (KeyStoreException e) {
+			}  catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (CertificateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				return false;
 			}
+			return true;
     }
 
     public KeyStore loadKeyStore() 
@@ -374,25 +368,18 @@ public class CertManager
         KeyStore store = null;
 		try {
 			store = KeyStore.getInstance("JKS");//"PKCS12", "BC");
-		} catch (KeyStoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Main.PopMsg(e.getMessage());
 		}
 
         try {
 			store.load(null, null);
-		} catch (NoSuchAlgorithmException e) {
+		}  catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (CertificateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main.PopMsg(e.getMessage());
 		}
 		
 		//
@@ -404,6 +391,7 @@ public class CertManager
 		} catch (KeyStoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Main.PopMsg(e.getMessage());
 		}
 
          return store;
@@ -413,7 +401,7 @@ public class CertManager
     {
     	return ks;
     }
-    public void recreateKeysCerts()
+    public boolean recreateKeysCerts()
     {
     	 KeyManager km=new KeyManager();
          pubkey=km.getPublicKey();
@@ -423,12 +411,15 @@ public class CertManager
         chain = new Certificate[1];
 
         try {
+        	Main.PopMsg("Creating hub certificate...");
 			chain[0] = createMasterCert(pubkey,privkey );
 			 //createIntermediateCert(km.getPublicKey(), km.getPrivateKey(), (X509Certificate)x);
 		     //   chain[0] = createCert(km.getPublicKey(), km.getPrivateKey(), km.getPublicKey());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Main.PopMsg(e.getMessage());
+			return false;
 		}
         
 		  //
@@ -460,6 +451,10 @@ public class CertManager
         
         //this.ks=ks;
         ks=genKeyStore();
+        if(ks!=null)
+        return true;
+        else
+        	return false;
     }
     public CertManager()
     {
