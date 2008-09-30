@@ -3253,6 +3253,11 @@ public class TestFrame extends javax.swing.JFrame {
         });
 
         disableadcs.setText("Disable ADC Secure");
+        disableadcs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disableadcsActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel49Layout = new org.jdesktop.layout.GroupLayout(jPanel49);
         jPanel49.setLayout(jPanel49Layout);
@@ -3346,8 +3351,7 @@ public class TestFrame extends javax.swing.JFrame {
         StatusLabel.setFont(new java.awt.Font("Tahoma", 0, 10));
         StatusLabel.setText("Initialising ...");
 
-        adcslabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dshub/off.jpg"))); // NOI18N
-        adcslabel.setText("ADC Secure mode not enabled ");
+        adcslabel.setText("Checking....");
         adcslabel.setToolTipText("Click for information");
         adcslabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3385,7 +3389,7 @@ public class TestFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 423, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -4816,12 +4820,14 @@ public class TestFrame extends javax.swing.JFrame {
 		//  blah00=blah00.substring (0,blah00.length ()-2);
 		// System.out.println (blah00);
                 
-                if(Vars.adcs_mode)
+                if(Vars.adcs_mode && Main.Server.adcs_ok)
                 {
+                   
                     enableadcs.setEnabled(false);
                     disableadcs.setEnabled(true);
                     adcslabel.setIcon(onIco);
                     adcslabel.setText("Running in ADC Secure mode");
+                   
                     
                 }
                 else
@@ -5710,6 +5716,23 @@ private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 // TODO add your handling code her
     deleteSelectedReg();
 }//GEN-LAST:event_jButton35ActionPerformed
+
+private void disableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableadcsActionPerformed
+// TODO add your handling code here:
+     int x=JOptionPane.showConfirmDialog(null,"This will disable ADC Secure mode. This means that your hub address will change\n" +
+           "from adcs://"+Vars.Hub_Host+" to adc://"+Vars.Hub_Host+" so all users connecting on old address\n" +
+           "will not be able to login. Your keys and certificates will remain intact so you\n"
+           +"can use ADCS in the future with them. Also, your hub will immediately restart to apply.\n" +
+           "Are you sure you want to proceed ? ( The operation is reversible at any time )", Vars.HubName, JOptionPane.OK_CANCEL_OPTION, 
+           JOptionPane.WARNING_MESSAGE);
+    if(x==JOptionPane.OK_OPTION)
+    {
+       
+        Vars.adcs_mode=false;
+        Main.Restart();
+        Main.PopMsg("ADC Secure mode has been disabled");
+    }
+}//GEN-LAST:event_disableadcsActionPerformed
 
 	public void SetStatus(String newstring, int msgType) {
 		StatusLabel.setText(newstring);
