@@ -1,3 +1,4 @@
+       * fixed #276197;     
        * fixed #255040;
        * fixed #259694;
        * updated jython to 2.5a3 hope it works better;
