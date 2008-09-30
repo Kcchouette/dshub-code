@@ -35,7 +35,7 @@ abstract public class ADC
     
     
     /**First string to send to connecting client ;)*/
-    public static final String Init="ISUP ADBASE ADTIGR ADUCM0 ADPING"; //adding basic ucmds, adding tiger hash support, adding basic PING
+    public static final String Init="ISUP ADBASE ADTIGR ADUCM0 ADPING ADADC0"; //adding basic ucmds, adding tiger hash support, adding PING, adding basic ADCS
     
     /**  ISID = session id string for connecting client*/
     public  static final String ISID="ISID";
@@ -43,12 +43,12 @@ abstract public class ADC
     /** The default motd.*/
     public static String MOTD=	"\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
-           "DSHub is ADC software so you need an ADC compatibile client.\n"+
-"At the moment of this release ( July 2008 ), the following ADC clients were available:\n"+
-"dc++ 0.69, icedc 1.01a, zion++ 2.04, AirDC 2.01,  apexdc 0.3.0, strongdc  2.01 , zk++  0.7, BCDC 0.69*, FMDC, Elise or ANY later version of those will be ADC compatible.\n"+
+           "DSHub is ADC software so you need an ADC compatibile client. More info about ADC on http://en.wikipedia.org/wiki/Advanced_Direct_Connect\n"+
+"At the moment of this release ( September 2008 ), the following ADC clients were available:\n"+
+"dc++ 0.702, AirDC 2.01,  apexdc 1.00, strongdc  2.13 ,BCDC 0.705, or ANY later version of those will be ADC compatible.\n"+
 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
 "Some ADC reminders:\n"+
-"-- You need to connect to address adc://\n"+
+"-- You need to connect to address adc:// ( or adcs:// if you use ADC Secure )\n"+
 "-- There is no default port, every time one must be specified ( like 411 on NMDC)\n"+
 "-- Accounts are on CID not nick ( you can use what nick you want )\n"+
 "-- Clients that are not ADC compat or dont use the address correctly will just hang up and you will see them at Connecting Users in stats command.\n"+
