@@ -54,16 +54,16 @@ public class Command
 
      private void sendUsersInfs()
 {
-String Infs="";
+//String Infs="";
         for( ClientNod iterator :  SimpleHandler.getUsers())
            {
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
-             Infs+=iterator.cur_client.getINF()+"\n";
+            	 cur_client.sendToClient(iterator.cur_client.getINF()+"\n");
              
              
          }
-        if(!(Infs.equals("")))
- cur_client.sendToClient(Infs);
+       // if(!(Infs.equals("")))
+ //cur_client.sendToClient(Infs);
 }
 
      void completeLogIn() throws STAException
