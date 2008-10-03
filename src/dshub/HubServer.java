@@ -86,6 +86,8 @@ public class HubServer extends Thread
    private static  RegConfig rcfg;
    private static bans bcfg;
    
+   public static boolean done_adcs=false;
+   
    public static boolean restart;
    //public static IoServiceManager IOSM;
   // public static ServiceManager SM;
@@ -113,7 +115,14 @@ public class HubServer extends Thread
     {
         
         
-      
+    	sslmanager=new SSLManager(new CertManager());
+        SslFilter sslfilter=sslmanager.getSSLFilter();
+        if(sslfilter!=null)
+       	 adcs_ok=true;
+        if(adcs_ok)
+       	 System.out.println("ADCS OK");
+        else
+       	 System.out.println("ADCS not OK");
        
         try 
         {
@@ -170,14 +179,7 @@ public class HubServer extends Thread
         
          //cfg.getSessionConfig().setReceiveBufferSize(102400);
         // cfg.getSessionConfig().setSendBufferSize(102400);
-        sslmanager=new SSLManager(new CertManager());
-         SslFilter sslfilter=sslmanager.getSSLFilter();
-         if(sslfilter!=null)
-        	 adcs_ok=true;
-         if(adcs_ok)
-        	 System.out.println("ADCS OK");
-         else
-        	 System.out.println("ADCS not OK");
+        
      if(Vars.adcs_mode)
      {
         
@@ -192,7 +194,7 @@ public class HubServer extends Thread
        }
        
      }
-        
+        done_adcs=true;
         acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
         TextLineCodecFactory myx=new TextLineCodecFactory( Charset.forName( "UTF-8" ),"\n","\n");
         myx.setDecoderMaxLineLength(64*1024*1024);
@@ -208,7 +210,7 @@ public class HubServer extends Thread
         acceptor.getSessionConfig().setIdleTime( IdleStatus.BOTH_IDLE, 50 );
         acceptor.setHandler(  new SimpleHandler() );
 //System.out.println(acceptor.getSessionConfig().getWriteTimeout());
-        acceptor.setCloseOnDeactivation(true);
+       // acceptor.setCloseOnDeactivation(true);
         //cfg.getSessionConfig().
         //System.out.println(cfg.getSessionConfig().getReceiveBufferSize());
        // IOSM=new IoServiceManager(acceptor);
@@ -307,15 +309,15 @@ public class HubServer extends Thread
         try
         {
             acceptor.unbind(new InetSocketAddress(port.portValue));
-           // System.out.println("deleted port"+port.portValue);
+        //    System.out.println("deleted port"+port.portValue);
         }
         catch(Exception exception)
         {
-            if(exception.getMessage().contains("Address not bound"))
-                ;
+            
             exception.printStackTrace();
         }
         
+    //    System.out.println("hmm");
     }
     
     public void shutdown()
