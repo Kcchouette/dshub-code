@@ -31,6 +31,7 @@ import dshub.ExtendedCmds.ExtRedirect;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
+import dshub.adcs.AdcsCommand;
 import dshub.gui.TestFrame;
 
 import java.util.Calendar;
@@ -232,7 +233,19 @@ public class CommandParser {
 			}
 			new BackupCmd(cur_client, recvbuf);
 
-		} else if (recvbuf.toLowerCase().equals("gui")) {
+		} 
+		else if(recvbuf.toLowerCase().startsWith("adcs"))
+		{
+			commandOK=1;
+			if(!cur_client.reg.myMask.adcs)
+			{
+				cur_client.sendFromBot("Access denied.");
+				done = true;
+				return;
+			}
+			new AdcsCommand(cur_client,recvbuf);
+		}
+		else if (recvbuf.toLowerCase().equals("gui")) {
 			commandOK = 1;
 			if (!cur_client.reg.myMask.gui) {
 				cur_client.sendFromBot("Access denied.");
