@@ -72,6 +72,7 @@ public class Variables implements Serializable
       String redirect_url;
       
       boolean adcs_mode;
+      boolean certlogin;
       
       String lang;
       

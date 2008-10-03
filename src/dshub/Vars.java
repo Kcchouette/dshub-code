@@ -151,6 +151,7 @@ public final class Vars
     public static int max_users=1000;
 
    public static boolean adcs_mode=false;
+   public static boolean certlogin=false;
    public  static int chat_interval=500;//millis
 
    public  static int savelogs=1;

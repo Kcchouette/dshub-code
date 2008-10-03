@@ -128,6 +128,10 @@ public class Nod implements Serializable,Cloneable
             Help+="+adc";
         else
             Help+="-adc";
+        if(curAcc.myMask.adcs)
+            Help+="+adcs";
+        else
+            Help+="-adcs";
         if(curAcc.myMask.backup)
             Help+="+backup";
         else

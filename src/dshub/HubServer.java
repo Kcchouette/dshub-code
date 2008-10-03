@@ -484,6 +484,8 @@ public class HubServer extends Thread
      Vars.redirect_url=vars.redirect_url;
      Vars.adcs_mode=vars.adcs_mode; 
      
+     Vars.certlogin=vars.certlogin;
+     
       Vars.chat_interval=vars.chat_interval;
 
       Vars.savelogs=vars.savelogs;
