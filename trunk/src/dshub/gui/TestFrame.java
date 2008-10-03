@@ -735,7 +735,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel79 = new javax.swing.JLabel();
         jPanel49 = new javax.swing.JPanel();
         jLabel88 = new javax.swing.JLabel();
-        enableadcs = new javax.swing.JButton();
+        setEnableadcs(new javax.swing.JButton());
         disableadcs = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -3245,8 +3245,8 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel88.setText("Step 4:");
 
-        enableadcs.setText("Enable ADC Secure");
-        enableadcs.addActionListener(new java.awt.event.ActionListener() {
+        getEnableadcs().setText("Enable ADC Secure");
+        getEnableadcs().addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enableadcsActionPerformed(evt);
             }
@@ -3267,7 +3267,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLabel88)
                 .add(157, 157, 157)
-                .add(enableadcs)
+                .add(getEnableadcs())
                 .add(18, 18, 18)
                 .add(disableadcs)
                 .addContainerGap(230, Short.MAX_VALUE))
@@ -3282,7 +3282,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE)
                 .add(jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(disableadcs)
-                    .add(enableadcs)))
+                    .add(getEnableadcs())))
         );
 
         jPanel45.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 710, 40));
@@ -4819,11 +4819,11 @@ public class TestFrame extends javax.swing.JFrame {
 		}
 		//  blah00=blah00.substring (0,blah00.length ()-2);
 		// System.out.println (blah00);
-                
+               if(HubServer.done_adcs) 
                 if(Vars.adcs_mode && Main.Server.adcs_ok)
                 {
                    
-                    enableadcs.setEnabled(false);
+                    getEnableadcs().setEnabled(false);
                     disableadcs.setEnabled(true);
                     adcslabel.setIcon(onIco);
                     adcslabel.setText("Running in ADC Secure mode");
@@ -4833,14 +4833,14 @@ public class TestFrame extends javax.swing.JFrame {
                 else
                 {
                 	if(Main.Server.adcs_ok)
-                    enableadcs.setEnabled(true);
+                    getEnableadcs().setEnabled(true);
                 	else
-                		enableadcs.setEnabled(false);
+                		getEnableadcs().setEnabled(false);
                     disableadcs.setEnabled(false);
                     adcslabel.setIcon(offIco);
                     adcslabel.setText("ADC Secure mode not enabled");
                 }
-                if(Main.Server.adcs_ok)
+                //if(Main.Server.adcs_ok)
 
 		/**setting stuff*/
 		jTextArea1.setText(ADC.GreetingMsg);
@@ -5653,7 +5653,7 @@ private void genbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.SetStatus("New pair of keys and certificate were created and saved into key.crt");
         Main.Server.adcs_ok=true;
         if(!Vars.adcs_mode)
-        enableadcs.setEnabled(true);
+        getEnableadcs().setEnabled(true);
         }
         else
         	JOptionPane.showMessageDialog(null,"Error creating keys and certificates. Check the log for details.", 
@@ -5676,6 +5676,7 @@ private void enableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
            JOptionPane.WARNING_MESSAGE);
     if(x==JOptionPane.OK_OPTION)
     {
+    	HubServer.done_adcs=false;
         if(!Main.Server.adcs_ok)
             return;//cannot start adcs mode.. bug ?
         Vars.adcs_mode=true;
@@ -5727,7 +5728,7 @@ private void disableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
            JOptionPane.WARNING_MESSAGE);
     if(x==JOptionPane.OK_OPTION)
     {
-       
+    	HubServer.done_adcs=false;
         Vars.adcs_mode=false;
         Main.Restart();
         Main.PopMsg("ADC Secure mode has been disabled");
@@ -5748,7 +5749,15 @@ private void disableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 					JOptionPane.INFORMATION_MESSAGE);
 	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public void setEnableadcs(javax.swing.JButton enableadcs) {
+		this.enableadcs = enableadcs;
+	}
+
+	public javax.swing.JButton getEnableadcs() {
+		return enableadcs;
+	}
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AccountTable;
     private javax.swing.JCheckBox BCTMcheck;
     private javax.swing.JCheckBox BINFcheck;

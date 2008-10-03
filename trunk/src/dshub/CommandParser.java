@@ -132,8 +132,8 @@ public class CommandParser {
 	public void runx() {
 
 		String recvbuf = ADC.retNormStr(cmd.substring(1));
-		String STR = cmd;
-		String NI = cur_client.NI;
+	//	String STR = cmd;
+	//	String NI = cur_client.NI;
 		;
 
 		if (recvbuf.toLowerCase().equals("quit")) {
@@ -145,11 +145,11 @@ public class CommandParser {
 			}
 
 			cur_client.sendFromBot("Closing down hub...");
-			Main.Server.rewriteregs();
-			Main.Server.rewriteconfig();
-			Main.Server.rewritebans();
+		//	Main.Server.rewriteregs();
+		//	Main.Server.rewriteconfig();
+		//	Main.Server.rewritebans();
 			//save Banned Words List
-			Main.listaBanate.printFile(Main.myPath + "banwlist.txt");
+			//Main.listaBanate.printFile(Main.myPath + "banwlist.txt");
 
 			Main.PopMsg("Hub is being shut down by " + cur_client.NI);
 
@@ -173,26 +173,23 @@ public class CommandParser {
 				return;
 			}
 			cur_client.sendFromBot("Restarting.... Wait 5 seconds...");
-			Main.Server.rewriteregs();
-			Main.Server.rewriteconfig();
-			Main.Server.rewritebans();
-			Main.Server.restart = true;
-			AccountsConfig.First = null;
-			BanList.First = null;
-
-			SimpleHandler.Users.clear();
+			cur_client.myNod.dropMe(cur_client);
+			//Main.Server.rewriteregs();
+			//Main.Server.rewriteconfig();
+			//Main.Server.rewritebans();
+			//Main.Server.restart = true;
+			//AccountsConfig.First = null;
+		//	BanList.First = null;
+            
+			//SimpleHandler.Users.clear();
 			Main.PopMsg("Hub restarted by " + cur_client.NI);
 
 			for (Module x : Modulator.myModules) {
 				x.onCommand(cur_client, recvbuf);
 				x.close();
 			}
-
-			Main.Server.shutdown();
-			System.gc(); //calling garbage collectors
-			Main.Server = new HubServer();
-			Main.curtime = System.currentTimeMillis();
-			Main.Proppies = System.getProperties();
+			//if(true)return;
+			Main.Restart();
 			done = true;
 			return;
 		}

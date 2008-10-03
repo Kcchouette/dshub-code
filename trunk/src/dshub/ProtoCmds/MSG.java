@@ -246,7 +246,7 @@ public class MSG
                        if(cur_client.reg.isreg && message.charAt (0)=='!' || cur_client.reg.isreg && message.charAt (0)=='+' && !( message.substring(1,message.length()).equalsIgnoreCase("myinf"))) //ok.. command mode.
                        {
                            
-                           if(message.toLowerCase().startsWith("!adc") || message.toLowerCase().startsWith("+adc"))//adc adv config panel
+                           if((message.toLowerCase().startsWith("!adc") || message.toLowerCase().startsWith("+adc")) && message.toLowerCase().charAt(4)!='s')//adc adv config panel
                            {
                                cur_client.sendFromBot("[adc:] "+ADC.retNormStr (message));
                                new ADCConfig(cur_client,message);

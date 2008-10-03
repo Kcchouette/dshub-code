@@ -1,4 +1,4 @@
-
+       * fixed #276193;
        * added the adcs command, config and regs will be lost;      
        * removed BAS0 support so old clients will NOT be able to connect starting from this version;
        * edited the motd a bit

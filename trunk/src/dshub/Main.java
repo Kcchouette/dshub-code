@@ -22,6 +22,8 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import dshub.Modules.Modulator;
+import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
 import dshub.gui.TestFrame;
 import dshub.python.*;
@@ -148,7 +150,7 @@ public class Main extends Thread
         }
         if(System.getProperty("os.name").equals("Linux"))
         {
-        	if(!bla.startsWith("/"))
+        	if(!bla.startsWith(separator))
         	{
             StringTokenizer st1=new StringTokenizer(myPath,pathsep);
             String aux=st1.nextToken();
@@ -176,6 +178,7 @@ public class Main extends Thread
        {
             Server.rewriteregs();
             Server.rewriteconfig();
+            Server.rewritebans();
             
             //save Banned Words List
             listaBanate.printFile(Main.myPath+"banwlist.txt");
@@ -188,24 +191,32 @@ public class Main extends Thread
         }
             System.exit(0);
        }
+       public void run()
+       {
+    	   PopMsg(Translation.getString("restart_hub"));
+           Main.Server.rewriteregs();
+                 Main. Server.rewriteconfig();
+                 Main.Server.rewritebans ();
+               Main.Server.restart=true;
+                
+               AccountsConfig.First=null;
+               BanList.First=null;
+               SimpleHandler.Users.clear();
+              
+            //  System.out.println("ok1");
+   			
+               Server.shutdown();
+            //   System.gc (); //calling garbage collectors
+               System.out.println("ok2");
+              Main.Server=new HubServer();
+           //   System.out.println("ok3");
+           Main.curtime=System.currentTimeMillis();
+           Main.Proppies=System.getProperties();
+       }
        public static void Restart()
        {
-         PopMsg(Translation.getString("restart_hub"));
-         Main.Server.rewriteregs();
-               Main. Server.rewriteconfig();
-               Main.Server.rewritebans ();
-             Main.Server.restart=true;
-              
-             AccountsConfig.First=null;
-             BanList.First=null;
-             SimpleHandler.Users.clear();
-            
-               
-             Server.shutdown();
-             System.gc (); //calling garbage collectors
-            Main.Server=new HubServer();
-         Main.curtime=System.currentTimeMillis();
-         Main.Proppies=System.getProperties();
+    	   new Main().start();
+         
        }
       public static void Reg(String aux)
       {
