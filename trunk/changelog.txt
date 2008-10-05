@@ -1,4 +1,6 @@
-*** Kappa RC1 ***     
+*** Kappa RC1 *** 
+
+       * added startup command line option -nogui that starts dshub with no gui;    
        * grouped the commands from the accounts editing page;
        * gui X button now closes again;
        * fixed bug when some disconnecting messages were lost;
