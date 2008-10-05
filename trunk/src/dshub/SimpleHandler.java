@@ -58,6 +58,20 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		//ClientNod.FirstClient=new ClientNod(1);
 
 	}
+	
+	public void Disconnect(IoSession session)
+	{
+		ClientHandler cur_client=((ClientHandler) (session.getAttachment()));
+		if(cur_client
+				.closingwrite!=null)
+			try {
+				cur_client.closingwrite.await();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		session.close(false);
+	}
 
 	public static synchronized Collection<ClientNod> getUsers() {
 		return Users.values();
@@ -71,7 +85,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
 			//t.printStackTrace();
-			session.close();
+			session.close(false);
 			return;
 		}
 		if (t.getMessage().contains("java.nio.charset.MalformedInputException")) {
@@ -86,7 +100,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		} else {
 			t.printStackTrace();
 			// Main.PopMsg(t.printStackTrace()getMessage());
-			session.close();
+			session.close(false);
 			return;
 		}
 		;
@@ -108,7 +122,8 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 			  }
 			 cur_client.myNod.killMe();*/
 			//  System.out.println("sta exception");
-			session.close();
+			session.close(false);
+			//Disconnect(session);
 		} catch (CommandException cfex) {
 			/* ClientHandler cur_client=(ClientHandler)(session.getAttachment());
 			  if(cur_client.userok==1)
@@ -116,7 +131,8 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 			       new Broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
 			  }
 			  cur_client.myNod.killMe();*/
-			session.close();
+			
+			session.close(false);
 		}
 
 	}

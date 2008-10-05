@@ -44,7 +44,7 @@ abstract public class ADC
     public static String MOTD=	"\n       CONGRATULATIONS you succesfully run DSHub and you are now connected to it.\n"+
            "Some reminders :\n" +
            "DSHub is ADC software so you need an ADC compatibile client. More info about ADC on http://en.wikipedia.org/wiki/Advanced_Direct_Connect\n"+
-"At the moment of this release ( September 2008 ), the following ADC clients were available:\n"+
+"At the moment of this release ( October 2008 ), the following ADC clients were available:\n"+
 "dc++ 0.702, AirDC 2.01,  apexdc 1.00, strongdc  2.13 ,BCDC 0.705, or ANY later version of those will be ADC compatible.\n"+
 "So after you start the Hub, try connecting to adc://127.0.0.1:411\n"+
 "Some ADC reminders:\n"+

@@ -24,6 +24,8 @@ package dshub;
 
 import java.net.*;
 import java.io.*;
+
+import org.apache.mina.core.future.WriteFuture;
 import org.apache.mina.core.session.IoSession;
 
 
@@ -63,7 +65,7 @@ public class ClientHandler
     public boolean can_receive_cmds=false;
     public boolean inside=false;
     
-    
+    WriteFuture closingwrite=null;
     public long LoggedAt=0l;
     
     public Nod reg;
@@ -210,12 +212,12 @@ public int kicked=0;
     
     
     
-     public void sendToClient(String bla)
+     public WriteFuture sendToClient(String bla)
     {
         
          //this.Queue.addMsg (bla);
         //System.out.println("[sent]: "+bla);
-         mySession.write(bla);
+         return mySession.write(bla);
          
        
     

@@ -86,9 +86,9 @@ public class SUP
                         {
                             aux=aux.substring (2);
                             if(aux.equals("BAS0") )
-                                cur_client.bas0=true;
+                                {cur_client.bas0=true;cur_client.base=1;}
                             if(aux.equals ("BASE") )
-                               cur_client.base=1;
+                               cur_client.base=2;
                             if(aux.startsWith ("PIN") && aux.length()==4)
                                 cur_client.ping=true;
                             if(aux.startsWith ("UCM") && aux.length()==4)
@@ -166,7 +166,8 @@ public class SUP
         
         
        cur_client. sendToClient("ISTA 000 "+
-            "Running\\sIota\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
+            "Running\\sKappa\\sVersion\\sof\\sDSHub"+(Vars.adcs_mode?"\\sin\\sADC\\sSecure\\smode":
+            	"")+".\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));
        
        //cur_client. sendToClient("ISTA 000 "+
         //    "Running\\Iota\\sVersion\\sof\\sDSHub.\nISTA 000 Hub\\sis\\sup\\ssince\\s"+ Main.Server.MyCalendar.getTime ().toString ().replaceAll (" ","\\\\s"));

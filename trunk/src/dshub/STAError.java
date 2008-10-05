@@ -55,7 +55,7 @@ public class STAError
         if(ec>=200)
         {
             if(!Vars.redirect_url.equals(""))
-                 cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
+            	cur_client.closingwrite= cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
              throw new STAException(Error_string,ec);
         }
        
@@ -74,7 +74,7 @@ public class STAError
         if(ec>=200)
         {
             if(!Vars.redirect_url.equals(""))
-                  cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
+                  cur_client.closingwrite=cur_client.sendToClient("IQUI "+cur_client.SessionID+" RD"+Vars.redirect_url);
             throw new STAException(Error_string,ec);
         }
         

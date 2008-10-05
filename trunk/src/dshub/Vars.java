@@ -56,15 +56,15 @@ public final class Vars
     public static int  Timeout_Login=20;
     //public static int  Default_Port=411;
    
-    public static String HubVersion="DSHub Iota";
+    public static String HubVersion="DSHub Kappa";
     public static String HubDE="";
     public static String HubName="hub of "+System.getProperty ("user.name");
    
             
     public static String About=
                    "[Death Squad Hub]\n"+
-                   "[Version Iota RC2]\n"+
-                   "[July 2008]\n"+
+                   "[Version Kappa RC1]\n"+
+                   "[October 2008]\n"+
                    "[Licensed under GNU GPL]\n"+
                    ":The credits\n"
               +    "::Written by: Eugen Hristev\n"
