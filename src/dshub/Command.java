@@ -672,7 +672,10 @@ public class Command
                  }
               
                
-              
+              if(cur_client.bas0 && cur_client.base!=2)
+              {
+            	  new STAError(cur_client,200+Constants.STA_GENERIC_PROTOCOL_ERROR,"Your client uses a very old ADC version. Please update in order to connect to this hub. You can get a new version usually by visiting the developer's webpage from Help/About menu.");
+              }
                 
                
                if(cur_client.SU!=null) if(!(cur_client.SU.equals("")))

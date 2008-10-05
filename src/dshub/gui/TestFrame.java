@@ -735,7 +735,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLabel79 = new javax.swing.JLabel();
         jPanel49 = new javax.swing.JPanel();
         jLabel88 = new javax.swing.JLabel();
-        setEnableadcs(new javax.swing.JButton());
+        enableadcs = new javax.swing.JButton();
         disableadcs = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -750,7 +750,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel62.setText("jLabel62");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DSHub ADC HubSoft created by Pietricica");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -1077,7 +1077,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(remport))
                     .add(pane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
                 .add(jPanel21Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(hubhostfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel50))
@@ -1196,7 +1196,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel8Layout.createSequentialGroup()
                         .add(264, 264, 264)
                         .add(jButton8)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1249,7 +1249,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(maxhubsuserfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel31))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
                 .add(jButton8)
                 .addContainerGap())
         );
@@ -1317,7 +1317,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jPanel13Layout.createSequentialGroup()
                         .add(256, 256, 256)
                         .add(jButton9)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1338,7 +1338,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel13Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(minschcharsfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel37))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 107, Short.MAX_VALUE)
                 .add(jButton9)
                 .add(69, 69, 69))
         );
@@ -1470,7 +1470,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 59, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel47)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 64, Short.MAX_VALUE)
                 .add(jButton10)
                 .addContainerGap())
         );
@@ -1558,7 +1558,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel35Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(botdescfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel49))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 150));
@@ -1618,7 +1618,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel38Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(kicktimefield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel40))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 480, 60));
@@ -1648,7 +1648,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel39Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(historylinesfield, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel39))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         miscpanel.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, 60));
@@ -1697,7 +1697,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jLabel41)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel37.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 600, 250));
@@ -1827,7 +1827,7 @@ public class TestFrame extends javax.swing.JFrame {
             .add(jPanel44Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(command_pmcheck)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addContainerGap(440, Short.MAX_VALUE))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1854,7 +1854,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .add(jPanel43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Other settings", jPanel42);
@@ -1872,7 +1872,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1975,7 +1975,7 @@ public class TestFrame extends javax.swing.JFrame {
                                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 624, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jButton35, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(jButton35, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .add(jButton22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
@@ -1990,7 +1990,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 302, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 12, Short.MAX_VALUE)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -2035,7 +2035,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .add(jScrollPane10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .add(40, 40, 40))
         );
 
@@ -2391,7 +2391,7 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton28))
                     .add(jPanel16Layout.createSequentialGroup()
                         .add(jLabel63)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 44, Short.MAX_VALUE)
                         .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 341, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton29)))
@@ -2591,7 +2591,7 @@ public class TestFrame extends javax.swing.JFrame {
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel18Layout.createSequentialGroup()
-                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .add(jScrollPane9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton24)
@@ -3160,7 +3160,7 @@ public class TestFrame extends javax.swing.JFrame {
                     .add(jLabel58)
                     .add(jButton32))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .add(jTabbedPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3245,8 +3245,8 @@ public class TestFrame extends javax.swing.JFrame {
 
         jLabel88.setText("Step 4:");
 
-        getEnableadcs().setText("Enable ADC Secure");
-        getEnableadcs().addActionListener(new java.awt.event.ActionListener() {
+        enableadcs.setText("Enable ADC Secure");
+        enableadcs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enableadcsActionPerformed(evt);
             }
@@ -3267,10 +3267,10 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLabel88)
                 .add(157, 157, 157)
-                .add(getEnableadcs())
+                .add(enableadcs)
                 .add(18, 18, 18)
                 .add(disableadcs)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         jPanel49Layout.setVerticalGroup(
             jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -3282,7 +3282,7 @@ public class TestFrame extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE)
                 .add(jPanel49Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(disableadcs)
-                    .add(getEnableadcs())))
+                    .add(enableadcs)))
         );
 
         jPanel45.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 710, 40));
@@ -3306,7 +3306,7 @@ public class TestFrame extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Log", jPanel12);
@@ -3332,7 +3332,7 @@ public class TestFrame extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .add(Panelxxx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 318, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Help", null, jPanel4, "Some Help...");
@@ -3379,8 +3379,8 @@ public class TestFrame extends javax.swing.JFrame {
                         .add(jButton3)
                         .add(27, 27, 27)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
+                            .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jTabbedPane1)))
@@ -5687,7 +5687,7 @@ private void enableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
 // TODO add your handling code here:
-    JOptionPane.showMessageDialog(null,"Product version: "+Vars.HubVersion+" RC2.\n" +
+    JOptionPane.showMessageDialog(null,"Product version: "+Vars.HubVersion+" RC1.\n" +
            "Copyright (c) 2007-2008 by Eugen Hristev.\n" +
            "Special Thanks go to : MAGY, Spader, Toast, Naccio, Catalaur, Ciprian Dobre.\n" +
            "Also thanks go to everybody who helped me with code, ideas or just moral support,\n" +
@@ -5757,7 +5757,7 @@ private void disableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 		return enableadcs;
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AccountTable;
     private javax.swing.JCheckBox BCTMcheck;
     private javax.swing.JCheckBox BINFcheck;
