@@ -1,5 +1,5 @@
 *** Kappa RC1 ***     
-   
+       * grouped the commands from the accounts editing page;
        * gui X button now closes again;
        * fixed bug when some disconnecting messages were lost;
        * the message for non BASE clients should be visible now;

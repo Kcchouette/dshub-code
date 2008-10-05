@@ -119,11 +119,11 @@ public class HubServer extends Thread
         SslFilter sslfilter=sslmanager.getSSLFilter();
         if(sslfilter!=null)
        	 adcs_ok=true;
-        if(adcs_ok)
+       /* if(adcs_ok)
        	 System.out.println("ADCS OK");
         else
        	 System.out.println("ADCS not OK");
-       
+       */
         try 
         {
             File MotdFile=new File(Main.myPath+"motd");
