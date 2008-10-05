@@ -249,6 +249,11 @@ public class CommandParser {
 				done = true;
 				return;
 			}
+			if(Main.nogui)
+       	 {
+       		 cur_client.sendFromBot("GUI disabled.");
+       		 return;
+       	 }
 			if (!Main.GUI.isDisplayable()) {
 				try {
 					Main.GUI = new TestFrame();

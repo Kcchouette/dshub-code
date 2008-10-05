@@ -67,6 +67,7 @@ public class Main extends Thread
     public static String myPath;
     public static boolean GUIok=true;
     public static boolean GUIshowing=false;
+    static boolean nogui=false;
     public static PythonManager pManager;
     public static void PopMsg(String bla)   
     {
@@ -168,6 +169,7 @@ public class Main extends Thread
         		myPath=bla;
             
         }
+        System.out.println(myPath);
          
         pManager = new PythonManager();
              
@@ -206,8 +208,8 @@ public class Main extends Thread
             //  System.out.println("ok1");
    			
                Server.shutdown();
-            //   System.gc (); //calling garbage collectors
-               System.out.println("ok2");
+              System.gc (); //calling garbage collectors
+              // System.out.println("ok2");
               Main.Server=new HubServer();
            //   System.out.println("ok3");
            Main.curtime=System.currentTimeMillis();
@@ -371,6 +373,7 @@ public class Main extends Thread
     /**
      * @param args the command line arguments
      */
+      
     public static void main(String [] args)  
     {   
         //
@@ -379,6 +382,9 @@ public class Main extends Thread
         init();
         System.out.println (Translation.getString("startup"));
         
+        if(args.length==1 && args[0].equalsIgnoreCase("-nogui"))
+        	{nogui=true;GUIok=false;}
+       
        
          try {
             
@@ -437,6 +443,7 @@ public class Main extends Thread
         
         ;}catch(Exception e){System.out.println(e);}
         */
+        if(!nogui)
     try
     {
         javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
@@ -522,6 +529,12 @@ public class Main extends Thread
         }
          else if(recvbuf.toLowerCase ().equals("gui"))
         {
+        	 if(nogui)
+        	 {
+        		 System.out.println("GUI disabled.");
+        		 ;
+        	 }
+        	 else
              if(!Main.GUI.isDisplayable())
                     {
                         try
