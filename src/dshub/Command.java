@@ -58,7 +58,7 @@ public class Command
         for( ClientNod iterator :  SimpleHandler.getUsers())
            {
              if(iterator.cur_client.userok==1 && iterator.cur_client!=cur_client)
-            	 cur_client.sendToClient(iterator.cur_client.getINF()+"\n");
+            	 cur_client.sendToClient(iterator.cur_client.getINF());
              
              
          }

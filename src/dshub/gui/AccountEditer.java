@@ -817,38 +817,13 @@ public class AccountEditer extends javax.swing.JFrame
         bla.setTitle ("What this means ?");
         
        bla.getContentPane ().add (jp);
-       JTextArea jl=new JTextArea("about -- The program credits.\n"+
-"adc -- ADC advanced configuration panel, setting contexts for each command.\n"+
-"backup -- A way to save configuration to files for backup or other usage.\n"+
-"bancid -- Bans a given cid or the cid of the given online user.\n"+
-"banip -- Bans a given ip or the ip of the given online user.\n"+
-"bannick -- Bans a given nick, drops if nick online.\n"+
-"cfg -- The hub variables.\n"+
-"cmdhistory -- Lists the last history_lines from given commands by logged users.\n"+
-"drop -- A kick with no reason or ban time, just drop/Extended drop; use with no arguments to show info.\n"+
-"gui -- Brings up the gui to server if available.\n"+
-"help -- This screen.\n"+
-"hideme -- Toggles if you are hidden or not in userlist.\n"+
-"history -- Lists the last history_lines from chat.\n"+
-"info -- Lists some useful information about a user,ip or cid.\n"+
-"kick -- Kicks out the user given by nick, add extra words for reason/Extended kick; use with no arguments for info.\n"+
-"listban -- Lists the current banned CIDs/IPs/nicks.\n"+
-"listreg -- Lists the current registered CIDs.\n"+
-"mass -- Broadcast message, takes extended parameters; use with no arguments for info.\n"+
-"mynick -- Changes your nick to new specified one.\n"+
-"password newpass -- Changes your current password, where newpass is the new password.\n"+
-"port x -- Change default port to which hub is listening to x.\n"+
-"quit -- Shuts down hub.\n"+
-"reg CID/online user nick -- Reg the new CID with no password (by default) or the CID of the online user specified by nick.\n"+
-"                                 If already registered, display registration info.\n"+
-"rename -- Renames the user given by nick to new nick given.\n"+
-"restart -- Restarts hub.\n"+
-"stats -- Hub statistics.\n"+
-"topic newtopic -- Where newtopic is the new desired topic; use with no arguments to delete current topic.\n"+
-"unban -- Unbans the specified, looking in CID/IP/nick order.\n"+
-"ureg CID/online user nick -- Unregs the CID/user's CID from database.\n"+
-"usercount -- Info about the current user count."
+       Nod ServerNode=new Nod();
+       ServerNode.myMask=new CommandMask(1);
+       JTextArea jl=new JTextArea(
+       
+       
                
+                ServerNode.myHelp.getHelp ()
                );
       // jl.setSize (100,30);
         jp.add (jl);
