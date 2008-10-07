@@ -175,7 +175,7 @@ public class Main extends Thread
             
         }
         
-        if(System.getProperty("os.name").equalsIgnoreCase("Solaris"))
+        if(System.getProperty("os.name").equalsIgnoreCase("sunos"))
         	if(bla.startsWith(separator))
         	{
         		if(bla.toLowerCase().endsWith("/dshub.jar"))
