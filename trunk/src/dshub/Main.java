@@ -168,7 +168,7 @@ public class Main extends Thread
         	else
         		{
         		if(bla.toLowerCase().endsWith("/dshub.jar"))
-        			myPath=bla.substring(0,bla.length()-10);
+        			myPath=bla.substring(0,bla.length()-9);
         		else
         		    myPath=bla;
         		}
