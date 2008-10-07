@@ -149,7 +149,7 @@ public class Main extends Thread
            if(myPath.equals("\\"))
                myPath="";
         }
-        if(System.getProperty("os.name").equals("Linux"))
+        if(System.getProperty("os.name").equalsIgnoreCase("Linux"))
         {
         	if(!bla.startsWith(separator))
         	{
@@ -166,9 +166,23 @@ public class Main extends Thread
             myPath=aux;
         	}
         	else
-        		myPath=bla;
+        		{
+        		if(bla.toLowerCase().endsWith("/dshub.jar"))
+        			myPath=bla.substring(0,bla.length()-10);
+        		else
+        		    myPath=bla;
+        		}
             
         }
+        
+        if(System.getProperty("os.name").equalsIgnoreCase("Solaris"))
+        	if(bla.startsWith(separator))
+        	{
+        		if(bla.toLowerCase().endsWith("/dshub.jar"))
+        			myPath=bla.substring(0,bla.length()-10);
+        		else
+        		    myPath=bla;
+        	}
         System.out.println(myPath);
          
         pManager = new PythonManager();
