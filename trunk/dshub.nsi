@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "DSHub"
-!define PRODUCT_VERSION "Iota RC2"
+!define PRODUCT_VERSION "Kappa RC1"
 !define PRODUCT_PUBLISHER "Eugen Hristev"
 !define PRODUCT_WEB_SITE "http://www.death-squad.ro/dshub"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\dshub.exe"
@@ -124,6 +124,7 @@ Section "DSHub" SEC01
   File "lib\slf4j-log4j12-1.4.3.jar"
   File "lib\swing-layout-1.0.3.jar"
   File "lib\jython.jar"
+  File "lib\bouncycastle.jar"
   
   
 
@@ -208,6 +209,7 @@ Section Uninstall
   Delete "$INSTDIR\lib\log4j-over-slf4j-1.4.3.jar"
   Delete "$INSTDIR\lib\log4j-1.2.14.jar"
   Delete "$INSTDIR\lib\AbsoluteLayout.jar"
+  Delete "$INSTDIR\lib\bouncycastle.jar"
   Delete "$INSTDIR\scripts\py\testscript.py"
   Delete "$INSTDIR\readme.txt"
   Delete "$INSTDIR\mina-license.txt"
