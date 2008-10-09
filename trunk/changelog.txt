@@ -1,4 +1,4 @@
-*** Kappa RC1 *** 
+*** Kappa RC1 09.10.2008*** 
 
        * added startup command line option -nogui that starts dshub with no gui;    
        * grouped the commands from the accounts editing page;
