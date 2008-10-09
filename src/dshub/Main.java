@@ -183,7 +183,7 @@ public class Main extends Thread
         		else
         		    myPath=bla;
         	}
-        System.out.println(myPath);
+      //  System.out.println(myPath);
          
         pManager = new PythonManager();
              
