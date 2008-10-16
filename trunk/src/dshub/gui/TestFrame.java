@@ -4976,7 +4976,7 @@ public class TestFrame extends javax.swing.JFrame {
 
 		maxhubsopfield.setText(Integer.toString(Vars.max_hubs_op));
 
-		maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_reg));
+		maxhubsregfield.setText(Integer.toString(Vars.max_hubs_reg));
 
 		maxhubsuserfield.setText(Integer.toString(Vars.max_hubs_user));
 
