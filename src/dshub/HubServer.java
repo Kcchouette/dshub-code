@@ -452,6 +452,7 @@ public class HubServer extends Thread
 
         
       Vars.min_ni=vars.min_ni;
+	  Vars.max_ni=vars.max_ni;
       Vars.max_de=vars.max_de;
       Vars.max_share=vars.max_share; 
       Vars.min_share=vars.min_share;
@@ -471,6 +472,7 @@ public class HubServer extends Thread
       Vars.Opchat_desc=vars.Opchat_desc;
       Vars.kick_time=vars.kick_time;
       Vars.Msg_Banned=vars.Msg_Banned;
+	   Vars.Msg_Search_Spam=vars.Msg_Search_Spam;
 
       Vars.reg_only=vars.reg_only;
       Vars.nick_chars=vars.nick_chars;

@@ -194,6 +194,8 @@ public class Variables implements Serializable
       max_sch_chars=Vars.max_sch_chars;
       max_chat_msg=Vars.max_chat_msg;
       command_pm=Vars.command_pm;
+	  
+	  chat_interval=Vars.chat_interval;
 
       adcs_mode=Vars.adcs_mode;
       
