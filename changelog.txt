@@ -1,3 +1,10 @@
+*** Kappa RC2 ***
+
+       * from now on, CID taken is gone ( except opchat and bot cid ) , because the connecting user will drop the online user with the same CID. Ghost problem should be gone with this.
+       * fixed #216674
+
+
+
 *** Kappa RC1 09.10.2008*** 
 
        * added startup command line option -nogui that starts dshub with no gui;    

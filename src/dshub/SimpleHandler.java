@@ -85,6 +85,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
 			//t.printStackTrace();
+			if(!session.isClosing() || session.isConnected())
 			session.close(false);
 			return;
 		}
@@ -100,6 +101,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		} else {
 			t.printStackTrace();
 			// Main.PopMsg(t.printStackTrace()getMessage());
+			if(!session.isClosing() || session.isConnected())
 			session.close(false);
 			return;
 		}
@@ -160,7 +162,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		// System.out.println("killed");
 		}*/
 
-		if (cur_client.userok == 1 && cur_client.kicked != 1) {
+		if (cur_client.userok == 1 && cur_client.kicked != 1 && cur_client.replaced==false) {
 			Broadcast.getInstance().broadcast("IQUI " + cur_client.SessionID, cur_client.myNod);
 		}
 		/** calling plugins...*/
@@ -173,8 +175,9 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		//  Main.PopMsg(cur_client.NI+" with SID " + cur_client.SessionID+" just quited.");
         if(cur_client.inside)  
         {
+        	if(!cur_client.replaced)
 			SimpleHandler.Users.remove(cur_client.ID);
-		//	System.out.println("a intrat "+cur_client.ID);
+			//System.out.println("a iesit "+cur_client.ID);
         }
 		cur_client = null;
 
