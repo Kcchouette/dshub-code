@@ -84,17 +84,34 @@ public class Command
 
 		synchronized (SimpleHandler.Users)
 		{
-			// System.out.println("marimea este "+SimpleHandler.Users.size());
+			// System.out.println("marimea este
+			// "+SimpleHandler.Users.size());
 			if (SimpleHandler.Users.containsKey(cur_client.ID))
-				SimpleHandler.Users.get(cur_client.ID).dropMe();
-			else
 			{
 
-				SimpleHandler.Users.put(cur_client.ID, cur_client.myNod);
-				cur_client.inside = true;
-				// System.out.println("a intrat "+cur_client.ID+", marimea este
-				// "+SimpleHandler.Users.size());
+				// SimpleHandler.Users.get(cur_client.ID).cur_client.inside=false;
+				SimpleHandler.Users.get(cur_client.ID).cur_client.replaced = true;
+				SimpleHandler.Users.get(cur_client.ID).cur_client.mySession
+						.close();
+				Broadcast
+						.getInstance()
+						.broadcast("IQUI "
+										+ SimpleHandler.Users
+												.get(cur_client.ID).cur_client.SessionID,
+								SimpleHandler.Users.get(cur_client.ID).cur_client.myNod);
+				SimpleHandler.Users
+						.replace(cur_client.ID, cur_client.myNod);
+
 			}
+
+			else
+			{
+				SimpleHandler.Users.put(cur_client.ID, cur_client.myNod);
+				//System.out.println("am adaugat ");
+			}
+			cur_client.inside = true;
+			// System.out.println("a intrat "+cur_client.ID+", marimea este
+			// "+SimpleHandler.Users.size());
 
 		}
 

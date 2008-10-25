@@ -58,16 +58,15 @@ public class Broadcast {
 
 	static int size = 0;
 
-	// un pool de threaduri ce este folosit pentru executia secventelor de operatii corespunzatoare
-	// conextiunilor cu fiecare client
-	final protected ExecutorService pool;
-	final private ThreadFactory tfactory;
+	
+	//final protected ExecutorService pool;
+	//final private ThreadFactory tfactory;
 
 	static Broadcast _instance = null;
 
 	private Broadcast() {
-		tfactory = new DaemonThreadFactory();
-		pool = Executors.newSingleThreadScheduledExecutor(tfactory);
+	//	tfactory = new DaemonThreadFactory();
+	//	pool = Executors.newSingleThreadScheduledExecutor(tfactory);
 	}
 
 	public synchronized static Broadcast getInstance() {
@@ -96,10 +95,10 @@ public class Broadcast {
 
 	public void execute(int state, String STR, ClientNod cur_client,
 			ClientNod CH) {
-		pool.execute(new ClientThread(state, STR, cur_client, CH));
+		new ClientThread(state, STR, cur_client, CH).run();
 	}
 
-	private class ClientThread implements Runnable {
+	private class ClientThread  {
 
 		private final int state;
 		private final String STR;
@@ -199,15 +198,7 @@ public class Broadcast {
 		sendToAll(state, STR, cur_client);
 	}
 
-	/**
-	 * Custom thread factory used in connection pool
-	 */
-	private final class DaemonThreadFactory implements ThreadFactory {
-		public Thread newThread(Runnable r) {
-			Thread thread = new Thread(r);
-			thread.setDaemon(true);
-			return thread;
-		}
-	}
+	
+	
 
 }
