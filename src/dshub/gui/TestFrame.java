@@ -2845,26 +2845,51 @@ public class TestFrame extends javax.swing.JFrame {
         BCTMcheck.setText("B");
         BCTMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BCTMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BCTMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BCTMcheckActionPerformed(evt);
+            }
+        });
         jPanel27.add(BCTMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DCTMcheck.setText("D");
         DCTMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DCTMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DCTMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DCTMcheckActionPerformed(evt);
+            }
+        });
         jPanel27.add(DCTMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         ECTMcheck.setText("E");
         ECTMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ECTMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ECTMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ECTMcheckActionPerformed(evt);
+            }
+        });
         jPanel27.add(ECTMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FCTMcheck.setText("F");
         FCTMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FCTMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FCTMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FCTMcheckActionPerformed(evt);
+            }
+        });
         jPanel27.add(FCTMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HCTMcheck.setText("H");
         HCTMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HCTMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HCTMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HCTMcheckActionPerformed(evt);
+            }
+        });
         jPanel27.add(HCTMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 50, 130));
@@ -2875,26 +2900,51 @@ public class TestFrame extends javax.swing.JFrame {
         BRCMcheck.setText("B");
         BRCMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BRCMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BRCMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRCMcheckActionPerformed(evt);
+            }
+        });
         jPanel28.add(BRCMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DRCMcheck.setText("D");
         DRCMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DRCMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DRCMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DRCMcheckActionPerformed(evt);
+            }
+        });
         jPanel28.add(DRCMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         ERCMcheck.setText("E");
         ERCMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ERCMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ERCMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ERCMcheckActionPerformed(evt);
+            }
+        });
         jPanel28.add(ERCMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FRCMcheck.setText("F");
         FRCMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FRCMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FRCMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FRCMcheckActionPerformed(evt);
+            }
+        });
         jPanel28.add(FRCMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HRCMcheck.setText("H");
         HRCMcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HRCMcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HRCMcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HRCMcheckActionPerformed(evt);
+            }
+        });
         jPanel28.add(HRCMcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 50, 130));
@@ -2905,26 +2955,51 @@ public class TestFrame extends javax.swing.JFrame {
         BINFcheck.setText("B");
         BINFcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BINFcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BINFcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BINFcheckActionPerformed(evt);
+            }
+        });
         jPanel29.add(BINFcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DINFcheck.setText("D");
         DINFcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DINFcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DINFcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DINFcheckActionPerformed(evt);
+            }
+        });
         jPanel29.add(DINFcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         EINFcheck.setText("E");
         EINFcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         EINFcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        EINFcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EINFcheckActionPerformed(evt);
+            }
+        });
         jPanel29.add(EINFcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FINFcheck.setText("F");
         FINFcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FINFcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FINFcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FINFcheckActionPerformed(evt);
+            }
+        });
         jPanel29.add(FINFcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HINFcheck.setText("H");
         HINFcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HINFcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HINFcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HINFcheckActionPerformed(evt);
+            }
+        });
         jPanel29.add(HINFcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 50, 130));
@@ -2935,26 +3010,51 @@ public class TestFrame extends javax.swing.JFrame {
         BSCHcheck.setText("B");
         BSCHcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BSCHcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BSCHcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSCHcheckActionPerformed(evt);
+            }
+        });
         jPanel30.add(BSCHcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DSCHcheck.setText("D");
         DSCHcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DSCHcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DSCHcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DSCHcheckActionPerformed(evt);
+            }
+        });
         jPanel30.add(DSCHcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         ESCHcheck.setText("E");
         ESCHcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ESCHcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ESCHcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ESCHcheckActionPerformed(evt);
+            }
+        });
         jPanel30.add(ESCHcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FSCHcheck.setText("F");
         FSCHcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FSCHcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FSCHcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FSCHcheckActionPerformed(evt);
+            }
+        });
         jPanel30.add(FSCHcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HSCHcheck.setText("H");
         HSCHcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HSCHcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HSCHcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HSCHcheckActionPerformed(evt);
+            }
+        });
         jPanel30.add(HSCHcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 50, 130));
@@ -2965,26 +3065,51 @@ public class TestFrame extends javax.swing.JFrame {
         BREScheck.setText("B");
         BREScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BREScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BREScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BREScheckActionPerformed(evt);
+            }
+        });
         jPanel31.add(BREScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DREScheck.setText("D");
         DREScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DREScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DREScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DREScheckActionPerformed(evt);
+            }
+        });
         jPanel31.add(DREScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         EREScheck.setText("E");
         EREScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         EREScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        EREScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EREScheckActionPerformed(evt);
+            }
+        });
         jPanel31.add(EREScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FREScheck.setText("F");
         FREScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FREScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FREScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FREScheckActionPerformed(evt);
+            }
+        });
         jPanel31.add(FREScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HREScheck.setText("H");
         HREScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HREScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HREScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HREScheckActionPerformed(evt);
+            }
+        });
         jPanel31.add(HREScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 50, 130));
@@ -2995,26 +3120,51 @@ public class TestFrame extends javax.swing.JFrame {
         BPAScheck.setText("B");
         BPAScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BPAScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BPAScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BPAScheckActionPerformed(evt);
+            }
+        });
         jPanel32.add(BPAScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DPAScheck.setText("D");
         DPAScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DPAScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DPAScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DPAScheckActionPerformed(evt);
+            }
+        });
         jPanel32.add(DPAScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         EPAScheck.setText("E");
         EPAScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         EPAScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        EPAScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EPAScheckActionPerformed(evt);
+            }
+        });
         jPanel32.add(EPAScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FPAScheck.setText("F");
         FPAScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FPAScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FPAScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FPAScheckActionPerformed(evt);
+            }
+        });
         jPanel32.add(FPAScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HPAScheck.setText("H");
         HPAScheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HPAScheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HPAScheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HPAScheckActionPerformed(evt);
+            }
+        });
         jPanel32.add(HPAScheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 50, 130));
@@ -3025,26 +3175,51 @@ public class TestFrame extends javax.swing.JFrame {
         BSUPcheck.setText("B");
         BSUPcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BSUPcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BSUPcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSUPcheckActionPerformed(evt);
+            }
+        });
         jPanel33.add(BSUPcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         DSUPcheck.setText("D");
         DSUPcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         DSUPcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        DSUPcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DSUPcheckActionPerformed(evt);
+            }
+        });
         jPanel33.add(DSUPcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         ESUPcheck.setText("E");
         ESUPcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ESUPcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        ESUPcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ESUPcheckActionPerformed(evt);
+            }
+        });
         jPanel33.add(ESUPcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         FSUPcheck.setText("F");
         FSUPcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         FSUPcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        FSUPcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FSUPcheckActionPerformed(evt);
+            }
+        });
         jPanel33.add(FSUPcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         HSUPcheck.setText("H");
         HSUPcheck.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         HSUPcheck.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        HSUPcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HSUPcheckActionPerformed(evt);
+            }
+        });
         jPanel33.add(HSUPcheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jPanel9.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 50, 130));
@@ -5734,6 +5909,466 @@ private void disableadcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         Main.PopMsg("ADC Secure mode has been disabled");
     }
 }//GEN-LAST:event_disableadcsActionPerformed
+
+private void BCTMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCTMcheckActionPerformed
+// TODO add your handling code here:
+    if (BCTMcheck.isSelected())
+
+		{
+			Main.PopMsg("BCTM changed from \"0\" to \"1\".");
+			Vars.BCTM = 1;
+		} else {
+			Main.PopMsg("BCTM changed from \"1\" to \"0\".");
+			Vars.BCTM = 0;
+		}
+}//GEN-LAST:event_BCTMcheckActionPerformed
+
+private void DCTMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DCTMcheckActionPerformed
+// TODO add your handling code here:
+    if (DCTMcheck.isSelected())
+
+		{
+			Main.PopMsg("DCTM changed from \"0\" to \"1\".");
+			Vars.DCTM = 1;
+		} else {
+			Main.PopMsg("DCTM changed from \"1\" to \"0\".");
+			Vars.DCTM = 0;
+		}
+}//GEN-LAST:event_DCTMcheckActionPerformed
+
+private void ECTMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ECTMcheckActionPerformed
+// TODO add your handling code here:
+    if (ECTMcheck.isSelected())
+
+		{
+			Main.PopMsg("ECTM changed from \"0\" to \"1\".");
+			Vars.ECTM = 1;
+		} else {
+			Main.PopMsg("BCTM changed from \"1\" to \"0\".");
+			Vars.ECTM = 0;
+		}
+}//GEN-LAST:event_ECTMcheckActionPerformed
+
+private void FCTMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FCTMcheckActionPerformed
+
+    if (FCTMcheck.isSelected())
+
+		{
+			Main.PopMsg("FCTM changed from \"0\" to \"1\".");
+			Vars.FCTM = 1;
+		} else {
+			Main.PopMsg("FCTM changed from \"1\" to \"0\".");
+			Vars.FCTM = 0;
+		}
+}//GEN-LAST:event_FCTMcheckActionPerformed
+
+private void HCTMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HCTMcheckActionPerformed
+// TODO add your handling code here:
+    if (HCTMcheck.isSelected())
+
+		{
+			Main.PopMsg("HCTM changed from \"0\" to \"1\".");
+			Vars.HCTM = 1;
+		} else {
+			Main.PopMsg("HCTM changed from \"1\" to \"0\".");
+			Vars.HCTM = 0;
+		}
+}//GEN-LAST:event_HCTMcheckActionPerformed
+
+private void BRCMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRCMcheckActionPerformed
+// TODO add your handling code here:
+    if (BRCMcheck.isSelected())
+
+		{
+			Main.PopMsg("BRCM changed from \"0\" to \"1\".");
+			Vars.BRCM = 1;
+		} else {
+			Main.PopMsg("BRCM changed from \"1\" to \"0\".");
+			Vars.BRCM = 0;
+		}
+}//GEN-LAST:event_BRCMcheckActionPerformed
+
+private void DRCMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DRCMcheckActionPerformed
+// TODO add your handling code here:
+    if (DRCMcheck.isSelected())
+
+		{
+			Main.PopMsg("DRCM changed from \"0\" to \"1\".");
+			Vars.DRCM = 1;
+		} else {
+			Main.PopMsg("DRCM changed from \"1\" to \"0\".");
+			Vars.DRCM = 0;
+		}
+}//GEN-LAST:event_DRCMcheckActionPerformed
+
+private void ERCMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ERCMcheckActionPerformed
+// TODO add your handling code here:
+    if (ERCMcheck.isSelected())
+
+		{
+			Main.PopMsg("ERCM changed from \"0\" to \"1\".");
+			Vars.ERCM = 1;
+		} else {
+			Main.PopMsg("ERCM changed from \"1\" to \"0\".");
+			Vars.ERCM = 0;
+		}
+}//GEN-LAST:event_ERCMcheckActionPerformed
+
+private void FRCMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FRCMcheckActionPerformed
+// TODO add your handling code here:
+    if (FRCMcheck.isSelected())
+
+		{
+			Main.PopMsg("FRCM changed from \"0\" to \"1\".");
+			Vars.FRCM = 1;
+		} else {
+			Main.PopMsg("FRCM changed from \"1\" to \"0\".");
+			Vars.FRCM = 0;
+		}
+}//GEN-LAST:event_FRCMcheckActionPerformed
+
+private void HRCMcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HRCMcheckActionPerformed
+// TODO add your handling code here:
+    if (HRCMcheck.isSelected())
+
+		{
+			Main.PopMsg("HRCM changed from \"0\" to \"1\".");
+			Vars.HRCM = 1;
+		} else {
+			Main.PopMsg("HRCM changed from \"1\" to \"0\".");
+			Vars.HRCM = 0;
+		}
+}//GEN-LAST:event_HRCMcheckActionPerformed
+
+private void BSCHcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSCHcheckActionPerformed
+// TODO add your handling code here:
+    if (BSCHcheck.isSelected())
+
+		{
+			Main.PopMsg("BSCH changed from \"0\" to \"1\".");
+			Vars.BSCH = 1;
+		} else {
+			Main.PopMsg("BSCH changed from \"1\" to \"0\".");
+			Vars.BSCH = 0;
+		}
+}//GEN-LAST:event_BSCHcheckActionPerformed
+
+private void DSCHcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSCHcheckActionPerformed
+// TODO add your handling code here:
+    if (DSCHcheck.isSelected())
+
+		{
+			Main.PopMsg("DSCH changed from \"0\" to \"1\".");
+			Vars.DSCH = 1;
+		} else {
+			Main.PopMsg("DSCH changed from \"1\" to \"0\".");
+			Vars.DSCH = 0;
+		}
+}//GEN-LAST:event_DSCHcheckActionPerformed
+
+private void ESCHcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ESCHcheckActionPerformed
+// TODO add your handling code here:
+    if (ESCHcheck.isSelected())
+
+		{
+			Main.PopMsg("ESCH changed from \"0\" to \"1\".");
+			Vars.ESCH = 1;
+		} else {
+			Main.PopMsg("ESCH changed from \"1\" to \"0\".");
+			Vars.ESCH = 0;
+		}
+}//GEN-LAST:event_ESCHcheckActionPerformed
+
+private void FSCHcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSCHcheckActionPerformed
+// TODO add your handling code here:
+    if (FSCHcheck.isSelected())
+
+		{
+			Main.PopMsg("FSCH changed from \"0\" to \"1\".");
+			Vars.FSCH = 1;
+		} else {
+			Main.PopMsg("FSCH changed from \"1\" to \"0\".");
+			Vars.FSCH = 0;
+		}
+}//GEN-LAST:event_FSCHcheckActionPerformed
+
+private void HSCHcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSCHcheckActionPerformed
+// TODO add your handling code here:
+    if (HSCHcheck.isSelected())
+
+		{
+			Main.PopMsg("HSCH changed from \"0\" to \"1\".");
+			Vars.HSCH = 1;
+		} else {
+			Main.PopMsg("HSCH changed from \"1\" to \"0\".");
+			Vars.HSCH = 0;
+		}
+}//GEN-LAST:event_HSCHcheckActionPerformed
+
+private void BREScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BREScheckActionPerformed
+// TODO add your handling code here:
+    if (BREScheck.isSelected())
+
+		{
+			Main.PopMsg("BRES changed from \"0\" to \"1\".");
+			Vars.BRES = 1;
+		} else {
+			Main.PopMsg("BRES changed from \"1\" to \"0\".");
+			Vars.BRES = 0;
+		}
+}//GEN-LAST:event_BREScheckActionPerformed
+
+private void DREScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DREScheckActionPerformed
+// TODO add your handling code here:
+    if (DREScheck.isSelected())
+
+		{
+			Main.PopMsg("DRES changed from \"0\" to \"1\".");
+			Vars.DRES = 1;
+		} else {
+			Main.PopMsg("DRES changed from \"1\" to \"0\".");
+			Vars.DRES = 0;
+		}
+}//GEN-LAST:event_DREScheckActionPerformed
+
+private void EREScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EREScheckActionPerformed
+// TODO add your handling code here:
+    if (EREScheck.isSelected())
+
+		{
+			Main.PopMsg("ERES changed from \"0\" to \"1\".");
+			Vars.ERES = 1;
+		} else {
+			Main.PopMsg("ERES changed from \"1\" to \"0\".");
+			Vars.ERES = 0;
+		}
+}//GEN-LAST:event_EREScheckActionPerformed
+
+private void FREScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FREScheckActionPerformed
+// TODO add your handling code here:
+    if (FREScheck.isSelected())
+
+		{
+			Main.PopMsg("FRES changed from \"0\" to \"1\".");
+			Vars.FRES = 1;
+		} else {
+			Main.PopMsg("FRES changed from \"1\" to \"0\".");
+			Vars.FRES = 0;
+		}
+}//GEN-LAST:event_FREScheckActionPerformed
+
+private void HREScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HREScheckActionPerformed
+// TODO add your handling code here:
+    if (HREScheck.isSelected())
+
+		{
+			Main.PopMsg("HRES changed from \"0\" to \"1\".");
+			Vars.HRES = 1;
+		} else {
+			Main.PopMsg("HRES changed from \"1\" to \"0\".");
+			Vars.HRES = 0;
+		}
+}//GEN-LAST:event_HREScheckActionPerformed
+
+private void BPAScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BPAScheckActionPerformed
+// TODO add your handling code here:
+    if (BPAScheck.isSelected())
+
+		{
+			Main.PopMsg("BPAS changed from \"0\" to \"1\".");
+			Vars.BPAS = 1;
+		} else {
+			Main.PopMsg("BPAS changed from \"1\" to \"0\".");
+			Vars.BPAS = 0;
+		}
+}//GEN-LAST:event_BPAScheckActionPerformed
+
+private void DPAScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DPAScheckActionPerformed
+// TODO add your handling code here:
+    
+     if (DPAScheck.isSelected())
+
+		{
+			Main.PopMsg("DPAS changed from \"0\" to \"1\".");
+			Vars.DPAS = 1;
+		} else {
+			Main.PopMsg("DPAS changed from \"1\" to \"0\".");
+			Vars.DPAS = 0;
+		}
+}//GEN-LAST:event_DPAScheckActionPerformed
+
+private void EPAScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EPAScheckActionPerformed
+// TODO add your handling code here:
+     if (EPAScheck.isSelected())
+
+		{
+			Main.PopMsg("EPAS changed from \"0\" to \"1\".");
+			Vars.EPAS = 1;
+		} else {
+			Main.PopMsg("EPAS changed from \"1\" to \"0\".");
+			Vars.EPAS = 0;
+		}
+}//GEN-LAST:event_EPAScheckActionPerformed
+
+private void FPAScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPAScheckActionPerformed
+// TODO add your handling code here:
+    
+     if (FPAScheck.isSelected())
+
+		{
+			Main.PopMsg("FPAS changed from \"0\" to \"1\".");
+			Vars.FPAS = 1;
+		} else {
+			Main.PopMsg("FPAS changed from \"1\" to \"0\".");
+			Vars.FPAS = 0;
+		}
+}//GEN-LAST:event_FPAScheckActionPerformed
+
+private void HPAScheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HPAScheckActionPerformed
+// TODO add your handling code here:
+     if (HPAScheck.isSelected())
+
+		{
+			Main.PopMsg("HPAS changed from \"0\" to \"1\".");
+			Vars.HPAS = 1;
+		} else {
+			Main.PopMsg("HPAS changed from \"1\" to \"0\".");
+			Vars.HPAS = 0;
+		}
+}//GEN-LAST:event_HPAScheckActionPerformed
+
+private void BSUPcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSUPcheckActionPerformed
+// TODO add your handling code here:
+     if (BSUPcheck.isSelected())
+
+		{
+			Main.PopMsg("BSUP changed from \"0\" to \"1\".");
+			Vars.BSUP = 1;
+		} else {
+			Main.PopMsg("BSUP changed from \"1\" to \"0\".");
+			Vars.BSUP = 0;
+		}
+}//GEN-LAST:event_BSUPcheckActionPerformed
+
+private void DSUPcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSUPcheckActionPerformed
+ if (DSUPcheck.isSelected())
+
+		{
+			Main.PopMsg("DSUP changed from \"0\" to \"1\".");
+			Vars.DSUP = 1;
+		} else {
+			Main.PopMsg("DSUP changed from \"1\" to \"0\".");
+			Vars.DSUP = 0;
+		}
+    
+    // TODO add your handling code here:
+}//GEN-LAST:event_DSUPcheckActionPerformed
+
+private void ESUPcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ESUPcheckActionPerformed
+// TODO add your handling code here:
+    
+     if (ESUPcheck.isSelected())
+
+		{
+			Main.PopMsg("ESUP changed from \"0\" to \"1\".");
+			Vars.ESUP = 1;
+		} else {
+			Main.PopMsg("ESUP changed from \"1\" to \"0\".");
+			Vars.ESUP = 0;
+		}
+}//GEN-LAST:event_ESUPcheckActionPerformed
+
+private void FSUPcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSUPcheckActionPerformed
+// TODO add your handling code here:
+     if (FSUPcheck.isSelected())
+
+		{
+			Main.PopMsg("FSUP changed from \"0\" to \"1\".");
+			Vars.FSUP = 1;
+		} else {
+			Main.PopMsg("FSUP changed from \"1\" to \"0\".");
+			Vars.FSUP = 0;
+		}
+}//GEN-LAST:event_FSUPcheckActionPerformed
+
+private void HSUPcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSUPcheckActionPerformed
+// TODO add your handling code here:
+    
+     if (HSUPcheck.isSelected())
+
+		{
+			Main.PopMsg("HSUP changed from \"0\" to \"1\".");
+			Vars.HSUP = 1;
+		} else {
+			Main.PopMsg("HSUP changed from \"1\" to \"0\".");
+			Vars.HSUP = 0;
+		}
+}//GEN-LAST:event_HSUPcheckActionPerformed
+
+private void BINFcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BINFcheckActionPerformed
+// TODO add your handling code here:
+    if (BINFcheck.isSelected())
+
+		{
+			Main.PopMsg("BINF changed from \"0\" to \"1\".");
+			Vars.BINF = 1;
+		} else {
+			Main.PopMsg("BINF changed from \"1\" to \"0\".");
+			Vars.BINF = 0;
+		}
+}//GEN-LAST:event_BINFcheckActionPerformed
+
+private void DINFcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DINFcheckActionPerformed
+// TODO add your handling code here:
+    if (DINFcheck.isSelected())
+
+		{
+			Main.PopMsg("DINF changed from \"0\" to \"1\".");
+			Vars.DINF = 1;
+		} else {
+			Main.PopMsg("DINF changed from \"1\" to \"0\".");
+			Vars.DINF = 0;
+		}
+}//GEN-LAST:event_DINFcheckActionPerformed
+
+private void EINFcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EINFcheckActionPerformed
+// TODO add your handling code here:
+    if (EINFcheck.isSelected())
+
+		{
+			Main.PopMsg("EINF changed from \"0\" to \"1\".");
+			Vars.EINF = 1;
+		} else {
+			Main.PopMsg("EINF changed from \"1\" to \"0\".");
+			Vars.EINF = 0;
+		}
+}//GEN-LAST:event_EINFcheckActionPerformed
+
+private void FINFcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FINFcheckActionPerformed
+// TODO add your handling code here:
+    if (FINFcheck.isSelected())
+
+		{
+			Main.PopMsg("FINF changed from \"0\" to \"1\".");
+			Vars.FINF = 1;
+		} else {
+			Main.PopMsg("FINF changed from \"1\" to \"0\".");
+			Vars.FINF = 0;
+		}
+}//GEN-LAST:event_FINFcheckActionPerformed
+
+private void HINFcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HINFcheckActionPerformed
+// TODO add your handling code here:
+    if (HINFcheck.isSelected())
+
+		{
+			Main.PopMsg("HINF changed from \"0\" to \"1\".");
+			Vars.HINF = 1;
+		} else {
+			Main.PopMsg("HINF changed from \"1\" to \"0\".");
+			Vars.HINF = 0;
+		}
+}//GEN-LAST:event_HINFcheckActionPerformed
 
 	public void SetStatus(String newstring, int msgType) {
 		StatusLabel.setText(newstring);

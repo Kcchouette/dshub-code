@@ -85,8 +85,6 @@ public class ClientHandler
     public boolean CIDsecure=false;
     
    public ClientQueue Queue;
-   
-   public boolean replaced=false;
     
 /** The CID of the client. Mandatory for C-C connections.*/
 public String ID="";
@@ -216,17 +214,13 @@ public int kicked=0;
     
      public WriteFuture sendToClient(String bla)
     {
-    	 
-    	 WriteFuture retfuture=null;
-        synchronized(this)
-        {
+        
          //this.Queue.addMsg (bla);
         //System.out.println("[sent]: "+bla);
-         retfuture= mySession.write(bla);
+         return mySession.write(bla);
          
        
-        }
-        return retfuture;
+    
     }
      
      public String getINF()
