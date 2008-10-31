@@ -171,18 +171,6 @@ public class ClientNod implements IoFutureListener<WriteFuture>
      {
      kickMeOut( whokicked, kickmsg,bantype,Long.parseLong (Integer.toString (Vars.kick_time)));
      }
-     public void dropMe()
-     {
-    	 Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID);
-         
-         cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
-           
-         cur_client. kicked=1;
-         
-       this.cur_client.mySession.close();
-      // System.out.println("am dat drop la"+cur_client.SessionID);
-         
-     }
        public void dropMe(ClientHandler whokicked)
      {
          if(!cur_client.reg.kickable)
