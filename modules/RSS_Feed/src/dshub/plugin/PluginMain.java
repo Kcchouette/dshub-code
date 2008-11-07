@@ -79,14 +79,8 @@ public void onConnect(ClientHandler cur_client)
     public void onRawCommand(ClientHandler cur_client,String Raw_Command)
     {
      StringTokenizer ST=new StringTokenizer(Raw_Command) ; //parsing the raw command;
-     if(!ST.hasMoreTokens())
-    	 return;
      ST.nextToken(); //this must be the BMSG
-     if(!ST.hasMoreTokens())
-    	 return;
      ST.nextToken();//this should be the SID
-     if(!ST.hasMoreTokens())
-    	 return;
      String cmd= ST.nextToken(); // this should be the actual command
      if(cmd.startsWith("+feed"))
      new  feed(cur_client,ADC.retNormStr(cmd.substring(1)),true);
