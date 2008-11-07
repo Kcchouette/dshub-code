@@ -1,9 +1,7 @@
 package dshub.plugin;
-
-/* RSS Feed Plugin 0.01
- * http://forum.java.sun.com/thread.jspa?threadID=5275485
+/* RSS Feed Plugin 0.02
+ * Orginal Idea grabbed from http://forum.java.sun.com/thread.jspa?threadID=5275485
  */
-
 import dshub.ClientHandler;
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
@@ -43,14 +41,11 @@ public class RSSReader {
 				
 				Element element = (Element)nodes.item(i);
 								
-				String ToastRegexp = "(<ol style=\".*\">|<a href=\".*\">|<img (alt=\".*\" )?src=\".*\"( height=\".*\" width=\".*\"| width=\".*\" height=\".*\"| border=\".*\"| class=\".*\" alt=\".*\" (title=\".*\"( )?)?)/>|(<.{1,15}>|&(lt|gt|quot|nbsp|rdquo|ndash);( )?)|(- )?|<blockquote( class=\".*\")?>)";
+				String ToastRegexp = "(<br />|<a href=\".*\">|</a>|<(/)?li>|<img src=\".*\" (class=\"(horizontal|vertical)\" alt=\".*\" )?/>|<ul>|&quot;|<span style=\".*\">|<!-- m -->)";
                                 cur_client.sendFromBotPM("Title: " + getElementValue(element,"title").replaceAll(ToastRegexp,""));
-                                cur_client.sendFromBotPM(" ");
-                                cur_client.sendFromBotPM("Description: " + getElementValue(element,"description").replaceAll(ToastRegexp,""));				
-                                cur_client.sendFromBotPM(" ");
                                 cur_client.sendFromBotPM("Publish Date: " + getElementValue(element,"pubDate"));
-                                cur_client.sendFromBotPM("Link: " + getElementValue(element,"link"));
-				cur_client.sendFromBotPM(" ");
+                                cur_client.sendFromBotPM("Full Story: " + getElementValue(element,"link"));
+                                cur_client.sendFromBotPM("Short Description: " + getElementValue(element,"description").replaceAll(ToastRegexp,""));				
 				System.out.println();
 			}//for			
 		}//try
@@ -59,9 +54,7 @@ public class RSSReader {
 		}
 		
 	}
-		
-		
-		private String getCharacterDataFromElement(Element e) {
+ 		private String getCharacterDataFromElement(Element e) {
 			try {
 				Node child = e.getFirstChild();
 				if(child instanceof CharacterData) {
@@ -74,17 +67,13 @@ public class RSSReader {
 			}
 			return "";			
 		} //private String getCharacterDataFromElement
-		
 		protected float getFloat(String value) {
 			if(value != null && !value.equals("")) {
 				return Float.parseFloat(value);	
 			}
 			return 0;
 		}
-		
 		protected String getElementValue(Element parent,String label) {
 			return getCharacterDataFromElement((Element)parent.getElementsByTagName(label).item(0));	
 		}
 }
-		
-
