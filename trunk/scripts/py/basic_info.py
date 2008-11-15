@@ -19,6 +19,7 @@ f = open('basic_info.log', 'w')
 print >> f, "Basic Info:","\n"
 print >> f, "Hostname:", hostname
 print >> f, 'Operating System:', platform.system(), platform.release()
+print >> f, 'Working Directory:', sys.argv[0] ,os.path.abspath(pathname)
 print >> f, 'Parent Process ID:', os.getpid()
 print >> f, 'Real User ID:', os.getuid()
 f.close()
