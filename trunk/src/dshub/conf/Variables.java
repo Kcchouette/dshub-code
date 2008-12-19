@@ -1,4 +1,4 @@
-package dshub;
+package dshub.conf;
 /*
  * Variables.java
  *
@@ -33,139 +33,139 @@ import java.util.LinkedList;
  */
 public class Variables implements Serializable
 {
-      int Timeout_Login;
+      public int Timeout_Login;
       /** Default port on which to start hubbie */
       //int Default_Port;
     
 
     
-      String HubVersion;
+      public String HubVersion;
       
-      String HubDE;
+      public String HubDE;
       
-      String HubName;
+      public String HubName;
       
 
  
-      String About;
+      public String About;
       
-      String Opchat_name;
-      String Opchat_desc;
-      String bot_name;
-      String bot_desc;
+      public String Opchat_name;
+      public String Opchat_desc;
+      public String bot_name;
+      public String bot_desc;
       
-      String Msg_Banned;
+      public String Msg_Banned;
       
-      String nick_chars;
-      String Msg_Full;
+      public String nick_chars;
+      public String Msg_Full;
 
-      String Msg_Search_Spam;
+      public String Msg_Search_Spam;
       
-      String SecurityCid;
-      String OpChatCid;
+      public String SecurityCid;
+      public String OpChatCid;
       
-      String Hub_Host;
+      public String Hub_Host;
       
-      String Proxy_Host;
-      int Proxy_Port;
+      public String Proxy_Host;
+      public int Proxy_Port;
       
-      String redirect_url;
+      public String redirect_url;
       
-      boolean adcs_mode;
-      boolean certlogin;
+      public boolean adcs_mode;
+      public boolean certlogin;
       
-      String lang;
+      public String lang;
       
-     int max_ni;
-     int min_ni;
-     int max_de;
-     long max_share ; 
-     long min_share;
-     int max_sl;
-     int min_sl;
-     int max_em;
-     int max_hubs_op;
-     int max_hubs_reg;
-     int max_hubs_user;
-     int min_sch_chars;
-     int max_sch_chars;
-     int max_chat_msg;
+      public int max_ni;
+      public int min_ni;
+      public int max_de;
+      public long max_share ; 
+      public long min_share;
+      public int max_sl;
+      public int min_sl;
+      public int max_em;
+      public int max_hubs_op;
+      public int max_hubs_reg;
+      public int max_hubs_user;
+      public int min_sch_chars;
+      public int max_sch_chars;
+      public int max_chat_msg;
 
-     int command_pm;
+      public int command_pm;
 
-     int history_lines;
-     int kick_time;
+      public int history_lines;
+      public int kick_time;
 
-     int reg_only;
-     int max_users;
+      public int reg_only;
+      public int max_users;
 
 
-     int chat_interval;
+      public int chat_interval;
 
-     int savelogs;
-     int automagic_search;
-     int search_log_base;
-     int search_steps;
-     int search_spam_reset;
+      public int savelogs;
+      public int automagic_search;
+      public int search_log_base;
+      public int search_steps;
+      public int search_spam_reset;
      
      
-     String activePlugins;
+      public  String activePlugins;
 
     // ****** ADC advanced config ************* 
      
-     int BMSG;
-     int DMSG;
-     int EMSG;
-     int FMSG;
-     int HMSG;
+      public int BMSG;
+      public int DMSG;
+      public int EMSG;
+      public int FMSG;
+      public int HMSG;
      
-     int BSTA;
-     int DSTA;
-     int ESTA;
-     int FSTA;
-     int HSTA;
+      public int BSTA;
+      public int DSTA;
+      public int ESTA;
+      public int FSTA;
+      public int HSTA;
      
-      int BCTM;
-     int DCTM;
-     int ECTM;
-     int FCTM;
-     int HCTM;
+      public  int BCTM;
+      public int DCTM;
+      public int ECTM;
+      public int FCTM;
+      public int HCTM;
     
-     int BRCM;
-     int DRCM;
-     int ERCM;
-     int FRCM;
-     int HRCM;
+      public int BRCM;
+      public int DRCM;
+      public int ERCM;
+      public int FRCM;
+      public int HRCM;
     
-     int BINF;
-     int DINF;
-     int EINF;
-     int FINF;
-     int HINF;
+      public int BINF;
+      public int DINF;
+      public int EINF;
+      public int FINF;
+      public int HINF;
     
-     int BSCH;
-     int DSCH;
-     int ESCH;
-     int FSCH;
-     int HSCH;
+      public  int BSCH;
+      public  int DSCH;
+      public  int ESCH;
+      public int FSCH;
+      public  int HSCH;
     
-     int BRES;
-     int DRES;
-     int ERES;
-     int FRES;
-     int HRES;
+      public int BRES;
+      public int DRES;
+      public int ERES;
+      public int FRES;
+      public  int HRES;
     
-     int BPAS;
-     int DPAS;
-     int EPAS;
-     int FPAS;
-     int HPAS;
+      public int BPAS;
+      public int DPAS;
+      public int EPAS;
+      public  int FPAS;
+      public int HPAS;
     
-     int BSUP;
-     int DSUP;
-     int ESUP;
-     int FSUP;
-     int HSUP;
+      public int BSUP;
+      public int DSUP;
+      public int ESUP;
+      public int FSUP;
+      public int HSUP;
      public LinkedList<Port> activePorts;
      
       public Variables()

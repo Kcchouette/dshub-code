@@ -21,9 +21,14 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.cmd;
 
 import java.util.StringTokenizer;
+
+import dshub.ClientHandler;
+import dshub.Main;
+import dshub.conf.Port;
+import dshub.conf.Vars;
 
 /**
  * 

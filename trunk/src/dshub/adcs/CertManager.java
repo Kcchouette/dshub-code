@@ -56,7 +56,7 @@ import org.bouncycastle.x509.extension.AuthorityKeyIdentifierStructure;
 import org.bouncycastle.x509.extension.SubjectKeyIdentifierStructure;
 
 import dshub.Main;
-import dshub.Vars;
+import dshub.conf.Vars;
 
 
 public class CertManager

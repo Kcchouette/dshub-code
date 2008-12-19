@@ -21,9 +21,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.conf;
 
 import java.util.StringTokenizer;
+
+import dshub.ClientHandler;
+import dshub.util.ADC;
 
 /**
  *The ADC advanced configuration panel main file ( for commands only, via client or tty )

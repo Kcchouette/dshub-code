@@ -23,6 +23,8 @@
 package dshub.gui;
 
 import dshub.*;
+import dshub.conf.Vars;
+import dshub.util.TimeConv;
 
 import java.util.Date;
 import java.util.Map;

@@ -1,5 +1,6 @@
-package dshub;
+package dshub.util;
 
+import dshub.ClientHandler;
 import dshub.Exceptions.STAException;
 /*
  * STAError.java
@@ -23,6 +24,7 @@ import dshub.Exceptions.STAException;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+import dshub.conf.Vars;
 
 /**
  * Provides a simple way to throw STA exceptions to clients 

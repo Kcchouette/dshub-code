@@ -26,6 +26,8 @@ package dshub;
 import java.io.Serializable;
 import java.util.Date;
 
+import dshub.util.TimeConv;
+
 /**
  *
  * @author Pietricica

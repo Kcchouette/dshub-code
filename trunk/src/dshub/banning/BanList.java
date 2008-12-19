@@ -22,7 +22,7 @@
  * 
  */
 
-package dshub;
+package dshub.banning;
 import java.io.Serializable;
 /**
  * A non serialisable list of bans
@@ -139,40 +139,4 @@ public class  BanList
     }
     
 }
-/**
- * 
- * A public class which holds a list of bans, and a Ban class for a singular Ban.
- * 
- * 
- * @author Pietricica
- */
 
-class bans implements Serializable
-{
-      
-    
-    Ban[] bans;
-    int i;
-    public bans ()
-    {
-        bans= new Ban[1000];
-        
-       
-        if(BanList.First==null)
-            return ;
-        Ban temp=BanList.First;
-        i=1;
-        while(temp!=null)
-        {
-            if(System.currentTimeMillis()-temp.timeofban-temp.time<0 || temp.time==-1)
-            {
-            bans[i]=temp;
-            
-            i++;
-            }
-            temp=temp.Next;
-        }
-        
-        
-    }
-}

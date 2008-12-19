@@ -28,6 +28,7 @@ import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 import dshub.*;
+import dshub.conf.Vars;
 
 /**
 *

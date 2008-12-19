@@ -26,7 +26,8 @@ package dshub.Modules;
 
 import dshub.ClientHandler;
 import dshub.Main;
-import dshub.Vars;
+import dshub.conf.Vars;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
