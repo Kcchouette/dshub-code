@@ -21,8 +21,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.banning;
 import java.io.Serializable;
+
+import dshub.util.TimeConv;
 
 /**
  * Serializable ban class that allows bans to be kept in linked list in memory

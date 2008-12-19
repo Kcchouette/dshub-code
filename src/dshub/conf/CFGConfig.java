@@ -21,12 +21,21 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.conf;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import dshub.Broadcast;
+import dshub.ClientHandler;
+import dshub.ClientNod;
+import dshub.HubServer;
+import dshub.Main;
+import dshub.SimpleHandler;
+import dshub.util.ADC;
+import dshub.util.HostTester;
 
 /**
  * The main hub configuration utility, is called when via command or tty a configuration wants changed.

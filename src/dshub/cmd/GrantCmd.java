@@ -19,10 +19,20 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package dshub;
+package dshub.cmd;
 
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import dshub.AccountsConfig;
+import dshub.Broadcast;
+import dshub.ClientHandler;
+import dshub.ClientNod;
+import dshub.HubServer;
+import dshub.Main;
+import dshub.Nod;
+import dshub.SimpleHandler;
+import dshub.util.ADC;
 
 /**
  * The grant command, that is called either via client , either via tty.

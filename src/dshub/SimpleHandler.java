@@ -41,6 +41,7 @@ import dshub.Exceptions.STAException;
 import dshub.Modules.Modulator;
 import dshub.Modules.Module;
 import dshub.TigerImpl.Base32;
+import dshub.util.STAError;
 
 /**
  *

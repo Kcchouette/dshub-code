@@ -28,6 +28,10 @@ import java.io.*;
 import org.apache.mina.core.future.WriteFuture;
 import org.apache.mina.core.session.IoSession;
 
+import dshub.banning.Ban;
+import dshub.conf.Vars;
+import dshub.util.ADC;
+
 
 /**
  * Main client class, keeps all info regarding a client, also provides forward and backlinks to other clients.
@@ -65,7 +69,7 @@ public class ClientHandler
     public boolean can_receive_cmds=false;
     public boolean inside=false;
     
-    WriteFuture closingwrite=null;
+    public WriteFuture closingwrite=null;
     public long LoggedAt=0l;
     
     public Nod reg;

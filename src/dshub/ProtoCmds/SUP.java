@@ -26,6 +26,11 @@ package dshub.ProtoCmds;
 import dshub.*;
 import dshub.Exceptions.CommandException;
 import dshub.Exceptions.STAException;
+import dshub.conf.Vars;
+import dshub.util.ADC;
+import dshub.util.Constants;
+import dshub.util.STAError;
+
 import java.util.StringTokenizer;
 
 /**

@@ -25,6 +25,8 @@ package dshub;
 
 import java.io.Serializable;
 
+import dshub.conf.Vars;
+
 /**
  * Help File generator class, dynamically.
  * @author Pietricica

@@ -21,7 +21,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package dshub;
+package dshub.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +30,8 @@ import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
+import dshub.conf.Vars;
 
 /**
  *

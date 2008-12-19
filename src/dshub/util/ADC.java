@@ -1,4 +1,4 @@
-package dshub;
+package dshub.util;
 /*
  * ADC.java
  *
@@ -22,7 +22,10 @@ package dshub;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import dshub.Main;
+import dshub.SimpleHandler;
 import dshub.TigerImpl.Base32;
+import dshub.conf.Vars;
 
 /**
  *This class is the main storage place for ADC command that hub has to send.
