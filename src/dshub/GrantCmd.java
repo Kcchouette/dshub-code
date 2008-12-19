@@ -1149,9 +1149,42 @@ public GrantCmd(String cmd)
              else  if(what.equals("opchataccess"))
              {
                
-               modnod.nickprotected=attribute;
+            	 if(attribute)
+                 {
+                        modnod.opchataccess=true; 
+            
+                        for( ClientNod tempx :  SimpleHandler.getUsers())
+                        {
+                          if(tempx.cur_client.userok==1)
+                                if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                                  {
+                                 tempx.cur_client.putOpchat(true);
+                                 }
+                        }
+                        
+                        
+                        
+                   
+                }
+                 else
+                {
+                 
+            
+                for( ClientNod tempx :  SimpleHandler.getUsers())
+                        {
+                        if(tempx.cur_client.userok==1)
+                             if(tempx.cur_client.ID.equals (modnod.CID))//if registered guy is online
+                             {
+                       tempx.cur_client.putOpchat(false);
+                             }
+                        
+                 }
+                
+                    
+                modnod.opchataccess=attribute;
+                 }
                
-              toSend+=" nickprotected modified to "+attribute+"\n";
+              toSend+=" opchataccess modified to "+attribute+"\n";
              }
             else  if(what.equals("overridefull"))
              {
@@ -1199,7 +1232,7 @@ public GrantCmd(String cmd)
       if(temp!=null)
           if(temp.cur_client.NI.equalsIgnoreCase(who) || temp.cur_client.ID.equals(who))
               temp.cur_client.sendFromBotPM(toSend.replaceAll( what +" is unknown feature \\\\n",""));
-       Main.Server.rewriteregs();
+       HubServer.rewriteregs();
     }
     
 }
