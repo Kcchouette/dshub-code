@@ -111,7 +111,7 @@ public class MSG
                        int index=Main.listaBanate.isOK(message);
                     
                    
-                   System.out.println(index);
+                 //  System.out.println(index);
                    if(index!=-1)//not ok
                     if(!((Issued_Command.startsWith("E") || Issued_Command.startsWith("D") ) //if pm
                     		&&  (Main.listaBanate.getPrAt(index) & BannedWord.privatechat )==0)) 
