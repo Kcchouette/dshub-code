@@ -183,7 +183,7 @@ public class ClientNod implements IoFutureListener<WriteFuture>
      {
     	 if(cur_client.inside)
     	 {
-    	 Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID);
+    	 Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID,cur_client.myNod);
          
      //    cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
     	 }
