@@ -66,9 +66,12 @@ public class ClientNod implements IoFutureListener<WriteFuture>
     	if(!future.isWritten())
     	cur_client.mySession.close();
     }
-    
+    public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
+    {
+    	kickMeOut( whokicked, kickmsg, bantype, kicktime,"");
+    }
   
-     public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime)
+     public void kickMeOut(ClientHandler whokicked,String kickmsg,int bantype,Long kicktime,String extraStr)
      {
          kickmsg=ADC.retNormStr (kickmsg);
          if(!cur_client.reg.kickable)
@@ -175,6 +178,19 @@ public class ClientNod implements IoFutureListener<WriteFuture>
      {
      kickMeOut( whokicked, kickmsg,bantype,Long.parseLong (Integer.toString (Vars.kick_time)));
      }
+     
+     public void dropMeImGhost()
+     {
+    	 if(cur_client.inside)
+    	 {
+    	 Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID);
+         
+     //    cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
+    	 }
+         cur_client. kicked=1;
+         cur_client.inside=false;
+       this.cur_client.mySession.close();
+     }
        public void dropMe(ClientHandler whokicked)
      {
          if(!cur_client.reg.kickable)
@@ -187,7 +203,7 @@ public class ClientNod implements IoFutureListener<WriteFuture>
          
          Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID);
            
-             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
+           //  cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                
              cur_client. kicked=1;
            this.cur_client.mySession.close();
@@ -209,7 +225,7 @@ public class ClientNod implements IoFutureListener<WriteFuture>
          
          Broadcast.getInstance().broadcast("IQUI "+cur_client.SessionID+" ID"+whokicked.SessionID+" RD"+URL);
            
-             cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
+          //   cur_client.reg.TimeOnline+=System.currentTimeMillis()-cur_client.LoggedAt;
                
              cur_client. kicked=1;
            this.cur_client.mySession.close();

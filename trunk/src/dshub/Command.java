@@ -71,6 +71,31 @@ public class Command
        // if(!(Infs.equals("")))
  //cur_client.sendToClient(Infs);
 }
+     
+     private boolean pushUser()
+     {
+    	// boolean ok=false;
+    	 synchronized(SimpleHandler.Users)
+         {
+       	 // System.out.println("marimea este "+SimpleHandler.Users.size());
+    		 if(SimpleHandler.Users.containsKey(cur_client.ID))
+    		 {
+    			 ClientNod ch=SimpleHandler.Users.get(cur_client.ID);
+    			 ch.dropMeImGhost();
+    		 }
+       	  
+       		   
+       	 
+       		 
+       		  SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
+       		  cur_client.inside=true;
+       		//  ok=true;
+       		  //System.out.println("a intrat "+cur_client.ID+", marimea este "+SimpleHandler.Users.size());
+       	  
+            
+         }
+    	 return true;
+     }
 
      void completeLogIn() throws STAException
     {
@@ -87,21 +112,8 @@ public class Command
         }
         
         
-        boolean ok=true;  
-        synchronized(SimpleHandler.Users)
-        {
-      	 // System.out.println("marimea este "+SimpleHandler.Users.size());
-      	  if(SimpleHandler.Users.containsKey(cur_client.ID))
-      		  ok=false;
-      	  else
-      	  {
-      		 
-      		  SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
-      		  cur_client.inside=true;
-      		  //System.out.println("a intrat "+cur_client.ID+", marimea este "+SimpleHandler.Users.size());
-      	  }
-           
-        }
+        boolean ok=pushUser();  
+        
         if(!ok)
         { new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
         return;}
@@ -505,17 +517,18 @@ public class Command
                    if(!temp.cur_client.equals (cur_client))
                    {
                        if(temp.cur_client.userok==1)
-                   if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()))
+                   if(temp.cur_client.NI.toLowerCase().equals(cur_client.NI.toLowerCase()) && 
+                		   !temp.cur_client.ID.equals(cur_client.ID))
                    {
                        new STAError(cur_client,200+Constants.STA_NICK_TAKEN,"Nick taken, please choose another");
                        return;
                    }
-                   if(State.equals ("PROTOCOL"))
+                  /* if(State.equals ("PROTOCOL"))
                    if(SimpleHandler.Users.containsKey(cur_client.ID) || temp.cur_client.ID.equals(cur_client.ID))//&& temp.cur_client.CIDsecure)
                    {
                        new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
                        return;
-                   }
+                   }*/
                        
                   // cur_client.CIDsecure=true;
                    i++;
@@ -776,21 +789,8 @@ public class Command
                  inf+=cur_client.getINF ();  //sending inf about itself too
          cur_client.sendToClient(inf);*/
          
-               boolean ok=true;  
-         synchronized(SimpleHandler.Users)
-          {
-        	 // System.out.println("marimea este "+SimpleHandler.Users.size());
-        	  if(SimpleHandler.Users.containsKey(cur_client.ID))
-        		  ok=false;
-        	  else
-        	  {
-        		 
-        		  SimpleHandler.Users.put(cur_client.ID,cur_client.myNod);
-        		  cur_client.inside=true;
-        		 // System.out.println("a intrat "+cur_client.ID+", marimea este "+SimpleHandler.Users.size());
-        	  }
-             
-          }
+               boolean ok=pushUser();  
+         
           if(!ok)
           { new STAError(cur_client,200+Constants.STA_CID_TAKEN,"CID taken. Please go to Settings and pick new PID.");
           return;}
