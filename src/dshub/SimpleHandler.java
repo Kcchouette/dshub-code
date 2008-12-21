@@ -86,7 +86,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
 			//t.printStackTrace();
-			session.close(false);
+			//session.close(false);
 			return;
 		}
 		if (t.getMessage().contains("java.nio.charset.MalformedInputException")) {
@@ -101,7 +101,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		} else {
 			t.printStackTrace();
 			// Main.PopMsg(t.printStackTrace()getMessage());
-			session.close(false);
+			//session.close(false);
 			return;
 		}
 		;
