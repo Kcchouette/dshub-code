@@ -83,6 +83,7 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 		//System.out.println(t.getMessage());
 		//t.printStackTrace();
 		// if((t.getMessage().contains("IOException")))
+		try{
 		if (t instanceof java.io.IOException) {
 			// Main.PopMsg(t.getMessage());
 			//t.printStackTrace();
@@ -105,6 +106,11 @@ public class SimpleHandler extends org.apache.mina.core.service.IoHandlerAdapter
 			return;
 		}
 		;
+		}catch(Exception e)
+		{
+			System.out.println("Funny exception in exceptionCaught(), here is the stack trace:");
+			e.printStackTrace();
+		}
 	}
 
 	public void messageReceived(IoSession session, Object msg) throws Exception {
